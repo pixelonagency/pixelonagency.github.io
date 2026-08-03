@@ -1,3 +1,5 @@
 design/
 .remember
 .loop
+design_handoff_astro_site/
+node_modules/
