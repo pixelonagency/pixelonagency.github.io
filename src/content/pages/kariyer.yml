@@ -1,0 +1,274 @@
+seo:
+  title: Kariyer ve Açık Pozisyonlar | Pixelon Dijital Ajans
+  description: >-
+    Pixelon'un açık pozisyonlarını inceleyin veya genel başvuru formunu doldurun. Yaratıcı, teknoloji odaklı ve birlikte üreten ekibimize katılın.
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: Pixelon Kariyer
+    headingLines:
+      - "Fikirlerinizi Özgürce Paylaşabileceğiniz Bir Ekibe Katılın."
+    lead: >-
+      Strateji, tasarım, teknoloji ve yaratıcılığın bir araya geldiği Pixelon'da; öğrenmeye açık, sorumluluk alan ve birlikte üretmekten keyif alan ekip arkadaşlarıyla büyüyoruz. Açık pozisyonlarımızı inceleyebilir veya yeteneklerinizi ve deneyiminizi paylaşmak için genel başvuru bırakabilirsiniz.
+    tagline: >-
+      Aradığınız pozisyon şu anda açık değilse de başvurunuzu bırakabilirsiniz. Uygun bir fırsat oluştuğunda sizinle iletişime geçebiliriz.
+    # DİKKAT: '#basvuru' hedefi bu sayfada henüz yok. Referansta "Genel Başvuru Yap"
+    # bir modal açıyor; `form` şemasının formId enum'ı ('contact' | 'analysis') kariyer
+    # başvuru formunu kapsamıyor. Form bölümü/modalı eklenene kadar bu bağlantı boşta.
+    ctas:
+      - label: Açık Pozisyonları İncele
+        href: '#pozisyonlar'
+        variant: primary
+      - label: Genel Başvuru Yap
+        href: '#basvuru'
+        variant: outline
+
+  # 2 — PIXELON'DA ÇALIŞMAK
+  - type: text
+    background: light
+    eyebrow: Birlikte Üreten Bir Ekip
+    heading: Sadece İş Üretmiyor, Birlikte Gelişiyoruz.
+    body: |-
+      Pixelon; farklı disiplinlerin, fikirlerin ve deneyimlerin ortak bir hedef etrafında buluştuğu yaratıcı bir çalışma ortamıdır. Web tasarım, sosyal medya, dijital reklam, içerik, marka tasarımı, video prodüksiyon ve teknoloji projelerinde ekip olarak düşünür, sorumluluğu paylaşır ve her projede daha iyisini üretmeye çalışırız.
+
+      Bizim için güçlü bir ekip; yalnızca alanında iyi insanlardan değil, iletişime açık, meraklı ve birlikte gelişmeye istekli kişilerden oluşur.
+
+  # 3 — AVANTAJLAR
+  - type: cards
+    background: dark
+    eyebrow: Pixelon'da Sizi Neler Bekliyor?
+    heading: Farklı Disiplinler, Gerçek Projeler ve Sürekli Gelişim
+    items:
+      - title: Yaratıcı Çalışma Ortamı
+        description: >-
+          Fikirlerinizi paylaşabileceğiniz, farklı bakış açılarının desteklendiği bir ekip kültürü.
+      - title: Gerçek Marka Deneyimi
+        description: >-
+          Sağlık, e-ticaret, inşaat, teknoloji ve farklı sektörlerden markalar için gerçek projelerde çalışma fırsatı.
+      - title: Öğrenme ve Gelişim
+        description: >-
+          Yeni teknolojileri, tasarım yaklaşımlarını ve dijital pazarlama trendlerini takip edebileceğiniz dinamik bir ortam.
+      - title: Sorumluluk ve İnisiyatif
+        description: >-
+          Sadece verilen işleri tamamlamak yerine süreçlere katkı sunabileceğiniz ve kararların parçası olabileceğiniz bir çalışma modeli.
+      - title: Ekip Çalışması
+        description: >-
+          Tasarım, içerik, reklam, yazılım ve prodüksiyon ekiplerinin aynı hedef doğrultusunda birlikte çalıştığı bir yapı.
+      - title: Esnek Çalışma Yaklaşımı
+        description: >-
+          Pozisyonun ihtiyaçlarına göre ofis, hibrit veya uzaktan çalışma modelleri değerlendirilebilir.
+
+  # 4 — AÇIK POZİSYONLAR
+  - type: jobs
+    background: light
+    anchor: pozisyonlar
+    eyebrow: Ekibimize Katılın
+    heading: Güncel Açık Pozisyonlar
+    lead: >-
+      Pixelon'un güncel iş ve staj fırsatlarını inceleyin. Size uygun pozisyonun detaylarını görüntüleyerek birkaç adımda başvurunuzu tamamlayabilirsiniz.
+    # Referanstaki pozisyon detay modalının tüm içeriği `description` bloğuna katlandı;
+    # `jobs` şemasında yalnızca title/location/employmentType/description/href alanları var.
+    items:
+      - title: Sosyal Medya Uzmanı
+        location: Kadıköy, İstanbul
+        employmentType: Hibrit
+        description: |-
+          Markaların sosyal medya stratejilerini planlayacak, içerik takvimlerini yönetecek ve yaratıcı ekiplerle birlikte üretim süreçlerini takip edecek ekip arkadaşı arıyoruz.
+
+          Departman: Sosyal Medya · Deneyim: 2+ yıl · İlan Tarihi: 10 Temmuz 2026
+
+          Rol Hakkında
+          Bu pozisyondaki ekip arkadaşımız; markaların sosyal medya stratejilerinin hazırlanması, aylık içerik planlarının oluşturulması ve üretim süreçlerinin takip edilmesinden sorumlu olacaktır.
+
+          Sorumluluklar
+          - Sosyal medya içerik planlarını hazırlamak
+          - Marka iletişim dilini korumak
+          - Tasarım ve video ekipleriyle koordineli çalışmak
+          - İçerik performansını takip etmek
+          - Müşteri iletişim süreçlerine katkı sunmak
+
+          Aradığımız Özellikler
+          - İlgili alanda deneyim sahibi olmak
+          - Sosyal medya platformlarına hâkim olmak
+          - Güçlü yazılı ve sözlü iletişime sahip olmak
+          - Planlama ve takip yeteneği
+          - Ekip çalışmasına uyum
+          - Trendleri ve güncel içerik formatlarını takip etmek
+
+          Avantaj Sağlayacak Özellikler
+          - Ajans deneyimi
+          - İngilizce bilgisi
+          - Reklam platformları hakkında temel bilgi
+          - Sağlık veya e-ticaret sektörlerinde deneyim
+      - title: Grafik Tasarımcı
+        location: Kadıköy, İstanbul
+        employmentType: Hibrit
+        description: |-
+          Sosyal medya, dijital reklam, kurumsal kimlik ve web projeleri için markaya özel, modern ve yaratıcı tasarımlar üretecek ekip arkadaşı arıyoruz.
+
+          Departman: Tasarım · Deneyim: 2+ yıl · İlan Tarihi: 5 Temmuz 2026
+
+          Rol Hakkında
+          Bu pozisyondaki ekip arkadaşımız; farklı sektörlerden markalar için sosyal medya, reklam, kurumsal kimlik ve web projelerinde görsel üretim sürecini yönetecektir.
+
+          Sorumluluklar
+          - Sosyal medya ve reklam görselleri tasarlamak
+          - Kurumsal kimlik materyalleri üretmek
+          - Web ve UI projelerine görsel destek sağlamak
+          - Marka görsel dilini tutarlı biçimde korumak
+          - Diğer ekiplerle koordineli çalışmak
+
+          Aradığımız Özellikler
+          - İlgili alanda deneyim sahibi olmak
+          - Adobe araçlarına hâkim olmak
+          - Güçlü tipografi ve kompozisyon anlayışı
+          - Zaman yönetimi ve çoklu proje takibi
+          - Ekip çalışmasına uyum
+          - Güncel tasarım trendlerini takip etmek
+
+          Avantaj Sağlayacak Özellikler
+          - Ajans deneyimi
+          - Motion tasarım bilgisi
+          - UI/UX temel bilgisi
+          - Sağlık veya e-ticaret sektörlerinde deneyim
+      - title: Video Editörü / Motion Designer
+        location: İstanbul
+        employmentType: Proje Bazlı veya Hibrit
+        description: |-
+          Reels, reklam videosu, kurumsal tanıtım ve sosyal medya içeriklerini yaratıcı kurgularla yayına hazır hale getirecek ekip arkadaşı arıyoruz.
+
+          Departman: Prodüksiyon · Deneyim: Portfolyo değerlendirmesi · İlan Tarihi: 1 Temmuz 2026
+
+          Rol Hakkında
+          Bu pozisyondaki ekip arkadaşımız; farklı marka ve formatlar için video kurgu, motion grafik ve renk düzenleme süreçlerini yönetecektir.
+
+          Sorumluluklar
+          - Reels ve sosyal medya videolarını kurgulamak
+          - Reklam ve kurumsal tanıtım videoları hazırlamak
+          - Motion grafik unsurları üretmek
+          - Ses ve renk düzenlemesi yapmak
+          - Prodüksiyon ekibiyle koordineli çalışmak
+
+          Aradığımız Özellikler
+          - İlgili alanda deneyim veya güçlü portfolyo
+          - Kurgu programlarına hâkim olmak
+          - Motion grafik temel bilgisi
+          - Zamanında teslim disiplini
+          - Yaratıcı anlatım becerisi
+          - Ekip çalışmasına uyum
+
+          Avantaj Sağlayacak Özellikler
+          - Ajans deneyimi
+          - Renk düzenleme (color grading) bilgisi
+          - 3D motion deneyimi
+          - Sağlık veya e-ticaret sektörlerinde deneyim
+    # Referanstaki "açık pozisyon yok" durumu bir UI durumudur (`sc-if noOpenPositions`),
+    # veri değildir; `jobs` şemasında karşılığı yok. `items` boşken JobsSection.astro
+    # aşağıdaki metni basmalıdır:
+    #   Başlık: Şu Anda Açık Bir Pozisyonumuz Bulunmuyor
+    #   P1: Ekibimizi büyütmek için doğru zamanı ve doğru kişileri bekliyoruz. Şu anda aktif
+    #       bir ilanımız bulunmasa da Pixelon'da çalışmak istiyorsanız genel başvurunuzu
+    #       bırakabilirsiniz.
+    #   P2: Deneyiminiz ve yetenekleriniz gelecekte oluşabilecek bir pozisyonla eşleştiğinde
+    #       sizinle iletişime geçebiliriz.
+    #   Buton: Genel Başvuru Yap (→ #basvuru)
+    #   Not: Tasarım, sosyal medya, içerik, reklam, yazılım, prodüksiyon ve staj
+    #        başvurularınızı değerlendirme havuzumuza bırakabilirsiniz.
+
+  # 5 — GENEL BAŞVURU ÇAĞRISI
+  - type: cta
+    background: dark
+    eyebrow: Açık Pozisyonu Beklemeyin
+    heading: Yeteneklerinizi Bizimle Paylaşın.
+    lead: >-
+      Şu anda size uygun bir pozisyon göremiyorsanız genel başvuru formunu doldurun. Deneyiminizi, ilgi alanlarınızı ve Pixelon'a nasıl katkı sağlayabileceğinizi bizimle paylaşın. Başvurunuz, ileride oluşabilecek iş, staj, freelance veya proje bazlı çalışma fırsatları için değerlendirilebilir.
+    ctas:
+      - label: Genel Başvuru Formunu Aç
+        href: '#basvuru'
+        variant: primary
+
+  # 6 — BAŞVURU SÜRECİ
+  - type: steps
+    background: light
+    eyebrow: Süreç Nasıl İşliyor?
+    heading: Başvurudan Ekibe Katılmaya
+    # Referansta bu paragraf adım ızgarasının ALTINDA dipnot olarak duruyor;
+    # `steps` şemasında dipnot alanı olmadığı için `lead`e alındı.
+    lead: >-
+      Başvuru aşamaları pozisyonun kapsamına göre değişebilir. Her başvuruyu dikkatle incelemeye çalışsak da yalnızca süreci ilerleyen adaylarla doğrudan iletişime geçilebilir.
+    items:
+      - title: Başvuru
+        description: >-
+          Form üzerinden CV'nizi, portfolyonuzu ve temel bilgilerinizi bizimle paylaşın.
+      - title: Ön Değerlendirme
+        description: >-
+          Deneyiminiz, uzmanlığınız ve pozisyona uygunluğunuz ekip tarafından incelensin.
+      - title: Tanışma Görüşmesi
+        description: >-
+          Uygun adaylarla karşılıklı beklentileri ve çalışma modelini konuşacağımız bir görüşme gerçekleştirelim.
+      - title: Teknik / Yaratıcı Değerlendirme
+        description: >-
+          Pozisyona göre portfolyo görüşmesi, örnek çalışma veya kısa bir değerlendirme süreci uygulanabilir.
+      - title: Teklif ve Başlangıç
+        description: >-
+          Süreç olumlu ilerlediğinde çalışma koşullarını paylaşarak birlikte başlangıç planını oluşturalım.
+
+  # 7 — ARANAN ÖZELLİKLER
+  - type: bullets
+    background: dark
+    eyebrow: Kimlerle Çalışmak İstiyoruz?
+    heading: Yeteneğin Kadar Yaklaşımın da Önemli
+    lead: >-
+      Her şeyi bilmenizi değil; öğrenmeye, paylaşmaya ve birlikte üretmeye açık olmanızı önemsiyoruz.
+    items:
+      - Öğrenmeye ve gelişmeye açık
+      - Sorumluluk alabilen
+      - İletişimi güçlü
+      - Geri bildirim vermeye ve almaya açık
+      - Ekip çalışmasına uyum sağlayan
+      - İşini zamanında ve özenli biçimde tamamlayan
+      - Dijital dünyadaki gelişmeleri takip eden
+      - Çözüm odaklı düşünen
+      - Marka ve kullanıcı ihtiyaçlarını önemseyen
+
+  # 8 — SSS
+  - type: faq
+    background: light
+    eyebrow: Merak Edilenler
+    heading: Kariyer Hakkında Sıkça Sorulan Sorular
+    items:
+      - question: Açık pozisyon olmasa da başvuru yapabilir miyim?
+        answer: >-
+          Evet. Genel başvuru formunu doldurarak CV'nizi ve ilgilendiğiniz çalışma alanını paylaşabilirsiniz. Uygun bir fırsat oluştuğunda başvurunuz değerlendirilebilir.
+      - question: Staj başvurusu kabul ediyor musunuz?
+        answer: >-
+          İhtiyaç ve dönemsel kapasiteye göre üniversite öğrencileri ve yeni mezunlar için staj imkânları oluşturulabilir. Genel başvuru formunda "Staj Başvurusu" seçeneğini kullanabilirsiniz.
+      - question: Uzaktan çalışma imkânı var mı?
+        answer: >-
+          Çalışma modeli pozisyonun ihtiyaçlarına göre ofis, hibrit veya uzaktan olarak belirlenebilir. İlan detayında çalışma modeli açıkça belirtilir.
+      - question: Freelance başvuru yapabilir miyim?
+        answer: >-
+          Evet. Video, tasarım, yazılım, içerik ve benzeri alanlarda freelance veya proje bazlı başvuru bırakabilirsiniz.
+      - question: Başvuruma ne zaman dönüş yapılır?
+        answer: >-
+          Başvurular açık pozisyonlar ve ekip ihtiyaçları doğrultusunda değerlendirilir. Uygun bulunan adaylarla doğrudan iletişime geçilir.
+      - question: Portfolyo zorunlu mu?
+        answer: >-
+          Tasarım, UX/UI, video, içerik ve yazılım gibi üretim odaklı pozisyonlarda portfolyo veya örnek çalışma bağlantısı değerlendirme açısından önemlidir.
+
+  # 9 — SON CTA
+  - type: cta
+    background: dark
+    eyebrow: Birlikte Üretmeye Hazır mısınız?
+    heading: Belki de Sıradaki Ekip Arkadaşımız Sizsiniz.
+    lead: >-
+      Pixelon'da yer almak, deneyiminizi paylaşmak ve yaratıcı projelerin parçası olmak için başvurunuzu bırakın.
+    ctas:
+      - label: Açık Pozisyonları İncele
+        href: '#pozisyonlar'
+        variant: primary
+      - label: Genel Başvuru Yap
+        href: '#basvuru'
+        variant: outline

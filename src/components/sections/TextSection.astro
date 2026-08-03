@@ -1,0 +1,104 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Text = Extract<PageSection, { type: 'text' }>;
+
+interface Props {
+  section: Text;
+}
+
+const { section } = Astro.props;
+
+// Gövde metni çift yeni satırlarla paragraflara ayrılır.
+const paragraphs = section.body
+  .split(/\n\s*\n/)
+  .map((paragraph) => paragraph.trim())
+  .filter((paragraph) => paragraph.length > 0);
+
+const hasMedia = Boolean(section.imageAlt);
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} />
+
+  <div class:list={['text', hasMedia && 'text--split']}>
+    <div class="text__body" data-reveal data-reveal-index={0}>
+      {paragraphs.map((paragraph) => <p class="body-text text__paragraph">{paragraph}</p>)}
+    </div>
+
+    {
+      hasMedia && (
+        <figure class="text__figure" data-reveal data-reveal-index={1}>
+          <div class="text__placeholder">
+            <span class="text__caption">{section.imageAlt}</span>
+          </div>
+        </figure>
+      )
+    }
+  </div>
+</Section>
+
+<style>
+  .text {
+    display: grid;
+    gap: var(--gap-section);
+  }
+
+  .text--split {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .text__body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 70ch;
+  }
+
+  .text__paragraph {
+    color: var(--text-soft);
+  }
+
+  .text__figure {
+    margin: 0;
+  }
+
+  .text__placeholder {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-media);
+    background: color-mix(in srgb, var(--bg-light) 8%, transparent);
+    overflow: hidden;
+  }
+
+  .text__caption {
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--text-faint);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .text__paragraph {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .text__placeholder {
+    background: color-mix(in srgb, var(--text-on-light) 4%, transparent);
+  }
+
+  :global(.section--light) .text__caption {
+    color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 860px) {
+    .text--split {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

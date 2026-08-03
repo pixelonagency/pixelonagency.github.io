@@ -1,0 +1,390 @@
+seo:
+  title: Biz Kimiz? | Pixelon 360° Dijital Pazarlama Ajansı
+  description: >-
+    Pixelon'u yakından tanıyın. Strateji, tasarım, teknoloji ve performansı
+    birleştirerek markalara 360° dijital pazarlama çözümleri sunuyoruz.
+
+whatsappMessage: Merhaba Pixelon, Biz Kimiz sayfasından yazıyorum.
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: 360° Dijital Pazarlama Partneriniz
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Biz Kimiz?
+    headingLines:
+      - "Biz *Pixelon* Ekibiyiz!"
+    lead: >-
+      Strateji, yaratıcılık, teknoloji ve performansı aynı hedef doğrultusunda
+      buluşturan 360° dijital pazarlama ajansıyız. Markaların dijital dünyada
+      yalnızca görünür olmasını değil; doğru hedef kitleyle buluşmasını, güven
+      oluşturmasını ve sürdürülebilir biçimde büyümesini sağlıyoruz.
+    tagline: Strateji ✦ Yaratıcılık ✦ Teknoloji ✦ Performans ✦ Tasarım ✦ Büyüme
+    ctas:
+      - label: Projelerimizi İnceleyin
+        href: /projelerimiz
+        variant: primary
+      - label: Bizimle İletişime Geçin
+        href: /iletisim
+        variant: outline
+    imageAlt: >-
+      Pixelon dijital pazarlama ekibi - sosyal etkileşim, hız ve topluluk odaklı
+      yaklaşımı simgeleyen pixel-art görsel
+
+  # 2 — PIXELON NEDİR
+  - type: text
+    background: light
+    eyebrow: Pixelon'da Ne Var?
+    heading: Fikirleri Markalara, Markaları Güçlü Dijital Deneyimlere Dönüştürüyoruz.
+    body: |-
+      Pixelon; markaların dijital dünyadaki ihtiyaçlarını tek bir bakış açısıyla ele alan, strateji ve yaratıcılığı teknolojiyle birleştiren 360° dijital pazarlama ajansıdır. Web tasarım, sosyal medya yönetimi, dijital reklam, SEO, marka ve kurumsal kimlik, UX/UI tasarımı, e-ticaret, video prodüksiyon, sağlık turizmi ve dijital dönüşüm alanlarında markaya özel çözümler üretiyoruz.
+
+      Ancak bizim için dijital pazarlama yalnızca bir web sitesi hazırlamak, sosyal medya paylaşımı yapmak veya reklam kampanyası yayınlamak değildir. Her çalışmayı markanın hedefleri, hedef kitlesi, sektörü ve büyüme planları doğrultusunda birbirini tamamlayan bir sistem olarak ele alıyoruz. Sağlık ve klinik markalarından sağlık turizmi firmalarına, e-ticaret girişimlerinden inşaat ve gayrimenkul şirketlerine kadar farklı sektörlerdeki markaların dijital dönüşüm yolculuklarına eşlik ediyoruz.
+
+      Pixelon'da her fikir bir stratejiyle, her tasarım bir amaçla ve her kampanya ölçülebilir bir hedefle başlar.
+
+  # 3 — NE YAPIYORUZ
+  - type: bullets
+    background: dark
+    eyebrow: Nasıl Çalışıyoruz?
+    heading: Tasarımın Ötesinde, Markanız İçin Çalışan Bir Dijital Sistem Kuruyoruz.
+    lead: >-
+      Markaların farklı dijital ihtiyaçlarını birbirinden bağımsız işler olarak
+      değerlendirmiyoruz. Web sitesi, sosyal medya, reklam, içerik ve marka
+      kimliğini aynı stratejinin parçaları olarak planlıyoruz. İlk olarak
+      markanızı, sektörünüzü ve hedef kitlenizi anlamaya çalışıyoruz. Ardından
+      ihtiyaçlarınıza uygun bir yol haritası oluşturuyor; strateji, içerik,
+      tasarım, yazılım ve performans süreçlerini aynı ekip içerisinde
+      yönetiyoruz. Bu yaklaşım sayesinde markanızın tüm dijital kanallarda aynı
+      dili konuşmasını, kullanıcılarına tutarlı bir deneyim sunmasını ve
+      pazarlama yatırımlarından daha güçlü sonuçlar elde etmesini sağlıyoruz.
+    items:
+      - Markanızı dinleriz.
+      - Hedef kitlenizi analiz ederiz.
+      - Stratejinizi oluştururuz.
+      - Tasarlar ve geliştiririz.
+      - Sonuçları ölçeriz.
+      - Sürekli iyileştiririz.
+
+  # 4 — NEDEN PIXELON
+  - type: cards
+    background: light
+    eyebrow: Bir Ajansın Ötesinde
+    heading: Neden Pixelon?
+    lead: >-
+      Markanız için yalnızca hizmet sağlayan bir ekip değil, hedeflerinizi
+      anlayan ve büyüme yolculuğunuza eşlik eden uzun vadeli bir iş ortağı olmak
+      istiyoruz.
+    columns: 3
+    items:
+      - title: Strateji ve Sonuç Odaklı Yaklaşım
+        description: |-
+          Her projeye yaratıcı fikirlerle başlamadan önce doğru soruları soruyoruz. Markanızın hedeflerini, kullanıcı beklentilerini ve sektör dinamiklerini analiz ederek uygulanabilir bir strateji oluşturuyoruz.
+
+          Yaratıcı fikirleri ölçülebilir hedeflerle buluşturuyoruz.
+      - title: Markaya Özel Çözümler
+        description: |-
+          Her markanın hikâyesi, hedef kitlesi ve ihtiyacı farklıdır. Hazır şablonlar kullanmak yerine markanızın karakterine ve iş hedeflerine özel çözümler geliştiriyoruz.
+
+          Sıradan değil, markanıza ait işler tasarlıyoruz.
+      - title: Tasarım ve Teknoloji Bir Arada
+        description: |-
+          Güçlü bir dijital deneyimin yalnızca estetik görünmekle sınırlı olmadığını biliyoruz. Tasarımlarımızı hız, kullanılabilirlik, performans ve dönüşüm hedefleriyle destekliyoruz.
+
+          Estetik, işlevsellik ve teknolojiyi aynı deneyimde birleştiriyoruz.
+      - title: 360° Dijital Pazarlama Yaklaşımı
+        description: |-
+          Web tasarım, sosyal medya, dijital reklam, SEO, içerik ve marka iletişimini tek çatı altında yönetiyoruz. Böylece tüm kanalların aynı hedef doğrultusunda çalışmasını sağlıyoruz.
+
+          Dijital ihtiyaçlarınızı tek ekip ve ortak bir stratejiyle yönetiyoruz.
+      - title: Sürekli İletişim ve Şeffaf Süreç
+        description: |-
+          Projenin her aşamasında müşterilerimizle düzenli iletişim kuruyor, yapılan çalışmaları ve elde edilen sonuçları anlaşılır biçimde paylaşıyoruz.
+
+          Süreci birlikte planlıyor, gelişmeleri şeffaf biçimde paylaşıyoruz.
+      - title: Sürdürülebilir İş Birlikleri
+        description: |-
+          Amacımız yalnızca bir projeyi tamamlamak değil, markanızın değişen ihtiyaçlarına yanıt veren uzun vadeli bir büyüme ortaklığı kurmaktır.
+
+          Projeyi teslim etmekle kalmıyor, markanızla birlikte büyüyoruz.
+
+  # 5a — VİZYON
+  - type: text
+    background: dark
+    eyebrow: Geleceğe Bakışımız
+    heading: Dijital Dünyada Güçlü, Özgün ve Sürdürülebilir Markalar Oluşturmak
+    body: >-
+      Vizyonumuz; strateji, yaratıcılık ve teknolojiyi bir araya getirerek
+      markaların yalnızca bugünkü ihtiyaçlarına değil, gelecekteki büyüme
+      hedeflerine de cevap veren dijital sistemler oluşturmaktır. Türkiye'de ve
+      uluslararası pazarlarda faaliyet gösteren markalar için güvenilir,
+      yenilikçi ve sonuç odaklı bir dijital çözüm ortağı olmayı hedefliyoruz.
+
+  # 5b — MİSYON
+  - type: text
+    background: dark
+    eyebrow: Nasıl Değer Üretiyoruz?
+    heading: Markaların Potansiyelini Görünür ve Ölçülebilir Sonuçlara Dönüştürmek
+    body: >-
+      Misyonumuz; markaları doğru analiz etmek, hedef kitleleriyle güçlü bağlar
+      kurmalarını sağlamak ve dijital pazarlama yatırımlarını sürdürülebilir
+      büyümeye dönüştürmektir. Her projede estetik, kullanıcı deneyimi, teknoloji
+      ve performans arasında doğru dengeyi kurarak markaya gerçek bir değer
+      kazandırmayı amaçlıyoruz.
+
+  # 6 — DEĞERLERİMİZ
+  - type: cards
+    background: light
+    eyebrow: Çalışma Kültürümüz
+    heading: Ürettiğimiz Her İşin Temelinde Bu Değerler Var
+    columns: 3
+    items:
+      - title: Yaratıcılık
+        description: >-
+          Yeni fikirler üretir, markaları benzerlerinden ayıracak özgün yollar
+          ararız.
+      - title: Stratejik Düşünce
+        description: >-
+          Her kararın markanın hedeflerine ve kullanıcı beklentilerine hizmet
+          etmesini önemseriz.
+      - title: Şeffaflık
+        description: >-
+          Süreçleri açık biçimde paylaşır, müşterilerimizle güvene dayalı
+          iletişim kurarız.
+      - title: Sorumluluk
+        description: >-
+          Üstlendiğimiz her projeyi kendi markamızın bir parçası gibi
+          sahipleniriz.
+      - title: Sürekli Gelişim
+        description: >-
+          Dijital dünyanın değişen teknolojilerini, platformlarını ve kullanıcı
+          alışkanlıklarını yakından takip ederiz.
+      - title: İş Birliği
+        description: >-
+          En güçlü sonuçların müşteriyle ajansın aynı hedef doğrultusunda
+          çalışmasıyla ortaya çıktığına inanırız.
+
+  # 7 — YAKLAŞIM
+  - type: steps
+    background: dark
+    eyebrow: Pixelon Yaklaşımı
+    heading: Tek Bir Hizmet Değil, Birbirini Besleyen Bütüncül Çözümler
+    lead: >-
+      Markanızın dijital dünyada karşılaştığı sorunları tek bir kanal üzerinden
+      çözmeye çalışmıyoruz. Her temas noktasını aynı stratejinin parçası olarak
+      değerlendiriyoruz.
+    items:
+      - title: Strateji
+        description: >-
+          Markanızı, rakiplerinizi, hedef kitlenizi ve büyüme fırsatlarını analiz
+          ediyoruz.
+      - title: Tasarım
+        description: >-
+          Markanızın karakterini yansıtan özgün ve kullanıcı odaklı deneyimler
+          tasarlıyoruz.
+      - title: Teknoloji
+        description: >-
+          Tasarımları hızlı, güvenli, yönetilebilir ve ölçeklenebilir dijital
+          sistemlere dönüştürüyoruz.
+      - title: İçerik
+        description: >-
+          Hedef kitlenizin dikkatini çeken, güven oluşturan ve harekete geçiren
+          içerikler üretiyoruz.
+      - title: Performans
+        description: >-
+          Kampanyaları, kullanıcı hareketlerini ve dönüşümleri takip ederek
+          çalışmaları sürekli geliştiriyoruz.
+      - title: Büyüme
+        description: >-
+          Kısa vadeli görünürlük yerine markanızın uzun vadeli büyümesini
+          destekleyen sistemler kuruyoruz.
+
+  # 8 — RAKAMLARLA
+  - type: stats
+    background: light
+    eyebrow: Deneyimden Sonuca
+    heading: Markaların Dijital Dönüşümüne Değer Katıyoruz.
+    items:
+      - value: 15
+        suffix: '+'
+        label: Yıl sektör deneyimi
+        description: >-
+          Tasarım, dijital pazarlama, marka iletişimi ve teknoloji alanlarında
+          yıllara dayanan deneyim.
+      - value: 180
+        suffix: '+'
+        label: Tamamlanan proje
+        description: >-
+          Farklı sektörlerdeki markalar için başarıyla tamamlanan dijital
+          projeler.
+      - value: 120
+        suffix: '+'
+        label: Başarı hikâyesi
+        description: >-
+          Dijital görünürlüğünü, marka iletişimini ve pazarlama performansını
+          güçlendirdiğimiz işletmeler.
+      - value: 50
+        suffix: '+'
+        label: Marka iş birliği
+        description: >-
+          Türkiye ve uluslararası pazarlarda birlikte çalıştığımız markalar.
+      - value: 500
+        suffix: '+'
+        label: Yaratıcı fikir ve kahve
+        description: >-
+          Çünkü iyi fikirlerin arkasında araştırma, ekip çalışması, merak ve
+          bolca kahve vardır.
+    ctas:
+      - label: ☕ Bir Kahve İçip Tanışalım
+        href: /iletisim
+        variant: primary
+
+  # 9 — UZMANLIK ALANLARI
+  - type: cards
+    background: dark
+    eyebrow: Sektör Deneyimimiz
+    heading: >-
+      Farklı Sektörleri Anlıyor, Her Marka İçin Özel Bir Yol Haritası
+      Oluşturuyoruz.
+    columns: 3
+    items:
+      - title: Sağlık ve Klinik Markaları
+        description: >-
+          Hasta güveni, uzmanlık iletişimi ve randevu dönüşümünü destekleyen
+          dijital çözümler üretiyoruz.
+      - title: Sağlık Turizmi Firmaları
+        description: >-
+          Çok dilli içerik, uluslararası reklam ve hasta iletişim süreçleriyle
+          global büyümeyi destekliyoruz.
+      - title: E-Ticaret Markaları
+        description: >-
+          Ürün sunumundan kullanıcı deneyimine, reklamdan satış dönüşümüne kadar
+          e-ticareti büyütüyoruz.
+      - title: İnşaat ve Gayrimenkul
+        description: >-
+          Projelerin güvenini, yatırım değerini ve kurumsal gücünü dijitalde
+          doğru şekilde yansıtıyoruz.
+      - title: KOBİ ve Kurumsal Hizmetler
+        description: >-
+          Markaların daha profesyonel görünmesini, doğru hedef kitleye ulaşmasını
+          ve sürdürülebilir büyümesini sağlıyoruz.
+      - title: Eğitim ve Danışmanlık
+        description: >-
+          Uzmanlığınızı görünür kılan, güven oluşturan ve başvuru dönüşümünü
+          artıran yapılar kuruyoruz.
+    ctas:
+      - label: Markanıza özel çözümümüzü keşfedin →
+        href: /iletisim
+        variant: outline
+
+  # 10 — EKİP
+  # Referanstaki bölüm iki sütunlu bir metin bloğu; ekip kartı/fotoğraf ızgarası yok.
+  # `type: team` koleksiyondan beslendiği ve `team` koleksiyonu boş olduğu için
+  # TeamSection bölümü hiç basmıyordu (başlık + 3 paragraf kayboluyordu) → `text`.
+  - type: text
+    background: light
+    eyebrow: Farklı Disiplinler, Ortak Bir Hedef
+    heading: Her Projenin Arkasında Birlikte Düşünen Bir Ekip Var
+    body: |-
+      Pixelon; strateji, tasarım, içerik, reklam, yazılım ve prodüksiyon alanlarındaki farklı uzmanlıkların aynı hedef etrafında buluştuğu bir ekip yapısına sahiptir. Her projeyi yalnızca ilgili departmanın işi olarak değil, tüm ekibin ortak sorumluluğu olarak görüyoruz. Tasarımcı, içerik üreticisi, reklam uzmanı ve geliştirici aynı marka hedefi doğrultusunda birlikte çalışıyor.
+
+      Bu iş birliği sayesinde yalnızca estetik görünen değil; teknik olarak güçlü, kullanıcı dostu, hedef kitleye uygun ve sonuç üreten projeler ortaya çıkarıyoruz.
+
+      Farklı bakış açılarını aynı masada buluşturuyor, güçlü fikirleri birlikte hayata geçiriyoruz.
+
+  # 11 — GLOBAL
+  - type: text
+    background: dark
+    eyebrow: Yerelden Globale
+    heading: Markaları Farklı Pazarlarda Hedef Kitleleriyle Buluşturuyoruz.
+    body: |-
+      Pixelon olarak Türkiye'nin yanı sıra Avrupa ve Afrika pazarlarında faaliyet gösteren markalar için projeler geliştiriyoruz. Farklı ülkelerin kullanıcı alışkanlıklarını, iletişim dillerini ve pazar dinamiklerini dikkate alarak çok dilli web siteleri, uluslararası reklam kampanyaları ve hedef pazara özel içerik stratejileri hazırlıyoruz.
+
+      İstanbul'da üretiyor, markaları dünyanın farklı noktalarındaki hedef kitlelerle buluşturuyoruz.
+
+  # 12 — PARTNERLER
+  - type: bullets
+    background: light
+    heading: Güçlü Teknolojilerle, Güçlü Dijital Deneyimler
+    lead: >-
+      Projelerimizi yönetirken ve markaların hedef kitlelerine ulaşmasını
+      sağlarken dijital dünyanın önde gelen platformlarından ve
+      teknolojilerinden yararlanıyoruz.
+    items:
+      - Google
+      - Meta
+      - Instagram
+      - Facebook
+      - WhatsApp
+      - YouTube
+      - TikTok
+      - LinkedIn
+      - Yandex
+
+  # 13 — CTA + İLETİŞİM
+  - type: cta
+    background: dark
+    anchor: iletisim
+    eyebrow: Sıradaki Başarı Hikâyesi Sizin Olabilir
+    heading: Markanızı Birlikte Büyütelim.
+    lead: >-
+      Yeni bir web sitesi, etkili bir dijital reklam kampanyası, güçlü bir sosyal
+      medya iletişimi veya kapsamlı bir dijital dönüşüm projesi için Pixelon
+      ekibiyle tanışın. Markanızı dinleyelim, ihtiyaçlarınızı anlayalım ve
+      hedeflerinize ulaşmanızı sağlayacak yol haritasını birlikte oluşturalım.
+    ctas:
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Hemen Arayın
+        href: tel:+905065229034
+        variant: outline
+      - label: Projenizi Anlatın
+        href: mailto:info@pixelon.com.tr
+        variant: outline
+
+  - type: contactInfo
+    background: dark
+    items:
+      - label: Telefon ve WhatsApp
+        value: +90 506 522 90 34
+        href: tel:+905065229034
+      - label: E-posta
+        value: info@pixelon.com.tr
+        href: mailto:info@pixelon.com.tr
+      - label: Konum
+        value: Kadıköy, İstanbul
+
+  # 14 — SSS
+  - type: faq
+    background: light
+    eyebrow: Sıkça Sorulan Sorular
+    heading: Pixelon Hakkında Sıkça Sorulan Sorular
+    items:
+      - question: Pixelon hangi alanlarda hizmet veriyor?
+        answer: >-
+          Pixelon; web tasarım ve yazılım, sosyal medya yönetimi, dijital reklam,
+          SEO, marka ve kurumsal kimlik, UX/UI tasarımı, e-ticaret, video
+          prodüksiyon, sağlık turizmi ve CRM çözümleri sunmaktadır.
+      - question: Pixelon hangi sektörlerle çalışıyor?
+        answer: >-
+          Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret
+          markaları, inşaat ve gayrimenkul şirketleri, KOBİ'ler ve kurumsal
+          hizmet markalarıyla çalışıyoruz.
+      - question: Pixelon yurt dışındaki markalara hizmet veriyor mu?
+        answer: >-
+          Evet. Çok dilli web sitesi, uluslararası reklam yönetimi, içerik
+          üretimi ve hedef pazara özel dijital pazarlama çalışmalarıyla farklı
+          ülkelerdeki markalara hizmet veriyoruz.
+      - question: Pixelon ile proje süreci nasıl başlıyor?
+        answer: >-
+          Süreç, markanızı ve ihtiyaçlarınızı anlamaya yönelik bir ön görüşmeyle
+          başlar. Ardından ihtiyaç analizi, strateji, teklif, tasarım, uygulama
+          ve optimizasyon aşamaları planlanır.
+      - question: Pixelon ile nasıl iletişime geçebilirim?
+        answer: >-
+          +90 506 522 90 34 numarası üzerinden WhatsApp'tan yazabilir, telefonla
+          arayabilir veya iletişim formunu doldurabilirsiniz.

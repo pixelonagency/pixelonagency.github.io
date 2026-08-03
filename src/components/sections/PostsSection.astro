@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import type { PageSection } from '../../content/page-schema';
+import { formatTurkishDate, isoDate } from '../../lib/format';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Posts = Extract<PageSection, { type: 'posts' }>;
+
+interface Props {
+  section: Posts;
+}
+
+const { section } = Astro.props;
+
+// Yalnızca yayınlanmış yazılar; en yeniden en eskiye.
+const entries = await getCollection('posts', ({ data }) => data.status === 'published');
+const sorted = [...entries].sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = section.limit ? sorted.slice(0, section.limit) : sorted;
+
+const hasCta = Boolean(section.ctaLabel && section.ctaHref);
+---
+
+{
+  posts.length > 0 && (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+      <ul class="posts" role="list">
+        {posts.map((post, index) => (
+          <li class="posts__cell">
+            <a class="card posts__item" href={`/blog/${post.id}`} data-reveal data-reveal-index={index}>
+              <span class="posts__category">{post.data.category}</span>
+              <h3 class="h3 posts__title">{post.data.title}</h3>
+              <p class="body-text posts__excerpt">{post.data.excerpt}</p>
+              <time class="posts__date" datetime={isoDate(post.data.date)}>
+                {formatTurkishDate(post.data.date)}
+              </time>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {hasCta && (
+        <div class="posts__footer">
+          <a class="btn btn--outline" href={section.ctaHref}>
+            {section.ctaLabel}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      )}
+    </Section>
+  )
+}
+
+<style>
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--gap-card);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .posts__cell {
+    display: flex;
+  }
+
+  .posts__item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .posts__category {
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .posts__title {
+    margin-top: 2px;
+  }
+
+  .posts__excerpt {
+    flex: 1;
+  }
+
+  .posts__date {
+    font: 500 var(--fs-small) var(--font-display);
+    color: var(--text-faint);
+  }
+
+  .posts__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .posts__category {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .posts__date {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .posts__footer .btn--outline {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .posts__footer .btn--outline:hover {
+    border-color: var(--text-on-light);
+    color: var(--text-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .posts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

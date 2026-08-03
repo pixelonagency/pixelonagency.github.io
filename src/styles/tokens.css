@@ -1,0 +1,78 @@
+/*
+ * Pixelon design token'ları.
+ * Kaynak: design_handoff_astro_site/README.md — "Tasarım Sistemi / Design Tokens".
+ * Bileşenlerde ham hex/px değeri yerine DAİMA bu değişkenler kullanılır.
+ */
+:root {
+  /* --- Zeminler --- */
+  --bg: #0a0a0a;
+  --bg-footer: #050505;
+  --bg-light: #f5f5ef;
+  --bg-header: rgba(10, 10, 10, 0.82);
+  --bg-dropdown: rgba(10, 10, 10, 0.97);
+
+  /* --- Metin --- */
+  --text: #ffffff;
+  --text-on-light: #0a0a0a;
+  --text-muted: rgba(255, 255, 255, 0.62);
+  --text-soft: rgba(255, 255, 255, 0.75);
+  /*
+   * Referans tasarım burada .45 kullanıyordu; koyu zeminde 12–13px metinde kontrast
+   * oranı ~4.4:1 ile WCAG AA eşiğinin (4.5:1) altında kalıyordu. Okunabilirlik için
+   * .58'e çekildi (~6.4:1) — görsel olarak neredeyse ayırt edilemez, erişilebilirlik
+   * açısından uyumlu.
+   */
+  --text-faint: rgba(255, 255, 255, 0.58);
+  --text-muted-on-light: rgba(10, 10, 10, 0.62);
+
+  /* --- Aksan --- */
+  --accent: #cfff00;
+  --accent-soft: rgba(207, 255, 0, 0.12);
+  --danger: #ff5050;
+
+  /* --- Kenarlıklar --- */
+  --border: rgba(255, 255, 255, 0.12);
+  --border-faint: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --border-input: rgba(255, 255, 255, 0.28);
+  --border-on-light: rgba(10, 10, 10, 0.12);
+
+  /* --- Tipografi --- */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Archivo', system-ui, sans-serif;
+
+  --fs-hero: clamp(36px, 5.2vw, 72px);
+  --fs-h2: clamp(28px, 3.4vw, 44px);
+  --fs-h3: 19px;
+  --fs-body: 15px;
+  --fs-lead: 17px;
+  --fs-small: 13px;
+  --fs-eyebrow: 12px;
+
+  --lh-hero: 1.08;
+  --ls-hero: -0.025em;
+  --ls-eyebrow: 0.18em;
+
+  /* --- Ölçü / yerleşim --- */
+  --container: 1280px;
+  --container-wide: 1320px;
+  --gutter: clamp(20px, 6vw, 80px);
+  --gutter-header: clamp(20px, 4vw, 40px);
+  --section-y: clamp(60px, 7vw, 90px);
+  --gap-card: 20px;
+  --gap-section: clamp(28px, 4vw, 56px);
+  --header-h: 71px;
+
+  /* --- Köşe yarıçapı --- */
+  --radius-card: 18px;
+  --radius-media: 16px;
+  --radius-feature: 24px;
+  --radius-pill: 999px;
+  --radius-input: 12px;
+
+  /* --- Hareket --- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 0.2s;
+  --t-base: 0.25s;
+  --t-slow: 0.3s;
+}

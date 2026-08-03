@@ -1,0 +1,462 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import type { PageSection } from '../../content/page-schema';
+import { ALL_CATEGORY, buildCategoryFilters, sortProjects } from '../../lib/projects';
+import { slugify } from '../../lib/slug';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Projects = Extract<PageSection, { type: 'projects' }>;
+
+interface Props {
+  section: Projects;
+}
+
+const { section } = Astro.props;
+
+const entries = await getCollection('projects');
+const sorted = sortProjects(entries.map((entry) => entry.data));
+const limited = section.limit ? sorted.slice(0, section.limit) : sorted;
+
+// `cover` şemada çözümleyici fonksiyonla tanımlandığı için tipi genişler —
+// <Image /> için tekrar daraltıyoruz.
+const projects = limited.map((project) => ({
+  ...project,
+  cover: project.cover as ImageMetadata | undefined,
+}));
+
+// Filtre etiketleri projelerin kendi `categoryLabel` alanından toplanır.
+const labels: Record<string, string> = {};
+for (const project of projects) {
+  if (project.categoryLabel) labels[project.category] ??= project.categoryLabel;
+}
+
+const filters = section.showFilters ? buildCategoryFilters(projects, labels) : [];
+const showCta = Boolean(section.ctaLabel && section.ctaHref);
+
+// Aynı sayfada birden fazla proje bölümü olabilir — id'ler bölüme özel olmalı.
+const uid = slugify(section.anchor ?? section.heading) || 'projeler';
+const panelId = `${uid}-panel`;
+const tabId = (slug: string) => `${uid}-tab-${slug}`;
+---
+
+{
+  projects.length > 0 && (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+      <div class="projects" data-projects>
+        {filters.length > 0 && (
+          <div class="projects__filterbar">
+            <div class="projects__filters" role="tablist" aria-label="Proje kategorileri">
+              {filters.map((filter) => {
+                const selected = filter.slug === ALL_CATEGORY;
+                return (
+                  <button
+                    type="button"
+                    role="tab"
+                    id={tabId(filter.slug)}
+                    class="projects__pill"
+                    data-filter={filter.slug}
+                    aria-selected={selected ? 'true' : 'false'}
+                    aria-controls={panelId}
+                    tabindex={selected ? 0 : -1}
+                  >
+                    <span>{filter.label}</span>
+                    <span class="projects__count">{filter.count}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        <div
+          class="projects__grid"
+          id={panelId}
+          role={filters.length > 0 ? 'tabpanel' : undefined}
+          aria-labelledby={filters.length > 0 ? tabId(ALL_CATEGORY) : undefined}
+          tabindex={filters.length > 0 ? 0 : undefined}
+        >
+          {projects.map((project, index) => (
+            <article
+              class="projects__card"
+              data-category={project.category}
+              data-reveal
+              data-reveal-index={index}
+              aria-labelledby={`${uid}-title-${index}`}
+            >
+              <div class="projects__media">
+                {project.cover ? (
+                  <Image
+                    src={project.cover}
+                    alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    class="projects__image"
+                  />
+                ) : (
+                  <div class="projects__placeholder" aria-hidden="true">
+                    <span>{project.client}</span>
+                  </div>
+                )}
+              </div>
+
+              <div class="projects__body">
+                {project.categoryLabel && <p class="projects__tag">{project.categoryLabel}</p>}
+                <h3 class="h3 projects__title" id={`${uid}-title-${index}`}>
+                  {project.title}
+                </h3>
+                <p class="body-text projects__excerpt">{project.excerpt}</p>
+
+                <div class="projects__foot">
+                  <span class="projects__client">{project.client}</span>
+                  {project.url && (
+                    <a class="projects__link" href={project.url} target="_blank" rel="noopener noreferrer">
+                      Projeyi İncele <span aria-hidden="true">→</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p class="projects__empty" data-empty role="status" hidden>
+          Bu kategoride henüz proje bulunmuyor.
+        </p>
+
+        {showCta && (
+          <div class="projects__cta">
+            <a class="btn btn--outline" href={section.ctaHref}>
+              {section.ctaLabel}
+            </a>
+          </div>
+        )}
+      </div>
+    </Section>
+  )
+}
+
+<style>
+  /* --- Filtre çubuğu --- */
+  .projects__filterbar {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 20;
+    margin-bottom: clamp(28px, 4vw, 44px);
+  }
+
+  .projects__filters {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--bg-header);
+    backdrop-filter: blur(10px);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .projects__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projects__pill {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-soft);
+    font: 600 var(--fs-small) var(--font-display);
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background var(--t-base),
+      border-color var(--t-base),
+      color var(--t-base);
+  }
+
+  .projects__pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .projects__pill[aria-selected='true'] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-on-light);
+  }
+
+  .projects__count {
+    font-size: 11px;
+    line-height: 1;
+    padding: 3px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .projects__pill[aria-selected='true'] .projects__count {
+    background: rgb(0 0 0 / 0.14);
+    color: var(--text-on-light);
+  }
+
+  .projects__grid:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+  }
+
+  /* --- Izgara --- */
+  .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--gap-card);
+  }
+
+  .projects__card {
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    transition:
+      border-color var(--t-slow),
+      transform var(--t-slow);
+  }
+
+  .projects__card[hidden] {
+    display: none;
+  }
+
+  .projects__card:hover {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+  }
+
+  .projects__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: var(--radius-media);
+  }
+
+  .projects__media :global(.projects__image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .projects__card:hover .projects__media :global(.projects__image) {
+    transform: scale(1.05);
+  }
+
+  .projects__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-media);
+    background: var(--accent-soft);
+    color: var(--accent);
+    font: 600 var(--fs-body) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+  }
+
+  .projects__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px 8px 8px;
+  }
+
+  .projects__tag {
+    margin: 0 0 10px;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .projects__title {
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+
+  .projects__excerpt {
+    flex: 1;
+  }
+
+  .projects__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-faint);
+  }
+
+  .projects__client {
+    font: 600 var(--fs-small) var(--font-display);
+    color: var(--text-faint);
+  }
+
+  .projects__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font: 600 var(--fs-small) var(--font-display);
+    text-decoration: none;
+    transition: gap var(--t-slow);
+  }
+
+  .projects__link:hover {
+    gap: 14px;
+    color: var(--accent);
+  }
+
+  .projects__empty {
+    margin: 32px 0 0;
+    font-size: var(--fs-lead);
+    color: var(--text-muted);
+  }
+
+  .projects__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(36px, 5vw, 56px);
+  }
+
+  /* --- Açık zeminli varyant --- */
+  :global(.section--light) .projects__filters {
+    background: var(--bg-light);
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .projects__pill {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .projects__pill:hover {
+    border-color: var(--text-on-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .projects__count {
+    background: rgb(10 10 10 / 0.08);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .projects__card {
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .projects__card:hover {
+    border-color: var(--text-on-light);
+  }
+
+  :global(.section--light) .projects__placeholder {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .projects__tag,
+  :global(.section--light) .projects__client {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .projects__foot {
+    border-top-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .projects__link {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .projects__empty {
+    color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .projects__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .projects__cta :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Kategori filtresi: eşleşmeyen kartlar `hidden` ile hem görsel hem erişilebilirlik
+  // ağacından çıkarılır. Durum URL'de saklanmaz.
+  const ALL_CATEGORY = 'tumu';
+
+  for (const root of document.querySelectorAll<HTMLElement>('[data-projects]')) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    if (tabs.length === 0) continue;
+
+    const cards = [...root.querySelectorAll<HTMLElement>('[data-category]')];
+    const panel = root.querySelector<HTMLElement>('.projects__grid');
+    const empty = root.querySelector<HTMLElement>('[data-empty]');
+
+    const select = (slug: string, moveFocus = false) => {
+      let visible = 0;
+
+      for (const card of cards) {
+        const matches = slug === ALL_CATEGORY || card.dataset.category === slug;
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      }
+
+      for (const tab of tabs) {
+        const isSelected = tab.dataset.filter === slug;
+        tab.setAttribute('aria-selected', String(isSelected));
+        tab.tabIndex = isSelected ? 0 : -1;
+        if (isSelected) {
+          if (panel && tab.id) panel.setAttribute('aria-labelledby', tab.id);
+          if (moveFocus) tab.focus();
+          tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        }
+      }
+
+      if (empty) empty.hidden = visible > 0;
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(tab.dataset.filter ?? ALL_CATEGORY));
+
+      tab.addEventListener('keydown', (event: KeyboardEvent) => {
+        const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+        let next = -1;
+
+        if (step !== 0) next = (index + step + tabs.length) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        else return;
+
+        event.preventDefault();
+        select(tabs[next]?.dataset.filter ?? ALL_CATEGORY, true);
+      });
+    });
+  }
+</script>

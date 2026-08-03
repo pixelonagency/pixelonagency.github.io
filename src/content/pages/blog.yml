@@ -1,0 +1,114 @@
+seo:
+  title: Dijital Pazarlama, Tasarım ve Teknoloji Blogu | Pixelon
+  description: |-
+    Dijital pazarlama, web tasarım, sosyal medya, SEO, reklam, e-ticaret ve marka iletişimi hakkında güncel bilgiler Pixelon Blog'da.
+
+whatsappMessage: Merhaba Pixelon, blog üzerinden ulaşıyorum, bir projem hakkında bilgi almak istiyorum.
+
+sections:
+  # HERO (kompakt) — arama kutusu yer tutucusu: "Bir konu veya içerik ara..."
+  - type: hero
+    background: dark
+    eyebrow: Pixelon Blog
+    headingLines:
+      - "Dijital Dünyayı Birlikte Okuyalım."
+    lead: |-
+      Dijital pazarlama, tasarım, teknoloji ve marka iletişimindeki güncel gelişmeleri; deneyimlerimiz, rehberlerimiz ve uygulanabilir önerilerimizle paylaşıyoruz.
+
+  # ÖNE ÇIKAN YAZI
+  # Referansta tek büyük link kartı: kategori rozeti (eyebrow) + başlık + özet + meta + buton.
+  - type: text
+    background: light
+    eyebrow: Dijital Pazarlama
+    heading: 2026'da Markaların Dijital Pazarlamada Dikkat Etmesi Gereken 10 Trend
+    body: |-
+      Yapay zekâ destekli içeriklerden kısa video stratejilerine, kişiselleştirmeden dönüşüm ölçümüne kadar markaların dijital dünyada öne çıkmasını sağlayacak gelişmeleri inceliyoruz.
+
+      12 dk. okuma · 18 Temmuz 2026 · Pixelon Ekibi
+    ctas:
+      - label: Yazıyı Okuyun →
+        href: /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur
+        variant: primary
+
+  # KATEGORİ FİLTRELERİ + SON YAZILAR (posts koleksiyonundan)
+  # Referanstaki filtre çipleri (posts şemasında karşılığı yok):
+  # Tümü · Dijital Pazarlama · Web Tasarım · Sosyal Medya · Dijital Reklam ·
+  # SEO ve İçerik · Marka ve Tasarım · E-Ticaret · Sağlık Pazarlaması · Teknoloji ve CRM
+  # Ayrıca sayfalama: ← Önceki · 1 · 2 · 3 · Sonraki →
+  - type: posts
+    background: light
+    eyebrow: Güncel İçerikler
+    heading: Son Eklenen Yazılar
+    lead: |-
+      Dijital dünyadaki gelişmeleri, deneyimlerimizi ve markanızda uygulayabileceğiniz pratik bilgileri keşfedin.
+    limit: 12
+    ctaLabel: Yazıyı Oku →
+    ctaHref: /blog
+
+  # EDİTÖRÜN SEÇTİKLERİ
+  - type: bullets
+    background: dark
+    eyebrow: Pixelon Öneriyor
+    heading: Editörün Seçtikleri
+    # İlk kartın referanstaki üst etiketi: "Kapsamlı Rehber" (bullets şemasında karşılığı yok).
+    items:
+      - Dijital Pazarlama Stratejisi Hazırlama Rehberi
+      - Kurumsal Web Sitesi İçerik Mimarisi
+      - Sağlık Turizmi Reklam Stratejisi
+      - Marka Kimliği Oluşturma Rehberi
+
+  # SEKTÖRLERE GÖRE
+  - type: cards
+    background: light
+    eyebrow: Sektörünüze Özel
+    heading: İşletmenize Uygun İçerikleri Keşfedin
+    items:
+      - title: Sağlık ve Klinikler
+        description: |-
+          Hasta iletişimi, klinik web sitesi, sosyal medya ve dijital reklam rehberleri.
+        href: /hizmetlerimiz/saglik-turizmi-danismanligi
+      - title: Sağlık Turizmi
+        description: |-
+          Uluslararası hasta kazanımı, çok dilli iletişim ve global reklam stratejileri.
+        href: /hizmetlerimiz/saglik-turizmi-danismanligi
+      - title: E-Ticaret
+        description: |-
+          Satış dönüşümü, ürün sunumu, reklam ve kullanıcı deneyimi içerikleri.
+        href: /hizmetlerimiz#hizmetler
+      - title: İnşaat ve Kurumsal Markalar
+        description: |-
+          Kurumsal iletişim, web tasarım, proje pazarlaması ve marka güveni içerikleri.
+        href: /hizmetlerimiz/marka-ve-kurumsal-kimlik
+
+  # E-POSTA ABONELİK
+  # Referansta e-posta input'u ("E-posta adresiniz") + onay kutusu metni:
+  # "Gizlilik Politikası'nı okudum ve bilgilendirme e-postaları almayı kabul ediyorum."
+  - type: cta
+    background: dark
+    anchor: abonelik
+    eyebrow: Güncel Kalın
+    heading: Yeni İçerikler Gelen Kutunuza Gelsin.
+    lead: |-
+      Dijital pazarlama, tasarım ve teknoloji dünyasındaki güncel içeriklerimizi belirli aralıklarla e-postanıza gönderelim.
+    ctas:
+      - label: Abone Ol
+        href: '#abonelik'
+        variant: primary
+
+  # SON CTA
+  - type: cta
+    background: light
+    anchor: iletisim
+    heading: Okuduklarınızı Markanız İçin Uygulamaya Dönüştürelim.
+    lead: |-
+      Web tasarım, sosyal medya, dijital reklam, SEO veya marka iletişimi konusunda profesyonel desteğe ihtiyacınız varsa Pixelon ekibiyle iletişime geçin.
+    ctas:
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Hizmetlerimizi İnceleyin
+        href: /hizmetlerimiz
+        variant: outline
+      - label: Projenizi Anlatın
+        href: /iletisim
+        variant: outline

@@ -1,0 +1,67 @@
+---
+import type { PageSection } from '../content/page-schema';
+import BulletsSection from './sections/BulletsSection.astro';
+import CardsSection from './sections/CardsSection.astro';
+import ContactInfoSection from './sections/ContactInfoSection.astro';
+import CtaSection from './sections/CtaSection.astro';
+import FaqSection from './sections/FaqSection.astro';
+import FormSection from './sections/FormSection.astro';
+import HeroSection from './sections/HeroSection.astro';
+import JobsSection from './sections/JobsSection.astro';
+import LogosSection from './sections/LogosSection.astro';
+import MediaSection from './sections/MediaSection.astro';
+import PostsSection from './sections/PostsSection.astro';
+import ProjectsSection from './sections/ProjectsSection.astro';
+import ServicesSection from './sections/ServicesSection.astro';
+import StatsSection from './sections/StatsSection.astro';
+import StepsSection from './sections/StepsSection.astro';
+import TeamSection from './sections/TeamSection.astro';
+import TextSection from './sections/TextSection.astro';
+
+interface Props {
+  sections: PageSection[];
+}
+
+const { sections } = Astro.props;
+---
+
+{
+  sections.map((section) => {
+    switch (section.type) {
+      case 'hero':
+        return <HeroSection section={section} />;
+      case 'cards':
+        return <CardsSection section={section} />;
+      case 'steps':
+        return <StepsSection section={section} />;
+      case 'bullets':
+        return <BulletsSection section={section} />;
+      case 'text':
+        return <TextSection section={section} />;
+      case 'stats':
+        return <StatsSection section={section} />;
+      case 'faq':
+        return <FaqSection section={section} />;
+      case 'cta':
+        return <CtaSection section={section} />;
+      case 'logos':
+        return <LogosSection section={section} />;
+      case 'projects':
+        return <ProjectsSection section={section} />;
+      case 'posts':
+        return <PostsSection section={section} />;
+      case 'team':
+        return <TeamSection section={section} />;
+      case 'services':
+        return <ServicesSection section={section} />;
+      case 'form':
+        return <FormSection section={section} />;
+      case 'contactInfo':
+        return <ContactInfoSection section={section} />;
+      case 'media':
+        return <MediaSection section={section} />;
+      case 'jobs':
+        return <JobsSection section={section} />;
+    }
+  })
+}

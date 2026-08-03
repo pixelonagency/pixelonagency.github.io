@@ -1,0 +1,39 @@
+---
+interface Props {
+  eyebrow?: string | undefined;
+  heading?: string | undefined;
+  lead?: string | undefined;
+  /** Başlık seviyesi — sayfada yalnızca bir tane h1 olmalı. */
+  as?: 'h1' | 'h2' | 'h3';
+  align?: 'start' | 'center';
+}
+
+const { eyebrow, heading, lead, as: Tag = 'h2', align = 'start' }: Props = Astro.props;
+const headingClass = Tag === 'h1' ? 'h1' : Tag === 'h2' ? 'h2' : 'h3';
+---
+
+{
+  (eyebrow || heading || lead) && (
+    <div class:list={['section-head', align === 'center' && 'section-head--center']}>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      {heading && <Tag class={headingClass}>{heading}</Tag>}
+      {lead && <p class="lead section-head__lead">{lead}</p>}
+    </div>
+  )
+}
+
+<style>
+  .section-head {
+    margin-bottom: clamp(32px, 4vw, 48px);
+    max-width: 780px;
+  }
+
+  .section-head--center {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .section-head__lead {
+    margin-top: 18px;
+  }
+</style>

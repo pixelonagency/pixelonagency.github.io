@@ -1,0 +1,126 @@
+seo:
+  title: Dijital Pazarlama Hizmetleri | Pixelon 360° Dijital Ajans
+  description: >-
+    Web tasarım, sosyal medya, dijital reklam, SEO, marka tasarımı, e-ticaret,
+    prodüksiyon ve sağlık turizmi çözümlerimizi keşfedin.
+
+whatsappMessage: Merhaba Pixelon, Hizmetlerimiz sayfasından yazıyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: 360° Dijital Çözümler
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Hizmetlerimiz
+    headingLines:
+      - "Markanızı Birlikte *Büyütelim!*"
+    lead: >-
+      Web tasarımından dijital reklama, sosyal medya yönetiminden marka
+      kimliğine kadar markanızın dijital dünyada ihtiyaç duyduğu tüm çözümleri
+      tek çatı altında sunuyoruz. Pixelon olarak her markaya aynı hizmet paketini
+      sunmak yerine; hedeflerinize, sektörünüze ve hedef kitlenize özel bir
+      dijital yol haritası oluşturuyoruz.
+    ctas:
+      - label: WhatsApp'tan Bize Ulaşın
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Projelerimizi İnceleyin
+        href: /projelerimiz
+        variant: outline
+
+  - type: text
+    background: light
+    eyebrow: 360° Yaklaşım
+    heading: Markanız İçin 360° Dijital Çözümler
+    body: >-
+      Strateji, tasarım, içerik, teknoloji ve performansı aynı hedef
+      doğrultusunda bir araya getiriyoruz. Böylece markanızın tüm dijital
+      kanallarda tutarlı, güçlü ve sonuç odaklı bir iletişim kurmasını
+      sağlıyoruz.
+
+  - type: services
+    background: dark
+    anchor: hizmetler
+    eyebrow: Ne Sunuyoruz?
+    heading: Hizmetlerimiz
+
+  - type: cards
+    background: light
+    eyebrow: Bir Ajansın Ötesinde
+    heading: Neden Pixelon?
+    items:
+      - title: Markanıza Özel Strateji
+        description: >-
+          Hazır paketler yerine markanızın ihtiyaçlarına ve hedeflerine uygun
+          çözümler oluşturuyoruz.
+      - title: Tüm Süreç Tek Ekipte
+        description: >-
+          Strateji, tasarım, içerik, yazılım ve reklam süreçlerini birbiriyle
+          uyumlu biçimde yönetiyoruz.
+      - title: Ölçülebilir Sonuçlar
+        description: >-
+          Trafik, etkileşim, talep, satış ve dönüşüm verilerini takip ederek
+          çalışmalarımızı sürekli geliştiriyoruz.
+      - title: Uzun Vadeli İş Birliği
+        description: >-
+          Yalnızca proje teslim etmiyor, markanızın değişen ihtiyaçlarına göre
+          büyüme sürecinize eşlik ediyoruz.
+
+  - type: text
+    background: dark
+    eyebrow: Sektör Deneyimimiz
+    heading: Hangi Sektörlerle Çalışıyoruz?
+    body: >-
+      Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret markaları,
+      inşaat ve gayrimenkul şirketleri ile hizmet sektöründeki KOBİ ve kurumsal
+      işletmelere özel dijital çözümler sunuyoruz.
+
+  - type: steps
+    background: light
+    eyebrow: Adım Adım
+    heading: Çalışma Sürecimiz
+    items:
+      - title: Keşif
+        description: Markanızı, ihtiyaçlarınızı ve hedeflerinizi dinliyoruz.
+      - title: Strateji
+        description: Sektör ve hedef kitle analizleriyle yol haritanızı oluşturuyoruz.
+      - title: Üretim
+        description: İçerik, tasarım, yazılım ve kampanya çalışmalarını hazırlıyoruz.
+      - title: Yayın ve Optimizasyon
+        description: >-
+          Projeyi yayına alıyor, sonuçları takip ediyor ve sürekli
+          geliştiriyoruz.
+
+  - type: cta
+    background: dark
+    anchor: iletisim
+    eyebrow: Birlikte Karar Verelim
+    heading: Markanız İçin Doğru Çözümü Birlikte Belirleyelim
+    lead: >-
+      Hangi hizmete ihtiyacınız olduğundan emin olmasanız bile markanızı ve
+      hedeflerinizi bize anlatabilirsiniz. Pixelon ekibi ihtiyaçlarınızı analiz
+      ederek size uygun dijital çözüm planını oluştursun.
+    ctas:
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Hemen Arayın
+        href: tel:+905065229034
+        variant: outline
+      - label: İletişim Formunu Doldurun
+        href: /iletisim
+        variant: outline
+
+  - type: contactInfo
+    background: dark
+    items:
+      - label: Telefon ve WhatsApp
+        value: +90 506 522 90 34
+        href: tel:+905065229034
+      - label: E-posta
+        value: info@pixelon.com.tr
+        href: mailto:info@pixelon.com.tr
+      - label: Konum
+        value: Kadıköy, İstanbul

@@ -1,0 +1,227 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, getEntry } from 'astro:content';
+import logo from '../assets/logo/pixelon-logo.webp';
+import { buildServicesNav } from '../lib/nav';
+import { telHref } from '../lib/whatsapp';
+
+const settingsEntry = await getEntry('settings', 'site');
+if (!settingsEntry) throw new Error('src/content/settings/site.yml bulunamadı.');
+const settings = settingsEntry.data;
+
+const services = await getCollection('services');
+const serviceLinks = buildServicesNav(services);
+
+const corporateLinks = [
+  { label: 'Biz Kimiz?', href: '/biz-kimiz' },
+  { label: 'Projelerimiz', href: '/projelerimiz' },
+  { label: 'Referanslarımız', href: '/projelerimiz#referanslar' },
+  { label: 'Kariyer', href: '/kariyer' },
+  { label: 'İletişim', href: '/iletisim' },
+  { label: 'Blog', href: '/blog' },
+];
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <Image src={logo} alt="Pixelon logosu" height={32} densities={[1, 2]} />
+        <p class="site-footer__intro">{settings.footerIntro}</p>
+        <div class="site-footer__social">
+          {
+            /*
+             * Görünen kısaltma ("IG") aria-hidden; erişilebilir ad tam marka adından
+             * ("Instagram") gelir. aria-label ile kısaltmayı çakıştırmak, görünen etiket
+             * ile erişilebilir adın uyuşmaması sorununu doğuruyordu.
+             */
+            settings.social.map((item) => (
+              <a href={item.url} class="site-footer__social-link" rel="noopener noreferrer" target="_blank">
+                <span aria-hidden="true">{item.short ?? item.label.slice(0, 2).toUpperCase()}</span>
+                <span class="visually-hidden">{item.label}</span>
+              </a>
+            ))
+          }
+        </div>
+        <a href="/ucretsiz-analiz" class="site-footer__cta">Ücretsiz Analiz</a>
+      </div>
+
+      <div>
+        <h2 class="site-footer__heading">Kurumsal</h2>
+        <div class="site-footer__links">
+          {corporateLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+        </div>
+      </div>
+
+      <div>
+        <h2 class="site-footer__heading">Hizmetlerimiz</h2>
+        <div class="site-footer__links">
+          {serviceLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+        </div>
+      </div>
+
+      <div>
+        <h2 class="site-footer__heading">İletişim</h2>
+        <address class="site-footer__contact">
+          <a href={`mailto:${settings.email}`}>{settings.email}</a>
+          <a href={telHref(settings.phone)}>{settings.phone}</a>
+          <span>{settings.address}</span>
+        </address>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <div class="site-footer__legal">
+        {settings.legalLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </div>
+      <div class="site-footer__copy">{settings.copyright}</div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-footer);
+    border-top: 1px solid var(--border-faint);
+    padding: clamp(56px, 7vw, 88px) var(--gutter) 32px;
+  }
+
+  .site-footer__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--gap-section);
+  }
+
+  .site-footer__brand {
+    grid-column: span 1;
+    min-width: 260px;
+  }
+
+  .site-footer__intro {
+    margin: 20px 0 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 320px;
+  }
+
+  .site-footer__social {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .site-footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: var(--text);
+    text-decoration: none;
+    font: 600 12px var(--font-display);
+    transition:
+      border-color var(--t-slow),
+      color var(--t-slow);
+  }
+
+  .site-footer__social-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .site-footer__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    background: var(--accent);
+    color: var(--text-on-light);
+    font: 600 13.5px var(--font-display);
+    padding: 11px 20px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    transition: background var(--t-slow);
+  }
+
+  .site-footer__cta:hover {
+    background: var(--text);
+    color: var(--text-on-light);
+  }
+
+  .site-footer__heading {
+    font: 600 13px var(--font-display);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 18px;
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .site-footer__links a,
+  .site-footer__contact a,
+  .site-footer__contact span {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color var(--t-base);
+  }
+
+  .site-footer__links a:hover,
+  .site-footer__contact a:hover {
+    color: var(--accent);
+  }
+
+  .site-footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: clamp(40px, 5vw, 64px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 26px;
+  }
+
+  .site-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .site-footer__legal a {
+    color: var(--text-faint);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color var(--t-base);
+  }
+
+  .site-footer__legal a:hover {
+    color: var(--accent);
+  }
+
+  .site-footer__copy {
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+</style>

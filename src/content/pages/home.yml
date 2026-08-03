@@ -1,0 +1,356 @@
+seo:
+  title: Pixelon | 360° Dijital Pazarlama Ajansı İstanbul
+  description: >-
+    Pixelon; web tasarım, sosyal medya, dijital reklam, SEO, e-ticaret, marka
+    tasarımı ve sağlık turizmi alanlarında 360° dijital çözümler sunar.
+
+whatsappMessage: Merhaba Pixelon, markam için dijital pazarlama hizmetleri hakkında bilgi almak istiyorum.
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: 360° Dijital Pazarlama Partneriniz
+    # *yıldız* içine alınan kelimeler lime (aksan) renkle basılır — bkz. src/lib/highlight.ts
+    headingLines:
+      - "Markanızı *Strateji*, *Tasarım* ve *Teknolojiyle* Büyütüyoruz."
+    lead: |-
+      Pixelon; yaratıcı fikirleri güçlü tasarımlara, dijital stratejileri ölçülebilir sonuçlara dönüştüren 360° dijital pazarlama ajansıdır. Web tasarımından sosyal medya yönetimine, performans reklamlarından SEO çalışmalarına kadar markanızın dijital dünyada ihtiyaç duyduğu tüm çözümleri tek çatı altında sunuyoruz.
+    tagline: Bir fikriniz mi var? Birlikte büyütelim.
+    chips:
+      - '*15+* Yıllık Deneyim'
+      - '*180+* Tamamlanan Proje'
+      - '*50+* Marka İş Birliği'
+      - Türkiye ve Global Pazar Deneyimi
+    ctas:
+      - label: WhatsApp'tan Bize Ulaşın
+        href: https://wa.me/905065229034
+        variant: primary
+        icon: whatsapp
+        external: true
+      - label: Projelerimizi İnceleyin
+        href: /projelerimiz
+        variant: outline
+      - label: Hemen Arayın
+        href: 'tel:+905065229034'
+        variant: link
+
+  # 2 — LİME MARQUEE (dekoratif şerit, referansta aria-hidden):
+  # Strateji ✦ Tasarım ✦ Teknoloji ✦ Performans ✦ Büyüme ✦ Dönüşüm ✦
+  # (Bölüm sözlüğünde marquee tipi yok; metin burada not olarak korundu.)
+
+  # 3 — REFERANSLAR (logo marquee, references koleksiyonundan)
+  - type: logos
+    background: light
+    anchor: referanslar
+    eyebrow: Referanslarımız
+    heading: Güçlü Markalar, Uzun Soluklu İş Birlikleri
+    lead: |-
+      Her markanın hikâyesi, hedefleri ve ihtiyaçları farklıdır. Pixelon olarak her projeye hazır kalıplarla değil, markaya özel stratejilerle yaklaşıyoruz. Türkiye'den dünyaya uzanan çalışmalarımızla kurumsal markaların, sağlık kuruluşlarının, e-ticaret girişimlerinin ve büyümek isteyen işletmelerin dijital dönüşüm yolculuklarına eşlik ediyoruz.
+    ctas:
+      - label: Tüm Referanslarımızı İnceleyin →
+        href: /projelerimiz
+        variant: outline
+
+  # 4 — PIXELON NE YAPAR
+  - type: text
+    background: light
+    anchor: pixelon
+    eyebrow: Pixelon Ne Yapar?
+    heading: Fikrinizi Görünür, Markanızı Güçlü, Sonuçlarınızı Ölçülebilir Hale Getiriyoruz.
+    body: |-
+      Pixelon; yalnızca güzel görünen tasarımlar üretmez. Markaların doğru hedef kitleyle buluşmasını, dijital dünyada güçlü bir konum elde etmesini ve yatırımlarından ölçülebilir sonuçlar almasını sağlayan bütünleşik çözümler geliştirir.
+
+      İşe markanızı, sektörünüzü ve hedef kitlenizi anlayarak başlarız. Ardından strateji, tasarım, içerik, teknoloji ve performans pazarlamasını aynı hedef doğrultusunda bir araya getiririz. Böylece birbirinden bağımsız çalışmalar yerine, tüm dijital kanallarınızın birlikte hareket ettiği sürdürülebilir bir büyüme sistemi oluştururuz.
+
+  # 5 — "PIXELON NE YAPAR" bölümünün içindeki koyu vurgu kutusu
+  - type: cta
+    background: dark
+    heading: >-
+      Sadece görünür olmanız için değil, tercih edilen bir marka olmanız için
+      çalışıyoruz.
+    ctas:
+      - label: Pixelon'u Yakından Tanıyın
+        href: /biz-kimiz
+        variant: primary
+
+  # 6 — HİZMETLER (services koleksiyonundan; referansta 10 hizmet listelenir)
+  - type: services
+    background: dark
+    anchor: hizmetler
+    eyebrow: 360° Dijital Çözümler
+    heading: Markanızın İhtiyaç Duyduğu Tüm Dijital Çözümler, Tek Ekipte
+    lead: |-
+      Markanızın dijital dünyadaki tüm temas noktalarını stratejik bir bütün olarak ele alıyoruz. Tasarımdan reklama, içerikten teknolojiye kadar ihtiyaç duyduğunuz çözümleri tek merkezden yönetiyoruz.
+    ctas:
+      - label: Tüm Hizmetlerimizi Keşfedin
+        href: /hizmetlerimiz
+        variant: primary
+
+  # 7 — PROJELER (projects koleksiyonundan; referansta 3 seçili proje)
+  - type: projects
+    background: light
+    anchor: projeler
+    eyebrow: Seçili Projeler
+    heading: Sadece Tasarlamıyor, Markalara Değer Katıyoruz.
+    lead: |-
+      Her proje bizim için yeni bir yolculuktur. Markanın mevcut durumunu, hedeflerini ve ihtiyaçlarını analiz ederek estetik, işlevsel ve sonuç odaklı çözümler üretiyoruz.
+    limit: 3
+    showFilters: false
+    # ctaLabel/ctaHref, ProjectsSection'da ızgaranın altındaki bölüm butonudur —
+    # kart içi "Projeyi İnceleyin →" bağlantısı bileşenin kendisinden gelir.
+    ctaLabel: Tüm Projelerimizi Görüntüleyin
+    ctaHref: /projelerimiz
+
+  # 8 — RAKAMLARLA
+  - type: stats
+    background: dark
+    eyebrow: Deneyim, Üretim ve Sonuç
+    heading: >-
+      Markaların Dijital Dönüşümüne ve Pazarlama Stratejilerine Değer
+      Katıyoruz.
+    items:
+      - value: 15
+        suffix: '+'
+        label: Yıl sektör deneyimi
+        description: Dijital tasarım, marka iletişimi ve pazarlama alanında yıllara dayanan deneyim.
+      - value: 180
+        suffix: '+'
+        label: Tamamlanan proje
+        description: Farklı sektörler ve ihtiyaçlar için başarıyla tamamlanan dijital projeler.
+      - value: 120
+        suffix: '+'
+        label: Başarı hikâyesi
+        description: Dijital görünürlüğünü, iletişimini ve performansını geliştirdiğimiz markalar.
+      - value: 50
+        suffix: '+'
+        label: Marka iş birliği
+        description: Türkiye ve global pazarlarda birlikte çalıştığımız kurumsal markalar.
+      - value: 500
+        suffix: '+'
+        label: Yaratıcı fikir ve kahve
+        description: >-
+          Çünkü güçlü fikirlerin arkasında merak, araştırma, ekip çalışması ve
+          biraz da kahve var.
+    ctas:
+      - label: ☕ Bir Kahve İçip Projenizi Konuşalım
+        href: /iletisim
+        variant: primary
+
+  # 9 — SEKTÖRLER
+  - type: cards
+    background: light
+    eyebrow: Sektörünüzü Anlıyoruz
+    heading: Her Sektör İçin Aynı Çözümü Değil, Markanıza Özel Stratejiyi Üretiyoruz.
+    lead: |-
+      Her sektörün hedef kitlesi, satın alma süreci ve iletişim dili farklıdır. Pixelon olarak deneyim sahibi olduğumuz sektörlerde kullanıcı davranışlarını ve pazar dinamiklerini analiz ederek markaya özel çözümler oluşturuyoruz.
+    columns: 3
+    items:
+      - title: Sağlık ve Klinik Markaları
+        description: |-
+          Hasta güvenini güçlendiren, etik iletişim kurallarına uygun ve randevu dönüşümünü destekleyen dijital sistemler oluşturuyoruz.
+      - title: Sağlık Turizmi Firmaları
+        description: |-
+          Uluslararası hasta kazanımına yönelik çok dilli web siteleri, reklam kampanyaları ve hasta iletişim süreçleri geliştiriyoruz.
+      - title: E-Ticaret Markaları
+        description: |-
+          Ürünlerin daha iyi sunulmasını, doğru hedef kitleye ulaşmasını ve satış dönüşümlerinin artmasını sağlayan çözümler üretiyoruz.
+      - title: İnşaat ve Gayrimenkul Firmaları
+        description: |-
+          Projelerin güven, kalite ve yatırım değerini etkili biçimde anlatan kurumsal web siteleri ve dijital pazarlama çalışmaları hazırlıyoruz.
+      - title: KOBİ ve Kurumsal Hizmet Markaları
+        description: |-
+          İşletmelerin dijital dünyada profesyonel bir kimliğe kavuşmasını ve yeni müşterilere ulaşmasını sağlayan sürdürülebilir sistemler kuruyoruz.
+      - title: Eğitim ve Danışmanlık Markaları
+        description: |-
+          Uzmanlığınızı görünür kılan, güven oluşturan ve başvuru dönüşümünü artıran dijital yapılar kuruyoruz.
+
+  # 10 — SÜREÇ
+  - type: steps
+    background: dark
+    eyebrow: Süreç Nasıl İşliyor?
+    heading: Fikirden Yayına, Yayından Büyümeye Yanınızdayız.
+    lead: |-
+      Başarılı projelerin yalnızca iyi tasarımla değil, doğru planlanan bir süreçle ortaya çıktığına inanıyoruz.
+    items:
+      - title: Keşif ve Brief
+        description: |-
+          Markanızı, hedeflerinizi, hedef kitlenizi ve ihtiyaçlarınızı detaylı biçimde dinliyoruz.
+      - title: Araştırma ve Strateji
+        description: |-
+          Sektörünüzü, rakiplerinizi ve kullanıcı davranışlarını analiz ederek projenin yol haritasını oluşturuyoruz.
+      - title: Tasarım ve İçerik
+        description: |-
+          Markanızın kimliğine uygun görsel dili, kullanıcı deneyimini ve içerik yapısını tasarlıyoruz.
+      - title: Geliştirme ve Uygulama
+        description: |-
+          Onaylanan tasarımları hızlı, güvenli, mobil uyumlu ve yönetilebilir dijital sistemlere dönüştürüyoruz.
+      - title: Test ve Yayın
+        description: |-
+          Tüm cihazlarda performans, kullanıcı deneyimi, form ve yönlendirme testlerini tamamlayarak projeyi yayına alıyoruz.
+      - title: Optimizasyon ve Büyüme
+        description: |-
+          Yayın sonrasında verileri takip ediyor, sonuçları analiz ediyor ve markanızın büyümesi için sistemi sürekli geliştiriyoruz.
+    ctas:
+      - label: Projenizi Birlikte Planlayalım
+        href: /iletisim
+        variant: primary
+
+  # 11 — NEDEN PIXELON (referansta sağ sütunda alt alta sıralanan liste)
+  - type: cards
+    background: light
+    eyebrow: Bir Ajansın Ötesinde
+    heading: Markanız İçin Stratejik, Yaratıcı ve Sonuç Odaklı Bir Ekip
+    columns: 1
+    items:
+      - title: Stratejiyle Başlarız
+        description: |-
+          Her projeye tasarımla değil, doğru soruları sorarak ve markanın gerçek ihtiyacını anlayarak başlarız.
+      - title: Markaya Özel Üretiriz
+        description: |-
+          Hazır şablonlar ve birbirine benzeyen çözümler yerine markanızın kimliğine özel çalışmalar oluştururuz.
+      - title: Tasarım ve Teknolojiyi Birleştiririz
+        description: |-
+          Estetik görünen çalışmaların aynı zamanda hızlı, işlevsel ve kullanıcı dostu olmasını sağlarız.
+      - title: Sonuçları Ölçeriz
+        description: |-
+          Yaptığımız çalışmaların yalnızca görünümünü değil, trafik, etkileşim, talep ve dönüşüm üzerindeki etkisini takip ederiz.
+      - title: Tüm Süreci Tek Ekipte Yönetiriz
+        description: |-
+          Strateji, tasarım, yazılım, içerik, reklam ve optimizasyon süreçlerini birbiriyle uyumlu biçimde yürütürüz.
+
+  # 12 — GLOBAL (ülke çipleri marquee'si)
+  - type: bullets
+    background: dark
+    eyebrow: Nerelerdeyiz?
+    heading: Pixelon Dünyanın Her Yerinde!
+    lead: |-
+      Türkiye'den Avrupa'ya ve Afrika'ya uzanan projelerimizde; farklı kültürlere, dillere ve hedef pazarlara uygun iletişim stratejileri geliştiriyoruz. Yerel bir markanın global pazara açılmasından uluslararası bir firmanın dijital dönüşümüne kadar her ölçekte projeye aynı özenle yaklaşıyoruz.
+    items:
+      - 🇹🇷 Türkiye
+      - 🇩🇪 Almanya
+      - 🇬🇧 Birleşik Krallık
+      - 🇫🇷 Fransa
+      - 🇮🇹 İtalya
+      - 🇪🇸 İspanya
+      - 🇷🇴 Romanya
+      - 🇧🇬 Bulgaristan
+      - 🇳🇱 Hollanda
+      - 🇮🇪 İrlanda
+      - 🌍 Afrika
+
+  # 13 — GLOBAL bölümünün dünya haritası görseli + kapanış cümlesi
+  - type: text
+    background: dark
+    body: >-
+      Sınırlar değişir, güçlü marka deneyiminin kuralları değişmez.
+    imageAlt: Pixelon global dijital pazarlama projeleri dünya haritası
+    ctas:
+      - label: Global Projelerimizi İnceleyin
+        href: /projelerimiz
+        variant: outline
+
+  # 14 — MÜŞTERİ YORUMLARI (referansta 3 yer tutucu kart)
+  # Kart üstündeki dekoratif 5 yıldız rozeti (★★★★★) bilinçli olarak içeriğe alınmadı.
+  - type: cards
+    background: light
+    eyebrow: Birlikte Ürettiklerimiz
+    heading: Müşterilerimiz Pixelon İçin Ne Diyor?
+    lead: |-
+      Başarımızı yalnızca tamamladığımız projelerle değil, kurduğumuz uzun soluklu iş birlikleriyle ölçüyoruz.
+    columns: 3
+    items:
+      - eyebrow: Web Tasarım
+        title: Ad Soyad
+        description: |-
+          "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
+          Pozisyon · Marka
+      - eyebrow: Sağlık Turizmi
+        title: Ad Soyad
+        description: |-
+          "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
+          Pozisyon · Marka
+      - eyebrow: Dijital Reklam
+        title: Ad Soyad
+        description: |-
+          "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
+          Pozisyon · Marka
+
+  # 15 — BLOG (posts koleksiyonundan; referansta 3 yazı)
+  # ctaLabel/ctaHref, PostsSection'da ızgaranın altındaki bölüm butonudur (ok işareti
+  # bileşen tarafından eklenir); kart içi "Yazıyı Okuyun →" bağlantısı kartın kendisidir.
+  - type: posts
+    background: light
+    anchor: blog
+    eyebrow: Pixelon Blog
+    heading: Dijital Dünyayı Birlikte Okuyalım
+    limit: 3
+    ctaLabel: Tüm Yazıları İnceleyin
+    ctaHref: /blog
+
+  # 16 — PROFESYONEL PARTNERLER (referansta metin marquee'si)
+  - type: bullets
+    background: light
+    heading: Profesyonel Partnerlerimiz
+    lead: |-
+      Markaların dijital dünyada güçlü bir varlık oluşturması için sektörün önde gelen platformları ve teknolojileriyle çalışıyoruz.
+    items:
+      - Google
+      - Meta
+      - Instagram
+      - Facebook
+      - WhatsApp
+      - YouTube
+      - TikTok
+      - LinkedIn
+      - Yandex
+
+  # 17 — İLETİŞİM
+  - type: cta
+    background: dark
+    anchor: iletisim
+    eyebrow: Yeni Bir Projeye Başlayalım
+    heading: Markanızı Birlikte Büyütelim.
+    lead: |-
+      Yeni bir web sitesine, etkili bir reklam kampanyasına veya markanızı dijitalde büyütecek kapsamlı bir stratejiye mi ihtiyacınız var? Bize projenizden bahsedin. Pixelon ekibi ihtiyaçlarınızı dinlesin, markanıza özel çözüm önerilerini sizinle paylaşsın.
+    ctas:
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Hemen Arayın
+        href: 'tel:+905065229034'
+        variant: outline
+
+  - type: contactInfo
+    background: dark
+    items:
+      - label: Telefon ve WhatsApp
+        value: +90 506 522 90 34
+        href: 'tel:+905065229034'
+      - label: E-posta
+        value: info@pixelon.com.tr
+        href: 'mailto:info@pixelon.com.tr'
+      - label: Adres
+        value: Kadıköy, İstanbul
+
+  # 18 — PROJE TALEP FORMU
+  # Alan yer tutucuları: Adınız · Soyadınız · Telefon Numaranız · E-posta Adresiniz ·
+  # Şirketinizin Adı · İlgilendiğiniz Hizmet · Tahmini Proje Bütçesi ·
+  # "Projeniz Hakkında Bize Ne Söylemek İstersiniz?"
+  # Hizmet seçenekleri: Web Tasarım ve Yazılım · Sosyal Medya Yönetimi ·
+  # Dijital Reklam Yönetimi · SEO ve İçerik Pazarlaması · Marka ve Kurumsal Kimlik ·
+  # UX/UI Tasarımı · Video ve Prodüksiyon · E-Ticaret · Sağlık Turizmi Danışmanlığı ·
+  # CRM ve Dijital Dönüşüm · Diğer
+  # Bütçe seçenekleri: 50.000 TL altı · 50.000 – 150.000 TL · 150.000 – 500.000 TL ·
+  # 500.000 TL üzeri · Henüz belirlemedim
+  # KVKK onayı: "Kişisel verilerimin iletişim talebimin değerlendirilmesi amacıyla
+  # işlenmesini kabul ediyorum."
+  # Gönderim sonrası ekran: "Talebiniz bize ulaştı!" /
+  # "Pixelon ekibi projenizi inceleyerek en kısa sürede sizinle iletişime geçecek." /
+  # buton: "WhatsApp'tan Devam Edin"
+  - type: form
+    background: dark
+    heading: Projenizden Bize Bahsedin
+    lead: Formu doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
+    formId: contact
+    submitLabel: Proje Talebi Gönder

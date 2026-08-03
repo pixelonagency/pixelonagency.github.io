@@ -1,0 +1,210 @@
+title: Web Tasarım ve Yazılım
+navLabel: Web Tasarım ve Yazılım
+order: 1
+
+seo:
+  title: Web Tasarım ve Yazılım Hizmetleri | Pixelon
+  description: >-
+    Pixelon ile hızlı, mobil uyumlu, SEO altyapılı ve dönüşüm odaklı web
+    sitelerine sahip olun. Markanıza özel web tasarım çözümlerini keşfedin.
+
+hero:
+  eyebrow: Web Tasarım ve Yazılım
+  headingLines:
+    - "Markanızı İlk Görüşte Etkileyici Kılan Web Siteleri Tasarlıyoruz."
+  lead: >-
+    Markanızı doğru yansıtan; hızlı, mobil uyumlu, kullanıcı dostu ve
+    ziyaretçileri müşteriye dönüştürmeye odaklanan web siteleri geliştiriyoruz.
+  tagline: >-
+    Kurumsal web sitelerinden e-ticaret projelerine kadar markanıza özel,
+    yönetilebilir ve SEO uyumlu dijital deneyimler oluşturuyoruz.
+  whatsappMessage: "Merhaba Pixelon, Web Tasarım ve Yazılım hizmeti hakkında bilgi almak istiyorum."
+
+sectors:
+  eyebrow: İlk İzlenim
+  heading: Markanızın Dijital Dünyadaki En Güçlü Yüzünü Oluşturuyoruz
+  body: |-
+    Web siteniz çoğu zaman müşterilerinizin markanızla kurduğu ilk temastır. Bu nedenle yalnızca güzel görünmesi değil; markanızı doğru anlatması, güven oluşturması ve ziyaretçiyi harekete geçirmesi gerekir.
+
+    Pixelon olarak web tasarım sürecini estetik, kullanıcı deneyimi, teknoloji, hız ve SEO altyapısıyla birlikte ele alıyoruz. Markanıza özel tasarlanan web siteleriyle dijital dünyada güçlü ve profesyonel bir görünüm oluşturuyoruz.
+
+    Sadece web sitesi tasarlamıyor, markanız için çalışan bir dijital satış ve iletişim alanı oluşturuyoruz.
+
+scope:
+  eyebrow: Web Tasarım Hizmetlerimiz
+  heading: İhtiyacınıza Uygun, Markanıza Özel Web Çözümleri
+  items:
+    - title: Kurumsal Web Sitesi
+      description: >-
+        Markanızın hizmetlerini, kurumsal yapısını ve uzmanlığını profesyonel
+        biçimde yansıtan yönetilebilir web siteleri tasarlıyoruz.
+    - title: E-Ticaret Sitesi
+      description: >-
+        Ürünlerinizi etkileyici biçimde sunan, kullanıcıların kolayca alışveriş
+        yapmasını sağlayan satış odaklı e-ticaret altyapıları oluşturuyoruz.
+    - title: Landing Page Tasarımı
+      description: >-
+        Google ve Meta reklam kampanyalarından gelen ziyaretçileri teklif,
+        arama, WhatsApp veya form dönüşümüne yönlendiren özel açılış sayfaları
+        hazırlıyoruz.
+    - title: Çok Dilli Web Sitesi
+      description: >-
+        Farklı ülke ve pazarlardaki hedef kitlelere ulaşabilmeniz için çok
+        dilli, SEO uyumlu ve kolay yönetilebilir web siteleri geliştiriyoruz.
+    - title: Sağlık ve Klinik Web Siteleri
+      description: >-
+        Klinikler, doktorlar ve sağlık turizmi markaları için güven oluşturan,
+        tedavileri anlaşılır biçimde sunan ve randevu talebi toplayan web
+        siteleri tasarlıyoruz.
+    - title: Özel Web Yazılımı
+      description: >-
+        Hazır sistemlerin yetersiz kaldığı projelerde markanızın iş süreçlerine
+        özel panel, form, rezervasyon, üyelik ve entegrasyon çözümleri
+        geliştiriyoruz.
+
+why:
+  eyebrow: Standartlarımız
+  heading: Güzel Görünmenin Ötesinde, Sonuç Üreten Bir Deneyim
+  items:
+    - title: Markaya Özel Tasarım
+      description: >-
+        Hazır şablonlar yerine markanızın kimliğine, sektörüne ve hedef
+        kitlesine uygun özgün arayüzler tasarlıyoruz.
+    - title: Mobil Uyumluluk
+      description: >-
+        Web sitenizin telefon, tablet ve masaüstü cihazlarda kusursuz
+        görünmesini sağlıyoruz.
+    - title: Hız ve Performans
+      description: >-
+        Sayfa yüklenme sürelerini iyileştirerek kullanıcı deneyimini ve arama
+        motoru performansını destekliyoruz.
+    - title: SEO Altyapısı
+      description: >-
+        Başlık yapıları, URL düzeni, meta alanları, görsel optimizasyonu ve
+        teknik altyapıyı SEO standartlarına uygun hazırlıyoruz.
+    - title: Dönüşüm Odaklı Yapı
+      description: >-
+        WhatsApp, telefon, teklif ve iletişim formu gibi aksiyonları doğru
+        noktalarda konumlandırarak daha fazla talep alınmasını hedefliyoruz.
+    - title: Yönetilebilir Admin Paneli
+      description: >-
+        İçeriklerinizi, hizmetlerinizi, projelerinizi, blog yazılarınızı ve
+        iletişim taleplerinizi kolayca yönetebileceğiniz bir panel
+        oluşturuyoruz.
+
+process:
+  eyebrow: Adım Adım
+  heading: Fikirden Yayına Planlı ve Şeffaf Bir Süreç
+  steps:
+    - title: Keşif ve İhtiyaç Analizi
+      description: >-
+        Markanızı, hedef kitlenizi, rakiplerinizi ve web sitesinden
+        beklentilerinizi öğreniyoruz.
+    - title: İçerik ve Site Mimarisi
+      description: >-
+        Sayfaları, kullanıcı yolculuğunu, içerik başlıklarını ve
+        yönlendirmeleri planlıyoruz.
+    - title: UX/UI Tasarımı
+      description: >-
+        Markanızın görsel kimliğine uygun masaüstü ve mobil arayüzleri
+        tasarlıyoruz.
+    - title: Yazılım ve Geliştirme
+      description: >-
+        Onaylanan tasarımı hızlı, güvenli, yönetilebilir ve mobil uyumlu bir
+        web sitesine dönüştürüyoruz.
+    - title: Test ve Yayın
+      description: >-
+        Formları, bağlantıları, sayfa hızını, farklı cihazları ve SEO ayarlarını
+        kontrol ederek siteyi yayına alıyoruz.
+    - title: Destek ve Geliştirme
+      description: >-
+        Yayın sonrasında ihtiyaç duyulan güncelleme, bakım ve geliştirme
+        süreçlerinde markanıza destek oluyoruz.
+
+projects:
+  eyebrow: Başarıyla Tamamladığımız Projeler
+  heading: Markalar İçin Tasarladığımız Dijital Deneyimler
+  lead: >-
+    Yaratıcı fikirler ve stratejik çözümlerle farklı sektörlerdeki markalara
+    dijital dünyada değer kattık. Siz de bu projeler arasındaki yerinizi almak
+    için bizimle iletişime geçin.
+  items:
+    - eyebrow: Çok Dilli Kurumsal Web Sitesi
+      title: Xray Groupe
+      description: >-
+        İnşaat ve mühendislik alanında faaliyet gösteren Xray Groupe için
+        kurumsal gücü, hizmet kapsamını ve uluslararası projeleri yansıtan
+        modern bir web sitesi tasarladık.
+    - eyebrow: Sağlık Turizmi Web Sitesi
+      title: Dentasay
+      description: >-
+        Tedavilerin anlaşılır biçimde sunulduğu, uluslararası hastalara hitap
+        eden ve iletişim taleplerini artırmaya odaklanan çok dilli bir web
+        deneyimi oluşturduk.
+    - eyebrow: Çok Dilli Doktor Web Sitesi
+      title: Dr. Ayşe Cinkaya Kahveci
+      description: >-
+        Dermatoloji ve estetik uygulamaları güven veren bir yapıyla sunan,
+        mobil uyumlu ve randevu dönüşümüne odaklanan çok dilli bir web sitesi
+        hazırladık.
+    - eyebrow: Sağlık ve Danışmanlık Web Sitesi
+      title: Çağla Aytaç
+      description: >-
+        Hizmetlerin, paketlerin ve farklı şubelerin kullanıcı dostu biçimde
+        sunulduğu, çok dilli ve modern bir web sitesi deneyimi geliştirdik.
+
+value:
+  eyebrow: Neden Pixelon ile Çalışmalısınız?
+  heading: Tasarım, Teknoloji ve Pazarlama Aynı Ekipte
+  lead: >-
+    Pixelon'da web sitesi yalnızca yazılım ekibinin tamamladığı teknik bir proje
+    değildir. Strateji, içerik, kullanıcı deneyimi, tasarım, SEO ve dijital
+    reklam ekipleri aynı hedef doğrultusunda birlikte çalışır. Bu sayede web
+    siteniz yalnızca profesyonel görünmekle kalmaz; markanızı doğru anlatan,
+    reklam kampanyalarınızı destekleyen ve yeni müşteri talepleri oluşturan
+    güçlü bir dijital merkeze dönüşür.
+  bullets:
+    - Markaya özel ve özgün tasarım
+    - Mobil uyumlu yapı
+    - SEO dostu teknik altyapı
+    - Kolay yönetilebilir admin paneli
+    - WhatsApp ve form entegrasyonları
+    - Çok dilli site desteği
+    - Hız ve güvenlik optimizasyonu
+    - Yayın sonrası teknik destek
+
+cta:
+  eyebrow: Web Sitesi Projenizi Birlikte Hayata Geçirelim
+  heading: Markanıza Değer Katacak Bir Web Sitesine Hazır mısınız?
+  lead: >-
+    Yeni bir web sitesi yaptırmak, mevcut sitenizi yenilemek veya satış ve talep
+    dönüşümlerinizi artıracak özel bir dijital proje geliştirmek için Pixelon
+    ekibiyle iletişime geçin. İhtiyaçlarınızı dinleyelim ve markanıza özel web
+    tasarım teklifimizi hazırlayalım.
+
+faq:
+  eyebrow: Merak Edilenler
+  heading: Web Tasarım Hakkında Sıkça Sorulan Sorular
+  items:
+    - question: Web sitesi tasarımı ne kadar sürer?
+      answer: >-
+        Projenin sayfa sayısı, içerik kapsamı, dil seçenekleri ve özel yazılım
+        ihtiyaçlarına göre değişir. Kurumsal web sitesi projeleri çoğunlukla
+        planlama, tasarım, yazılım ve test aşamalarından oluşur.
+    - question: Web sitesini daha sonra kendimiz yönetebilir miyiz?
+      answer: >-
+        Evet. Web sitenize içerikleri, hizmetleri, projeleri ve blog yazılarını
+        düzenleyebileceğiniz kullanıcı dostu bir yönetim paneli eklenir.
+    - question: Web sitesi mobil uyumlu olacak mı?
+      answer: >-
+        Evet. Tüm web siteleri telefon, tablet ve masaüstü cihazlara uyumlu
+        olacak şekilde tasarlanır ve test edilir.
+    - question: SEO çalışması web tasarım hizmetine dâhil mi?
+      answer: >-
+        Web sitesi temel teknik SEO altyapısına uygun hazırlanır. Kapsamlı
+        anahtar kelime, içerik üretimi ve sürekli SEO çalışmaları ayrı bir
+        hizmet planı olarak sunulabilir.
+    - question: Çok dilli web sitesi hazırlıyor musunuz?
+      answer: >-
+        Evet. Hedeflediğiniz ülkelere ve dillere uygun çok dilli web sitesi
+        altyapıları oluşturuyoruz.

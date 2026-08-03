@@ -1,0 +1,152 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Faq = Extract<PageSection, { type: 'faq' }>;
+
+interface Props {
+  section: Faq;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <div class="faq" data-faq>
+    {
+      section.items.map((item, index) => (
+        <div class="faq__item">
+          <h3 class="faq__heading">
+            <button
+              type="button"
+              class="faq__trigger"
+              aria-expanded={index === 0 ? 'true' : 'false'}
+              aria-controls={`faq-panel-${index}`}
+              id={`faq-trigger-${index}`}
+            >
+              <span>{item.question}</span>
+              <span class="faq__icon" aria-hidden="true" />
+            </button>
+          </h3>
+          <div
+            class="faq__panel"
+            id={`faq-panel-${index}`}
+            role="region"
+            aria-labelledby={`faq-trigger-${index}`}
+            hidden={index !== 0}
+          >
+            <p class="faq__answer">{item.answer}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Section>
+
+<style>
+  .faq {
+    max-width: 860px;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq__heading {
+    margin: 0;
+  }
+
+  .faq__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 24px 0;
+    text-align: left;
+    font: 600 17px var(--font-display);
+    color: var(--text);
+  }
+
+  .faq__icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--accent);
+    transition:
+      border-color var(--t-base),
+      transform var(--t-base);
+  }
+
+  .faq__icon::before {
+    content: '+';
+  }
+
+  .faq__trigger[aria-expanded='true'] .faq__icon {
+    border-color: var(--accent);
+  }
+
+  .faq__trigger[aria-expanded='true'] .faq__icon::before {
+    content: '−';
+  }
+
+  .faq__answer {
+    margin: 0 0 26px;
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 680px;
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .faq__item {
+    border-bottom-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .faq__trigger {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .faq__answer {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .faq__icon {
+    border-color: var(--border-on-light);
+  }
+</style>
+
+<script>
+  // Akordeon: aynı anda yalnızca tek bir madde açık kalır.
+  for (const group of document.querySelectorAll<HTMLElement>('[data-faq]')) {
+    const triggers = group.querySelectorAll<HTMLButtonElement>('.faq__trigger');
+
+    for (const trigger of triggers) {
+      trigger.addEventListener('click', () => {
+        const willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+
+        for (const other of triggers) {
+          const panelId = other.getAttribute('aria-controls');
+          const panel = panelId ? document.getElementById(panelId) : null;
+          const isCurrent = other === trigger;
+          const open = isCurrent && willOpen;
+
+          other.setAttribute('aria-expanded', String(open));
+          if (panel) panel.hidden = !open;
+        }
+      });
+    }
+  }
+</script>

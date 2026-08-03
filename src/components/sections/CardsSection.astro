@@ -1,0 +1,89 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Cards = Extract<PageSection, { type: 'cards' }>;
+
+interface Props {
+  section: Cards;
+}
+
+const { section } = Astro.props;
+const minColumnWidth = section.columns === 2 ? '340px' : section.columns === 4 ? '220px' : '280px';
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <div class="cards" style={`--min-col: ${minColumnWidth}`}>
+    {
+      section.items.map((item, index) => {
+        const Tag = item.href ? 'a' : 'div';
+        return (
+          <Tag class="card cards__item" href={item.href} data-reveal data-reveal-index={index}>
+            {item.eyebrow && <p class="cards__eyebrow">{item.eyebrow}</p>}
+            <h3 class="h3">{item.title}</h3>
+            <p class="body-text cards__text">{item.description}</p>
+            {item.href && (
+              <span class="cards__arrow" aria-hidden="true">
+                →
+              </span>
+            )}
+          </Tag>
+        );
+      })
+    }
+  </div>
+
+  {section.note && <p class="lead cards__note">{section.note}</p>}
+</Section>
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--min-col), 1fr));
+    gap: var(--gap-card);
+  }
+
+  .cards__item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .cards__eyebrow {
+    margin: 0;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .cards__text {
+    flex: 1;
+  }
+
+  .cards__note {
+    margin-top: clamp(28px, 3vw, 40px);
+    max-width: 780px;
+  }
+
+  :global(.section--light) .cards__eyebrow {
+    color: var(--text-muted-on-light);
+  }
+
+  .cards__arrow {
+    color: var(--accent);
+    font: 600 16px var(--font-display);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 720px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

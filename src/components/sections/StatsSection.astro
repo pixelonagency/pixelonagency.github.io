@@ -1,0 +1,140 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Stats = Extract<PageSection, { type: 'stats' }>;
+
+interface Props {
+  section: Stats;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <dl class="stats">
+    {
+      section.items.map((item, index) => (
+        <div class="stats__item" data-reveal data-reveal-index={index}>
+          <dt class="stats__value">
+            {item.prefix}
+            <span data-counter data-counter-to={item.value}>
+              0
+            </span>
+            {item.suffix}
+          </dt>
+          <dd class="stats__label">
+            <span class="stats__label-text">{item.label}</span>
+            {item.description && <span class="stats__description">{item.description}</span>}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</Section>
+
+<style>
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--gap-section);
+    margin: 0;
+  }
+
+  .stats__item {
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
+  }
+
+  .stats__value {
+    font: 700 clamp(38px, 5vw, 62px) / 1 var(--font-display);
+    letter-spacing: -0.03em;
+    color: var(--accent);
+  }
+
+  .stats__label {
+    margin: 12px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .stats__label-text {
+    font: 600 15px var(--font-display);
+    color: var(--text);
+  }
+
+  .stats__description {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  :global(.section--light) .stats__label-text {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .stats__description {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .stats__item {
+    border-top-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .stats__value {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .stats__label {
+    color: var(--text-muted-on-light);
+  }
+</style>
+
+<script>
+  // Sayaç: eleman viewport'a girince 0'dan hedef değere sayar.
+  const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
+  const DURATION = 1600;
+
+  const runCount = (element: HTMLElement) => {
+    const target = Number(element.dataset.counterTo ?? 0);
+    const start = performance.now();
+
+    const step = (now: number) => {
+      const progress = Math.min((now - start) / DURATION, 1);
+      // easeOutCubic — sonlara doğru yavaşlar
+      const eased = 1 - Math.pow(1 - progress, 3);
+      element.textContent = String(Math.round(target * eased));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (counters.length > 0) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      for (const element of counters) element.textContent = element.dataset.counterTo ?? '0';
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            runCount(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          }
+        },
+        { threshold: 0.4 },
+      );
+
+      for (const element of counters) observer.observe(element);
+    }
+  }
+</script>

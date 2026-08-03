@@ -1,0 +1,113 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type ContactInfo = Extract<PageSection, { type: 'contactInfo' }>;
+
+interface Props {
+  section: ContactInfo;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <dl class="contact-info">
+    {
+      section.items.map((item, index) => (
+        <div class="contact-info__item" data-reveal data-reveal-index={index}>
+          <dt class="contact-info__label">{item.label}</dt>
+          <dd class="contact-info__value">
+            {item.href ? (
+              <a class="contact-info__link" href={item.href}>
+                {item.value}
+              </a>
+            ) : (
+              item.value
+            )}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</Section>
+
+<style>
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gap-card);
+    margin: 0;
+  }
+
+  .contact-info__item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 28px;
+    transition:
+      border-color var(--t-slow),
+      transform var(--t-slow);
+  }
+
+  .contact-info__item:hover,
+  .contact-info__item:focus-within {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+  }
+
+  .contact-info__label {
+    margin: 0;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .contact-info__value {
+    margin: 12px 0 0;
+    font: 600 var(--fs-lead) / 1.5 var(--font-display);
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+
+  .contact-info__link {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--t-base);
+  }
+
+  .contact-info__link:hover {
+    color: var(--accent);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .contact-info__item {
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .contact-info__item:hover,
+  :global(.section--light) .contact-info__item:focus-within {
+    border-color: var(--text-on-light);
+  }
+
+  :global(.section--light) .contact-info__label {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .contact-info__value {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .contact-info__link:hover {
+    color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .contact-info {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

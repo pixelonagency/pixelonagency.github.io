@@ -1,0 +1,152 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Logos = Extract<PageSection, { type: 'logos' }>;
+
+interface Props {
+  section: Logos;
+}
+
+const { section } = Astro.props;
+
+const references = await getCollection('references');
+
+// `image()` çözümleyicisi şema tarafında `ZodTypeAny` ile tiplendiği için
+// derleyiciye logonun bir ImageMetadata olduğu burada bildirilir.
+const logos = [...references]
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => ({ name: entry.data.name, logo: entry.data.logo as ImageMetadata }));
+
+// Koleksiyon boşsa bölüm hiç basılmaz — boş bir şerit build'i kırmasın.
+const hasLogos = logos.length > 0;
+---
+
+{
+  hasLogos && (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+      <div class="logos" role="group" aria-label="Çalıştığımız markalar" tabindex="0" data-reveal data-reveal-index={1}>
+        <div class="logos__track">
+          <ul class="logos__group">
+            {logos.map((ref) => (
+              <li class="logos__item">
+                <Image class="logos__logo" src={ref.logo} alt={`${ref.name} logosu`} height={38} densities={[1, 2]} />
+              </li>
+            ))}
+          </ul>
+
+          {/* Sonsuz akış için ikinci kopya — ekran okuyucudan gizli. */}
+          <ul class="logos__group" aria-hidden="true">
+            {logos.map((ref) => (
+              <li class="logos__item">
+                <Image class="logos__logo" src={ref.logo} alt="" height={38} densities={[1, 2]} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+<style>
+  .logos {
+    --logo-gap: clamp(44px, 6vw, 80px);
+
+    overflow: hidden;
+    padding: 34px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    /* Şerit kenarları zemine karışır. */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
+  }
+
+  .logos__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+
+  /* Okunabilirlik: fare üzerindeyken veya klavye odağındayken akış durur. */
+  .logos:hover .logos__track,
+  .logos:focus-within .logos__track {
+    animation-play-state: paused;
+  }
+
+  .logos__group {
+    display: flex;
+    align-items: center;
+    /* Sondaki boşluk da gruba dahil — böylece -50% kaydırma dikişsiz olur. */
+    gap: var(--logo-gap);
+    padding: 0 var(--logo-gap) 0 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .logos__item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* <Image /> bir bileşen olduğu için basılan <img> :global ile hedeflenir. */
+  .logos__item :global(img) {
+    height: 38px;
+    width: auto;
+    opacity: 0.55;
+    filter: grayscale(1) brightness(1.8);
+    transition:
+      opacity var(--t-slow),
+      filter var(--t-slow);
+  }
+
+  .logos__item :global(img):hover {
+    opacity: 1;
+    filter: grayscale(0) brightness(1);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .logos {
+    border-top-color: var(--border-on-light);
+    border-bottom-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .logos__item :global(img) {
+    filter: grayscale(1) brightness(0.5);
+  }
+
+  :global(.section--light) .logos__item :global(img):hover {
+    filter: grayscale(0) brightness(1);
+  }
+
+  /* Hareket azaltma: akış durur, şerit elle kaydırılır. */
+  @media (prefers-reduced-motion: reduce) {
+    .logos {
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .logos__track {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .logos {
+      --logo-gap: 40px;
+
+      padding: 24px 0;
+    }
+
+    .logos__item :global(img) {
+      height: 30px;
+    }
+  }
+</style>

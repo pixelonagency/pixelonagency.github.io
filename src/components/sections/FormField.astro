@@ -1,0 +1,240 @@
+---
+/**
+ * Tek bir form alanı: etiket + denetim (input / textarea / select) + hata paragrafı.
+ *
+ * Doğrulama mantığı burada DEĞİL — `src/lib/forms.ts` içinde. Bu bileşen yalnızca
+ * işaretlemeyi üretir; hata metnini `FormSection` içindeki script `#err-<name>`
+ * paragrafına yazar ve `[data-error-target]` denetimine `aria-invalid` ekler.
+ */
+type FormFieldType = 'text' | 'email' | 'tel' | 'url' | 'textarea' | 'select';
+
+interface Props {
+  name: string;
+  label: string;
+  type?: FormFieldType;
+  required?: boolean;
+  options?: string[] | undefined;
+  placeholder?: string | undefined;
+  rows?: number | undefined;
+}
+
+const { name, label, type = 'text', required = false, options = [], placeholder, rows = 5 } = Astro.props;
+
+const fieldId = `f-${name}`;
+const errorId = `err-${name}`;
+
+// Tarayıcı otomatik doldurma ipuçları — alan adına göre.
+const AUTOCOMPLETE: Record<string, string> = {
+  name: 'name',
+  email: 'email',
+  phone: 'tel',
+  company: 'organization',
+  website: 'url',
+};
+const autocomplete = AUTOCOMPLETE[name];
+
+// Native doğrulama kapalı (form `novalidate`); zorunluluk yalnızca ARIA ile duyurulur.
+const ariaRequired = required ? 'true' : undefined;
+---
+
+<div class="field">
+  <label class="field__label" for={fieldId}>
+    {label}
+    {
+      required && (
+        <>
+          <span class="field__required" aria-hidden="true">
+            *
+          </span>
+          <span class="visually-hidden">(zorunlu)</span>
+        </>
+      )
+    }
+  </label>
+
+  {
+    type === 'textarea' && (
+      <textarea
+        class="field__control field__control--textarea"
+        id={fieldId}
+        name={name}
+        rows={rows}
+        placeholder={placeholder}
+        aria-required={ariaRequired}
+        data-error-target={name}
+      />
+    )
+  }
+
+  {
+    type === 'select' && (
+      <span class="field__select">
+        <select
+          class="field__control field__control--select"
+          id={fieldId}
+          name={name}
+          aria-required={ariaRequired}
+          data-error-target={name}
+        >
+          <option value="">{placeholder ?? 'Seçiniz'}</option>
+          {options.map((option) => (
+            <option value={option}>{option}</option>
+          ))}
+        </select>
+        <span class="field__caret" aria-hidden="true">
+          ▼
+        </span>
+      </span>
+    )
+  }
+
+  {
+    type !== 'textarea' && type !== 'select' && (
+      <input
+        class="field__control"
+        id={fieldId}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        autocomplete={autocomplete}
+        aria-required={ariaRequired}
+        data-error-target={name}
+      />
+    )
+  }
+
+  <p class="field__error" id={errorId} data-error-for={name} aria-live="polite"></p>
+</div>
+
+<style>
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .field__label {
+    font: 600 var(--fs-small) var(--font-display);
+    letter-spacing: 0.01em;
+    color: var(--text-soft);
+  }
+
+  .field__required {
+    color: var(--accent);
+    margin-left: 4px;
+  }
+
+  .field__control {
+    width: 100%;
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-input);
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    color: var(--text);
+    background: transparent;
+    transition:
+      border-color var(--t-base),
+      background var(--t-base);
+  }
+
+  .field__control::placeholder {
+    color: var(--text-faint);
+  }
+
+  .field__control:hover {
+    border-color: var(--border-strong);
+  }
+
+  .field__control:focus {
+    border-color: var(--accent);
+  }
+
+  .field__control--textarea {
+    min-height: 132px;
+    line-height: 1.65;
+    resize: vertical;
+  }
+
+  .field__control[aria-invalid='true'] {
+    border-color: var(--danger);
+  }
+
+  /* --- Seçim kutusu: yerel ok yerine metin oku --- */
+  .field__select {
+    position: relative;
+    display: block;
+  }
+
+  .field__control--select {
+    appearance: none;
+    padding-right: 46px;
+    cursor: pointer;
+  }
+
+  .field__control--select option {
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .field__caret {
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    font-size: 9px;
+    color: var(--accent);
+    pointer-events: none;
+  }
+
+  /* --- Hata --- */
+  .field__error {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--danger);
+  }
+
+  .field__error:empty {
+    display: none;
+  }
+
+  /* --- Açık zeminli varyant --- */
+  :global(.section--light) .field__label {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .field__control {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .field__control::placeholder {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .field__control:hover {
+    border-color: var(--text-muted-on-light);
+  }
+
+  /* Lime, açık zeminde tek başına görünmediği için koyu kenarlık + lime halka. */
+  :global(.section--light) .field__control:focus {
+    border-color: var(--text-on-light);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  :global(.section--light) .field__control[aria-invalid='true'] {
+    border-color: var(--danger);
+  }
+
+  :global(.section--light) .field__control--select option {
+    background: var(--bg-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .field__caret {
+    color: var(--text-on-light);
+  }
+</style>

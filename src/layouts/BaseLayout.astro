@@ -1,0 +1,102 @@
+---
+import { getEntry } from 'astro:content';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { canonicalUrl, truncateDescription } from '../lib/seo';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Bu sayfaya özel WhatsApp ön-dolu mesajı; verilmezse site varsayılanı kullanılır. */
+  whatsappMessage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const { title, description, whatsappMessage, ogType = 'website', noindex = false } = Astro.props;
+
+const settingsEntry = await getEntry('settings', 'site');
+if (!settingsEntry) throw new Error('src/content/settings/site.yml bulunamadı.');
+const settings = settingsEntry.data;
+
+const site = Astro.site?.toString() ?? 'https://pixelonagency.github.io';
+const canonical = canonicalUrl(Astro.url.pathname, site);
+const metaDescription = truncateDescription(description, 160);
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={metaDescription} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:site_name" content="Pixelon" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <slot name="head" />
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">İçeriğe geç</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFloat number={settings.whatsapp.number} message={whatsappMessage ?? settings.whatsapp.defaultMessage} />
+
+    <script>
+      // Scroll-reveal: viewport'a giren [data-reveal] elemanlarını kademeli gecikmeyle açar.
+      const revealables = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+      if (revealables.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const element = entry.target as HTMLElement;
+              const index = Number(element.dataset.revealIndex ?? 0);
+              element.style.transitionDelay = `${index * 0.05}s`;
+              element.classList.add('is-revealed');
+              observer.unobserve(element);
+            }
+          },
+          { threshold: 0.12 },
+        );
+
+        for (const element of revealables) observer.observe(element);
+      } else {
+        for (const element of revealables) element.classList.add('is-revealed');
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  main {
+    padding-top: var(--header-h);
+  }
+</style>

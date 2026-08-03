@@ -1,0 +1,21 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionRenderer from './SectionRenderer.astro';
+
+interface Props {
+  /** `src/content/pages/<id>.yml` dosyasının adı (uzantısız). */
+  id: string;
+}
+
+const { id } = Astro.props;
+
+const entry = await getEntry('pages', id);
+if (!entry) throw new Error(`İçerik bulunamadı: src/content/pages/${id}.yml`);
+
+const { seo, sections, whatsappMessage } = entry.data;
+---
+
+<BaseLayout title={seo.title} description={seo.description} whatsappMessage={whatsappMessage}>
+  <SectionRenderer sections={sections} />
+</BaseLayout>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Pixelon İçerik Yönetimi</title>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <!--
+      Sveltia CMS — Git tabanlı headless CMS (Decap/Netlify CMS uyumlu).
+
+      Koleksiyon tanımları config.yml içindedir ve src/content/schemas.ts +
+      src/content/page-schema.ts dosyalarındaki zod şemalarının birebir aynasıdır.
+
+      Sürüm ve SRI: script tam sürüme sabitlenmiş ve subresource integrity ile
+      doğrulanıyor — CDN ele geçirilse dahi değiştirilmiş dosya çalıştırılmaz.
+      Sürüm yükseltirken integrity hash'i de yenileyin:
+        curl -sSL https://unpkg.com/@sveltia/cms@<sürüm>/dist/sveltia-cms.js \
+          | openssl dgst -sha384 -binary | openssl base64 -A
+    -->
+    <script
+      src="https://unpkg.com/@sveltia/cms@0.178.0/dist/sveltia-cms.js"
+      type="module"
+      integrity="sha384-JaupnMgbYkiRRASh2WV1+EcLmDDy/gkT2nuBq4R1RpKgSw7coIAY+HNHVUsLTYVw"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

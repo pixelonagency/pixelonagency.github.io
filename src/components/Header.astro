@@ -1,0 +1,404 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import logo from '../assets/logo/pixelon-logo.webp';
+import { buildServicesNav, isActiveRoute, PRIMARY_NAV } from '../lib/nav';
+
+const services = await getCollection('services');
+const serviceLinks = buildServicesNav(services);
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="site-header__logo" aria-label="Pixelon ana sayfa">
+      <Image src={logo} alt="Pixelon 360 dijital pazarlama ajansı logosu" height={34} densities={[1, 2]} />
+    </a>
+
+    <nav class="site-nav" aria-label="Ana menü">
+      {
+        PRIMARY_NAV.map((item) =>
+          item.hasDropdown ? (
+            <div class="site-nav__dd">
+              <a
+                href={item.href}
+                class="site-nav__link site-nav__link--dd"
+                aria-current={isActiveRoute(currentPath, item.href) ? 'page' : undefined}
+              >
+                {item.label}{' '}
+                <span class="site-nav__caret" aria-hidden="true">
+                  ▼
+                </span>
+              </a>
+              <div class="site-nav__menu">
+                <div class="site-nav__menu-inner">
+                  {serviceLinks.map((service) => (
+                    <a href={service.href} class="site-nav__menu-link">
+                      {service.label}
+                    </a>
+                  ))}
+                  <a href="/hizmetlerimiz" class="site-nav__menu-all">
+                    Tüm Hizmetlerimiz →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class="site-nav__link"
+              aria-current={isActiveRoute(currentPath, item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ),
+        )
+      }
+    </nav>
+
+    <div class="site-header__actions">
+      <div class="lang-switch" data-hide-mobile>
+        <a href="/" class="lang-switch__item lang-switch__item--active" aria-current="true">
+          <span aria-hidden="true">🇹🇷</span>TR
+        </a>
+        <span class="lang-switch__sep" aria-hidden="true">/</span>
+        <span class="lang-switch__item lang-switch__item--soon" title="İngilizce sürüm yakında">
+          <span aria-hidden="true">🇬🇧</span>EN
+        </span>
+      </div>
+
+      <a href="/ucretsiz-analiz" class="btn btn--primary btn--sm">Ücretsiz Analiz</a>
+
+      <button type="button" id="mnav-btn" class="mnav-btn" aria-expanded="false" aria-controls="mnav-panel">
+        <span class="visually-hidden">Menüyü aç</span>
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!--
+  Mobil menü paneli bilinçli olarak <header> DIŞINDA duruyor: header'daki
+  `backdrop-filter`, içindeki `position: fixed` elemanlar için yeni bir kapsayıcı blok
+  oluşturuyor ve paneli header yüksekliğine hapsediyordu. Kardeş olarak durunca panel
+  gerçekten viewport'u kaplıyor.
+-->
+<div id="mnav-panel" class="mnav-panel" hidden>
+  <div class="mnav-panel__top">
+    <Image src={logo} alt="Pixelon" height={28} densities={[1, 2]} />
+    <button type="button" id="mnav-close" class="mnav-panel__close">
+      <span class="visually-hidden">Menüyü kapat</span>
+      <span aria-hidden="true">✕</span>
+    </button>
+  </div>
+  <nav class="mnav-panel__nav" aria-label="Mobil menü">
+    <a href="/biz-kimiz" class="mnav-panel__link">Biz Kimiz?</a>
+    <a href="/hizmetlerimiz" class="mnav-panel__link">Hizmetlerimiz</a>
+    {
+      serviceLinks.map((service, index) => (
+        <a
+          href={service.href}
+          class:list={['mnav-panel__sublink', index === serviceLinks.length - 1 && 'mnav-panel__sublink--last']}
+        >
+          {service.label}
+        </a>
+      ))
+    }
+    <a href="/projelerimiz" class="mnav-panel__link">Projelerimiz</a>
+    <a href="/projelerimiz#referanslar" class="mnav-panel__link">Referanslarımız</a>
+    <a href="/blog" class="mnav-panel__link">Blog</a>
+    <a href="/kariyer" class="mnav-panel__link">Kariyer</a>
+    <a href="/iletisim" class="mnav-panel__link mnav-panel__link--last">İletişim</a>
+  </nav>
+  <a href="/ucretsiz-analiz" class="btn btn--primary mnav-panel__cta">Ücretsiz Analiz</a>
+</div>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    background: var(--bg-header);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-faint);
+  }
+
+  .site-header__inner {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px var(--gutter-header);
+  }
+
+  .site-header__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* --- Masaüstü nav --- */
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .site-nav__link {
+    color: var(--text);
+    text-decoration: none;
+    font: 500 14px var(--font-display);
+    letter-spacing: 0.02em;
+    transition: color var(--t-base);
+  }
+
+  .site-nav__link:hover,
+  .site-nav__link[aria-current='page'] {
+    color: var(--accent);
+  }
+
+  .site-nav__link--dd {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .site-nav__caret {
+    font-size: 10px;
+    opacity: 0.7;
+  }
+
+  .site-nav__dd {
+    position: relative;
+  }
+
+  .site-nav__menu {
+    position: absolute;
+    top: 100%;
+    left: -16px;
+    padding-top: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition:
+      opacity var(--t-base),
+      transform var(--t-base),
+      visibility var(--t-base);
+    z-index: 60;
+  }
+
+  .site-nav__dd:hover .site-nav__menu,
+  .site-nav__dd:focus-within .site-nav__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .site-nav__menu-inner {
+    background: var(--bg-dropdown);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 10px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 48px rgb(0 0 0 / 50%);
+  }
+
+  .site-nav__menu-link {
+    display: block;
+    color: var(--text-soft);
+    text-decoration: none;
+    font: 500 13.5px var(--font-display);
+    padding: 9px 14px;
+    border-radius: 10px;
+    transition:
+      background var(--t-fast),
+      color var(--t-fast);
+  }
+
+  .site-nav__menu-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .site-nav__menu-all {
+    display: block;
+    color: var(--accent);
+    text-decoration: none;
+    font: 600 13.5px var(--font-display);
+    padding: 11px 14px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+  }
+
+  .site-nav__menu-all:hover {
+    color: var(--text);
+  }
+
+  /* --- Dil seçici --- */
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font: 600 13px var(--font-display);
+  }
+
+  .lang-switch__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+
+  .lang-switch__item span {
+    font-size: 15px;
+  }
+
+  .lang-switch__item--active {
+    color: var(--accent);
+  }
+
+  .lang-switch__item--soon {
+    color: rgba(255, 255, 255, 0.55);
+    cursor: default;
+  }
+
+  .lang-switch__sep {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* --- Mobil menü --- */
+  .mnav-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    background: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: var(--text);
+    font-size: 19px;
+  }
+
+  .mnav-panel {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 90;
+    padding: 26px 24px 40px;
+    overflow-y: auto;
+  }
+
+  .mnav-panel[data-open] {
+    display: flex;
+  }
+
+  .mnav-panel__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .mnav-panel__close {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .mnav-panel__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mnav-panel__link {
+    color: var(--text);
+    text-decoration: none;
+    font: 600 17px var(--font-display);
+    padding: 14px 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mnav-panel__link--last {
+    border-bottom: none;
+  }
+
+  .mnav-panel__sublink {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font: 500 14.5px var(--font-display);
+    padding: 11px 2px 11px 16px;
+  }
+
+  .mnav-panel__sublink--last {
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mnav-panel__cta {
+    margin-top: 24px;
+  }
+
+  @media (max-width: 1020px) {
+    .site-nav {
+      display: none;
+    }
+
+    .mnav-btn {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 720px) {
+    [data-hide-mobile] {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const openBtn = document.getElementById('mnav-btn');
+  const closeBtn = document.getElementById('mnav-close');
+  const panel = document.getElementById('mnav-panel');
+
+  if (openBtn && closeBtn && panel) {
+    const setOpen = (open: boolean) => {
+      panel.toggleAttribute('data-open', open);
+      panel.hidden = !open;
+      openBtn.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) closeBtn.focus();
+      else openBtn.focus();
+    };
+
+    openBtn.addEventListener('click', () => setOpen(true));
+    closeBtn.addEventListener('click', () => setOpen(false));
+
+    // Bir bağlantıya tıklanınca panel kapanır (aynı sayfa içi çapa bağlantıları dahil).
+    panel.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && panel.hasAttribute('data-open')) setOpen(false);
+    });
+  }
+</script>

@@ -1,0 +1,42 @@
+{
+  "name": "pixelon-website",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pixelon 360° dijital ajans kurumsal web sitesi — Astro SSG + Sveltia CMS",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "typecheck": "astro check",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "oxlint",
+    "knip": "knip",
+    "test": "bun test",
+    "gate": "bun run typecheck && bun run format && bun run lint && bun run knip && bun run test",
+    "secrets": "secretlint --secretlintignore .secretlintignore '**/*'",
+    "audit": "bun audit",
+    "prepare": "git config core.hooksPath .githooks",
+    "test:dist": "bun test ./tests/dist-smoke.ts",
+    "verify": "bun run build && bun run test:dist"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.3",
+    "astro": "7.1.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@secretlint/secretlint-rule-preset-recommend": "13.0.4",
+    "@types/bun": "1.3.14",
+    "knip": "6.31.0",
+    "oxlint": "1.77.0",
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "0.14.1",
+    "secretlint": "13.0.4",
+    "typescript": "5.9.3",
+    "yaml": "2.9.0"
+  }
+}

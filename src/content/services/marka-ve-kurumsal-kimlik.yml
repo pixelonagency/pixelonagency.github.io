@@ -1,0 +1,184 @@
+title: Marka ve Kurumsal Kimlik
+navLabel: Marka ve Kurumsal Kimlik
+order: 5
+
+seo:
+  title: Marka ve Kurumsal Kimlik Tasarımı | Pixelon
+  description: >-
+    Logo, renk paleti, tipografi, marka dili ve kurumsal materyallerle markanıza
+    özgün, güçlü ve tutarlı bir kurumsal kimlik kazandırın.
+
+hero:
+  eyebrow: Marka ve Kurumsal Kimlik
+  headingLines:
+    - "Markanızı Sadece Görünür Değil, *Unutulmaz* Hale Getiriyoruz."
+  lead: |-
+    Markanızın karakterini, değerlerini ve hedeflerini yansıtan özgün bir görsel kimlik oluşturuyor; tüm iletişim kanallarında tutarlı ve güçlü görünmesini sağlıyoruz.
+  tagline: |-
+    Logo tasarımından kurumsal kimlik sistemine kadar markanızı rakiplerinden ayıran bütüncül çözümler geliştiriyoruz.
+  whatsappMessage: |-
+    Merhaba Pixelon, Marka ve Kurumsal Kimlik hizmeti hakkında bilgi almak istiyorum.
+
+why:
+  eyebrow: Neden Pixelon?
+  heading: Logonuzu Değil, Markanızın Bütününü Tasarlıyoruz.
+  lead: |-
+    Marka tasarımını tek başına bir logo çalışması olarak değerlendirmiyoruz. Strateji, görsel dil, iletişim tonu ve farklı uygulama alanlarını birbirini tamamlayan bir sistem halinde ele alıyoruz.
+  items:
+    - title: Stratejiyle Başlarız
+      description: |-
+        Her tasarım kararını markanızın hedeflerine ve konumlandırmasına göre veririz.
+    - title: Markaya Özel Üretiriz
+      description: |-
+        Hazır simgeler ve standart çözümler yerine özgün tasarım fikirleri geliştiririz.
+    - title: Tüm Temas Noktalarını Düşünürüz
+      description: |-
+        Kimliğin web sitesi, sosyal medya, reklam, baskı ve ambalajlarda nasıl görüneceğini birlikte planlarız.
+    - title: Uygulanabilir Bir Sistem Sunarız
+      description: |-
+        Kurumsal kimliğinizi farklı ekiplerin ve tedarikçilerin doğru kullanabilmesi için açık bir marka kılavuzu hazırlarız.
+
+scope:
+  eyebrow: Marka ve Kurumsal Kimlik Hizmetlerimiz
+  heading: Markanızın İhtiyaç Duyduğu Tüm Görsel Sistem
+  items:
+    - title: Marka Stratejisi
+      description: |-
+        Markanızın konumlandırmasını, hedef kitlesini, rakiplerinden ayrılan yönlerini ve temel iletişim yaklaşımını belirliyoruz.
+    - title: Marka İsmi ve Slogan
+      description: |-
+        Yeni markalar için akılda kalıcı isim alternatifleri, marka söylemi ve güçlü slogan seçenekleri oluşturuyoruz.
+    - title: Logo Tasarımı
+      description: |-
+        Markanızın karakterini yansıtan, özgün, kolay hatırlanan ve farklı kullanım alanlarına uyum sağlayan logo sistemleri tasarlıyoruz.
+    - title: Renk Paleti ve Tipografi
+      description: |-
+        Markanızın vermek istediği duyguya ve sektörel konumuna uygun renk, yazı karakteri ve görsel stil belirliyoruz.
+    - title: Kurumsal Kimlik Kılavuzu
+      description: |-
+        Logo kullanımı, renk kodları, tipografi, görsel dil ve uygulama kurallarını içeren kapsamlı bir marka kılavuzu hazırlıyoruz.
+    - title: Kurumsal Materyaller
+      description: |-
+        Kartvizit, antetli kâğıt, zarf, dosya, teklif şablonu, sunum, e-posta imzası ve diğer kurumsal dokümanları tasarlıyoruz.
+    - title: Sosyal Medya Görsel Sistemi
+      description: |-
+        Markanızın sosyal medya hesaplarında tutarlı görünmesini sağlayan gönderi, hikâye, Reels kapağı ve kampanya şablonları oluşturuyoruz.
+    - title: Ambalaj ve Ürün Tasarımı
+      description: |-
+        Ürününüzü rafta ve dijital ortamda öne çıkaran ambalaj, etiket ve ürün sunum tasarımları hazırlıyoruz.
+
+principles:
+  eyebrow: Kurumsal Kimlik Tasarımında Neye Önem Veriyoruz?
+  heading: Estetikten Önce Anlam, Tasarımdan Sonra Tutarlılık
+  items:
+    - title: Özgünlük
+      description: |-
+        Rakiplerinize benzeyen değil, markanıza ait olan bir görsel dünya oluşturuyoruz.
+    - title: Hatırlanabilirlik
+      description: |-
+        Sade, güçlü ve farklı kullanım alanlarında kolayca tanınabilecek tasarım sistemleri geliştiriyoruz.
+    - title: Tutarlılık
+      description: |-
+        Web sitesi, sosyal medya, basılı materyaller ve reklam çalışmalarında aynı marka algısının korunmasını sağlıyoruz.
+    - title: Kullanılabilirlik
+      description: |-
+        Logo ve kurumsal kimlik öğelerini dijitalden baskıya kadar farklı ölçü ve formatlarda sorunsuz kullanılabilecek şekilde hazırlıyoruz.
+    - title: Geleceğe Uygunluk
+      description: |-
+        Günübirlik trendlere bağlı kalmayan, markanız büyüdükçe gelişebilecek zamansız bir kimlik tasarlıyoruz.
+
+process:
+  eyebrow: Marka Tasarım Sürecimiz
+  heading: Markanızı Tanıyor, Hikâyesini Tasarıma Dönüştürüyoruz.
+  steps:
+    - title: Keşif ve Brief
+      description: |-
+        Markanızın hikâyesini, değerlerini, hedef kitlesini ve gelecek hedeflerini öğreniyoruz.
+    - title: Araştırma ve Konumlandırma
+      description: |-
+        Sektörü, rakipleri ve görsel iletişim fırsatlarını analiz ederek yaratıcı yönü belirliyoruz.
+    - title: Konsept Geliştirme
+      description: |-
+        Markaya uygun logo fikirleri, renk yönleri, tipografi ve görsel konseptler hazırlıyoruz.
+    - title: Tasarım ve Revizyon
+      description: |-
+        Seçilen yönü geliştiriyor, geri bildirimlerle marka kimliğini son haline getiriyoruz.
+    - title: Kurumsal Uygulamalar
+      description: |-
+        Onaylanan kimliği kartvizit, sosyal medya, sunum, ambalaj ve diğer materyallere uyguluyoruz.
+    - title: Teslim ve Marka Kılavuzu
+      description: |-
+        Tüm logo formatlarını, renk kodlarını, font bilgilerini ve kullanım kurallarını düzenli biçimde teslim ediyoruz.
+
+projects:
+  eyebrow: Başarıyla Tamamladığımız Projeler
+  heading: Markalara Güçlü ve Tutarlı Bir Kimlik Kazandırdık.
+  lead: |-
+    Yaratıcı fikirleri stratejik marka yaklaşımıyla birleştirerek farklı sektörlerdeki markalar için özgün kimlikler ve kurumsal iletişim sistemleri oluşturduk. Siz de markanızı bu projeler arasına eklemek için bizimle iletişime geçin.
+  items:
+    - eyebrow: Kurumsal Kimlik ve Marka Uygulamaları
+      title: Xray Groupe
+      description: |-
+        Mimarlık, mühendislik ve inşaat alanında faaliyet gösteren Xray Groupe için profesyonel, güven veren ve uluslararası yapıya uygun bir kurumsal iletişim sistemi oluşturduk.
+    - eyebrow: Ürün Markası ve Ambalaj Tasarımı
+      title: Sera Natura
+      description: |-
+        Doğal ürünlerin kalite ve güven algısını yansıtan marka dili, etiket sistemi ve ürün ambalaj tasarımları hazırladık.
+    - eyebrow: Sosyal Marka Kimliği
+      title: HandsForAll
+      description: |-
+        Markanın toplumsal fayda yaklaşımını modern, enerjik ve kolay tanınan bir görsel kimlikle buluşturduk.
+    - eyebrow: Dijital Marka Kimliği
+      title: Anneliğin Hikâyesi
+      description: |-
+        Anne ve kadın odaklı topluluğun samimi ve enerjik karakterini yansıtan renkli bir logo ve sosyal medya görsel sistemi geliştirdik.
+
+value:
+  eyebrow: Güçlü Markalar Tesadüfen Oluşmaz
+  heading: Markanızın Kim Olduğunu Görsel Bir Dile Dönüştürüyoruz.
+  lead: |-
+    Marka kimliği yalnızca bir logodan ibaret değildir. Renklerden tipografiye, kullanılan görsellerden iletişim diline kadar her detay, müşterilerinizin markanız hakkında nasıl hissettiğini belirler.
+  bullets:
+    - |-
+      Pixelon olarak markanızın hikâyesini, hedef kitlesini, sektörünü ve gelecek hedeflerini analiz ediyor; tüm temas noktalarında aynı güveni ve kalite algısını oluşturan bir kurumsal kimlik sistemi tasarlıyoruz.
+    - |-
+      İyi bir marka kimliği yalnızca güzel görünmez; markanızı tanıtır, farklılaştırır ve hatırlanır hale getirir.
+
+sectors:
+  eyebrow: Sektör Deneyimimiz
+  heading: Kimler İçin Marka Kimliği Tasarlıyoruz?
+  body: |-
+    Yeni kurulan markalar
+    Mevcut kimliğini yenilemek isteyen işletmeler
+    Kurumsallaşma sürecindeki KOBİ'ler
+    Sağlık ve klinik markaları
+    Sağlık turizmi firmaları
+    E-ticaret ve ürün markaları
+    İnşaat ve gayrimenkul şirketleri
+    Uluslararası pazarlara açılmak isteyen markalar
+
+cta:
+  eyebrow: Markanızın Yeni Kimliğini Birlikte Oluşturalım
+  heading: Markanız Gerçek Potansiyelini Yansıtmaya Hazır mı?
+  lead: |-
+    Yeni bir marka oluşturmak, mevcut logonuzu yenilemek veya tüm kurumsal iletişiminizi daha güçlü ve tutarlı hale getirmek için Pixelon ekibiyle iletişime geçin. Markanızı dinleyelim, hikâyesini anlayalım ve sizi rakiplerinizden ayıracak özgün bir kimlik tasarlayalım.
+
+faq:
+  eyebrow: Merak Edilenler
+  heading: Marka ve Kurumsal Kimlik Hakkında Sıkça Sorulan Sorular
+  items:
+    - question: Kurumsal kimlik çalışmasına neler dahildir?
+      answer: |-
+        Projenin kapsamına göre logo, renk paleti, tipografi, kartvizit, antetli kâğıt, e-posta imzası, sosyal medya şablonları ve marka kullanım kılavuzu dâhil edilebilir.
+    - question: Sadece logo tasarımı yaptırabilir miyiz?
+      answer: |-
+        Evet. Yalnızca logo tasarımı yapılabilir. Ancak markanın farklı alanlarda tutarlı kullanılması için temel kurumsal kimlik sisteminin oluşturulmasını öneriyoruz.
+    - question: Logo tasarım süreci ne kadar sürer?
+      answer: |-
+        Süre; araştırma, konsept sayısı, geri bildirimler ve kurumsal uygulamaların kapsamına göre değişir. Proje takvimi çalışma başlamadan önce netleştirilir.
+    - question: Logo dosyaları hangi formatlarda teslim edilir?
+      answer: |-
+        Logo; baskı ve dijital kullanım için uygun vektörel ve görsel formatlarda teslim edilir. Renkli, siyah, beyaz ve ihtiyaç duyulan farklı kullanım versiyonları hazırlanır.
+    - question: Mevcut markamızın kimliği yenilenebilir mi?
+      answer: |-
+        Evet. Mevcut marka bilinirliğini tamamen kaybetmeden logo, renk sistemi, tipografi ve iletişim dili güncellenerek yeniden markalama çalışması yapılabilir.

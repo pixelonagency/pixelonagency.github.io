@@ -1,0 +1,155 @@
+title: "UX/UI Tasarımı"
+navLabel: "UX/UI Tasarımı"
+order: 6
+
+seo:
+  title: "UX/UI Tasarımı ve Kullanıcı Deneyimi Hizmeti | Pixelon"
+  description: "Web sitesi, mobil uygulama, SaaS ve yönetim panelleri için kullanıcı odaklı, modern ve dönüşüm sağlayan UX/UI tasarımları oluşturuyoruz."
+
+hero:
+  eyebrow: "UX/UI Tasarımı"
+  headingLines:
+    - "Kullanıcıların Kolayca Anladığı, *Severek Kullandığı* Dijital Deneyimler Tasarlıyoruz."
+  lead: "Web siteleri, mobil uygulamalar, SaaS ürünleri ve yönetim panelleri için estetik, işlevsel ve kullanıcı odaklı arayüzler oluşturuyoruz."
+  tagline: "Karmaşık süreçleri sadeleştiriyor, kullanıcı ihtiyaçlarını güçlü dijital deneyimlere dönüştürüyoruz."
+  whatsappMessage: "Merhaba Pixelon, UX/UI Tasarımı hizmeti hakkında bilgi almak istiyorum."
+
+intro:
+  eyebrow: "İyi Tasarım Sadece Güzel Görünmez"
+  heading: "Kullanıcıyı Anlar, Yönlendirir ve Harekete Geçirir."
+  body: |-
+    Bir dijital ürünün başarısını yalnızca renkleri veya görsel detayları belirlemez. Kullanıcının aradığı bilgiye kolayca ulaşması, işlemlerini zorlanmadan tamamlaması ve ürünle kurduğu deneyim de en az tasarım kadar önemlidir.
+
+    Pixelon olarak kullanıcı davranışlarını, iş hedeflerini ve teknik gereksinimleri birlikte değerlendiriyoruz. Böylece hem markanızı güçlü biçimde yansıtan hem de kullanıcıların ihtiyaçlarına cevap veren dijital arayüzler tasarlıyoruz.
+  highlight: "Amacımız yalnızca etkileyici ekranlar oluşturmak değil, kullanıcı ile marka arasındaki deneyimi daha kolay ve değerli hale getirmektir."
+
+why:
+  eyebrow: "Neden Pixelon?"
+  heading: "Tasarım, İş Hedefleri ve Teknolojiyi Aynı Masada Buluşturuyoruz."
+  lead: "UX/UI projelerinde yalnızca ekran tasarlamıyoruz. Ürünün iş modelini, kullanıcı beklentilerini ve yazılım gereksinimlerini birlikte değerlendiriyoruz."
+  items:
+    - title: "Kullanıcı Odaklı Yaklaşım"
+      description: "Tasarım kararlarını kişisel tercihlere göre değil, kullanıcı ihtiyaçları ve kullanım senaryolarına göre veriyoruz."
+    - title: "Strateji ve Tasarım Bir Arada"
+      description: "Arayüzün hem marka hedeflerini hem de kullanıcı deneyimini desteklemesini sağlıyoruz."
+    - title: "Yazılıma Uygun Tasarım"
+      description: "Hazırladığımız ekranları uygulanabilir, tutarlı ve geliştirici ekipler için anlaşılır bir sistem halinde teslim ediyoruz."
+    - title: "Ölçeklenebilir Yapı"
+      description: "Ürün büyüdükçe yeni ekranların ve özelliklerin kolayca eklenebileceği bir tasarım altyapısı oluşturuyoruz."
+
+scope:
+  eyebrow: "UX/UI Tasarım Hizmetlerimiz"
+  heading: "Fikirden Kullanıma Hazır Dijital Ürün Tasarımına"
+  items:
+    - title: "Web Sitesi Arayüz Tasarımı"
+      description: "Kurumsal web siteleri, e-ticaret siteleri ve landing page projeleri için kullanıcı dostu, modern ve dönüşüm odaklı arayüzler tasarlıyoruz."
+    - title: "Mobil Uygulama Tasarımı"
+      description: "iOS ve Android uygulamalar için mobil kullanım alışkanlıklarına uygun, kolay anlaşılır ve tutarlı ekran deneyimleri oluşturuyoruz."
+    - title: "SaaS ve Web Uygulaması Tasarımı"
+      description: "Abonelik tabanlı platformlar, CRM sistemleri ve dijital ürünler için ölçeklenebilir arayüz sistemleri geliştiriyoruz."
+    - title: "Dashboard ve Admin Paneli Tasarımı"
+      description: "Yoğun veri ve operasyon süreçlerini sadeleştiren, kolay kullanılabilir yönetim panelleri ve raporlama ekranları tasarlıyoruz."
+    - title: "E-Ticaret Kullanıcı Deneyimi"
+      description: "Ürün keşfinden ödeme adımına kadar alışveriş sürecini kolaylaştıran ve satış dönüşümünü destekleyen deneyimler oluşturuyoruz."
+    - title: "Tasarım Sistemi"
+      description: "Renk, tipografi, buton, form, ikon ve arayüz bileşenlerini standartlaştırarak tutarlı ve geliştirilebilir tasarım sistemleri hazırlıyoruz."
+    - title: "Wireframe ve Prototip"
+      description: "Yazılım sürecinden önce sayfa yapısını, kullanıcı akışlarını ve temel işlevleri test edebileceğiniz etkileşimli prototipler oluşturuyoruz."
+
+comparison:
+  eyebrow: "UX ve UI Arasındaki Fark Nedir?"
+  heading: "Kullanıcı Deneyimi ile Görsel Tasarımı Birlikte Ele Alıyoruz."
+  items:
+    - title: "UX — Kullanıcı Deneyimi"
+      description: "Kullanıcının ürünü nasıl keşfettiğini, hangi adımları izlediğini ve hedeflediği işlemi ne kadar kolay tamamladığını planlar."
+    - title: "UI — Kullanıcı Arayüzü"
+      description: "Ürünün renklerini, tipografisini, butonlarını, kartlarını, ikonlarını ve genel görsel dilini oluşturur."
+  note: "Güçlü bir dijital ürün için UX ve UI süreçlerinin birbirinden bağımsız değil, aynı hedef doğrultusunda birlikte planlanması gerekir."
+
+process:
+  eyebrow: "Tasarım Sürecimiz"
+  heading: "Araştırmadan Etkileşimli Prototipe"
+  steps:
+    - title: "Keşif ve İhtiyaç Analizi"
+      description: "Projenin hedeflerini, kullanıcı gruplarını, iş modelini ve teknik gereksinimlerini öğreniyoruz."
+    - title: "Kullanıcı Akışları"
+      description: "Kullanıcıların ürün içerisinde izleyeceği adımları ve temel senaryoları planlıyoruz."
+    - title: "Bilgi Mimarisi ve Wireframe"
+      description: "Sayfaların, ekranların ve içeriklerin yapısını düşük detaylı taslaklarla oluşturuyoruz."
+    - title: "UI Tasarımı"
+      description: "Marka kimliğine uygun renk, tipografi, bileşen ve ekran tasarımlarını hazırlıyoruz."
+    - title: "Prototip ve Test"
+      description: "Ekranlar arasındaki geçişleri etkileşimli hale getiriyor ve temel kullanım senaryolarını test ediyoruz."
+    - title: "Yazılım Ekibine Teslim"
+      description: "Tüm ekranları, tasarım sistemini, ölçüleri ve bileşen kullanım kurallarını geliştirme ekibine düzenli biçimde teslim ediyoruz."
+
+principles:
+  eyebrow: "Tasarımda Neye Önem Veriyoruz?"
+  heading: "Her Detayın Bir Amacı Olmalı."
+  items:
+    - title: "Kullanım Kolaylığı"
+      description: "Kullanıcının aradığı bilgiye ve işleve mümkün olan en kısa yoldan ulaşmasını sağlıyoruz."
+    - title: "Görsel Tutarlılık"
+      description: "Tüm ekranlarda aynı tasarım dilini koruyan düzenli ve profesyonel bir sistem oluşturuyoruz."
+    - title: "Mobil Öncelikli Yaklaşım"
+      description: "Arayüzleri telefon, tablet ve masaüstü kullanımına uygun biçimde tasarlıyoruz."
+    - title: "Erişilebilirlik"
+      description: "Okunabilir tipografi, yeterli kontrast ve anlaşılır etkileşimlerle daha kapsayıcı deneyimler oluşturuyoruz."
+    - title: "Dönüşüm Odaklı Yapı"
+      description: "Form, üyelik, teklif, satın alma veya iletişim gibi temel aksiyonları kullanıcı yolculuğunun doğru noktalarına yerleştiriyoruz."
+    - title: "Geliştirilebilir Sistem"
+      description: "Yeni ekran ve özelliklerin mevcut tasarım yapısına kolayca eklenebilmesini sağlayan bileşen sistemleri kuruyoruz."
+
+projects:
+  eyebrow: "Başarıyla Tamamladığımız Projeler"
+  heading: "Kullanıcı Deneyimini Güçlü Dijital Ürünlere Dönüştürdük."
+  lead: "Kullanıcı ihtiyaçlarını, iş hedeflerini ve teknik gereksinimleri bir araya getirerek farklı sektörlerde işlevsel ve modern dijital deneyimler tasarladık. Siz de projenizi bu çalışmalar arasına eklemek için bizimle iletişime geçin."
+  items:
+    - eyebrow: "Randevu ve İş Yönetimi Platformu"
+      title: "Mobico"
+      description: "Hizmet işletmelerinin randevularını, çalışanlarını ve müşteri süreçlerini kolayca yönetebileceği sade ve işlevsel panel ekranları tasarladık."
+    - eyebrow: "Ajans Yönetim Sistemi"
+      title: "Pixelon CRM"
+      description: "Müşteri, teklif, sözleşme, fatura, ödeme ve proje süreçlerini tek merkezden yönetmeye imkân tanıyan kapsamlı bir CRM deneyimi oluşturduk."
+    - eyebrow: "Hasta ve Klinik Yönetim Arayüzü"
+      title: "Klinik CRM"
+      description: "Randevu, hasta iletişimi, tedavi, stok, görev ve finans süreçlerini farklı kullanıcı rollerine göre sadeleştiren bir klinik yönetim sistemi tasarladık."
+    - eyebrow: "Çok Dilli Sağlık Web Deneyimi"
+      title: "Dentasay"
+      description: "Tedavi araştıran kullanıcıların ihtiyaç duyduğu bilgilere kolayca ulaşmasını ve hızlı biçimde iletişime geçmesini sağlayan dönüşüm odaklı bir web deneyimi tasarladık."
+
+value:
+  eyebrow: "Sektör Deneyimimiz"
+  heading: "Kimler İçin UX/UI Tasarımı Yapıyoruz?"
+  bullets:
+    - "Yeni bir dijital ürün geliştiren girişimler"
+    - "Web sitesini yenilemek isteyen markalar"
+    - "Mobil uygulama projeleri"
+    - "SaaS ve üyelik tabanlı platformlar"
+    - "CRM ve ERP sistemleri"
+    - "Yönetim panelleri ve dashboard projeleri"
+    - "E-ticaret markaları"
+    - "Sağlık ve klinik yönetim sistemleri"
+    - "Mevcut ürününün kullanımını iyileştirmek isteyen şirketler"
+
+cta:
+  eyebrow: "Dijital Ürününüzü Birlikte Tasarlayalım"
+  heading: "Kullanıcıların Severek Kullanacağı Bir Deneyime Hazır mısınız?"
+  lead: "Yeni bir web sitesi, mobil uygulama, SaaS ürünü veya yönetim paneli geliştirmek için Pixelon ekibiyle iletişime geçin. Projenizi, kullanıcılarınızı ve ihtiyaçlarınızı analiz edelim; fikrinizi modern, işlevsel ve uygulanabilir bir dijital deneyime dönüştürelim."
+
+faq:
+  eyebrow: "Merak Edilenler"
+  heading: "UX/UI Tasarımı Hakkında Sıkça Sorulan Sorular"
+  items:
+    - question: "UX/UI tasarım hizmetine neler dahildir?"
+      answer: "Projenin kapsamına göre kullanıcı akışları, bilgi mimarisi, wireframe, arayüz tasarımı, mobil uyumluluk, tasarım sistemi ve etkileşimli prototip çalışmaları hazırlanır."
+    - question: "Sadece tasarım hizmeti alabilir miyiz?"
+      answer: "Evet. Yazılım sürecini kendi ekibinizle yürütebilir, Pixelon'dan yalnızca UX/UI tasarım ve prototip hizmeti alabilirsiniz."
+    - question: "Tasarımlar hangi programda hazırlanıyor?"
+      answer: "Projeler çoğunlukla Figma üzerinde hazırlanır. Ekranlar, bileşenler ve prototip bağlantıları geliştirme ekibine düzenli biçimde teslim edilir."
+    - question: "Mevcut bir uygulamanın tasarımı yenilenebilir mi?"
+      answer: "Evet. Mevcut ürün kullanıcı deneyimi, arayüz tutarlılığı ve dönüşüm noktaları açısından analiz edilerek yeniden tasarlanabilir."
+    - question: "Tasarımlar mobil uyumlu hazırlanıyor mu?"
+      answer: "Evet. Projenin ihtiyaçlarına göre mobil, tablet ve masaüstü ekranları ayrı kullanım senaryolarıyla tasarlanır."
+    - question: "Yazılım hizmeti de sunuyor musunuz?"
+      answer: "Evet. UX/UI tasarımının ardından web sitesi, yönetim paneli ve özel web yazılımı geliştirme süreçleri Pixelon tarafından yürütülebilir."

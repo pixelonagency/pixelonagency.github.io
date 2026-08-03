@@ -1,0 +1,147 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Jobs = Extract<PageSection, { type: 'jobs' }>;
+
+interface Props {
+  section: Jobs;
+}
+
+const { section } = Astro.props;
+
+/** Başlıksız bir bölüm listesi olmaması için ilan listesine erişilebilir bir ad veriyoruz. */
+const listLabelId = section.anchor ? `${section.anchor}-jobs-label` : 'jobs-label';
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <span id={listLabelId} class="visually-hidden">{section.heading}</span>
+  <ul class="jobs" aria-labelledby={listLabelId}>
+    {
+      section.items.map((item, index) => {
+        const meta = [item.location, item.employmentType].filter((value): value is string => Boolean(value));
+        const label = item.href ? 'Başvur' : 'Bize Yazın';
+
+        return (
+          <li class="jobs__row">
+            <article class="card jobs__item" data-reveal data-reveal-index={index}>
+              <div class="jobs__body">
+                <h3 class="h3 jobs__title">{item.title}</h3>
+                {meta.length > 0 && (
+                  <p class="jobs__meta">
+                    {meta.map((value) => (
+                      <span class="jobs__meta-item">{value}</span>
+                    ))}
+                  </p>
+                )}
+                <p class="body-text jobs__description">{item.description}</p>
+              </div>
+
+              <a
+                class="btn btn--outline btn--sm jobs__cta"
+                href={item.href ?? '/iletisim'}
+                aria-label={`${item.title} — ${label}`}
+              >
+                {label}
+                <span aria-hidden="true">→</span>
+              </a>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Section>
+
+<style>
+  .jobs {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .jobs__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .jobs__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .jobs__title {
+    margin: 0;
+  }
+
+  .jobs__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--text-faint);
+  }
+
+  .jobs__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* İlk maddeden sonrakiler lime nokta ayraçla başlar. */
+  .jobs__meta-item + .jobs__meta-item::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .jobs__description {
+    max-width: 68ch;
+  }
+
+  .jobs__cta {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* ≥900px: başlık blogu solda, başvuru butonu sağda. */
+  @media (min-width: 900px) {
+    .jobs__item {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+  }
+
+  /* --- Açık zemin varyantı --- */
+  :global(.section--light) .jobs__meta {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .jobs__cta {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .jobs__cta:hover {
+    border-color: var(--text-on-light);
+    color: var(--text-on-light);
+  }
+</style>

@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+# Ucuz kontroller: sır sızıntısı + biçim. Commit akışını yavaşlatmayacak kadar hafif.
+set -e
+
+export PATH="$HOME/.bun/bin:$PATH"
+
+echo "▸ pre-commit: secrets"
+bun run secrets
+
+echo "▸ pre-commit: format"
+bun run format
+
+echo "✔ pre-commit passed"

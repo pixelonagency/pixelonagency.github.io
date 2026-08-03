@@ -1,0 +1,224 @@
+seo:
+  title: Ücretsiz Dijital Analiz | Markanızın Potansiyelini Keşfedin
+  description: >-
+    Web siteniz, sosyal medya hesaplarınız, reklamlarınız ve SEO performansınız için
+    ücretsiz dijital ön analiz talep edin. Pixelon geliştirme fırsatlarınızı belirlesin.
+
+whatsappMessage: Merhaba Pixelon, markam için ücretsiz dijital analiz hizmetiniz hakkında bilgi almak istiyorum.
+
+sections:
+  # 1) HERO — sol sütun
+  - type: hero
+    background: dark
+    eyebrow: Pixelon Ücretsiz Dijital Analiz
+    headingLines:
+      - "Markanızın Dijital Potansiyelini Birlikte Keşfedelim."
+    lead: |-
+      Web sitenizi, sosyal medya hesaplarınızı ve dijital pazarlama çalışmalarınızı ön değerlendirmeden geçirerek güçlü yönlerinizi, geliştirilmesi gereken noktaları ve büyüme fırsatlarını belirleyelim.
+
+      Formu doldurun, Pixelon ekibi markanıza özel ücretsiz ön analiz hazırlamak için sizinle iletişime geçsin.
+    chips:
+      - Ücretsizdir
+      - Satın alma zorunluluğu yoktur
+      - Markanıza özel hazırlanır
+
+  # 2) LEAD FORMU — hero'nun sağ sütunundaki açık zeminli kart
+  - type: form
+    background: dark
+    anchor: form
+    heading: Ücretsiz Analize Başlayalım
+    lead: >-
+      Markanıza ait temel bilgileri paylaşın. Ekibimiz başvurunuzu inceleyerek analiz
+      kapsamını netleştirmek için sizinle iletişime geçsin.
+    formId: analysis
+    submitLabel: Ücretsiz Analiz Talep Et
+
+  # 3) ANALİZ KAPSAMI
+  - type: cards
+    background: light
+    eyebrow: Neleri İnceliyoruz?
+    heading: Markanızın Dijital Görünümüne Bütüncül Bakıyoruz.
+    lead: >-
+      Her marka aynı sorunlara ve ihtiyaçlara sahip değildir. Bu nedenle analiz kapsamını
+      sektörünüze, hedeflerinize ve mevcut dijital çalışmalarınıza göre belirliyoruz.
+    columns: 4
+    items:
+      - title: Web Sitesi ve Kullanıcı Deneyimi
+        description: Mobil uyumluluk, sayfa hızı, içerik yapısı, yönlendirmeler ve dönüşüm unsurları.
+      - title: SEO ve Google Görünürlüğü
+        description: İndeks durumu, meta yapısı, anahtar kelime fırsatları ve teknik SEO sorunları.
+      - title: Google Ads ve Meta Ads
+        description: Kampanya yapısı, hedef kitle, reklam mesajları ve dönüşüm takibi.
+      - title: Sosyal Medya
+        description: Profil bütünlüğü, görsel kimlik, içerik çeşitliliği ve etkileşim yapısı.
+      - title: Marka ve Kurumsal Kimlik
+        description: Logo, renk ve tipografi tutarlılığı, dijital görünüm ve marka güveni.
+      - title: E-Ticaret ve Satış Deneyimi
+        description: Ürün sayfaları, sepet ve ödeme akışı, mobil deneyim ve güven unsurları.
+      - title: Sağlık Turizmi
+        description: Çok dilli yapı, klinik güveni, tedavi sayfaları ve hasta iletişim süreci.
+      - title: CRM ve Dijital Süreçler
+        description: Talep kaydı, takip aşamaları, raporlama eksikleri ve otomasyon fırsatları.
+
+  # 4) NE ELDE EDECEKSİNİZ
+  - type: bullets
+    background: dark
+    eyebrow: Analiz Sonucunda Ne Elde Edeceksiniz?
+    heading: Markanız İçin Net ve Uygulanabilir Öneriler
+    lead: |-
+      Ücretsiz ön analiz sonucunda, markanızın mevcut dijital durumuna ilişkin genel bir değerlendirme ve öncelikli geliştirme önerileri paylaşılır.
+
+      Karmaşık teknik ifadeler yerine, markanız için neyin neden geliştirilmesi gerektiğini anlaşılır biçimde aktarıyoruz.
+    items:
+      - Güçlü yönleriniz
+      - Geliştirilmesi gereken alanlar
+      - Öncelikli dijital sorunlar
+      - Hızlı uygulanabilecek iyileştirmeler
+      - Rakiplerinize göre fırsatlar
+      - Kullanılabilecek hizmet ve kanal önerileri
+      - Pixelon'un önerdiği sonraki adımlar
+
+  # 5) ÖRNEK RAPOR KARTI
+  - type: cards
+    background: light
+    eyebrow: Örnek Analiz Kartı
+    heading: Analiz Raporunuzda Neler Olabilir?
+    columns: 4
+    items:
+      - eyebrow: Dijital Görünürlük Puanı
+        title: 72 / 100
+        description: Web sitesi, içerik, sosyal medya ve dijital dönüşüm altyapısının genel değerlendirmesi.
+      - eyebrow: Güçlü Alan
+        title: Mobil web sitesi deneyimi
+        description: Web siteniz farklı ekran boyutlarında düzenli ve kullanılabilir bir yapı sunuyor.
+      - eyebrow: Öncelikli Geliştirme Alanı
+        title: Dönüşüm takibi eksikliği
+        description: >-
+          WhatsApp, form ve telefon aksiyonları yeterli düzeyde ölçülmediği için reklam
+          sonuçları net değerlendirilemiyor.
+      - eyebrow: Hızlı Kazanım Fırsatı
+        title: Hizmet sayfalarının geliştirilmesi
+        description: Hedeflenen hizmetler için SEO uyumlu ve dönüşüm odaklı ayrı sayfalar hazırlanabilir.
+    ctas:
+      - label: Kendi Markam İçin Analiz Talep Et
+        href: '#form'
+        variant: primary
+
+  # 6) SÜREÇ
+  # Referansta "Başvurular değerlendirmeye alınır…" notu ızgaranın ALTINDA yer alıyor;
+  # steps bölümünde ızgara sonrası metin alanı olmadığı için `lead` olarak korundu.
+  - type: steps
+    background: dark
+    eyebrow: 4 Basit Adım
+    heading: Formdan Analiz Sonucuna
+    lead: >-
+      Başvurular değerlendirmeye alınır. Analiz kapsamı markanın mevcut dijital varlıklarına
+      ve paylaşılan bilgilere göre değişebilir.
+    items:
+      - title: Bilgilerinizi Paylaşın
+        description: >-
+          Form üzerinden markanızı, web sitenizi ve analiz edilmesini istediğiniz alanları
+          bize iletin.
+      - title: Ön Değerlendirme Yapalım
+        description: >-
+          Pixelon ekibi dijital varlıklarınızı ve paylaştığınız hedefleri genel hatlarıyla
+          incelesin.
+      - title: Fırsatları Belirleyelim
+        description: >-
+          Güçlü yönlerinizi, temel problemleri ve öncelikli geliştirme alanlarını
+          belirleyelim.
+      - title: Sonuçları Paylaşalım
+        description: >-
+          Uygun durumlarda kısa bir online görüşme veya yazılı değerlendirme üzerinden
+          önerilerimizi sizinle paylaşalım.
+
+  # 7) KİMLER İÇİN UYGUN
+  - type: bullets
+    background: light
+    eyebrow: Kimler İçin Uygun?
+    heading: Dijitalde Büyümek İsteyen Markalar İçin
+    items:
+      - Web sitesinden yeterli talep alamayan işletmeler
+      - Google'da görünürlüğünü artırmak isteyen markalar
+      - Reklamlarından yeterli sonuç alamayan firmalar
+      - Sosyal medyada nasıl ilerleyeceğini bilmeyen işletmeler
+      - E-ticaret satışlarını geliştirmek isteyen markalar
+      - Uluslararası hasta kazanmak isteyen klinikler
+      - Dijital süreçlerini tek merkezden yönetmek isteyen şirketler
+      - Yeni bir marka veya proje hazırlığında olan girişimler
+
+  # 8) NEDEN PIXELON
+  - type: cards
+    background: dark
+    eyebrow: Neden Pixelon?
+    heading: Analizden Uygulamaya Tüm Süreç Tek Ekipte
+    lead: >-
+      Pixelon; markaların dijital varlığını yalnızca tek bir kanal üzerinden değerlendirmez.
+      Web tasarım, sosyal medya, reklam, SEO, marka tasarımı, içerik ve teknoloji süreçlerini
+      birlikte inceler.
+    columns: 1
+    items:
+      - title: Bütüncül Bakış Açısı
+        description: >-
+          Markanızın dijital temas noktalarını birbirinden bağımsız değil, tek bir sistem
+          olarak değerlendiriyoruz.
+      - title: Sektörel Deneyim
+        description: >-
+          Sağlık, sağlık turizmi, e-ticaret, inşaat, gayrimenkul ve kurumsal hizmet
+          sektörlerinde deneyime sahibiz.
+      - title: Uygulanabilir Öneriler
+        description: >-
+          Sadece sorunları sıralamak yerine hangi adımların öncelikli olarak
+          uygulanabileceğini açıklıyoruz.
+      - title: Satın Alma Zorunluluğu Yok
+        description: >-
+          Ücretsiz ön analiz talebinde bulunmanız herhangi bir hizmet satın alma zorunluluğu
+          oluşturmaz.
+
+  # 9) SSS
+  - type: faq
+    background: light
+    eyebrow: Merak Edilenler
+    heading: Ücretsiz Dijital Analiz Hakkında Sıkça Sorulan Sorular
+    items:
+      - question: Ücretsiz analiz gerçekten ücretsiz mi?
+        answer: >-
+          Evet. İlk dijital ön değerlendirme için herhangi bir ücret talep edilmez ve hizmet
+          satın alma zorunluluğu bulunmaz.
+      - question: Analiz ne kadar sürede hazırlanır?
+        answer: >-
+          Başvuru yoğunluğu ve analiz kapsamına göre değişebilir. Başvurunuz incelendikten
+          sonra süreç ve tahmini dönüş süresi hakkında bilgi verilir.
+      - question: Reklam hesaplarıma erişim vermem gerekiyor mu?
+        answer: >-
+          İlk değerlendirme için erişim zorunlu değildir. Daha ayrıntılı hesap analizi
+          gerekirse süreç içerisinde sizin onayınızla sınırlı erişim talep edilebilir.
+      - question: Analiz raporu hangi formatta paylaşılır?
+        answer: >-
+          Analizin kapsamına göre yazılı değerlendirme, kısa rapor veya online görüşme
+          şeklinde paylaşılabilir.
+      - question: Her başvuru kabul ediliyor mu?
+        answer: >-
+          Başvurular Pixelon ekibi tarafından değerlendirilir. Yeterli bilgi bulunmayan veya
+          uzmanlık alanlarımızın dışında kalan başvurular için ek bilgi talep edilebilir.
+      - question: Analiz sonucunda teklif almak zorunda mıyım?
+        answer: >-
+          Hayır. Analiz sonucunu inceleyebilir, önerileri kendi ekibinizle uygulayabilir veya
+          Pixelon'dan hizmet teklifi talep edebilirsiniz.
+
+  # 10) SON CTA
+  - type: cta
+    background: dark
+    anchor: iletisim
+    eyebrow: İlk Adımı Bugün Atın
+    heading: Markanızın Dijitalde Neleri Daha İyi Yapabileceğini Keşfedin.
+    lead: >-
+      Web sitenizden reklamlarınıza, sosyal medya hesaplarınızdan müşteri takip süreçlerinize
+      kadar dijital çalışmalarınızı birlikte değerlendirelim.
+    ctas:
+      - label: Ücretsiz Analiz Talep Et
+        href: '#form'
+        variant: primary
+      - label: WhatsApp'tan Bilgi Al
+        href: https://wa.me/905065229034
+        variant: outline

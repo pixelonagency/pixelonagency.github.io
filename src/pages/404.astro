@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Sayfa Bulunamadı | Pixelon"
+  description="Aradığınız sayfa taşınmış veya kaldırılmış olabilir. Pixelon ana sayfasından devam edebilirsiniz."
+  noindex
+>
+  <section class="notfound">
+    <div class="container notfound__inner">
+      <p class="eyebrow">404</p>
+      <h1 class="h1">Aradığınız sayfayı bulamadık.</h1>
+      <p class="lead notfound__lead">
+        Sayfa taşınmış, adı değişmiş veya kaldırılmış olabilir. Aşağıdaki bağlantılardan devam edebilirsiniz.
+      </p>
+      <div class="notfound__ctas">
+        <a href="/" class="btn btn--primary">Ana Sayfa</a>
+        <a href="/hizmetlerimiz" class="btn btn--outline">Hizmetlerimiz</a>
+        <a href="/iletisim" class="btn btn--outline">İletişim</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    padding: clamp(80px, 12vw, 160px) 0;
+  }
+
+  .notfound__inner {
+    max-width: 680px;
+  }
+
+  .notfound__lead {
+    margin-top: 22px;
+  }
+
+  .notfound__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+  }
+</style>

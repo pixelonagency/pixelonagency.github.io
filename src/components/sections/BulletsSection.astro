@@ -1,0 +1,91 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Bullets = Extract<PageSection, { type: 'bullets' }>;
+
+interface Props {
+  section: Bullets;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <ul class="bullets">
+    {
+      section.items.map((item, index) => (
+        <li class="bullets__item" data-reveal data-reveal-index={index}>
+          <svg
+            class="bullets__mark"
+            viewBox="0 0 20 20"
+            width="20"
+            height="20"
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M4 10.5 8.2 14.5 16 6"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="bullets__text">{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .bullets {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px clamp(24px, 4vw, 56px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .bullets__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-faint);
+  }
+
+  .bullets__mark {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--accent);
+  }
+
+  .bullets__text {
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--text-soft);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .bullets__item {
+    border-bottom-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .bullets__text {
+    color: var(--text-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .bullets {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

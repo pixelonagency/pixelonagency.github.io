@@ -1,0 +1,341 @@
+import { describe, expect, test } from 'bun:test';
+import { makePageSchema } from './page-schema';
+
+const pageSchema = makePageSchema();
+
+const base = {
+  seo: { title: 'Biz Kimiz? | Pixelon', description: 'Pixelon ekibini tanıyın.' },
+  sections: [],
+};
+
+const parseSection = (section: unknown) => pageSchema.safeParse({ ...base, sections: [section] });
+
+describe('page frame', () => {
+  test('accepts a page with SEO metadata and no sections yet', () => {
+    expect(pageSchema.safeParse(base).success).toBe(true);
+  });
+
+  test('rejects a page with no SEO block', () => {
+    expect(pageSchema.safeParse({ sections: [] }).success).toBe(false);
+  });
+
+  test('rejects a page whose SEO description is empty', () => {
+    expect(pageSchema.safeParse({ ...base, seo: { title: 'X', description: '' } }).success).toBe(false);
+  });
+
+  test('keeps an optional whatsappMessage override', () => {
+    const parsed = pageSchema.parse({ ...base, whatsappMessage: 'Merhaba Pixelon' });
+    expect(parsed.whatsappMessage).toBe('Merhaba Pixelon');
+  });
+});
+
+describe('hero section', () => {
+  const hero = {
+    type: 'hero',
+    headingLines: ['Markanızı Dijitalde', 'Büyütüyoruz.'],
+    lead: '360 derece dijital pazarlama.',
+    ctas: [{ label: 'Hemen Teklif Al', href: '/iletisim', variant: 'primary' }],
+  };
+
+  test('accepts a hero with heading lines and CTAs', () => {
+    expect(parseSection(hero).success).toBe(true);
+  });
+
+  test('rejects a hero with no heading lines', () => {
+    expect(parseSection({ ...hero, headingLines: [] }).success).toBe(false);
+  });
+
+  test('rejects a CTA with an unknown variant', () => {
+    expect(parseSection({ ...hero, ctas: [{ label: 'X', href: '/', variant: 'ghost' }] }).success).toBe(false);
+  });
+
+  test('defaults a CTA variant to primary', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ ...hero, ctas: [{ label: 'Teklif Al', href: '/iletisim' }] }],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'hero' && section.ctas[0]?.variant).toBe('primary');
+  });
+});
+
+describe('cards section', () => {
+  const cards = {
+    type: 'cards',
+    heading: 'Hizmetlerimiz',
+    items: [{ title: 'SEO', description: 'Organik büyüme.' }],
+  };
+
+  test('accepts a cards section', () => {
+    expect(parseSection(cards).success).toBe(true);
+  });
+
+  test('rejects a cards section with an empty item list', () => {
+    expect(parseSection({ ...cards, items: [] }).success).toBe(false);
+  });
+
+  test('rejects a card missing its description', () => {
+    expect(parseSection({ ...cards, items: [{ title: 'SEO' }] }).success).toBe(false);
+  });
+
+  test('carries an optional eyebrow on a card, used by service project showcases', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ ...cards, items: [{ eyebrow: 'Çok Dilli SEO', title: 'Dentasay', description: 'X' }] }],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'cards' && section.items[0]?.eyebrow).toBe('Çok Dilli SEO');
+  });
+
+  test('carries an optional closing note under the grid', () => {
+    const parsed = pageSchema.parse({ ...base, sections: [{ ...cards, note: 'UX ve UI birlikte planlanmalıdır.' }] });
+    const section = parsed.sections[0];
+    expect(section?.type === 'cards' && section.note).toBe('UX ve UI birlikte planlanmalıdır.');
+  });
+
+  test('carries an optional href so a card can link out', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ ...cards, items: [{ title: 'SEO', description: 'X', href: '/hizmetlerimiz/seo' }] }],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'cards' && section.items[0]?.href).toBe('/hizmetlerimiz/seo');
+  });
+});
+
+describe('stats section', () => {
+  test('accepts counter stats with a numeric value', () => {
+    expect(
+      parseSection({
+        type: 'stats',
+        heading: 'Rakamlarla Pixelon',
+        items: [{ value: 120, suffix: '+', label: 'Tamamlanan Proje' }],
+      }).success,
+    ).toBe(true);
+  });
+
+  test('rejects a stat whose value is not a number, so the counter can animate', () => {
+    expect(parseSection({ type: 'stats', heading: 'R', items: [{ value: 'yüz yirmi', label: 'Proje' }] }).success).toBe(
+      false,
+    );
+  });
+});
+
+describe('faq section', () => {
+  test('accepts a FAQ section', () => {
+    expect(
+      parseSection({
+        type: 'faq',
+        heading: 'Sıkça Sorulan Sorular',
+        items: [{ question: 'Ne kadar sürer?', answer: 'Projeye göre değişir.' }],
+      }).success,
+    ).toBe(true);
+  });
+
+  test('rejects a FAQ entry with no answer', () => {
+    expect(parseSection({ type: 'faq', heading: 'SSS', items: [{ question: 'Ne?' }] }).success).toBe(false);
+  });
+});
+
+describe('bullets and text sections', () => {
+  test('accepts a bullets section of plain strings', () => {
+    expect(parseSection({ type: 'bullets', heading: 'Avantajlar', items: ['Hızlı', 'Ölçülebilir'] }).success).toBe(
+      true,
+    );
+  });
+
+  test('accepts a text section with a body', () => {
+    expect(parseSection({ type: 'text', heading: 'Hakkımızda', body: 'Uzun paragraf.' }).success).toBe(true);
+  });
+
+  test('rejects a text section with no body', () => {
+    expect(parseSection({ type: 'text', heading: 'Hakkımızda' }).success).toBe(false);
+  });
+
+  test('carries an optional pull-quote highlight on a text section', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ type: 'text', heading: 'Giriş', body: 'Uzun metin.', highlight: 'Amacımız bağ kurmaktır.' }],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'text' && section.highlight).toBe('Amacımız bağ kurmaktır.');
+  });
+});
+
+describe('collection-backed sections', () => {
+  test('accepts a projects section that pulls from the collection', () => {
+    expect(parseSection({ type: 'projects', heading: 'Projelerimiz', limit: 6 }).success).toBe(true);
+  });
+
+  test('accepts a posts section', () => {
+    expect(parseSection({ type: 'posts', heading: 'Blog', limit: 3 }).success).toBe(true);
+  });
+
+  test('accepts a logos marquee backed by the references collection', () => {
+    expect(parseSection({ type: 'logos', heading: 'Referanslarımız' }).success).toBe(true);
+  });
+
+  test('accepts a team section', () => {
+    expect(parseSection({ type: 'team', heading: 'Ekibimiz' }).success).toBe(true);
+  });
+});
+
+describe('form section', () => {
+  test('accepts the contact form', () => {
+    expect(parseSection({ type: 'form', heading: 'Bize Yazın', formId: 'contact' }).success).toBe(true);
+  });
+
+  test('accepts the analysis form', () => {
+    expect(parseSection({ type: 'form', heading: 'Ücretsiz Analiz', formId: 'analysis' }).success).toBe(true);
+  });
+
+  test('rejects an unknown form id', () => {
+    expect(parseSection({ type: 'form', heading: 'X', formId: 'newsletter' }).success).toBe(false);
+  });
+});
+
+describe('section-level buttons', () => {
+  // Referans tasarımda ızgaraların ALTINDA bölüm düzeyinde butonlar var
+  // ("Tüm Hizmetlerimizi Keşfedin", "Projenizi Birlikte Planlayalım" …).
+  // Bunlar yalnızca hero/cta bölümlerine özgü değil — her bölüm tipi taşıyabilmeli.
+  test('a cards section can carry buttons under the grid', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        {
+          type: 'cards',
+          heading: 'Hizmetlerimiz',
+          items: [{ title: 'SEO', description: 'x' }],
+          ctas: [{ label: 'Tüm Hizmetlerimizi Keşfedin', href: '/hizmetlerimiz' }],
+        },
+      ],
+    });
+    expect(parsed.sections[0]?.ctas[0]?.label).toBe('Tüm Hizmetlerimizi Keşfedin');
+  });
+
+  test('a stats section can carry a button', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        {
+          type: 'stats',
+          heading: 'Rakamlarla',
+          items: [{ value: 15, suffix: '+', label: 'Yıl' }],
+          ctas: [{ label: '☕ Bir Kahve İçip Tanışalım', href: '/iletisim', variant: 'outline' }],
+        },
+      ],
+    });
+    expect(parsed.sections[0]?.ctas[0]?.variant).toBe('outline');
+  });
+
+  test('a steps section can carry a button', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        {
+          type: 'steps',
+          heading: 'Süreç',
+          items: [{ title: 'A', description: 'a' }],
+          ctas: [{ label: 'Projenizi Birlikte Planlayalım', href: '/iletisim' }],
+        },
+      ],
+    });
+    expect(parsed.sections[0]?.ctas).toHaveLength(1);
+  });
+
+  test('a text section can carry a button', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        { type: 'text', body: 'x', ctas: [{ label: 'Global Projelerimizi İnceleyin', href: '/projelerimiz' }] },
+      ],
+    });
+    expect(parsed.sections[0]?.ctas).toHaveLength(1);
+  });
+
+  test('a logos section can carry a button', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ type: 'logos', ctas: [{ label: 'Tüm Referanslarımızı İnceleyin', href: '/projelerimiz' }] }],
+    });
+    expect(parsed.sections[0]?.ctas).toHaveLength(1);
+  });
+
+  test('sections default to no buttons rather than undefined', () => {
+    const parsed = pageSchema.parse({ ...base, sections: [{ type: 'text', body: 'x' }] });
+    expect(parsed.sections[0]?.ctas).toEqual([]);
+  });
+});
+
+describe('stats items keep their explanatory paragraph', () => {
+  test('a stat can carry a description alongside its label', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        {
+          type: 'stats',
+          heading: 'Rakamlarla Pixelon',
+          items: [{ value: 15, suffix: '+', label: 'Yıl sektör deneyimi', description: 'Uzun açıklama cümlesi.' }],
+        },
+      ],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'stats' && section.items[0]?.description).toBe('Uzun açıklama cümlesi.');
+  });
+});
+
+describe('hero trust chips', () => {
+  test('a hero can carry short trust badges as a list', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        {
+          type: 'hero',
+          headingLines: ['Bir'],
+          chips: ['15+ Yıllık Deneyim', '180+ Tamamlanan Proje'],
+        },
+      ],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'hero' && section.chips).toEqual(['15+ Yıllık Deneyim', '180+ Tamamlanan Proje']);
+  });
+
+  test('hero chips default to an empty list', () => {
+    const parsed = pageSchema.parse({ ...base, sections: [{ type: 'hero', headingLines: ['Bir'] }] });
+    const section = parsed.sections[0];
+    expect(section?.type === 'hero' && section.chips).toEqual([]);
+  });
+});
+
+describe('section discrimination', () => {
+  test('rejects an unknown section type outright', () => {
+    expect(parseSection({ type: 'carousel', heading: 'X' }).success).toBe(false);
+  });
+
+  test('keeps section order as authored', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        { type: 'text', heading: 'Bir', body: 'a' },
+        { type: 'text', heading: 'İki', body: 'b' },
+      ],
+    });
+    expect(parsed.sections.map((s) => (s.type === 'text' ? s.heading : ''))).toEqual(['Bir', 'İki']);
+  });
+
+  test('accepts an optional anchor id so nav links can target a section', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ type: 'text', heading: 'Referanslar', body: 'x', anchor: 'referanslar' }],
+    });
+    expect(parsed.sections[0]?.anchor).toBe('referanslar');
+  });
+
+  test('accepts the light background variant used by inverted sections', () => {
+    expect(parseSection({ type: 'text', heading: 'X', body: 'y', background: 'light' }).success).toBe(true);
+  });
+
+  test('rejects an unknown background variant', () => {
+    expect(parseSection({ type: 'text', heading: 'X', body: 'y', background: 'purple' }).success).toBe(false);
+  });
+});

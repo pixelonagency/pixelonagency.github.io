@@ -1,0 +1,83 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Cta = Extract<PageSection, { type: 'cta' }>;
+
+interface Props {
+  section: Cta;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <div class="cta-box" data-reveal data-reveal-index={0}>
+    <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
+
+    {
+      section.ctas.length > 0 && (
+        <div class="cta-box__actions">
+          {section.ctas.map((item) => (
+            <a class:list={['btn', item.variant === 'outline' ? 'btn--outline' : 'btn--primary']} href={item.href}>
+              {item.label}
+              <span aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</Section>
+
+<style>
+  .cta-box {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-feature);
+    padding: clamp(40px, 6vw, 76px) clamp(24px, 5vw, 64px);
+    text-align: center;
+    background-image: radial-gradient(ellipse 60% 70% at 50% 0%, var(--accent-soft), transparent 65%);
+  }
+
+  /* SectionHead alt boşluğunu buton satırıyla dengele. */
+  .cta-box :global(.section-head) {
+    margin-bottom: 0;
+  }
+
+  .cta-box__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: clamp(28px, 3.5vw, 40px);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .cta-box {
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .cta-box .btn--outline {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .cta-box .btn--outline:hover {
+    border-color: var(--text-on-light);
+    color: var(--text-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .cta-box__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .cta-box__actions .btn {
+      width: 100%;
+    }
+  }
+</style>

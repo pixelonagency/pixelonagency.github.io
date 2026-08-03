@@ -1,6 +1,23 @@
-design/
-.remember
-.loop
-design_handoff_astro_site/
+# build output
+dist/
+.astro/
+
+# dependencies
 node_modules/
 
+# design handoff (kaynak tasarım paketi — üretim reposuna dahil değil)
+design/
+design_handoff_astro_site/
+
+# tooling state
+.remember
+.loop
+.DS_Store
+
+# env
+.env
+.env.production
+.env.*.local
+
+# playwright-mcp geçici çıktıları
+.playwright-mcp/

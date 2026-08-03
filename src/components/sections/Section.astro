@@ -1,0 +1,94 @@
+---
+import CtaButton from '../CtaButton.astro';
+
+interface Cta {
+  label: string;
+  href: string;
+  variant: 'primary' | 'outline' | 'link';
+  icon?: 'whatsapp' | 'phone' | 'arrow' | undefined;
+  external?: boolean;
+}
+
+interface Props {
+  anchor?: string | undefined;
+  background?: 'dark' | 'light';
+  class?: string | undefined;
+  /** Bölüm içeriğinin ALTINDA gösterilen bölüm düzeyi butonları. */
+  ctas?: readonly Cta[] | undefined;
+  ctaAlign?: 'start' | 'center';
+}
+
+const { anchor, background = 'dark', class: className, ctas = [], ctaAlign = 'start' }: Props = Astro.props;
+---
+
+<section id={anchor} class:list={['section', `section--${background}`, className]} data-reveal>
+  <div class="container">
+    <slot />
+
+    {
+      ctas.length > 0 && (
+        <div class:list={['section__ctas', ctaAlign === 'center' && 'section__ctas--center']}>
+          {ctas.map((cta) => (
+            <CtaButton
+              label={cta.label}
+              href={cta.href}
+              variant={cta.variant}
+              icon={cta.icon}
+              external={cta.external ?? false}
+            />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .section--light {
+    background: var(--bg-light);
+    color: var(--text-on-light);
+  }
+
+  .section--light :global(.h1),
+  .section--light :global(.h2),
+  .section--light :global(.h3) {
+    color: var(--text-on-light);
+  }
+
+  .section--light :global(.lead),
+  .section--light :global(.body-text) {
+    color: var(--text-muted-on-light);
+  }
+
+  .section--light :global(.card) {
+    border-color: var(--border-on-light);
+  }
+
+  .section__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  .section__ctas--center {
+    justify-content: center;
+  }
+
+  /* Açık zeminde outline buton koyu kenarlık/metin alır. */
+  .section--light .section__ctas :global(.btn--outline) {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  .section--light .section__ctas :global(.btn--outline:hover) {
+    border-color: var(--text-on-light);
+    color: var(--text-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .section__ctas :global(.btn) {
+      width: 100%;
+    }
+  }
+</style>

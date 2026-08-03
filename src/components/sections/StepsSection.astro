@@ -1,0 +1,121 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Steps = Extract<PageSection, { type: 'steps' }>;
+
+interface Props {
+  section: Steps;
+}
+
+const { section } = Astro.props;
+
+// Sıra numarası içerikte tutulmaz — 01, 02, 03… burada üretilir.
+const steps = section.items.map((item, index) => ({
+  ...item,
+  number: String(index + 1).padStart(2, '0'),
+}));
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <ol class="steps">
+    {
+      steps.map((item, index) => (
+        <li class="steps__item" data-reveal data-reveal-index={index}>
+          <span class="steps__number" aria-hidden="true">
+            {item.number}
+          </span>
+          <h3 class="h3 steps__title">{item.title}</h3>
+          <p class="body-text steps__text">{item.description}</p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--gap-section);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Akış hissi: her adımın üstünde ince bağlayıcı çizgi + lime düğüm noktası. */
+  .steps__item {
+    position: relative;
+    padding-top: 26px;
+    border-top: 1px solid var(--border);
+  }
+
+  .steps__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateY(-50%);
+  }
+
+  .steps__number {
+    display: block;
+    font: 700 clamp(30px, 3.4vw, 42px) / 1 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+
+  .steps__title {
+    margin-top: 16px;
+  }
+
+  .steps__text {
+    margin-top: 10px;
+    max-width: 40ch;
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .steps__item {
+    border-top-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .steps__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .steps__text {
+    color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    /* Mobilde akış dikeye döner: üst çizgi yerine sol kenarlık. */
+    .steps__item {
+      border-top: none;
+      border-left: 1px solid var(--border);
+      padding-top: 0;
+      padding-left: 22px;
+    }
+
+    .steps__item::before {
+      top: 10px;
+      left: 0;
+      transform: translateX(-50%);
+    }
+
+    :global(.section--light) .steps__item {
+      border-left-color: var(--border-on-light);
+    }
+  }
+</style>

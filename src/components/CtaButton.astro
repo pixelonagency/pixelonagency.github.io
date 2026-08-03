@@ -1,0 +1,51 @@
+---
+import CtaIcon from './CtaIcon.astro';
+
+interface Props {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'outline' | 'link';
+  icon?: 'whatsapp' | 'phone' | 'arrow' | undefined;
+  external?: boolean;
+}
+
+const { label, href, variant = 'primary', icon, external = false }: Props = Astro.props;
+
+// wa.me / tel: / mailto: bağlantıları da dış bağlantı sayılır.
+const isExternal = external || /^(https?:|tel:|mailto:)/.test(href);
+const target = isExternal && href.startsWith('http') ? '_blank' : undefined;
+---
+
+<a
+  {href}
+  {target}
+  rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+  class:list={[variant === 'link' ? 'cta-link' : 'btn', variant !== 'link' && `btn--${variant}`]}
+>
+  {icon && <CtaIcon name={icon} />}
+  {label}
+</a>
+
+<style>
+  .cta-link {
+    color: rgba(255, 255, 255, 0.7);
+    font: 600 15px var(--font-display);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    transition: color var(--t-slow);
+  }
+
+  .cta-link:hover {
+    color: var(--accent);
+  }
+
+  :global(.section--light) .cta-link,
+  :global(.hero--light) .cta-link {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .cta-link:hover,
+  :global(.hero--light) .cta-link:hover {
+    color: var(--text-on-light);
+  }
+</style>

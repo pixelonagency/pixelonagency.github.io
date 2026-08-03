@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+# Tam doğrulama — CI'nın enforce ettiğinin aynısı.
+set -e
+
+export PATH="$HOME/.bun/bin:$PATH"
+
+echo "▸ pre-push: gate (typecheck → format → lint → knip → test)"
+bun run gate
+
+echo "▸ pre-push: audit (danışma niteliğinde, bloklamaz)"
+bun audit || true
+
+echo "✔ pre-push passed"

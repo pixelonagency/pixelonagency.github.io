@@ -1,0 +1,106 @@
+---
+import videoUrl from '../../assets/images/webdesignvideo.webm?url';
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Media = Extract<PageSection, { type: 'media' }>;
+
+interface Props {
+  section: Media;
+}
+
+const { section } = Astro.props;
+
+// Şu an pakette tek bir video kaynağı var; başka bir dosya adı verilirse
+// video atlanır ve yer tutucu gösterilir.
+const SUPPORTED_VIDEO = 'webdesignvideo.webm';
+const requestedVideo = section.video?.split('/').pop();
+const videoSrc = requestedVideo === SUPPORTED_VIDEO ? videoUrl : undefined;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <figure class="media" data-reveal data-reveal-index={0}>
+    {
+      videoSrc ? (
+        <video
+          class="media__video"
+          src={videoSrc}
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label={section.alt}
+          data-autoplay-video
+        />
+      ) : (
+        <div class="media__placeholder">{section.alt && <span class="media__caption">{section.alt}</span>}</div>
+      )
+    }
+  </figure>
+</Section>
+
+<style>
+  .media {
+    margin: 0;
+    border-radius: var(--radius-media);
+    overflow: hidden;
+  }
+
+  .media__video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-media);
+  }
+
+  .media__placeholder {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-media);
+    background: color-mix(in srgb, var(--bg-light) 8%, transparent);
+    overflow: hidden;
+  }
+
+  .media__caption {
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--text-faint);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .media__placeholder {
+    background: color-mix(in srgb, var(--text-on-light) 4%, transparent);
+  }
+
+  :global(.section--light) .media__caption {
+    color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .media__placeholder,
+    .media__video {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>
+
+<script>
+  // Otomatik oynatma yalnızca hareket azaltma tercihi kapalıysa başlatılır.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduceMotion) {
+    for (const video of document.querySelectorAll<HTMLVideoElement>('[data-autoplay-video]')) {
+      video.muted = true;
+      void video.play().catch(() => {
+        // Tarayıcı oynatmayı engellerse sessizce yok say.
+      });
+    }
+  }
+</script>

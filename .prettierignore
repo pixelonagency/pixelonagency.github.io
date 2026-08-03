@@ -1,0 +1,19 @@
+dist
+.astro
+node_modules
+bun.lock
+public
+design_handoff_astro_site
+.remember
+
+# CMS tarafından yönetilen içerik — Sveltia kendi YAML/Markdown biçimiyle yeniden yazar,
+# Prettier ile çakışmaması için kapsam dışı. (src/content/*.ts şemaları kapsam İÇİNDE kalır.)
+src/content/services
+src/content/projects
+src/content/posts
+src/content/references
+src/content/team
+src/content/settings
+src/content/pages
+
+.playwright-mcp

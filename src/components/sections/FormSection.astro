@@ -1,0 +1,434 @@
+---
+import { getCollection } from 'astro:content';
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import FormField from './FormField.astro';
+import Section from './Section.astro';
+
+type Form = Extract<PageSection, { type: 'form' }>;
+
+interface Props {
+  section: Form;
+}
+
+const { section } = Astro.props;
+
+// Konu / hizmet seçenekleri içerikten üretilir — hiçbir hizmet adı gömülü değildir.
+const services = await getCollection('services');
+const serviceTitles = services.sort((a, b) => a.data.order - b.data.order).map((entry) => entry.data.title);
+
+// Statik site: gönderim harici bir uç noktaya (Formspree/Resend vb.) düz POST edilir.
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+
+const isAnalysis = section.formId === 'analysis';
+const submitLabel = section.submitLabel ?? (isAnalysis ? 'Ücretsiz Analiz Talep Et' : 'Mesajı Gönder');
+
+const consentText = isAnalysis
+  ? "Kişisel verilerimin ücretsiz analiz talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla işlenmesine ilişkin KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum."
+  : "Kişisel verilerimin iletişim talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla işlenmesine ilişkin KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum.";
+
+const privacyNote = isAnalysis
+  ? 'Bilgileriniz yalnızca analiz talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla kullanılacaktır.'
+  : 'Bilgileriniz yalnızca talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla kullanılacaktır.';
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <form
+    class="form"
+    method="POST"
+    action={endpoint}
+    novalidate
+    aria-label={section.heading}
+    data-form={section.formId}
+    data-endpoint={endpoint}
+    data-reveal
+    data-reveal-index="0"
+  >
+    {/* Bal küpü: gerçek kullanıcı görmez, botlar doldurur — dolu gelirse gönderim iptal edilir. */}
+    <div class="visually-hidden" aria-hidden="true">
+      <label for={`gotcha-${section.formId}`}>Bu alanı boş bırakın</label>
+      <input type="text" id={`gotcha-${section.formId}`} name="_gotcha" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="form__grid">
+      <FormField name="name" label="Adınız ve Soyadınız" required placeholder="Ad Soyad" />
+      <FormField name="email" label="E-posta Adresiniz" type="email" required placeholder="ornek@sirketiniz.com" />
+
+      {
+        isAnalysis ? (
+          <>
+            <FormField name="phone" label="Telefon Numaranız" type="tel" required placeholder="+90 5xx xxx xx xx" />
+            <FormField name="company" label="Şirket / Marka Adı" required placeholder="Şirketinizin adı" />
+            <div class="form__span">
+              <FormField name="website" label="Web Siteniz" type="url" placeholder="ornek.com.tr" />
+            </div>
+          </>
+        ) : (
+          <>
+            <FormField name="phone" label="Telefon Numaranız" type="tel" placeholder="+90 5xx xxx xx xx" />
+            <FormField
+              name="subject"
+              label="İlgilendiğiniz Hizmet"
+              type="select"
+              options={serviceTitles}
+              placeholder="Hizmet seçin"
+            />
+            <div class="form__span">
+              <FormField
+                name="message"
+                label="Mesajınız"
+                type="textarea"
+                required
+                rows={6}
+                placeholder="Markanız, ihtiyaç duyduğunuz hizmet ve hedefleriniz hakkında kısaca bilgi verin."
+              />
+            </div>
+          </>
+        )
+      }
+    </div>
+
+    {
+      isAnalysis && (
+        <fieldset class="checks" data-error-target="services">
+          <legend class="checks__legend">
+            Analiz Edilmesini İstediğiniz Alanlar
+            <span class="checks__required" aria-hidden="true">
+              *
+            </span>
+            <span class="visually-hidden">(zorunlu)</span>
+          </legend>
+          <div class="checks__grid">
+            {serviceTitles.map((title) => (
+              <label class="checks__item">
+                <input type="checkbox" name="services" value={title} />
+                <span>{title}</span>
+              </label>
+            ))}
+          </div>
+          <p class="field__error" id="err-services" data-error-for="services" aria-live="polite" />
+        </fieldset>
+      )
+    }
+
+    <div class="consent">
+      <label class="consent__label" for="f-consent">
+        <input
+          type="checkbox"
+          id="f-consent"
+          name="consent"
+          value="1"
+          aria-required="true"
+          data-error-target="consent"
+        />
+        <span>{consentText}</span>
+      </label>
+      <p class="field__error" id="err-consent" data-error-for="consent" aria-live="polite"></p>
+    </div>
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary form__submit">{submitLabel}</button>
+      {
+        !endpoint && (
+          <p class="form__note form__note--warn">
+            Form gönderimi için PUBLIC_FORM_ENDPOINT ortam değişkeni tanımlanmalı.
+          </p>
+        )
+      }
+      <p class="form__note">{privacyNote}</p>
+    </div>
+  </form>
+</Section>
+
+<style>
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 880px;
+  }
+
+  .form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .form__span {
+    grid-column: 1 / -1;
+  }
+
+  /* --- Hizmet seçim kutuları --- */
+  .checks {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 22px 24px 24px;
+    transition: border-color var(--t-base);
+  }
+
+  .checks[aria-invalid='true'] {
+    border-color: var(--danger);
+  }
+
+  .checks__legend {
+    padding: 0 6px;
+    font: 600 var(--fs-small) var(--font-display);
+    letter-spacing: 0.01em;
+    color: var(--text-soft);
+  }
+
+  .checks__required {
+    color: var(--accent);
+    margin-left: 4px;
+  }
+
+  .checks__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 24px;
+    margin-top: 14px;
+  }
+
+  .checks__item,
+  .consent__label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .consent__label {
+    font-size: var(--fs-small);
+    line-height: 1.65;
+    max-width: 720px;
+  }
+
+  .checks__item input,
+  .consent__label input {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 2px 0 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+
+  .consent__label input[aria-invalid='true'] {
+    outline: 2px solid var(--danger);
+    outline-offset: 2px;
+  }
+
+  .consent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* --- Hata metni (grup alanları) --- */
+  .field__error {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--danger);
+  }
+
+  .field__error:empty {
+    display: none;
+  }
+
+  /* --- Aksiyonlar --- */
+  .form__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .form__submit {
+    align-self: flex-start;
+  }
+
+  .form__note {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--text-faint);
+    max-width: 620px;
+  }
+
+  .form__note--warn {
+    color: var(--text-muted);
+  }
+
+  /* --- Açık zeminli varyant --- */
+  :global(.section--light) .checks {
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .checks__legend {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .checks__required {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .checks__item,
+  :global(.section--light) .consent__label {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .form__note {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .form__submit {
+    background: var(--text-on-light);
+    color: var(--accent);
+    border-color: var(--text-on-light);
+  }
+
+  :global(.section--light) .form__submit:hover {
+    background: var(--bg-footer);
+    color: var(--accent);
+  }
+
+  @media (max-width: 720px) {
+    .form__grid,
+    .checks__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Doğrulama mantığı src/lib/forms.ts içinde yaşar ve birim testleriyle korunur —
+  // burada yalnızca DOM'dan değer toplanır ve dönen hatalar arayüze yazılır.
+  import { MESSAGES, validateAnalysisForm, validateContactForm } from '../../lib/forms';
+
+  type FieldName = keyof typeof MESSAGES | 'subject';
+  type FormKind = 'contact' | 'analysis';
+
+  const FIELDS: Record<FormKind, FieldName[]> = {
+    contact: ['name', 'email', 'phone', 'message', 'consent'],
+    analysis: ['name', 'email', 'phone', 'company', 'website', 'services', 'consent'],
+  };
+
+  for (const form of document.querySelectorAll<HTMLFormElement>('form[data-form]')) {
+    const kind: FormKind = form.dataset.form === 'analysis' ? 'analysis' : 'contact';
+    const endpoint = form.dataset.endpoint ?? '';
+    const fields = FIELDS[kind];
+
+    const controlOf = (name: string) => form.querySelector<HTMLElement>(`[data-error-target="${name}"]`);
+    const errorBoxOf = (name: string) => form.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
+
+    const textValue = (name: string): string => {
+      const element = form.querySelector<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+        `[name="${name}"]`,
+      );
+      return element ? element.value.trim() : '';
+    };
+
+    const isChecked = (name: string): boolean => {
+      const element = form.querySelector<HTMLInputElement>(`input[name="${name}"]`);
+      return element ? element.checked : false;
+    };
+
+    const checkedValues = (name: string): string[] =>
+      [...form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)].map((element) => element.value);
+
+    const clearError = (name: string): void => {
+      const box = errorBoxOf(name);
+      if (box) box.textContent = '';
+
+      const control = controlOf(name);
+      if (!control) return;
+      control.removeAttribute('aria-invalid');
+      control.removeAttribute('aria-describedby');
+    };
+
+    const showError = (name: string, message: string): void => {
+      const box = errorBoxOf(name);
+      if (box) box.textContent = message;
+
+      const control = controlOf(name);
+      if (!control) return;
+      control.setAttribute('aria-invalid', 'true');
+      control.setAttribute('aria-describedby', `err-${name}`);
+    };
+
+    // Onay kutusu grubunda odak <fieldset>'e değil ilk kutuya verilir.
+    const focusTargetOf = (name: string): HTMLElement | null => {
+      const control = controlOf(name);
+      if (control instanceof HTMLFieldSetElement) return control.querySelector<HTMLInputElement>('input');
+      return control;
+    };
+
+    // Alan düzeltilir düzeltilmez o alanın hatası kaybolur.
+    const handleEdit = (event: Event): void => {
+      const target = event.target;
+      const isControl =
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement;
+      if (isControl && target.name) clearError(target.name);
+    };
+
+    form.addEventListener('input', handleEdit);
+    form.addEventListener('change', handleEdit);
+
+    form.addEventListener('submit', (event) => {
+      for (const name of fields) clearError(name);
+
+      // Bal küpü doluysa bot demektir: sessizce iptal.
+      const gotcha = form.querySelector<HTMLInputElement>('input[name="_gotcha"]');
+      if (gotcha && gotcha.value.trim() !== '') {
+        event.preventDefault();
+        return;
+      }
+
+      const result =
+        kind === 'analysis'
+          ? validateAnalysisForm({
+              name: textValue('name'),
+              email: textValue('email'),
+              phone: textValue('phone'),
+              company: textValue('company'),
+              website: textValue('website'),
+              services: checkedValues('services'),
+              consent: isChecked('consent'),
+            })
+          : validateContactForm({
+              name: textValue('name'),
+              email: textValue('email'),
+              phone: textValue('phone'),
+              subject: textValue('subject'),
+              message: textValue('message'),
+              consent: isChecked('consent'),
+            });
+
+      if (!result.valid) {
+        event.preventDefault();
+
+        let firstInvalid: HTMLElement | null = null;
+        for (const name of fields) {
+          const message = result.errors[name];
+          if (!message) continue;
+          showError(name, message);
+          if (!firstInvalid) firstInvalid = focusTargetOf(name);
+        }
+        firstInvalid?.focus();
+        return;
+      }
+
+      // Uç nokta tanımlı değilse gönderilecek bir yer yok — form yerinde kalır.
+      if (!endpoint) event.preventDefault();
+    });
+  }
+</script>

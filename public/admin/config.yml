@@ -1,0 +1,628 @@
+# Pixelon — Sveltia CMS yapılandırması
+#
+# Bu dosya src/content/schemas.ts ve src/content/page-schema.ts içindeki zod şemalarının
+# BİREBİR aynasıdır. Şemalardan biri değişirse burası da güncellenmelidir; aksi halde
+# CMS'ten kaydedilen içerik build sırasında doğrulamadan geçemez veya sessizce silinir.
+#
+# Bu sözleşmeyi `tests/cms-config.test.ts` otomatik doğrular (gate'in parçası).
+#
+# YAML anchor notu: anchor'lar TEK bir alan nesnesi üzerinde tanımlanır ve liste öğesi
+# olarak (`- *anchor`) yeniden kullanılır. Bir LİSTE anchor'ını liste öğesi yapmak iç içe
+# dizi üretir ve CMS bunu okuyamaz — testler bu hatayı yakalar.
+
+backend:
+  name: github
+  repo: pixelonagency/pixelonagency.github.io
+  branch: main
+  # GitHub OAuth aracısı. Sveltia'nın Cloudflare Workers tabanlı çözümü (sveltia-cms-auth)
+  # kurulduktan sonra kendi alan adınızı yazın: https://github.com/sveltia/sveltia-cms-auth
+  base_url: https://sveltia-cms-auth.pixelon.workers.dev
+
+# Yerel geliştirme: `bun run dev` çalışırken http://localhost:4321/admin/ adresinde
+# "Work with Local Repository" ile doğrudan dosya sistemine yazabilirsiniz.
+local_backend: true
+
+# CMS'ten yüklenen görseller repoya bu klasöre yazılır. public_folder BAĞIL bir yoldur:
+# içerik dosyaları src/content/<koleksiyon>/ altındadır, dolayısıyla ../../assets/uploads/…
+# Astro'nun image() çözümleyicisiyle uyumludur.
+media_folder: src/assets/uploads
+public_folder: ../../assets/uploads
+
+publish_mode: simple
+site_url: https://pixelonagency.github.io
+display_url: https://pixelonagency.github.io
+locale: tr
+
+collections:
+  # --- Site Ayarları (tekil) ---------------------------------------------
+  - name: settings
+    label: Site Ayarları
+    files:
+      - name: site
+        label: Genel Ayarlar
+        file: src/content/settings/site.yml
+        fields:
+          - { label: Telefon, name: phone, widget: string }
+          - { label: E-posta, name: email, widget: string }
+          - { label: Adres, name: address, widget: string }
+          - label: WhatsApp
+            name: whatsapp
+            widget: object
+            fields:
+              - { label: Numara (yalnızca rakam), name: number, widget: string }
+              - { label: Varsayılan Mesaj, name: defaultMessage, widget: text }
+          - label: Sosyal Medya
+            name: social
+            widget: list
+            required: false
+            fields:
+              - { label: Ad, name: label, widget: string }
+              - { label: Kısaltma, name: short, widget: string, required: false }
+              - { label: Bağlantı, name: url, widget: string }
+          - label: Yasal Bağlantılar
+            name: legalLinks
+            widget: list
+            required: false
+            fields:
+              - { label: Etiket, name: label, widget: string }
+              - { label: Yol, name: href, widget: string }
+          - { label: Footer Tanıtım Metni, name: footerIntro, widget: text, required: false }
+          - { label: Telif Satırı, name: copyright, widget: string, required: false }
+
+  # --- Hizmetler ----------------------------------------------------------
+  - name: services
+    label: Hizmetler
+    label_singular: Hizmet
+    folder: src/content/services
+    extension: yml
+    format: yaml
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{order}} — {{title}}'
+    sortable_fields: [order, title]
+    fields:
+      - { label: Hizmet Adı, name: title, widget: string }
+      - { label: Menü Etiketi, name: navLabel, widget: string }
+      - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
+      - &f_seo
+        label: SEO
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - { label: Sayfa Başlığı (title), name: title, widget: string }
+          - { label: Meta Açıklama, name: description, widget: text }
+      - { label: Kapak Görseli, name: cover, widget: image, required: false }
+      - label: Hero
+        name: hero
+        widget: object
+        fields:
+          - { label: Eyebrow, name: eyebrow, widget: string }
+          - label: Başlık Satırları
+            name: headingLines
+            widget: list
+            field: { label: Satır, name: line, widget: string }
+          - { label: Giriş Metni, name: lead, widget: text }
+          - { label: Alt Slogan, name: tagline, widget: string, required: false }
+          - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text }
+      - label: Giriş Bölümü
+        name: intro
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: Eyebrow, name: eyebrow, widget: string }
+          - { label: Başlık, name: heading, widget: string }
+          - { label: Gövde, name: body, widget: text }
+          - { label: Vurgu Cümlesi, name: highlight, widget: text, required: false }
+      - label: Neden Pixelon?
+        name: why
+        widget: object
+        collapsed: true
+        fields:
+          - &f_eyebrow { label: Eyebrow (üst etiket), name: eyebrow, widget: string }
+          - &f_heading { label: Başlık, name: heading, widget: string }
+          - &f_lead { label: Giriş Metni, name: lead, widget: text, required: false }
+          - &f_titled_items
+            label: Kartlar
+            name: items
+            widget: list
+            fields: &titled_item_fields
+              - { label: Başlık, name: title, widget: string }
+              - { label: Açıklama, name: description, widget: text }
+      - label: Hizmet Kapsamı
+        name: scope
+        widget: object
+        collapsed: true
+        fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
+      - label: Platformlar
+        name: platforms
+        widget: object
+        required: false
+        collapsed: true
+        fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
+      - label: İlkeler
+        name: principles
+        widget: object
+        required: false
+        collapsed: true
+        fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
+      - label: Karşılaştırma
+        name: comparison
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          - *f_titled_items
+          - { label: Kapanış Notu, name: note, widget: text, required: false }
+      - label: İçerik Türleri
+        name: contentTypes
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          - label: Maddeler
+            name: items
+            widget: list
+            field: { label: Madde, name: item, widget: string }
+      - label: Süreç
+        name: process
+        widget: object
+        collapsed: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - { label: Adımlar, name: steps, widget: list, fields: *titled_item_fields }
+      - label: Proje Vitrini
+        name: projects
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          - label: Projeler
+            name: items
+            widget: list
+            fields:
+              - { label: Üst Etiket, name: eyebrow, widget: string, required: false }
+              - { label: Başlık, name: title, widget: string }
+              - { label: Açıklama, name: description, widget: text }
+              - { label: Bağlantı, name: href, widget: string, required: false }
+      - label: Neden Önemli
+        name: value
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          - label: Maddeler
+            name: bullets
+            widget: list
+            required: false
+            field: { label: Madde, name: item, widget: string }
+      - label: Sektörler
+        name: sectors
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - { label: Gövde, name: body, widget: text }
+      - label: Kapanış Çağrısı
+        name: cta
+        widget: object
+        collapsed: true
+        fields: [*f_eyebrow, *f_heading, *f_lead]
+      - label: Sıkça Sorulan Sorular
+        name: faq
+        widget: object
+        collapsed: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - &f_faq_items
+            label: Sorular
+            name: items
+            widget: list
+            fields:
+              - { label: Soru, name: question, widget: string }
+              - { label: Cevap, name: answer, widget: text }
+
+  # --- Sayfalar (bölüm kurgusu) ------------------------------------------
+  - name: pages
+    label: Sayfalar
+    label_singular: Sayfa
+    folder: src/content/pages
+    extension: yml
+    format: yaml
+    create: true
+    slug: '{{slug}}'
+    identifier_field: seo.title
+    fields:
+      - *f_seo
+      - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text, required: false }
+      - label: Bölümler
+        name: sections
+        widget: list
+        types:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - &s_eyebrow { label: Eyebrow (üst etiket), name: eyebrow, widget: string, required: false }
+              - &s_anchor { label: Bölüm Bağlantı Kimliği (anchor), name: anchor, widget: string, required: false }
+              - &s_background
+                label: Zemin
+                name: background
+                widget: select
+                default: dark
+                options: [dark, light]
+              - label: Başlık Satırları
+                name: headingLines
+                widget: list
+                field: { label: Satır, name: line, widget: string }
+              - &s_lead { label: Giriş Metni, name: lead, widget: text, required: false }
+              - { label: Alt Slogan, name: tagline, widget: string, required: false }
+              - label: Güven Rozetleri
+                name: chips
+                widget: list
+                required: false
+                field: { label: Rozet, name: chip, widget: string }
+              - label: Breadcrumb
+                name: breadcrumb
+                widget: list
+                required: false
+                fields:
+                  - { label: Etiket, name: label, widget: string }
+                  - { label: Bağlantı, name: href, widget: string, required: false }
+              - &s_ctas
+                label: Butonlar
+                name: ctas
+                widget: list
+                required: false
+                fields:
+                  - { label: Etiket, name: label, widget: string }
+                  - { label: Bağlantı, name: href, widget: string }
+                  - label: Görünüm
+                    name: variant
+                    widget: select
+                    default: primary
+                    options: [primary, outline]
+              - &s_image { label: Görsel, name: image, widget: image, required: false }
+              - &s_image_alt { label: Görsel Alt Metni, name: imageAlt, widget: string, required: false }
+
+          - label: Kart Izgarası
+            name: cards
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - &s_heading { label: Başlık, name: heading, widget: string }
+              - *s_lead
+              - { label: Sütun Sayısı, name: columns, widget: number, value_type: int, required: false }
+              - { label: Kapanış Notu, name: note, widget: text, required: false }
+              - label: Kartlar
+                name: items
+                widget: list
+                fields:
+                  - { label: Üst Etiket, name: eyebrow, widget: string, required: false }
+                  - { label: Başlık, name: title, widget: string }
+                  - { label: Açıklama, name: description, widget: text }
+                  - { label: Bağlantı, name: href, widget: string, required: false }
+                  - { label: İkon, name: icon, widget: string, required: false }
+
+          - label: Süreç Adımları
+            name: steps
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - { label: Adımlar, name: items, widget: list, fields: *titled_item_fields }
+
+          - label: Madde Listesi
+            name: bullets
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: Maddeler
+                name: items
+                widget: list
+                field: { label: Madde, name: item, widget: string }
+
+          - label: Metin
+            name: text
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - &s_heading_opt { label: Başlık, name: heading, widget: string, required: false }
+              - { label: Gövde, name: body, widget: text }
+              - { label: Vurgu Cümlesi, name: highlight, widget: text, required: false }
+              - *s_image
+              - *s_image_alt
+
+          - label: Rakamlar (sayaç)
+            name: stats
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading_opt
+              - *s_lead
+              - label: Rakamlar
+                name: items
+                widget: list
+                fields:
+                  - { label: Değer (sayı), name: value, widget: number, value_type: int }
+                  - { label: Ön Ek, name: prefix, widget: string, required: false }
+                  - { label: Son Ek, name: suffix, widget: string, required: false }
+                  - { label: Etiket, name: label, widget: string }
+                  - { label: Açıklama, name: description, widget: text, required: false }
+
+          - label: Sıkça Sorulan Sorular
+            name: faq
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - *f_faq_items
+
+          - label: Kapanış Çağrısı
+            name: cta
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_heading
+              - *s_lead
+              - *s_ctas
+
+          - label: Referans Logoları
+            name: logos
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading_opt
+              - *s_lead
+
+          - label: Projeler
+            name: projects
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - &s_limit { label: Adet Sınırı, name: limit, widget: number, value_type: int, required: false }
+              - { label: Kategori Filtresi Göster, name: showFilters, widget: boolean, default: false }
+              - &s_cta_label { label: Buton Etiketi, name: ctaLabel, widget: string, required: false }
+              - &s_cta_href { label: Buton Bağlantısı, name: ctaHref, widget: string, required: false }
+
+          - label: Blog Yazıları
+            name: posts
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - *s_limit
+              - *s_cta_label
+              - *s_cta_href
+
+          - label: Ekip
+            name: team
+            widget: object
+            fields: [*s_eyebrow, *s_anchor, *s_background, *s_heading, *s_lead, *s_ctas]
+
+          - label: Hizmetler
+            name: services
+            widget: object
+            fields: [*s_eyebrow, *s_anchor, *s_background, *s_heading, *s_lead, *s_limit, *s_ctas]
+
+          - label: Form
+            name: form
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: Form
+                name: formId
+                widget: select
+                options: [contact, analysis]
+              - { label: Gönder Butonu Etiketi, name: submitLabel, widget: string, required: false }
+
+          - label: İletişim Bilgileri
+            name: contactInfo
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading_opt
+              - *s_lead
+              - label: Bilgiler
+                name: items
+                widget: list
+                fields:
+                  - { label: Etiket, name: label, widget: string }
+                  - { label: Değer, name: value, widget: string }
+                  - { label: Bağlantı, name: href, widget: string, required: false }
+
+          - label: Görsel / Video
+            name: media
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading_opt
+              - *s_lead
+              - *s_image
+              - { label: Video Dosya Adı, name: video, widget: string, required: false }
+              - { label: Alt Metin, name: alt, widget: string, required: false }
+
+          - label: Açık Pozisyonlar
+            name: jobs
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: İlanlar
+                name: items
+                widget: list
+                fields:
+                  - { label: Pozisyon, name: title, widget: string }
+                  - { label: Konum, name: location, widget: string, required: false }
+                  - { label: Çalışma Şekli, name: employmentType, widget: string, required: false }
+                  - { label: Açıklama, name: description, widget: text }
+                  - { label: Başvuru Bağlantısı, name: href, widget: string, required: false }
+
+  # --- Projeler -----------------------------------------------------------
+  - name: projects
+    label: Projeler
+    label_singular: Proje
+    folder: src/content/projects
+    extension: md
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    sortable_fields: [order, title, client]
+    fields:
+      - { label: Proje Adı, name: title, widget: string }
+      - { label: Müşteri, name: client, widget: string }
+      - { label: Kategori (slug), name: category, widget: string }
+      - { label: Kategori Etiketi, name: categoryLabel, widget: string, required: false }
+      - { label: Özet, name: excerpt, widget: text }
+      - { label: Kapak Görseli, name: cover, widget: image, required: false }
+      - { label: Öne Çıkan, name: featured, widget: boolean, default: false }
+      - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
+      - label: Etiketler
+        name: tags
+        widget: list
+        required: false
+        field: { label: Etiket, name: tag, widget: string }
+      - { label: Yıl, name: year, widget: string, required: false }
+      - { label: Proje Bağlantısı, name: url, widget: string, required: false }
+      - { label: İçerik, name: body, widget: markdown, required: false }
+
+  # --- Blog ---------------------------------------------------------------
+  - name: posts
+    label: Blog Yazıları
+    label_singular: Blog Yazısı
+    folder: src/content/posts
+    extension: md
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    sortable_fields: [date, title]
+    fields:
+      - { label: Başlık, name: title, widget: string }
+      - { label: Kategori, name: category, widget: string }
+      - { label: Özet, name: excerpt, widget: text }
+      - label: Tarih
+        name: date
+        widget: datetime
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        picker_utc: true
+      - { label: Kapak Görseli, name: cover, widget: image, required: false }
+      - { label: Yazar, name: author, widget: string, default: Pixelon }
+      - label: Durum
+        name: status
+        widget: select
+        default: published
+        options: [draft, published]
+      - { label: Öne Çıkan, name: featured, widget: boolean, default: false }
+      - label: SEO
+        name: seo
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: Sayfa Başlığı, name: title, widget: string, required: false }
+          - { label: Meta Açıklama, name: description, widget: text, required: false }
+      - { label: İçerik, name: body, widget: markdown }
+
+  # --- Referanslar --------------------------------------------------------
+  - name: references
+    label: Referanslar
+    label_singular: Referans
+    folder: src/content/references
+    extension: yml
+    format: yaml
+    create: true
+    slug: '{{slug}}'
+    identifier_field: name
+    sortable_fields: [order, name]
+    fields:
+      - { label: Marka Adı, name: name, widget: string }
+      - { label: Sektör, name: sector, widget: string, required: false }
+      - { label: Logo, name: logo, widget: image }
+      - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
+
+  # --- Ekip ---------------------------------------------------------------
+  - name: team
+    label: Ekip
+    label_singular: Ekip Üyesi
+    folder: src/content/team
+    extension: yml
+    format: yaml
+    create: true
+    slug: '{{slug}}'
+    identifier_field: name
+    sortable_fields: [order, name]
+    fields:
+      - { label: Ad Soyad, name: name, widget: string }
+      - { label: Görev, name: role, widget: string }
+      - { label: Fotoğraf, name: photo, widget: image, required: false }
+      - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
