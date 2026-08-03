@@ -14,24 +14,29 @@ backend:
   name: github
   repo: pixelonagency/pixelonagency.github.io
   branch: main
-  # GitHub OAuth aracısı. Sveltia'nın Cloudflare Workers tabanlı çözümü (sveltia-cms-auth)
-  # kurulduktan sonra kendi alan adınızı yazın: https://github.com/sveltia/sveltia-cms-auth
+  # GitHub OAuth aracısı — YALNIZCA "Sign In with GitHub" akışı için gerekli.
+  # Kurulmadıysa giriş ekranındaki "Sign In Using Access Token" seçeneği ile kişisel
+  # erişim token'ı (PAT) kullanılabilir; CMS o şekilde de tam çalışır.
+  # Worker kurulumu: https://github.com/sveltia/sveltia-cms-auth
   base_url: https://sveltia-cms-auth.pixelon.workers.dev
 
-# Yerel geliştirme: `bun run dev` çalışırken http://localhost:4321/admin/ adresinde
-# "Work with Local Repository" ile doğrudan dosya sistemine yazabilirsiniz.
-local_backend: true
+# NOT: `local_backend` ve `locale` seçenekleri Sveltia'da DESTEKLENMİYOR (yok sayılır ve
+# konsolda uyarı üretir) — bu yüzden tanımlanmadılar. Yerel düzenleme için giriş
+# ekranındaki "Work with Local Repository" düğmesi kullanılır; bu, tarayıcının
+# File System Access API'si üzerinden çalışır ve ek yapılandırma istemez.
 
-# CMS'ten yüklenen görseller repoya bu klasöre yazılır. public_folder BAĞIL bir yoldur:
-# içerik dosyaları src/content/<koleksiyon>/ altındadır, dolayısıyla ../../assets/uploads/…
-# Astro'nun image() çözümleyicisiyle uyumludur.
+# CMS'ten yüklenen görseller repoya bu klasöre yazılır.
+#
+# public_folder MUTLAK olmak zorundadır: Sveltia göreli yolları açıkça reddeder
+# ("It must be an absolute path starting with /"). Proje kökünden mutlak yol yazıyoruz;
+# Astro'nun `image()` çözümleyicisi bu biçimi de çözer ve görseli astro:assets ile
+# optimize eder — yani hem CMS hem build tarafı memnun.
 media_folder: src/assets/uploads
-public_folder: ../../assets/uploads
+public_folder: /src/assets/uploads
 
 publish_mode: simple
 site_url: https://pixelonagency.github.io
 display_url: https://pixelonagency.github.io
-locale: tr
 
 collections:
   # --- Site Ayarları (tekil) ---------------------------------------------

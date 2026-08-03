@@ -164,28 +164,41 @@ bun run dev
 doğrudan `src/content/` altındaki dosyalara yazılır; Astro anında yeniden derler.
 
 > Geliştirme sunucusunda `public/` alt klasörleri için dizin indeksi sunulmadığından
-> `/admin/` yerine `/admin/index.html` adresini kullanın. Üretim çıktısında (`bun run build`
->
-> - `bun run preview` veya GitHub Pages) `/admin/` doğrudan çalışır.
+> `/admin/` yerine `/admin/index.html` adresini kullanın. Üretim çıktısında
+> (`bun run preview` veya GitHub Pages) `/admin/` doğrudan çalışır.
 
-### Üretimde kimlik doğrulama — yapılması gereken tek kurulum
+`local_backend` ayarına gerek yoktur — Sveltia bu Decap seçeneğini desteklemez. "Work with
+Local Repository", tarayıcının File System Access API'si üzerinden çalışır.
 
-GitHub Pages statik bir barındırmadır, dolayısıyla OAuth el sıkışmasını yapacak bir
-sunucu yoktur. Sveltia bunun için küçük bir Cloudflare Workers aracısı kullanır:
+### Üretimde kimlik doğrulama
+
+Canlı adres: **https://pixelonagency.github.io/admin/** — iki seçenek var:
+
+**A) Erişim token'ı ile (kurulum gerektirmez, hemen kullanılabilir)**
+Giriş ekranında **"Sign In Using Access Token"** → GitHub'da bu repoya yazma yetkisi olan bir
+fine-grained personal access token üretip yapıştırın. Kurulacak bir şey yoktur.
+
+**B) "Sign In with GitHub" düğmesi ile (daha rahat, tek seferlik kurulum)**
+GitHub Pages statik olduğu için OAuth el sıkışmasını yapacak bir aracı gerekir:
 
 1. [`sveltia/sveltia-cms-auth`](https://github.com/sveltia/sveltia-cms-auth) worker'ını deploy edin.
 2. GitHub'da bir **OAuth App** oluşturun; callback URL'i worker adresiniz olsun.
 3. Worker'ın `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` secret'larını doldurun.
 4. `public/admin/config.yml` içindeki `backend.base_url` değerini worker adresinizle değiştirin.
 
-Bundan sonra `https://<site>/admin/` üzerinden GitHub hesabıyla giriş yapılır; her kayıt
-repoya bir commit olarak yazılır ve release ile yayına alınır.
+Her iki yolda da kayıt işlemi repoya bir commit yazar; `main` dalına gittiği için site
+otomatik olarak yeniden yayınlanır.
 
 ### Görseller
 
-CMS'ten yüklenen görseller `src/assets/uploads/` altına yazılır (`media_folder`), içerik
-dosyalarına `../../assets/uploads/…` bağıl yoluyla kaydedilir (`public_folder`) — böylece
+CMS'ten yüklenen görseller `src/assets/uploads/` altına yazılır (`media_folder`) ve içerik
+dosyalarına `/src/assets/uploads/…` biçiminde kaydedilir (`public_folder`) — böylece
 `astro:assets` optimizasyonundan geçerler.
+
+> **Neden proje kökünden mutlak yol?** Sveltia, Decap'ten farklı olarak göreli
+> `public_folder` değerini reddeder ("It must be an absolute path starting with /").
+> Astro'nun `image()` çözümleyicisi ise bu kök-mutlak biçimi de çözebildiği için her iki
+> taraf da memnun olur. `tests/cms-config.test.ts` bu kuralı kapıda tutar.
 
 Tasarımda `<image-slot>` ile temsil edilen alanlar şu an anlamlı `alt` metinli yer tutucular
 olarak render ediliyor; gerçek görseller CMS'ten yüklendiğinde otomatik olarak yerlerine geçer.

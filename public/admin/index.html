@@ -20,9 +20,12 @@
         curl -sSL https://unpkg.com/@sveltia/cms@<sürüm>/dist/sveltia-cms.js \
           | openssl dgst -sha384 -binary | openssl base64 -A
     -->
+    <!--
+      `type="module"` KULLANILMAZ: Sveltia paketi bir ES modülü değil; module olarak
+      yüklenirse JavaScript API'si beklenmedik davranıyor (konsolda uyarı verir).
+    -->
     <script
       src="https://unpkg.com/@sveltia/cms@0.178.0/dist/sveltia-cms.js"
-      type="module"
       integrity="sha384-JaupnMgbYkiRRASh2WV1+EcLmDDy/gkT2nuBq4R1RpKgSw7coIAY+HNHVUsLTYVw"
       crossorigin="anonymous"
     ></script>

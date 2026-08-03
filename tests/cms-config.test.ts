@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'bun:test';
+import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { PAGE_SECTION_TYPES } from '../src/content/page-schema';
@@ -32,6 +33,10 @@ interface CmsCollection {
   fields?: CmsField[];
   files?: { name: string; fields: CmsField[] }[];
 }
+
+const CONTENT = join(import.meta.dir, '..', 'src', 'content');
+
+const adminHtml = await Bun.file(join(import.meta.dir, '..', 'public', 'admin', 'index.html')).text();
 
 const config = parse(await Bun.file(join(import.meta.dir, '..', 'public', 'admin', 'config.yml')).text()) as {
   backend: { name: string; repo: string; branch: string };
@@ -76,10 +81,60 @@ describe('backend wiring', () => {
     expect(config.backend.repo).toBe('pixelonagency/pixelonagency.github.io');
   });
 
-  test('uploads media where Astro can resolve it from a content file', () => {
+  test('uploads media into the asset pipeline so astro:assets can optimise it', () => {
     expect(config.media_folder).toBe('src/assets/uploads');
-    // Bağıl yol: src/content/<koleksiyon>/x.yml → ../../assets/uploads/…
-    expect(config.public_folder).toBe('../../assets/uploads');
+    expect(config.public_folder).toBe('/src/assets/uploads');
+  });
+
+  test('public_folder is absolute — Sveltia rejects relative paths outright', () => {
+    // Sveltia: "The configured public folder is invalid. It must be an absolute path
+    // starting with /". Decap kabul ederdi, Sveltia etmiyor — bu yüzden kapıda tutuluyor.
+    expect(config.public_folder.startsWith('/')).toBe(true);
+    expect(config.public_folder.startsWith('..')).toBe(false);
+  });
+
+  test('public_folder is not an absolute URL, which Sveltia also rejects', () => {
+    expect(/^https?:\/\//.test(config.public_folder)).toBe(false);
+  });
+
+  test('declares no Decap-only options that Sveltia ignores', () => {
+    // Bunlar Decap'te geçerli ama Sveltia bunları yok sayıp konsola uyarı basıyor.
+    // Yapılandırmayı yanıltıcı hâle getirdikleri için hiç bulunmamalılar.
+    const unsupported = ['local_backend', 'locale'] as const;
+    const present = unsupported.filter((key) => key in (config as Record<string, unknown>));
+    expect(present).toEqual([]);
+  });
+});
+
+describe('admin entry point', () => {
+  test('loads the CMS as a classic script, not an ES module', () => {
+    // Sveltia paketi ES modülü değil; type="module" ile yüklenirse JS API'si bozuluyor.
+    const scriptTag = /<script[\s\S]*?<\/script>/.exec(adminHtml)?.[0] ?? '';
+    expect(scriptTag).toContain('sveltia-cms.js');
+    expect(scriptTag).not.toContain('type="module"');
+  });
+
+  test('pins the CMS to an exact version with subresource integrity', () => {
+    expect(adminHtml).toMatch(/@sveltia\/cms@\d+\.\d+\.\d+\//);
+    expect(adminHtml).toContain('integrity="sha384-');
+    expect(adminHtml).toContain('crossorigin="anonymous"');
+  });
+
+  test('keeps the admin out of search results', () => {
+    expect(adminHtml).toContain('noindex');
+  });
+});
+
+describe('committed image paths match the CMS public_folder convention', () => {
+  // CMS bir görsel yazdığında `/src/assets/...` üretir. Elle eklenmiş içerik de aynı
+  // biçimi kullanmalı, aksi halde editör aynı alanı açtığında yol bozulur.
+  test('every reference logo uses a root-absolute path', async () => {
+    const offenders: string[] = [];
+    for (const file of readdirSync(join(CONTENT, 'references')).filter((f) => f.endsWith('.yml'))) {
+      const raw = parse(await Bun.file(join(CONTENT, 'references', file)).text()) as { logo?: string };
+      if (typeof raw.logo === 'string' && !raw.logo.startsWith('/')) offenders.push(`${file}: ${raw.logo}`);
+    }
+    expect(offenders).toEqual([]);
   });
 });
 
