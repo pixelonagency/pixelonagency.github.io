@@ -86,6 +86,20 @@ describe('routes', () => {
     expect(existsSync(join(DIST, 'sitemap-index.xml'))).toBe(true);
   });
 
+  test('robots.txt is generated and points at the sitemap on the canonical domain', async () => {
+    const robots = join(DIST, 'robots.txt');
+    expect(existsSync(robots)).toBe(true);
+    const body = await Bun.file(robots).text();
+    expect(body).toContain('Sitemap: https://pixelon.com.tr/sitemap-index.xml');
+    expect(body).toContain('Disallow: /admin/');
+  });
+
+  test('the CNAME file ships in the artifact so deploys keep the custom domain', async () => {
+    const cname = join(DIST, 'CNAME');
+    expect(existsSync(cname)).toBe(true);
+    expect((await Bun.file(cname).text()).trim()).toBe('pixelon.com.tr');
+  });
+
   test('at least one blog post detail page is rendered', () => {
     const blogDir = join(DIST, 'blog');
     expect(existsSync(blogDir)).toBe(true);
