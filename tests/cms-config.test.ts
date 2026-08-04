@@ -255,6 +255,38 @@ describe('pages collection mirrors the page section vocabulary', () => {
     expect(fieldNames(items?.fields ?? [])).toContain('description');
   });
 
+  test('every button list offers exactly the variants the schema allows', () => {
+    // page-schema'daki cta.variant enum'u: primary | outline | link
+    const expected = ['primary', 'outline', 'link'];
+    const lists: { where: string; options: string[] }[] = [];
+
+    const walk = (fields: CmsField[] | undefined, where: string): void => {
+      for (const field of fields ?? []) {
+        if (field.name === 'variant') {
+          lists.push({ where, options: (field as unknown as { options: string[] }).options });
+        }
+        walk(field.fields, `${where}.${field.name}`);
+        walk(field.types, `${where}.${field.name}`);
+      }
+    };
+    walk(sections?.types, 'sections');
+
+    expect(lists.length).toBeGreaterThan(0);
+    for (const list of lists)
+      expect({ where: list.where, options: list.options }).toEqual({
+        where: list.where,
+        options: expected,
+      });
+  });
+
+  test('the form section exposes the post-submit copy fields', () => {
+    const form = (sections?.types ?? []).find((type) => type.name === 'form');
+    const names = fieldNames(form?.fields ?? []);
+    for (const field of ['successHeading', 'successBody', 'successNote', 'successCtas', 'errorHeading', 'errorBody']) {
+      expect({ field, present: names.includes(field) }).toEqual({ field, present: true });
+    }
+  });
+
   test('the form section offers exactly the form ids the schema allows', () => {
     const form = (sections?.types ?? []).find((type) => type.name === 'form');
     const formId = form?.fields?.find((field) => field.name === 'formId') as { options?: string[] } | undefined;

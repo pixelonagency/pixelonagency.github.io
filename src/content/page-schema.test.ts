@@ -192,6 +192,53 @@ describe('form section', () => {
   test('rejects an unknown form id', () => {
     expect(parseSection({ type: 'form', heading: 'X', formId: 'newsletter' }).success).toBe(false);
   });
+
+  test('carries the post-submit success copy', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        {
+          type: 'form',
+          heading: 'Bize Yazın',
+          formId: 'contact',
+          successHeading: 'Talebiniz Bize Ulaştı!',
+          successBody: 'En kısa sürede sizinle iletişime geçeceğiz.',
+          successNote: 'Bu sırada çalışmalarımızı inceleyebilirsiniz.',
+          successCtas: [{ label: 'Projelerimizi İnceleyin', href: '/projelerimiz' }],
+        },
+      ],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'form' && section.successHeading).toBe('Talebiniz Bize Ulaştı!');
+    expect(section?.type === 'form' && section.successCtas[0]?.variant).toBe('primary');
+  });
+
+  test('carries the submission failure copy', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        {
+          type: 'form',
+          heading: 'Bize Yazın',
+          formId: 'contact',
+          errorHeading: 'Form Gönderilemedi',
+          errorBody: 'Teknik bir sorun oluştu. Lütfen tekrar deneyin.',
+        },
+      ],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'form' && section.errorHeading).toBe('Form Gönderilemedi');
+  });
+
+  test('leaves the success and error copy optional so a form still validates without it', () => {
+    expect(parseSection({ type: 'form', heading: 'X', formId: 'contact' }).success).toBe(true);
+  });
+
+  test('defaults successCtas to an empty list', () => {
+    const parsed = pageSchema.parse({ ...base, sections: [{ type: 'form', heading: 'X', formId: 'contact' }] });
+    const section = parsed.sections[0];
+    expect(section?.type === 'form' && section.successCtas).toEqual([]);
+  });
 });
 
 describe('section-level buttons', () => {

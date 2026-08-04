@@ -304,7 +304,13 @@ collections:
                     name: variant
                     widget: select
                     default: primary
-                    options: [primary, outline]
+                    options: [primary, outline, link]
+                  - label: İkon
+                    name: icon
+                    widget: select
+                    required: false
+                    options: [whatsapp, phone, arrow]
+                  - { label: Yeni sekmede aç, name: external, widget: boolean, default: false }
               - &s_image { label: Görsel, name: image, widget: image, required: false }
               - &s_image_alt { label: Görsel Alt Metni, name: imageAlt, widget: string, required: false }
 
@@ -479,6 +485,29 @@ collections:
                 widget: select
                 options: [contact, analysis]
               - { label: Gönder Butonu Etiketi, name: submitLabel, widget: string, required: false }
+              - { label: 'Başarı — Başlık', name: successHeading, widget: string, required: false }
+              - { label: 'Başarı — Metin', name: successBody, widget: text, required: false }
+              - { label: 'Başarı — Ek Not', name: successNote, widget: text, required: false }
+              - label: Başarı — Butonlar
+                name: successCtas
+                widget: list
+                required: false
+                fields:
+                  - { label: Etiket, name: label, widget: string }
+                  - { label: Bağlantı, name: href, widget: string }
+                  - label: Görünüm
+                    name: variant
+                    widget: select
+                    default: primary
+                    options: [primary, outline, link]
+                  - label: İkon
+                    name: icon
+                    widget: select
+                    required: false
+                    options: [whatsapp, phone, arrow]
+                  - { label: Yeni sekmede aç, name: external, widget: boolean, default: false }
+              - { label: 'Hata — Başlık', name: errorHeading, widget: string, required: false }
+              - { label: 'Hata — Metin', name: errorBody, widget: text, required: false }
 
           - label: İletişim Bilgileri
             name: contactInfo

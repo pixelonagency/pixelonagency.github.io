@@ -22,6 +22,18 @@ body {
   box-sizing: border-box;
 }
 
+/*
+ * `hidden` özniteliği her zaman gizlemeli.
+ *
+ * Tarayıcının `[hidden]{display:none}` kuralı çok düşük özgüllüktedir; bir bileşen
+ * `display:flex`/`grid` tanımladığı anda sessizce ezilir ve `el.hidden = true`
+ * hiçbir işe yaramaz. Bu tam olarak mobil menü panelinde ve form başarı/hata
+ * panellerinde yaşandı — bu yüzden kural site genelinde sabitlendi.
+ */
+[hidden] {
+  display: none !important;
+}
+
 ::selection {
   background: var(--accent);
   color: var(--bg);

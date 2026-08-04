@@ -229,6 +229,48 @@ describe('interactive behaviour is shipped', () => {
     expect(html.get('/projelerimiz')).toContain('role="tablist"');
   });
 
+  test('both forms post to Web3Forms and carry its required fields', () => {
+    for (const route of ['/iletisim', '/ucretsiz-analiz']) {
+      const source = html.get(route) ?? '';
+      expect({ route, endpoint: source.includes('action="https://api.web3forms.com/submit"') }).toEqual({
+        route,
+        endpoint: true,
+      });
+      expect({ route, key: source.includes('name="access_key"') }).toEqual({ route, key: true });
+      expect({ route, subject: /name="subject" value="[^"]+"/.test(source) }).toEqual({ route, subject: true });
+      // Web3Forms sunucu tarafında bu adı denetler.
+      expect({ route, honeypot: source.includes('name="botcheck"') }).toEqual({ route, honeypot: true });
+    }
+  });
+
+  test('the service dropdown is not named "subject", which Web3Forms reserves for the mail subject', () => {
+    const source = html.get('/iletisim') ?? '';
+    // `subject` yalnızca gizli alanda bulunmalı; görünür seçim kutusu `service` olmalı.
+    expect(source).toContain('name="service"');
+    expect(source).not.toMatch(/<select[^>]*name="subject"/);
+  });
+
+  test('the shipped CSS forces [hidden] to win over component display rules', async () => {
+    // Bileşenler `display:flex` tanımladığında tarayıcının düşük özgüllüklü
+    // `[hidden]{display:none}` kuralı eziliyor ve `el.hidden = true` işe yaramıyor.
+    // Mobil menü ve form panelleri tam olarak bu yüzden bozulmuştu.
+    const cssDir = join(DIST, 'assets');
+    const sheets = readdirSync(cssDir).filter((file) => file.endsWith('.css'));
+    expect(sheets.length).toBeGreaterThan(0);
+
+    const all = (await Promise.all(sheets.map((file) => Bun.file(join(cssDir, file)).text()))).join('');
+    expect(all.replace(/\s/g, '')).toContain('[hidden]{display:none!important}');
+  });
+
+  test('both forms ship the post-submit success and error panels', () => {
+    for (const route of ['/iletisim', '/ucretsiz-analiz']) {
+      const source = html.get(route) ?? '';
+      expect({ route, ok: source.includes('data-form-success=') }).toEqual({ route, ok: true });
+      expect({ route, ok: source.includes('data-form-error=') }).toEqual({ route, ok: true });
+      expect({ route, ok: source.includes('Bize Ulaştı!') }).toEqual({ route, ok: true });
+    }
+  });
+
   test('the contact page ships a form', () => {
     expect(html.get('/iletisim')).toContain('<form');
   });

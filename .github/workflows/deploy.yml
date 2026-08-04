@@ -47,7 +47,13 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
+      # Web3Forms erişim anahtarı build sırasında form HTML'ine gömülür — Web3Forms'un
+      # tasarımı gereği istemci tarafında görünür ve gizli bir sır DEĞİLDİR. Secret'ta
+      # tutulmasının amacı anahtarın depo geçmişine yazılmamasıdır.
+      # Kod tarafı `PUBLIC_` ön ekli ismi okur (Vite yalnızca o ön eki istemciye açar).
       - name: Build & smoke-test the rendered output
+        env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: bun run verify
 
       - name: Upload artifact

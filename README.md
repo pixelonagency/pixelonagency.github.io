@@ -36,6 +36,7 @@ bun run preview      # dist/ önizlemesi
 | ------------------------------- | ------------------------------------------------------------ |
 | `bun run dev`                   | Geliştirme sunucusu                                          |
 | `bun run build`                 | Statik çıktı (`dist/`)                                       |
+| `bun run build:clean`           | `--force` ile tam yeniden derleme (içerik şeması değişince)  |
 | `bun run gate`                  | **Kalite kapısı:** typecheck → format → lint → knip → test   |
 | `bun run verify`                | `build` + `dist/` üzerinde duman testleri                    |
 | `bun run typecheck`             | `astro check` (`.astro` dosyaları dahil tip kontrolü)        |
@@ -210,16 +211,43 @@ olarak render ediliyor; gerçek görseller CMS'ten yüklendiğinde otomatik olar
 İletişim ve Ücretsiz Analiz formlarının doğrulama mantığı `src/lib/forms.ts` içindedir ve
 birim testleriyle korunur; aynı modül hem sunucu-öncesi hem tarayıcı tarafında kullanılır.
 
-Statik sitede form uç noktası yoktur; gönderim bir dış servise POST edilir:
+Gönderim **Web3Forms** üzerinden yapılır (`https://api.web3forms.com/submit`). Form AJAX ile
+gönderilir: sayfa yenilenmez, sonuç yerinde gösterilir.
+
+### Erişim anahtarı
 
 ```sh
-# .env
-PUBLIC_FORM_ENDPOINT="https://formspree.io/f/xxxxxxx"
+# .env  (bkz. .env.example)
+WEB3FORMS_ACCESS_KEY="..."
 ```
 
-Bu değişken tanımlı değilse formlar render edilir ama gönderim engellenir ve kullanıcıya
-yapılandırma uyarısı gösterilir. Formspree, Resend ya da düz POST kabul eden herhangi bir
-servis kullanılabilir.
+Üretimde değer `WEB3FORMS_ACCESS_KEY` **repository secret**'ından okunur ve
+`.github/workflows/deploy.yml` içindeki build adımına verilir.
+
+> ⚠️ **Bu anahtar gizli bir sır değildir.** Statik sitede form gönderimi istemci tarafından
+> yapıldığı için anahtar yayımlanan HTML'de görünür — Web3Forms'un tasarımı böyledir ve
+> güvenlik modeli buna dayanır (anahtar yalnızca forma bağlı e-posta adresine gönderim
+> yapılmasına izin verir, veri okumaya yaramaz). Secret'ta tutulmasının amacı anahtarın
+> **depo geçmişine yazılmamasıdır**; gizli kalmasını sağlamaz.
+>
+> Anahtar sızdırılırsa yapılabilecek tek şey forma spam göndermektir; Web3Forms panelinden
+> anahtarı yenilemek yeterlidir.
+
+Anahtar tanımlı değilse formlar yine render edilir, gönder butonunun altında yapılandırma
+uyarısı görünür ve gönderim denendiğinde veri kaybolmadan hata paneli açılır.
+
+### Alan adı çakışması
+
+Web3Forms `subject` alanını **e-postanın konu satırı** olarak kullanır. Bu yüzden iletişim
+formundaki "İlgilendiğiniz Hizmet" seçim kutusu `service` adını taşır; `subject` gizli bir
+alan olarak sabit konu başlığını gönderir. Bot koruması Web3Forms'un sunucu tarafında
+denetlediği `botcheck` bal küpüyle yapılır.
+
+### Gönderim sonrası metinler
+
+Başarı ve hata panellerinin metinleri CMS'ten yönetilir (form bölümünün
+`successHeading` / `successBody` / `successNote` / `successCtas` / `errorHeading` /
+`errorBody` alanları). Varsayılan metinler referans tasarımdan birebir alınmıştır.
 
 ---
 

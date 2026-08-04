@@ -187,6 +187,14 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     lead: z.string().optional(),
     formId: z.enum(['contact', 'analysis']),
     submitLabel: z.string().optional(),
+    /** Gönderim başarılı olduğunda formun yerine geçen panel. */
+    successHeading: z.string().optional(),
+    successBody: z.string().optional(),
+    successNote: z.string().optional(),
+    successCtas: z.array(cta).default([]),
+    /** Gönderim başarısız olduğunda formun üstünde gösterilen uyarı. */
+    errorHeading: z.string().optional(),
+    errorBody: z.string().optional(),
   });
 
   const contactInfo = z.object({

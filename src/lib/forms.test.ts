@@ -5,7 +5,7 @@ const validContact = {
   name: 'Ayşe Yılmaz',
   email: 'ayse@ornek.com',
   phone: '+90 506 522 90 34',
-  subject: 'Web Tasarım',
+  service: 'Web Tasarım',
   message: 'Merhaba, yeni bir kurumsal site için teklif almak istiyorum.',
   consent: true,
 };

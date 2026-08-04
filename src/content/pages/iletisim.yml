@@ -65,6 +65,19 @@ sections:
       hizmet ve proje modeli hakkında geri dönüş sağlasın.
     formId: contact
     submitLabel: Proje Talebini Gönder
+    # Gönderim sonrası ekranlar — metinler referans tasarımdan birebir alındı.
+    successHeading: Talebiniz Bize Ulaştı!
+    successBody: >-
+      Projenizle ilgili paylaştığınız bilgileri inceleyerek en kısa sürede sizinle
+      iletişime geçeceğiz.
+    successCtas:
+      - label: Bu Sırada Projelerimizi İnceleyin
+        href: /projelerimiz
+        variant: primary
+    errorHeading: Form Gönderilemedi
+    errorBody: >-
+      Teknik bir sorun oluştu. Lütfen tekrar deneyin veya doğrudan WhatsApp üzerinden
+      bizimle iletişime geçin.
 
   - type: cta
     background: dark

@@ -1,7 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
+import CtaButton from '../CtaButton.astro';
 import SectionHead from '../SectionHead.astro';
+import { buildWhatsAppUrl } from '../../lib/whatsapp';
 import FormField from './FormField.astro';
 import Section from './Section.astro';
 
@@ -17,11 +19,40 @@ const { section } = Astro.props;
 const services = await getCollection('services');
 const serviceTitles = services.sort((a, b) => a.data.order - b.data.order).map((entry) => entry.data.title);
 
-// Statik site: gönderim harici bir uç noktaya (Formspree/Resend vb.) düz POST edilir.
-const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+/**
+ * Gönderim Web3Forms üzerinden yapılır: sabit uç nokta + gövdede `access_key`.
+ *
+ * Anahtar build sırasında HTML'e gömülür — Web3Forms'un tasarımı bunu gerektirir ve
+ * anahtar "gizli" değildir (yalnızca ilişkili e-posta adresine gönderim yapılmasına izin
+ * verir). Yine de depoya yazılmasın diye ortam değişkeninden okunur.
+ */
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+
+/*
+ * `PUBLIC_` ön eki bilinçlidir: değer istemciye ulaşan HTML'e gömüldüğü için Vite'ın
+ * "public" sınıfına girer ve yalnızca bu ön ekle hem `astro dev` hem `astro build`
+ * içinde tutarlı biçimde okunabilir. Ön ek ayrıca "bu değer gizli değildir" sinyalidir.
+ * CI'da repository secret'ı bu isme eşlenir (bkz. .github/workflows/deploy.yml).
+ */
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
+
+const settingsEntry = await getEntry('settings', 'site');
+const whatsapp = settingsEntry?.data.whatsapp;
+const whatsappUrl = whatsapp ? buildWhatsAppUrl(whatsapp.number, whatsapp.defaultMessage) : '';
 
 const isAnalysis = section.formId === 'analysis';
 const submitLabel = section.submitLabel ?? (isAnalysis ? 'Ücretsiz Analiz Talep Et' : 'Mesajı Gönder');
+
+// Web3Forms `subject` alanını e-postanın konu satırı olarak kullanır.
+const mailSubject = isAnalysis ? 'Pixelon — Yeni Ücretsiz Analiz Talebi' : 'Pixelon — Yeni İletişim Formu Mesajı';
+
+const successHeading = section.successHeading ?? 'Talebiniz Bize Ulaştı!';
+const successBody =
+  section.successBody ?? 'Paylaştığınız bilgileri inceleyerek en kısa sürede sizinle iletişime geçeceğiz.';
+const errorHeading = section.errorHeading ?? 'Form Gönderilemedi';
+const errorBody =
+  section.errorBody ??
+  'Teknik bir sorun oluştu. Lütfen tekrar deneyin veya doğrudan WhatsApp üzerinden bizimle iletişime geçin.';
 
 const consentText = isAnalysis
   ? "Kişisel verilerimin ücretsiz analiz talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla işlenmesine ilişkin KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum."
@@ -35,22 +66,61 @@ const privacyNote = isAnalysis
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
   <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
+  {/* Gönderim başarısızsa formun üstünde beliren uyarı. */}
+  <div class="form-alert" data-form-error={section.formId} role="alert" hidden>
+    <p class="form-alert__title">{errorHeading}</p>
+    <p class="form-alert__body">{errorBody}</p>
+    {
+      whatsappUrl && (
+        <CtaButton label="WhatsApp'tan Yazın" href={whatsappUrl} variant="outline" icon="whatsapp" external />
+      )
+    }
+  </div>
+
+  {/* Gönderim başarılıysa formun yerini alan panel. */}
+  <div class="form-success" data-form-success={section.formId} role="status" hidden tabindex="-1">
+    <span class="form-success__mark" aria-hidden="true">✓</span>
+    <p class="form-success__title">{successHeading}</p>
+    <p class="form-success__body">{successBody}</p>
+    {section.successNote && <p class="form-success__note">{section.successNote}</p>}
+    {
+      section.successCtas.length > 0 && (
+        <div class="form-success__ctas">
+          {section.successCtas.map((item) => (
+            <CtaButton
+              label={item.label}
+              href={item.href}
+              variant={item.variant}
+              icon={item.icon}
+              external={item.external}
+            />
+          ))}
+        </div>
+      )
+    }
+  </div>
+
   <form
     class="form"
     method="POST"
-    action={endpoint}
+    action={WEB3FORMS_ENDPOINT}
     novalidate
     aria-label={section.heading}
     data-form={section.formId}
-    data-endpoint={endpoint}
+    data-endpoint={WEB3FORMS_ENDPOINT}
     data-reveal
     data-reveal-index="0"
   >
-    {/* Bal küpü: gerçek kullanıcı görmez, botlar doldurur — dolu gelirse gönderim iptal edilir. */}
-    <div class="visually-hidden" aria-hidden="true">
-      <label for={`gotcha-${section.formId}`}>Bu alanı boş bırakın</label>
-      <input type="text" id={`gotcha-${section.formId}`} name="_gotcha" tabindex="-1" autocomplete="off" />
-    </div>
+    {/* Web3Forms zorunlu alanları — gövdeyle birlikte gönderilir. */}
+    <input type="hidden" name="access_key" value={accessKey} />
+    <input type="hidden" name="subject" value={mailSubject} />
+    <input type="hidden" name="from_name" value="Pixelon Web Sitesi" />
+
+    {/* Bal küpü: Web3Forms'un sunucu tarafında denetlediği alan adı. */}
+    <label class="visually-hidden" aria-hidden="true">
+      Bu alanı boş bırakın
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
+    </label>
 
     <div class="form__grid">
       <FormField name="name" label="Adınız ve Soyadınız" required placeholder="Ad Soyad" />
@@ -68,8 +138,9 @@ const privacyNote = isAnalysis
         ) : (
           <>
             <FormField name="phone" label="Telefon Numaranız" type="tel" placeholder="+90 5xx xxx xx xx" />
+            {/* `subject` adı Web3Forms'ta e-posta konusuna ayrılmıştır — bu yüzden `service`. */}
             <FormField
-              name="subject"
+              name="service"
               label="İlgilendiğiniz Hizmet"
               type="select"
               options={serviceTitles}
@@ -129,11 +200,11 @@ const privacyNote = isAnalysis
     </div>
 
     <div class="form__actions">
-      <button type="submit" class="btn btn--primary form__submit">{submitLabel}</button>
+      <button type="submit" class="btn btn--primary form__submit" data-submit>{submitLabel}</button>
       {
-        !endpoint && (
+        !accessKey && (
           <p class="form__note form__note--warn">
-            Form gönderimi için PUBLIC_FORM_ENDPOINT ortam değişkeni tanımlanmalı.
+            Form gönderimi için PUBLIC_WEB3FORMS_ACCESS_KEY ortam değişkeni tanımlanmalı.
           </p>
         )
       }
@@ -240,6 +311,113 @@ const privacyNote = isAnalysis
 
   .field__error:empty {
     display: none;
+  }
+
+  /* Not: `[hidden]` gizlemesi global.css'te site geneline sabitlenmiştir. */
+
+  /* --- Gönderim sonrası paneller --- */
+  .form-alert {
+    border: 1px solid rgb(226 60 60 / 40%);
+    border-radius: var(--radius-input);
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    max-width: 880px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .form-alert__title {
+    margin: 0;
+    font: 600 15px var(--font-display);
+    color: var(--danger);
+  }
+
+  .form-alert__body {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 620px;
+  }
+
+  .form-success {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-feature);
+    padding: clamp(32px, 4vw, 48px);
+    max-width: 880px;
+    text-align: center;
+    background-image: radial-gradient(ellipse 70% 80% at 50% 0%, var(--accent-soft), transparent 65%);
+  }
+
+  .form-success:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .form-success__mark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--text-on-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin: 0 auto 20px;
+  }
+
+  .form-success__title {
+    margin: 0 0 10px;
+    font: 600 clamp(21px, 2.4vw, 26px) var(--font-display);
+    color: var(--text);
+  }
+
+  .form-success__body,
+  .form-success__note {
+    margin: 0 auto;
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 560px;
+  }
+
+  .form-success__note {
+    margin-top: 10px;
+  }
+
+  .form-success__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 26px;
+  }
+
+  :global(.section--light) .form-alert {
+    background: #fff;
+  }
+
+  :global(.section--light) .form-alert__body,
+  :global(.section--light) .form-success__body,
+  :global(.section--light) .form-success__note {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .form-success {
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .form-success__title {
+    color: var(--text-on-light);
+  }
+
+  @media (max-width: 720px) {
+    .form-success__ctas :global(.btn) {
+      width: 100%;
+    }
   }
 
   /* --- Aksiyonlar --- */
@@ -383,15 +561,22 @@ const privacyNote = isAnalysis
     form.addEventListener('input', handleEdit);
     form.addEventListener('change', handleEdit);
 
-    form.addEventListener('submit', (event) => {
-      for (const name of fields) clearError(name);
+    const formId = form.dataset.form ?? '';
+    const successPanel = document.querySelector<HTMLElement>(`[data-form-success="${formId}"]`);
+    const errorPanel = document.querySelector<HTMLElement>(`[data-form-error="${formId}"]`);
+    const submitButton = form.querySelector<HTMLButtonElement>('[data-submit]');
+    const accessKey = form.querySelector<HTMLInputElement>('input[name="access_key"]')?.value ?? '';
 
-      // Bal küpü doluysa bot demektir: sessizce iptal.
-      const gotcha = form.querySelector<HTMLInputElement>('input[name="_gotcha"]');
-      if (gotcha && gotcha.value.trim() !== '') {
-        event.preventDefault();
-        return;
-      }
+    // Gönderim Web3Forms'a AJAX ile gider; sayfa yenilenmez, sonuç yerinde gösterilir.
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      for (const name of fields) clearError(name);
+      if (errorPanel) errorPanel.hidden = true;
+
+      // Bal küpü işaretliyse bot demektir: sessizce iptal.
+      const botcheck = form.querySelector<HTMLInputElement>('input[name="botcheck"]');
+      if (botcheck?.checked) return;
 
       const result =
         kind === 'analysis'
@@ -408,14 +593,12 @@ const privacyNote = isAnalysis
               name: textValue('name'),
               email: textValue('email'),
               phone: textValue('phone'),
-              subject: textValue('subject'),
+              service: textValue('service'),
               message: textValue('message'),
               consent: isChecked('consent'),
             });
 
       if (!result.valid) {
-        event.preventDefault();
-
         let firstInvalid: HTMLElement | null = null;
         for (const name of fields) {
           const message = result.errors[name];
@@ -427,8 +610,47 @@ const privacyNote = isAnalysis
         return;
       }
 
-      // Uç nokta tanımlı değilse gönderilecek bir yer yok — form yerinde kalır.
-      if (!endpoint) event.preventDefault();
+      // Anahtar yoksa gidilecek bir yer yok — hata panelini göster, veriyi kaybetme.
+      if (!accessKey) {
+        if (errorPanel) errorPanel.hidden = false;
+        errorPanel?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      const busyLabel = 'Gönderiliyor…';
+      const originalLabel = submitButton?.textContent ?? '';
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = busyLabel;
+      }
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const payload = (await response.json().catch(() => ({}))) as { success?: boolean };
+
+        if (!response.ok || payload.success !== true) throw new Error('web3forms rejected the submission');
+
+        form.hidden = true;
+        if (successPanel) {
+          successPanel.hidden = false;
+          successPanel.focus();
+          successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } catch {
+        if (errorPanel) {
+          errorPanel.hidden = false;
+          errorPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalLabel;
+        }
+      }
     });
   }
 </script>

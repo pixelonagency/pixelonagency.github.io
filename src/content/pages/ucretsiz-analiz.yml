@@ -32,6 +32,25 @@ sections:
       kapsamını netleştirmek için sizinle iletişime geçsin.
     formId: analysis
     submitLabel: Ücretsiz Analiz Talep Et
+    # Gönderim sonrası ekranlar — metinler referans tasarımdan birebir alındı.
+    successHeading: Analiz Talebiniz Bize Ulaştı!
+    successBody: >-
+      Markanızla ilgili paylaştığınız bilgileri inceleyerek en kısa sürede sizinle
+      iletişime geçeceğiz.
+    successNote: Bu sırada gerçekleştirdiğimiz çalışmaları inceleyebilirsiniz.
+    successCtas:
+      - label: Projelerimizi İnceleyin
+        href: /projelerimiz
+        variant: primary
+      - label: WhatsApp'tan Bize Ulaşın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+    errorHeading: Talebiniz Gönderilemedi
+    errorBody: >-
+      Form gönderilirken teknik bir sorun oluştu. Lütfen tekrar deneyin veya WhatsApp
+      üzerinden bizimle iletişime geçin.
 
   # 3) ANALİZ KAPSAMI
   - type: cards
