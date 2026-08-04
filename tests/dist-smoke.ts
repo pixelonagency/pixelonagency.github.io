@@ -122,6 +122,16 @@ describe('every rendered page', () => {
     }
   });
 
+  test('points its canonical at the live domain, not the github.io fallback', () => {
+    for (const [route, source] of html) {
+      const canonical = /<link rel="canonical" href="([^"]+)"/.exec(source)?.[1] ?? '';
+      expect({ route, canonical }).toEqual({
+        route,
+        canonical: `https://pixelon.com.tr${route === '/' ? '/' : `${route}/`}`,
+      });
+    }
+  });
+
   test('renders the shared header with the services dropdown', () => {
     for (const [route, source] of html) {
       expect({ route, ok: source.includes('aria-label="Ana menü"') }).toEqual({ route, ok: true });

@@ -21,7 +21,7 @@ const settingsEntry = await getEntry('settings', 'site');
 if (!settingsEntry) throw new Error('src/content/settings/site.yml bulunamadı.');
 const settings = settingsEntry.data;
 
-const site = Astro.site?.toString() ?? 'https://pixelonagency.github.io';
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
 const canonical = canonicalUrl(Astro.url.pathname, site);
 const metaDescription = truncateDescription(description, 160);
 ---

@@ -1,29 +1,29 @@
 import { describe, expect, test } from 'bun:test';
 import { canonicalUrl, truncateDescription } from './seo';
 
-const SITE = 'https://pixelonagency.github.io';
+const SITE = 'https://pixelon.com.tr';
 
 describe('canonicalUrl', () => {
   test('returns the bare site origin with a trailing slash for the home page', () => {
-    expect(canonicalUrl('/', SITE)).toBe('https://pixelonagency.github.io/');
+    expect(canonicalUrl('/', SITE)).toBe('https://pixelon.com.tr/');
   });
 
   test('appends a trailing slash to a top-level route', () => {
-    expect(canonicalUrl('/biz-kimiz', SITE)).toBe('https://pixelonagency.github.io/biz-kimiz/');
+    expect(canonicalUrl('/biz-kimiz', SITE)).toBe('https://pixelon.com.tr/biz-kimiz/');
   });
 
   test('keeps an already trailing-slashed route unchanged', () => {
-    expect(canonicalUrl('/blog/', SITE)).toBe('https://pixelonagency.github.io/blog/');
+    expect(canonicalUrl('/blog/', SITE)).toBe('https://pixelon.com.tr/blog/');
   });
 
   test('handles a nested service route', () => {
     expect(canonicalUrl('/hizmetlerimiz/web-tasarim-ve-yazilim', SITE)).toBe(
-      'https://pixelonagency.github.io/hizmetlerimiz/web-tasarim-ve-yazilim/',
+      'https://pixelon.com.tr/hizmetlerimiz/web-tasarim-ve-yazilim/',
     );
   });
 
   test('does not double the slash when the site base itself ends in one', () => {
-    expect(canonicalUrl('/blog', 'https://pixelonagency.github.io/')).toBe('https://pixelonagency.github.io/blog/');
+    expect(canonicalUrl('/blog', 'https://pixelon.com.tr/')).toBe('https://pixelon.com.tr/blog/');
   });
 });
 

@@ -35,8 +35,8 @@ media_folder: src/assets/uploads
 public_folder: /src/assets/uploads
 
 publish_mode: simple
-site_url: https://pixelonagency.github.io
-display_url: https://pixelonagency.github.io
+site_url: https://pixelon.com.tr
+display_url: https://pixelon.com.tr
 
 collections:
   # --- Site Ayarları (tekil) ---------------------------------------------
