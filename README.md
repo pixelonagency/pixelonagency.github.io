@@ -190,6 +190,26 @@ GitHub Pages statik olduğu için OAuth el sıkışmasını yapacak bir aracı g
 Her iki yolda da kayıt işlemi repoya bir commit yazar; `main` dalına gittiği için site
 otomatik olarak yeniden yayınlanır.
 
+### "CMS'ten kaydettim ama site güncellenmedi"
+
+Kayıt her zaman repoya bir commit yazar, ancak **yayın kapıdan geçmeye bağlıdır**:
+`gate` veya `build` başarısızsa deploy adımı hiç çalışmaz ve site eski hâlinde kalır.
+Bu bilinçli bir tercihtir — bozuk içerik canlıya çıkmasın diye.
+
+Kontrol sırası:
+
+1. Repo → **Actions → Deploy to GitHub Pages** — en üstteki koşum kırmızı mı?
+2. Kırmızıysa `Gate` adımının çıktısına bakın. İçerik kaynaklı hatalar
+   `InvalidContentEntryDataError` olarak görünür ve hangi dosya/alan olduğunu yazar.
+3. Yerelde aynı hatayı görmek için: `bun run gate`
+
+> Not: içerik şeması `null` ve boş string'i "verilmemiş" sayacak şekilde toleranslıdır
+> (bkz. `opt()` / `list()` — `src/content/schemas.ts`), çünkü Sveltia dokunulmamış
+> opsiyonel alanları böyle yazar. Bu davranış `src/content/cms-round-trip.test.ts`
+> içinde CMS'in ürettiği gerçek yüklerle sabitlenmiştir; şemaya yeni bir opsiyonel alan
+> eklerken **mutlaka** bu iki yardımcıdan biriyle sarın, aksi halde editörün kaydı
+> sessizce yayını durdurur.
+
 ### Görseller
 
 CMS'ten yüklenen görseller `src/assets/uploads/` altına yazılır (`media_folder`) ve içerik
