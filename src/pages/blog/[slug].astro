@@ -182,6 +182,16 @@ const coverImage: ImageMetadata | undefined =
     color: var(--text-soft);
   }
 
+  /*
+   * Sveltia'nın markdown serileştiricisi, alıntı içindeki boş `>` ayırıcı satırını
+   * kaydederken `> >` yapıyor; bu da not kutusunun içine BOŞ bir iç içe alıntı
+   * bloğu basıyor. Tasarım dilinde iç içe alıntı hiç kullanılmadığı için, içerik
+   * tekrar CMS'ten kaydedilip yeniden bozulsa bile görünmesin diye gizleniyor.
+   */
+  .post__body :global(blockquote blockquote) {
+    display: none;
+  }
+
   .post__body :global(img) {
     max-width: 100%;
     height: auto;

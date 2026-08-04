@@ -11,6 +11,24 @@ const defaultImage: ImageResolver = () => z.string();
 
 const nonEmpty = z.string().min(1);
 
+/**
+ * Sveltia CMS, dokunulmamış opsiyonel alanları `undefined` olarak değil `null` veya boş
+ * string olarak yazar (`seo: null`, `cover: ''`). zod'un `.optional()` yalnızca
+ * `undefined` kabul ettiği için bu içerik doğrulamadan geçemiyor, build patlıyor ve
+ * editörün kaydı hiç yayına çıkmıyor.
+ *
+ * `opt()` ve `list()` bu iki biçimi "verilmemiş" sayar. Opsiyonel HER alan bunlardan
+ * biriyle sarılmalıdır — `src/content/cms-round-trip.test.ts` bunu CMS'in ürettiği
+ * gerçek yüklerle doğrular.
+ */
+const blankToUndefined = (value: unknown): unknown => (value === null || value === '' ? undefined : value);
+
+/** Opsiyonel alan: `null` ve `''` da "verilmemiş" sayılır. */
+export const opt = <T extends z.ZodTypeAny>(schema: T) => z.preprocess(blankToUndefined, schema.optional());
+
+/** Opsiyonel liste: `null` / `''` boş listeye düşer. */
+export const list = <T extends z.ZodTypeAny>(schema: T) => z.preprocess(blankToUndefined, z.array(schema).default([]));
+
 // Not: `z.string().email()` / `.url()` bu zod sürümünde deprecate edilmiş durumda —
 // `astro check` çıktısını temiz tutmak için düz regex doğrulaması kullanılır.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -39,117 +57,117 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
     navLabel: nonEmpty,
     order: z.number().default(0),
     seo,
-    cover: image().optional(),
+    cover: opt(image()),
     hero: z.object({
       eyebrow: nonEmpty,
       headingLines: z.array(nonEmpty).min(1),
       lead: nonEmpty,
-      tagline: z.string().optional(),
+      tagline: opt(z.string()),
       whatsappMessage: nonEmpty,
     }),
     // Hizmet sayfalarındaki giriş/manşet bölümü (referans HTML'lerde "GİRİŞ").
-    intro: z
-      .object({
+    intro: opt(
+      z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
         body: nonEmpty,
-        highlight: z.string().optional(),
-      })
-      .optional(),
+        highlight: opt(z.string()),
+      }),
+    ),
     why: z.object({
       eyebrow: nonEmpty,
       heading: nonEmpty,
-      lead: z.string().optional(),
+      lead: opt(z.string()),
       items: z.array(titledItem).min(1),
     }),
     // Platform/kanal kartları — yalnızca bazı hizmetlerde bulunur.
-    platforms: z
-      .object({
+    platforms: opt(
+      z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
-        lead: z.string().optional(),
+        lead: opt(z.string()),
         items: z.array(titledItem).min(1),
-      })
-      .optional(),
+      }),
+    ),
     scope: z.object({
       eyebrow: nonEmpty,
       heading: nonEmpty,
-      lead: z.string().optional(),
+      lead: opt(z.string()),
       items: z.array(titledItem).min(1),
     }),
     // İki kavramın karşılaştırıldığı sekmeli bölüm (ör. UX/UI sayfasındaki
     // "UX ve UI Arasındaki Fark Nedir?").
-    comparison: z
-      .object({
+    comparison: opt(
+      z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
-        lead: z.string().optional(),
+        lead: opt(z.string()),
         items: z.array(titledItem).min(1),
-        note: z.string().optional(),
-      })
-      .optional(),
+        note: opt(z.string()),
+      }),
+    ),
     // "Neye önem veriyoruz?" bölümü — bazı hizmet sayfalarında `why` bölümünden
     // ayrı, ikinci bir kart listesi olarak yer alır.
-    principles: z
-      .object({
+    principles: opt(
+      z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
-        lead: z.string().optional(),
+        lead: opt(z.string()),
         items: z.array(titledItem).min(1),
-      })
-      .optional(),
+      }),
+    ),
     // Üretilen içerik türleri — düz etiket listesi (yalnızca Video ve Prodüksiyon sayfasında).
-    contentTypes: z
-      .object({
+    contentTypes: opt(
+      z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
-        lead: z.string().optional(),
+        lead: opt(z.string()),
         items: z.array(nonEmpty).min(1),
-      })
-      .optional(),
+      }),
+    ),
     process: z.object({
       eyebrow: nonEmpty,
       heading: nonEmpty,
       steps: z.array(titledItem).min(1),
     }),
-    projects: z
-      .object({
+    projects: opt(
+      z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
-        lead: z.string().optional(),
+        lead: opt(z.string()),
         items: z
           .array(
             z.object({
-              eyebrow: z.string().optional(),
+              eyebrow: opt(z.string()),
               title: nonEmpty,
               description: nonEmpty,
-              href: z.string().optional(),
+              href: opt(z.string()),
             }),
           )
           .min(1),
-      })
-      .optional(),
+      }),
+    ),
     // Madde listesi bölümü (ör. "İÇERİK TÜRLERİ", "KİMLER İÇİN").
     // Her hizmet sayfasında bulunmaz.
-    value: z
-      .object({
+    value: opt(
+      z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
-        lead: z.string().optional(),
-        bullets: z.array(nonEmpty).default([]),
-      })
-      .optional(),
-    sectors: z
-      .object({
+        lead: opt(z.string()),
+        bullets: list(nonEmpty),
+      }),
+    ),
+    sectors: opt(
+      z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
         body: nonEmpty,
-      })
-      .optional(),
+      }),
+    ),
     cta: z.object({
       eyebrow: nonEmpty,
       heading: nonEmpty,
-      lead: z.string().optional(),
+      lead: opt(z.string()),
     }),
     faq: z.object({
       eyebrow: nonEmpty,
@@ -166,14 +184,14 @@ export function makeProjectSchema(image: ImageResolver = defaultImage) {
     title: nonEmpty,
     client: nonEmpty,
     category: nonEmpty,
-    categoryLabel: z.string().optional(),
+    categoryLabel: opt(z.string()),
     excerpt: nonEmpty,
-    cover: image().optional(),
+    cover: opt(image()),
     featured: z.boolean().default(false),
     order: z.number().default(0),
-    tags: z.array(z.string()).default([]),
-    year: z.string().optional(),
-    url: z.string().optional(),
+    tags: list(z.string()),
+    year: opt(z.string()),
+    url: opt(z.string()),
   });
 }
 
@@ -185,11 +203,11 @@ export function makePostSchema(image: ImageResolver = defaultImage) {
     category: nonEmpty,
     excerpt: nonEmpty,
     date: z.coerce.date(),
-    cover: image().optional(),
+    cover: opt(image()),
     author: z.string().default('Pixelon'),
     status: z.enum(['draft', 'published']).default('published'),
     featured: z.boolean().default(false),
-    seo: seo.partial().optional(),
+    seo: opt(seo.partial()),
   });
 }
 
@@ -198,7 +216,7 @@ export function makePostSchema(image: ImageResolver = defaultImage) {
 export function makeReferenceSchema(image: ImageResolver = defaultImage) {
   return z.object({
     name: nonEmpty,
-    sector: z.string().optional(),
+    sector: opt(z.string()),
     logo: image(),
     order: z.number().default(0),
   });
@@ -210,7 +228,7 @@ export function makeTeamSchema(image: ImageResolver = defaultImage) {
   return z.object({
     name: nonEmpty,
     role: nonEmpty,
-    photo: image().optional(),
+    photo: opt(image()),
     order: z.number().default(0),
   });
 }
@@ -225,23 +243,19 @@ export const settingsSchema = z.object({
     number: nonEmpty,
     defaultMessage: nonEmpty,
   }),
-  social: z
-    .array(
-      z.object({
-        label: nonEmpty,
-        short: z.string().optional(),
-        url: z.string().regex(URL_RE, 'Geçerli bir bağlantı olmalı.'),
-      }),
-    )
-    .default([]),
-  legalLinks: z
-    .array(
-      z.object({
-        label: nonEmpty,
-        href: nonEmpty,
-      }),
-    )
-    .default([]),
-  footerIntro: z.string().optional(),
-  copyright: z.string().optional(),
+  social: list(
+    z.object({
+      label: nonEmpty,
+      short: opt(z.string()),
+      url: z.string().regex(URL_RE, 'Geçerli bir bağlantı olmalı.'),
+    }),
+  ),
+  legalLinks: list(
+    z.object({
+      label: nonEmpty,
+      href: nonEmpty,
+    }),
+  ),
+  footerIntro: opt(z.string()),
+  copyright: opt(z.string()),
 });

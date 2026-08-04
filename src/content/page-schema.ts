@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import type { ImageResolver } from './schemas';
+import { list, opt, type ImageResolver } from './schemas';
 
 /**
  * Sayfa gövdesi "bölüm sözlüğü".
@@ -19,7 +19,7 @@ const cta = z.object({
   /** `link` = altı çizili düz bağlantı (referanstaki "Hemen Arayın" gibi). */
   variant: z.enum(['primary', 'outline', 'link']).default('primary'),
   /** Etiketin solunda gösterilen küçük satır içi SVG. */
-  icon: z.enum(['whatsapp', 'phone', 'arrow']).optional(),
+  icon: opt(z.enum(['whatsapp', 'phone', 'arrow'])),
   /** Dış bağlantı — yeni sekmede açılır. */
   external: z.boolean().default(false),
 });
@@ -33,10 +33,10 @@ const cta = z.object({
  * butonların içerikte hiç yerinin olmamasına yol açıyordu.
  */
 const sectionBase = {
-  eyebrow: z.string().optional(),
-  anchor: z.string().optional(),
+  eyebrow: opt(z.string()),
+  anchor: opt(z.string()),
   background: z.enum(['dark', 'light']).default('dark'),
-  ctas: z.array(cta).default([]),
+  ctas: list(cta),
 };
 
 export function makePageSchema(image: ImageResolver = defaultImage) {
@@ -44,31 +44,31 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     ...sectionBase,
     type: z.literal('hero'),
     headingLines: z.array(nonEmpty).min(1),
-    lead: z.string().optional(),
-    tagline: z.string().optional(),
-    breadcrumb: z.array(z.object({ label: nonEmpty, href: z.string().optional() })).default([]),
+    lead: opt(z.string()),
+    tagline: opt(z.string()),
+    breadcrumb: list(z.object({ label: nonEmpty, href: opt(z.string()) })),
     /** Hero altındaki kısa güven rozetleri ("15+ Yıllık Deneyim" …). */
-    chips: z.array(nonEmpty).default([]),
-    image: image().optional(),
-    imageAlt: z.string().optional(),
+    chips: list(nonEmpty),
+    image: opt(image()),
+    imageAlt: opt(z.string()),
   });
 
   const cards = z.object({
     ...sectionBase,
     type: z.literal('cards'),
     heading: nonEmpty,
-    lead: z.string().optional(),
-    columns: z.number().optional(),
+    lead: opt(z.string()),
+    columns: opt(z.number()),
     /** Izgaranın altında yer alan kapanış notu (ör. UX/UI karşılaştırmasındaki bağlayıcı cümle). */
-    note: z.string().optional(),
+    note: opt(z.string()),
     items: z
       .array(
         z.object({
-          eyebrow: z.string().optional(),
+          eyebrow: opt(z.string()),
           title: nonEmpty,
           description: nonEmpty,
-          href: z.string().optional(),
-          icon: z.string().optional(),
+          href: opt(z.string()),
+          icon: opt(z.string()),
         }),
       )
       .min(1),
@@ -78,7 +78,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     ...sectionBase,
     type: z.literal('steps'),
     heading: nonEmpty,
-    lead: z.string().optional(),
+    lead: opt(z.string()),
     items: z.array(z.object({ title: nonEmpty, description: nonEmpty })).min(1),
   });
 
@@ -86,36 +86,36 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     ...sectionBase,
     type: z.literal('bullets'),
     heading: nonEmpty,
-    lead: z.string().optional(),
+    lead: opt(z.string()),
     items: z.array(nonEmpty).min(1),
   });
 
   const text = z.object({
     ...sectionBase,
     type: z.literal('text'),
-    heading: z.string().optional(),
+    heading: opt(z.string()),
     body: nonEmpty,
     /** Gövdeden sonra gelen vurgulu alıntı satırı. */
-    highlight: z.string().optional(),
-    image: image().optional(),
-    imageAlt: z.string().optional(),
+    highlight: opt(z.string()),
+    image: opt(image()),
+    imageAlt: opt(z.string()),
   });
 
   const stats = z.object({
     ...sectionBase,
     type: z.literal('stats'),
-    heading: z.string().optional(),
-    lead: z.string().optional(),
+    heading: opt(z.string()),
+    lead: opt(z.string()),
     items: z
       .array(
         z.object({
           // Sayaç animasyonu 0'dan bu değere sayar — bu yüzden sayı olmak zorunda.
           value: z.number(),
-          prefix: z.string().optional(),
-          suffix: z.string().optional(),
+          prefix: opt(z.string()),
+          suffix: opt(z.string()),
           label: nonEmpty,
           /** Etiketin altındaki açıklama paragrafı. */
-          description: z.string().optional(),
+          description: opt(z.string()),
         }),
       )
       .min(1),
@@ -125,7 +125,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     ...sectionBase,
     type: z.literal('faq'),
     heading: nonEmpty,
-    lead: z.string().optional(),
+    lead: opt(z.string()),
     items: z.array(z.object({ question: nonEmpty, answer: nonEmpty })).min(1),
   });
 
@@ -133,101 +133,101 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     ...sectionBase,
     type: z.literal('cta'),
     heading: nonEmpty,
-    lead: z.string().optional(),
+    lead: opt(z.string()),
     // `ctas` sectionBase'ten gelir.
   });
 
   const logos = z.object({
     ...sectionBase,
     type: z.literal('logos'),
-    heading: z.string().optional(),
-    lead: z.string().optional(),
+    heading: opt(z.string()),
+    lead: opt(z.string()),
   });
 
   const projects = z.object({
     ...sectionBase,
     type: z.literal('projects'),
     heading: nonEmpty,
-    lead: z.string().optional(),
-    limit: z.number().optional(),
+    lead: opt(z.string()),
+    limit: opt(z.number()),
     showFilters: z.boolean().default(false),
-    ctaLabel: z.string().optional(),
-    ctaHref: z.string().optional(),
+    ctaLabel: opt(z.string()),
+    ctaHref: opt(z.string()),
   });
 
   const posts = z.object({
     ...sectionBase,
     type: z.literal('posts'),
     heading: nonEmpty,
-    lead: z.string().optional(),
-    limit: z.number().optional(),
-    ctaLabel: z.string().optional(),
-    ctaHref: z.string().optional(),
+    lead: opt(z.string()),
+    limit: opt(z.number()),
+    ctaLabel: opt(z.string()),
+    ctaHref: opt(z.string()),
   });
 
   const team = z.object({
     ...sectionBase,
     type: z.literal('team'),
     heading: nonEmpty,
-    lead: z.string().optional(),
+    lead: opt(z.string()),
   });
 
   const services = z.object({
     ...sectionBase,
     type: z.literal('services'),
     heading: nonEmpty,
-    lead: z.string().optional(),
-    limit: z.number().optional(),
+    lead: opt(z.string()),
+    limit: opt(z.number()),
   });
 
   const form = z.object({
     ...sectionBase,
     type: z.literal('form'),
     heading: nonEmpty,
-    lead: z.string().optional(),
+    lead: opt(z.string()),
     formId: z.enum(['contact', 'analysis']),
-    submitLabel: z.string().optional(),
+    submitLabel: opt(z.string()),
     /** Gönderim başarılı olduğunda formun yerine geçen panel. */
-    successHeading: z.string().optional(),
-    successBody: z.string().optional(),
-    successNote: z.string().optional(),
-    successCtas: z.array(cta).default([]),
+    successHeading: opt(z.string()),
+    successBody: opt(z.string()),
+    successNote: opt(z.string()),
+    successCtas: list(cta),
     /** Gönderim başarısız olduğunda formun üstünde gösterilen uyarı. */
-    errorHeading: z.string().optional(),
-    errorBody: z.string().optional(),
+    errorHeading: opt(z.string()),
+    errorBody: opt(z.string()),
   });
 
   const contactInfo = z.object({
     ...sectionBase,
     type: z.literal('contactInfo'),
-    heading: z.string().optional(),
-    lead: z.string().optional(),
-    items: z.array(z.object({ label: nonEmpty, value: nonEmpty, href: z.string().optional() })).min(1),
+    heading: opt(z.string()),
+    lead: opt(z.string()),
+    items: z.array(z.object({ label: nonEmpty, value: nonEmpty, href: opt(z.string()) })).min(1),
   });
 
   const media = z.object({
     ...sectionBase,
     type: z.literal('media'),
-    heading: z.string().optional(),
-    lead: z.string().optional(),
-    image: image().optional(),
-    video: z.string().optional(),
-    alt: z.string().optional(),
+    heading: opt(z.string()),
+    lead: opt(z.string()),
+    image: opt(image()),
+    video: opt(z.string()),
+    alt: opt(z.string()),
   });
 
   const jobs = z.object({
     ...sectionBase,
     type: z.literal('jobs'),
     heading: nonEmpty,
-    lead: z.string().optional(),
+    lead: opt(z.string()),
     items: z
       .array(
         z.object({
           title: nonEmpty,
-          location: z.string().optional(),
-          employmentType: z.string().optional(),
+          location: opt(z.string()),
+          employmentType: opt(z.string()),
           description: nonEmpty,
-          href: z.string().optional(),
+          href: opt(z.string()),
         }),
       )
       .min(1),
@@ -255,8 +255,8 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
 
   return z.object({
     seo: z.object({ title: nonEmpty, description: nonEmpty }),
-    whatsappMessage: z.string().optional(),
-    sections: z.array(section).default([]),
+    whatsappMessage: opt(z.string()),
+    sections: list(section),
   });
 }
 
