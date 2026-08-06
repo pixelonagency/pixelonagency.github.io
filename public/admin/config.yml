@@ -38,71 +38,133 @@ publish_mode: simple
 site_url: https://pixelon.com.tr
 display_url: https://pixelon.com.tr
 
+# --- Çok dillilik ---------------------------------------------------------
+#
+# `structure: multiple_folders` = her dil kendi klasöründe, koleksiyon klasörünün ALTINDA:
+#     src/content/<koleksiyon>/<locale>/<ad>
+# Depodaki gerçek düzen tam olarak budur (`src/content/services/tr/...`), bu yüzden bu değer
+# seçildi. Kardeş seçenekler bize UYMAZ:
+#   - multiple_files       → tek klasör, `about.en.yml` biçimi
+#   - single_file          → tüm diller tek dosyada, iç içe locale anahtarlarıyla
+#   - multiple_root_folders→ dil klasörü EN ÜSTTE: `src/content/<locale>/<koleksiyon>/...`
+#     (eski adı `multiple_folders_i18n_root`; kullanımdan kaldırıldı)
+#
+# `folder:` değerleri dil klasörünü İÇERMEZ — Sveltia `<folder>/<locale>/` olarak kendisi ekler.
+# Yalnızca "file" koleksiyonlarında yol elle yazıldığı için `{{locale}}` yer tutucusu gerekir.
+#
+# locales/default_locale, src/lib/i18n.ts içindeki LOCALES ve DEFAULT_LOCALE ile birebir
+# aynı olmalıdır — `tests/cms-config.test.ts` bunu doğrular.
+i18n:
+  structure: multiple_folders
+  locales: [tr, en]
+  default_locale: tr
+
 collections:
   # --- Site Ayarları (tekil) ---------------------------------------------
   - name: settings
     label: Site Ayarları
+    # "file" koleksiyonlarında i18n hem koleksiyonda hem HER dosyada açılmalıdır;
+    # yol elle yazıldığı için dil klasörü `{{locale}}` yer tutucusuyla belirtilir.
+    # Yer tutucu unutulursa Sveltia sessizce `single_file` yapısına düşer ve iki dili
+    # tek dosyaya iç içe yazmaya çalışır.
+    i18n: true
     files:
       - name: site
         label: Genel Ayarlar
-        file: src/content/settings/site.yml
+        i18n: true
+        file: src/content/settings/{{locale}}/site.yml
         fields:
-          - { label: Telefon, name: phone, widget: string }
-          - { label: E-posta, name: email, widget: string }
-          - { label: Adres, name: address, widget: string }
+          # Telefon / e-posta / WhatsApp numarası dile göre değişmez → `duplicate`:
+          # editör yalnızca varsayılan dilde girer, Sveltia diğer dile aynen kopyalar.
+          - { label: Telefon, name: phone, widget: string, i18n: duplicate }
+          - { label: E-posta, name: email, widget: string, i18n: duplicate }
+          - { label: Adres, name: address, widget: string, i18n: true }
           - label: WhatsApp
             name: whatsapp
             widget: object
+            i18n: true
             fields:
-              - { label: Numara (yalnızca rakam), name: number, widget: string }
-              - { label: Varsayılan Mesaj, name: defaultMessage, widget: text }
+              - { label: Numara (yalnızca rakam), name: number, widget: string, i18n: duplicate }
+              - { label: Varsayılan Mesaj, name: defaultMessage, widget: text, i18n: true }
+          # Sosyal hesaplar iki dilde de aynı (marka adı + aynı URL) → tümü `duplicate`.
           - label: Sosyal Medya
             name: social
             widget: list
             required: false
+            i18n: duplicate
             fields:
               - { label: Ad, name: label, widget: string }
               - { label: Kısaltma, name: short, widget: string, required: false }
               - { label: Bağlantı, name: url, widget: string }
+          # Yasal bağlantıların ETİKETİ çevriliyor (href aynı kalsa da) → `true`.
           - label: Yasal Bağlantılar
             name: legalLinks
             widget: list
             required: false
+            i18n: true
             fields:
               - { label: Etiket, name: label, widget: string }
               - { label: Yol, name: href, widget: string }
-          - { label: Footer Tanıtım Metni, name: footerIntro, widget: text, required: false }
-          - { label: Telif Satırı, name: copyright, widget: string, required: false }
+          - { label: Footer Tanıtım Metni, name: footerIntro, widget: text, required: false, i18n: true }
+          - { label: Telif Satırı, name: copyright, widget: string, required: false, i18n: true }
 
   # --- Hizmetler ----------------------------------------------------------
   - name: services
     label: Hizmetler
     label_singular: Hizmet
+    # `folder` dil klasörünü İÇERMEZ — Sveltia `src/content/services/<locale>/` yapar.
     folder: src/content/services
     extension: yml
     format: yaml
     create: true
-    slug: '{{slug}}'
+    # Hizmet dosya adı = o dildeki URL slug'ı, yani TR ve EN'de FARKLI
+    # (`web-tasarim-ve-yazilim.yml` ↔ `web-design-and-development.yml`).
+    # `| localize` filtresi olmadan Sveltia her dilde AYNI dosya adını bekler ve iki dili
+    # birbirine bağlayamaz — TR ve EN ayrı ayrı, çevirisi eksik girdiler gibi görünür.
+    slug: '{{title | localize}}'
     identifier_field: title
     summary: '{{order}} — {{title}}'
     sortable_fields: [order, title]
+    # Dosya adları ayrıştığı için bağ, dosyaya yazılan bir özellik üzerinden kurulur.
+    # Anahtar adı ve değeri Sveltia'nın varsayılanıyla aynı; sözleşmeyi görünür kılmak için
+    # açıkça yazıldı. Koleksiyon düzeyindeki `i18n` nesnesi üst düzeydeki bloğun ÜZERİNE
+    # yazılır (Object.assign) — structure/locales/default_locale global bloktan miras kalır.
+    # Bu alan, `src/pages/[...path].astro` içinde hreflang eşleştirmesi için okunan alanın
+    # ta kendisidir.
+    i18n:
+      canonical_slug:
+        key: translationKey
+        value: '{{slug}}'
     fields:
-      - { label: Hizmet Adı, name: title, widget: string }
-      - { label: Menü Etiketi, name: navLabel, widget: string }
-      - { label: Çeviri Anahtarı, name: translationKey, widget: string, required: false }
-      - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
+      - { label: Hizmet Adı, name: title, widget: string, i18n: true }
+      - { label: Menü Etiketi, name: navLabel, widget: string, i18n: true }
+      # Diller arası bağ anahtarı — iki dilde AYNI olmak zorunda, yoksa hreflang kopar.
+      # `duplicate`: varsayılan dilde girilir, diğer dilde salt okunur kopya.
+      #
+      # DİKKAT: bu koleksiyonda slug localize edildiği için Sveltia kaydederken bu alanı
+      # varsayılan dilin (tr) slug'ıyla EZER — ör. elle yazılmış `web-design` yerine
+      # `web-tasarim-ve-yazilim` yazar. Zararsızdır: Sveltia tüm dilleri her zaman birlikte
+      # kaydeder (save_all_locales), dolayısıyla iki dosya aynı değeri alır ve
+      # `[...path].astro` yalnızca değerlerin EŞİT olmasını arar.
+      - { label: Çeviri Anahtarı, name: translationKey, widget: string, required: false, i18n: duplicate }
+      - { label: Sıra, name: order, widget: number, value_type: int, default: 0, i18n: duplicate }
       - &f_seo
         label: SEO
         name: seo
         widget: object
         collapsed: true
+        i18n: true
         fields:
           - { label: Sayfa Başlığı (title), name: title, widget: string }
           - { label: Meta Açıklama, name: description, widget: text }
-      - { label: Kapak Görseli, name: cover, widget: image, required: false }
+      # Görsel yolu dile bağlı değil → `duplicate`.
+      - { label: Kapak Görseli, name: cover, widget: image, required: false, i18n: duplicate }
+      # Aşağıdaki bölümlerin tamamı metin. Nesne/liste alanında `i18n: true` ALT ALANLARA
+      # miras kalır, bu yüzden her alt alanı tek tek işaretlemeye gerek yoktur.
       - label: Hero
         name: hero
         widget: object
+        i18n: true
         fields:
           - { label: Eyebrow, name: eyebrow, widget: string }
           - label: Başlık Satırları
@@ -117,6 +179,7 @@ collections:
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields:
           - { label: Eyebrow, name: eyebrow, widget: string }
           - { label: Başlık, name: heading, widget: string }
@@ -126,6 +189,7 @@ collections:
         name: why
         widget: object
         collapsed: true
+        i18n: true
         fields:
           - &f_eyebrow { label: Eyebrow (üst etiket), name: eyebrow, widget: string }
           - &f_heading { label: Başlık, name: heading, widget: string }
@@ -141,24 +205,28 @@ collections:
         name: scope
         widget: object
         collapsed: true
+        i18n: true
         fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
       - label: Platformlar
         name: platforms
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
       - label: İlkeler
         name: principles
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
       - label: Karşılaştırma
         name: comparison
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields:
           - *f_eyebrow
           - *f_heading
@@ -170,6 +238,7 @@ collections:
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields:
           - *f_eyebrow
           - *f_heading
@@ -182,6 +251,7 @@ collections:
         name: process
         widget: object
         collapsed: true
+        i18n: true
         fields:
           - *f_eyebrow
           - *f_heading
@@ -191,6 +261,7 @@ collections:
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields:
           - *f_eyebrow
           - *f_heading
@@ -208,6 +279,7 @@ collections:
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields:
           - *f_eyebrow
           - *f_heading
@@ -222,6 +294,7 @@ collections:
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields:
           - *f_eyebrow
           - *f_heading
@@ -230,11 +303,13 @@ collections:
         name: cta
         widget: object
         collapsed: true
+        i18n: true
         fields: [*f_eyebrow, *f_heading, *f_lead]
       - label: Sıkça Sorulan Sorular
         name: faq
         widget: object
         collapsed: true
+        i18n: true
         fields:
           - *f_eyebrow
           - *f_heading
@@ -254,14 +329,23 @@ collections:
     extension: yml
     format: yaml
     create: true
+    # Sayfa dosya adları TR ve EN'de AYNIDIR (`home.yml`, `about.yml`, ...); URL slug'ı
+    # `src/lib/i18n.ts > ROUTE_SLUGS` içinde ayrı tutulur. Dosya adı ortak olduğu için
+    # `| localize` filtresi KULLANILMAZ — Sveltia iki dosyayı doğrudan adla eşler ve
+    # dosyalara `translationKey` gibi ek bir bağ özelliği yazmasına gerek kalmaz.
     slug: '{{slug}}'
     identifier_field: seo.title
+    i18n: true
     fields:
       - *f_seo
-      - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text, required: false }
+      - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text, required: false, i18n: true }
+      # Bölüm listesi tamamen çevrilir. `i18n: true` bir listede TÜM alt alanları dile
+      # bağlar; böylece TR ve EN sayfaları farklı bölüm kurgusuna sahip olabilir
+      # (mevcut içerikte de öyleler).
       - label: Bölümler
         name: sections
         widget: list
+        i18n: true
         types:
           - label: Hero
             name: hero
@@ -569,26 +653,30 @@ collections:
     folder: src/content/projects
     extension: md
     create: true
+    # Proje dosya adları iki dilde AYNI (`dentasay.md`) — localize filtresi gerekmez.
     slug: '{{slug}}'
     identifier_field: title
     sortable_fields: [order, title, client]
+    i18n: true
     fields:
-      - { label: Proje Adı, name: title, widget: string }
-      - { label: Müşteri, name: client, widget: string }
-      - { label: Kategori (slug), name: category, widget: string }
-      - { label: Kategori Etiketi, name: categoryLabel, widget: string, required: false }
-      - { label: Özet, name: excerpt, widget: text }
-      - { label: Kapak Görseli, name: cover, widget: image, required: false }
-      - { label: Öne Çıkan, name: featured, widget: boolean, default: false }
-      - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
+      - { label: Proje Adı, name: title, widget: string, i18n: true }
+      # Müşteri/marka adı, kategori slug'ı, yıl ve dış bağlantı dile göre değişmez.
+      - { label: Müşteri, name: client, widget: string, i18n: duplicate }
+      - { label: Kategori (slug), name: category, widget: string, i18n: duplicate }
+      - { label: Kategori Etiketi, name: categoryLabel, widget: string, required: false, i18n: true }
+      - { label: Özet, name: excerpt, widget: text, i18n: true }
+      - { label: Kapak Görseli, name: cover, widget: image, required: false, i18n: duplicate }
+      - { label: Öne Çıkan, name: featured, widget: boolean, default: false, i18n: duplicate }
+      - { label: Sıra, name: order, widget: number, value_type: int, default: 0, i18n: duplicate }
       - label: Etiketler
         name: tags
         widget: list
         required: false
+        i18n: true
         field: { label: Etiket, name: tag, widget: string }
-      - { label: Yıl, name: year, widget: string, required: false }
-      - { label: Proje Bağlantısı, name: url, widget: string, required: false }
-      - { label: İçerik, name: body, widget: markdown, required: false }
+      - { label: Yıl, name: year, widget: string, required: false, i18n: duplicate }
+      - { label: Proje Bağlantısı, name: url, widget: string, required: false, i18n: duplicate }
+      - { label: İçerik, name: body, widget: markdown, required: false, i18n: true }
 
   # --- Blog ---------------------------------------------------------------
   - name: posts
@@ -597,39 +685,52 @@ collections:
     folder: src/content/posts
     extension: md
     create: true
-    slug: '{{slug}}'
+    # Blog dosya adı = o dildeki URL slug'ı, TR ve EN'de FARKLI → `| localize` şart.
+    slug: '{{title | localize}}'
     identifier_field: title
     sortable_fields: [date, title]
+    i18n:
+      canonical_slug:
+        key: translationKey
+        value: '{{slug}}'
     fields:
-      - { label: Başlık, name: title, widget: string }
-      - { label: Kategori, name: category, widget: string }
-      - { label: Çeviri Anahtarı, name: translationKey, widget: string, required: false }
-      - { label: Özet, name: excerpt, widget: text }
+      - { label: Başlık, name: title, widget: string, i18n: true }
+      - { label: Kategori, name: category, widget: string, i18n: duplicate }
+      # Hizmetlerdeki ile aynı: canonical_slug bu alanı kaydederken tr slug'ıyla ezer;
+      # iki dil birlikte kaydedildiği için değerler eşit kalır, hreflang kopmaz.
+      - { label: Çeviri Anahtarı, name: translationKey, widget: string, required: false, i18n: duplicate }
+      - { label: Özet, name: excerpt, widget: text, i18n: true }
       - label: Tarih
         name: date
         widget: datetime
         date_format: 'YYYY-MM-DD'
         time_format: false
         picker_utc: true
-      - { label: Kapak Görseli, name: cover, widget: image, required: false }
-      - { label: Yazar, name: author, widget: string, default: Pixelon }
+        i18n: duplicate
+      - { label: Kapak Görseli, name: cover, widget: image, required: false, i18n: duplicate }
+      - { label: Yazar, name: author, widget: string, default: Pixelon, i18n: duplicate }
       - label: Durum
         name: status
         widget: select
         default: published
         options: [draft, published]
-      - { label: Öne Çıkan, name: featured, widget: boolean, default: false }
+        i18n: duplicate
+      - { label: Öne Çıkan, name: featured, widget: boolean, default: false, i18n: duplicate }
       - label: SEO
         name: seo
         widget: object
         required: false
         collapsed: true
+        i18n: true
         fields:
           - { label: Sayfa Başlığı, name: title, widget: string, required: false }
           - { label: Meta Açıklama, name: description, widget: text, required: false }
-      - { label: İçerik, name: body, widget: markdown }
+      - { label: İçerik, name: body, widget: markdown, i18n: true }
 
   # --- Referanslar --------------------------------------------------------
+  # Referanslar ve Ekip dile bağlı DEĞİL: klasörleri düz (`src/content/references/x.yml`),
+  # dil alt klasörü yok. `i18n: false` varsayılan davranış zaten, ama açıkça yazıldı ki
+  # üst düzeydeki `i18n:` bloğu bu koleksiyonlara sızıyor sanılmasın.
   - name: references
     label: Referanslar
     label_singular: Referans
@@ -639,6 +740,7 @@ collections:
     create: true
     slug: '{{slug}}'
     identifier_field: name
+    i18n: false
     sortable_fields: [order, name]
     fields:
       - { label: Marka Adı, name: name, widget: string }
@@ -656,6 +758,7 @@ collections:
     create: true
     slug: '{{slug}}'
     identifier_field: name
+    i18n: false
     sortable_fields: [order, name]
     fields:
       - { label: Ad Soyad, name: name, widget: string }

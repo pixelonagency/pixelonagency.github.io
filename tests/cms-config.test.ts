@@ -1,8 +1,9 @@
 import { describe, expect, test } from 'bun:test';
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { PAGE_SECTION_TYPES } from '../src/content/page-schema';
+import { DEFAULT_LOCALE, LOCALES } from '../src/lib/i18n';
 import {
   makePostSchema,
   makeProjectSchema,
@@ -19,6 +20,9 @@ import {
  * build'de doğrulamadan geçemez (ya da sessizce silinir). Bu testler o kaymayı yakalar.
  */
 
+/** Sveltia'nın alan bazlı i18n değerleri. `duplicate` = tek dilde girilir, ötekine kopyalanır. */
+type CmsI18n = boolean | 'duplicate' | 'translate' | 'none';
+
 interface CmsField {
   name: string;
   widget?: string;
@@ -26,12 +30,23 @@ interface CmsField {
   field?: CmsField;
   types?: CmsField[];
   required?: boolean;
+  i18n?: CmsI18n;
+}
+
+interface CmsI18nOptions {
+  structure?: string;
+  locales?: string[];
+  default_locale?: string;
+  canonical_slug?: { key?: string; value?: string };
 }
 
 interface CmsCollection {
   name: string;
+  folder?: string;
+  slug?: string;
+  i18n?: CmsI18n | CmsI18nOptions;
   fields?: CmsField[];
-  files?: { name: string; fields: CmsField[] }[];
+  files?: { name: string; file: string; i18n?: CmsI18n | CmsI18nOptions; fields: CmsField[] }[];
 }
 
 const CONTENT = join(import.meta.dir, '..', 'src', 'content');
@@ -42,6 +57,7 @@ const config = parse(await Bun.file(join(import.meta.dir, '..', 'public', 'admin
   backend: { name: string; repo: string; branch: string };
   media_folder: string;
   public_folder: string;
+  i18n: CmsI18nOptions;
   collections: CmsCollection[];
 };
 
@@ -157,6 +173,201 @@ describe('config structure', () => {
       'settings',
       'team',
     ]);
+  });
+});
+
+/**
+ * Çok dillilik sözleşmesi.
+ *
+ * CMS'in dil listesi `src/lib/i18n.ts` ile elle senkron tutuluyor. Bir dil eklendiğinde
+ * (LOCALES büyüdüğünde) CMS geride kalırsa editör yeni dili hiç göremez — site o dilde
+ * build olur ama içerik yönetilemez hâle gelir. Aşağıdaki testler o kaymayı kapıda tutar.
+ */
+describe('i18n wiring', () => {
+  /** İçeriği dile göre klasörlenmiş koleksiyonlar. */
+  const LOCALISED_COLLECTIONS = ['pages', 'posts', 'projects', 'services', 'settings'] as const;
+  /** Dile bağlı OLMAYAN koleksiyonlar — düz klasör, dil alt klasörü yok. */
+  const PLAIN_COLLECTIONS = ['references', 'team'] as const;
+  /** Dosya adı (= URL slug'ı) dile göre değişen koleksiyonlar. */
+  const LOCALISED_SLUG_COLLECTIONS = ['posts', 'services'] as const;
+
+  /**
+   * Dile göre DEĞİŞMEYEN alanlar: editör bunları iki dilde ayrı ayrı girmemeli.
+   * Sıra/öne çıkan/çeviri anahtarı/kategori/tarih/durum, iletişim numaraları ve görsel yolları.
+   */
+  const LANGUAGE_INDEPENDENT_FIELDS = new Set([
+    'author',
+    'category',
+    'client',
+    'cover',
+    'date',
+    'email',
+    'featured',
+    'order',
+    'phone',
+    'social',
+    'status',
+    'translationKey',
+    'url',
+    'year',
+  ]);
+
+  /** Bir dil klasöründeki içerik dosyaları — `.gitkeep` gibi nokta dosyaları sayılmaz. */
+  const entryFiles = (collectionName: string, locale: string): string[] =>
+    readdirSync(join(CONTENT, collectionName, locale))
+      .filter((file) => !file.startsWith('.'))
+      .sort();
+
+  const subDirectories = (path: string): string[] =>
+    readdirSync(path)
+      .filter((entry) => statSync(join(path, entry)).isDirectory())
+      .sort();
+
+  /** Koleksiyonun üst düzey alanları — "file" koleksiyonunda tek dosyanın alanları. */
+  const topLevelFields = (name: string): CmsField[] => {
+    const entry = collection(name);
+    return entry.fields ?? (entry.files ?? []).flatMap((file) => file.fields);
+  };
+
+  test('declares the folder-per-locale structure the content tree actually uses', () => {
+    // `multiple_folders` = <koleksiyon>/<locale>/<ad>. Kardeş seçenekler farklı bir düzen
+    // bekler: multiple_files → `about.en.yml`, single_file → tek dosyada iç içe diller,
+    // multiple_root_folders → dil klasörü en üstte. Depodaki gerçek düzenle doğruluyoruz.
+    expect(config.i18n.structure).toBe('multiple_folders');
+
+    const layout = Object.fromEntries(
+      ['pages', 'posts', 'projects', 'services', 'settings'].map((name) => [name, subDirectories(join(CONTENT, name))]),
+    );
+    const expected = Object.fromEntries(Object.keys(layout).map((name) => [name, [...LOCALES].sort()]));
+    expect(layout).toEqual(expected);
+  });
+
+  test('locales mirror LOCALES in src/lib/i18n.ts', () => {
+    expect(config.i18n.locales).toEqual([...LOCALES]);
+  });
+
+  test('default_locale mirrors DEFAULT_LOCALE in src/lib/i18n.ts', () => {
+    expect(config.i18n.default_locale).toBe(DEFAULT_LOCALE);
+  });
+
+  test('default_locale is one of the declared locales', () => {
+    // Sveltia, tanınmayan bir default_locale'i sessizce listenin ilkine düşürür.
+    expect(config.i18n.locales ?? []).toContain(config.i18n.default_locale as string);
+  });
+
+  test('every locale-dependent collection opts into i18n', () => {
+    // Sveltia'da koleksiyon i18n'e AÇIKÇA katılmalı; üst düzey blok tek başına yetmez.
+    const optedOut = LOCALISED_COLLECTIONS.filter((name) => !collection(name).i18n);
+    expect(optedOut).toEqual([]);
+  });
+
+  test('locale-independent collections stay out of i18n', () => {
+    // `references` ve `team` düz klasörde duruyor; i18n açılırsa Sveltia var olmayan
+    // `src/content/references/tr/` yolunu arar ve koleksiyon boş görünür.
+    for (const name of PLAIN_COLLECTIONS) {
+      expect({ name, i18n: collection(name).i18n }).toEqual({ name, i18n: false });
+    }
+  });
+
+  test('locale-independent collections really have no locale sub-folders', () => {
+    for (const name of PLAIN_COLLECTIONS) {
+      const path = join(CONTENT, name);
+      if (!existsSync(path)) continue;
+      expect({ name, subDirs: subDirectories(path) }).toEqual({ name, subDirs: [] });
+    }
+  });
+
+  test('the settings file collection resolves through a {{locale}} placeholder', () => {
+    // "file" koleksiyonlarında yol elle yazılır: hem koleksiyon hem dosya i18n'e katılmalı
+    // ve yol `{{locale}}` içermelidir. İçermezse Sveltia `single_file` yapısına düşer ve
+    // iki dili tek dosyaya iç içe yazmaya çalışır.
+    const settings = collection('settings');
+    const file = settings.files?.find((entry) => entry.name === 'site');
+
+    expect(settings.i18n).toBe(true);
+    expect(file?.i18n).toBe(true);
+    expect(file?.file).toContain('{{locale}}');
+
+    // Yer tutucu her dil için gerçekten var olan bir dosyaya çözülmeli.
+    const missing = LOCALES.filter(
+      (locale) => !existsSync(join(CONTENT, '..', '..', (file?.file ?? '').replace('{{locale}}', locale))),
+    );
+    expect(missing).toEqual([]);
+  });
+
+  test('collections whose filenames differ per locale localize the slug', () => {
+    // `| localize` olmadan Sveltia her dilde AYNI dosya adını bekler; farklı adlar
+    // birbirine bağlanmaz ve her dil "çevirisi eksik" ayrı bir girdi gibi görünür.
+    for (const name of LOCALISED_SLUG_COLLECTIONS) {
+      const perLocale = LOCALES.map((locale) => new Set(entryFiles(name, locale)));
+      const shared = [...perLocale[0]!].filter((file) => perLocale.slice(1).every((set) => set.has(file)));
+
+      expect({ name, sharedFilenames: shared }).toEqual({ name, sharedFilenames: [] });
+      expect({ name, slug: collection(name).slug }).toEqual({ name, slug: '{{title | localize}}' });
+    }
+  });
+
+  test('collections that share filenames across locales do not localize the slug', () => {
+    for (const name of ['pages', 'projects'] as const) {
+      const perLocale = LOCALES.map((locale) => entryFiles(name, locale));
+      const expected = perLocale.map(() => perLocale[0]);
+      expect({ name, perLocale }).toEqual({ name, perLocale: expected as string[][] });
+      expect({ name, slug: collection(name).slug }).toEqual({ name, slug: '{{slug}}' });
+    }
+  });
+
+  test('localized-slug collections link their locales through translationKey', () => {
+    // Dosya adları ayrıştığı için bağ dosya içindeki bir özellikten kurulur.
+    // `src/pages/[...path].astro` hreflang'i tam da bu alandan üretiyor.
+    for (const name of LOCALISED_SLUG_COLLECTIONS) {
+      const options = collection(name).i18n as CmsI18nOptions;
+      expect({ name, key: options?.canonical_slug?.key }).toEqual({ name, key: 'translationKey' });
+
+      const declared = topLevelFields(name).map((field) => field.name);
+      expect({ name, declares: declared.includes('translationKey') }).toEqual({ name, declares: true });
+    }
+  });
+
+  test('language-independent fields are duplicated so the editor enters them once', () => {
+    const offenders: string[] = [];
+    for (const name of LOCALISED_COLLECTIONS) {
+      for (const field of topLevelFields(name)) {
+        if (!LANGUAGE_INDEPENDENT_FIELDS.has(field.name)) continue;
+        if (field.i18n !== 'duplicate') offenders.push(`${name}.${field.name} = ${String(field.i18n)}`);
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('every other top-level field is explicitly translatable', () => {
+    // Sveltia'da alan varsayılanı `false`: işaretlenmeyen alan yalnızca varsayılan dilde
+    // düzenlenebilir ve diğer dillerde GİZLENİR. Yani unutulan bir alan sessizce
+    // çevrilemez hâle gelir. Nesne/liste alanında `i18n: true` alt alanlara miras kalır.
+    const offenders: string[] = [];
+    for (const name of LOCALISED_COLLECTIONS) {
+      for (const field of topLevelFields(name)) {
+        if (LANGUAGE_INDEPENDENT_FIELDS.has(field.name)) continue;
+        if (field.i18n !== true) offenders.push(`${name}.${field.name} = ${String(field.i18n)}`);
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('the WhatsApp number is duplicated while its message is translated', () => {
+    // Numara dile bağlı değil, hazır mesaj bağlı — aynı nesnenin içinde ayrışıyorlar.
+    const whatsapp = topLevelFields('settings').find((field) => field.name === 'whatsapp');
+    const byName = Object.fromEntries((whatsapp?.fields ?? []).map((field) => [field.name, field.i18n]));
+    expect(byName).toEqual({ number: 'duplicate', defaultMessage: true });
+  });
+
+  test('locale-independent collections declare no field-level i18n', () => {
+    const offenders: string[] = [];
+    for (const name of PLAIN_COLLECTIONS) {
+      for (const field of topLevelFields(name)) {
+        if (field.i18n !== undefined) offenders.push(`${name}.${field.name} = ${String(field.i18n)}`);
+      }
+    }
+    expect(offenders).toEqual([]);
   });
 });
 
