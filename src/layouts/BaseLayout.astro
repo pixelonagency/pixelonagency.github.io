@@ -4,21 +4,37 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import { canonicalUrl, truncateDescription } from '../lib/seo';
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
+import { t } from '../lib/ui';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description: string;
+  /** Sayfanın dili — <html lang> ve arayüz sözlüğü bunu kullanır. */
+  locale?: Locale;
+  /** hreflang için diğer dillerdeki karşılıklar. */
+  alternates?: Partial<Record<Locale, string>>;
   /** Bu sayfaya özel WhatsApp ön-dolu mesajı; verilmezse site varsayılanı kullanılır. */
   whatsappMessage?: string;
   ogType?: 'website' | 'article';
   noindex?: boolean;
 }
 
-const { title, description, whatsappMessage, ogType = 'website', noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  whatsappMessage,
+  ogType = 'website',
+  noindex = false,
+  locale = DEFAULT_LOCALE,
+  alternates = {},
+} = Astro.props;
 
-const settingsEntry = await getEntry('settings', 'site');
-if (!settingsEntry) throw new Error('src/content/settings/site.yml bulunamadı.');
+// Ayarlar da dile göre; çevrilmemişse varsayılan dile düşer.
+const settingsEntry =
+  (await getEntry('settings', `${locale}/site`)) ?? (await getEntry('settings', `${DEFAULT_LOCALE}/site`));
+if (!settingsEntry) throw new Error(`src/content/settings/${DEFAULT_LOCALE}/site.yml bulunamadı.`);
 const settings = settingsEntry.data;
 
 const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
@@ -27,7 +43,7 @@ const metaDescription = truncateDescription(description, 160);
 ---
 
 <!doctype html>
-<html lang="tr">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,13 +57,24 @@ const metaDescription = truncateDescription(description, 160);
     <meta property="og:description" content={metaDescription} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:locale" content={locale === 'tr' ? 'tr_TR' : 'en_US'} />
     <meta property="og:site_name" content="Pixelon" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="theme-color" content="#0A0A0A" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {
+      Object.entries(alternates).map(([code, path]) => (
+        <link rel="alternate" hreflang={code} href={canonicalUrl(path, site)} />
+      ))
+    }
+    {
+      alternates[DEFAULT_LOCALE] && (
+        <link rel="alternate" hreflang="x-default" href={canonicalUrl(alternates[DEFAULT_LOCALE], site)} />
+      )
+    }
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,12 +87,12 @@ const metaDescription = truncateDescription(description, 160);
   </head>
 
   <body>
-    <a href="#main" class="skip-link">İçeriğe geç</a>
-    <Header />
+    <a href="#main" class="skip-link">{t('nav.skipToContent', locale)}</a>
+    <Header {locale} />
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer {locale} />
     <WhatsAppFloat number={settings.whatsapp.number} message={whatsappMessage ?? settings.whatsapp.defaultMessage} />
 
     <script>

@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getEntry } from 'astro:content';
+import SectionRenderer from './SectionRenderer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Locale } from '../lib/i18n';
+import { serviceToSections } from '../lib/service-sections';
+import { buildWhatsAppUrl } from '../lib/whatsapp';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+}
+
+const { service, locale, alternates } = Astro.props;
+const { seo, hero } = service.data;
+
+const settingsEntry = await getEntry('settings', `${locale}/site`);
+const fallbackSettings = await getEntry('settings', 'tr/site');
+const settings = settingsEntry ?? fallbackSettings;
+if (!settings) throw new Error('settings/<locale>/site.yml bulunamadı.');
+
+const whatsappUrl = buildWhatsAppUrl(settings.data.whatsapp.number, hero.whatsappMessage);
+const sections = serviceToSections(service.data, whatsappUrl, locale);
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  whatsappMessage={hero.whatsappMessage}
+  {locale}
+  {alternates}
+>
+  <SectionRenderer {sections} />
+</BaseLayout>

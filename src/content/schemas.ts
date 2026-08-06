@@ -55,6 +55,12 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
   return z.object({
     title: nonEmpty,
     navLabel: nonEmpty,
+    /**
+     * Diller arası eşleştirme anahtarı. Slug dile göre değişebildiği için
+     * (`seo-ve-icerik-pazarlamasi` ↔ `seo-and-content-marketing`) hreflang ve dil
+     * değiştirici bu alanla bağ kurar. Verilmezse dosya adı anahtar sayılır.
+     */
+    translationKey: opt(z.string()),
     order: z.number().default(0),
     seo,
     cover: opt(image()),
@@ -203,6 +209,12 @@ export function makePostSchema(image: ImageResolver = defaultImage) {
     category: nonEmpty,
     excerpt: nonEmpty,
     date: z.coerce.date(),
+    /**
+     * Diller arası eşleştirme anahtarı. Slug dile göre değişebildiği için
+     * (`seo-ve-icerik-pazarlamasi` ↔ `seo-and-content-marketing`) hreflang ve dil
+     * değiştirici bu alanla bağ kurar. Verilmezse dosya adı anahtar sayılır.
+     */
+    translationKey: opt(z.string()),
     cover: opt(image()),
     author: z.string().default('Pixelon'),
     status: z.enum(['draft', 'published']).default('published'),

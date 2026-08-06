@@ -1,21 +1,35 @@
 ---
-import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionRenderer from './SectionRenderer.astro';
+import { DEFAULT_LOCALE, resolveEntryId, type Locale, type PageKey } from '../lib/i18n';
 
 interface Props {
-  /** `src/content/pages/<id>.yml` dosyasının adı (uzantısız). */
-  id: string;
+  pageKey: PageKey;
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
 }
 
-const { id } = Astro.props;
+const { pageKey, locale, alternates } = Astro.props;
 
-const entry = await getEntry('pages', id);
-if (!entry) throw new Error(`İçerik bulunamadı: src/content/pages/${id}.yml`);
+/**
+ * Sayfa içeriği `pages/<locale>/<pageKey>.yml` dosyasından gelir.
+ * İstenen dilde çeviri yoksa varsayılan dile düşülür — sayfa asla kaybolmaz.
+ */
+const pages = await getCollection('pages');
+const ids = new Set(pages.map((entry) => entry.id));
+const entryId = resolveEntryId(pageKey, locale, (id) => ids.has(id));
+
+if (!entryId) {
+  throw new Error(`İçerik bulunamadı: src/content/pages/${DEFAULT_LOCALE}/${pageKey}.yml`);
+}
+
+const entry = pages.find((page) => page.id === entryId);
+if (!entry) throw new Error(`Beklenmeyen durum: ${entryId} çözümlendi ama bulunamadı.`);
 
 const { seo, sections, whatsappMessage } = entry.data;
 ---
 
-<BaseLayout title={seo.title} description={seo.description} whatsappMessage={whatsappMessage}>
-  <SectionRenderer sections={sections} />
+<BaseLayout title={seo.title} description={seo.description} {whatsappMessage} {locale} {alternates}>
+  <SectionRenderer {sections} {locale} />
 </BaseLayout>

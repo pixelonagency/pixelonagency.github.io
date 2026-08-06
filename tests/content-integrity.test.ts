@@ -15,10 +15,21 @@ import { makeServiceSchema, makeTeamSchema, settingsSchema } from '../src/conten
 
 const CONTENT = join(import.meta.dir, '..', 'src', 'content');
 
+/** Çok dilli koleksiyonlarda dosyalar `<koleksiyon>/<locale>/<ad>` altındadır. */
 const yamlFiles = (dir: string): string[] => {
   const full = join(CONTENT, dir);
   if (!existsSync(full)) return [];
-  return readdirSync(full).filter((file) => file.endsWith('.yml'));
+  const out: string[] = [];
+  for (const entry of readdirSync(full, { withFileTypes: true })) {
+    if (entry.isDirectory()) {
+      for (const file of readdirSync(join(full, entry.name))) {
+        if (file.endsWith('.yml')) out.push(`${entry.name}/${file}`);
+      }
+    } else if (entry.name.endsWith('.yml')) {
+      out.push(entry.name);
+    }
+  }
+  return out;
 };
 
 const readYaml = async (dir: string, file: string): Promise<Record<string, unknown>> =>
@@ -30,8 +41,8 @@ const strippedKeys = (raw: Record<string, unknown>, parsed: Record<string, unkno
 describe('services collection', () => {
   const files = yamlFiles('services');
 
-  test('all ten service pages are present', () => {
-    expect(files).toHaveLength(10);
+  test('varsayılan dilde on hizmet sayfası bulunur', () => {
+    expect(files.filter((f) => f.startsWith('tr/'))).toHaveLength(10);
   });
 
   for (const file of files) {
@@ -91,9 +102,9 @@ describe('every page and service has a usable hero heading', () => {
     });
   }
 
-  test('services are numbered 1..10 with no duplicate order', async () => {
+  test('her dilde hizmet sıraları 1..N kesintisizdir', async () => {
     const orders: number[] = [];
-    for (const file of yamlFiles('services')) {
+    for (const file of yamlFiles('services').filter((f) => f.startsWith('tr/'))) {
       orders.push(makeServiceSchema().parse(await readYaml('services', file)).order);
     }
     expect([...orders].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -111,12 +122,12 @@ describe('team collection', () => {
 
 describe('site settings', () => {
   test('site.yml validates against the settings schema', async () => {
-    const result = settingsSchema.safeParse(await readYaml('settings', 'site.yml'));
+    const result = settingsSchema.safeParse(await readYaml('settings', 'tr/site.yml'));
     expect(result.success ? [] : result.error.issues).toEqual([]);
   });
 
   test('site.yml loses no key to silent schema stripping', async () => {
-    const raw = await readYaml('settings', 'site.yml');
+    const raw = await readYaml('settings', 'tr/site.yml');
     const parsed = settingsSchema.parse(raw);
     expect(strippedKeys(raw, parsed)).toEqual([]);
   });

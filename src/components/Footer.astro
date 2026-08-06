@@ -2,23 +2,35 @@
 import { Image } from 'astro:assets';
 import { getCollection, getEntry } from 'astro:content';
 import logo from '../assets/logo/pixelon-logo.webp';
-import { buildServicesNav } from '../lib/nav';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
+import { serviceHref, t } from '../lib/ui';
 import { telHref } from '../lib/whatsapp';
 
-const settingsEntry = await getEntry('settings', 'site');
-if (!settingsEntry) throw new Error('src/content/settings/site.yml bulunamadı.');
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = DEFAULT_LOCALE } = Astro.props;
+
+const settingsEntry =
+  (await getEntry('settings', `${locale}/site`)) ?? (await getEntry('settings', `${DEFAULT_LOCALE}/site`));
+if (!settingsEntry) throw new Error(`src/content/settings/${DEFAULT_LOCALE}/site.yml bulunamadı.`);
 const settings = settingsEntry.data;
 
-const services = await getCollection('services');
-const serviceLinks = buildServicesNav(services);
+const allServices = await getCollection('services');
+const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
+const scoped = inLocale.length > 0 ? inLocale : allServices.filter((e) => e.id.startsWith(`${DEFAULT_LOCALE}/`));
+const serviceLinks = [...scoped]
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => ({ label: entry.data.navLabel, href: serviceHref(entry.id.split('/').slice(1).join('/'), locale) }));
 
 const corporateLinks = [
-  { label: 'Biz Kimiz?', href: '/biz-kimiz' },
-  { label: 'Projelerimiz', href: '/projelerimiz' },
-  { label: 'Referanslarımız', href: '/projelerimiz#referanslar' },
-  { label: 'Kariyer', href: '/kariyer' },
-  { label: 'İletişim', href: '/iletisim' },
-  { label: 'Blog', href: '/blog' },
+  { label: t('nav.about', locale), href: localizedPath('about', locale) },
+  { label: t('nav.projects', locale), href: localizedPath('projects', locale) },
+  { label: t('nav.references', locale), href: `${localizedPath('projects', locale)}#referanslar` },
+  { label: t('nav.careers', locale), href: localizedPath('careers', locale) },
+  { label: t('nav.contact', locale), href: localizedPath('contact', locale) },
+  { label: t('nav.blog', locale), href: localizedPath('blog', locale) },
 ];
 ---
 
@@ -43,25 +55,25 @@ const corporateLinks = [
             ))
           }
         </div>
-        <a href="/ucretsiz-analiz" class="site-footer__cta">Ücretsiz Analiz</a>
+        <a href={localizedPath('analysis', locale)} class="site-footer__cta">{t('nav.analysis', locale)}</a>
       </div>
 
       <div>
-        <h2 class="site-footer__heading">Kurumsal</h2>
+        <h2 class="site-footer__heading">{t('footer.corporate', locale)}</h2>
         <div class="site-footer__links">
           {corporateLinks.map((link) => <a href={link.href}>{link.label}</a>)}
         </div>
       </div>
 
       <div>
-        <h2 class="site-footer__heading">Hizmetlerimiz</h2>
+        <h2 class="site-footer__heading">{t('footer.services', locale)}</h2>
         <div class="site-footer__links">
           {serviceLinks.map((link) => <a href={link.href}>{link.label}</a>)}
         </div>
       </div>
 
       <div>
-        <h2 class="site-footer__heading">İletişim</h2>
+        <h2 class="site-footer__heading">{t('footer.contact', locale)}</h2>
         <address class="site-footer__contact">
           <a href={`mailto:${settings.email}`}>{settings.email}</a>
           <a href={telHref(settings.phone)}>{settings.phone}</a>

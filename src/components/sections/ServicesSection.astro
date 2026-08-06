@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -8,12 +9,21 @@ type Services = Extract<PageSection, { type: 'services' }>;
 
 interface Props {
   section: Services;
+  locale?: Locale;
 }
 
-const { section } = Astro.props;
+const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
 // Hizmetler koleksiyondan gelir; sıra editörün belirlediği `order` alanına göredir.
-const entries = await getCollection('services');
+const all = await getCollection('services');
+
+/**
+ * Girdi kimliği `<locale>/<slug>` biçimindedir. Bu dile ait girdi yoksa varsayılan
+ * dildekiler gösterilir — çeviri tamamlanmadan sayfa boş kalmaz.
+ */
+const inLocale = all.filter((entry) => entry.id.startsWith(`${locale}/`));
+const entries = inLocale.length > 0 ? inLocale : all.filter((entry) => entry.id.startsWith(`${DEFAULT_LOCALE}/`));
+const slugOf = (id: string) => id.split('/').slice(1).join('/');
 const sorted = [...entries].sort((a, b) => a.data.order - b.data.order);
 const services = section.limit ? sorted.slice(0, section.limit) : sorted;
 ---
@@ -26,7 +36,12 @@ const services = section.limit ? sorted.slice(0, section.limit) : sorted;
       <ul class="services" role="list">
         {services.map((service, index) => (
           <li class="services__cell">
-            <a class="card services__item" href={`/hizmetlerimiz/${service.id}`} data-reveal data-reveal-index={index}>
+            <a
+              class="card services__item"
+              href={localizedPath('services', locale, slugOf(service.id))}
+              data-reveal
+              data-reveal-index={index}
+            >
               <span class="services__index" aria-hidden="true">
                 {String(index + 1).padStart(2, '0')}
               </span>

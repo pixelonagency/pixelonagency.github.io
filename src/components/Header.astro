@@ -2,20 +2,37 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import logo from '../assets/logo/pixelon-logo.webp';
-import { buildServicesNav, isActiveRoute, PRIMARY_NAV } from '../lib/nav';
+import { DEFAULT_LOCALE, LOCALES, localizedPath, type Locale } from '../lib/i18n';
+import { buildPrimaryNav, serviceHref, t } from '../lib/ui';
+import { isActiveRoute } from '../lib/nav';
 
-const services = await getCollection('services');
-const serviceLinks = buildServicesNav(services);
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = DEFAULT_LOCALE } = Astro.props;
+
+const allServices = await getCollection('services');
+const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
+const scoped = inLocale.length > 0 ? inLocale : allServices.filter((e) => e.id.startsWith(`${DEFAULT_LOCALE}/`));
+const serviceLinks = [...scoped]
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => ({ label: entry.data.navLabel, href: serviceHref(entry.id.split('/').slice(1).join('/'), locale) }));
+
+const PRIMARY_NAV = buildPrimaryNav(locale);
 const currentPath = Astro.url.pathname;
+
+/** Dil değiştirici: aynı sayfanın diğer dildeki kökü (detay eşlemesi hreflang'de). */
+const otherLocale = LOCALES.find((code) => code !== locale) ?? DEFAULT_LOCALE;
 ---
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/" class="site-header__logo" aria-label="Pixelon ana sayfa">
+    <a href={localizedPath('home', locale)} class="site-header__logo" aria-label={t('nav.logoHome', locale)}>
       <Image src={logo} alt="Pixelon 360 dijital pazarlama ajansı logosu" height={34} densities={[1, 2]} />
     </a>
 
-    <nav class="site-nav" aria-label="Ana menü">
+    <nav class="site-nav" aria-label={t('nav.mainMenu', locale)}>
       {
         PRIMARY_NAV.map((item) =>
           item.hasDropdown ? (
@@ -37,7 +54,7 @@ const currentPath = Astro.url.pathname;
                       {service.label}
                     </a>
                   ))}
-                  <a href="/hizmetlerimiz" class="site-nav__menu-all">
+                  <a href={localizedPath('services', locale)} class="site-nav__menu-all">
                     Tüm Hizmetlerimiz →
                   </a>
                 </div>
@@ -58,19 +75,32 @@ const currentPath = Astro.url.pathname;
 
     <div class="site-header__actions">
       <div class="lang-switch" data-hide-mobile>
-        <a href="/" class="lang-switch__item lang-switch__item--active" aria-current="true">
-          <span aria-hidden="true">🇹🇷</span>TR
-        </a>
-        <span class="lang-switch__sep" aria-hidden="true">/</span>
-        <span class="lang-switch__item lang-switch__item--soon" title="İngilizce sürüm yakında">
-          <span aria-hidden="true">🇬🇧</span>EN
-        </span>
+        {
+          LOCALES.map((code, index) => (
+            <>
+              {index > 0 && (
+                <span class="lang-switch__sep" aria-hidden="true">
+                  /
+                </span>
+              )}
+              {code === locale ? (
+                <span class="lang-switch__item lang-switch__item--active" aria-current="true">
+                  {code.toUpperCase()}
+                </span>
+              ) : (
+                <a class="lang-switch__item" href={localizedPath('home', code)} hreflang={code}>
+                  {code.toUpperCase()}
+                </a>
+              )}
+            </>
+          ))
+        }
       </div>
 
-      <a href="/ucretsiz-analiz" class="btn btn--primary btn--sm">Ücretsiz Analiz</a>
+      <a href={localizedPath('analysis', locale)} class="btn btn--primary btn--sm">{t('nav.analysis', locale)}</a>
 
       <button type="button" id="mnav-btn" class="mnav-btn" aria-expanded="false" aria-controls="mnav-panel">
-        <span class="visually-hidden">Menüyü aç</span>
+        <span class="visually-hidden">{t('nav.openMenu', locale)}</span>
         <span aria-hidden="true">☰</span>
       </button>
     </div>
@@ -87,13 +117,13 @@ const currentPath = Astro.url.pathname;
   <div class="mnav-panel__top">
     <Image src={logo} alt="Pixelon" height={28} densities={[1, 2]} />
     <button type="button" id="mnav-close" class="mnav-panel__close">
-      <span class="visually-hidden">Menüyü kapat</span>
+      <span class="visually-hidden">{t('nav.closeMenu', locale)}</span>
       <span aria-hidden="true">✕</span>
     </button>
   </div>
-  <nav class="mnav-panel__nav" aria-label="Mobil menü">
-    <a href="/biz-kimiz" class="mnav-panel__link">Biz Kimiz?</a>
-    <a href="/hizmetlerimiz" class="mnav-panel__link">Hizmetlerimiz</a>
+  <nav class="mnav-panel__nav" aria-label={t('nav.mobileMenu', locale)}>
+    <a href={localizedPath('about', locale)} class="mnav-panel__link">{t('nav.about', locale)}</a>
+    <a href={localizedPath('services', locale)} class="mnav-panel__link">{t('nav.services', locale)}</a>
     {
       serviceLinks.map((service, index) => (
         <a
@@ -104,13 +134,17 @@ const currentPath = Astro.url.pathname;
         </a>
       ))
     }
-    <a href="/projelerimiz" class="mnav-panel__link">Projelerimiz</a>
-    <a href="/projelerimiz#referanslar" class="mnav-panel__link">Referanslarımız</a>
-    <a href="/blog" class="mnav-panel__link">Blog</a>
-    <a href="/kariyer" class="mnav-panel__link">Kariyer</a>
-    <a href="/iletisim" class="mnav-panel__link mnav-panel__link--last">İletişim</a>
+    <a href={localizedPath('projects', locale)} class="mnav-panel__link">{t('nav.projects', locale)}</a>
+    <a href={`${localizedPath('projects', locale)}#referanslar`} class="mnav-panel__link"
+      >{t('nav.references', locale)}</a
+    >
+    <a href={localizedPath('blog', locale)} class="mnav-panel__link">{t('nav.blog', locale)}</a>
+    <a href={localizedPath('careers', locale)} class="mnav-panel__link">{t('nav.careers', locale)}</a>
+    <a href={localizedPath('contact', locale)} class="mnav-panel__link mnav-panel__link--last"
+      >{t('nav.contact', locale)}</a
+    >
   </nav>
-  <a href="/ucretsiz-analiz" class="btn btn--primary mnav-panel__cta">Ücretsiz Analiz</a>
+  <a href={localizedPath('analysis', locale)} class="btn btn--primary mnav-panel__cta">{t('nav.analysis', locale)}</a>
 </div>
 
 <style>

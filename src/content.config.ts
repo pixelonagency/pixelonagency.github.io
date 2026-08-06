@@ -12,18 +12,26 @@ import {
 
 const CONTENT = './src/content';
 
+/**
+ * Çok dilli koleksiyonlar `<koleksiyon>/<locale>/<ad>` düzenindedir; dolayısıyla girdi
+ * kimliği `tr/home`, `en/services` biçiminde oluşur. `resolveEntryId()` (src/lib/i18n.ts)
+ * istenen dilde girdi yoksa varsayılan dile düşer.
+ *
+ * `references` ve `team` dile bağlı değildir (logo ve isimler ortaktır) — düz kalırlar.
+ */
+
 const services = defineCollection({
-  loader: glob({ pattern: '**/*.yml', base: `${CONTENT}/services` }),
+  loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/services` }),
   schema: ({ image }) => makeServiceSchema(image),
 });
 
 const projects = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: `${CONTENT}/projects` }),
+  loader: glob({ pattern: '*/*.md', base: `${CONTENT}/projects` }),
   schema: ({ image }) => makeProjectSchema(image),
 });
 
 const posts = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: `${CONTENT}/posts` }),
+  loader: glob({ pattern: '*/*.md', base: `${CONTENT}/posts` }),
   schema: ({ image }) => makePostSchema(image),
 });
 
@@ -39,13 +47,13 @@ const team = defineCollection({
 
 // Tekil (singleton) ayarlar — tek girdi: `site`.
 const settings = defineCollection({
-  loader: glob({ pattern: 'site.yml', base: `${CONTENT}/settings` }),
+  loader: glob({ pattern: '*/site.yml', base: `${CONTENT}/settings` }),
   schema: settingsSchema,
 });
 
 // Sayfa gövdeleri — her biri sıralı bir `sections` listesinden oluşur (bkz. page-schema.ts).
 const pages = defineCollection({
-  loader: glob({ pattern: '**/*.yml', base: `${CONTENT}/pages` }),
+  loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/pages` }),
   schema: ({ image }) => makePageSchema(image),
 });
 

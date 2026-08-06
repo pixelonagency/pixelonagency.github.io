@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
 import { formatTurkishDate, isoDate } from '../../lib/format';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
@@ -9,12 +10,18 @@ type Posts = Extract<PageSection, { type: 'posts' }>;
 
 interface Props {
   section: Posts;
+  locale?: Locale;
 }
 
-const { section } = Astro.props;
+const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
 // Yalnızca yayınlanmış yazılar; en yeniden en eskiye.
-const entries = await getCollection('posts', ({ data }) => data.status === 'published');
+// Girdi kimliği `<locale>/<slug>`; bu dilde yazı yoksa varsayılan dildekiler listelenir.
+const all = await getCollection('posts', ({ data }) => data.status === 'published');
+const inLocale = all.filter((entry) => entry.id.startsWith(`${locale}/`));
+const entries = inLocale.length > 0 ? inLocale : all.filter((entry) => entry.id.startsWith(`${DEFAULT_LOCALE}/`));
+const slugOf = (id: string) => id.split('/').slice(1).join('/');
+
 const sorted = [...entries].sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const posts = section.limit ? sorted.slice(0, section.limit) : sorted;
 
@@ -29,7 +36,12 @@ const hasCta = Boolean(section.ctaLabel && section.ctaHref);
       <ul class="posts" role="list">
         {posts.map((post, index) => (
           <li class="posts__cell">
-            <a class="card posts__item" href={`/blog/${post.id}`} data-reveal data-reveal-index={index}>
+            <a
+              class="card posts__item"
+              href={localizedPath('blog', locale, slugOf(post.id))}
+              data-reveal
+              data-reveal-index={index}
+            >
               <span class="posts__category">{post.data.category}</span>
               <h3 class="h3 posts__title">{post.data.title}</h3>
               <p class="body-text posts__excerpt">{post.data.excerpt}</p>

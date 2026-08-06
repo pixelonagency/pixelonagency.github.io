@@ -211,6 +211,17 @@ describe('projectSchema', () => {
   });
 });
 
+describe('translationKey — diller arası eşleştirme', () => {
+  test('hizmet, slug’dan bağımsız bir çeviri anahtarı taşıyabilir', () => {
+    const parsed = serviceSchema.parse({ ...validService, translationKey: 'seo' });
+    expect(parsed.translationKey).toBe('seo');
+  });
+
+  test('verilmezse tanımsız kalır — dosya adı anahtar sayılır', () => {
+    expect(serviceSchema.parse(validService).translationKey).toBeUndefined();
+  });
+});
+
 describe('postSchema', () => {
   const validPost = {
     title: 'SEO Nedir?',

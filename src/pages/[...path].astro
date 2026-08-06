@@ -1,0 +1,114 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import CmsPage from '../components/CmsPage.astro';
+import PostDetail from '../components/PostDetail.astro';
+import ServiceDetail from '../components/ServiceDetail.astro';
+import {
+  alternatesFor,
+  DEFAULT_LOCALE,
+  LOCALES,
+  localizedPath,
+  ROUTE_SLUGS,
+  type Locale,
+  type PageKey,
+} from '../lib/i18n';
+
+/**
+ * Tüm sayfalar tek bir catch-all'dan üretilir.
+ *
+ * Sebep: slug'lar dile göre ÇEVRİLİYOR (`/hizmetlerimiz` ↔ `/en/services`), dolayısıyla
+ * dosya tabanlı sabit rotalar her dil için ayrı ayrı yazılmak zorunda kalırdı. Route
+ * manifest'i (`ROUTE_SLUGS`) tek kaynak; buradaki üretici ondan türetir.
+ */
+
+export const getStaticPaths = (async () => {
+  /*
+   * Yardımcılar BU fonksiyonun içinde tanımlanır: Astro `getStaticPaths`'i ayrı bir
+   * modüle çıkarıp çalıştırdığı için frontmatter'ın geri kalanındaki değişkenler
+   * burada görünmez ("toParam is not defined").
+   */
+  const toParam = (path: string): string | undefined => {
+    const clean = path.replace(/^\/+/, '');
+    return clean === '' ? undefined : clean;
+  };
+
+  const splitId = (id: string): { locale: Locale; key: string } => {
+    const [head, ...rest] = id.split('/');
+    return { locale: head as Locale, key: rest.join('/') };
+  };
+
+  const [services, posts] = await Promise.all([
+    getCollection('services'),
+    getCollection('posts', ({ data }) => data.status === 'published'),
+  ]);
+
+  const paths: {
+    params: { path: string | undefined };
+    props: Record<string, unknown>;
+  }[] = [];
+
+  // --- CMS sayfaları (her dil × her sayfa anahtarı) ---
+  for (const locale of LOCALES) {
+    for (const page of Object.keys(ROUTE_SLUGS) as PageKey[]) {
+      paths.push({
+        params: { path: toParam(localizedPath(page, locale)) },
+        props: { kind: 'page', pageKey: page, locale, alternates: alternatesFor(page) },
+      });
+    }
+  }
+
+  // --- Hizmet detayları: slug'lar dile göre farklı olabilir ---
+  const serviceKeys = new Map<string, Partial<Record<Locale, string>>>();
+  for (const entry of services) {
+    const { locale, key } = splitId(entry.id);
+    const group = serviceKeys.get(entry.data.translationKey ?? key) ?? {};
+    group[locale] = key;
+    serviceKeys.set(entry.data.translationKey ?? key, group);
+  }
+
+  for (const entry of services) {
+    const { locale, key } = splitId(entry.id);
+    const siblings = serviceKeys.get(entry.data.translationKey ?? key) ?? { [locale]: key };
+    paths.push({
+      params: { path: toParam(localizedPath('services', locale, key)) },
+      props: { kind: 'service', service: entry, locale, alternates: alternatesFor('services', siblings) },
+    });
+  }
+
+  // --- Blog yazıları ---
+  const postKeys = new Map<string, Partial<Record<Locale, string>>>();
+  for (const entry of posts) {
+    const { locale, key } = splitId(entry.id);
+    const group = postKeys.get(entry.data.translationKey ?? key) ?? {};
+    group[locale] = key;
+    postKeys.set(entry.data.translationKey ?? key, group);
+  }
+
+  for (const entry of posts) {
+    const { locale, key } = splitId(entry.id);
+    const siblings = postKeys.get(entry.data.translationKey ?? key) ?? { [locale]: key };
+    paths.push({
+      params: { path: toParam(localizedPath('blog', locale, key)) },
+      props: { kind: 'post', post: entry, locale, alternates: alternatesFor('blog', siblings) },
+    });
+  }
+
+  return paths;
+}) satisfies GetStaticPaths;
+
+const props = Astro.props as {
+  kind: 'page' | 'service' | 'post';
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+  pageKey?: PageKey;
+  service?: Parameters<typeof ServiceDetail>[0]['service'];
+  post?: Parameters<typeof PostDetail>[0]['post'];
+};
+
+const { kind, locale = DEFAULT_LOCALE, alternates } = props;
+---
+
+{kind === 'page' && props.pageKey && <CmsPage pageKey={props.pageKey} {locale} {alternates} />}
+{kind === 'service' && props.service && <ServiceDetail service={props.service} {locale} {alternates} />}
+{kind === 'post' && props.post && <PostDetail post={props.post} {locale} {alternates} />}

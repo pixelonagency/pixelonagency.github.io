@@ -1,29 +1,25 @@
 ---
-import type { GetStaticPaths, ImageMetadata } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
-import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { formatTurkishDate, isoDate, readingTime } from '../../lib/format';
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatTurkishDate, isoDate, readingTime } from '../lib/format';
+import { localizedPath, type Locale } from '../lib/i18n';
+import { t } from '../lib/ui';
 
-export const getStaticPaths = (async () => {
-  const posts = await getCollection('posts', ({ data }) => data.status === 'published');
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
-}) satisfies GetStaticPaths;
+interface Props {
+  post: CollectionEntry<'posts'>;
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+}
 
-const { post } = Astro.props;
+const { post, locale, alternates } = Astro.props;
 const { Content } = await render(post);
 const { title, excerpt, category, date, author, cover, seo } = post.data;
 
 const minutes = readingTime(post.body ?? '');
 
-/**
- * Hiçbir yazı henüz `cover` tanımlamadığı için Astro bu opsiyonel alanın tipini `{}` olarak
- * daraltıyor. Gerçek bir görsel eklendiğinde `ImageMetadata` olacak — bu yüzden tip zorlaması
- * yerine çalışma zamanında biçim kontrolü yapılıyor.
- */
 const coverImage: ImageMetadata | undefined =
   cover && typeof cover === 'object' && 'src' in cover ? (cover as ImageMetadata) : undefined;
 ---

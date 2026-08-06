@@ -89,6 +89,7 @@ collections:
     fields:
       - { label: Hizmet Adı, name: title, widget: string }
       - { label: Menü Etiketi, name: navLabel, widget: string }
+      - { label: Çeviri Anahtarı, name: translationKey, widget: string, required: false }
       - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
       - &f_seo
         label: SEO
@@ -602,6 +603,7 @@ collections:
     fields:
       - { label: Başlık, name: title, widget: string }
       - { label: Kategori, name: category, widget: string }
+      - { label: Çeviri Anahtarı, name: translationKey, widget: string, required: false }
       - { label: Özet, name: excerpt, widget: text }
       - label: Tarih
         name: date

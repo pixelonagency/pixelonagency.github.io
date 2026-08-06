@@ -1,5 +1,6 @@
 ---
 import type { PageSection } from '../content/page-schema';
+import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import BulletsSection from './sections/BulletsSection.astro';
 import CardsSection from './sections/CardsSection.astro';
 import ContactInfoSection from './sections/ContactInfoSection.astro';
@@ -20,9 +21,11 @@ import TextSection from './sections/TextSection.astro';
 
 interface Props {
   sections: PageSection[];
+  /** Koleksiyondan beslenen bölümler (hizmetler, yazılar) bağlantılarını bu dile göre kurar. */
+  locale?: Locale;
 }
 
-const { sections } = Astro.props;
+const { sections, locale = DEFAULT_LOCALE } = Astro.props;
 ---
 
 {
@@ -49,11 +52,11 @@ const { sections } = Astro.props;
       case 'projects':
         return <ProjectsSection section={section} />;
       case 'posts':
-        return <PostsSection section={section} />;
+        return <PostsSection section={section} {locale} />;
       case 'team':
         return <TeamSection section={section} />;
       case 'services':
-        return <ServicesSection section={section} />;
+        return <ServicesSection section={section} {locale} />;
       case 'form':
         return <FormSection section={section} />;
       case 'contactInfo':

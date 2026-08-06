@@ -1,4 +1,6 @@
 import type { PageSection } from '../content/page-schema';
+import { localizedPath, type Locale } from './i18n';
+import { t } from './ui';
 
 /**
  * Hizmet detay sayfaları, sayfa bölümleriyle aynı görsel dili paylaşır. Bu yüzden ayrı bir
@@ -54,7 +56,10 @@ const cards = (block: Block & { items: PageSection extends never ? never : Title
   items: block.items,
 });
 
-export function serviceToSections(service: ServiceLike, whatsappUrl: string): PageSection[] {
+export function serviceToSections(service: ServiceLike, whatsappUrl: string, locale: Locale = 'tr'): PageSection[] {
+  const contactPath = localizedPath('contact', locale);
+  const homePath = localizedPath('home', locale);
+  const servicesPath = localizedPath('services', locale);
   const sections: PageSection[] = [];
 
   sections.push({
@@ -66,13 +71,13 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string): Pa
     lead: service.hero.lead,
     tagline: service.hero.tagline,
     breadcrumb: [
-      { label: 'Ana Sayfa', href: '/' },
-      { label: 'Hizmetlerimiz', href: '/hizmetlerimiz' },
+      { label: t('nav.home', locale), href: homePath },
+      { label: t('nav.services', locale), href: servicesPath },
       { label: service.title },
     ],
     ctas: [
-      { label: 'Hemen Teklif Al', href: '/iletisim', variant: 'primary', external: false },
-      { label: "WhatsApp'tan Yazın", href: whatsappUrl, variant: 'outline', icon: 'whatsapp', external: true },
+      { label: t('cta.quote', locale), href: contactPath, variant: 'primary', external: false },
+      { label: t('cta.whatsapp', locale), href: whatsappUrl, variant: 'outline', icon: 'whatsapp', external: true },
     ],
   });
 
@@ -184,8 +189,8 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string): Pa
     lead: service.cta.lead,
     background: 'dark',
     ctas: [
-      { label: 'Hemen Teklif Alın', href: '/iletisim', variant: 'primary', external: false },
-      { label: "WhatsApp'tan Yazın", href: whatsappUrl, variant: 'outline', icon: 'whatsapp', external: true },
+      { label: t('cta.quoteFormal', locale), href: contactPath, variant: 'primary', external: false },
+      { label: t('cta.whatsapp', locale), href: whatsappUrl, variant: 'outline', icon: 'whatsapp', external: true },
     ],
   });
 
