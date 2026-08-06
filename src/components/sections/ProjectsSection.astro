@@ -3,8 +3,10 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
+import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
 import { ALL_CATEGORY, buildCategoryFilters, sortProjects } from '../../lib/projects';
 import { slugify } from '../../lib/slug';
+import { t } from '../../lib/ui';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -12,11 +14,18 @@ type Projects = Extract<PageSection, { type: 'projects' }>;
 
 interface Props {
   section: Projects;
+  locale?: Locale;
 }
 
-const { section } = Astro.props;
+const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
-const entries = await getCollection('projects');
+/**
+ * Girdi kimliği `<locale>/<slug>`. Bu dilde proje yoksa varsayılan dildekiler gösterilir —
+ * aksi halde İngilizce sayfada her proje iki kez (TR + EN) listelenirdi.
+ */
+const all = await getCollection('projects');
+const inLocale = all.filter((entry) => entry.id.startsWith(`${locale}/`));
+const entries = inLocale.length > 0 ? inLocale : all.filter((entry) => entry.id.startsWith(`${DEFAULT_LOCALE}/`));
 const sorted = sortProjects(entries.map((entry) => entry.data));
 const limited = section.limit ? sorted.slice(0, section.limit) : sorted;
 
@@ -27,8 +36,9 @@ const projects = limited.map((project) => ({
   cover: project.cover as ImageMetadata | undefined,
 }));
 
-// Filtre etiketleri projelerin kendi `categoryLabel` alanından toplanır.
-const labels: Record<string, string> = {};
+// Filtre etiketleri projelerin kendi `categoryLabel` alanından toplanır;
+// "hepsi" sözde kategorisinin etiketi ise arayüz sözlüğünden gelir.
+const labels: Record<string, string> = { [ALL_CATEGORY]: t('projects.all', locale) };
 for (const project of projects) {
   if (project.categoryLabel) labels[project.category] ??= project.categoryLabel;
 }
@@ -50,7 +60,7 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
       <div class="projects" data-projects>
         {filters.length > 0 && (
           <div class="projects__filterbar">
-            <div class="projects__filters" role="tablist" aria-label="Proje kategorileri">
+            <div class="projects__filters" role="tablist" aria-label={t('projects.categories', locale)}>
               {filters.map((filter) => {
                 const selected = filter.slug === ALL_CATEGORY;
                 return (
@@ -115,7 +125,7 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
                   <span class="projects__client">{project.client}</span>
                   {project.url && (
                     <a class="projects__link" href={project.url} target="_blank" rel="noopener noreferrer">
-                      Projeyi İncele <span aria-hidden="true">→</span>
+                      {t('projects.view', locale)} <span aria-hidden="true">→</span>
                     </a>
                   )}
                 </div>
@@ -125,7 +135,7 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
         </div>
 
         <p class="projects__empty" data-empty role="status" hidden>
-          Bu kategoride henüz proje bulunmuyor.
+          {t('projects.empty', locale)}
         </p>
 
         {showCta && (

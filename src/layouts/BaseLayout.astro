@@ -93,7 +93,11 @@ const metaDescription = truncateDescription(description, 160);
       <slot />
     </main>
     <Footer {locale} />
-    <WhatsAppFloat number={settings.whatsapp.number} message={whatsappMessage ?? settings.whatsapp.defaultMessage} />
+    <WhatsAppFloat
+      number={settings.whatsapp.number}
+      message={whatsappMessage ?? settings.whatsapp.defaultMessage}
+      {locale}
+    />
 
     <script>
       // Scroll-reveal: viewport'a giren [data-reveal] elemanlarını kademeli gecikmeyle açar.

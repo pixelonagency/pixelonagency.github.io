@@ -21,15 +21,12 @@ const serviceLinks = [...scoped]
 
 const PRIMARY_NAV = buildPrimaryNav(locale);
 const currentPath = Astro.url.pathname;
-
-/** Dil değiştirici: aynı sayfanın diğer dildeki kökü (detay eşlemesi hreflang'de). */
-const otherLocale = LOCALES.find((code) => code !== locale) ?? DEFAULT_LOCALE;
 ---
 
 <header class="site-header">
   <div class="site-header__inner">
     <a href={localizedPath('home', locale)} class="site-header__logo" aria-label={t('nav.logoHome', locale)}>
-      <Image src={logo} alt="Pixelon 360 dijital pazarlama ajansı logosu" height={34} densities={[1, 2]} />
+      <Image src={logo} alt={t('brand.logoAlt', locale)} height={34} densities={[1, 2]} />
     </a>
 
     <nav class="site-nav" aria-label={t('nav.mainMenu', locale)}>
@@ -55,7 +52,7 @@ const otherLocale = LOCALES.find((code) => code !== locale) ?? DEFAULT_LOCALE;
                     </a>
                   ))}
                   <a href={localizedPath('services', locale)} class="site-nav__menu-all">
-                    Tüm Hizmetlerimiz →
+                    {t('nav.allServices', locale)}
                   </a>
                 </div>
               </div>

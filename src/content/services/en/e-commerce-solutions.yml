@@ -1,0 +1,241 @@
+title: E-Commerce Solutions
+navLabel: E-Commerce Solutions
+order: 8
+translationKey: ecommerce
+
+seo:
+  title: E-Commerce Website and Digital Sales Solutions | Pixelon
+  description: >-
+    Grow your brand online with a sales-driven e-commerce website, strong user
+    experience and payment and shipping integrations. Discover Pixelon
+    e-commerce solutions.
+
+hero:
+  eyebrow: E-Commerce Solutions
+  headingLines:
+    - "We Don't Just Display Your Products Online, We Turn Them Into *Sales*."
+  lead: >-
+    With design made for your brand, a strong user experience and infrastructure
+    that is easy to manage, we build e-commerce websites that turn visitors into
+    customers.
+  tagline: >-
+    From product management to payment and shipping integrations, we plan the
+    entire e-commerce process from a single place.
+  whatsappMessage: Hello Pixelon, I would like to get information about your E-Commerce Solutions service.
+
+why:
+  eyebrow: Why Pixelon?
+  heading: We Handle E-Commerce as Design, Technology and Marketing Together.
+  lead: >-
+    We do not consider it enough for your e-commerce website to simply work on a
+    technical level. We build a sales system that tells your brand story
+    correctly, earns the trust of users and supports your digital marketing
+    efforts.
+  items:
+    - title: Design Made for Your Brand
+      description: >-
+        We design your store to match your brand identity, not with standard
+        templates that look like your competitors.
+    - title: Easy Management
+      description: >-
+        We provide a panel where you can easily manage products, stock, orders,
+        customers and campaigns.
+    - title: Sales-Driven User Experience
+      description: >-
+        We make the journey of discovering and purchasing a product as easy as
+        possible for users.
+    - title: SEO and Advertising Alignment
+      description: >-
+        We plan your e-commerce website so that it works in harmony with Google,
+        Meta and other digital marketing channels.
+    - title: Infrastructure Ready to Grow
+      description: >-
+        We build scalable systems that can be developed further as your product
+        and order volume grows.
+
+scope:
+  eyebrow: Our E-Commerce Services
+  heading: Scalable Sales Solutions That Fit Your Needs
+  items:
+    - title: Brand-Specific E-Commerce Design
+      description: >-
+        Without relying on ready-made templates, we create original store
+        experiences that reflect the visual identity of your brand.
+    - title: E-Commerce Infrastructure Setup
+      description: >-
+        We set up infrastructures where you can easily manage your products,
+        orders, customers and campaigns.
+    - title: Product and Category Structure
+      description: >-
+        We design category, filtering, search and product detail pages that make
+        products easy to discover.
+    - title: Payment System Integrations
+      description: >-
+        We make sure credit cards, debit cards, bank transfers and other
+        suitable payment methods can be used securely.
+    - title: Shipping and Logistics Integrations
+      description: >-
+        We carry out shipping company and tracking system integrations that
+        simplify order and delivery processes.
+    - title: Marketplace Integrations
+      description: >-
+        Where needed, we align your product, stock and order processes with
+        marketplaces.
+    - title: Multi-Language and Multi-Currency Structure
+      description: >-
+        For brands that want to sell abroad, we build systems that support
+        multiple languages and different currencies.
+    - title: E-Commerce SEO Infrastructure
+      description: >-
+        We plan category, product and content pages within a technical structure
+        suited to search engines.
+
+principles:
+  eyebrow: What Do We Focus On in an E-Commerce Website?
+  heading: We Plan Every Detail, From User Experience to After-Sales.
+  items:
+    - title: Mobile-First Design
+      description: >-
+        We prepare screens that let your customers shop quickly and easily from
+        their phones.
+    - title: Fast Product Discovery
+      description: >-
+        With search, filtering, categories and product recommendations, we help
+        users reach the right product easily.
+    - title: A Structure That Builds Trust
+      description: >-
+        We position trust elements such as payment, delivery, returns, contact
+        and user reviews at the right points.
+    - title: Easy Purchase Process
+      description: >-
+        By simplifying cart and checkout steps, we aim for users to complete
+        their transactions quickly.
+    - title: Campaign Management
+      description: >-
+        We set up a system where you can easily manage discounts, coupons, free
+        shipping, bundles and seasonal campaigns.
+    - title: Reporting and Tracking
+      description: >-
+        We build measurement infrastructures that let you track sales, order,
+        product and user performance.
+
+process:
+  eyebrow: How Does Our E-Commerce Process Work?
+  heading: We Are With You From the First Idea to the First Order.
+  steps:
+    - title: Discovery and Analysis
+      description: >-
+        We examine your products, target audience, sales model and current
+        operational process.
+    - title: Site Architecture and Strategy
+      description: >-
+        We plan the category structure, product pages, user flows and the
+        integrations that will be needed.
+    - title: UX/UI Design
+      description: >-
+        We design store screens that are made for your brand, mobile friendly
+        and focused on sales.
+    - title: Development and Integration
+      description: >-
+        We connect payment, shipping, stock, marketplace and any other required
+        systems to the project.
+    - title: Product Entry and Testing
+      description: >-
+        We add the products to the system and test order, payment, e-mail and
+        user flows.
+    - title: Launch and Support
+      description: >-
+        We take the store live and support the maintenance and development work
+        that follows.
+
+projects:
+  eyebrow: Projects We Have Successfully Completed
+  heading: We Added Value to the Digital Sales Journey of Brands.
+  lead: >-
+    With user experience, strong product presentation and sales-driven digital
+    solutions, we helped brands bring their products to their customers more
+    effectively. Contact us to add your brand to these projects as well.
+  items:
+    - eyebrow: Natural Products E-Commerce Experience
+      title: Sera Natura
+      description: >-
+        We created a digital store structure that presents product ingredients,
+        benefits and usage information clearly, builds trust and makes shopping
+        easy.
+    - eyebrow: Fashion and Accessories E-Commerce Design
+      title: Ella Scarf
+      description: >-
+        We designed a shopping experience that highlights product visuals, makes
+        collections easy to explore and supports the premium perception of the
+        brand.
+    - eyebrow: Service and Package Sales System
+      title: Çağla Aytaç
+      description: >-
+        We developed a sales structure where consultancy and device-based
+        treatment packages can be reviewed, supporting online payment and
+        booking processes.
+
+value:
+  eyebrow: Who Is It For?
+  heading: Who Do We Offer E-Commerce Solutions For?
+  bullets:
+    - Brands that want to launch a new online store
+    - Businesses that want to renew their current e-commerce website
+    - Companies that want to move their physical store into digital
+    - Fashion and accessory brands
+    - Cosmetics and personal care brands
+    - Food and natural product businesses
+    - Companies selling corporate products
+    - Brands that want to sell abroad
+    - Businesses that want to sell their services and packages online
+
+sectors:
+  eyebrow: Your Digital Store Is Your Brand's Strongest Point of Sale
+  heading: >-
+    We Design Experiences Where Users Explore With Confidence and Shop With
+    Ease.
+  body: |-
+    A successful e-commerce website is not only a platform where products are listed. Users need to find the product easily, review its details, trust the brand and complete the payment without any trouble.
+
+    At Pixelon, we approach e-commerce projects as a whole, covering design, development, user experience, SEO and digital marketing. We build a mobile friendly e-commerce system that can grow over time and fits your brand's product structure, target audience and sales model.
+
+    We do not just launch an online store, we design the digital sales system of your brand.
+
+cta:
+  eyebrow: Let's Grow Your Digital Store Together
+  heading: Ready for a Stronger E-Commerce Experience?
+  lead: >-
+    Get in touch with the Pixelon team to launch a new e-commerce website, renew
+    your current store or make your sales processes more efficient. Let's
+    analyse your products, target audience and sales goals, and build the
+    e-commerce roadmap for your brand together.
+
+faq:
+  eyebrow: Frequently Asked
+  heading: Frequently Asked Questions About E-Commerce Solutions
+  items:
+    - question: What is included in the e-commerce website service?
+      answer: >-
+        Depending on the scope of the project, design, development, product and
+        category structure, payment, shipping, stock, order, campaign and
+        reporting systems can be included.
+    - question: Can we manage the e-commerce website ourselves?
+      answer: >-
+        Yes. A user friendly admin panel is prepared where you can manage
+        products, prices, stock, orders, campaigns and content.
+    - question: Which payment systems can be integrated?
+      answer: >-
+        Depending on your needs, suitable virtual POS and payment systems used
+        in Turkey and in your target markets can be integrated.
+    - question: Do you provide marketplace integration?
+      answer: >-
+        Depending on the needs of the project, product, stock and order data can
+        be integrated to work with marketplaces.
+    - question: Will the e-commerce website be mobile friendly?
+      answer: >-
+        Yes. All pages and purchase steps are optimised for phone, tablet and
+        desktop devices.
+    - question: Do you offer product photography and content support?
+      answer: >-
+        Yes. Product photography, promotional video, product descriptions and
+        SEO friendly category content can be planned separately.

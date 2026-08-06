@@ -1,5 +1,7 @@
 ---
 import type { PageSection } from '../../content/page-schema';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
+import { t } from '../../lib/ui';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -7,9 +9,13 @@ type Jobs = Extract<PageSection, { type: 'jobs' }>;
 
 interface Props {
   section: Jobs;
+  locale?: Locale;
 }
 
-const { section } = Astro.props;
+const { section, locale = DEFAULT_LOCALE } = Astro.props;
+
+/** İlanın kendi başvuru bağlantısı yoksa o dilin iletişim sayfasına düşülür. */
+const contactPath = localizedPath('contact', locale);
 
 /** Başlıksız bir bölüm listesi olmaması için ilan listesine erişilebilir bir ad veriyoruz. */
 const listLabelId = section.anchor ? `${section.anchor}-jobs-label` : 'jobs-label';
@@ -23,7 +29,7 @@ const listLabelId = section.anchor ? `${section.anchor}-jobs-label` : 'jobs-labe
     {
       section.items.map((item, index) => {
         const meta = [item.location, item.employmentType].filter((value): value is string => Boolean(value));
-        const label = item.href ? 'Başvur' : 'Bize Yazın';
+        const label = t(item.href ? 'jobs.apply' : 'jobs.contact', locale);
 
         return (
           <li class="jobs__row">
@@ -42,7 +48,7 @@ const listLabelId = section.anchor ? `${section.anchor}-jobs-label` : 'jobs-labe
 
               <a
                 class="btn btn--outline btn--sm jobs__cta"
-                href={item.href ?? '/iletisim'}
+                href={item.href ?? contactPath}
                 aria-label={`${item.title} — ${label}`}
               >
                 {label}

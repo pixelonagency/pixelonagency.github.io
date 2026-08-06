@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { validateAnalysisForm, validateContactForm } from './forms';
+import { validateAnalysisForm, validateContactForm, type FormMessages } from './forms';
 
 const validContact = {
   name: 'Ayşe Yılmaz',
@@ -113,5 +113,44 @@ describe('validateAnalysisForm', () => {
     expect(validateAnalysisForm({ ...validAnalysis, website: 'ornek' }).errors.website).toBe(
       'Geçerli bir web sitesi adresi girin.',
     );
+  });
+});
+
+/**
+ * Doğrulama metinleri tarayıcıda gösterilir; sayfa İngilizceyse hata da İngilizce
+ * olmalıdır. Metinler `src/lib/ui.ts` sözlüğünden gelir ve buraya parametreyle geçilir.
+ */
+const english: FormMessages = {
+  name: 'Please enter your first and last name.',
+  email: 'Please enter a valid email address.',
+  phone: 'Please enter a valid phone number.',
+  message: 'Your message must be at least 10 characters long.',
+  consent: 'Please accept the disclosure notice to continue.',
+  company: 'Please enter your company name.',
+  website: 'Please enter a valid website address.',
+  services: 'Please select at least one service.',
+};
+
+describe('locale-aware validation messages', () => {
+  test('validateContactForm uses the supplied message set', () => {
+    const result = validateContactForm({ ...validContact, name: '', message: '' }, english);
+    expect(result.errors.name).toBe(english.name);
+    expect(result.errors.message).toBe(english.message);
+  });
+
+  test('validateAnalysisForm uses the supplied message set', () => {
+    const result = validateAnalysisForm({ ...validAnalysis, company: '', services: [] }, english);
+    expect(result.errors.company).toBe(english.company);
+    expect(result.errors.services).toBe(english.services);
+  });
+
+  test('consent and email messages come from the supplied set too', () => {
+    const result = validateAnalysisForm({ ...validAnalysis, consent: false, email: 'nope' }, english);
+    expect(result.errors.consent).toBe(english.consent);
+    expect(result.errors.email).toBe(english.email);
+  });
+
+  test('falls back to the Turkish defaults when no message set is given', () => {
+    expect(validateContactForm({ ...validContact, name: '' }).errors.name).toBe('Lütfen adınızı ve soyadınızı girin.');
   });
 });

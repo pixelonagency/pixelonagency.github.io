@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
-import { formatTurkishDate, isoDate } from '../../lib/format';
+import { formatDate, isoDate } from '../../lib/format';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -46,7 +46,7 @@ const hasCta = Boolean(section.ctaLabel && section.ctaHref);
               <h3 class="h3 posts__title">{post.data.title}</h3>
               <p class="body-text posts__excerpt">{post.data.excerpt}</p>
               <time class="posts__date" datetime={isoDate(post.data.date)}>
-                {formatTurkishDate(post.data.date)}
+                {formatDate(post.data.date, locale)}
               </time>
             </a>
           </li>

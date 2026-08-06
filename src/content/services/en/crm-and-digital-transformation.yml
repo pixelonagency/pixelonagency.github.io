@@ -1,0 +1,236 @@
+title: CRM and Digital Transformation
+navLabel: CRM and Digital Transformation
+translationKey: crm
+order: 10
+
+seo:
+  title: CRM and Digital Transformation Solutions | Pixelon
+  description: >-
+    Manage your customer, sales, quote, appointment and team processes from a
+    single place with custom CRM software and digital automation built for your
+    brand.
+
+hero:
+  eyebrow: CRM and Digital Transformation
+  headingLines:
+    - "We Turn Scattered Business Processes Into *Smart Systems*."
+  lead: >-
+    From customer requests to sales tracking, from appointments to financial
+    reporting, we develop CRM and management systems built around what your
+    business actually needs.
+  tagline: >-
+    We build digital systems that fit the way you work, stay easy to manage and
+    keep growing along with your business.
+  whatsappMessage: Hello Pixelon, I would like to get information about your CRM and Digital Transformation service.
+
+intro:
+  eyebrow: We Shape the Software Around Your Business, Not the Other Way Around
+  heading: We Bring Your Data, Teams and Processes Together in a Single System.
+  body: >-
+    When customer information sits in separate files, requests get lost in
+    WhatsApp conversations and sales processes are scattered across
+    spreadsheets, you lose both time and opportunities.
+
+
+    At Pixelon we analyze the way your business works and turn your customer,
+    sales, quote, appointment, task, finance and reporting processes into
+    digital systems you can manage from one place. Instead of expecting you to
+    adapt to off-the-shelf software, we let the system take shape around the
+    needs of your business.
+  highlight: >-
+    Our goal is not simply to build a piece of software, but to help your
+    business run in a more organized, faster and measurable way.
+
+why:
+  eyebrow: Why Pixelon?
+  heading: We Handle Software, Design and Business Processes Together.
+  lead: >-
+    Instead of installing a ready-made program and handing it over, we focus on
+    understanding what your business really needs. We plan user experience,
+    operations, technology and reporting within the same system.
+  items:
+    - title: A Structure Built for Your Business
+      description: >-
+        We shape the system around your industry, your team structure and your
+        workflows.
+    - title: User-Friendly Interface
+      description: >-
+        We create screens that simplify complex tasks and that your team can
+        learn quickly.
+    - title: Permissions and Security
+      description: >-
+        We make sure every user can only reach the screens and data related to
+        their own role.
+    - title: Scalable Infrastructure
+      description: >-
+        We develop systems that let you add new users, branches, modules and
+        integrations as your business grows.
+    - title: Measurable Processes
+      description: >-
+        We give you reports to follow sales, request, customer, team and
+        financial performance.
+
+scope:
+  eyebrow: Our CRM and Digital Transformation Services
+  heading: Management Solutions Built Around Your Business Processes
+  items:
+    - title: Customer and Request Management
+      description: >-
+        We gather customer requests coming from your website, WhatsApp, social
+        media, phone and advertising channels on a single screen.
+    - title: Sales and Quote Tracking
+      description: >-
+        We build quote, meeting and payment processes that let you follow
+        prospects through every stage of your sales pipeline.
+    - title: Clinic and Patient Management
+      description: >-
+        We develop clinic CRM systems for managing patient records,
+        appointments, treatments, communication history, payments and doctor
+        workflows.
+    - title: Appointment and Calendar Systems
+      description: >-
+        We create online appointment and calendar solutions that work by
+        customer, staff member, service and branch.
+    - title: Task and Team Management
+      description: >-
+        We digitize team processes such as task assignment, deadlines,
+        responsible staff and project tracking.
+    - title: Finance and Reporting
+      description: >-
+        We prepare reporting screens where you can follow income, expenses,
+        payments, receivables, quotes and invoice data.
+    - title: Admin Panel Development
+      description: >-
+        We design custom admin panels for managing your website, content,
+        projects, forms and user requests.
+    - title: Automation and Integration
+      description: >-
+        We set up automations that connect forms, email, WhatsApp, calendars,
+        advertising and third-party systems to each other.
+
+process:
+  eyebrow: Our Digital Transformation Process
+  heading: From Analysis to a Ready-to-Use System
+  steps:
+    - title: Process Analysis
+      description: >-
+        We review the way you currently work, the tools you use and the
+        operational problems you run into.
+    - title: System Architecture
+      description: >-
+        We plan the modules, user roles, data structure and the connections
+        between processes.
+    - title: UX/UI Design
+      description: >-
+        We design clean, clear screens that match your brand and that your team
+        can use with ease.
+    - title: Development and Integration
+      description: >-
+        We build the approved structure and integrate it with the services and
+        communication channels you need.
+    - title: Testing and Training
+      description: >-
+        We test permissions, data, transactions and user scenarios, then train
+        your team on how to use the system.
+    - title: Support and Development
+      description: >-
+        After the system goes live, we keep adding new modules and features as
+        your needs evolve.
+
+projects:
+  eyebrow: Projects We Have Successfully Completed
+  heading: We Made the Management Processes of Businesses Smarter.
+  lead: >-
+    By analyzing the operational needs of brands, we turned complex business
+    processes into simple, manageable and measurable digital systems. Get in
+    touch with us to see your own business among these projects.
+  items:
+    - eyebrow: Agency Management System
+      title: Pixelon CRM
+      description: >-
+        We developed a comprehensive agency CRM system that makes it possible to
+        manage customer, quote, contract, invoice, payment, expense and
+        reporting processes from a single place.
+    - eyebrow: Patient and Clinic Management System
+      title: Clinic CRM
+      description: >-
+        We designed a multi-branch clinic system that manages patient,
+        treatment, appointment, communication, task, stock and finance processes
+        with different user roles.
+    - eyebrow: Appointment and Business Management
+      title: Mobico
+      description: >-
+        We created user-friendly screens where service businesses can easily
+        manage their appointments, staff, customers and daily operations.
+
+value:
+  eyebrow: What Do We Digitize for Your Business?
+  heading: We Reduce Manual Work and Strengthen Operational Control.
+  bullets:
+    - Customer and prospect records
+    - Sales and quote processes
+    - Appointment and reservation management
+    - Patient and treatment tracking
+    - Project and task management
+    - Contract, invoice and payment records
+    - Stock and product management
+    - Staff and user permissions
+    - Form and request management
+    - Performance and management reports
+    - Automatic notifications and reminders
+    - Multi-branch operation management
+
+sectors:
+  eyebrow: Our Industry Experience
+  heading: Who Do We Build CRM Solutions For?
+  body: |-
+    Healthcare organizations and clinics
+    Health tourism companies
+    Digital and creative agencies
+    Businesses in the service sector
+    Construction and real estate companies
+    Sales teams
+    Businesses that work with appointments
+    Multi-branch companies
+    E-commerce and customer service teams
+    SMEs that want to digitize their operations
+
+cta:
+  eyebrow: Let's Digitize Your Business Together
+  heading: Ready for a More Organized, Faster and Measurable Business System?
+  lead: >-
+    If you are still managing your customer, sales, appointment or operational
+    processes across separate apps and files, get in touch with the Pixelon
+    team. Let's analyze your needs and build a CRM and digital transformation
+    roadmap tailored to your business.
+
+faq:
+  eyebrow: Frequently Asked
+  heading: Frequently Asked Questions About CRM and Digital Transformation
+  items:
+    - question: What is a CRM system?
+      answer: >-
+        CRM is a customer relationship management system that lets you manage
+        customer information, requests, meetings, quotes and sales processes
+        from a single place.
+    - question: Do you build a ready-made CRM or a custom one?
+      answer: >-
+        Depending on what your business needs, existing systems can be
+        integrated or a completely custom CRM software can be developed for you.
+    - question: Which modules can be added to a CRM system?
+      answer: >-
+        Customer, sales, quote, appointment, task, finance, stock, reporting,
+        user permission and communication modules can be added according to the
+        project.
+    - question: Does the system support different user roles?
+      answer: >-
+        Yes. Different user roles and access permissions such as administrator,
+        sales, accounting, doctor, assistant or call center can be created.
+    - question: Can existing data be transferred to the system?
+      answer: >-
+        Once the format and condition of your current data have been reviewed,
+        the migration of suitable records to the new system can be planned.
+    - question: Can the CRM be used on mobile devices?
+      answer: >-
+        Yes. The systems can be developed with a responsive structure that works
+        on phones, tablets and desktop computers.

@@ -1,0 +1,124 @@
+seo:
+  title: Digital Marketing Services | Pixelon 360° Digital Agency
+  description: >-
+    Explore our web design, social media, digital advertising, SEO, brand design,
+    e-commerce, production and health tourism solutions.
+
+whatsappMessage: Hello Pixelon, I am writing from the Services page.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: 360° Digital Solutions
+    breadcrumb:
+      - label: Home
+        href: /en
+      - label: Services
+    headingLines:
+      - "Let's *Grow* Your Brand Together!"
+    lead: >-
+      From web design to digital advertising, from social media management to
+      brand identity, we bring every solution your brand needs in the digital
+      world under one roof. Rather than offering every brand the same service
+      package, Pixelon builds a digital roadmap shaped by your goals, your
+      industry and your audience.
+    ctas:
+      - label: Reach Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Explore Our Projects
+        href: /en/projects
+        variant: outline
+
+  - type: text
+    background: light
+    eyebrow: A 360° Approach
+    heading: 360° Digital Solutions for Your Brand
+    body: >-
+      We bring strategy, design, content, technology and performance together
+      around the same goal. That way your brand communicates consistently,
+      powerfully and with a clear focus on results across every digital channel.
+
+  - type: services
+    background: dark
+    anchor: hizmetler
+    eyebrow: What Do We Offer?
+    heading: Our Services
+
+  - type: cards
+    background: light
+    eyebrow: More Than an Agency
+    heading: Why Pixelon?
+    items:
+      - title: Strategy Built for Your Brand
+        description: >-
+          Instead of off-the-shelf packages, we create solutions that match your
+          brand's needs and goals.
+      - title: One Team for the Whole Process
+        description: >-
+          We manage strategy, design, content, development and advertising in
+          step with one another.
+      - title: Measurable Results
+        description: >-
+          We track traffic, engagement, enquiries, sales and conversion data to
+          keep improving our work.
+      - title: Long-Term Partnership
+        description: >-
+          We do not just deliver projects; we support your growth as your brand's
+          needs evolve.
+
+  - type: text
+    background: dark
+    eyebrow: Our Industry Experience
+    heading: Which Industries Do We Work With?
+    body: >-
+      We deliver tailored digital solutions for healthcare and clinic brands,
+      health tourism companies, e-commerce brands, construction and real estate
+      firms, and SMEs and corporate businesses in the service sector.
+
+  - type: steps
+    background: light
+    eyebrow: Step by Step
+    heading: How We Work
+    items:
+      - title: Discovery
+        description: We listen to your brand, your needs and your goals.
+      - title: Strategy
+        description: We build your roadmap through industry and audience analysis.
+      - title: Production
+        description: We prepare the content, design, development and campaign work.
+      - title: Launch and Optimisation
+        description: >-
+          We take the project live, track the results and keep improving them.
+
+  - type: cta
+    background: dark
+    anchor: iletisim
+    eyebrow: Let's Decide Together
+    heading: Let's Find the Right Solution for Your Brand Together
+    lead: >-
+      Even if you are not sure which service you need, you can simply tell us
+      about your brand and your goals. Let the Pixelon team analyse your needs
+      and build the digital solution plan that fits you.
+    ctas:
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Call Us Now
+        href: tel:+905065229034
+        variant: outline
+      - label: Fill In the Contact Form
+        href: /en/contact
+        variant: outline
+
+  - type: contactInfo
+    background: dark
+    items:
+      - label: Phone and WhatsApp
+        value: +90 506 522 90 34
+        href: tel:+905065229034
+      - label: E-mail
+        value: info@pixelon.com.tr
+        href: mailto:info@pixelon.com.tr
+      - label: Location
+        value: Kadikoy, Istanbul

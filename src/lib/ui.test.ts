@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import { LOCALES } from './i18n';
-import { buildPrimaryNav, serviceHref, t, UI_KEYS } from './ui';
+import { buildPrimaryNav, formMessages, serviceHref, t, UI_KEYS } from './ui';
 
 describe('t — arayüz sözlüğü', () => {
   test('istenen dildeki dizeyi döner', () => {
@@ -22,6 +22,49 @@ describe('t — arayüz sözlüğü', () => {
   test('bilinmeyen anahtarda anahtarın kendisini döner (sessizce boş bırakmaz)', () => {
     // @ts-expect-error — kasıtlı geçersiz anahtar
     expect(t('yok.boyle.bir.anahtar', 'tr')).toBe('yok.boyle.bir.anahtar');
+  });
+
+  /**
+   * Dil değiştirici bilinçli istisnadır: İngilizce sayfada gösterilen etiket, gidilecek
+   * dilin KENDİ adıdır ("Türkçeye geç") — çevrilseydi amacını yitirirdi.
+   */
+  const DIL_ADI_ANAHTARLARI: readonly string[] = ['lang.switchTo'];
+
+  test('İngilizce karşılıklarda Türkçe harf kalmaz', () => {
+    const kirli = UI_KEYS.filter((key) => !DIL_ADI_ANAHTARLARI.includes(key) && /[çğıöşüÇĞİÖŞÜ]/.test(t(key, 'en')));
+    expect(kirli).toEqual([]);
+  });
+
+  test('İngilizce karşılıklarda eğik tırnak yerine düz tırnak kullanılır', () => {
+    const kirli = UI_KEYS.filter((key) => /[‘’“”]/.test(t(key, 'en')));
+    expect(kirli).toEqual([]);
+  });
+});
+
+describe('formMessages', () => {
+  test('her dilde sekiz alanın da metni doludur', () => {
+    for (const locale of LOCALES) {
+      const messages = formMessages(locale);
+      expect(Object.keys(messages).sort()).toEqual([
+        'company',
+        'consent',
+        'email',
+        'message',
+        'name',
+        'phone',
+        'services',
+        'website',
+      ]);
+      for (const value of Object.values(messages)) expect(value.length).toBeGreaterThan(0);
+    }
+  });
+
+  test('diller birbirinden farklı metinler döner', () => {
+    expect(formMessages('en').name).not.toBe(formMessages('tr').name);
+  });
+
+  test('sözlükteki hata anahtarlarıyla aynı metni verir', () => {
+    expect(formMessages('en').services).toBe(t('form.error.services', 'en'));
   });
 });
 

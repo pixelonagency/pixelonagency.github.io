@@ -1,23 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { DEFAULT_LOCALE, localizedPath } from '../lib/i18n';
+import { t } from '../lib/ui';
+
+/*
+ * 404 tek bir statik dosyadır (`/404.html`) ve sunucu onu her yol için döner —
+ * dolayısıyla bir dil seçmek zorundayız ve bu varsayılan dildir. Metinler yine de
+ * sözlükten gelir; ileride `/en/404` üretilmek istenirse tek yapılacak bu bileşeni
+ * dil başına basmaktır.
+ */
+const locale = DEFAULT_LOCALE;
 ---
 
 <BaseLayout
-  title="Sayfa Bulunamadı | Pixelon"
-  description="Aradığınız sayfa taşınmış veya kaldırılmış olabilir. Pixelon ana sayfasından devam edebilirsiniz."
+  title={t('error.notFoundSeoTitle', locale)}
+  description={t('error.notFoundSeoDescription', locale)}
+  {locale}
   noindex
 >
   <section class="notfound">
     <div class="container notfound__inner">
       <p class="eyebrow">404</p>
-      <h1 class="h1">Aradığınız sayfayı bulamadık.</h1>
-      <p class="lead notfound__lead">
-        Sayfa taşınmış, adı değişmiş veya kaldırılmış olabilir. Aşağıdaki bağlantılardan devam edebilirsiniz.
-      </p>
+      <h1 class="h1">{t('error.notFoundTitle', locale)}</h1>
+      <p class="lead notfound__lead">{t('error.notFoundBody', locale)}</p>
       <div class="notfound__ctas">
-        <a href="/" class="btn btn--primary">Ana Sayfa</a>
-        <a href="/hizmetlerimiz" class="btn btn--outline">Hizmetlerimiz</a>
-        <a href="/iletisim" class="btn btn--outline">İletişim</a>
+        <a href={localizedPath('home', locale)} class="btn btn--primary">{t('nav.home', locale)}</a>
+        <a href={localizedPath('services', locale)} class="btn btn--outline">{t('nav.services', locale)}</a>
+        <a href={localizedPath('contact', locale)} class="btn btn--outline">{t('nav.contact', locale)}</a>
       </div>
     </div>
   </section>

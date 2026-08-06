@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
+import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -10,9 +11,10 @@ type Team = Extract<PageSection, { type: 'team' }>;
 
 interface Props {
   section: Team;
+  locale?: Locale;
 }
 
-const { section } = Astro.props;
+const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
 const entries = await getCollection('team');
 
@@ -26,12 +28,19 @@ const team = [...entries]
     photo: entry.data.photo as ImageMetadata | undefined,
   }));
 
-/** Fotoğrafı olmayan üyeler için baş harflerden monogram — "Fatih Demir" → "FD". */
+/**
+ * Fotoğrafı olmayan üyeler için baş harflerden monogram — "Fatih Demir" → "FD".
+ *
+ * Büyük harfe çevirme dile duyarlıdır: `tr-TR` "i" harfini "İ" yapar, bu da İngilizce
+ * bir isimde ("Ian") yanlış olur. Bu yüzden sayfanın dili kullanılır.
+ */
+const CASE_TAGS: Record<Locale, string> = { tr: 'tr-TR', en: 'en-GB' };
+
 function initials(name: string): string {
   const words = name.trim().split(/\s+/).filter(Boolean);
   const letters =
     words.length > 1 ? `${words[0]?.[0] ?? ''}${words[words.length - 1]?.[0] ?? ''}` : (words[0] ?? '').slice(0, 2);
-  return letters.toLocaleUpperCase('tr-TR');
+  return letters.toLocaleUpperCase(CASE_TAGS[locale]);
 }
 ---
 

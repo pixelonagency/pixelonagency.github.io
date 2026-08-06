@@ -1,0 +1,388 @@
+seo:
+  title: About Us | Pixelon 360° Digital Marketing Agency
+  description: >-
+    Get to know Pixelon. We bring strategy, design, technology and performance
+    together to deliver 360° digital marketing solutions for brands.
+
+whatsappMessage: Hello Pixelon, I am writing from the About Us page.
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: Your 360° Digital Marketing Partner
+    breadcrumb:
+      - label: Home
+        href: /en
+      - label: About Us
+    headingLines:
+      - "We Are the *Pixelon* Team!"
+    lead: >-
+      We are a 360° digital marketing agency that brings strategy, creativity,
+      technology and performance together around a single goal. We help brands do
+      more than simply appear online; we connect them with the right audience,
+      build trust and drive sustainable growth.
+    tagline: Strategy ✦ Creativity ✦ Technology ✦ Performance ✦ Design ✦ Growth
+    ctas:
+      - label: Explore Our Projects
+        href: /en/projects
+        variant: primary
+      - label: Get in Touch With Us
+        href: /en/contact
+        variant: outline
+    imageAlt: >-
+      Pixelon digital marketing team - pixel-art illustration representing social
+      engagement, speed and a community-driven approach
+
+  # 2 — WHAT IS PIXELON
+  - type: text
+    background: light
+    eyebrow: What Is Pixelon?
+    heading: We Turn Ideas Into Brands, and Brands Into Powerful Digital Experiences.
+    body: |-
+      Pixelon is a 360° digital marketing agency that approaches every digital need of a brand from a single perspective, combining strategy and creativity with technology. We build tailor-made solutions across web design, social media management, digital advertising, SEO, brand and corporate identity, UX/UI design, e-commerce, video production, health tourism and digital transformation.
+
+      For us, however, digital marketing is never just building a website, publishing a social media post or launching an ad campaign. We treat every piece of work as part of one connected system, shaped by the brand's goals, audience, industry and growth plans. From healthcare and clinic brands to health tourism companies, from e-commerce ventures to construction and real estate firms, we accompany brands across many industries on their digital transformation journey.
+
+      At Pixelon, every idea starts with a strategy, every design with a purpose and every campaign with a measurable goal.
+
+  # 3 — WHAT WE DO
+  - type: bullets
+    background: dark
+    eyebrow: How Do We Work?
+    heading: Beyond Design, We Build a Digital System That Works for Your Brand.
+    lead: >-
+      We do not treat a brand's different digital needs as separate, disconnected
+      jobs. We plan your website, social media, advertising, content and brand
+      identity as parts of the same strategy. We start by understanding your
+      brand, your industry and your audience. Then we build a roadmap that fits
+      your needs and manage strategy, content, design, development and
+      performance within a single team. This approach makes sure your brand
+      speaks the same language across every digital channel, offers a consistent
+      experience to its users and gets stronger results from its marketing
+      investment.
+    items:
+      - We listen to your brand.
+      - We analyse your audience.
+      - We build your strategy.
+      - We design and develop.
+      - We measure the results.
+      - We keep improving.
+
+  # 4 — WHY PIXELON
+  - type: cards
+    background: light
+    eyebrow: More Than an Agency
+    heading: Why Pixelon?
+    lead: >-
+      We want to be more than a team that simply delivers services; we aim to be
+      a long-term business partner that understands your goals and walks with you
+      through your growth journey.
+    columns: 3
+    items:
+      - title: Strategy and Result-Driven Approach
+        description: |-
+          Before jumping into creative ideas, we ask the right questions. We analyse your brand's goals, your users' expectations and your industry dynamics to build a strategy you can actually put into practice.
+
+          We bring creative ideas together with measurable goals.
+      - title: Solutions Built for Your Brand
+        description: |-
+          Every brand has its own story, audience and needs. Instead of reaching for ready-made templates, we develop solutions shaped by your brand's character and business goals.
+
+          We design work that belongs to your brand, not to a template.
+      - title: Design and Technology Together
+        description: |-
+          We know a strong digital experience is about far more than looking good. We back our designs with speed, usability, performance and conversion goals.
+
+          We combine aesthetics, functionality and technology in one experience.
+      - title: A 360° Digital Marketing Approach
+        description: |-
+          We manage web design, social media, digital advertising, SEO, content and brand communication under one roof, so every channel works towards the same goal.
+
+          We manage all your digital needs with one team and one shared strategy.
+      - title: Constant Communication, Transparent Process
+        description: |-
+          We stay in regular contact with our clients at every stage of a project and share the work we do and the results we achieve in clear, understandable terms.
+
+          We plan the process together and share progress openly.
+      - title: Sustainable Partnerships
+        description: |-
+          Our aim is not simply to finish a project, but to build a long-term growth partnership that responds to your brand's changing needs.
+
+          We do not just deliver a project - we grow alongside your brand.
+
+  # 5a — VISION
+  - type: text
+    background: dark
+    eyebrow: How We See the Future
+    heading: Building Strong, Original and Sustainable Brands in the Digital World
+    body: >-
+      Our vision is to bring strategy, creativity and technology together to
+      build digital systems that answer not only a brand's needs today, but its
+      growth goals for tomorrow. We aim to be a reliable, innovative and
+      result-driven digital partner for brands operating in Turkey and in
+      international markets.
+
+  # 5b — MISSION
+  - type: text
+    background: dark
+    eyebrow: How We Create Value
+    heading: Turning a Brand's Potential Into Visible and Measurable Results
+    body: >-
+      Our mission is to understand brands accurately, help them build strong
+      connections with their audiences and turn their digital marketing
+      investment into sustainable growth. In every project we look for the right
+      balance between aesthetics, user experience, technology and performance so
+      the brand gains real value.
+
+  # 6 — OUR VALUES
+  - type: cards
+    background: light
+    eyebrow: Our Working Culture
+    heading: These Values Sit at the Heart of Everything We Create
+    columns: 3
+    items:
+      - title: Creativity
+        description: >-
+          We generate new ideas and look for original ways to set brands apart
+          from the rest.
+      - title: Strategic Thinking
+        description: >-
+          We care that every decision serves the brand's goals and its users'
+          expectations.
+      - title: Transparency
+        description: >-
+          We share our processes openly and build communication with our clients
+          on trust.
+      - title: Responsibility
+        description: >-
+          We take ownership of every project we accept as if it were part of our
+          own brand.
+      - title: Continuous Improvement
+        description: >-
+          We follow the changing technologies, platforms and user habits of the
+          digital world closely.
+      - title: Collaboration
+        description: >-
+          We believe the strongest results come when client and agency work
+          towards the same goal.
+
+  # 7 — APPROACH
+  - type: steps
+    background: dark
+    eyebrow: The Pixelon Approach
+    heading: Not a Single Service, but Connected Solutions That Feed Each Other
+    lead: >-
+      We do not try to solve the challenges your brand faces online through a
+      single channel. We treat every touchpoint as part of the same strategy.
+    items:
+      - title: Strategy
+        description: >-
+          We analyse your brand, your competitors, your audience and your growth
+          opportunities.
+      - title: Design
+        description: >-
+          We design original, user-focused experiences that reflect your brand's
+          character.
+      - title: Technology
+        description: >-
+          We turn designs into fast, secure, manageable and scalable digital
+          systems.
+      - title: Content
+        description: >-
+          We produce content that captures your audience's attention, builds
+          trust and drives action.
+      - title: Performance
+        description: >-
+          We track campaigns, user behaviour and conversions to keep improving
+          the work.
+      - title: Growth
+        description: >-
+          Instead of short-term visibility, we build systems that support your
+          brand's long-term growth.
+
+  # 8 — IN NUMBERS
+  - type: stats
+    background: light
+    eyebrow: From Experience to Results
+    heading: We Add Value to the Digital Transformation of Brands.
+    items:
+      - value: 15
+        suffix: '+'
+        label: Years of industry experience
+        description: >-
+          Years of hands-on experience in design, digital marketing, brand
+          communication and technology.
+      - value: 180
+        suffix: '+'
+        label: Completed projects
+        description: >-
+          Digital projects successfully delivered for brands across many
+          different industries.
+      - value: 120
+        suffix: '+'
+        label: Success stories
+        description: >-
+          Businesses whose digital visibility, brand communication and marketing
+          performance we have strengthened.
+      - value: 50
+        suffix: '+'
+        label: Brand partnerships
+        description: >-
+          Brands we work with in Turkey and in international markets.
+      - value: 500
+        suffix: '+'
+        label: Creative ideas and cups of coffee
+        description: >-
+          Because behind good ideas there is always research, teamwork, curiosity
+          and plenty of coffee.
+    ctas:
+      - label: ☕ Let's Meet Over a Coffee
+        href: /en/contact
+        variant: primary
+
+  # 9 — AREAS OF EXPERTISE
+  - type: cards
+    background: dark
+    eyebrow: Our Industry Experience
+    heading: >-
+      We Understand Different Industries and Build a Dedicated Roadmap for Every
+      Brand.
+    columns: 3
+    items:
+      - title: Healthcare and Clinic Brands
+        description: >-
+          We create digital solutions that support patient trust, expert
+          communication and appointment conversions.
+      - title: Health Tourism Companies
+        description: >-
+          We support global growth with multilingual content, international
+          advertising and patient communication processes.
+      - title: E-Commerce Brands
+        description: >-
+          From product presentation to user experience, from advertising to sales
+          conversion, we grow e-commerce.
+      - title: Construction and Real Estate
+        description: >-
+          We reflect the credibility, investment value and corporate strength of
+          projects accurately in the digital space.
+      - title: SMEs and Corporate Services
+        description: >-
+          We help brands look more professional, reach the right audience and
+          grow sustainably.
+      - title: Education and Consultancy
+        description: >-
+          We build structures that make your expertise visible, create trust and
+          increase enquiry conversions.
+    ctas:
+      - label: Discover the solution built for your brand →
+        href: /en/contact
+        variant: outline
+
+  # 10 — TEAM
+  # Mirrors the TR source: a two-column text block, not a team card/photo grid.
+  # `type: team` is fed by the (empty) team collection, so TeamSection rendered
+  # nothing at all — hence `text`.
+  - type: text
+    background: light
+    eyebrow: Different Disciplines, One Shared Goal
+    heading: Behind Every Project There Is a Team That Thinks Together
+    body: |-
+      Pixelon is built around a team where different specialisms - strategy, design, content, advertising, development and production - meet around the same goal. We see every project not as the job of one department, but as the shared responsibility of the whole team. Designer, content creator, advertising specialist and developer all work together towards the same brand goal.
+
+      Thanks to this collaboration, we deliver projects that are not just visually appealing, but technically strong, user-friendly, right for the audience and capable of producing results.
+
+      We bring different perspectives to the same table and turn strong ideas into reality together.
+
+  # 11 — GLOBAL
+  - type: text
+    background: dark
+    eyebrow: From Local to Global
+    heading: We Connect Brands With Their Audiences in Different Markets.
+    body: |-
+      Alongside Turkey, Pixelon develops projects for brands operating in European and African markets. Taking into account the user habits, communication styles and market dynamics of each country, we build multilingual websites, international ad campaigns and content strategies tailored to the target market.
+
+      We create in Istanbul and connect brands with audiences all around the world.
+
+  # 12 — PARTNERS
+  - type: bullets
+    background: light
+    heading: Strong Technologies, Strong Digital Experiences
+    lead: >-
+      We rely on the leading platforms and technologies of the digital world both
+      to manage our projects and to help brands reach their audiences.
+    items:
+      - Google
+      - Meta
+      - Instagram
+      - Facebook
+      - WhatsApp
+      - YouTube
+      - TikTok
+      - LinkedIn
+      - Yandex
+
+  # 13 — CTA + CONTACT
+  - type: cta
+    background: dark
+    anchor: iletisim
+    eyebrow: The Next Success Story Could Be Yours
+    heading: Let's Grow Your Brand Together.
+    lead: >-
+      Whether you need a new website, an effective digital ad campaign, strong
+      social media communication or a comprehensive digital transformation
+      project, meet the Pixelon team. Let us listen to your brand, understand
+      your needs and build the roadmap to your goals together.
+    ctas:
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Call Us Now
+        href: tel:+905065229034
+        variant: outline
+      - label: Tell Us About Your Project
+        href: mailto:info@pixelon.com.tr
+        variant: outline
+
+  - type: contactInfo
+    background: dark
+    items:
+      - label: Phone and WhatsApp
+        value: +90 506 522 90 34
+        href: tel:+905065229034
+      - label: E-mail
+        value: info@pixelon.com.tr
+        href: mailto:info@pixelon.com.tr
+      - label: Location
+        value: Kadikoy, Istanbul
+
+  # 14 — FAQ
+  - type: faq
+    background: light
+    eyebrow: Frequently Asked Questions
+    heading: Frequently Asked Questions About Pixelon
+    items:
+      - question: What services does Pixelon offer?
+        answer: >-
+          Pixelon offers web design and development, social media management,
+          digital advertising, SEO, brand and corporate identity, UX/UI design,
+          e-commerce, video production, health tourism and CRM solutions.
+      - question: Which industries does Pixelon work with?
+        answer: >-
+          We work with healthcare and clinic brands, health tourism companies,
+          e-commerce brands, construction and real estate firms, SMEs and
+          corporate service brands.
+      - question: Does Pixelon work with brands outside Turkey?
+        answer: >-
+          Yes. We serve brands in different countries with multilingual websites,
+          international ad management, content production and digital marketing
+          tailored to the target market.
+      - question: How does a project with Pixelon begin?
+        answer: >-
+          The process starts with an initial conversation to understand your
+          brand and your needs. We then plan the needs analysis, strategy,
+          proposal, design, implementation and optimisation stages.
+      - question: How can I get in touch with Pixelon?
+        answer: >-
+          You can message us on WhatsApp at +90 506 522 90 34, give us a call or
+          fill in the contact form.

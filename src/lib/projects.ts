@@ -36,7 +36,10 @@ export function sortProjects<T extends ProjectLike>(projects: T[]): T[] {
   });
 }
 
-/** Kategori filtre çubuğunu üretir: başta "Tümü", ardından ilk görülme sırasına göre kategoriler. */
+/**
+ * Kategori filtre çubuğunu üretir: başta "Tümü", ardından ilk görülme sırasına göre kategoriler.
+ * `labels` içinde `tumu` anahtarı varsa "Tümü" etiketi de o dile göre değişir.
+ */
 export function buildCategoryFilters(projects: ProjectLike[], labels: Record<string, string> = {}): CategoryFilter[] {
   const counts = new Map<string, number>();
   for (const project of projects) {
@@ -44,7 +47,7 @@ export function buildCategoryFilters(projects: ProjectLike[], labels: Record<str
   }
 
   return [
-    { slug: ALL_CATEGORY, label: ALL_LABEL, count: projects.length },
+    { slug: ALL_CATEGORY, label: labels[ALL_CATEGORY] ?? ALL_LABEL, count: projects.length },
     ...[...counts.entries()].map(([slug, count]) => ({
       slug,
       label: labels[slug] ?? titleCase(slug),

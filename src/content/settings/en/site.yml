@@ -1,0 +1,26 @@
+phone: '+90 506 522 90 34'
+email: info@pixelon.com.tr
+address: Kadıköy, İstanbul
+whatsapp:
+  number: '905065229034'
+  defaultMessage: Hello Pixelon, I would like to learn more about your services.
+social:
+  - label: Instagram
+    short: IG
+    url: https://www.instagram.com/pixelonajans
+  - label: Facebook
+    short: FB
+    url: https://www.facebook.com/pixelonajans
+legalLinks:
+  - label: KVKK Privacy Notice
+    href: /kvkk-aydinlatma-metni
+  - label: Privacy Policy
+    href: /gizlilik-politikasi
+  - label: Cookie Policy
+    href: /cerez-politikasi
+  - label: Terms of Use
+    href: /kullanim-kosullari
+footerIntro: >-
+  Pixelon helps brands grow in the digital world with social media, web design, digital
+  advertising, SEO, brand design and performance marketing solutions.
+copyright: © 2026 Pixelon. All rights reserved.

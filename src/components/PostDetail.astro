@@ -4,7 +4,7 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { formatTurkishDate, isoDate, readingTime } from '../lib/format';
+import { formatDate, isoDate, readingTime } from '../lib/format';
 import { localizedPath, type Locale } from '../lib/i18n';
 import { t } from '../lib/ui';
 
@@ -24,13 +24,19 @@ const coverImage: ImageMetadata | undefined =
   cover && typeof cover === 'object' && 'src' in cover ? (cover as ImageMetadata) : undefined;
 ---
 
-<BaseLayout title={seo?.title ?? `${title} | Pixelon Blog`} description={seo?.description ?? excerpt} ogType="article">
+<BaseLayout
+  title={seo?.title ?? `${title} | Pixelon Blog`}
+  description={seo?.description ?? excerpt}
+  ogType="article"
+  {locale}
+  {alternates}
+>
   <article class="post">
     <div class="container post__inner">
-      <nav class="post__crumbs" aria-label="Site haritası">
-        <a href="/">Ana Sayfa</a>
+      <nav class="post__crumbs" aria-label={t('nav.breadcrumb', locale)}>
+        <a href={localizedPath('home', locale)}>{t('nav.home', locale)}</a>
         <span aria-hidden="true">/</span>
-        <a href="/blog">Blog</a>
+        <a href={localizedPath('blog', locale)}>{t('nav.blog', locale)}</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">{title}</span>
       </nav>
@@ -42,9 +48,9 @@ const coverImage: ImageMetadata | undefined =
       <div class="post__meta">
         <span>{author}</span>
         <span aria-hidden="true">•</span>
-        <time datetime={isoDate(date)}>{formatTurkishDate(date)}</time>
+        <time datetime={isoDate(date)}>{formatDate(date, locale)}</time>
         <span aria-hidden="true">•</span>
-        <span>{minutes} dk okuma</span>
+        <span>{minutes} {t('blog.readingTime', locale)}</span>
       </div>
 
       {
@@ -59,7 +65,7 @@ const coverImage: ImageMetadata | undefined =
         <Content />
       </div>
 
-      <a href="/blog" class="btn btn--outline post__back">← Tüm Yazılar</a>
+      <a href={localizedPath('blog', locale)} class="btn btn--outline post__back">{t('cta.allPosts', locale)}</a>
     </div>
   </article>
 </BaseLayout>

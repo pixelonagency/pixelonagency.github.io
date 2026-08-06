@@ -3,6 +3,8 @@ import { getCollection, getEntry } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
 import CtaButton from '../CtaButton.astro';
 import SectionHead from '../SectionHead.astro';
+import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
+import { formMessages, t } from '../../lib/ui';
 import { buildWhatsAppUrl } from '../../lib/whatsapp';
 import FormField from './FormField.astro';
 import Section from './Section.astro';
@@ -11,13 +13,20 @@ type Form = Extract<PageSection, { type: 'form' }>;
 
 interface Props {
   section: Form;
+  locale?: Locale;
 }
 
-const { section } = Astro.props;
+const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
-// Konu / hizmet seçenekleri içerikten üretilir — hiçbir hizmet adı gömülü değildir.
-const services = await getCollection('services');
-const serviceTitles = services.sort((a, b) => a.data.order - b.data.order).map((entry) => entry.data.title);
+/*
+ * Konu / hizmet seçenekleri içerikten üretilir — hiçbir hizmet adı gömülü değildir.
+ * Girdi kimliği `<locale>/<slug>`; bu dilde hizmet yoksa varsayılan dildekiler listelenir
+ * (aksi halde İngilizce formda Türkçe hizmet adları da görünürdü).
+ */
+const allServices = await getCollection('services');
+const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
+const services = inLocale.length > 0 ? inLocale : allServices.filter((e) => e.id.startsWith(`${DEFAULT_LOCALE}/`));
+const serviceTitles = [...services].sort((a, b) => a.data.order - b.data.order).map((entry) => entry.data.title);
 
 /**
  * Gönderim Web3Forms üzerinden yapılır: sabit uç nokta + gövdede `access_key`.
@@ -36,31 +45,31 @@ const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
  */
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
 
-const settingsEntry = await getEntry('settings', 'site');
-const whatsapp = settingsEntry?.data.whatsapp;
+const settingsEntry = await getEntry('settings', `${locale}/site`);
+const fallbackSettings = await getEntry('settings', `${DEFAULT_LOCALE}/site`);
+const whatsapp = (settingsEntry ?? fallbackSettings)?.data.whatsapp;
 const whatsappUrl = whatsapp ? buildWhatsAppUrl(whatsapp.number, whatsapp.defaultMessage) : '';
 
 const isAnalysis = section.formId === 'analysis';
-const submitLabel = section.submitLabel ?? (isAnalysis ? 'Ücretsiz Analiz Talep Et' : 'Mesajı Gönder');
+const submitLabel = section.submitLabel ?? t(isAnalysis ? 'form.submit.analysis' : 'form.submit.contact', locale);
 
 // Web3Forms `subject` alanını e-postanın konu satırı olarak kullanır.
-const mailSubject = isAnalysis ? 'Pixelon — Yeni Ücretsiz Analiz Talebi' : 'Pixelon — Yeni İletişim Formu Mesajı';
+const mailSubject = t(isAnalysis ? 'form.subject.analysis' : 'form.subject.contact', locale);
 
-const successHeading = section.successHeading ?? 'Talebiniz Bize Ulaştı!';
-const successBody =
-  section.successBody ?? 'Paylaştığınız bilgileri inceleyerek en kısa sürede sizinle iletişime geçeceğiz.';
-const errorHeading = section.errorHeading ?? 'Form Gönderilemedi';
-const errorBody =
-  section.errorBody ??
-  'Teknik bir sorun oluştu. Lütfen tekrar deneyin veya doğrudan WhatsApp üzerinden bizimle iletişime geçin.';
+const successHeading = section.successHeading ?? t('form.successHeading', locale);
+const successBody = section.successBody ?? t('form.successBody', locale);
+const errorHeading = section.errorHeading ?? t('form.errorHeading', locale);
+const errorBody = section.errorBody ?? t('form.errorBody', locale);
 
-const consentText = isAnalysis
-  ? "Kişisel verilerimin ücretsiz analiz talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla işlenmesine ilişkin KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum."
-  : "Kişisel verilerimin iletişim talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla işlenmesine ilişkin KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum.";
+const consentText = t(isAnalysis ? 'form.consent.analysis' : 'form.consent.contact', locale);
+const privacyNote = t(isAnalysis ? 'form.privacy.analysis' : 'form.privacy.contact', locale);
 
-const privacyNote = isAnalysis
-  ? 'Bilgileriniz yalnızca analiz talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla kullanılacaktır.'
-  : 'Bilgileriniz yalnızca talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla kullanılacaktır.';
+/*
+ * Doğrulama tarayıcıda çalışır ve hata metinleri sayfanın dilinde olmalıdır. Sözlüğü
+ * istemciye taşımak yerine yalnızca bu formun ihtiyaç duyduğu metinler `data-messages`
+ * ile gömülür; aşağıdaki script onu okuyup `validate*Form`'a geçirir.
+ */
+const messagesJson = JSON.stringify(formMessages(locale));
 ---
 
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
@@ -72,7 +81,7 @@ const privacyNote = isAnalysis
     <p class="form-alert__body">{errorBody}</p>
     {
       whatsappUrl && (
-        <CtaButton label="WhatsApp'tan Yazın" href={whatsappUrl} variant="outline" icon="whatsapp" external />
+        <CtaButton label={t('cta.whatsapp', locale)} href={whatsappUrl} variant="outline" icon="whatsapp" external />
       )
     }
   </div>
@@ -108,52 +117,94 @@ const privacyNote = isAnalysis
     aria-label={section.heading}
     data-form={section.formId}
     data-endpoint={WEB3FORMS_ENDPOINT}
+    data-busy-label={t('form.sending', locale)}
+    data-messages={messagesJson}
     data-reveal
     data-reveal-index="0"
   >
     {/* Web3Forms zorunlu alanları — gövdeyle birlikte gönderilir. */}
     <input type="hidden" name="access_key" value={accessKey} />
     <input type="hidden" name="subject" value={mailSubject} />
-    <input type="hidden" name="from_name" value="Pixelon Web Sitesi" />
+    <input type="hidden" name="from_name" value={t('form.fromName', locale)} />
 
     {/* Bal küpü: Web3Forms'un sunucu tarafında denetlediği alan adı. */}
     <label class="visually-hidden" aria-hidden="true">
-      Bu alanı boş bırakın
+      {t('form.honeypot', locale)}
       <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
     </label>
 
     <div class="form__grid">
-      <FormField name="name" label="Adınız ve Soyadınız" required placeholder="Ad Soyad" />
-      <FormField name="email" label="E-posta Adresiniz" type="email" required placeholder="ornek@sirketiniz.com" />
+      <FormField
+        name="name"
+        label={t('form.field.name', locale)}
+        required
+        placeholder={t('form.placeholder.name', locale)}
+        {locale}
+      />
+      <FormField
+        name="email"
+        label={t('form.field.email', locale)}
+        type="email"
+        required
+        placeholder={t('form.placeholder.email', locale)}
+        {locale}
+      />
 
       {
         isAnalysis ? (
           <>
-            <FormField name="phone" label="Telefon Numaranız" type="tel" required placeholder="+90 5xx xxx xx xx" />
-            <FormField name="company" label="Şirket / Marka Adı" required placeholder="Şirketinizin adı" />
+            <FormField
+              name="phone"
+              label={t('form.field.phone', locale)}
+              type="tel"
+              required
+              placeholder={t('form.placeholder.phone', locale)}
+              {locale}
+            />
+            <FormField
+              name="company"
+              label={t('form.field.company', locale)}
+              required
+              placeholder={t('form.placeholder.company', locale)}
+              {locale}
+            />
             <div class="form__span">
-              <FormField name="website" label="Web Siteniz" type="url" placeholder="ornek.com.tr" />
+              <FormField
+                name="website"
+                label={t('form.field.website', locale)}
+                type="url"
+                placeholder={t('form.placeholder.website', locale)}
+                {locale}
+              />
             </div>
           </>
         ) : (
           <>
-            <FormField name="phone" label="Telefon Numaranız" type="tel" placeholder="+90 5xx xxx xx xx" />
+            <FormField
+              name="phone"
+              label={t('form.field.phone', locale)}
+              type="tel"
+              placeholder={t('form.placeholder.phone', locale)}
+              {locale}
+            />
             {/* `subject` adı Web3Forms'ta e-posta konusuna ayrılmıştır — bu yüzden `service`. */}
             <FormField
               name="service"
-              label="İlgilendiğiniz Hizmet"
+              label={t('form.field.service', locale)}
               type="select"
               options={serviceTitles}
-              placeholder="Hizmet seçin"
+              placeholder={t('form.placeholder.service', locale)}
+              {locale}
             />
             <div class="form__span">
               <FormField
                 name="message"
-                label="Mesajınız"
+                label={t('form.field.message', locale)}
                 type="textarea"
                 required
                 rows={6}
-                placeholder="Markanız, ihtiyaç duyduğunuz hizmet ve hedefleriniz hakkında kısaca bilgi verin."
+                placeholder={t('form.placeholder.message', locale)}
+                {locale}
               />
             </div>
           </>
@@ -165,11 +216,11 @@ const privacyNote = isAnalysis
       isAnalysis && (
         <fieldset class="checks" data-error-target="services">
           <legend class="checks__legend">
-            Analiz Edilmesini İstediğiniz Alanlar
+            {t('form.checksLegend', locale)}
             <span class="checks__required" aria-hidden="true">
               *
             </span>
-            <span class="visually-hidden">(zorunlu)</span>
+            <span class="visually-hidden">{t('form.required', locale)}</span>
           </legend>
           <div class="checks__grid">
             {serviceTitles.map((title) => (
@@ -201,13 +252,7 @@ const privacyNote = isAnalysis
 
     <div class="form__actions">
       <button type="submit" class="btn btn--primary form__submit" data-submit>{submitLabel}</button>
-      {
-        !accessKey && (
-          <p class="form__note form__note--warn">
-            Form gönderimi için PUBLIC_WEB3FORMS_ACCESS_KEY ortam değişkeni tanımlanmalı.
-          </p>
-        )
-      }
+      {!accessKey && <p class="form__note form__note--warn">{t('form.missingKey', locale)}</p>}
       <p class="form__note">{privacyNote}</p>
     </div>
   </form>
@@ -488,9 +533,9 @@ const privacyNote = isAnalysis
 <script>
   // Doğrulama mantığı src/lib/forms.ts içinde yaşar ve birim testleriyle korunur —
   // burada yalnızca DOM'dan değer toplanır ve dönen hatalar arayüze yazılır.
-  import { MESSAGES, validateAnalysisForm, validateContactForm } from '../../lib/forms';
+  import { validateAnalysisForm, validateContactForm, type FormMessages } from '../../lib/forms';
 
-  type FieldName = keyof typeof MESSAGES | 'subject';
+  type FieldName = keyof FormMessages;
   type FormKind = 'contact' | 'analysis';
 
   const FIELDS: Record<FormKind, FieldName[]> = {
@@ -502,6 +547,17 @@ const privacyNote = isAnalysis
     const kind: FormKind = form.dataset.form === 'analysis' ? 'analysis' : 'contact';
     const endpoint = form.dataset.endpoint ?? '';
     const fields = FIELDS[kind];
+
+    /*
+     * Hata metinleri sayfanın dilinde build sırasında gömülür (bkz. frontmatter).
+     * Öznitelik bozuksa doğrulama yine çalışsın diye Türkçe varsayılanlara düşülür.
+     */
+    let messages: FormMessages | undefined;
+    try {
+      messages = JSON.parse(form.dataset.messages ?? '') as FormMessages;
+    } catch {
+      messages = undefined;
+    }
 
     const controlOf = (name: string) => form.querySelector<HTMLElement>(`[data-error-target="${name}"]`);
     const errorBoxOf = (name: string) => form.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
@@ -580,23 +636,29 @@ const privacyNote = isAnalysis
 
       const result =
         kind === 'analysis'
-          ? validateAnalysisForm({
-              name: textValue('name'),
-              email: textValue('email'),
-              phone: textValue('phone'),
-              company: textValue('company'),
-              website: textValue('website'),
-              services: checkedValues('services'),
-              consent: isChecked('consent'),
-            })
-          : validateContactForm({
-              name: textValue('name'),
-              email: textValue('email'),
-              phone: textValue('phone'),
-              service: textValue('service'),
-              message: textValue('message'),
-              consent: isChecked('consent'),
-            });
+          ? validateAnalysisForm(
+              {
+                name: textValue('name'),
+                email: textValue('email'),
+                phone: textValue('phone'),
+                company: textValue('company'),
+                website: textValue('website'),
+                services: checkedValues('services'),
+                consent: isChecked('consent'),
+              },
+              messages,
+            )
+          : validateContactForm(
+              {
+                name: textValue('name'),
+                email: textValue('email'),
+                phone: textValue('phone'),
+                service: textValue('service'),
+                message: textValue('message'),
+                consent: isChecked('consent'),
+              },
+              messages,
+            );
 
       if (!result.valid) {
         let firstInvalid: HTMLElement | null = null;
@@ -617,7 +679,7 @@ const privacyNote = isAnalysis
         return;
       }
 
-      const busyLabel = 'Gönderiliyor…';
+      const busyLabel = form.dataset.busyLabel ?? '…';
       const originalLabel = submitButton?.textContent ?? '';
       if (submitButton) {
         submitButton.disabled = true;

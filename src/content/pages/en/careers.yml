@@ -1,0 +1,274 @@
+seo:
+  title: Careers and Open Positions | Pixelon Digital Agency
+  description: >-
+    Explore Pixelon's open positions or send a general application. Join a creative, technology-driven team that enjoys building together.
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: Pixelon Careers
+    headingLines:
+      - "Join a Team Where You Can Share Your Ideas Freely."
+    lead: >-
+      At Pixelon, where strategy, design, technology and creativity come together, we grow with colleagues who are eager to learn, ready to take ownership and happy to build alongside others. Browse our open positions or send a general application to tell us about your skills and experience.
+    tagline: >-
+      Even if the role you are looking for is not open right now, you can still send your application. We will reach out when the right opportunity comes up.
+    # NOTE: the '#basvuru' target does not exist on this page yet. In the reference,
+    # "Send a General Application" opens a modal; the `form` schema's formId enum
+    # ('contact' | 'analysis') does not cover the careers application form. This link
+    # stays dangling until that section/modal is added. Anchor kept identical to TR.
+    ctas:
+      - label: Browse Open Positions
+        href: '#pozisyonlar'
+        variant: primary
+      - label: Send a General Application
+        href: '#basvuru'
+        variant: outline
+
+  # 2 — WORKING AT PIXELON
+  - type: text
+    background: light
+    eyebrow: A Team That Builds Together
+    heading: We Don't Just Deliver Work, We Grow Together.
+    body: |-
+      Pixelon is a creative working environment where different disciplines, ideas and experiences meet around a shared goal. Across web design, social media, digital advertising, content, brand design, video production and technology projects, we think as a team, share responsibility and aim to do better with every project.
+
+      For us, a strong team is not only made up of people who are good at what they do, but of people who communicate openly, stay curious and want to grow together.
+
+  # 3 — BENEFITS
+  - type: cards
+    background: dark
+    eyebrow: What Awaits You at Pixelon?
+    heading: Different Disciplines, Real Projects and Continuous Growth
+    items:
+      - title: Creative Work Environment
+        description: >-
+          A team culture where you can share your ideas and different perspectives are genuinely encouraged.
+      - title: Real Brand Experience
+        description: >-
+          The chance to work on real projects for brands in healthcare, e-commerce, construction, technology and many other sectors.
+      - title: Learning and Development
+        description: >-
+          A dynamic environment where you can follow new technologies, design approaches and digital marketing trends.
+      - title: Ownership and Initiative
+        description: >-
+          A way of working where you contribute to the process and take part in decisions instead of simply completing assigned tasks.
+      - title: Teamwork
+        description: >-
+          A structure where design, content, advertising, software and production teams work side by side toward the same goal.
+      - title: Flexible Working Approach
+        description: >-
+          Depending on the needs of the role, office, hybrid or remote working models can be considered.
+
+  # 4 — OPEN POSITIONS
+  - type: jobs
+    background: light
+    anchor: pozisyonlar
+    eyebrow: Join Our Team
+    heading: Current Open Positions
+    lead: >-
+      Browse Pixelon's current job and internship opportunities. View the details of the role that suits you and complete your application in a few steps.
+    # The entire content of the reference position-detail modal is folded into the
+    # `description` block; the `jobs` schema only has title/location/employmentType/description/href.
+    items:
+      - title: Social Media Specialist
+        location: Kadikoy, Istanbul
+        employmentType: Hybrid
+        description: |-
+          We are looking for a colleague who will plan social media strategies for brands, manage content calendars and follow production processes together with our creative teams.
+
+          Department: Social Media · Experience: 2+ years · Posted: 10 July 2026
+
+          About the Role
+          In this position, you will be responsible for preparing brands' social media strategies, building monthly content plans and following the production process end to end.
+
+          Responsibilities
+          - Preparing social media content plans
+          - Protecting the brand's tone of voice
+          - Working in coordination with the design and video teams
+          - Tracking content performance
+          - Contributing to client communication processes
+
+          What We Are Looking For
+          - Experience in a related field
+          - Strong command of social media platforms
+          - Strong written and verbal communication
+          - Planning and follow-up skills
+          - A good fit for teamwork
+          - Keeping up with trends and current content formats
+
+          Nice to Have
+          - Agency experience
+          - Command of English
+          - Basic knowledge of advertising platforms
+          - Experience in the healthcare or e-commerce sectors
+      - title: Graphic Designer
+        location: Kadikoy, Istanbul
+        employmentType: Hybrid
+        description: |-
+          We are looking for a colleague who will produce modern, creative and brand-specific designs for social media, digital advertising, corporate identity and web projects.
+
+          Department: Design · Experience: 2+ years · Posted: 5 July 2026
+
+          About the Role
+          In this position, you will manage the visual production process for brands from different sectors across social media, advertising, corporate identity and web projects.
+
+          Responsibilities
+          - Designing social media and advertising visuals
+          - Producing corporate identity materials
+          - Providing visual support for web and UI projects
+          - Keeping the brand's visual language consistent
+          - Working in coordination with other teams
+
+          What We Are Looking For
+          - Experience in a related field
+          - Strong command of Adobe tools
+          - A strong sense of typography and composition
+          - Time management and the ability to follow multiple projects
+          - A good fit for teamwork
+          - Keeping up with current design trends
+
+          Nice to Have
+          - Agency experience
+          - Motion design knowledge
+          - Basic UI/UX knowledge
+          - Experience in the healthcare or e-commerce sectors
+      - title: Video Editor / Motion Designer
+        location: Istanbul
+        employmentType: Project-Based or Hybrid
+        description: |-
+          We are looking for a colleague who will turn reels, ad films, corporate presentations and social media content into publish-ready work with creative editing.
+
+          Department: Production · Experience: Portfolio-based assessment · Posted: 1 July 2026
+
+          About the Role
+          In this position, you will manage video editing, motion graphics and color work for different brands and formats.
+
+          Responsibilities
+          - Editing reels and social media videos
+          - Preparing advertising and corporate presentation videos
+          - Producing motion graphic elements
+          - Handling sound and color adjustments
+          - Working in coordination with the production team
+
+          What We Are Looking For
+          - Experience in a related field or a strong portfolio
+          - Strong command of editing software
+          - Basic motion graphics knowledge
+          - Discipline in delivering on time
+          - Creative storytelling skills
+          - A good fit for teamwork
+
+          Nice to Have
+          - Agency experience
+          - Color grading knowledge
+          - 3D motion experience
+          - Experience in the healthcare or e-commerce sectors
+    # The reference "no open positions" state is a UI state (`sc-if noOpenPositions`),
+    # not data; the `jobs` schema has no field for it. When `items` is empty,
+    # JobsSection.astro should render the following copy:
+    #   Heading: We Do Not Have an Open Position Right Now
+    #   P1: We are waiting for the right time and the right people to grow our team. Even
+    #       though there is no active listing at the moment, you can send a general
+    #       application if you would like to work at Pixelon.
+    #   P2: When your experience and skills match a future opening, we will get in touch.
+    #   Button: Send a General Application (→ #basvuru)
+    #   Note: You can add your design, social media, content, advertising, software,
+    #         production and internship applications to our talent pool.
+
+  # 5 — GENERAL APPLICATION CALL
+  - type: cta
+    background: dark
+    eyebrow: Don't Wait for an Open Position
+    heading: Share Your Talent With Us.
+    lead: >-
+      If you don't see a role that fits you right now, fill in the general application form. Tell us about your experience, your interests and how you could contribute to Pixelon. Your application can be considered for future full-time, internship, freelance or project-based opportunities.
+    ctas:
+      - label: Open the General Application Form
+        href: '#basvuru'
+        variant: primary
+
+  # 6 — APPLICATION PROCESS
+  - type: steps
+    background: light
+    eyebrow: How Does the Process Work?
+    heading: From Application to Joining the Team
+    # In the reference this paragraph sits BELOW the step grid as a footnote;
+    # the `steps` schema has no footnote field, so it is placed in `lead`.
+    lead: >-
+      The stages of the process may vary depending on the scope of the role. Although we try to review every application carefully, we can only contact candidates directly when they move forward in the process.
+    items:
+      - title: Application
+        description: >-
+          Share your CV, your portfolio and your basic details with us through the form.
+      - title: Initial Review
+        description: >-
+          Our team reviews your experience, expertise and fit for the position.
+      - title: Introductory Interview
+        description: >-
+          With suitable candidates, we hold a conversation to discuss mutual expectations and the way of working.
+      - title: Technical / Creative Assessment
+        description: >-
+          Depending on the role, a portfolio review, a sample task or a short assessment may be part of the process.
+      - title: Offer and Start
+        description: >-
+          When the process goes well, we share the working conditions and build the start plan together.
+
+  # 7 — WHAT WE LOOK FOR
+  - type: bullets
+    background: dark
+    eyebrow: Who Do We Want to Work With?
+    heading: Your Approach Matters as Much as Your Talent
+    lead: >-
+      We don't expect you to know everything; what matters to us is that you are open to learning, sharing and building together.
+    items:
+      - Open to learning and growing
+      - Able to take ownership
+      - A strong communicator
+      - Open to giving and receiving feedback
+      - A good fit for teamwork
+      - Completes work on time and with care
+      - Follows developments in the digital world
+      - Thinks in terms of solutions
+      - Cares about brand and user needs
+
+  # 8 — FAQ
+  - type: faq
+    background: light
+    eyebrow: Common Questions
+    heading: Frequently Asked Questions About Careers
+    items:
+      - question: Can I apply even if there is no open position?
+        answer: >-
+          Yes. You can fill in the general application form and share your CV and the field you are interested in. Your application can be reviewed when a suitable opportunity comes up.
+      - question: Do you accept internship applications?
+        answer: >-
+          Depending on our needs and seasonal capacity, internship opportunities can be created for university students and recent graduates. You can select the "Internship Application" option in the general application form.
+      - question: Is remote work possible?
+        answer: >-
+          The working model is decided according to the needs of the role and can be office-based, hybrid or remote. The working model is stated clearly in each job listing.
+      - question: Can I apply as a freelancer?
+        answer: >-
+          Yes. You can send a freelance or project-based application in areas such as video, design, software and content.
+      - question: When will I hear back about my application?
+        answer: >-
+          Applications are reviewed in line with open positions and team needs. We contact suitable candidates directly.
+      - question: Is a portfolio required?
+        answer: >-
+          For production-focused roles such as design, UX/UI, video, content and software, a portfolio or a link to sample work matters a great deal in the assessment.
+
+  # 9 — FINAL CTA
+  - type: cta
+    background: dark
+    eyebrow: Ready to Build Together?
+    heading: You Might Just Be Our Next Teammate.
+    lead: >-
+      Send your application to become part of Pixelon, share your experience and join creative projects.
+    ctas:
+      - label: Browse Open Positions
+        href: '#pozisyonlar'
+        variant: primary
+      - label: Send a General Application
+        href: '#basvuru'
+        variant: outline

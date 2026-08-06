@@ -3,6 +3,7 @@ title: 'Sağlık Turizminde Uluslararası Hasta Güveni Nasıl Kazanılır?'
 category: Sağlık Pazarlaması
 excerpt: Uluslararası bir hasta, tedavi olmak için başka bir ülkeye gitmeye karar verdiğinde yalnızca klinik veya doktor seçmez; sağlığını, bütçesini ve zamanını emanet edebileceği güvenilir bir kurum arar.
 date: 2026-07-10
+translationKey: health-tourism-patient-trust
 author: Pixelon Ekibi
 status: published
 featured: false

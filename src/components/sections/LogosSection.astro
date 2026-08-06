@@ -3,6 +3,8 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
+import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
+import { t } from '../../lib/ui';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -10,9 +12,10 @@ type Logos = Extract<PageSection, { type: 'logos' }>;
 
 interface Props {
   section: Logos;
+  locale?: Locale;
 }
 
-const { section } = Astro.props;
+const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
 const references = await getCollection('references');
 
@@ -31,12 +34,25 @@ const hasLogos = logos.length > 0;
     <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
       <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
-      <div class="logos" role="group" aria-label="Çalıştığımız markalar" tabindex="0" data-reveal data-reveal-index={1}>
+      <div
+        class="logos"
+        role="group"
+        aria-label={t('logos.groupLabel', locale)}
+        tabindex="0"
+        data-reveal
+        data-reveal-index={1}
+      >
         <div class="logos__track">
           <ul class="logos__group">
             {logos.map((ref) => (
               <li class="logos__item">
-                <Image class="logos__logo" src={ref.logo} alt={`${ref.name} logosu`} height={38} densities={[1, 2]} />
+                <Image
+                  class="logos__logo"
+                  src={ref.logo}
+                  alt={`${ref.name} ${t('logos.altSuffix', locale)}`}
+                  height={38}
+                  densities={[1, 2]}
+                />
               </li>
             ))}
           </ul>

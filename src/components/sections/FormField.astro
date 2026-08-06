@@ -6,6 +6,9 @@
  * işaretlemeyi üretir; hata metnini `FormSection` içindeki script `#err-<name>`
  * paragrafına yazar ve `[data-error-target]` denetimine `aria-invalid` ekler.
  */
+import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
+import { t } from '../../lib/ui';
+
 type FormFieldType = 'text' | 'email' | 'tel' | 'url' | 'textarea' | 'select';
 
 interface Props {
@@ -16,9 +19,20 @@ interface Props {
   options?: string[] | undefined;
   placeholder?: string | undefined;
   rows?: number | undefined;
+  /** Etiket ve yer tutucu metinleri çağıran verir; buradaki mikro-metinler bu dile göre. */
+  locale?: Locale;
 }
 
-const { name, label, type = 'text', required = false, options = [], placeholder, rows = 5 } = Astro.props;
+const {
+  name,
+  label,
+  type = 'text',
+  required = false,
+  options = [],
+  placeholder,
+  rows = 5,
+  locale = DEFAULT_LOCALE,
+} = Astro.props;
 
 const fieldId = `f-${name}`;
 const errorId = `err-${name}`;
@@ -46,7 +60,7 @@ const ariaRequired = required ? 'true' : undefined;
           <span class="field__required" aria-hidden="true">
             *
           </span>
-          <span class="visually-hidden">(zorunlu)</span>
+          <span class="visually-hidden">{t('form.required', locale)}</span>
         </>
       )
     }
@@ -76,7 +90,7 @@ const ariaRequired = required ? 'true' : undefined;
           aria-required={ariaRequired}
           data-error-target={name}
         >
-          <option value="">{placeholder ?? 'Seçiniz'}</option>
+          <option value="">{placeholder ?? t('form.selectPlaceholder', locale)}</option>
           {options.map((option) => (
             <option value={option}>{option}</option>
           ))}

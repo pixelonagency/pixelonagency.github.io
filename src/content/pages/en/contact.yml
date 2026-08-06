@@ -1,0 +1,165 @@
+seo:
+  title: Contact | Pixelon 360° Digital Marketing Agency
+  description: >-
+    Contact Pixelon for your web design, social media, digital advertising, SEO and
+    branding projects. Message us on WhatsApp or fill in the project form.
+
+whatsappMessage: Hello Pixelon, I would like to get information about digital marketing services for my brand.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Get in Touch With Pixelon
+    headingLines:
+      - "Let's Build Something Great Together."
+    lead: >-
+      Are you planning a new website, an effective ad campaign, stronger social
+      media communication or a comprehensive digital strategy built around your
+      brand? Tell us about your project. Let's listen to your needs, understand
+      your goals and shape the right roadmap for your brand together.
+    tagline: >-
+      Once we receive your message, we will review your project and get back to
+      you as soon as possible.
+    ctas:
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Call Us Now
+        href: 'tel:+905065229034'
+        variant: outline
+
+  - type: contactInfo
+    background: light
+    anchor: form
+    eyebrow: Reach Us Through the Channel That Suits You Best
+    heading: Get quick answers about your project
+    lead: You can message us on WhatsApp, call us or fill in the contact form.
+    items:
+      - label: WhatsApp and Phone
+        value: |-
+          +90 506 522 90 34
+          Contact us directly about new project requests, our services and the way we work.
+        href: 'tel:+905065229034'
+      - label: E-mail
+        value: |-
+          info@pixelon.com.tr
+          Send your project files, your brief or partnership requests by e-mail.
+        href: 'mailto:info@pixelon.com.tr'
+      - label: Location
+        value: |-
+          Kadikoy, Istanbul
+          We run projects both online and face to face with brands from Turkey and from many other parts of the world.
+      - label: Social Media
+        value: |-
+          Instagram: @pixelonagency
+          Facebook: pixelonagency
+        href: https://www.instagram.com/pixelonajans
+
+  - type: form
+    background: light
+    eyebrow: Tell Us About Your Project
+    heading: What Kind of Solution Are You Looking For?
+    lead: >-
+      Fill in the form and let the Pixelon team review your needs and get back to
+      you with the service and project model that fits your brand.
+    formId: contact
+    submitLabel: Send Project Request
+    # Post-submission screens — copy taken directly from the reference design.
+    successHeading: We Have Received Your Request!
+    successBody: >-
+      We will review the details you shared about your project and get in touch
+      with you as soon as possible.
+    successCtas:
+      - label: In the Meantime, Explore Our Projects
+        href: /en/projects
+        variant: primary
+    errorHeading: The Form Could Not Be Sent
+    errorBody: >-
+      A technical problem occurred. Please try again or contact us directly on
+      WhatsApp.
+
+  - type: cta
+    background: dark
+    heading: Would You Rather Skip the Form?
+    lead: >-
+      Just send us a short message on WhatsApp describing what you need. Our team
+      will tell you about the right service and process for you.
+    ctas:
+      - label: Start a WhatsApp Conversation
+        href: https://wa.me/905065229034
+        variant: primary
+
+  - type: steps
+    background: light
+    eyebrow: How Does a Project Start?
+    heading: From the First Message to Project Kick-off
+    items:
+      - title: Share Your Request
+        description: Tell us about your project via WhatsApp, phone, e-mail or the form.
+      - title: Let's Have an Initial Call
+        description: >-
+          Let's review your brand, your goals, your needs and your expectations
+          together.
+      - title: Let's Build the Roadmap
+        description: >-
+          Let's define the project scope, the deliverables, the timeline and the
+          way we will work.
+      - title: Let's Launch the Project
+        description: >-
+          Once approved, let's start the strategy, content, design or development
+          process.
+
+  - type: media
+    background: dark
+    eyebrow: Our Head Office
+    heading: Digital Solutions From Kadikoy to the World
+    lead: >-
+      Our head office is in Kadikoy, Istanbul. We work with brands across Turkey
+      and around the world through online meetings and cloud-based project
+      management systems.
+    alt: A clean map illustration showing the Kadikoy district of Istanbul
+
+  - type: faq
+    background: light
+    eyebrow: Common Questions
+    heading: Frequently Asked Questions About Getting in Touch
+    items:
+      - question: Is the first meeting paid?
+        answer: >-
+          No. The first introductory meeting, where we get to know your brand and
+          your needs, is free of charge.
+      - question: How long does it take to prepare a project proposal?
+        answer: >-
+          It depends on the scope of the project. Once the requirements are clear,
+          we prepare the project scope, the timeline and the pricing.
+      - question: Do you only work with brands based in Istanbul?
+        answer: >-
+          No. We work online with brands in different regions of Turkey and around
+          the world.
+      - question: Can we get more than one service together?
+        answer: >-
+          Yes. Website, social media, advertising, SEO, production and other
+          services can be planned together so that they support one another.
+      - question: Which channel should I use to contact you?
+        answer: >-
+          Use WhatsApp for quick answers, e-mail to share detailed project
+          documents, or the contact form to send a comprehensive request.
+
+  - type: cta
+    background: dark
+    anchor: iletisim
+    eyebrow: The Next Project Could Be Yours
+    heading: Let's Turn Your Idea Into Reality Together.
+    lead: >-
+      Get in touch with the Pixelon team to make your brand more visible in the
+      digital world, reach the right audience and grow in a measurable way.
+    ctas:
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Call Us Now
+        href: 'tel:+905065229034'
+        variant: outline
+      - label: Explore Our Services
+        href: /en/services
+        variant: outline

@@ -45,6 +45,11 @@ describe('buildCategoryFilters', () => {
     expect(filters.find((f) => f.slug === 'web-tasarim')?.label).toBe('Web Tasarım');
   });
 
+  test('lets the label map translate the "all" pseudo-category', () => {
+    const filters = buildCategoryFilters(projects, { tumu: 'All' });
+    expect(filters[0]).toEqual({ slug: 'tumu', label: 'All', count: 4 });
+  });
+
   test('falls back to a title-cased slug when the label map has no entry', () => {
     const filters = buildCategoryFilters(projects, {});
     expect(filters.find((f) => f.slug === 'saglik-turizmi')?.label).toBe('Saglik Turizmi');

@@ -1,22 +1,25 @@
 ---
 import type { PageSection } from '../../content/page-schema';
 import { parseHighlights } from '../../lib/highlight';
+import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
+import { t } from '../../lib/ui';
 import CtaButton from '../CtaButton.astro';
 
 type Hero = Extract<PageSection, { type: 'hero' }>;
 
 interface Props {
   section: Hero;
+  locale?: Locale;
 }
 
-const { section } = Astro.props;
+const { section, locale = DEFAULT_LOCALE } = Astro.props;
 ---
 
 <section id={section.anchor} class:list={['hero', `hero--${section.background}`]}>
   <div class="hero__inner">
     {
       section.breadcrumb.length > 0 && (
-        <nav class="hero__crumbs" aria-label="Site haritası">
+        <nav class="hero__crumbs" aria-label={t('nav.breadcrumb', locale)}>
           {section.breadcrumb.map((crumb, index) => (
             <>
               {index > 0 && <span aria-hidden="true">/</span>}

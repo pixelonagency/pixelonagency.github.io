@@ -3,6 +3,7 @@ title: Sağlık Markaları İçin Dijital Pazarlama Stratejisi Nasıl Oluşturul
 category: Sağlık Pazarlaması
 excerpt: Sağlık sektöründe güven veren bir marka oluşturmak, doğru hedef kitleye ulaşmak ve daha fazla randevu talebi elde etmek için web sitesi, içerik, reklam ve hasta iletişim süreçlerinin birlikte planlanması gerekir.
 date: 2026-07-18
+translationKey: healthcare-digital-marketing-strategy
 author: Pixelon Ekibi
 status: published
 featured: false

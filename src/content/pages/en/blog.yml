@@ -1,0 +1,114 @@
+seo:
+  title: Digital Marketing, Design and Technology Blog | Pixelon
+  description: |-
+    Up-to-date insights on digital marketing, web design, social media, SEO, advertising, e-commerce and brand communication on the Pixelon Blog.
+
+whatsappMessage: Hello Pixelon, I am reaching out from the blog and would like to get information about a project.
+
+sections:
+  # HERO (compact) - search box placeholder: "Search for a topic or article..."
+  - type: hero
+    background: dark
+    eyebrow: Pixelon Blog
+    headingLines:
+      - "Let's Read the Digital World Together."
+    lead: |-
+      We share the latest developments in digital marketing, design, technology and brand communication through our own experience, practical guides and actionable advice.
+
+  # FEATURED ARTICLE
+  # A single large link card in the reference: category badge (eyebrow) + title + summary + meta + button.
+  - type: text
+    background: light
+    eyebrow: Digital Marketing
+    heading: 10 Trends Brands Should Watch in Digital Marketing in 2026
+    body: |-
+      From AI-assisted content to short-form video strategies, from personalisation to conversion measurement, we look at the developments that will help brands stand out in the digital world.
+
+      12 min read · July 18, 2026 · Pixelon Team
+    ctas:
+      - label: Read the Article →
+        href: /en/blog
+        variant: primary
+
+  # CATEGORY FILTERS + LATEST ARTICLES (from the posts collection)
+  # Filter chips in the reference (no equivalent in the posts schema):
+  # All · Digital Marketing · Web Design · Social Media · Digital Advertising ·
+  # SEO and Content · Brand and Design · E-Commerce · Healthcare Marketing · Technology and CRM
+  # Pagination as well: ← Previous · 1 · 2 · 3 · Next →
+  - type: posts
+    background: light
+    eyebrow: Latest Content
+    heading: Recently Published Articles
+    lead: |-
+      Discover what is happening in the digital world, what we have learned along the way and the practical insights you can apply to your own brand.
+    limit: 12
+    ctaLabel: Read the Article →
+    ctaHref: /en/blog
+
+  # EDITOR'S PICKS
+  - type: bullets
+    background: dark
+    eyebrow: Recommended by Pixelon
+    heading: Editor's Picks
+    # Top label of the first card in the reference: "Comprehensive Guide" (no equivalent in the bullets schema).
+    items:
+      - A Guide to Building a Digital Marketing Strategy
+      - Content Architecture for Corporate Websites
+      - Advertising Strategy for Health Tourism
+      - A Guide to Creating a Brand Identity
+
+  # BY INDUSTRY
+  - type: cards
+    background: light
+    eyebrow: Tailored to Your Industry
+    heading: Discover the Content That Fits Your Business
+    items:
+      - title: Healthcare and Clinics
+        description: |-
+          Guides on patient communication, clinic websites, social media and digital advertising.
+        href: /en/services/health-tourism-consulting
+      - title: Health Tourism
+        description: |-
+          International patient acquisition, multilingual communication and global advertising strategies.
+        href: /en/services/health-tourism-consulting
+      - title: E-Commerce
+        description: |-
+          Content on sales conversion, product presentation, advertising and user experience.
+        href: /en/services#hizmetler
+      - title: Construction and Corporate Brands
+        description: |-
+          Content on corporate communication, web design, project marketing and brand trust.
+        href: /en/services/brand-and-corporate-identity
+
+  # EMAIL SUBSCRIPTION
+  # In the reference an email input ("Your email address") + checkbox text:
+  # "I have read the Privacy Policy and agree to receive informational emails."
+  - type: cta
+    background: dark
+    anchor: abonelik
+    eyebrow: Stay Up to Date
+    heading: Get New Content Straight to Your Inbox.
+    lead: |-
+      Let us send our latest content on digital marketing, design and technology to your inbox at regular intervals.
+    ctas:
+      - label: Subscribe
+        href: '#abonelik'
+        variant: primary
+
+  # FINAL CTA
+  - type: cta
+    background: light
+    anchor: iletisim
+    heading: Let's Turn What You Read Into Action for Your Brand.
+    lead: |-
+      If you need professional support with web design, social media, digital advertising, SEO or brand communication, get in touch with the Pixelon team.
+    ctas:
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Explore Our Services
+        href: /en/services
+        variant: outline
+      - label: Tell Us About Your Project
+        href: /en/contact
+        variant: outline

@@ -32,7 +32,7 @@ const { sections, locale = DEFAULT_LOCALE } = Astro.props;
   sections.map((section) => {
     switch (section.type) {
       case 'hero':
-        return <HeroSection section={section} />;
+        return <HeroSection section={section} {locale} />;
       case 'cards':
         return <CardsSection section={section} />;
       case 'steps':
@@ -48,23 +48,23 @@ const { sections, locale = DEFAULT_LOCALE } = Astro.props;
       case 'cta':
         return <CtaSection section={section} />;
       case 'logos':
-        return <LogosSection section={section} />;
+        return <LogosSection section={section} {locale} />;
       case 'projects':
-        return <ProjectsSection section={section} />;
+        return <ProjectsSection section={section} {locale} />;
       case 'posts':
         return <PostsSection section={section} {locale} />;
       case 'team':
-        return <TeamSection section={section} />;
+        return <TeamSection section={section} {locale} />;
       case 'services':
         return <ServicesSection section={section} {locale} />;
       case 'form':
-        return <FormSection section={section} />;
+        return <FormSection section={section} {locale} />;
       case 'contactInfo':
         return <ContactInfoSection section={section} />;
       case 'media':
         return <MediaSection section={section} />;
       case 'jobs':
-        return <JobsSection section={section} />;
+        return <JobsSection section={section} {locale} />;
     }
   })
 }

@@ -1,0 +1,242 @@
+seo:
+  title: Free Digital Analysis | Discover Your Brand's Potential
+  description: >-
+    Request a free digital pre-analysis of your website, social media accounts, ads and
+    SEO performance. Let Pixelon identify where your brand can grow.
+
+whatsappMessage: Hello Pixelon, I would like to get information about your free digital analysis service for my brand.
+
+sections:
+  # 1) HERO — left column
+  - type: hero
+    background: dark
+    eyebrow: Pixelon Free Digital Analysis
+    headingLines:
+      - "Let's Discover Your Brand's Digital Potential Together."
+    lead: |-
+      Let's run a preliminary review of your website, your social media accounts and your digital marketing work to identify your strengths, the areas that need improvement and your opportunities for growth.
+
+      Fill in the form and the Pixelon team will get in touch to prepare a free pre-analysis tailored to your brand.
+    chips:
+      - Completely free
+      - No obligation to buy
+      - Prepared for your brand
+
+  # 2) LEAD FORM — the light card in the right column of the hero
+  - type: form
+    background: dark
+    anchor: form
+    heading: Let's Start Your Free Analysis
+    lead: >-
+      Share the basic details about your brand. Our team will review your request and get
+      in touch to define the scope of the analysis.
+    formId: analysis
+    submitLabel: Request a Free Analysis
+    # Post-submission screens — copy taken directly from the reference design.
+    successHeading: We Have Received Your Analysis Request!
+    successBody: >-
+      We will review the details you shared about your brand and get in touch with you as
+      soon as possible.
+    successNote: In the meantime, feel free to take a look at the work we have delivered.
+    successCtas:
+      - label: Explore Our Projects
+        href: /en/projects
+        variant: primary
+      - label: Reach Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+    errorHeading: Your Request Could Not Be Sent
+    errorBody: >-
+      A technical problem occurred while sending the form. Please try again or contact us
+      on WhatsApp.
+
+  # 3) SCOPE OF THE ANALYSIS
+  - type: cards
+    background: light
+    eyebrow: What Do We Review?
+    heading: We Look at Your Brand's Digital Presence as a Whole.
+    lead: >-
+      No two brands have the same problems or the same needs. That is why we shape the scope
+      of the analysis around your sector, your goals and your current digital activity.
+    columns: 4
+    items:
+      - title: Website and User Experience
+        description: Mobile compatibility, page speed, content structure, navigation and conversion elements.
+      - title: SEO and Google Visibility
+        description: Index status, meta structure, keyword opportunities and technical SEO issues.
+      - title: Google Ads and Meta Ads
+        description: Campaign structure, audience targeting, ad messaging and conversion tracking.
+      - title: Social Media
+        description: Profile completeness, visual identity, content variety and engagement patterns.
+      - title: Brand and Corporate Identity
+        description: Consistency of logo, color and typography, digital presence and brand trust.
+      - title: E-Commerce and Sales Experience
+        description: Product pages, cart and checkout flow, mobile experience and trust signals.
+      - title: Health Tourism
+        description: Multilingual setup, clinic credibility, treatment pages and patient communication.
+      - title: CRM and Digital Processes
+        description: Lead capture, follow-up stages, reporting gaps and automation opportunities.
+
+  # 4) WHAT YOU WILL GET
+  - type: bullets
+    background: dark
+    eyebrow: What Will You Get From the Analysis?
+    heading: Clear and Actionable Recommendations for Your Brand
+    lead: |-
+      At the end of the free pre-analysis, you receive a general assessment of your brand's current digital position along with prioritized improvement recommendations.
+
+      Instead of complex technical jargon, we explain in plain language what should be improved for your brand and why.
+    items:
+      - Your strengths
+      - Areas that need improvement
+      - Priority digital issues
+      - Improvements you can apply quickly
+      - Opportunities compared with your competitors
+      - Recommended services and channels
+      - The next steps Pixelon suggests
+
+  # 5) SAMPLE REPORT CARD
+  - type: cards
+    background: light
+    eyebrow: Sample Analysis Card
+    heading: What Could Your Analysis Report Include?
+    columns: 4
+    items:
+      - eyebrow: Digital Visibility Score
+        title: 72 / 100
+        description: An overall assessment of the website, content, social media and digital conversion setup.
+      - eyebrow: Strong Area
+        title: Mobile website experience
+        description: Your website offers a tidy and usable structure across different screen sizes.
+      - eyebrow: Priority Improvement Area
+        title: Missing conversion tracking
+        description: >-
+          Because WhatsApp, form and phone actions are not measured properly, advertising
+          results cannot be evaluated clearly.
+      - eyebrow: Quick Win Opportunity
+        title: Improving the service pages
+        description: Separate SEO-friendly and conversion-focused pages can be built for your target services.
+    ctas:
+      - label: Request an Analysis for My Brand
+        href: '#form'
+        variant: primary
+
+  # 6) PROCESS
+  # In the reference, the note "Applications are taken into review..." sits BELOW the grid;
+  # since the steps section has no post-grid text field, it is kept as `lead`.
+  - type: steps
+    background: dark
+    eyebrow: 4 Simple Steps
+    heading: From the Form to Your Analysis Results
+    lead: >-
+      All applications are taken into review. The scope of the analysis may vary depending on
+      the brand's existing digital assets and the information shared with us.
+    items:
+      - title: Share Your Details
+        description: >-
+          Use the form to tell us about your brand, your website and the areas you would like
+          us to analyze.
+      - title: We Run an Initial Review
+        description: >-
+          The Pixelon team reviews your digital assets and the goals you shared in broad
+          strokes.
+      - title: We Identify the Opportunities
+        description: >-
+          Together we pinpoint your strengths, the core problems and the priority areas for
+          improvement.
+      - title: We Share the Results
+        description: >-
+          Where appropriate, we share our recommendations through a short online meeting or a
+          written assessment.
+
+  # 7) WHO IS IT FOR
+  - type: bullets
+    background: light
+    eyebrow: Who Is It For?
+    heading: For Brands That Want to Grow in Digital
+    items:
+      - Businesses that do not get enough leads from their website
+      - Brands that want to increase their visibility on Google
+      - Companies that do not get enough results from their ads
+      - Businesses unsure how to move forward on social media
+      - Brands that want to improve their e-commerce sales
+      - Clinics that want to attract international patients
+      - Companies that want to manage their digital processes from one place
+      - Ventures preparing to launch a new brand or project
+
+  # 8) WHY PIXELON
+  - type: cards
+    background: dark
+    eyebrow: Why Pixelon?
+    heading: From Analysis to Delivery, One Team Handles It All
+    lead: >-
+      Pixelon does not judge a brand's digital presence through a single channel. We review
+      web design, social media, advertising, SEO, brand design, content and technology
+      processes together.
+    columns: 1
+    items:
+      - title: A Holistic Point of View
+        description: >-
+          We assess your brand's digital touchpoints as one single system rather than as
+          separate pieces.
+      - title: Sector Experience
+        description: >-
+          We have experience in healthcare, health tourism, e-commerce, construction, real
+          estate and corporate services.
+      - title: Actionable Recommendations
+        description: >-
+          Instead of only listing problems, we explain which steps should be taken first.
+      - title: No Obligation to Buy
+        description: >-
+          Requesting a free pre-analysis does not create any obligation to purchase a
+          service.
+
+  # 9) FAQ
+  - type: faq
+    background: light
+    eyebrow: Common Questions
+    heading: Frequently Asked Questions About the Free Digital Analysis
+    items:
+      - question: Is the free analysis really free?
+        answer: >-
+          Yes. There is no charge for the initial digital assessment and no obligation to
+          purchase any service.
+      - question: How long does the analysis take?
+        answer: >-
+          It depends on the volume of applications and the scope of the analysis. Once your
+          request has been reviewed, we let you know the process and the estimated timeline.
+      - question: Do I need to give you access to my ad accounts?
+        answer: >-
+          Access is not required for the initial assessment. If a more detailed account
+          analysis is needed, limited access may be requested later with your approval.
+      - question: In which format is the analysis report shared?
+        answer: >-
+          Depending on the scope, it can be shared as a written assessment, a short report or
+          an online meeting.
+      - question: Is every application accepted?
+        answer: >-
+          Applications are reviewed by the Pixelon team. We may ask for additional details
+          for applications with insufficient information or outside our areas of expertise.
+      - question: Do I have to request a proposal after the analysis?
+        answer: >-
+          No. You can review the results and apply the recommendations with your own team, or
+          request a service proposal from Pixelon.
+
+  # 10) FINAL CTA
+  - type: cta
+    background: dark
+    anchor: iletisim
+    eyebrow: Take the First Step Today
+    heading: Discover What Your Brand Could Do Better in Digital.
+    lead: >-
+      From your website to your ads, from your social media accounts to your lead follow-up
+      processes, let's review your digital activity together.
+    ctas:
+      - label: Request a Free Analysis
+        href: '#form'
+        variant: primary
+      - label: Get Information on WhatsApp
+        href: https://wa.me/905065229034
+        variant: outline
