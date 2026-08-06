@@ -87,7 +87,7 @@ sections:
         description: We build your roadmap through industry and audience analysis.
       - title: Production
         description: We prepare the content, design, development and campaign work.
-      - title: Launch and Optimisation
+      - title: Launch and Optimization
         description: >-
           We take the project live, track the results and keep improving them.
 
@@ -121,4 +121,4 @@ sections:
         value: info@pixelon.com.tr
         href: mailto:info@pixelon.com.tr
       - label: Location
-        value: Kadikoy, Istanbul
+        value: Kadıköy, Istanbul

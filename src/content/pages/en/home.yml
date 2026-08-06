@@ -188,7 +188,7 @@ sections:
       - title: Testing and Launch
         description: |-
           We complete performance, user experience, form and redirect tests on every device, then take the project live.
-      - title: Optimisation and Growth
+      - title: Optimization and Growth
         description: |-
           After launch we track the data, analyse the results and keep improving the system so your brand keeps growing.
     ctas:
@@ -217,7 +217,7 @@ sections:
           We follow not only how our work looks, but its impact on traffic, engagement, enquiries and conversion.
       - title: We Manage the Whole Process in One Team
         description: |-
-          We run strategy, design, development, content, advertising and optimisation in full alignment with each other.
+          We run strategy, design, development, content, advertising and optimization in full alignment with each other.
 
   # 12 — GLOBAL (marquee of country chips)
   - type: bullets
@@ -331,7 +331,7 @@ sections:
         value: info@pixelon.com.tr
         href: 'mailto:info@pixelon.com.tr'
       - label: Address
-        value: Kadikoy, Istanbul
+        value: Kadıköy, Istanbul
 
   # 18 — PROJECT REQUEST FORM
   # Field placeholders: First Name · Last Name · Phone Number · E-mail Address ·

@@ -354,7 +354,7 @@ sections:
         value: info@pixelon.com.tr
         href: mailto:info@pixelon.com.tr
       - label: Location
-        value: Kadikoy, Istanbul
+        value: Kadıköy, Istanbul
 
   # 14 — FAQ
   - type: faq
@@ -381,7 +381,7 @@ sections:
         answer: >-
           The process starts with an initial conversation to understand your
           brand and your needs. We then plan the needs analysis, strategy,
-          proposal, design, implementation and optimisation stages.
+          proposal, design, implementation and optimization stages.
       - question: How can I get in touch with Pixelon?
         answer: >-
           You can message us on WhatsApp at +90 506 522 90 34, give us a call or

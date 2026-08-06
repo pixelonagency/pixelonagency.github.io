@@ -47,7 +47,7 @@ sections:
         href: 'mailto:info@pixelon.com.tr'
       - label: Location
         value: |-
-          Kadikoy, Istanbul
+          Kadıköy, Istanbul
           We run projects both online and face to face with brands from Turkey and from many other parts of the world.
       - label: Social Media
         value: |-
@@ -112,12 +112,12 @@ sections:
   - type: media
     background: dark
     eyebrow: Our Head Office
-    heading: Digital Solutions From Kadikoy to the World
+    heading: Digital Solutions From Kadıköy to the World
     lead: >-
-      Our head office is in Kadikoy, Istanbul. We work with brands across Turkey
+      Our head office is in Kadıköy, Istanbul. We work with brands across Turkey
       and around the world through online meetings and cloud-based project
       management systems.
-    alt: A clean map illustration showing the Kadikoy district of Istanbul
+    alt: A clean map illustration showing the Kadıköy district of Istanbul
 
   - type: faq
     background: light

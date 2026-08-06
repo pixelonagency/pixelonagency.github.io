@@ -73,7 +73,7 @@ sections:
     # `description` block; the `jobs` schema only has title/location/employmentType/description/href.
     items:
       - title: Social Media Specialist
-        location: Kadikoy, Istanbul
+        location: Kadıköy, Istanbul
         employmentType: Hybrid
         description: |-
           We are looking for a colleague who will plan social media strategies for brands, manage content calendars and follow production processes together with our creative teams.
@@ -104,7 +104,7 @@ sections:
           - Basic knowledge of advertising platforms
           - Experience in the healthcare or e-commerce sectors
       - title: Graphic Designer
-        location: Kadikoy, Istanbul
+        location: Kadıköy, Istanbul
         employmentType: Hybrid
         description: |-
           We are looking for a colleague who will produce modern, creative and brand-specific designs for social media, digital advertising, corporate identity and web projects.
