@@ -79,4 +79,4 @@ sections:
         variant: outline
       - label: Hemen Arayın
         href: 'tel:+905065229034'
-        variant: outline
+        variant: link

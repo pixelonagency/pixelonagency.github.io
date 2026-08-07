@@ -37,57 +37,49 @@ const steps = section.items.map((item, index) => ({
 </Section>
 
 <style>
+  /* Referans tasarım: adımlar çerçeveli KARTLAR halinde, sabit 3 sütunlu ızgarada durur. */
   .steps {
     display: grid;
-    /* Referans tasarımda 6 adım 3 sütunlu bir ızgarada durur (220px min ile bu, geniş
-       ekranlarda yanlışlıkla 4 sütuna bölünüyordu). */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--gap-section);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  /* Akış hissi: her adımın üstünde ince bağlayıcı çizgi + lime düğüm noktası. */
   .steps__item {
-    position: relative;
-    padding-top: 26px;
-    border-top: 1px solid var(--border);
-  }
-
-  .steps__item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    transform: translateY(-50%);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 30px;
   }
 
   .steps__number {
     display: block;
-    font: 700 clamp(30px, 3.4vw, 42px) / 1 var(--font-display);
+    font: 700 clamp(36px, 3vw, 48px) / 1 var(--font-display);
     letter-spacing: -0.02em;
     /* Referans tasarımda rakamlar dolu değil, yalnızca lime çerçeveli (outline). */
     color: transparent;
-    -webkit-text-stroke: 1px var(--accent);
+    -webkit-text-stroke: 1px rgba(207, 255, 0, 0.8);
   }
 
   .steps__title {
-    margin-top: 16px;
+    margin: 18px 0 0;
   }
 
   .steps__text {
     margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.65;
     max-width: 40ch;
   }
 
-  /* Açık zeminli varyant */
+  /* Açık zeminli varyant — referansta numara konturu koyudur. */
   :global(.section--light) .steps__item {
-    border-top-color: var(--border-on-light);
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .steps__number {
+    -webkit-text-stroke: 1px rgba(10, 10, 10, 0.7);
   }
 
   :global(.section--light) .steps__title {
@@ -98,28 +90,9 @@ const steps = section.items.map((item, index) => ({
     color: var(--text-muted-on-light);
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 860px) {
     .steps {
       grid-template-columns: 1fr;
-      gap: 28px;
-    }
-
-    /* Mobilde akış dikeye döner: üst çizgi yerine sol kenarlık. */
-    .steps__item {
-      border-top: none;
-      border-left: 1px solid var(--border);
-      padding-top: 0;
-      padding-left: 22px;
-    }
-
-    .steps__item::before {
-      top: 10px;
-      left: 0;
-      transform: translateX(-50%);
-    }
-
-    :global(.section--light) .steps__item {
-      border-left-color: var(--border-on-light);
     }
   }
 </style>

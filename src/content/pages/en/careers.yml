@@ -7,6 +7,7 @@ sections:
   # 1 — HERO
   - type: hero
     background: dark
+    align: center
     eyebrow: Pixelon Careers
     headingLines:
       - "Join a Team Where You Can Share Your Ideas Freely."
@@ -29,6 +30,7 @@ sections:
   # 2 — WORKING AT PIXELON
   - type: text
     background: light
+    layout: center
     eyebrow: A Team That Builds Together
     heading: We Don't Just Deliver Work, We Grow Together.
     body: |-
@@ -218,6 +220,7 @@ sections:
   # 7 — WHAT WE LOOK FOR
   - type: bullets
     background: dark
+    kind: split
     eyebrow: Who Do We Want to Work With?
     heading: Your Approach Matters as Much as Your Talent
     lead: >-

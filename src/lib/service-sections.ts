@@ -46,21 +46,33 @@ export interface ServiceLike {
   faq: Block & { items: { question: string; answer: string }[] };
 }
 
-const cards = (block: Block & { items: PageSection extends never ? never : TitledItem[] }): PageSection => ({
-  type: 'cards',
-  eyebrow: block.eyebrow,
-  heading: block.heading,
-  lead: block.lead,
-  background: 'dark',
-  ctas: [],
-  items: block.items,
-});
-
 export function serviceToSections(service: ServiceLike, whatsappUrl: string, locale: Locale = 'tr'): PageSection[] {
   const contactPath = localizedPath('contact', locale);
   const homePath = localizedPath('home', locale);
   const servicesPath = localizedPath('services', locale);
   const sections: PageSection[] = [];
+
+  /*
+   * Referans tasarımda hizmet sayfaları koyu hero'nun ardından KATI bir
+   * beyaz/koyu bölüm ritmiyle akar. Hangi opsiyonel bölümlerin var olduğundan
+   * bağımsız olarak sıradaki her içerik bölümü zemini değiştirir.
+   */
+  let lightNext = true;
+  const nextBg = (): 'light' | 'dark' => {
+    const bg = lightNext ? 'light' : 'dark';
+    lightNext = !lightNext;
+    return bg;
+  };
+
+  const cards = (block: Block & { items: TitledItem[] }): PageSection => ({
+    type: 'cards',
+    eyebrow: block.eyebrow,
+    heading: block.heading,
+    lead: block.lead,
+    background: nextBg(),
+    ctas: [],
+    items: block.items,
+  });
 
   sections.push({
     type: 'hero',
@@ -82,13 +94,15 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
   });
 
   if (service.intro) {
+    // Referans: giriş bölümü beyazdır — başlık solda sticky, paragraflar sağda.
     sections.push({
       type: 'text',
       eyebrow: service.intro.eyebrow,
       heading: service.intro.heading,
       body: service.intro.body,
       highlight: service.intro.highlight,
-      background: 'dark',
+      layout: 'split',
+      background: nextBg(),
       ctas: [],
     });
   }
@@ -97,7 +111,21 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
   sections.push(cards(service.scope));
 
   if (service.platforms) sections.push(cards(service.platforms));
-  if (service.principles) sections.push(cards(service.principles));
+
+  if (service.principles) {
+    // Referans: ilkeler/standartlar beyaz zeminde krem dolgulu kartlardır.
+    const background = nextBg();
+    sections.push({
+      type: 'cards',
+      eyebrow: service.principles.eyebrow,
+      heading: service.principles.heading,
+      lead: service.principles.lead,
+      kind: background === 'light' ? 'tinted' : 'grid',
+      background,
+      ctas: [],
+      items: service.principles.items,
+    });
+  }
 
   if (service.comparison) {
     sections.push({
@@ -106,7 +134,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       heading: service.comparison.heading,
       lead: service.comparison.lead,
       note: service.comparison.note,
-      background: 'dark',
+      background: nextBg(),
       ctas: [],
       items: service.comparison.items,
       columns: 2,
@@ -119,7 +147,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       eyebrow: service.contentTypes.eyebrow,
       heading: service.contentTypes.heading,
       lead: service.contentTypes.lead,
-      background: 'dark',
+      background: nextBg(),
       ctas: [],
       items: service.contentTypes.items,
     });
@@ -130,7 +158,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     eyebrow: service.process.eyebrow,
     heading: service.process.heading,
     lead: service.process.lead,
-    background: 'dark',
+    background: nextBg(),
     ctas: [],
     items: service.process.steps,
   });
@@ -141,21 +169,22 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       eyebrow: service.projects.eyebrow,
       heading: service.projects.heading,
       lead: service.projects.lead,
-      background: 'dark',
+      background: nextBg(),
       ctas: [],
       items: service.projects.items,
     });
   }
 
   if (service.value) {
-    // Madde listesi varsa bullets; yoksa lead tek paragraflık bir metin bölümüne düşer.
+    // Referans: değer listesi 2 sütunlu noktalı listedir; maddesizse düz metin bölümü.
     if (service.value.bullets.length > 0) {
       sections.push({
         type: 'bullets',
         eyebrow: service.value.eyebrow,
         heading: service.value.heading,
         lead: service.value.lead,
-        background: 'dark',
+        kind: 'split',
+        background: nextBg(),
         ctas: [],
         items: service.value.bullets,
       });
@@ -165,7 +194,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
         eyebrow: service.value.eyebrow,
         heading: service.value.heading,
         body: service.value.lead,
-        background: 'dark',
+        background: nextBg(),
         ctas: [],
       });
     }
@@ -177,7 +206,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       eyebrow: service.sectors.eyebrow,
       heading: service.sectors.heading,
       body: service.sectors.body,
-      background: 'dark',
+      background: nextBg(),
       ctas: [],
     });
   }
@@ -187,7 +216,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     eyebrow: service.cta.eyebrow,
     heading: service.cta.heading,
     lead: service.cta.lead,
-    background: 'dark',
+    background: nextBg(),
     ctas: [
       { label: t('cta.quoteFormal', locale), href: contactPath, variant: 'primary', external: false },
       { label: t('cta.whatsapp', locale), href: whatsappUrl, variant: 'outline', icon: 'whatsapp', external: true },
@@ -199,7 +228,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     eyebrow: service.faq.eyebrow,
     heading: service.faq.heading,
     lead: service.faq.lead,
-    background: 'dark',
+    background: nextBg(),
     ctas: [],
     items: service.faq.items,
   });

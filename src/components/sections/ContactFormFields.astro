@@ -59,6 +59,13 @@ const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`)
 const services = inLocale.length > 0 ? inLocale : allServices.filter((e) => e.id.startsWith(`${DEFAULT_LOCALE}/`));
 const serviceTitles = [...services].sort((a, b) => a.data.order - b.data.order).map((entry) => entry.data.title);
 
+/* Referans tasarımdaki isteğe bağlı bütçe aralıkları — doğrulamaya girmez, e-postayla iletilir. */
+const BUDGET_OPTIONS: Record<Locale, string[]> = {
+  tr: ['50.000 TL altı', '50.000 – 150.000 TL', '150.000 – 500.000 TL', '500.000 TL üzeri', 'Henüz belirlemedim'],
+  en: ['Under 50,000 TRY', '50,000 – 150,000 TRY', '150,000 – 500,000 TRY', 'Over 500,000 TRY', 'Not decided yet'],
+};
+const budgetOptions = BUDGET_OPTIONS[locale];
+
 /**
  * Gönderim Web3Forms üzerinden yapılır: sabit uç nokta + gövdede `access_key`.
  *
@@ -224,6 +231,16 @@ const messagesJson = JSON.stringify(formMessages(locale));
             placeholder={t('form.placeholder.service', locale)}
             {locale}
           />
+          <div class="form__span">
+            <FormField
+              name="budget"
+              label={t('form.field.budget', locale)}
+              type="select"
+              options={budgetOptions}
+              placeholder={t('form.placeholder.budget', locale)}
+              {locale}
+            />
+          </div>
           <div class="form__span">
             <FormField
               name="message"

@@ -18,7 +18,8 @@ interface Props {
   ctaAlign?: 'start' | 'center';
 }
 
-const { anchor, background = 'dark', class: className, ctas = [], ctaAlign = 'start' }: Props = Astro.props;
+/* Bölüm sonu butonları referans tasarımda ortalanmıştır — varsayılan 'center'. */
+const { anchor, background = 'dark', class: className, ctas = [], ctaAlign = 'center' }: Props = Astro.props;
 ---
 
 <section id={anchor} class:list={['section', `section--${background}`, className]} data-reveal>
@@ -75,6 +76,12 @@ const { anchor, background = 'dark', class: className, ctas = [], ctaAlign = 'st
     justify-content: center;
   }
 
+  /* Bölüm sonu butonları hero butonlarından bir kademe küçüktür (referans: 15px / 16-17×28-34). */
+  .section__ctas :global(.btn) {
+    font-size: 15px;
+    padding: 16px 30px;
+  }
+
   /* Açık zeminde outline buton koyu kenarlık/metin alır. */
   .section--light .section__ctas :global(.btn--outline) {
     border-color: var(--border-on-light);
@@ -84,6 +91,26 @@ const { anchor, background = 'dark', class: className, ctas = [], ctaAlign = 'st
   .section--light .section__ctas :global(.btn--outline:hover) {
     border-color: var(--text-on-light);
     color: var(--text-on-light);
+  }
+
+  /* Referans: açık zeminde dolgulu bölüm butonu SİYAHTIR (lime değil). */
+  .section--light .section__ctas :global(.btn--primary) {
+    background: var(--text-on-light);
+    color: #fff;
+  }
+
+  .section--light .section__ctas :global(.btn--primary:hover) {
+    background: var(--bg-footer);
+    color: var(--accent);
+  }
+
+  /* Referans: bölüm sonu düz bağlantıları lime olur ("Markanıza özel çözümümüzü keşfedin →"). */
+  .section__ctas :global(.cta-link) {
+    color: var(--accent);
+  }
+
+  .section__ctas :global(.cta-link:hover) {
+    color: var(--text);
   }
 
   @media (max-width: 720px) {

@@ -30,21 +30,22 @@ sections:
       - label: Bizimle İletişime Geçin
         href: /iletisim
         variant: outline
+    image: '/src/assets/images/pixelon-ekip-pixel-art.webp'
     imageAlt: >-
       Pixelon dijital pazarlama ekibi - sosyal etkileşim, hız ve topluluk odaklı
       yaklaşımı simgeleyen pixel-art görsel
 
-  # 2 — PIXELON NEDİR
+  # 2 — PIXELON NEDİR (referans: başlık solda sticky, paragraflar sağda)
   - type: text
     background: light
+    layout: split
     eyebrow: Pixelon'da Ne Var?
     heading: Fikirleri Markalara, Markaları Güçlü Dijital Deneyimlere Dönüştürüyoruz.
     body: |-
       Pixelon; markaların dijital dünyadaki ihtiyaçlarını tek bir bakış açısıyla ele alan, strateji ve yaratıcılığı teknolojiyle birleştiren 360° dijital pazarlama ajansıdır. Web tasarım, sosyal medya yönetimi, dijital reklam, SEO, marka ve kurumsal kimlik, UX/UI tasarımı, e-ticaret, video prodüksiyon, sağlık turizmi ve dijital dönüşüm alanlarında markaya özel çözümler üretiyoruz.
 
       Ancak bizim için dijital pazarlama yalnızca bir web sitesi hazırlamak, sosyal medya paylaşımı yapmak veya reklam kampanyası yayınlamak değildir. Her çalışmayı markanın hedefleri, hedef kitlesi, sektörü ve büyüme planları doğrultusunda birbirini tamamlayan bir sistem olarak ele alıyoruz. Sağlık ve klinik markalarından sağlık turizmi firmalarına, e-ticaret girişimlerinden inşaat ve gayrimenkul şirketlerine kadar farklı sektörlerdeki markaların dijital dönüşüm yolculuklarına eşlik ediyoruz.
-
-      Pixelon'da her fikir bir stratejiyle, her tasarım bir amaçla ve her kampanya ölçülebilir bir hedefle başlar.
+    highlight: Pixelon'da her fikir bir stratejiyle, her tasarım bir amaçla ve her kampanya ölçülebilir bir hedefle başlar.
 
   # 3 — NE YAPIYORUZ
   - type: bullets
@@ -111,33 +112,33 @@ sections:
 
           Projeyi teslim etmekle kalmıyor, markanızla birlikte büyüyoruz.
 
-  # 5a — VİZYON
-  - type: text
+  # 5 — VİZYON + MİSYON (referans: tek bölümde yan yana, üst çizgili iki blok)
+  - type: cards
     background: dark
-    eyebrow: Geleceğe Bakışımız
-    heading: Dijital Dünyada Güçlü, Özgün ve Sürdürülebilir Markalar Oluşturmak
-    body: >-
-      Vizyonumuz; strateji, yaratıcılık ve teknolojiyi bir araya getirerek
-      markaların yalnızca bugünkü ihtiyaçlarına değil, gelecekteki büyüme
-      hedeflerine de cevap veren dijital sistemler oluşturmaktır. Türkiye'de ve
-      uluslararası pazarlarda faaliyet gösteren markalar için güvenilir,
-      yenilikçi ve sonuç odaklı bir dijital çözüm ortağı olmayı hedefliyoruz.
+    kind: panels
+    columns: 2
+    items:
+      - eyebrow: Geleceğe Bakışımız
+        title: Dijital Dünyada Güçlü, Özgün ve Sürdürülebilir Markalar Oluşturmak
+        description: >-
+          Vizyonumuz; strateji, yaratıcılık ve teknolojiyi bir araya getirerek
+          markaların yalnızca bugünkü ihtiyaçlarına değil, gelecekteki büyüme
+          hedeflerine de cevap veren dijital sistemler oluşturmaktır. Türkiye'de
+          ve uluslararası pazarlarda faaliyet gösteren markalar için güvenilir,
+          yenilikçi ve sonuç odaklı bir dijital çözüm ortağı olmayı hedefliyoruz.
+      - eyebrow: Nasıl Değer Üretiyoruz?
+        title: Markaların Potansiyelini Görünür ve Ölçülebilir Sonuçlara Dönüştürmek
+        description: >-
+          Misyonumuz; markaları doğru analiz etmek, hedef kitleleriyle güçlü
+          bağlar kurmalarını sağlamak ve dijital pazarlama yatırımlarını
+          sürdürülebilir büyümeye dönüştürmektir. Her projede estetik, kullanıcı
+          deneyimi, teknoloji ve performans arasında doğru dengeyi kurarak
+          markaya gerçek bir değer kazandırmayı amaçlıyoruz.
 
-  # 5b — MİSYON
-  - type: text
-    background: dark
-    eyebrow: Nasıl Değer Üretiyoruz?
-    heading: Markaların Potansiyelini Görünür ve Ölçülebilir Sonuçlara Dönüştürmek
-    body: >-
-      Misyonumuz; markaları doğru analiz etmek, hedef kitleleriyle güçlü bağlar
-      kurmalarını sağlamak ve dijital pazarlama yatırımlarını sürdürülebilir
-      büyümeye dönüştürmektir. Her projede estetik, kullanıcı deneyimi, teknoloji
-      ve performans arasında doğru dengeyi kurarak markaya gerçek bir değer
-      kazandırmayı amaçlıyoruz.
-
-  # 6 — DEĞERLERİMİZ
+  # 6 — DEĞERLERİMİZ (referans: krem dolgulu, çerçevesiz kartlar)
   - type: cards
     background: light
+    kind: tinted
     eyebrow: Çalışma Kültürümüz
     heading: Ürettiğimiz Her İşin Temelinde Bu Değerler Var
     columns: 3
@@ -252,33 +253,40 @@ sections:
     columns: 3
     items:
       - title: Sağlık ve Klinik Markaları
+        icon: health
         description: >-
           Hasta güveni, uzmanlık iletişimi ve randevu dönüşümünü destekleyen
           dijital çözümler üretiyoruz.
       - title: Sağlık Turizmi Firmaları
+        icon: tourism
         description: >-
           Çok dilli içerik, uluslararası reklam ve hasta iletişim süreçleriyle
           global büyümeyi destekliyoruz.
       - title: E-Ticaret Markaları
+        icon: ecommerce
+        featured: true
         description: >-
           Ürün sunumundan kullanıcı deneyimine, reklamdan satış dönüşümüne kadar
           e-ticareti büyütüyoruz.
       - title: İnşaat ve Gayrimenkul
+        icon: construction
         description: >-
           Projelerin güvenini, yatırım değerini ve kurumsal gücünü dijitalde
           doğru şekilde yansıtıyoruz.
       - title: KOBİ ve Kurumsal Hizmetler
+        icon: sme
         description: >-
           Markaların daha profesyonel görünmesini, doğru hedef kitleye ulaşmasını
           ve sürdürülebilir büyümesini sağlıyoruz.
       - title: Eğitim ve Danışmanlık
+        icon: education
         description: >-
           Uzmanlığınızı görünür kılan, güven oluşturan ve başvuru dönüşümünü
           artıran yapılar kuruyoruz.
     ctas:
       - label: Markanıza özel çözümümüzü keşfedin →
         href: /iletisim
-        variant: outline
+        variant: link
 
   # 10 — EKİP
   # Referanstaki bölüm iki sütunlu bir metin bloğu; ekip kartı/fotoğraf ızgarası yok.
@@ -286,27 +294,28 @@ sections:
   # TeamSection bölümü hiç basmıyordu (başlık + 3 paragraf kayboluyordu) → `text`.
   - type: text
     background: light
+    layout: split
     eyebrow: Farklı Disiplinler, Ortak Bir Hedef
     heading: Her Projenin Arkasında Birlikte Düşünen Bir Ekip Var
     body: |-
       Pixelon; strateji, tasarım, içerik, reklam, yazılım ve prodüksiyon alanlarındaki farklı uzmanlıkların aynı hedef etrafında buluştuğu bir ekip yapısına sahiptir. Her projeyi yalnızca ilgili departmanın işi olarak değil, tüm ekibin ortak sorumluluğu olarak görüyoruz. Tasarımcı, içerik üreticisi, reklam uzmanı ve geliştirici aynı marka hedefi doğrultusunda birlikte çalışıyor.
 
       Bu iş birliği sayesinde yalnızca estetik görünen değil; teknik olarak güçlü, kullanıcı dostu, hedef kitleye uygun ve sonuç üreten projeler ortaya çıkarıyoruz.
+    highlight: Farklı bakış açılarını aynı masada buluşturuyor, güçlü fikirleri birlikte hayata geçiriyoruz.
 
-      Farklı bakış açılarını aynı masada buluşturuyor, güçlü fikirleri birlikte hayata geçiriyoruz.
-
-  # 11 — GLOBAL
+  # 11 — GLOBAL (referans: ortalanmış blok + lime vurgulu büyük kapanış cümlesi)
   - type: text
     background: dark
+    layout: center
     eyebrow: Yerelden Globale
     heading: Markaları Farklı Pazarlarda Hedef Kitleleriyle Buluşturuyoruz.
     body: |-
       Pixelon olarak Türkiye'nin yanı sıra Avrupa ve Afrika pazarlarında faaliyet gösteren markalar için projeler geliştiriyoruz. Farklı ülkelerin kullanıcı alışkanlıklarını, iletişim dillerini ve pazar dinamiklerini dikkate alarak çok dilli web siteleri, uluslararası reklam kampanyaları ve hedef pazara özel içerik stratejileri hazırlıyoruz.
+    highlight: İstanbul'da üretiyor, markaları *dünyanın farklı noktalarındaki* hedef kitlelerle buluşturuyoruz.
 
-      İstanbul'da üretiyor, markaları dünyanın farklı noktalarındaki hedef kitlelerle buluşturuyoruz.
-
-  # 12 — PARTNERLER
-  - type: bullets
+  # 12 — PARTNERLER (referans: ana sayfadaki gibi kayan marka isimleri şeridi)
+  - type: marquee
+    kind: wordmarks
     background: light
     heading: Güçlü Teknolojilerle, Güçlü Dijital Deneyimler
     lead: >-
@@ -344,7 +353,7 @@ sections:
         variant: outline
       - label: Projenizi Anlatın
         href: mailto:info@pixelon.com.tr
-        variant: outline
+        variant: link
 
   - type: contactInfo
     background: dark

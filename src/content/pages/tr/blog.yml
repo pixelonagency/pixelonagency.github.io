@@ -111,4 +111,4 @@ sections:
         variant: outline
       - label: Projenizi Anlatın
         href: /iletisim
-        variant: outline
+        variant: link

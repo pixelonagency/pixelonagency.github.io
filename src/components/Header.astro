@@ -21,6 +21,9 @@ const serviceLinks = [...scoped]
 
 const PRIMARY_NAV = buildPrimaryNav(locale);
 const currentPath = Astro.url.pathname;
+
+/* Referans tasarımda dil seçici bayrak emojisiyle basılır. */
+const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
 ---
 
 <header class="site-header">
@@ -82,10 +85,12 @@ const currentPath = Astro.url.pathname;
               )}
               {code === locale ? (
                 <span class="lang-switch__item lang-switch__item--active" aria-current="true">
+                  <span aria-hidden="true">{FLAGS[code]}</span>
                   {code.toUpperCase()}
                 </span>
               ) : (
                 <a class="lang-switch__item" href={localizedPath('home', code)} hreflang={code}>
+                  <span aria-hidden="true">{FLAGS[code]}</span>
                   {code.toUpperCase()}
                 </a>
               )}
@@ -145,13 +150,13 @@ const currentPath = Astro.url.pathname;
 </div>
 
 <style>
+  /* Referans tasarımda header'ın alt çizgisi yoktur — zemin blur'u yeterli ayrımı verir. */
   .site-header {
     position: fixed;
     inset: 0 0 auto;
     z-index: 50;
     background: var(--bg-header);
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border-faint);
   }
 
   .site-header__inner {
@@ -288,6 +293,13 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     gap: 6px;
     text-decoration: none;
+    /* Pasif dil soluk beyaz; etkin dil lime (referans). */
+    color: rgba(255, 255, 255, 0.55);
+    transition: color var(--t-base);
+  }
+
+  a.lang-switch__item:hover {
+    color: var(--text);
   }
 
   .lang-switch__item span {

@@ -12,7 +12,7 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="section-stats">
   <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
   <dl class="stats">
@@ -45,9 +45,16 @@ const { section } = Astro.props;
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
-    border-radius: var(--radius-feature);
+    /* Referans: bu ızgaranın köşe yarıçapı 20px (feature'daki 24 değil). */
+    border-radius: 20px;
     overflow: hidden;
     margin: clamp(40px, 5vw, 64px) 0 0;
+  }
+
+  /* Referans: bölüm butonu lime kenarlıklı outline'dır (dolgulu değil). */
+  :global(.section-stats .section__ctas .btn--outline) {
+    border-color: rgba(207, 255, 0, 0.5);
+    color: var(--accent);
   }
 
   .stats__item {
@@ -98,6 +105,8 @@ const { section } = Astro.props;
 
   :global(.section--light) .stats__value {
     color: var(--text-on-light);
+    /* Referans: açık zeminli sayaçlar bir kademe küçüktür (max 58px). */
+    font-size: clamp(40px, 4.2vw, 58px);
   }
 </style>
 

@@ -111,4 +111,4 @@ sections:
         variant: outline
       - label: Tell Us About Your Project
         href: /en/contact
-        variant: outline
+        variant: link

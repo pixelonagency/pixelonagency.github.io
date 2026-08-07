@@ -9,6 +9,7 @@ whatsappMessage: Hello Pixelon, I would like to get information about digital ma
 sections:
   - type: hero
     background: dark
+    align: center
     eyebrow: Get in Touch With Pixelon
     headingLines:
       - "Let's Build Something Great Together."
@@ -162,4 +163,4 @@ sections:
         variant: outline
       - label: Explore Our Services
         href: /en/services
-        variant: outline
+        variant: link

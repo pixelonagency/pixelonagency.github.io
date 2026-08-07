@@ -7,6 +7,7 @@ sections:
   # 1 — HERO
   - type: hero
     background: dark
+    align: center
     eyebrow: Pixelon Kariyer
     headingLines:
       - "Fikirlerinizi Özgürce Paylaşabileceğiniz Bir Ekibe Katılın."
@@ -28,6 +29,7 @@ sections:
   # 2 — PIXELON'DA ÇALIŞMAK
   - type: text
     background: light
+    layout: center
     eyebrow: Birlikte Üreten Bir Ekip
     heading: Sadece İş Üretmiyor, Birlikte Gelişiyoruz.
     body: |-
@@ -218,6 +220,7 @@ sections:
   # 7 — ARANAN ÖZELLİKLER
   - type: bullets
     background: dark
+    kind: split
     eyebrow: Kimlerle Çalışmak İstiyoruz?
     heading: Yeteneğin Kadar Yaklaşımın da Önemli
     lead: >-

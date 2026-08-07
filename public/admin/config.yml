@@ -365,6 +365,11 @@ collections:
                 field: { label: Satır, name: line, widget: string }
               - &s_lead { label: Giriş Metni, name: lead, widget: text, required: false }
               - { label: Alt Slogan, name: tagline, widget: string, required: false }
+              - label: Hizalama
+                name: align
+                widget: select
+                required: false
+                options: [start, center]
               - label: Güven Rozetleri
                 name: chips
                 widget: list
@@ -407,9 +412,14 @@ collections:
               - *s_anchor
               - *s_background
               - *s_ctas
-              - &s_heading { label: Başlık, name: heading, widget: string }
+              - { label: Başlık, name: heading, widget: string, required: false }
               - *s_lead
               - { label: Sütun Sayısı, name: columns, widget: number, value_type: int, required: false }
+              - label: Görünüm
+                name: kind
+                widget: select
+                required: false
+                options: [grid, tinted, panels]
               - { label: Kapanış Notu, name: note, widget: text, required: false }
               - label: Kartlar
                 name: items
@@ -441,7 +451,7 @@ collections:
               - *s_anchor
               - *s_background
               - *s_ctas
-              - *s_heading
+              - &s_heading { label: Başlık, name: heading, widget: string }
               - *s_lead
               - { label: Adımlar, name: items, widget: list, fields: *titled_item_fields }
 
@@ -455,6 +465,11 @@ collections:
               - *s_ctas
               - *s_heading
               - *s_lead
+              - label: Görünüm
+                name: kind
+                widget: select
+                required: false
+                options: [grid, split]
               - label: Maddeler
                 name: items
                 widget: list
@@ -512,6 +527,11 @@ collections:
               - &s_heading_opt { label: Başlık, name: heading, widget: string, required: false }
               - { label: Gövde, name: body, widget: text }
               - { label: Vurgu Cümlesi, name: highlight, widget: text, required: false }
+              - label: Düzen
+                name: layout
+                widget: select
+                required: false
+                options: [stack, split, center]
               - *s_image
               - *s_image_alt
 

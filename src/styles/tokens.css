@@ -7,14 +7,18 @@
   /* --- Zeminler --- */
   --bg: #0a0a0a;
   --bg-footer: #050505;
-  --bg-light: #f5f5ef;
+  /* Referans tasarımda açık bölümler SAF BEYAZ; krem ton (#f5f5ef) yalnızca
+     beyaz zemin üstündeki dolgulu kartlarda (blog kartları) kullanılır. */
+  --bg-light: #ffffff;
+  --bg-tint: #f5f5ef;
   --bg-header: rgba(10, 10, 10, 0.82);
   --bg-dropdown: rgba(10, 10, 10, 0.97);
 
   /* --- Metin --- */
   --text: #ffffff;
   --text-on-light: #0a0a0a;
-  --text-muted: rgba(255, 255, 255, 0.62);
+  /* Referans: koyu zeminde gövde/lead metinleri .65, açık zeminde .7 opaklıkta. */
+  --text-muted: rgba(255, 255, 255, 0.65);
   --text-soft: rgba(255, 255, 255, 0.75);
   /*
    * Referans tasarım burada .45 kullanıyordu; koyu zeminde 12–13px metinde kontrast
@@ -23,7 +27,7 @@
    * açısından uyumlu.
    */
   --text-faint: rgba(255, 255, 255, 0.58);
-  --text-muted-on-light: rgba(10, 10, 10, 0.62);
+  --text-muted-on-light: rgba(10, 10, 10, 0.7);
 
   /* --- Aksan --- */
   --accent: #cfff00;

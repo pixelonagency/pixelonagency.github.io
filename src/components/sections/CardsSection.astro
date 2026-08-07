@@ -12,52 +12,295 @@ interface Props {
 }
 
 const { section } = Astro.props;
-// `columns: 1` ("Neden Pixelon" gibi tek sütun dikey listeler) auto-fit ile ele alınamaz —
-// bir min genişlik vermek, konteyner geniş olduğunda birden çok sütuna bölünmesine yol açar.
+
+/*
+ * Referans tasarımda `cards` üç ayrı görünüm taşır:
+ *  - columns:1 → "split liste": başlık solda (sticky), maddeler sağda çizgi ayraçlı
+ *    ve ÇERÇEVESİZ satırlar halinde (ör. ana sayfadaki "Neden Pixelon").
+ *  - rating'li kartlar → müşteri yorumu anatomisi: yıldızlar üstte, alıntı ortada,
+ *    en altta isim/pozisyon solda + lime dolgulu kategori pili sağda.
+ *  - diğerleri → standart kart ızgarası; ikonlu kartlar (sektörler) 01, 02… numarası alır.
+ */
+const isSplit = section.columns === 1;
+const kind = section.kind ?? 'grid';
+const hasRatings = section.items.some((item) => item.rating);
+
+// columns:3 referansta sabit üç sütundur (yorum kartları hariç — onlar auto-fit akar).
 const cardsTemplate =
-  section.columns === 1
-    ? '1fr'
+  section.columns === 3 && !hasRatings
+    ? 'repeat(3, minmax(0, 1fr))'
     : `repeat(auto-fit, minmax(${section.columns === 2 ? '340px' : section.columns === 4 ? '220px' : '280px'}, 1fr))`;
+
+/** Yorum kartı açıklaması: son satır "Pozisyon · Marka" meta bilgisidir. */
+const splitQuote = (description: string): { quote: string; meta?: string } => {
+  const lines = description
+    .trim()
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+  if (lines.length < 2) return { quote: description.trim() };
+  return { quote: lines.slice(0, -1).join(' '), meta: lines[lines.length - 1] };
+};
+
+/**
+ * Referans: çok paragraflı kart açıklamalarında SON paragraf kalın kapanış satırıdır
+ * ("Yaratıcı fikirleri ölçülebilir hedeflerle buluşturuyoruz." gibi).
+ */
+const splitBody = (description: string): { body: string; strong?: string } => {
+  const parts = description
+    .trim()
+    .split(/\n\s*\n/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (parts.length < 2) return { body: description.trim() };
+  return { body: parts.slice(0, -1).join('\n\n'), strong: parts[parts.length - 1] };
+};
+
+/*
+ * Referans: sıra numarası ikonlu kartlarda (sektörler) ve kalın kapanış satırlı
+ * kartlarda (Neden Pixelon) görünür; sade başlık+açıklama kartları (kariyer
+ * avantajları, blog sektör kartları) numarasızdır.
+ */
+const numberedCards = kind === 'grid' && !hasRatings;
 ---
 
-<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+{
+  isSplit ? (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <div class="split">
+        <div class="split__head">
+          <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+        </div>
 
-  <div class="cards" style={`--cards-template: ${cardsTemplate}`}>
-    {
-      section.items.map((item, index) => {
-        const Tag = item.href ? 'a' : 'div';
-        return (
-          <Tag
-            class:list={['card', 'cards__item', item.featured && 'cards__item--featured']}
-            href={item.href}
-            data-reveal
-            data-reveal-index={index}
-          >
-            {item.icon && <SectorIcon name={item.icon} />}
-            {item.rating && <StarRating rating={item.rating} />}
-            {item.eyebrow && <p class="cards__eyebrow">{item.eyebrow}</p>}
-            <h3 class="h3">{item.title}</h3>
-            <p class="body-text cards__text">{item.description}</p>
-            {item.href && (
-              <span class="cards__arrow" aria-hidden="true">
-                →
-              </span>
+        <div class="split__list">
+          {section.items.map((item, index) => (
+            <div class="split__item" data-reveal data-reveal-index={index}>
+              <h3 class="split__title">{item.title}</h3>
+              <p class="split__text">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {section.note && <p class="lead cards__note">{section.note}</p>}
+    </Section>
+  ) : kind === 'panels' ? (
+    /* Referans (vizyon/misyon): üst çizgili açık bloklar — noktalı eyebrow + büyük başlık. */
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      {(section.eyebrow || section.heading || section.lead) && (
+        <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+      )}
+
+      <div class="panels">
+        {section.items.map((item, index) => (
+          <div class="panels__item" data-reveal data-reveal-index={index}>
+            {item.eyebrow && (
+              <p class="panels__eyebrow">
+                <span class="panels__dot" aria-hidden="true" />
+                {item.eyebrow}
+              </p>
             )}
-          </Tag>
-        );
-      })
-    }
-  </div>
+            <h3 class="panels__title">{item.title}</h3>
+            <p class="panels__text">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  ) : (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
-  {section.note && <p class="lead cards__note">{section.note}</p>}
-</Section>
+      <div class="cards" style={`--cards-template: ${cardsTemplate}`}>
+        {section.items.map((item, index) => {
+          const Tag = item.href ? 'a' : 'div';
+          const testimonial = item.rating ? splitQuote(item.description) : null;
+          const content = testimonial ? null : splitBody(item.description);
+          return (
+            <Tag
+              class:list={[
+                'card',
+                'cards__item',
+                kind === 'tinted' && 'cards__item--tinted',
+                item.featured && 'cards__item--featured',
+              ]}
+              href={item.href}
+              data-reveal
+              data-reveal-index={index}
+            >
+              {item.icon && <SectorIcon name={item.icon} />}
+              {numberedCards && (item.icon || content?.strong) && (
+                <span class="cards__num" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              )}
+
+              {testimonial ? (
+                <>
+                  <StarRating rating={item.rating ?? 5} />
+                  <blockquote class="cards__quote">{testimonial.quote}</blockquote>
+                  <footer class="cards__foot">
+                    <div>
+                      <p class="cards__name">{item.title}</p>
+                      {testimonial.meta && <p class="cards__meta">{testimonial.meta}</p>}
+                    </div>
+                    {item.eyebrow && <span class="cards__pill">{item.eyebrow}</span>}
+                  </footer>
+                </>
+              ) : (
+                <>
+                  {item.eyebrow && <p class="cards__eyebrow">{item.eyebrow}</p>}
+                  <h3 class="h3 cards__title">{item.title}</h3>
+                  <p class="cards__text">{content?.body}</p>
+                  {content?.strong && <p class="cards__strong">{content.strong}</p>}
+                  {item.href && (
+                    <span class="cards__arrow" aria-hidden="true">
+                      →
+                    </span>
+                  )}
+                </>
+              )}
+            </Tag>
+          );
+        })}
+      </div>
+
+      {section.note && <p class="lead cards__note">{section.note}</p>}
+    </Section>
+  )
+}
 
 <style>
+  /* --- Split liste (columns:1) — başlık solda sticky, maddeler sağda --- */
+  .split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+
+  .split__head {
+    position: sticky;
+    top: calc(var(--header-h) + 48px);
+  }
+
+  .split__head :global(.section-head) {
+    margin-bottom: 0;
+  }
+
+  .split__item {
+    padding: 26px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .split__title {
+    margin: 0 0 8px;
+    font: 600 20px var(--font-display);
+    color: var(--text);
+  }
+
+  .split__text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  :global(.section--light) .split__item {
+    border-top-color: rgba(10, 10, 10, 0.1);
+  }
+
+  :global(.section--light) .split__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .split__text {
+    color: rgba(10, 10, 10, 0.65);
+  }
+
+  /* --- Panels (vizyon/misyon): üst çizgili açık bloklar --- */
+  .panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(28px, 5vw, 72px);
+  }
+
+  .panels__item {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 28px;
+  }
+
+  .panels__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font: 600 12px var(--font-display);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .panels__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .panels__title {
+    margin: 18px 0 0;
+    font: 600 clamp(26px, 3vw, 36px) / 1.2 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .panels__text {
+    margin: 20px 0 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+
+  :global(.section--light) .panels__item {
+    border-top-color: rgba(10, 10, 10, 0.15);
+  }
+
+  :global(.section--light) .panels__eyebrow {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .panels__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .panels__text {
+    color: var(--text-muted-on-light);
+  }
+
+  /* --- Standart kart ızgarası --- */
   .cards {
     display: grid;
     grid-template-columns: var(--cards-template);
     gap: var(--gap-card);
+  }
+
+  /* Referans (değerler): krem dolgulu, çerçevesiz kartlar. */
+  .cards__item--tinted {
+    background: var(--bg-tint);
+    border-color: transparent;
+    padding: 28px;
+  }
+
+  /* Referans: kalın kapanış satırı — açıklamanın son paragrafı. */
+  .cards__strong {
+    margin: 0;
+    font: 600 14px var(--font-display);
+    color: var(--text);
+  }
+
+  :global(.section--light) .cards__strong {
+    color: var(--text-on-light);
   }
 
   .cards__item {
@@ -66,6 +309,15 @@ const cardsTemplate =
     gap: 12px;
     text-decoration: none;
     color: inherit;
+  }
+
+  .cards__num {
+    font: 600 12px var(--font-display);
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  :global(.section--light) .cards__num {
+    color: rgba(10, 10, 10, 0.3);
   }
 
   .cards__eyebrow {
@@ -78,6 +330,14 @@ const cardsTemplate =
 
   .cards__text {
     flex: 1;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  :global(.section--light) .cards__text {
+    color: rgba(10, 10, 10, 0.65);
   }
 
   .cards__note {
@@ -95,12 +355,74 @@ const cardsTemplate =
     margin-top: 4px;
   }
 
+  /* --- Müşteri yorumu kartı --- */
+  .cards__quote {
+    flex: 1;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-soft);
+  }
+
+  :global(.section--light) .cards__quote {
+    color: rgba(10, 10, 10, 0.75);
+  }
+
+  .cards__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .cards__name {
+    margin: 0;
+    font: 600 15px var(--font-display);
+    color: var(--text);
+  }
+
+  :global(.section--light) .cards__name {
+    color: var(--text-on-light);
+  }
+
+  .cards__meta {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: var(--text-faint);
+  }
+
+  :global(.section--light) .cards__meta {
+    color: rgba(10, 10, 10, 0.55);
+  }
+
+  .cards__pill {
+    flex-shrink: 0;
+    font: 500 11px var(--font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(207, 255, 0, 0.25);
+    color: var(--text-on-light);
+    border-radius: var(--radius-pill);
+    padding: 6px 12px;
+  }
+
   /* Sürekli (yalnızca hover'da değil) lime çerçeveyle öne çıkan kart — bkz. `featured` alanı. */
   .cards__item--featured {
     border-color: var(--accent);
     box-shadow:
       0 0 0 1px rgba(207, 255, 0, 0.35),
       0 20px 40px rgba(207, 255, 0, 0.08);
+  }
+
+  /* Referans: sabit 3 sütun 860px altında tek sütuna düşer. */
+  @media (max-width: 860px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .split__head {
+      position: static;
+    }
   }
 
   @media (max-width: 720px) {

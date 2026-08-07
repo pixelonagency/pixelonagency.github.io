@@ -12,8 +12,8 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="faq-section">
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
 
   <div class="faq" data-faq>
     {
@@ -47,8 +47,15 @@ const { section } = Astro.props;
 </Section>
 
 <style>
+  /* Referans: SSS bloğu ortalanmış dar bir kolondur; başlığı bir kademe küçüktür. */
   .faq {
-    max-width: 860px;
+    max-width: 840px;
+    margin: 0 auto;
+  }
+
+  :global(.faq-section .section-head .h2) {
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.15;
   }
 
   .faq__item {

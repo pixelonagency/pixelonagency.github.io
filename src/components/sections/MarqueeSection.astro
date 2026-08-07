@@ -31,7 +31,7 @@ const speed = section.speed ?? (section.kind === 'wordmarks' ? 26 : 22);
       </div>
     </div>
   ) : (
-    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="section-partners">
       <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
 
       <div class="marquee-wordmarks" role="group" tabindex="0">
@@ -53,11 +53,11 @@ const speed = section.speed ?? (section.kind === 'wordmarks' ? 26 : 22);
 }
 
 <style>
-  /* --- Lime şerit (hero altı) --- */
+  /* --- Lime şerit (hero altı) — referans: 20px yazı, 18px dolgu, 56px aralık --- */
   .marquee-strip {
     overflow: hidden;
     background: var(--accent);
-    padding: 14px 0;
+    padding: 18px 0;
   }
 
   .marquee-strip__track {
@@ -71,21 +71,41 @@ const speed = section.speed ?? (section.kind === 'wordmarks' ? 26 : 22);
   .marquee-strip__group {
     display: flex;
     flex-shrink: 0;
-    gap: 40px;
-    padding-right: 40px;
+    gap: 56px;
+    padding-right: 56px;
   }
 
   .marquee-strip__group span {
-    font: 600 14px var(--font-display);
-    letter-spacing: 0.08em;
+    font: 600 20px var(--font-display);
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--text-on-light);
     white-space: nowrap;
   }
 
   /* --- Metin marka isimleri şeridi (partnerler) --- */
+  /* Referans: bu bölüm daha sıkışıktır (48-72px dolgu) ve başlığı küçüktür (max 30px). */
+  :global(.section-partners) {
+    padding: clamp(48px, 6vw, 72px) 0;
+  }
+
+  :global(.section-partners .section-head .h2) {
+    font-size: clamp(22px, 2.4vw, 30px);
+    letter-spacing: -0.01em;
+  }
+
+  :global(.section-partners .section-head .lead) {
+    font-size: 15px;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  :global(.section-partners .section-head) {
+    margin-bottom: clamp(24px, 3vw, 36px);
+  }
+
   .marquee-wordmarks {
-    --wm-gap: clamp(40px, 5vw, 64px);
+    --wm-gap: 64px;
 
     overflow: hidden;
     padding: 8px 0;
@@ -116,8 +136,9 @@ const speed = section.speed ?? (section.kind === 'wordmarks' ? 26 : 22);
     list-style: none;
   }
 
+  /* Referans: marka isimleri 26px ve çok silik (filigran hissi). */
   .marquee-wordmarks__group li {
-    font: 700 clamp(18px, 2.4vw, 24px) var(--font-display);
+    font: 700 26px var(--font-display);
     color: var(--text-faint);
     white-space: nowrap;
     transition: color var(--t-slow);
@@ -128,7 +149,7 @@ const speed = section.speed ?? (section.kind === 'wordmarks' ? 26 : 22);
   }
 
   :global(.section--light) .marquee-wordmarks__group li {
-    color: var(--text-muted-on-light);
+    color: rgba(10, 10, 10, 0.3);
   }
 
   :global(.section--light) .marquee-wordmarks__group li:hover {

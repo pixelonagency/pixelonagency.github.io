@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import type { PageSection } from '../../content/page-schema';
 import { parseHighlights } from '../../lib/highlight';
 import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
@@ -13,9 +15,40 @@ interface Props {
 }
 
 const { section, locale = DEFAULT_LOCALE } = Astro.props;
+
+// Şema çözümleyicisi geniş tiplediği için <Image /> öncesi daraltılır.
+const heroImage = section.image as ImageMetadata | undefined;
+
+/*
+ * Referans: hero ölçüsü sayfa tipine göre kademelidir —
+ * tam (ana/landing, 3 CTA) → alt sayfa (1-2 CTA veya breadcrumb) → kompakt (CTA'sız; blog/analiz).
+ */
+const heroScale =
+  section.ctas.length === 0 ? 'compact' : section.breadcrumb.length > 0 || section.ctas.length < 3 ? 'sub' : 'full';
+const isSubpage = heroScale !== 'full';
+
+/*
+ * Referans: "Strateji ✦ Yaratıcılık ✦ …" biçimindeki slogan statik metin değil,
+ * lime ✦ ayraçlı KAYAN şerittir. '✦' içeren tagline bu şeride dönüşür.
+ */
+const tickerItems = section.tagline?.includes('✦')
+  ? section.tagline
+      .split('✦')
+      .map((item) => item.trim())
+      .filter(Boolean)
+  : null;
 ---
 
-<section id={section.anchor} class:list={['hero', `hero--${section.background}`]}>
+<section
+  id={section.anchor}
+  class:list={[
+    'hero',
+    `hero--${section.background}`,
+    isSubpage && 'hero--sub',
+    heroScale === 'compact' && 'hero--compact',
+    section.align === 'center' && 'hero--center',
+  ]}
+>
   <div class="hero__inner">
     {
       section.breadcrumb.length > 0 && (
@@ -30,61 +63,95 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
       )
     }
 
-    {
-      section.eyebrow && (
-        <span class="hero__eyebrow">
-          <span class="hero__eyebrow-dot" aria-hidden="true" />
-          {section.eyebrow}
-        </span>
-      )
-    }
+    <div class:list={['hero__grid', heroImage && 'hero__grid--media']}>
+      <div>
+        {
+          section.eyebrow && (
+            <span class="hero__eyebrow">
+              <span class="hero__eyebrow-dot" aria-hidden="true" />
+              {section.eyebrow}
+            </span>
+          )
+        }
 
-    <h1 class="hero__title">
+        <h1 class="hero__title">
+          {
+            section.headingLines.map((line, lineIndex) => (
+              <>
+                {lineIndex > 0 && <br />}
+                {parseHighlights(line).map((segment) =>
+                  segment.accent ? <span class="hero__accent">{segment.text}</span> : segment.text,
+                )}
+              </>
+            ))
+          }
+        </h1>
+
+        {section.lead && <p class="hero__lead">{section.lead}</p>}
+
+        {
+          section.ctas.length > 0 && (
+            <div class="hero__ctas">
+              {section.ctas.map((cta) => (
+                <CtaButton
+                  label={cta.label}
+                  href={cta.href}
+                  variant={cta.variant}
+                  icon={cta.icon}
+                  external={cta.external}
+                />
+              ))}
+            </div>
+          )
+        }
+
+        {
+          section.tagline &&
+            (tickerItems ? (
+              <div class="hero__ticker" aria-label={section.tagline}>
+                <div class="hero__ticker-track">
+                  {[0, 1].map((copy) => (
+                    <div class="hero__ticker-group" aria-hidden={copy === 1 || undefined}>
+                      {tickerItems.map((item) => (
+                        <>
+                          <span class="hero__ticker-item">{item}</span>
+                          <span class="hero__ticker-star" aria-hidden="true">
+                            ✦
+                          </span>
+                        </>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <p class="hero__tagline">{section.tagline}</p>
+            ))
+        }
+
+        {
+          section.chips.length > 0 && (
+            <ul class="hero__chips">
+              {section.chips.map((chip) => (
+                <li class="hero__chip">
+                  {parseHighlights(chip).map((segment) =>
+                    segment.accent ? <strong class="hero__chip-strong">{segment.text}</strong> : segment.text,
+                  )}
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
       {
-        section.headingLines.map((line, lineIndex) => (
-          <>
-            {lineIndex > 0 && <br />}
-            {parseHighlights(line).map((segment) =>
-              segment.accent ? <span class="hero__accent">{segment.text}</span> : segment.text,
-            )}
-          </>
-        ))
+        heroImage && (
+          <div class="hero__media" data-reveal>
+            <Image src={heroImage} alt={section.imageAlt ?? ''} class="hero__image" width={1000} densities={[1, 2]} />
+          </div>
+        )
       }
-    </h1>
-
-    {section.lead && <p class="hero__lead">{section.lead}</p>}
-
-    {
-      section.ctas.length > 0 && (
-        <div class="hero__ctas">
-          {section.ctas.map((cta) => (
-            <CtaButton
-              label={cta.label}
-              href={cta.href}
-              variant={cta.variant}
-              icon={cta.icon}
-              external={cta.external}
-            />
-          ))}
-        </div>
-      )
-    }
-
-    {section.tagline && <p class="hero__tagline">{section.tagline}</p>}
-
-    {
-      section.chips.length > 0 && (
-        <ul class="hero__chips">
-          {section.chips.map((chip) => (
-            <li class="hero__chip">
-              {parseHighlights(chip).map((segment) =>
-                segment.accent ? <strong class="hero__chip-strong">{segment.text}</strong> : segment.text,
-              )}
-            </li>
-          ))}
-        </ul>
-      )
-    }
+    </div>
   </div>
 </section>
 
@@ -164,6 +231,21 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
     flex-shrink: 0;
   }
 
+  /* Görselli hero: metin solda, görsel sağda (referans: 1.15fr / .85fr). */
+  .hero__grid--media {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+  }
+
+  .hero__media :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 28px;
+  }
+
   .hero__title {
     margin: 28px 0 0;
     font: 600 clamp(40px, 6.2vw, 86px) / 1.04 var(--font-display);
@@ -172,6 +254,50 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
     max-width: 1050px;
     text-wrap: balance;
     animation: fadeUp 0.8s var(--ease-out) 0.1s both;
+  }
+
+  /* Referans: alt sayfa hero başlığı bir kademe küçüktür. */
+  .hero--sub .hero__title {
+    font-size: clamp(38px, 5.4vw, 74px);
+    line-height: 1.05;
+  }
+
+  .hero--sub .hero__lead {
+    font-size: clamp(16px, 1.3vw, 18px);
+    max-width: 600px;
+  }
+
+  /* Referans (kariyer): ortalanmış hero — içerik dar kolonda ortada durur. */
+  .hero--center .hero__inner {
+    max-width: 880px;
+    text-align: center;
+  }
+
+  .hero--center .hero__title,
+  .hero--center .hero__lead {
+    margin-inline: auto;
+  }
+
+  .hero--center .hero__ctas,
+  .hero--center .hero__chips {
+    justify-content: center;
+  }
+
+  /* Referans: CTA'sız içerik hero'ları (blog, analiz) kompakttır. */
+  .hero--compact {
+    padding-top: clamp(48px, 6vw, 72px);
+    padding-bottom: clamp(48px, 6vw, 72px);
+  }
+
+  .hero--compact .hero__title {
+    font-size: clamp(30px, 4.2vw, 52px);
+    line-height: 1.1;
+  }
+
+  .hero--compact .hero__lead {
+    margin-top: 18px;
+    font-size: clamp(15px, 1.1vw, 17px);
+    max-width: 640px;
   }
 
   .hero--light .hero__title {
@@ -211,6 +337,50 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
     animation: fadeUp 0.8s var(--ease-out) 0.4s both;
   }
 
+  /* Referans: '✦' ayraçlı slogan kayan şerittir — 18px soluk metin + lime yıldızlar. */
+  .hero__ticker {
+    margin-top: 40px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
+    animation: fadeUp 0.8s var(--ease-out) 0.4s both;
+  }
+
+  .hero__ticker-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 24s linear infinite;
+  }
+
+  .hero__ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 40px;
+  }
+
+  .hero__ticker-item {
+    font: 600 18px var(--font-display);
+    color: rgb(255 255 255 / 50%);
+    white-space: nowrap;
+  }
+
+  .hero__ticker-star {
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__ticker {
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .hero__ticker-track {
+      animation: none;
+    }
+  }
+
   .hero--light .hero__tagline {
     color: var(--text-muted-on-light);
   }
@@ -241,6 +411,12 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
   .hero--light .hero__chip {
     border-color: var(--border-on-light);
     color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 860px) {
+    .hero__grid--media {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 720px) {

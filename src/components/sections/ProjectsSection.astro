@@ -46,6 +46,16 @@ for (const project of projects) {
 const filters = section.showFilters ? buildCategoryFilters(projects, labels) : [];
 const showCta = Boolean(section.ctaLabel && section.ctaHref);
 
+/*
+ * Listeleme modunda (showFilters) referans tasarım öne çıkan projeyi ızgaranın
+ * üstünde lime çerçeveli bir vitrin kartında gösterir; ızgara kalan projeleri basar.
+ */
+const spotlight = section.showFilters ? projects.find((project) => project.featured) : undefined;
+const gridProjects = spotlight ? projects.filter((project) => project !== spotlight) : projects;
+
+/* Koyu bölümlerde kartlar açık (dolgusuz); açık bölümlerde koyu dolgulu (ana sayfa). */
+const openCards = section.background === 'dark';
+
 // Aynı sayfada birden fazla proje bölümü olabilir — id'ler bölüme özel olmalı.
 const uid = slugify(section.anchor ?? section.heading) || 'projeler';
 const panelId = `${uid}-panel`;
@@ -55,7 +65,15 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
 {
   projects.length > 0 && (
     <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+      {/* Referans: başlık solda, bölüm bağlantısı sağda — taban çizgisine hizalı. */}
+      <div class="projects__head">
+        <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+        {showCta && (
+          <a class="btn btn--outline projects__head-cta" href={section.ctaHref}>
+            {section.ctaLabel}
+          </a>
+        )}
+      </div>
 
       <div class="projects" data-projects>
         {filters.length > 0 && (
@@ -83,6 +101,45 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
           </div>
         )}
 
+        {spotlight && (
+          <article class="projects__spot" data-reveal aria-labelledby={`${uid}-spot-title`}>
+            <div class="projects__spot-media">
+              {spotlight.cover ? (
+                <Image
+                  src={spotlight.cover}
+                  alt={spotlight.title}
+                  loading="lazy"
+                  decoding="async"
+                  class="projects__image"
+                />
+              ) : (
+                <div class="projects__placeholder" aria-hidden="true">
+                  <span>{spotlight.client}</span>
+                </div>
+              )}
+            </div>
+            <div>
+              {spotlight.categoryLabel && <p class="projects__spot-tag">{spotlight.categoryLabel}</p>}
+              <h3 class="projects__spot-title" id={`${uid}-spot-title`}>
+                {spotlight.title}
+              </h3>
+              <p class="projects__spot-excerpt">{spotlight.excerpt}</p>
+              {spotlight.tags.length > 0 && (
+                <div class="projects__spot-pills">
+                  {spotlight.tags.map((tag) => (
+                    <span class="projects__spot-pill">{tag}</span>
+                  ))}
+                </div>
+              )}
+              {spotlight.url && (
+                <a class="projects__link" href={spotlight.url} target="_blank" rel="noopener noreferrer">
+                  {t('projects.view', locale)} <span aria-hidden="true">→</span>
+                </a>
+              )}
+            </div>
+          </article>
+        )}
+
         <div
           class="projects__grid"
           id={panelId}
@@ -90,9 +147,9 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
           aria-labelledby={filters.length > 0 ? tabId(ALL_CATEGORY) : undefined}
           tabindex={filters.length > 0 ? 0 : undefined}
         >
-          {projects.map((project, index) => (
+          {gridProjects.map((project, index) => (
             <article
-              class="projects__card"
+              class:list={['projects__card', openCards && 'projects__card--open']}
               data-category={project.category}
               data-reveal
               data-reveal-index={index}
@@ -115,20 +172,32 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
               </div>
 
               <div class="projects__body">
-                {project.categoryLabel && <p class="projects__tag">{project.categoryLabel}</p>}
-                <h3 class="h3 projects__title" id={`${uid}-title-${index}`}>
+                {project.categoryLabel &&
+                  (openCards ? (
+                    <p class="projects__cat">{project.categoryLabel}</p>
+                  ) : (
+                    <div class="projects__tags">
+                      {project.categoryLabel.split('·').map((tag) => (
+                        <span class="projects__tag">{tag.trim()}</span>
+                      ))}
+                    </div>
+                  ))}
+                <h3 class="projects__title" id={`${uid}-title-${index}`}>
                   {project.title}
                 </h3>
-                <p class="body-text projects__excerpt">{project.excerpt}</p>
-
-                <div class="projects__foot">
-                  <span class="projects__client">{project.client}</span>
-                  {project.url && (
-                    <a class="projects__link" href={project.url} target="_blank" rel="noopener noreferrer">
-                      {t('projects.view', locale)} <span aria-hidden="true">→</span>
-                    </a>
-                  )}
-                </div>
+                <p class="projects__excerpt">{project.excerpt}</p>
+                {openCards && project.tags.length > 0 && (
+                  <div class="projects__minis">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <span class="projects__mini">{tag}</span>
+                    ))}
+                  </div>
+                )}
+                {project.url && (
+                  <a class="projects__link" href={project.url} target="_blank" rel="noopener noreferrer">
+                    {t('projects.view', locale)} <span aria-hidden="true">→</span>
+                  </a>
+                )}
               </div>
             </article>
           ))}
@@ -137,14 +206,6 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
         <p class="projects__empty" data-empty role="status" hidden>
           {t('projects.empty', locale)}
         </p>
-
-        {showCta && (
-          <div class="projects__cta">
-            <a class="btn btn--outline" href={section.ctaHref}>
-              {section.ctaLabel}
-            </a>
-          </div>
-        )}
       </div>
     </Section>
   )
@@ -225,22 +286,171 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
     outline-offset: 6px;
   }
 
+  /* --- Başlık satırı: solda başlık, sağda outline bağlantı (referans düzeni) --- */
+  .projects__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .projects__head :global(.section-head) {
+    max-width: 760px;
+    margin-bottom: 0;
+  }
+
+  .projects__head + .projects {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  .projects__head-cta {
+    flex-shrink: 0;
+    font-size: 15px;
+    padding: 15px 28px;
+  }
+
+  :global(.section--light) .projects__head-cta {
+    border-color: rgba(10, 10, 10, 0.25);
+    color: var(--text-on-light);
+  }
+
+  /* --- Öne çıkan proje vitrini (listeleme sayfası) --- */
+  .projects__spot {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(28px, 4vw, 56px);
+    align-items: center;
+    border: 1px solid rgba(207, 255, 0, 0.35);
+    border-radius: 24px;
+    padding: clamp(24px, 3vw, 40px);
+    background: radial-gradient(ellipse 70% 90% at 0% 0%, rgba(207, 255, 0, 0.06), transparent 60%);
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+
+  .projects__spot-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .projects__spot-media :global(.projects__image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .projects__spot-tag {
+    margin: 0;
+    font: 600 12px var(--font-display);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .projects__spot-title {
+    margin: 16px 0 0;
+    font: 600 clamp(24px, 2.6vw, 34px) / 1.2 var(--font-display);
+    color: var(--text);
+  }
+
+  .projects__spot-excerpt {
+    margin: 18px 0 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .projects__spot-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .projects__spot-pill {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--text-soft);
+    font: 600 12px var(--font-display);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+  }
+
+  .projects__spot > div > .projects__link {
+    margin-top: 22px;
+  }
+
+  @media (max-width: 860px) {
+    .projects__spot {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* --- Izgara --- */
   .projects__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--gap-card);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
   }
 
+  /* Referans (listeleme): koyu zeminde kartlar dolgusuz ve çerçevesizdir. */
+  .projects__card--open {
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  :global(.section--dark) .projects__card--open {
+    border: none;
+  }
+
+  .projects__card--open .projects__media {
+    border-radius: 14px;
+    height: auto;
+    aspect-ratio: 16 / 11;
+  }
+
+  .projects__card--open .projects__body {
+    padding: 22px 4px 4px;
+    gap: 10px;
+  }
+
+  .projects__cat {
+    margin: 0;
+    font: 600 12px var(--font-display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .projects__card--open .projects__title {
+    font-size: 20px;
+  }
+
+  .projects__minis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .projects__mini {
+    font: 500 11.5px var(--font-display);
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 5px 11px;
+    border-radius: var(--radius-pill);
+  }
+
+  /* Referans: kartlar beyaz zemin üstünde DOLGULU koyu bloklar — çerçevesiz, r20. */
   .projects__card {
     display: flex;
     flex-direction: column;
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    transition:
-      border-color var(--t-slow),
-      transform var(--t-slow);
+    background: var(--bg);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform var(--t-slow);
   }
 
   .projects__card[hidden] {
@@ -248,15 +458,18 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
   }
 
   .projects__card:hover {
-    border-color: var(--accent);
     transform: translateY(-6px);
+  }
+
+  /* Koyu bölümlerde kartın zeminden ayrışması için ince çerçeve. */
+  :global(.section--dark) .projects__card {
+    border: 1px solid var(--border-faint);
   }
 
   .projects__media {
     position: relative;
-    aspect-ratio: 16 / 10;
+    height: 280px;
     overflow: hidden;
-    border-radius: var(--radius-media);
   }
 
   .projects__media :global(.projects__image) {
@@ -279,8 +492,6 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
     justify-content: center;
     text-align: center;
     padding: 16px;
-    border: 1px solid var(--accent);
-    border-radius: var(--radius-media);
     background: var(--accent-soft);
     color: var(--accent);
     font: 600 var(--fs-body) var(--font-display);
@@ -292,40 +503,39 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 20px 8px 8px;
+    gap: 14px;
+    padding: 28px;
+  }
+
+  .projects__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .projects__tag {
-    margin: 0 0 10px;
-    font: 600 var(--fs-eyebrow) var(--font-display);
-    letter-spacing: 0.1em;
+    font: 500 11px var(--font-display);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
+    border: 1px solid rgba(207, 255, 0, 0.35);
+    border-radius: var(--radius-pill);
+    padding: 5px 12px;
   }
 
   .projects__title {
-    margin: 0 0 8px;
+    margin: 0;
+    font: 600 22px var(--font-display);
+    color: var(--text);
     text-wrap: balance;
   }
 
   .projects__excerpt {
     flex: 1;
-  }
-
-  .projects__foot {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 18px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border-faint);
-  }
-
-  .projects__client {
-    font: 600 var(--fs-small) var(--font-display);
-    color: var(--text-faint);
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.6);
   }
 
   .projects__link {
@@ -333,7 +543,7 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
     align-items: center;
     gap: 8px;
     color: var(--accent);
-    font: 600 var(--fs-small) var(--font-display);
+    font: 600 14px var(--font-display);
     text-decoration: none;
     transition: gap var(--t-slow);
   }
@@ -347,12 +557,6 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
     margin: 32px 0 0;
     font-size: var(--fs-lead);
     color: var(--text-muted);
-  }
-
-  .projects__cta {
-    display: flex;
-    justify-content: center;
-    margin-top: clamp(36px, 5vw, 56px);
   }
 
   /* --- Açık zeminli varyant --- */
@@ -376,43 +580,8 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
     color: var(--text-on-light);
   }
 
-  :global(.section--light) .projects__card {
-    border-color: var(--border-on-light);
-  }
-
-  :global(.section--light) .projects__card:hover {
-    border-color: var(--text-on-light);
-  }
-
-  :global(.section--light) .projects__placeholder {
-    color: var(--text-on-light);
-  }
-
-  :global(.section--light) .projects__tag,
-  :global(.section--light) .projects__client {
-    color: var(--text-muted-on-light);
-  }
-
-  :global(.section--light) .projects__foot {
-    border-top-color: var(--border-on-light);
-  }
-
-  :global(.section--light) .projects__link {
-    color: var(--text-on-light);
-  }
-
   :global(.section--light) .projects__empty {
     color: var(--text-muted-on-light);
-  }
-
-  :global(.section--light) .projects__cta .btn--outline {
-    border-color: var(--border-on-light);
-    color: var(--text-on-light);
-  }
-
-  :global(.section--light) .projects__cta .btn--outline:hover {
-    border-color: var(--text-on-light);
-    color: var(--text-on-light);
   }
 
   @media (max-width: 720px) {
@@ -420,8 +589,9 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
       grid-template-columns: 1fr;
     }
 
-    .projects__cta :global(.btn) {
+    .projects__head-cta {
       width: 100%;
+      justify-content: center;
     }
   }
 </style>

@@ -140,7 +140,7 @@ sections:
     ctas:
       - label: ☕ Let Us Talk About Your Project Over Coffee
         href: /en/contact
-        variant: primary
+        variant: outline
 
   # 9 — INDUSTRIES
   - type: cards

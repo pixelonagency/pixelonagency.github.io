@@ -57,10 +57,13 @@ const headingSegments = isSlim ? parseHighlights(section.heading) : [];
         {section.ctas.length > 0 && (
           <div class="cta-box__actions">
             {section.ctas.map((item) => (
-              <a class:list={['btn', item.variant === 'outline' ? 'btn--outline' : 'btn--primary']} href={item.href}>
-                {item.label}
-                <span aria-hidden="true">→</span>
-              </a>
+              <CtaButton
+                label={item.label}
+                href={item.href}
+                variant={item.variant}
+                icon={item.icon}
+                external={item.external}
+              />
             ))}
           </div>
         )}
@@ -107,20 +110,64 @@ const headingSegments = isSlim ? parseHighlights(section.heading) : [];
     }
   }
 
-  /* --- Büyük kutu: eyebrow + başlık + lead, ortalanmış (kapanış CTA'ları) --- */
+  /* --- Kapanış bloğu: koyu zeminde açık ortalanmış blok (referans: Biz Kimiz). --- */
   .cta-box {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-feature);
-    padding: clamp(40px, 6vw, 76px) clamp(24px, 5vw, 64px);
+    max-width: 900px;
+    margin: 0 auto;
     text-align: center;
-    background-image: radial-gradient(ellipse 60% 70% at 50% 0%, var(--accent-soft), transparent 65%);
+  }
+
+  /*
+   * Referans (Blog): AÇIK zeminli kapanış CTA'sı, beyaz bölüm içinde duran
+   * koyu dolgulu yuvarlatılmış bir kutudur. İçindeki tüm metin/butonlar koyu
+   * bölüm paletine döner — açık zemin geçersiz kılmaları burada geri alınır.
+   */
+  :global(.section--light) .cta-box {
+    background: var(--bg);
+    border-radius: 28px;
+    padding: clamp(48px, 6vw, 72px) clamp(24px, 5vw, 56px);
+  }
+
+  :global(.section--light) .cta-box :global(.h2) {
+    color: var(--text);
+  }
+
+  :global(.section--light) .cta-box :global(.lead) {
+    color: var(--text-muted);
+  }
+
+  :global(.section--light) .cta-box :global(.eyebrow) {
+    color: var(--accent);
+  }
+
+  :global(.section--light) .cta-box :global(.btn--outline) {
+    border-color: var(--border-input);
+    color: var(--text);
+  }
+
+  :global(.section--light) .cta-box :global(.btn--outline:hover) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  :global(.section--light) .cta-box :global(.cta-link) {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  :global(.section--light) .cta-box :global(.cta-link:hover) {
+    color: var(--accent);
+  }
+
+  /* Referans: kapanış başlığı büyüktür (max 58px). */
+  .cta-box :global(.section-head .h2) {
+    font-size: clamp(32px, 4.6vw, 58px);
+    line-height: 1.08;
   }
 
   /* SectionHead alt boşluğunu buton satırıyla dengele. */
   .cta-box :global(.section-head) {
     margin-bottom: 0;
+    margin-inline: auto;
   }
 
   .cta-box__actions {
@@ -131,28 +178,13 @@ const headingSegments = isSlim ? parseHighlights(section.heading) : [];
     margin-top: clamp(28px, 3.5vw, 40px);
   }
 
-  /* Açık zeminli varyant */
-  :global(.section--light) .cta-box {
-    border-color: var(--border-on-light);
-  }
-
-  :global(.section--light) .cta-box .btn--outline {
-    border-color: var(--border-on-light);
-    color: var(--text-on-light);
-  }
-
-  :global(.section--light) .cta-box .btn--outline:hover {
-    border-color: var(--text-on-light);
-    color: var(--text-on-light);
-  }
-
   @media (max-width: 720px) {
     .cta-box__actions {
       flex-direction: column;
       align-items: stretch;
     }
 
-    .cta-box__actions .btn {
+    .cta-box__actions :global(.btn) {
       width: 100%;
     }
   }

@@ -96,28 +96,31 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
     margin-bottom: clamp(32px, 4vw, 48px);
   }
 
-  .contact__info {
-    display: grid;
-    gap: 18px;
-    margin: 0;
+  /* Referans: bu bölümün başlığı en büyüğüdür (max 60px). */
+  .contact :global(.section-head .h2) {
+    font-size: clamp(34px, 4.6vw, 60px);
+    line-height: 1.06;
   }
 
-  .contact__info-item {
-    border-top: 1px solid var(--border);
-    padding-top: 14px;
+  /* Referans: iletişim bilgileri yatay sıralanır — çizgisiz, gri etiket + 20px değer. */
+  .contact__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 32px;
+    margin: 0;
   }
 
   .contact__info-label {
     margin: 0;
-    font: 600 var(--fs-eyebrow) var(--font-display);
-    letter-spacing: var(--ls-eyebrow);
+    font: 600 12px var(--font-display);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.45);
   }
 
   .contact__info-value {
     margin: 8px 0 0;
-    font: 600 var(--fs-lead) / 1.5 var(--font-display);
+    font: 600 20px / 1.4 var(--font-display);
     color: var(--text);
     overflow-wrap: anywhere;
   }
@@ -152,8 +155,8 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
   }
 
   /* Açık zeminli varyant */
-  :global(.section--light) .contact__info-item {
-    border-top-color: var(--border-on-light);
+  :global(.section--light) .contact__info-label {
+    color: rgba(10, 10, 10, 0.45);
   }
 
   :global(.section--light) .contact__info-value {

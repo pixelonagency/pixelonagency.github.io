@@ -140,7 +140,7 @@ sections:
     ctas:
       - label: ☕ Bir Kahve İçip Projenizi Konuşalım
         href: /iletisim
-        variant: primary
+        variant: outline
 
   # 9 — SEKTÖRLER
   - type: cards

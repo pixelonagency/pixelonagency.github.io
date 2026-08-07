@@ -27,12 +27,32 @@ const logos = [...references]
 
 // Koleksiyon boşsa bölüm hiç basılmaz — boş bir şerit build'i kırmasın.
 const hasLogos = logos.length > 0;
+
+/*
+ * Referans tasarımda bu bölümün başlığı iki sütundur: solda eyebrow + başlık,
+ * sağda tanıtım paragrafı ve DÜZ metin ok bağlantısı (outline buton değil).
+ * Bu yüzden `ctas` Section'a devredilmez; ilk CTA sağ sütunda link olarak basılır.
+ */
+const headLink = section.ctas[0];
+const stripArrow = (label: string) => label.replace(/\s*→\s*$/, '');
 ---
 
 {
   hasLogos && (
-    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+    <Section anchor={section.anchor} background={section.background} class="logos-section">
+      <div class="logos-head">
+        <div>
+          <SectionHead eyebrow={section.eyebrow} heading={section.heading} />
+        </div>
+        <div class="logos-head__right">
+          {section.lead && <p class="lead">{section.lead}</p>}
+          {headLink && (
+            <a class="logos-head__link" href={headLink.href}>
+              {stripArrow(headLink.label)} <span aria-hidden="true">→</span>
+            </a>
+          )}
+        </div>
+      </div>
 
       <div
         class="logos"
@@ -50,7 +70,7 @@ const hasLogos = logos.length > 0;
                   class="logos__logo"
                   src={ref.logo}
                   alt={`${ref.name} ${t('logos.altSuffix', locale)}`}
-                  height={38}
+                  height={44}
                   densities={[1, 2]}
                 />
               </li>
@@ -61,7 +81,7 @@ const hasLogos = logos.length > 0;
           <ul class="logos__group" aria-hidden="true">
             {logos.map((ref) => (
               <li class="logos__item">
-                <Image class="logos__logo" src={ref.logo} alt="" height={38} densities={[1, 2]} />
+                <Image class="logos__logo" src={ref.logo} alt="" height={44} densities={[1, 2]} />
               </li>
             ))}
           </ul>
@@ -72,13 +92,47 @@ const hasLogos = logos.length > 0;
 }
 
 <style>
+  /* Referans: bu bölümün başlığı bir kademe küçüktür (max 48px). */
+  .logos-head :global(.section-head .h2) {
+    font-size: clamp(30px, 3.6vw, 48px);
+  }
+
+  .logos-head {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(28px, 5vw, 80px);
+    align-items: start;
+  }
+
+  .logos-head :global(.section-head) {
+    margin-bottom: 0;
+  }
+
+  .logos-head__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: var(--text);
+    font: 600 15px var(--font-display);
+    text-decoration: none;
+    transition: gap var(--t-slow);
+  }
+
+  .logos-head__link:hover {
+    gap: 14px;
+  }
+
+  :global(.section--light) .logos-head__link {
+    color: var(--text-on-light);
+  }
+
   .logos {
-    --logo-gap: clamp(44px, 6vw, 80px);
+    --logo-gap: clamp(48px, 6vw, 80px);
 
     overflow: hidden;
+    margin-top: clamp(28px, 4vw, 44px);
     padding: 34px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
     /* Şerit kenarları zemine karışır. */
     -webkit-mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
     mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
@@ -112,30 +166,16 @@ const hasLogos = logos.length > 0;
     flex-shrink: 0;
   }
 
-  /* <Image /> bir bileşen olduğu için basılan <img> :global ile hedeflenir. */
+  /* <Image /> bileşen olduğu için basılan <img> :global ile hedeflenir. */
   .logos__item :global(img) {
-    height: 38px;
+    height: 44px;
     width: auto;
-    opacity: 0.55;
-    filter: grayscale(1) brightness(1.8);
-    transition:
-      opacity var(--t-slow),
-      filter var(--t-slow);
+    transition: filter var(--t-slow);
   }
 
-  .logos__item :global(img):hover {
-    opacity: 1;
-    filter: grayscale(0) brightness(1);
-  }
-
-  /* Açık zeminli varyant */
-  :global(.section--light) .logos {
-    border-top-color: var(--border-on-light);
-    border-bottom-color: var(--border-on-light);
-  }
-
+  /* Logo varlıkları beyaz tonlu — beyaz zeminde okunmaları için koyulaştırılır. */
   :global(.section--light) .logos__item :global(img) {
-    filter: grayscale(1) brightness(0.5);
+    filter: grayscale(1) brightness(0.45);
   }
 
   :global(.section--light) .logos__item :global(img):hover {
@@ -162,7 +202,7 @@ const hasLogos = logos.length > 0;
     }
 
     .logos__item :global(img) {
-      height: 30px;
+      height: 32px;
     }
   }
 </style>

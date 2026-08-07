@@ -10,44 +10,91 @@ interface Props {
 }
 
 const { section } = Astro.props;
+const kind = section.kind ?? 'grid';
 ---
 
-<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+{
+  kind === 'split' ? (
+    /* Referans (kariyer): başlık solda, lime noktalı satır listesi sağda. */
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <div class="bsplit">
+        <div data-reveal data-reveal-index={0}>
+          <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+        </div>
+        <ul class="bsplit__list" data-reveal data-reveal-index={1}>
+          {section.items.map((item) => (
+            <li class="bsplit__item">
+              <span class="bsplit__dot" aria-hidden="true">
+                ●
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
+  ) : (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
-  <ul class="bullets">
-    {
-      section.items.map((item, index) => (
-        <li class="bullets__item" data-reveal data-reveal-index={index}>
-          <svg
-            class="bullets__mark"
-            viewBox="0 0 20 20"
-            width="20"
-            height="20"
-            fill="none"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              d="M4 10.5 8.2 14.5 16 6"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span class="bullets__text">{item}</span>
-        </li>
-      ))
-    }
-  </ul>
-</Section>
+      {/* Referans tasarım: maddeler numaralı, ince çizgili hücre ızgarasında durur. */}
+      <ol class="bullets">
+        {section.items.map((item, index) => (
+          <li class="bullets__item" data-reveal data-reveal-index={index}>
+            <span class="bullets__num" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span class="bullets__text">{item}</span>
+          </li>
+        ))}
+      </ol>
+    </Section>
+  )
+}
 
 <style>
+  /* --- Split (kariyer): 2 sütun, noktalı liste --- */
+  .bsplit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(28px, 5vw, 64px);
+    align-items: center;
+  }
+
+  .bsplit :global(.section-head) {
+    margin-bottom: 0;
+  }
+
+  .bsplit__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .bsplit__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+    color: var(--text-soft);
+  }
+
+  .bsplit__dot {
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  :global(.section--light) .bsplit__item {
+    border-bottom-color: rgba(10, 10, 10, 0.1);
+    color: var(--text-muted-on-light);
+  }
+
   .bullets {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px clamp(24px, 4vw, 56px);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    border-top: 1px solid var(--border);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -55,27 +102,33 @@ const { section } = Astro.props;
 
   .bullets__item {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-faint);
+    flex-direction: column;
+    padding: 26px 22px;
+    border-bottom: 1px solid var(--border);
   }
 
-  .bullets__mark {
-    flex-shrink: 0;
-    margin-top: 2px;
-    color: var(--accent);
+  .bullets__num {
+    font: 600 13px var(--font-display);
+    color: rgba(255, 255, 255, 0.35);
   }
 
   .bullets__text {
-    font-size: var(--fs-body);
-    line-height: 1.7;
-    color: var(--text-soft);
+    margin-top: 12px;
+    font: 600 16px / 1.4 var(--font-display);
+    color: var(--text);
   }
 
   /* Açık zeminli varyant */
+  :global(.section--light) .bullets {
+    border-top-color: var(--border-on-light);
+  }
+
   :global(.section--light) .bullets__item {
     border-bottom-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .bullets__num {
+    color: rgba(10, 10, 10, 0.35);
   }
 
   :global(.section--light) .bullets__text {
@@ -84,8 +137,7 @@ const { section } = Astro.props;
 
   @media (max-width: 720px) {
     .bullets {
-      grid-template-columns: 1fr;
-      gap: 0;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>

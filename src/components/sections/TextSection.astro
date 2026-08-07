@@ -1,5 +1,6 @@
 ---
 import type { PageSection } from '../../content/page-schema';
+import { parseHighlights } from '../../lib/highlight';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -18,29 +19,158 @@ const paragraphs = section.body
   .filter((paragraph) => paragraph.length > 0);
 
 const hasMedia = Boolean(section.imageAlt);
+const layout = section.layout ?? 'stack';
+
+// `center` düzeninde kapanış cümlesi `*yıldız*` vurgularıyla basılır.
+const highlightSegments = section.highlight ? parseHighlights(section.highlight) : [];
 ---
 
-<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-  <SectionHead eyebrow={section.eyebrow} heading={section.heading} />
+{
+  layout === 'split' ? (
+    /* Referans: başlık solda sticky, paragraflar sağda; kapanış 20px vurgulu satır. */
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <div class="tsplit">
+        <div class="tsplit__head" data-reveal data-reveal-index={0}>
+          <SectionHead eyebrow={section.eyebrow} heading={section.heading} />
+        </div>
+        <div class="tsplit__body" data-reveal data-reveal-index={1}>
+          {paragraphs.map((paragraph) => (
+            <p class="tsplit__paragraph">{paragraph}</p>
+          ))}
+          {section.highlight && <p class="tsplit__closing">{section.highlight}</p>}
+        </div>
+      </div>
+    </Section>
+  ) : layout === 'center' ? (
+    /* Referans: ortalanmış blok + büyük (lime vurgulu) kapanış cümlesi. */
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <div class="tcenter" data-reveal data-reveal-index={0}>
+        <SectionHead eyebrow={section.eyebrow} heading={section.heading} align="center" />
+        {paragraphs.map((paragraph) => (
+          <p class="tcenter__paragraph">{paragraph}</p>
+        ))}
+        {section.highlight && (
+          <p class="tcenter__closing">
+            {highlightSegments.map((segment) =>
+              segment.accent ? <span class="tcenter__accent">{segment.text}</span> : segment.text,
+            )}
+          </p>
+        )}
+      </div>
+    </Section>
+  ) : (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <SectionHead eyebrow={section.eyebrow} heading={section.heading} />
 
-  <div class:list={['text', hasMedia && 'text--split']}>
-    <div class="text__body" data-reveal data-reveal-index={0}>
-      {paragraphs.map((paragraph) => <p class="body-text text__paragraph">{paragraph}</p>)}
-    </div>
+      <div class:list={['text', hasMedia && 'text--split']}>
+        <div class="text__body" data-reveal data-reveal-index={0}>
+          {paragraphs.map((paragraph) => (
+            <p class="body-text text__paragraph">{paragraph}</p>
+          ))}
+          {section.highlight && <p class="text__closing">{section.highlight}</p>}
+        </div>
 
-    {
-      hasMedia && (
-        <figure class="text__figure" data-reveal data-reveal-index={1}>
-          <div class="text__placeholder">
-            <span class="text__caption">{section.imageAlt}</span>
-          </div>
-        </figure>
-      )
-    }
-  </div>
-</Section>
+        {hasMedia && (
+          <figure class="text__figure" data-reveal data-reveal-index={1}>
+            <div class="text__placeholder">
+              <span class="text__caption">{section.imageAlt}</span>
+            </div>
+          </figure>
+        )}
+      </div>
+    </Section>
+  )
+}
 
 <style>
+  /* --- Split düzen (başlık solda sticky) --- */
+  .tsplit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(28px, 5vw, 72px);
+    align-items: start;
+  }
+
+  .tsplit__head {
+    position: sticky;
+    top: calc(var(--header-h) + 48px);
+  }
+
+  .tsplit__head :global(.section-head) {
+    margin-bottom: 0;
+  }
+
+  /* Referans: split başlığı bir kademe küçüktür (max 46px). */
+  .tsplit__head :global(.section-head .h2) {
+    font-size: clamp(30px, 3.6vw, 46px);
+    line-height: 1.12;
+  }
+
+  .tsplit__paragraph {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+
+  .tsplit__paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  .tsplit__closing {
+    margin: 24px 0 0;
+    font: 500 20px / 1.5 var(--font-display);
+    color: var(--text);
+  }
+
+  :global(.section--light) .tsplit__paragraph {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .tsplit__closing {
+    color: var(--text-on-light);
+  }
+
+  @media (max-width: 860px) {
+    .tsplit__head {
+      position: static;
+    }
+  }
+
+  /* --- Center düzen --- */
+  .tcenter {
+    text-align: center;
+  }
+
+  .tcenter__paragraph {
+    margin: 0 auto 16px;
+    max-width: 760px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* Referans: kapanış cümlesi büyük ve beyazdır; vurgular lime. */
+  .tcenter__closing {
+    margin: 32px auto 0;
+    max-width: 680px;
+    font: 500 clamp(19px, 2vw, 24px) / 1.4 var(--font-display);
+    color: var(--text);
+  }
+
+  .tcenter__accent {
+    color: var(--accent);
+  }
+
+  :global(.section--light) .tcenter__paragraph {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .tcenter__closing {
+    color: var(--text-on-light);
+  }
+
+  /* --- Stack (varsayılan) --- */
   .text {
     display: grid;
     gap: var(--gap-section);
@@ -59,7 +189,16 @@ const hasMedia = Boolean(section.imageAlt);
   }
 
   .text__paragraph {
+    /* Referans: düz metin bölümlerinde gövde 16px/1.75 — kart açıklamalarından büyük. */
+    font-size: 16px;
+    line-height: 1.75;
     color: var(--text-soft);
+  }
+
+  .text__closing {
+    margin: 6px 0 0;
+    font: 500 20px / 1.5 var(--font-display);
+    color: var(--text);
   }
 
   .text__figure {
@@ -86,6 +225,10 @@ const hasMedia = Boolean(section.imageAlt);
   /* Açık zeminli varyant */
   :global(.section--light) .text__paragraph {
     color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .text__closing {
+    color: var(--text-on-light);
   }
 
   :global(.section--light) .text__placeholder {

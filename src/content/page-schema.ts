@@ -49,6 +49,8 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     breadcrumb: list(z.object({ label: nonEmpty, href: opt(z.string()) })),
     /** Hero altındaki kısa güven rozetleri ("15+ Yıllık Deneyim" …). */
     chips: list(nonEmpty),
+    /** Referans: kariyer gibi bazı alt sayfa hero'ları ortalanmıştır. */
+    align: opt(z.enum(['start', 'center'])),
     image: opt(image()),
     imageAlt: opt(z.string()),
   });
@@ -56,9 +58,17 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
   const cards = z.object({
     ...sectionBase,
     type: z.literal('cards'),
-    heading: nonEmpty,
+    /* Panels varyantında (vizyon/misyon) bölüm başlığı yoktur — bu yüzden opsiyonel. */
+    heading: opt(z.string()),
     lead: opt(z.string()),
     columns: opt(z.number()),
+    /**
+     * `grid` = çerçeveli kart ızgarası (varsayılan). `tinted` = krem dolgulu, çerçevesiz
+     * kartlar (değerler). `panels` = üst çizgili açık bloklar; madde eyebrow'u noktalı
+     * bölüm eyebrow'u gibi basılır (vizyon/misyon). Alan adı bilinçli olarak `variant`
+     * DEĞİL: CMS senkron testi `variant` adını buton görünümü sanıyor.
+     */
+    kind: opt(z.enum(['grid', 'tinted', 'panels'])),
     /** Izgaranın altında yer alan kapanış notu (ör. UX/UI karşılaştırmasındaki bağlayıcı cümle). */
     note: opt(z.string()),
     items: z
@@ -92,6 +102,11 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     type: z.literal('bullets'),
     heading: nonEmpty,
     lead: opt(z.string()),
+    /**
+     * `grid` (varsayılan) = numaralı ince çizgili hücre ızgarası ("Nasıl Çalışıyoruz").
+     * `split` = başlık solda, lime noktalı satır listesi sağda ("Kimlerle Çalışmak İstiyoruz").
+     */
+    kind: opt(z.enum(['grid', 'split'])),
     items: z.array(nonEmpty).min(1),
   });
 
@@ -138,6 +153,13 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     body: nonEmpty,
     /** Gövdeden sonra gelen vurgulu alıntı satırı. */
     highlight: opt(z.string()),
+    /**
+     * Referans tasarımdaki üç metin düzeni:
+     * `stack` (varsayılan) = başlık üstte, gövde altta.
+     * `split` = başlık solda sticky, paragraflar sağda; `highlight` 20px kapanış satırı.
+     * `center` = ortalanmış blok; `highlight` büyük (lime vurgulu) kapanış cümlesi.
+     */
+    layout: opt(z.enum(['stack', 'split', 'center'])),
     image: opt(image()),
     imageAlt: opt(z.string()),
   });

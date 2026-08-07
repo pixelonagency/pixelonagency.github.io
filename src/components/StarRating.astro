@@ -21,15 +21,20 @@ const stars = [1, 2, 3, 4, 5];
 <style>
   .star-rating {
     display: flex;
-    gap: 2px;
     margin-bottom: 12px;
     font-size: 16px;
+    letter-spacing: 3px;
     line-height: 1;
     color: var(--accent);
   }
 
   .star-rating__star--empty {
     color: var(--border);
+  }
+
+  /* Referans: açık zeminde yıldızlar SİYAHTIR (lime değil). */
+  :global(.section--light) .star-rating {
+    color: var(--text-on-light);
   }
 
   :global(.section--light) .star-rating__star--empty {

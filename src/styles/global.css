@@ -77,6 +77,41 @@ button {
   padding: var(--section-y) 0;
 }
 
+/*
+ * Slim CTA (eyebrow/lead'i olmayan koyu vurgu kutusu) görsel olarak bir önceki
+ * bölümün İÇİNDEKİ kapanış kutusudur (ör. "Pixelon Ne Yapar" altındaki kutu).
+ * İki bölümün tam dolguları üst üste binince ~240px boşluk oluşuyordu; kutu
+ * öncekine yaklaştırılır. Kural yalnızca .cta-slim içeren bölümleri etkiler.
+ */
+.section:has(+ .section .cta-slim) {
+  padding-bottom: 0;
+}
+
+.section + .section:has(.cta-slim) {
+  padding-top: 48px;
+}
+
+/*
+ * Referans tasarımda ardışık beyaz bölümler tek blok gibi akar:
+ * logo şeridini izleyen bölüm ile yorumları izleyen blog bölümü üst dolgusuz başlar.
+ */
+.section--light:has(.logos) + .section--light {
+  padding-top: 0;
+}
+
+.section--light + .section--light:has(.posts) {
+  padding-top: 0;
+}
+
+/* Kapanış CTA'sını izleyen iletişim bilgisi aynı bloğun devamıdır (bkz. ContactInfoSection). */
+.section:has(.cta-box):has(+ .section .contact-info) {
+  padding-bottom: 0;
+}
+
+.section:has(.cta-box) + .section:has(.contact-info) {
+  padding-top: 48px;
+}
+
 /* --- Tipografi yardımcıları --- */
 .eyebrow {
   display: inline-flex;
@@ -96,6 +131,15 @@ button {
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
+}
+
+/*
+ * Açık zeminde eyebrow METNİ koyuya döner — lime metin açık zeminde (#f5f5ef)
+ * neredeyse okunmaz. Nokta (::before) lime kalır: referans tasarımdaki gibi
+ * "koyu etiket + lime nokta" görünümü. Koyu bölümlerde eyebrow lime kalır.
+ */
+.section--light .eyebrow {
+  color: var(--text-on-light);
 }
 
 .h1 {

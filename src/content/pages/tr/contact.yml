@@ -9,6 +9,7 @@ whatsappMessage: Merhaba Pixelon, markam için dijital pazarlama hizmetleri hakk
 sections:
   - type: hero
     background: dark
+    align: center
     eyebrow: Pixelon ile İletişime Geçin
     headingLines:
       - "Birlikte Harika Bir Şey Üretelim."
@@ -166,4 +167,4 @@ sections:
         variant: outline
       - label: Hizmetlerimizi İnceleyin
         href: /hizmetlerimiz
-        variant: outline
+        variant: link

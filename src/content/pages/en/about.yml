@@ -30,21 +30,22 @@ sections:
       - label: Get in Touch With Us
         href: /en/contact
         variant: outline
+    image: '/src/assets/images/pixelon-ekip-pixel-art.webp'
     imageAlt: >-
       Pixelon digital marketing team - pixel-art illustration representing social
       engagement, speed and a community-driven approach
 
-  # 2 — WHAT IS PIXELON
+  # 2 — WHAT IS PIXELON (reference: sticky heading left, paragraphs right)
   - type: text
     background: light
+    layout: split
     eyebrow: What Is Pixelon?
     heading: We Turn Ideas Into Brands, and Brands Into Powerful Digital Experiences.
     body: |-
       Pixelon is a 360° digital marketing agency that approaches every digital need of a brand from a single perspective, combining strategy and creativity with technology. We build tailor-made solutions across web design, social media management, digital advertising, SEO, brand and corporate identity, UX/UI design, e-commerce, video production, health tourism and digital transformation.
 
       For us, however, digital marketing is never just building a website, publishing a social media post or launching an ad campaign. We treat every piece of work as part of one connected system, shaped by the brand's goals, audience, industry and growth plans. From healthcare and clinic brands to health tourism companies, from e-commerce ventures to construction and real estate firms, we accompany brands across many industries on their digital transformation journey.
-
-      At Pixelon, every idea starts with a strategy, every design with a purpose and every campaign with a measurable goal.
+    highlight: At Pixelon, every idea starts with a strategy, every design with a purpose and every campaign with a measurable goal.
 
   # 3 — WHAT WE DO
   - type: bullets
@@ -111,33 +112,33 @@ sections:
 
           We do not just deliver a project - we grow alongside your brand.
 
-  # 5a — VISION
-  - type: text
+  # 5 — VISION + MISSION (reference: side by side in one section, top-ruled blocks)
+  - type: cards
     background: dark
-    eyebrow: How We See the Future
-    heading: Building Strong, Original and Sustainable Brands in the Digital World
-    body: >-
-      Our vision is to bring strategy, creativity and technology together to
-      build digital systems that answer not only a brand's needs today, but its
-      growth goals for tomorrow. We aim to be a reliable, innovative and
-      result-driven digital partner for brands operating in Turkey and in
-      international markets.
+    kind: panels
+    columns: 2
+    items:
+      - eyebrow: How We See the Future
+        title: Building Strong, Original and Sustainable Brands in the Digital World
+        description: >-
+          Our vision is to bring strategy, creativity and technology together to
+          build digital systems that answer not only a brand's needs today, but
+          its growth goals for tomorrow. We aim to be a reliable, innovative and
+          result-driven digital partner for brands operating in Turkey and in
+          international markets.
+      - eyebrow: How We Create Value
+        title: Turning a Brand's Potential Into Visible and Measurable Results
+        description: >-
+          Our mission is to understand brands accurately, help them build strong
+          connections with their audiences and turn their digital marketing
+          investment into sustainable growth. In every project we look for the
+          right balance between aesthetics, user experience, technology and
+          performance so the brand gains real value.
 
-  # 5b — MISSION
-  - type: text
-    background: dark
-    eyebrow: How We Create Value
-    heading: Turning a Brand's Potential Into Visible and Measurable Results
-    body: >-
-      Our mission is to understand brands accurately, help them build strong
-      connections with their audiences and turn their digital marketing
-      investment into sustainable growth. In every project we look for the right
-      balance between aesthetics, user experience, technology and performance so
-      the brand gains real value.
-
-  # 6 — OUR VALUES
+  # 6 — OUR VALUES (reference: cream-filled, borderless cards)
   - type: cards
     background: light
+    kind: tinted
     eyebrow: Our Working Culture
     heading: These Values Sit at the Heart of Everything We Create
     columns: 3
@@ -251,33 +252,40 @@ sections:
     columns: 3
     items:
       - title: Healthcare and Clinic Brands
+        icon: health
         description: >-
           We create digital solutions that support patient trust, expert
           communication and appointment conversions.
       - title: Health Tourism Companies
+        icon: tourism
         description: >-
           We support global growth with multilingual content, international
           advertising and patient communication processes.
       - title: E-Commerce Brands
+        icon: ecommerce
+        featured: true
         description: >-
           From product presentation to user experience, from advertising to sales
           conversion, we grow e-commerce.
       - title: Construction and Real Estate
+        icon: construction
         description: >-
           We reflect the credibility, investment value and corporate strength of
           projects accurately in the digital space.
       - title: SMEs and Corporate Services
+        icon: sme
         description: >-
           We help brands look more professional, reach the right audience and
           grow sustainably.
       - title: Education and Consultancy
+        icon: education
         description: >-
           We build structures that make your expertise visible, create trust and
           increase enquiry conversions.
     ctas:
       - label: Discover the solution built for your brand →
         href: /en/contact
-        variant: outline
+        variant: link
 
   # 10 — TEAM
   # Mirrors the TR source: a two-column text block, not a team card/photo grid.
@@ -285,27 +293,28 @@ sections:
   # nothing at all — hence `text`.
   - type: text
     background: light
+    layout: split
     eyebrow: Different Disciplines, One Shared Goal
     heading: Behind Every Project There Is a Team That Thinks Together
     body: |-
       Pixelon is built around a team where different specialisms - strategy, design, content, advertising, development and production - meet around the same goal. We see every project not as the job of one department, but as the shared responsibility of the whole team. Designer, content creator, advertising specialist and developer all work together towards the same brand goal.
 
       Thanks to this collaboration, we deliver projects that are not just visually appealing, but technically strong, user-friendly, right for the audience and capable of producing results.
+    highlight: We bring different perspectives to the same table and turn strong ideas into reality together.
 
-      We bring different perspectives to the same table and turn strong ideas into reality together.
-
-  # 11 — GLOBAL
+  # 11 — GLOBAL (reference: centred block + large lime-accented closing line)
   - type: text
     background: dark
+    layout: center
     eyebrow: From Local to Global
     heading: We Connect Brands With Their Audiences in Different Markets.
     body: |-
       Alongside Turkey, Pixelon develops projects for brands operating in European and African markets. Taking into account the user habits, communication styles and market dynamics of each country, we build multilingual websites, international ad campaigns and content strategies tailored to the target market.
+    highlight: We create in Istanbul and connect brands with audiences *all around the world*.
 
-      We create in Istanbul and connect brands with audiences all around the world.
-
-  # 12 — PARTNERS
-  - type: bullets
+  # 12 — PARTNERS (reference: scrolling wordmark strip, same as the homepage)
+  - type: marquee
+    kind: wordmarks
     background: light
     heading: Strong Technologies, Strong Digital Experiences
     lead: >-
@@ -342,7 +351,7 @@ sections:
         variant: outline
       - label: Tell Us About Your Project
         href: mailto:info@pixelon.com.tr
-        variant: outline
+        variant: link
 
   - type: contactInfo
     background: dark

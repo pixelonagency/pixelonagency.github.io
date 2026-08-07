@@ -44,6 +44,12 @@ const STRINGS = {
   'cta.allPosts': { tr: '← Tüm Yazılar', en: '← All Posts' },
 
   'blog.readingTime': { tr: 'dk okuma', en: 'min read' },
+  'blog.readPost': { tr: 'Yazıyı Okuyun', en: 'Read the Article' },
+  'blog.applyHeading': {
+    tr: 'Bu Stratejiyi Markanız İçin Uygulayalım.',
+    en: "Let's Put This Strategy to Work for Your Brand.",
+  },
+  'blog.exploreServices': { tr: 'Hizmetlerimizi İnceleyin', en: 'Explore Our Services' },
 
   'logos.groupLabel': { tr: 'Çalıştığımız markalar', en: 'Brands we work with' },
   /** Marka adının ARDINA gelir: "Dentasay logosu" / "Dentasay logo". */
@@ -123,6 +129,7 @@ const STRINGS = {
   'form.field.company': { tr: 'Şirket / Marka Adı', en: 'Company / Brand Name' },
   'form.field.website': { tr: 'Web Siteniz', en: 'Your Website' },
   'form.field.service': { tr: 'İlgilendiğiniz Hizmet', en: 'Service You Are Interested In' },
+  'form.field.budget': { tr: 'Tahmini Proje Bütçesi', en: 'Estimated Project Budget' },
   'form.field.message': { tr: 'Mesajınız', en: 'Your Message' },
 
   'form.placeholder.name': { tr: 'Ad Soyad', en: 'Full name' },
@@ -131,6 +138,7 @@ const STRINGS = {
   'form.placeholder.company': { tr: 'Şirketinizin adı', en: 'Your company name' },
   'form.placeholder.website': { tr: 'ornek.com.tr', en: 'example.com' },
   'form.placeholder.service': { tr: 'Hizmet seçin', en: 'Select a service' },
+  'form.placeholder.budget': { tr: 'Bütçe seçin', en: 'Select a budget' },
   'form.placeholder.message': {
     tr: 'Markanız, ihtiyaç duyduğunuz hizmet ve hedefleriniz hakkında kısaca bilgi verin.',
     en: 'Tell us briefly about your brand, the service you need and your goals.',

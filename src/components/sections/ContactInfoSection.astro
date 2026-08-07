@@ -110,4 +110,44 @@ const { section } = Astro.props;
       grid-template-columns: 1fr;
     }
   }
+
+  /*
+   * Referans (Biz Kimiz / kapanış): CTA bloğunu hemen izleyen iletişim bilgisi kart
+   * ızgarası DEĞİL, üst çizgili ortalanmış tek satırdır — aynı bloğun devamı gibi.
+   * Bu görünüm yalnızca bitişiklikte devreye girer; bağımsız kullanımlar kart kalır.
+   */
+  :global(.section:has(.cta-box) + .section) .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 32px;
+    max-width: 900px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+  }
+
+  :global(.section:has(.cta-box) + .section) .contact-info__item {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  :global(.section:has(.cta-box) + .section) .contact-info__item:hover,
+  :global(.section:has(.cta-box) + .section) .contact-info__item:focus-within {
+    border-color: transparent;
+    transform: none;
+  }
+
+  :global(.section:has(.cta-box) + .section) .contact-info__label {
+    font: 600 12px var(--font-display);
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  :global(.section:has(.cta-box) + .section) .contact-info__value {
+    margin-top: 8px;
+    font: 600 18px var(--font-display);
+  }
 </style>

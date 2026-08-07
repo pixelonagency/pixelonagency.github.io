@@ -104,9 +104,19 @@ const services = section.limit ? sorted.slice(0, section.limit) : sorted;
     margin: 0;
   }
 
+  /* Referans: satır başlığı masaüstünde 24px'e ölçeklenir (sabit 19px değil). */
+  .services__title {
+    font: 600 clamp(18px, 1.8vw, 24px) var(--font-display);
+  }
+
+  .services__text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
   .services__arrow {
     justify-self: end;
-    font: 600 18px var(--font-display);
+    font: 600 22px var(--font-display);
     line-height: 1;
     color: var(--accent);
     transition: transform var(--t-slow);
