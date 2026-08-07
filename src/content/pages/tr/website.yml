@@ -1,0 +1,181 @@
+seo:
+  title: Profesyonel Web Sitesi Tasarımı | Pixelon
+  description: >-
+    Markanıza özel, mobil uyumlu, hızlı ve müşteri kazandırmaya odaklı
+    profesyonel web sitesi yaptırın. Projenizi anlatın, teklifinizi alın.
+
+whatsappMessage: Merhaba Pixelon, işletmem için profesyonel bir web sitesi yaptırmak istiyorum. Bilgi alabilir miyim?
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: Profesyonel Web Sitesi Tasarımı
+    # *yıldız* içine alınan kelimeler lime (aksan) renkle basılır — bkz. src/lib/highlight.ts
+    headingLines:
+      - "Markanızı *Güçlü* Gösteren, *Müşteri Kazandıran* Web Siteleri Tasarlıyoruz."
+    lead: |-
+      Hazır şablonlardan uzak, markanıza özel; hızlı, mobil uyumlu ve ziyaretçileri iletişime yönlendiren profesyonel web siteleri oluşturuyoruz. Amacımız yalnızca güzel görünen değil, sizin için çalışan bir web sitesi kurmak.
+    tagline: Projenizi anlatın, size özel teklifinizi hazırlayalım.
+    chips:
+      - Markaya özel tasarım
+      - Mobil uyumlu yapı
+      - SEO altyapısı
+      - Yönetilebilir admin paneli
+      - WhatsApp ve form entegrasyonu
+    ctas:
+      - label: Ücretsiz Teklif Alın
+        href: '#basvuru'
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+      - label: Hemen Arayın
+        href: 'tel:+905065229034'
+        variant: link
+
+  # 2 — LİME MARQUEE (dekoratif şerit, hero altında)
+  - type: marquee
+    kind: strip
+    background: dark
+    items:
+      - Kurumsal Web Sitesi
+      - E-Ticaret
+      - Landing Page
+      - Çok Dilli Site
+      - Mobil Uyumlu
+      - SEO Dostu
+      - Hızlı Altyapı
+
+  # 3 — KISA TANITIM
+  - type: text
+    background: light
+    eyebrow: Neden Önemli?
+    heading: Web Siteniz Sadece Güzel Görünmesin, Sizin İçin Çalışsın.
+    body: |-
+      Potansiyel müşterileriniz markanızla çoğu zaman ilk kez web sitenizde karşılaşır. Bu ilk izlenim, sizinle çalışıp çalışmayacaklarına dair kararlarının büyük bölümünü belirler.
+
+      Pixelon olarak yalnızca güzel görünen değil; hizmetlerinizi doğru anlatan, güven oluşturan ve ziyaretçileri arama, WhatsApp veya form doldurma aksiyonuna yönlendiren web siteleri tasarlıyoruz.
+
+      İyi bir web sitesi bir masraf değil, size müşteri kazandıran bir yatırımdır.
+
+  # 4 — NELER HAZIRLIYORUZ (dört site türü)
+  - type: cards
+    background: dark
+    anchor: cozumler
+    eyebrow: Neler Hazırlıyoruz?
+    heading: İhtiyacınıza Uygun Web Çözümleri
+    lead: |-
+      İşletmenizin hedefine göre doğru web sitesi türünü öneriyor, tümünü markanıza özel olarak tasarlıyoruz.
+    columns: 4
+    items:
+      - title: Kurumsal Web Sitesi
+        icon: sme
+        featured: true
+        description: |-
+          Markanızı ve hizmetlerinizi profesyonel şekilde anlatan, güven veren modern web siteleri.
+      - title: E-Ticaret Sitesi
+        icon: ecommerce
+        description: |-
+          Ürünlerinizi kolayca satabileceğiniz güvenli ve kullanıcı dostu online mağazalar.
+      - title: Landing Page
+        icon: construction
+        description: |-
+          Reklamlardan gelen ziyaretçileri form, telefon veya WhatsApp talebine dönüştüren özel sayfalar.
+      - title: Çok Dilli Web Sitesi
+        icon: tourism
+        description: |-
+          Yurt dışındaki müşterilere ulaşmanızı sağlayan, çok dilli ve global hedeflere uygun web altyapıları.
+
+  # 5 — NEDEN PIXELON
+  - type: bullets
+    background: light
+    eyebrow: Neden Pixelon?
+    heading: Hazır Site Değil, Markanıza Özel Bir Dijital Deneyim
+    lead: |-
+      Her projeye markanızın kimliği, sektörü ve hedefleriyle başlıyoruz. Sonuç: birbirinin aynı değil, size özel çalışan bir web sitesi.
+    items:
+      - Sektörünüze özel, markanıza uygun tasarım
+      - Kullanıcı dostu ve anlaşılır sayfa yapısı
+      - Telefon, tablet ve bilgisayarla tam uyum
+      - Hızlı ve SEO dostu altyapı
+      - Kolay yönetilebilir içerik paneli
+      - Form, WhatsApp ve sosyal medya bağlantıları
+      - Yayın sonrası teknik destek
+
+  # 6 — SÜREÇ (dört adım; 01–04 numaraları bileşende üretilir)
+  - type: steps
+    background: dark
+    eyebrow: Süreç Nasıl İşliyor?
+    heading: Fikirden Yayına, Sade ve Net Bir Süreç
+    lead: |-
+      Web sitenizi hayata geçirirken her adımda yanınızdayız; süreci sizin için basit ve anlaşılır tutuyoruz.
+    items:
+      - title: Projenizi Anlatın
+        description: |-
+          İhtiyaçlarınızı ve hayalinizdeki web sitesini dinliyoruz.
+      - title: Tasarlayalım
+        description: |-
+          Markanıza özel sayfa yapısını ve görsel tasarımı hazırlıyoruz.
+      - title: Geliştirelim
+        description: |-
+          Onaylanan tasarımı hızlı ve yönetilebilir bir web sitesine dönüştürüyoruz.
+      - title: Yayına Alalım
+        description: |-
+          Tüm kontrolleri tamamlayarak web sitenizi kullanıma açıyoruz.
+
+  # 7 — PROJELER (projects koleksiyonundan; ilk 3)
+  - type: projects
+    background: light
+    anchor: projeler
+    eyebrow: Tamamladığımız Bazı Projeler
+    heading: Markalar İçin Tasarladığımız Dijital Deneyimler
+    lead: |-
+      Sağlık, e-ticaret, inşaat, danışmanlık ve farklı sektörlerdeki markalar için kullanıcı dostu ve güçlü web siteleri hazırladık.
+    limit: 3
+    showFilters: false
+    ctaLabel: Tüm Projelerimizi Görün
+    ctaHref: /projelerimiz
+
+  # 8 — BAŞVURU FORMU (iletişim formu; hero CTA'sı buraya kayar)
+  - type: form
+    background: dark
+    anchor: basvuru
+    eyebrow: Ücretsiz Teklif
+    heading: Web Sitenizi Birlikte Planlayalım
+    lead: |-
+      Formu doldurun, ihtiyaçlarınızı inceleyerek size özel web tasarım teklifimizi hazırlayalım.
+    formId: contact
+    submitLabel: Ücretsiz Teklif İsteyin
+    successHeading: Talebiniz bize ulaştı!
+    successBody: Pixelon ekibi projenizi inceleyerek en kısa sürede sizinle iletişime geçecek.
+    successNote: Bilgileriniz yalnızca projenizi değerlendirmek ve sizinle iletişime geçmek amacıyla kullanılacaktır.
+    successCtas:
+      - label: WhatsApp'tan Devam Edin
+        href: https://wa.me/905065229034
+        variant: primary
+        icon: whatsapp
+        external: true
+
+  # 9 — SAYFA SONU CTA
+  - type: cta
+    background: dark
+    heading: Markanıza Yakışan Bir Web Sitesine Hazır mısınız?
+    lead: |-
+      Yeni bir web sitesi yaptırmak veya mevcut sitenizi daha modern ve etkili hale getirmek için Pixelon ekibiyle iletişime geçin. Telefon ve WhatsApp: +90 506 522 90 34
+    ctas:
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: primary
+        icon: whatsapp
+        external: true
+      - label: Ücretsiz Teklif Alın
+        href: '#basvuru'
+        variant: outline
+      - label: +90 506 522 90 34
+        href: 'tel:+905065229034'
+        variant: link
+        icon: phone

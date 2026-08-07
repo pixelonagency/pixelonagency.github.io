@@ -1,0 +1,180 @@
+seo:
+  title: Professional Website Design | Pixelon
+  description: >-
+    Get a custom, mobile-friendly, fast website built to win you customers.
+    Tell us about your project and receive a tailored proposal.
+
+whatsappMessage: Hello Pixelon, I'd like to have a professional website built for my business. Can you help?
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: Professional Website Design
+    headingLines:
+      - "We Build Websites That Make Your Brand *Stronger* and Win You *Customers*."
+    lead: |-
+      Far from ready-made templates — custom to your brand: fast, mobile-friendly websites that guide visitors toward getting in touch. Our goal isn't just a good-looking site, but one that works for you.
+    tagline: Tell us about your project and we'll prepare a tailored proposal.
+    chips:
+      - Brand-specific design
+      - Mobile-friendly build
+      - SEO foundation
+      - Manageable admin panel
+      - WhatsApp and form integration
+    ctas:
+      - label: Get a Free Quote
+        href: '#request'
+        variant: primary
+        icon: arrow
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+      - label: Call Now
+        href: 'tel:+905065229034'
+        variant: link
+
+  # 2 — LIME MARQUEE
+  - type: marquee
+    kind: strip
+    background: dark
+    items:
+      - Corporate Website
+      - E-Commerce
+      - Landing Page
+      - Multilingual Site
+      - Mobile-Friendly
+      - SEO-Ready
+      - Fast Infrastructure
+
+  # 3 — SHORT INTRO
+  - type: text
+    background: light
+    eyebrow: Why It Matters
+    heading: Your Website Shouldn't Just Look Good — It Should Work for You.
+    body: |-
+      Most of the time, potential customers meet your brand for the first time on your website. That first impression shapes much of their decision on whether to work with you.
+
+      At Pixelon, we design websites that don't just look good; they explain your services clearly, build trust, and guide visitors toward calling, messaging on WhatsApp, or filling out a form.
+
+      A good website isn't an expense — it's an investment that wins you customers.
+
+  # 4 — WHAT WE BUILD (four website types)
+  - type: cards
+    background: dark
+    anchor: solutions
+    eyebrow: What We Build
+    heading: Web Solutions Tailored to Your Needs
+    lead: |-
+      We recommend the right type of website for your goals and design every one of them custom to your brand.
+    columns: 4
+    items:
+      - title: Corporate Website
+        icon: sme
+        featured: true
+        description: |-
+          Modern, trust-building websites that present your brand and services professionally.
+      - title: E-Commerce Site
+        icon: ecommerce
+        description: |-
+          Secure, user-friendly online stores where you can sell your products with ease.
+      - title: Landing Page
+        icon: construction
+        description: |-
+          Dedicated pages that turn ad traffic into form, phone, or WhatsApp requests.
+      - title: Multilingual Website
+        icon: tourism
+        description: |-
+          Multilingual, globally-minded web foundations that help you reach customers abroad.
+
+  # 5 — WHY PIXELON
+  - type: bullets
+    background: light
+    eyebrow: Why Pixelon?
+    heading: Not a Template — a Digital Experience Custom to Your Brand
+    lead: |-
+      We start every project with your brand identity, industry, and goals. The result: not a copy of everyone else, but a website that works for you.
+    items:
+      - Industry-specific design tailored to your brand
+      - User-friendly, easy-to-follow page structure
+      - Full compatibility across phone, tablet, and desktop
+      - Fast and SEO-friendly infrastructure
+      - Easy-to-manage content panel
+      - Form, WhatsApp, and social media links
+      - Post-launch technical support
+
+  # 6 — PROCESS (four steps; 01–04 numbers rendered by the component)
+  - type: steps
+    background: dark
+    eyebrow: How the Process Works
+    heading: From Idea to Launch, a Simple and Clear Process
+    lead: |-
+      We're by your side at every step of bringing your website to life, keeping the process simple and clear for you.
+    items:
+      - title: Tell Us About Your Project
+        description: |-
+          We listen to your needs and the website you have in mind.
+      - title: We Design
+        description: |-
+          We prepare a page structure and visual design custom to your brand.
+      - title: We Develop
+        description: |-
+          We turn the approved design into a fast, manageable website.
+      - title: We Launch
+        description: |-
+          We complete all checks and put your website live.
+
+  # 7 — PROJECTS
+  - type: projects
+    background: light
+    anchor: projects
+    eyebrow: Some of Our Completed Projects
+    heading: Digital Experiences We've Designed for Brands
+    lead: |-
+      We've built user-friendly, powerful websites for brands across healthcare, e-commerce, construction, consulting, and many other industries.
+    limit: 3
+    showFilters: false
+    ctaLabel: See All Our Projects
+    ctaHref: /en/projects
+
+  # 8 — APPLICATION FORM
+  - type: form
+    background: dark
+    anchor: request
+    eyebrow: Free Quote
+    heading: Let's Plan Your Website Together
+    lead: |-
+      Fill out the form and we'll review your needs to prepare a web design proposal tailored to you.
+    formId: contact
+    submitLabel: Request a Free Quote
+    successHeading: Your request has reached us!
+    successBody: The Pixelon team will review your project and get in touch with you shortly.
+    successNote: Your information will be used only to evaluate your project and to contact you.
+    successCtas:
+      - label: Continue on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+        icon: whatsapp
+        external: true
+
+  # 9 — CLOSING CTA
+  - type: cta
+    background: dark
+    heading: Ready for a Website Worthy of Your Brand?
+    lead: |-
+      Get in touch with the Pixelon team to build a new website or make your existing one more modern and effective. Phone and WhatsApp: +90 506 522 90 34
+    ctas:
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+        icon: whatsapp
+        external: true
+      - label: Get a Free Quote
+        href: '#request'
+        variant: outline
+      - label: +90 506 522 90 34
+        href: 'tel:+905065229034'
+        variant: link
+        icon: phone

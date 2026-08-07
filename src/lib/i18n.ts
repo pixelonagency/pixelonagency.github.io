@@ -26,6 +26,7 @@ export const ROUTE_SLUGS = {
   home: { tr: '', en: '' },
   about: { tr: 'biz-kimiz', en: 'about-us' },
   services: { tr: 'hizmetlerimiz', en: 'services' },
+  website: { tr: 'web-sitesi-yaptir', en: 'get-a-website' },
   projects: { tr: 'projelerimiz', en: 'projects' },
   blog: { tr: 'blog', en: 'blog' },
   careers: { tr: 'kariyer', en: 'careers' },
