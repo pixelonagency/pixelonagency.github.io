@@ -35,9 +35,11 @@ sections:
         href: 'tel:+905065229034'
         variant: link
 
-  # 2 — LİME MARQUEE (dekoratif şerit, referansta aria-hidden):
-  # Strateji ✦ Tasarım ✦ Teknoloji ✦ Performans ✦ Büyüme ✦ Dönüşüm ✦
-  # (Bölüm sözlüğünde marquee tipi yok; metin burada not olarak korundu.)
+  # 2 — LİME MARQUEE (dekoratif şerit, hero altında)
+  - type: marquee
+    kind: strip
+    background: dark
+    items: [Strateji, Tasarım, Teknoloji, Performans, Büyüme, Dönüşüm]
 
   # 3 — REFERANSLAR (logo marquee, references koleksiyonundan)
   - type: logos
@@ -64,11 +66,14 @@ sections:
       İşe markanızı, sektörünüzü ve hedef kitlenizi anlayarak başlarız. Ardından strateji, tasarım, içerik, teknoloji ve performans pazarlamasını aynı hedef doğrultusunda bir araya getiririz. Böylece birbirinden bağımsız çalışmalar yerine, tüm dijital kanallarınızın birlikte hareket ettiği sürdürülebilir bir büyüme sistemi oluştururuz.
 
   # 5 — "PIXELON NE YAPAR" bölümünün içindeki koyu vurgu kutusu
+  # NOT: bölümün kendisi (background) LIGHT — beyaz zemin üstünde duran, kendi
+  # içinde koyu bir kart. `background: dark` yapılırsa bölümün tamamı siyaha
+  # döner ve kart görünümü (beyaz kenar boşluğu + yuvarlak köşe) kaybolur.
   - type: cta
-    background: dark
+    background: light
     heading: >-
-      Sadece görünür olmanız için değil, tercih edilen bir marka olmanız için
-      çalışıyoruz.
+      Sadece görünür olmanız için değil, *tercih edilen bir marka* olmanız
+      için çalışıyoruz.
     ctas:
       - label: Pixelon'u Yakından Tanıyın
         href: /biz-kimiz
@@ -147,21 +152,28 @@ sections:
     columns: 3
     items:
       - title: Sağlık ve Klinik Markaları
+        icon: health
         description: |-
           Hasta güvenini güçlendiren, etik iletişim kurallarına uygun ve randevu dönüşümünü destekleyen dijital sistemler oluşturuyoruz.
       - title: Sağlık Turizmi Firmaları
+        icon: tourism
         description: |-
           Uluslararası hasta kazanımına yönelik çok dilli web siteleri, reklam kampanyaları ve hasta iletişim süreçleri geliştiriyoruz.
       - title: E-Ticaret Markaları
+        icon: ecommerce
+        featured: true
         description: |-
           Ürünlerin daha iyi sunulmasını, doğru hedef kitleye ulaşmasını ve satış dönüşümlerinin artmasını sağlayan çözümler üretiyoruz.
       - title: İnşaat ve Gayrimenkul Firmaları
+        icon: construction
         description: |-
           Projelerin güven, kalite ve yatırım değerini etkili biçimde anlatan kurumsal web siteleri ve dijital pazarlama çalışmaları hazırlıyoruz.
       - title: KOBİ ve Kurumsal Hizmet Markaları
+        icon: sme
         description: |-
           İşletmelerin dijital dünyada profesyonel bir kimliğe kavuşmasını ve yeni müşterilere ulaşmasını sağlayan sürdürülebilir sistemler kuruyoruz.
       - title: Eğitim ve Danışmanlık Markaları
+        icon: education
         description: |-
           Uzmanlığınızı görünür kılan, güven oluşturan ve başvuru dönüşümünü artıran dijital yapılar kuruyoruz.
 
@@ -219,32 +231,27 @@ sections:
         description: |-
           Strateji, tasarım, yazılım, içerik, reklam ve optimizasyon süreçlerini birbiriyle uyumlu biçimde yürütürüz.
 
-  # 12 — GLOBAL (ülke çipleri marquee'si)
-  - type: bullets
+  # 12/13 — GLOBAL (ülke çipleri marquee'si + dünya haritası + kapanış cümlesi, tek blok)
+  - type: worldMap
     background: dark
     eyebrow: Nerelerdeyiz?
     heading: Pixelon Dünyanın Her Yerinde!
     lead: |-
       Türkiye'den Avrupa'ya ve Afrika'ya uzanan projelerimizde; farklı kültürlere, dillere ve hedef pazarlara uygun iletişim stratejileri geliştiriyoruz. Yerel bir markanın global pazara açılmasından uluslararası bir firmanın dijital dönüşümüne kadar her ölçekte projeye aynı özenle yaklaşıyoruz.
-    items:
-      - 🇹🇷 Türkiye
-      - 🇩🇪 Almanya
-      - 🇬🇧 Birleşik Krallık
-      - 🇫🇷 Fransa
-      - 🇮🇹 İtalya
-      - 🇪🇸 İspanya
-      - 🇷🇴 Romanya
-      - 🇧🇬 Bulgaristan
-      - 🇳🇱 Hollanda
-      - 🇮🇪 İrlanda
-      - 🌍 Afrika
-
-  # 13 — GLOBAL bölümünün dünya haritası görseli + kapanış cümlesi
-  - type: text
-    background: dark
-    body: >-
-      Sınırlar değişir, güçlü marka deneyiminin kuralları değişmez.
-    imageAlt: Pixelon global dijital pazarlama projeleri dünya haritası
+    countries:
+      - { label: Türkiye, flag: 🇹🇷, highlighted: true }
+      - { label: Almanya, flag: 🇩🇪 }
+      - { label: Birleşik Krallık, flag: 🇬🇧 }
+      - { label: Fransa, flag: 🇫🇷 }
+      - { label: İtalya, flag: 🇮🇹 }
+      - { label: İspanya, flag: 🇪🇸 }
+      - { label: Romanya, flag: 🇷🇴 }
+      - { label: Bulgaristan, flag: 🇧🇬 }
+      - { label: Hollanda, flag: 🇳🇱 }
+      - { label: İrlanda, flag: 🇮🇪 }
+      - { label: Afrika, flag: 🌍 }
+    closingLine: Sınırlar değişir, *güçlü marka deneyiminin* kuralları değişmez.
+    mapImageAlt: Pixelon global dijital pazarlama projeleri dünya haritası
     ctas:
       - label: Global Projelerimizi İnceleyin
         href: /projelerimiz
@@ -262,16 +269,19 @@ sections:
     items:
       - eyebrow: Web Tasarım
         title: Ad Soyad
+        rating: 5
         description: |-
           "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
           Pozisyon · Marka
       - eyebrow: Sağlık Turizmi
         title: Ad Soyad
+        rating: 5
         description: |-
           "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
           Pozisyon · Marka
       - eyebrow: Dijital Reklam
         title: Ad Soyad
+        rating: 5
         description: |-
           "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
           Pozisyon · Marka
@@ -288,8 +298,9 @@ sections:
     ctaLabel: Tüm Yazıları İnceleyin
     ctaHref: /blog
 
-  # 16 — PROFESYONEL PARTNERLER (referansta metin marquee'si)
-  - type: bullets
+  # 16 — PROFESYONEL PARTNERLER (kayan metin şeridi)
+  - type: marquee
+    kind: wordmarks
     background: light
     heading: Profesyonel Partnerlerimiz
     lead: |-
@@ -305,35 +316,7 @@ sections:
       - LinkedIn
       - Yandex
 
-  # 17 — İLETİŞİM
-  - type: cta
-    background: dark
-    anchor: iletisim
-    eyebrow: Yeni Bir Projeye Başlayalım
-    heading: Markanızı Birlikte Büyütelim.
-    lead: |-
-      Yeni bir web sitesine, etkili bir reklam kampanyasına veya markanızı dijitalde büyütecek kapsamlı bir stratejiye mi ihtiyacınız var? Bize projenizden bahsedin. Pixelon ekibi ihtiyaçlarınızı dinlesin, markanıza özel çözüm önerilerini sizinle paylaşsın.
-    ctas:
-      - label: WhatsApp'tan Yazın
-        href: https://wa.me/905065229034
-        variant: primary
-      - label: Hemen Arayın
-        href: 'tel:+905065229034'
-        variant: outline
-
-  - type: contactInfo
-    background: dark
-    items:
-      - label: Telefon ve WhatsApp
-        value: +90 506 522 90 34
-        href: 'tel:+905065229034'
-      - label: E-posta
-        value: info@pixelon.com.tr
-        href: 'mailto:info@pixelon.com.tr'
-      - label: Adres
-        value: Kadıköy, İstanbul
-
-  # 18 — PROJE TALEP FORMU
+  # 17/18 — İLETİŞİM (metin + iletişim bilgileri + form, referanstaki gibi tek birleşik blok)
   # Alan yer tutucuları: Adınız · Soyadınız · Telefon Numaranız · E-posta Adresiniz ·
   # Şirketinizin Adı · İlgilendiğiniz Hizmet · Tahmini Proje Bütçesi ·
   # "Projeniz Hakkında Bize Ne Söylemek İstersiniz?"
@@ -348,9 +331,30 @@ sections:
   # Gönderim sonrası ekran: "Talebiniz bize ulaştı!" /
   # "Pixelon ekibi projenizi inceleyerek en kısa sürede sizinle iletişime geçecek." /
   # buton: "WhatsApp'tan Devam Edin"
-  - type: form
+  - type: contact
     background: dark
-    heading: Projenizden Bize Bahsedin
-    lead: Formu doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
+    anchor: iletisim
+    eyebrow: Yeni Bir Projeye Başlayalım
+    heading: Markanızı Birlikte Büyütelim.
+    lead: |-
+      Yeni bir web sitesine, etkili bir reklam kampanyasına veya markanızı dijitalde büyütecek kapsamlı bir stratejiye mi ihtiyacınız var? Bize projenizden bahsedin. Pixelon ekibi ihtiyaçlarınızı dinlesin, markanıza özel çözüm önerilerini sizinle paylaşsın.
+    ctas:
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Hemen Arayın
+        href: 'tel:+905065229034'
+        variant: outline
+    contactItems:
+      - label: Telefon ve WhatsApp
+        value: +90 506 522 90 34
+        href: 'tel:+905065229034'
+      - label: E-posta
+        value: info@pixelon.com.tr
+        href: 'mailto:info@pixelon.com.tr'
+      - label: Adres
+        value: Kadıköy, İstanbul
+    formHeading: Projenizden Bize Bahsedin
+    formLead: Formu doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
     formId: contact
     submitLabel: Proje Talebi Gönder

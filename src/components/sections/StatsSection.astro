@@ -37,43 +37,50 @@ const { section } = Astro.props;
 </Section>
 
 <style>
+  /* İnce çizgi ayraçlı kutu: dış kenarlık + 1px boşluk (zemin rengiyle) hücreler arası
+     hairline oluşturuyor — referans tasarımdaki teknik. */
   .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--gap-section);
-    margin: 0;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-feature);
+    overflow: hidden;
+    margin: clamp(40px, 5vw, 64px) 0 0;
   }
 
   .stats__item {
-    border-top: 1px solid var(--border);
-    padding-top: 22px;
+    background: var(--bg);
+    padding: 36px 28px;
   }
 
   .stats__value {
-    font: 700 clamp(38px, 5vw, 62px) / 1 var(--font-display);
+    font: 600 clamp(44px, 4.6vw, 64px) / 1 var(--font-display);
     letter-spacing: -0.03em;
     color: var(--accent);
   }
 
   .stats__label {
-    margin: 12px 0 0;
+    margin: 14px 0 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-muted);
   }
 
   .stats__label-text {
-    font: 600 15px var(--font-display);
+    font: 600 16px var(--font-display);
     color: var(--text);
   }
 
   .stats__description {
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 13px;
+    line-height: 1.6;
     color: var(--text-muted);
+  }
+
+  :global(.section--light) .stats__item {
+    background: var(--bg-light);
   }
 
   :global(.section--light) .stats__label-text {
@@ -84,16 +91,13 @@ const { section } = Astro.props;
     color: var(--text-muted-on-light);
   }
 
-  :global(.section--light) .stats__item {
-    border-top-color: var(--border-on-light);
+  :global(.section--light) .stats {
+    background: var(--border-on-light);
+    border-color: var(--border-on-light);
   }
 
   :global(.section--light) .stats__value {
     color: var(--text-on-light);
-  }
-
-  :global(.section--light) .stats__label {
-    color: var(--text-muted-on-light);
   }
 </style>
 

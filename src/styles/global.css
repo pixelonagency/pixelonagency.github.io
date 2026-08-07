@@ -91,8 +91,8 @@ button {
 
 .eyebrow::before {
   content: '';
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
@@ -107,7 +107,7 @@ button {
 
 .h2 {
   margin: 0;
-  font: 600 var(--fs-h2) / 1.14 var(--font-display);
+  font: 600 var(--fs-h2) / 1.1 var(--font-display);
   letter-spacing: -0.02em;
   color: var(--text);
 }
@@ -183,7 +183,7 @@ button {
 .card {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  padding: 28px;
+  padding: 30px;
   background: transparent;
   transition:
     border-color var(--t-slow),
@@ -210,6 +210,17 @@ button {
 @keyframes marquee {
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* Ülke çiplerinin hafif zıplama animasyonu — bkz. WorldMapSection.astro. */
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
   }
 }
 

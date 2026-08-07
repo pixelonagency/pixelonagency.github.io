@@ -1,5 +1,7 @@
 ---
 import type { PageSection } from '../../content/page-schema';
+import { parseHighlights } from '../../lib/highlight';
+import CtaButton from '../CtaButton.astro';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -10,28 +12,102 @@ interface Props {
 }
 
 const { section } = Astro.props;
+
+/*
+ * Referans tasarımda "cta" bölümü iki farklı görünüme sahip:
+ * - eyebrow/lead'i olmayan kısa kutular (ör. "Pixelon Ne Yapar" içindeki vurgu kutusu):
+ *   metin solda, buton sağda, tek satırda (space-between).
+ * - eyebrow+lead içeren daha büyük "kapanış" blokları (ör. sayfa sonu iletişim çağrısı):
+ *   ortalanmış, alt alta.
+ */
+const isSlim = !section.eyebrow && !section.lead;
+const headingSegments = isSlim ? parseHighlights(section.heading) : [];
 ---
 
-<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-  <div class="cta-box" data-reveal data-reveal-index={0}>
-    <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
+{
+  isSlim ? (
+    <Section anchor={section.anchor} background={section.background}>
+      <div class="cta-slim" data-reveal>
+        <p class="cta-slim__text">
+          {headingSegments.map((segment) =>
+            segment.accent ? <span class="cta-slim__accent">{segment.text}</span> : segment.text,
+          )}
+        </p>
 
-    {
-      section.ctas.length > 0 && (
-        <div class="cta-box__actions">
-          {section.ctas.map((item) => (
-            <a class:list={['btn', item.variant === 'outline' ? 'btn--outline' : 'btn--primary']} href={item.href}>
-              {item.label}
-              <span aria-hidden="true">→</span>
-            </a>
-          ))}
-        </div>
-      )
-    }
-  </div>
-</Section>
+        {section.ctas.length > 0 && (
+          <div class="cta-slim__actions">
+            {section.ctas.map((item) => (
+              <CtaButton
+                label={item.label}
+                href={item.href}
+                variant={item.variant}
+                icon={item.icon}
+                external={item.external}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </Section>
+  ) : (
+    <Section anchor={section.anchor} background={section.background}>
+      <div class="cta-box" data-reveal data-reveal-index={0}>
+        <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
+
+        {section.ctas.length > 0 && (
+          <div class="cta-box__actions">
+            {section.ctas.map((item) => (
+              <a class:list={['btn', item.variant === 'outline' ? 'btn--outline' : 'btn--primary']} href={item.href}>
+                {item.label}
+                <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </Section>
+  )
+}
 
 <style>
+  /* --- Kısa kutu: metin solda, buton sağda (eyebrow/lead yok) --- */
+  .cta-slim {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    background: var(--bg);
+    border-radius: var(--radius-feature);
+    padding: clamp(32px, 5vw, 64px);
+  }
+
+  .cta-slim__text {
+    margin: 0;
+    font: 500 clamp(20px, 2.4vw, 30px) / 1.35 var(--font-display);
+    color: var(--text);
+    max-width: 680px;
+    text-wrap: balance;
+  }
+
+  .cta-slim__accent {
+    color: var(--accent);
+  }
+
+  .cta-slim__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .cta-slim__actions :global(.btn) {
+      width: 100%;
+    }
+  }
+
+  /* --- Büyük kutu: eyebrow + başlık + lead, ortalanmış (kapanış CTA'ları) --- */
   .cta-box {
     position: relative;
     overflow: hidden;

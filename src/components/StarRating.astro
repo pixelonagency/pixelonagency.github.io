@@ -1,0 +1,38 @@
+---
+/** Müşteri yorumu kartlarındaki 1-5 yıldız rozeti. */
+interface Props {
+  rating: number;
+}
+
+const { rating }: Props = Astro.props;
+const stars = [1, 2, 3, 4, 5];
+---
+
+<div class="star-rating" aria-label={`${rating} yıldız`}>
+  {
+    stars.map((star) => (
+      <span class:list={['star-rating__star', star > rating && 'star-rating__star--empty']} aria-hidden="true">
+        ★
+      </span>
+    ))
+  }
+</div>
+
+<style>
+  .star-rating {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .star-rating__star--empty {
+    color: var(--border);
+  }
+
+  :global(.section--light) .star-rating__star--empty {
+    color: var(--border-on-light);
+  }
+</style>

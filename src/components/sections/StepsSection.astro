@@ -39,7 +39,9 @@ const steps = section.items.map((item, index) => ({
 <style>
   .steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Referans tasarımda 6 adım 3 sütunlu bir ızgarada durur (220px min ile bu, geniş
+       ekranlarda yanlışlıkla 4 sütuna bölünüyordu). */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--gap-section);
     margin: 0;
     padding: 0;
@@ -69,7 +71,9 @@ const steps = section.items.map((item, index) => ({
     display: block;
     font: 700 clamp(30px, 3.4vw, 42px) / 1 var(--font-display);
     letter-spacing: -0.02em;
-    color: var(--accent);
+    /* Referans tasarımda rakamlar dolu değil, yalnızca lime çerçeveli (outline). */
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
   }
 
   .steps__title {

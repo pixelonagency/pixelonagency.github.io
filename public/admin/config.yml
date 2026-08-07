@@ -419,7 +419,19 @@ collections:
                   - { label: Başlık, name: title, widget: string }
                   - { label: Açıklama, name: description, widget: text }
                   - { label: Bağlantı, name: href, widget: string, required: false }
-                  - { label: İkon, name: icon, widget: string, required: false }
+                  - label: İkon
+                    name: icon
+                    widget: select
+                    required: false
+                    options: [health, tourism, ecommerce, construction, sme, education]
+                  - {
+                      label: 'Sabit Öne Çıkar (kalıcı lime çerçeve)',
+                      name: featured,
+                      widget: boolean,
+                      default: false,
+                      required: false,
+                    }
+                  - { label: 'Yıldız Puanı (1-5)', name: rating, widget: number, value_type: int, required: false }
 
           - label: Süreç Adımları
             name: steps
@@ -447,6 +459,47 @@ collections:
                 name: items
                 widget: list
                 field: { label: Madde, name: item, widget: string }
+
+          - label: Kayan Şerit
+            name: marquee
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - label: Görünüm
+                name: kind
+                widget: select
+                default: strip
+                options: [strip, wordmarks]
+              - { label: Başlık, name: heading, widget: string, required: false }
+              - *s_lead
+              - { label: Tur Süresi (saniye), name: speed, widget: number, required: false }
+              - label: Öğeler
+                name: items
+                widget: list
+                field: { label: Öğe, name: item, widget: string }
+
+          - label: 'Global (Ülke Şeridi + Harita)'
+            name: worldMap
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: Ülkeler
+                name: countries
+                widget: list
+                fields:
+                  - { label: Ad, name: label, widget: string }
+                  - { label: Bayrak (emoji), name: flag, widget: string }
+                  - { label: Öne Çıkar, name: highlighted, widget: boolean, default: false, required: false }
+              - { label: Kapanış Cümlesi, name: closingLine, widget: text, required: false }
+              - { label: Harita Görseli Alt Metni, name: mapImageAlt, widget: string, required: false }
 
           - label: Metin
             name: text
@@ -565,6 +618,54 @@ collections:
               - *s_ctas
               - *s_heading
               - *s_lead
+              - label: Form
+                name: formId
+                widget: select
+                options: [contact, analysis]
+              - { label: Gönder Butonu Etiketi, name: submitLabel, widget: string, required: false }
+              - { label: 'Başarı — Başlık', name: successHeading, widget: string, required: false }
+              - { label: 'Başarı — Metin', name: successBody, widget: text, required: false }
+              - { label: 'Başarı — Ek Not', name: successNote, widget: text, required: false }
+              - label: Başarı — Butonlar
+                name: successCtas
+                widget: list
+                required: false
+                fields:
+                  - { label: Etiket, name: label, widget: string }
+                  - { label: Bağlantı, name: href, widget: string }
+                  - label: Görünüm
+                    name: variant
+                    widget: select
+                    default: primary
+                    options: [primary, outline, link]
+                  - label: İkon
+                    name: icon
+                    widget: select
+                    required: false
+                    options: [whatsapp, phone, arrow]
+                  - { label: Yeni sekmede aç, name: external, widget: boolean, default: false }
+              - { label: 'Hata — Başlık', name: errorHeading, widget: string, required: false }
+              - { label: 'Hata — Metin', name: errorBody, widget: text, required: false }
+
+          - label: İletişim (Birleşik Blok)
+            name: contact
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: İletişim Bilgileri
+                name: contactItems
+                widget: list
+                fields:
+                  - { label: Etiket, name: label, widget: string }
+                  - { label: Değer, name: value, widget: string }
+                  - { label: Bağlantı, name: href, widget: string, required: false }
+              - { label: Form Başlığı, name: formHeading, widget: string }
+              - { label: Form Giriş Metni, name: formLead, widget: text, required: false }
               - label: Form
                 name: formId
                 widget: select

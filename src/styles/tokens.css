@@ -42,23 +42,23 @@
   --font-body: 'Archivo', system-ui, sans-serif;
 
   --fs-hero: clamp(36px, 5.2vw, 72px);
-  --fs-h2: clamp(28px, 3.4vw, 44px);
+  --fs-h2: clamp(30px, 4vw, 52px);
   --fs-h3: 19px;
   --fs-body: 15px;
-  --fs-lead: 17px;
+  --fs-lead: 16px;
   --fs-small: 13px;
   --fs-eyebrow: 12px;
 
   --lh-hero: 1.08;
   --ls-hero: -0.025em;
-  --ls-eyebrow: 0.18em;
+  --ls-eyebrow: 0.22em;
 
   /* --- Ölçü / yerleşim --- */
   --container: 1280px;
   --container-wide: 1320px;
   --gutter: clamp(20px, 6vw, 80px);
   --gutter-header: clamp(20px, 4vw, 40px);
-  --section-y: clamp(60px, 7vw, 90px);
+  --section-y: clamp(72px, 9vw, 120px);
   --gap-card: 20px;
   --gap-section: clamp(28px, 4vw, 56px);
   --header-h: 71px;

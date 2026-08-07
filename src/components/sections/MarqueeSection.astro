@@ -1,0 +1,150 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Marquee = Extract<PageSection, { type: 'marquee' }>;
+
+interface Props {
+  section: Marquee;
+}
+
+const { section } = Astro.props;
+const speed = section.speed ?? (section.kind === 'wordmarks' ? 26 : 22);
+---
+
+{
+  section.kind === 'strip' ? (
+    // Tamamen dekoratif kayan şerit — referansta aria-hidden, container/section boşluğu yok (tam genişlik).
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-strip__track" style={`animation-duration:${speed}s`}>
+        <div class="marquee-strip__group">
+          {section.items.map((item) => (
+            <span>{item} ✦</span>
+          ))}
+        </div>
+        <div class="marquee-strip__group">
+          {section.items.map((item) => (
+            <span>{item} ✦</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
+
+      <div class="marquee-wordmarks" role="group" tabindex="0">
+        <div class="marquee-wordmarks__track" style={`animation-duration:${speed}s`}>
+          <ul class="marquee-wordmarks__group">
+            {section.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <ul class="marquee-wordmarks__group" aria-hidden="true">
+            {section.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+<style>
+  /* --- Lime şerit (hero altı) --- */
+  .marquee-strip {
+    overflow: hidden;
+    background: var(--accent);
+    padding: 14px 0;
+  }
+
+  .marquee-strip__track {
+    display: flex;
+    width: max-content;
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .marquee-strip__group {
+    display: flex;
+    flex-shrink: 0;
+    gap: 40px;
+    padding-right: 40px;
+  }
+
+  .marquee-strip__group span {
+    font: 600 14px var(--font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-on-light);
+    white-space: nowrap;
+  }
+
+  /* --- Metin marka isimleri şeridi (partnerler) --- */
+  .marquee-wordmarks {
+    --wm-gap: clamp(40px, 5vw, 64px);
+
+    overflow: hidden;
+    padding: 8px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
+  }
+
+  .marquee-wordmarks__track {
+    display: flex;
+    width: max-content;
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .marquee-wordmarks:hover .marquee-wordmarks__track,
+  .marquee-wordmarks:focus-within .marquee-wordmarks__track {
+    animation-play-state: paused;
+  }
+
+  .marquee-wordmarks__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--wm-gap);
+    padding: 0 var(--wm-gap) 0 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .marquee-wordmarks__group li {
+    font: 700 clamp(18px, 2.4vw, 24px) var(--font-display);
+    color: var(--text-faint);
+    white-space: nowrap;
+    transition: color var(--t-slow);
+  }
+
+  .marquee-wordmarks__group li:hover {
+    color: var(--text);
+  }
+
+  :global(.section--light) .marquee-wordmarks__group li {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .marquee-wordmarks__group li:hover {
+    color: var(--text-on-light);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-strip,
+    .marquee-wordmarks {
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .marquee-strip__track,
+    .marquee-wordmarks__track {
+      animation: none;
+    }
+  }
+</style>

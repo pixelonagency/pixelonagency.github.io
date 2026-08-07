@@ -1,0 +1,65 @@
+---
+/** Sektör kartlarının üstünde gösterilen küçük çizgi ikon — bkz. src/content/page-schema.ts `cards.items.icon`. */
+interface Props {
+  name: 'health' | 'tourism' | 'ecommerce' | 'construction' | 'sme' | 'education';
+}
+
+const { name }: Props = Astro.props;
+---
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+  {name === 'health' && <path d="M4 12h4l1.5-3L12 15l1.5-3H20" stroke-linecap="round" stroke-linejoin="round" />}
+  {
+    name === 'tourism' && (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18M12 3c2.5 2.5 3.8 6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-6-3.8-9s1.3-6.5 3.8-9z" />
+      </>
+    )
+  }
+  {
+    name === 'ecommerce' && (
+      <>
+        <circle cx="9" cy="20" r="1.4" fill="currentColor" stroke="none" />
+        <circle cx="18" cy="20" r="1.4" fill="currentColor" stroke="none" />
+        <path
+          d="M2.5 3h2.5l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.55L21 8H6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </>
+    )
+  }
+  {
+    name === 'construction' && (
+      <>
+        <path d="M4 21V9l5-4 5 4v12M14 21v-8l5-3v11" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M8 12h2M8 16h2" stroke-linecap="round" />
+      </>
+    )
+  }
+  {
+    name === 'sme' && (
+      <>
+        <rect x="3" y="7" width="18" height="12" rx="1.5" />
+        <path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18" stroke-linecap="round" />
+      </>
+    )
+  }
+  {
+    name === 'education' && (
+      <>
+        <path d="M2 8l10-4 10 4-10 4-10-4z" />
+        <path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5M22 8v6" stroke-linecap="round" stroke-linejoin="round" />
+      </>
+    )
+  }
+</svg>
+
+<style>
+  svg {
+    flex-shrink: 0;
+    margin-bottom: 14px;
+    color: var(--accent);
+  }
+</style>

@@ -4,6 +4,7 @@ client: Dentasay
 category: saglik
 categoryLabel: Sağlık Turizmi · Öne Çıkan Proje
 excerpt: Dentasay için web sitesi, sosyal medya, dijital reklam, içerik üretimi ve uluslararası hasta iletişim süreçlerini aynı strateji altında bir araya getirdik.
+cover: '/src/assets/images/dentasay.webp'
 featured: true
 order: 2
 tags:

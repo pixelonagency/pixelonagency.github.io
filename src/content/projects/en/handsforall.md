@@ -4,6 +4,7 @@ client: HandsForAll
 category: marka
 categoryLabel: Social Impact · Corporate Identity
 excerpt: We matched a social impact mission with a modern, energetic visual system that is easy to recognise.
+cover: '/src/assets/images/handsforall.webp'
 featured: true
 order: 3
 tags:

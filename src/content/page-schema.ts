@@ -68,7 +68,12 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
           title: nonEmpty,
           description: nonEmpty,
           href: opt(z.string()),
-          icon: opt(z.string()),
+          /** Kart başlığının üstünde gösterilen küçük çizgi ikon (bkz. SectorIcon.astro). */
+          icon: opt(z.enum(['health', 'tourism', 'ecommerce', 'construction', 'sme', 'education'])),
+          /** Sürekli (yalnızca hover'da değil) lime çerçeveyle öne çıkarılan kart. */
+          featured: opt(z.boolean()),
+          /** 1-5 yıldız derecelendirmesi (müşteri yorumu kartlarında). */
+          rating: opt(z.number()),
         }),
       )
       .min(1),
@@ -88,6 +93,42 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     heading: nonEmpty,
     lead: opt(z.string()),
     items: z.array(nonEmpty).min(1),
+  });
+
+  const marquee = z.object({
+    ...sectionBase,
+    type: z.literal('marquee'),
+    /**
+     * `strip` = dekoratif lime kayan yazı şeridi (hero altı). `wordmarks` = düz metin marka
+     * isimleri şeridi. Alan adı bilinçli olarak `variant` DEĞİL `kind`: CMS senkron testi
+     * `variant` adlı her alanı buton görünümü (primary/outline/link) sanıyor.
+     */
+    kind: z.enum(['strip', 'wordmarks']).default('strip'),
+    heading: opt(z.string()),
+    lead: opt(z.string()),
+    /** Bir turun kaç saniye süreceği — verilmezse bileşen varyanta göre varsayılan kullanır. */
+    speed: opt(z.number()),
+    items: z.array(nonEmpty).min(1),
+  });
+
+  const worldMap = z.object({
+    ...sectionBase,
+    type: z.literal('worldMap'),
+    heading: nonEmpty,
+    lead: opt(z.string()),
+    countries: z
+      .array(
+        z.object({
+          label: nonEmpty,
+          flag: nonEmpty,
+          /** Diğerlerinden ayrışan, sürekli vurgulu çip (ör. "Türkiye"). */
+          highlighted: z.boolean().default(false),
+        }),
+      )
+      .min(1),
+    /** `*yıldız*` işaretlemesi destekler — bkz. src/lib/highlight.ts. */
+    closingLine: opt(z.string()),
+    mapImageAlt: opt(z.string()),
   });
 
   const text = z.object({
@@ -197,6 +238,30 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     errorBody: opt(z.string()),
   });
 
+  /**
+   * İletişim bölümünün referanstaki gibi TEK, iki sütunlu blok halinde basılması için:
+   * sol sütun (metin + iletişim bilgileri) + sağ sütun (form), aynı görsel çerçeve içinde.
+   * `cta`/`contactInfo`/`form` tipleri başka sayfalarda (ör. /iletisim) bağımsız olarak
+   * kullanıldığı için DOKUNULMAZ — bu, yalnızca birleşik blok gereken sayfalar içindir.
+   */
+  const contact = z.object({
+    ...sectionBase,
+    type: z.literal('contact'),
+    heading: nonEmpty,
+    lead: opt(z.string()),
+    contactItems: z.array(z.object({ label: nonEmpty, value: nonEmpty, href: opt(z.string()) })).min(1),
+    formHeading: nonEmpty,
+    formLead: opt(z.string()),
+    formId: z.enum(['contact', 'analysis']),
+    submitLabel: opt(z.string()),
+    successHeading: opt(z.string()),
+    successBody: opt(z.string()),
+    successNote: opt(z.string()),
+    successCtas: list(cta),
+    errorHeading: opt(z.string()),
+    errorBody: opt(z.string()),
+  });
+
   const contactInfo = z.object({
     ...sectionBase,
     type: z.literal('contactInfo'),
@@ -238,6 +303,8 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     cards,
     steps,
     bullets,
+    marquee,
+    worldMap,
     text,
     stats,
     faq,
@@ -248,6 +315,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     team,
     services,
     form,
+    contact,
     contactInfo,
     media,
     jobs,
@@ -275,6 +343,8 @@ export const PAGE_SECTION_TYPES = [
   'cards',
   'steps',
   'bullets',
+  'marquee',
+  'worldMap',
   'text',
   'stats',
   'faq',
@@ -285,6 +355,7 @@ export const PAGE_SECTION_TYPES = [
   'team',
   'services',
   'form',
+  'contact',
   'contactInfo',
   'media',
   'jobs',

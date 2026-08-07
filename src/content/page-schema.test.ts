@@ -354,6 +354,131 @@ describe('hero trust chips', () => {
   });
 });
 
+describe('marquee section', () => {
+  test('accepts a marquee with a list of items', () => {
+    expect(parseSection({ type: 'marquee', items: ['Strateji', 'Tasarım'] }).success).toBe(true);
+  });
+
+  test('rejects a marquee with no items', () => {
+    expect(parseSection({ type: 'marquee', items: [] }).success).toBe(false);
+  });
+
+  test('defaults kind to strip', () => {
+    const parsed = pageSchema.parse({ ...base, sections: [{ type: 'marquee', items: ['A'] }] });
+    const section = parsed.sections[0];
+    expect(section?.type === 'marquee' && section.kind).toBe('strip');
+  });
+
+  test('accepts the wordmarks kind with an optional heading and lead', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ type: 'marquee', kind: 'wordmarks', heading: 'Partnerlerimiz', lead: 'Metin', items: ['Google'] }],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'marquee' && section.heading).toBe('Partnerlerimiz');
+  });
+
+  test('rejects an unknown kind', () => {
+    expect(parseSection({ type: 'marquee', kind: 'ticker', items: ['A'] }).success).toBe(false);
+  });
+});
+
+describe('worldMap section', () => {
+  const worldMap = {
+    type: 'worldMap',
+    heading: 'Pixelon Dünyanın Her Yerinde!',
+    countries: [{ label: 'Türkiye', flag: '🇹🇷' }],
+  };
+
+  test('accepts a worldMap section with at least one country', () => {
+    expect(parseSection(worldMap).success).toBe(true);
+  });
+
+  test('rejects a worldMap section with no countries', () => {
+    expect(parseSection({ ...worldMap, countries: [] }).success).toBe(false);
+  });
+
+  test('defaults a country to not highlighted', () => {
+    const parsed = pageSchema.parse({ ...base, sections: [worldMap] });
+    const section = parsed.sections[0];
+    expect(section?.type === 'worldMap' && section.countries[0]?.highlighted).toBe(false);
+  });
+
+  test('carries an optional closing line and map alt text', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ ...worldMap, closingLine: 'Sınırlar değişir.', mapImageAlt: 'Dünya haritası' }],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'worldMap' && section.closingLine).toBe('Sınırlar değişir.');
+  });
+});
+
+describe('contact section', () => {
+  const contact = {
+    type: 'contact',
+    heading: 'Markanızı Birlikte Büyütelim.',
+    contactItems: [{ label: 'E-posta', value: 'info@pixelon.com.tr' }],
+    formHeading: 'Projenizden Bize Bahsedin',
+    formId: 'contact',
+  };
+
+  test('accepts a unified contact section', () => {
+    expect(parseSection(contact).success).toBe(true);
+  });
+
+  test('rejects a contact section with no contact items', () => {
+    expect(parseSection({ ...contact, contactItems: [] }).success).toBe(false);
+  });
+
+  test('rejects an unknown formId', () => {
+    expect(parseSection({ ...contact, formId: 'newsletter' }).success).toBe(false);
+  });
+
+  test('defaults successCtas to an empty list', () => {
+    const parsed = pageSchema.parse({ ...base, sections: [contact] });
+    const section = parsed.sections[0];
+    expect(section?.type === 'contact' && section.successCtas).toEqual([]);
+  });
+});
+
+describe('cards section extras', () => {
+  test('accepts an icon, a permanent featured highlight and a star rating on a card', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [
+        {
+          type: 'cards',
+          heading: 'Sektörler',
+          items: [{ title: 'E-Ticaret', description: 'x', icon: 'ecommerce', featured: true, rating: 5 }],
+        },
+      ],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'cards' && section.items[0]?.featured).toBe(true);
+    expect(section?.type === 'cards' && section.items[0]?.rating).toBe(5);
+  });
+
+  test('rejects an unknown icon name', () => {
+    expect(
+      parseSection({
+        type: 'cards',
+        heading: 'Sektörler',
+        items: [{ title: 'X', description: 'x', icon: 'rocket' }],
+      }).success,
+    ).toBe(false);
+  });
+
+  test('featured and rating stay optional', () => {
+    const parsed = pageSchema.parse({
+      ...base,
+      sections: [{ type: 'cards', heading: 'X', items: [{ title: 'A', description: 'b' }] }],
+    });
+    const section = parsed.sections[0];
+    expect(section?.type === 'cards' && section.items[0]?.featured).toBeUndefined();
+  });
+});
+
 describe('section discrimination', () => {
   test('rejects an unknown section type outright', () => {
     expect(parseSection({ type: 'carousel', heading: 'X' }).success).toBe(false);

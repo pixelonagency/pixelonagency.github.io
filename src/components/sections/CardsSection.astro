@@ -1,6 +1,8 @@
 ---
 import type { PageSection } from '../../content/page-schema';
 import SectionHead from '../SectionHead.astro';
+import SectorIcon from '../SectorIcon.astro';
+import StarRating from '../StarRating.astro';
 import Section from './Section.astro';
 
 type Cards = Extract<PageSection, { type: 'cards' }>;
@@ -10,18 +12,30 @@ interface Props {
 }
 
 const { section } = Astro.props;
-const minColumnWidth = section.columns === 2 ? '340px' : section.columns === 4 ? '220px' : '280px';
+// `columns: 1` ("Neden Pixelon" gibi tek sütun dikey listeler) auto-fit ile ele alınamaz —
+// bir min genişlik vermek, konteyner geniş olduğunda birden çok sütuna bölünmesine yol açar.
+const cardsTemplate =
+  section.columns === 1
+    ? '1fr'
+    : `repeat(auto-fit, minmax(${section.columns === 2 ? '340px' : section.columns === 4 ? '220px' : '280px'}, 1fr))`;
 ---
 
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
   <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
-  <div class="cards" style={`--min-col: ${minColumnWidth}`}>
+  <div class="cards" style={`--cards-template: ${cardsTemplate}`}>
     {
       section.items.map((item, index) => {
         const Tag = item.href ? 'a' : 'div';
         return (
-          <Tag class="card cards__item" href={item.href} data-reveal data-reveal-index={index}>
+          <Tag
+            class:list={['card', 'cards__item', item.featured && 'cards__item--featured']}
+            href={item.href}
+            data-reveal
+            data-reveal-index={index}
+          >
+            {item.icon && <SectorIcon name={item.icon} />}
+            {item.rating && <StarRating rating={item.rating} />}
             {item.eyebrow && <p class="cards__eyebrow">{item.eyebrow}</p>}
             <h3 class="h3">{item.title}</h3>
             <p class="body-text cards__text">{item.description}</p>
@@ -42,7 +56,7 @@ const minColumnWidth = section.columns === 2 ? '340px' : section.columns === 4 ?
 <style>
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--min-col), 1fr));
+    grid-template-columns: var(--cards-template);
     gap: var(--gap-card);
   }
 
@@ -79,6 +93,14 @@ const minColumnWidth = section.columns === 2 ? '340px' : section.columns === 4 ?
     color: var(--accent);
     font: 600 16px var(--font-display);
     margin-top: 4px;
+  }
+
+  /* Sürekli (yalnızca hover'da değil) lime çerçeveyle öne çıkan kart — bkz. `featured` alanı. */
+  .cards__item--featured {
+    border-color: var(--accent);
+    box-shadow:
+      0 0 0 1px rgba(207, 255, 0, 0.35),
+      0 20px 40px rgba(207, 255, 0, 0.08);
   }
 
   @media (max-width: 720px) {

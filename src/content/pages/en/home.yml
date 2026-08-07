@@ -35,9 +35,11 @@ sections:
         href: 'tel:+905065229034'
         variant: link
 
-  # 2 — LIME MARQUEE (decorative strip, aria-hidden in the reference):
-  # Strategy ✦ Design ✦ Technology ✦ Performance ✦ Growth ✦ Conversion ✦
-  # (The section dictionary has no marquee type; the text is kept here as a note.)
+  # 2 — LIME MARQUEE (decorative strip, below the hero)
+  - type: marquee
+    kind: strip
+    background: dark
+    items: [Strategy, Design, Technology, Performance, Growth, Conversion]
 
   # 3 — REFERENCES (logo marquee, from the references collection)
   - type: logos
@@ -64,11 +66,14 @@ sections:
       We start by understanding your brand, your industry and your audience. Then we bring strategy, design, content, technology and performance marketing together around a single goal. Instead of disconnected efforts, the result is a sustainable growth system in which all of your digital channels move as one.
 
   # 5 — Dark highlight box inside the "What Pixelon Does" section
+  # NOTE: the SECTION itself is LIGHT (white) — a dark card sits inside it.
+  # `background: dark` would turn the whole section black and lose the
+  # card look (white margin + rounded corners).
   - type: cta
-    background: dark
+    background: light
     heading: >-
-      We do not work to make you merely visible; we work to make you the brand
-      people choose.
+      We do not work to make you merely visible; we work to make you *the
+      brand people choose*.
     ctas:
       - label: Get to Know Pixelon
         href: /en/about-us
@@ -147,21 +152,28 @@ sections:
     columns: 3
     items:
       - title: Healthcare and Clinic Brands
+        icon: health
         description: |-
           We build digital systems that strengthen patient trust, comply with ethical communication rules and support appointment conversion.
       - title: Health Tourism Companies
+        icon: tourism
         description: |-
           We develop multilingual websites, advertising campaigns and patient communication processes designed to attract international patients.
       - title: E-Commerce Brands
+        icon: ecommerce
+        featured: true
         description: |-
           We create solutions that present products better, reach the right audience and increase sales conversion.
       - title: Construction and Real Estate Companies
+        icon: construction
         description: |-
           We prepare corporate websites and digital marketing programmes that convey the trust, quality and investment value of your projects.
       - title: SME and Corporate Service Brands
+        icon: sme
         description: |-
           We set up sustainable systems that give businesses a professional identity in the digital world and help them reach new customers.
       - title: Education and Consultancy Brands
+        icon: education
         description: |-
           We build digital structures that make your expertise visible, establish trust and increase application conversion.
 
@@ -219,32 +231,27 @@ sections:
         description: |-
           We run strategy, design, development, content, advertising and optimization in full alignment with each other.
 
-  # 12 — GLOBAL (marquee of country chips)
-  - type: bullets
+  # 12/13 — GLOBAL (country chip marquee + world map + closing line, single block)
+  - type: worldMap
     background: dark
     eyebrow: Where Are We?
     heading: Pixelon Is Everywhere in the World!
     lead: |-
       In projects reaching from Turkey to Europe and Africa, we develop communication strategies suited to different cultures, languages and target markets. From taking a local brand into global markets to the digital transformation of an international company, we approach every project with the same care, whatever its scale.
-    items:
-      - 🇹🇷 Turkey
-      - 🇩🇪 Germany
-      - 🇬🇧 United Kingdom
-      - 🇫🇷 France
-      - 🇮🇹 Italy
-      - 🇪🇸 Spain
-      - 🇷🇴 Romania
-      - 🇧🇬 Bulgaria
-      - 🇳🇱 Netherlands
-      - 🇮🇪 Ireland
-      - 🌍 Africa
-
-  # 13 — World map image of the GLOBAL section + closing line
-  - type: text
-    background: dark
-    body: >-
-      Borders change; the rules of a strong brand experience do not.
-    imageAlt: World map of Pixelon global digital marketing projects
+    countries:
+      - { label: Turkey, flag: 🇹🇷, highlighted: true }
+      - { label: Germany, flag: 🇩🇪 }
+      - { label: United Kingdom, flag: 🇬🇧 }
+      - { label: France, flag: 🇫🇷 }
+      - { label: Italy, flag: 🇮🇹 }
+      - { label: Spain, flag: 🇪🇸 }
+      - { label: Romania, flag: 🇷🇴 }
+      - { label: Bulgaria, flag: 🇧🇬 }
+      - { label: Netherlands, flag: 🇳🇱 }
+      - { label: Ireland, flag: 🇮🇪 }
+      - { label: Africa, flag: 🌍 }
+    closingLine: Borders change; *the rules of a strong brand experience* do not.
+    mapImageAlt: World map of Pixelon global digital marketing projects
     ctas:
       - label: Explore Our Global Projects
         href: /en/projects
@@ -262,16 +269,19 @@ sections:
     items:
       - eyebrow: Web Design
         title: Full Name
+        rating: 5
         description: |-
           "A real client testimonial, published with permission, will be added here."
           Position · Brand
       - eyebrow: Health Tourism
         title: Full Name
+        rating: 5
         description: |-
           "A real client testimonial, published with permission, will be added here."
           Position · Brand
       - eyebrow: Digital Advertising
         title: Full Name
+        rating: 5
         description: |-
           "A real client testimonial, published with permission, will be added here."
           Position · Brand
@@ -288,8 +298,9 @@ sections:
     ctaLabel: Browse All Articles
     ctaHref: /en/blog
 
-  # 16 — PROFESSIONAL PARTNERS (text marquee in the reference)
-  - type: bullets
+  # 16 — PROFESSIONAL PARTNERS (scrolling text strip)
+  - type: marquee
+    kind: wordmarks
     background: light
     heading: Our Professional Partners
     lead: |-
@@ -305,35 +316,7 @@ sections:
       - LinkedIn
       - Yandex
 
-  # 17 — CONTACT
-  - type: cta
-    background: dark
-    anchor: iletisim
-    eyebrow: Let Us Start a New Project
-    heading: Let Us Grow Your Brand Together.
-    lead: |-
-      Do you need a new website, an effective advertising campaign or a comprehensive strategy to grow your brand digitally? Tell us about your project. Let the Pixelon team listen to your needs and share solution proposals built around your brand.
-    ctas:
-      - label: Message Us on WhatsApp
-        href: https://wa.me/905065229034
-        variant: primary
-      - label: Call Us Now
-        href: 'tel:+905065229034'
-        variant: outline
-
-  - type: contactInfo
-    background: dark
-    items:
-      - label: Phone and WhatsApp
-        value: +90 506 522 90 34
-        href: 'tel:+905065229034'
-      - label: E-mail
-        value: info@pixelon.com.tr
-        href: 'mailto:info@pixelon.com.tr'
-      - label: Address
-        value: Kadıköy, Istanbul
-
-  # 18 — PROJECT REQUEST FORM
+  # 17/18 — CONTACT (intro text + contact info + form, single unified block as in the reference)
   # Field placeholders: First Name · Last Name · Phone Number · E-mail Address ·
   # Company Name · Service You Are Interested In · Estimated Project Budget ·
   # "What would you like to tell us about your project?"
@@ -348,9 +331,30 @@ sections:
   # Post-submit screen: "We have received your request!" /
   # "The Pixelon team will review your project and get in touch with you as soon as possible." /
   # button: "Continue on WhatsApp"
-  - type: form
+  - type: contact
     background: dark
-    heading: Tell Us About Your Project
-    lead: Fill in the form and our team will get back to you as soon as possible.
+    anchor: iletisim
+    eyebrow: Let Us Start a New Project
+    heading: Let Us Grow Your Brand Together.
+    lead: |-
+      Do you need a new website, an effective advertising campaign or a comprehensive strategy to grow your brand digitally? Tell us about your project. Let the Pixelon team listen to your needs and share solution proposals built around your brand.
+    ctas:
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: primary
+      - label: Call Us Now
+        href: 'tel:+905065229034'
+        variant: outline
+    contactItems:
+      - label: Phone and WhatsApp
+        value: +90 506 522 90 34
+        href: 'tel:+905065229034'
+      - label: E-mail
+        value: info@pixelon.com.tr
+        href: 'mailto:info@pixelon.com.tr'
+      - label: Address
+        value: Kadıköy, Istanbul
+    formHeading: Tell Us About Your Project
+    formLead: Fill in the form and our team will get back to you as soon as possible.
     formId: contact
     submitLabel: Send Project Request

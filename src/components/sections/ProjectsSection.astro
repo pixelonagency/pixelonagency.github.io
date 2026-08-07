@@ -405,6 +405,16 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
     color: var(--text-muted-on-light);
   }
 
+  :global(.section--light) .projects__cta .btn--outline {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .projects__cta .btn--outline:hover {
+    border-color: var(--text-on-light);
+    color: var(--text-on-light);
+  }
+
   @media (max-width: 720px) {
     .projects__grid {
       grid-template-columns: 1fr;

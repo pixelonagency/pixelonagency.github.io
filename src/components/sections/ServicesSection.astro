@@ -35,9 +35,9 @@ const services = section.limit ? sorted.slice(0, section.limit) : sorted;
 
       <ul class="services" role="list">
         {services.map((service, index) => (
-          <li class="services__cell">
+          <li class="services__row">
             <a
-              class="card services__item"
+              class="services__link"
               href={localizedPath('services', locale, slugOf(service.id))}
               data-reveal
               data-reveal-index={index}
@@ -59,26 +59,38 @@ const services = section.limit ? sorted.slice(0, section.limit) : sorted;
 }
 
 <style>
+  /* Referans tasarımda hizmetler kart ızgarası değil, numaralı tam genişlik satır listesidir. */
   .services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--gap-card);
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .services__cell {
-    display: flex;
+  .services__row {
+    border-top: 1px solid var(--border);
   }
 
-  .services__item {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
+  .services__row:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .services__link {
+    display: grid;
+    grid-template-columns: 64px 1fr 1.2fr 40px;
+    align-items: center;
+    gap: clamp(16px, 3vw, 40px);
+    padding: 26px 12px;
     text-decoration: none;
     color: inherit;
+    transition:
+      background var(--t-slow),
+      padding-left var(--t-slow);
+  }
+
+  .services__link:hover,
+  .services__link:focus-visible {
+    background: rgba(207, 255, 0, 0.06);
+    padding-left: 24px;
   }
 
   .services__index {
@@ -87,29 +99,33 @@ const services = section.limit ? sorted.slice(0, section.limit) : sorted;
     color: var(--text-faint);
   }
 
-  .services__title {
-    margin-top: 4px;
-  }
-
+  .services__title,
   .services__text {
-    flex: 1;
+    margin: 0;
   }
 
   .services__arrow {
-    margin-top: 6px;
+    justify-self: end;
     font: 600 18px var(--font-display);
     line-height: 1;
     color: var(--accent);
-    align-self: flex-end;
     transition: transform var(--t-slow);
   }
 
-  .services__item:hover .services__arrow,
-  .services__item:focus-visible .services__arrow {
+  .services__link:hover .services__arrow,
+  .services__link:focus-visible .services__arrow {
     transform: translateX(4px);
   }
 
   /* Açık zeminli varyant */
+  :global(.section--light) .services__row {
+    border-top-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .services__row:last-child {
+    border-bottom-color: var(--border-on-light);
+  }
+
   :global(.section--light) .services__index {
     color: var(--text-muted-on-light);
   }
@@ -119,8 +135,13 @@ const services = section.limit ? sorted.slice(0, section.limit) : sorted;
   }
 
   @media (max-width: 720px) {
-    .services {
-      grid-template-columns: 1fr;
+    .services__link {
+      grid-template-columns: 44px 1fr 28px;
+    }
+
+    /* Açıklama satırı dar ekranda gizlenir — referanstaki data-hide-m davranışı. */
+    .services__text {
+      display: none;
     }
   }
 </style>
