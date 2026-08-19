@@ -626,7 +626,29 @@ collections:
           - label: Hizmetler
             name: services
             widget: object
-            fields: [*s_eyebrow, *s_anchor, *s_background, *s_heading, *s_lead, *s_limit, *s_ctas]
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_heading
+              - *s_lead
+              - *s_limit
+              - *s_ctas
+              - label: Görünüm
+                name: kind
+                widget: select
+                required: false
+                options: [rows, showcase]
+              - label: Vitrin Kartları
+                name: items
+                widget: list
+                required: false
+                fields:
+                  - { label: Hizmet Slug, name: service, widget: string }
+                  - { label: Başlık, name: title, widget: string }
+                  - { label: Açıklama, name: description, widget: text }
+                  - { label: Kapak Görseli, name: image, widget: image, required: false }
+                  - { label: Görsel Alt Metni, name: imageAlt, widget: string, required: false }
 
           - label: Form
             name: form

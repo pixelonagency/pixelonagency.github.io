@@ -241,6 +241,22 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     heading: nonEmpty,
     lead: opt(z.string()),
     limit: opt(z.number()),
+    /**
+     * `rows` (varsayılan) = koleksiyondan beslenen numaralı satır listesi.
+     * `showcase` = ana sayfadaki 6'lı editoryal kart vitrini — kartlar `items`ten gelir,
+     * her kart kendi hizmet detayına bağlanır. Alan adı bilinçli olarak `variant` değil.
+     */
+    kind: opt(z.enum(['rows', 'showcase'])),
+    /** Showcase kartları. `service` = bu dildeki hizmet slug'ı (detay sayfası bağlantısı). */
+    items: list(
+      z.object({
+        service: nonEmpty,
+        title: nonEmpty,
+        description: nonEmpty,
+        image: opt(image()),
+        imageAlt: opt(z.string()),
+      }),
+    ),
   });
 
   const form = z.object({

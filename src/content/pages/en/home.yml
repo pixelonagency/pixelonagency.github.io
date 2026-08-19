@@ -83,16 +83,48 @@ sections:
         href: /en/about-us
         variant: primary
 
-  # 6 — SERVICES (from the services collection; 10 services listed in the reference)
+  # 6 — SERVICES SHOWCASE (6 core disciplines; full list on /en/services)
   - type: services
     background: dark
     anchor: hizmetler
-    eyebrow: 360° Digital Solutions
-    heading: Every Digital Solution Your Brand Needs, from a Single Team
+    kind: showcase
+    eyebrow: Services
+    heading: Six core disciplines that move your brand forward in digital.
     lead: |-
-      We treat every digital touchpoint of your brand as one strategic whole. From design to advertising, from content to technology, we manage all the solutions you need from a single centre.
+      From strategy to design, from content to technology. We work with a single service or bring every discipline together, depending on what you need.
+    items:
+      - service: web-design-and-development
+        title: Web Design & Development
+        description: We design and build fast, conversion-focused digital experiences that tell your brand's story the right way.
+        image: '/src/assets/images/service-web-design.webp'
+        imageAlt: Layered web interface panels floating in a dark studio
+      - service: social-media-management
+        title: Social Media
+        description: We combine strategy, design and video production to build a powerful social media universe for your brand.
+        image: '/src/assets/images/service-social-media.webp'
+        imageAlt: Vertical content cards orbiting a smartphone
+      - service: digital-advertising
+        title: Digital Advertising
+        description: We build Google and Meta campaigns that deliver more demand, more sales and measurable growth.
+        image: '/src/assets/images/service-digital-ads.webp'
+        imageAlt: A data sculpture of rising performance charts and targeting rings
+      - service: video-and-production
+        title: Video & Production
+        description: From idea to shoot, from editing to motion design, we produce content that tells your brand in motion.
+        image: '/src/assets/images/service-video-production.webp'
+        imageAlt: Cinema lens, storyboard frames and editing timeline layers
+      - service: brand-and-corporate-identity
+        title: Brand & Corporate Identity
+        description: We craft strong, original and consistent brand identities through logos, visual systems and brand applications.
+        image: '/src/assets/images/service-brand-identity.webp'
+        imageAlt: A still life of business cards, type specimens and brand guideline sheets
+      - service: seo-and-content-marketing
+        title: SEO & Content
+        description: We grow your brand's organic visibility sustainably with technical SEO and content strategy.
+        image: '/src/assets/images/service-seo-content.webp'
+        imageAlt: Interconnected content nodes and search interface layers
     ctas:
-      - label: Discover All Our Services
+      - label: Explore All Services →
         href: /en/services
         variant: primary
 

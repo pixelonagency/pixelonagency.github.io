@@ -83,16 +83,48 @@ sections:
         href: /biz-kimiz
         variant: primary
 
-  # 6 — HİZMETLER (services koleksiyonundan; referansta 10 hizmet listelenir)
+  # 6 — HİZMETLER VİTRİNİ (6 ana disiplin; tam liste /hizmetlerimiz'de)
   - type: services
     background: dark
     anchor: hizmetler
-    eyebrow: 360° Dijital Çözümler
-    heading: Markanızın İhtiyaç Duyduğu Tüm Dijital Çözümler, Tek Ekipte
+    kind: showcase
+    eyebrow: Hizmetler
+    heading: Markanızı dijitalde ileri taşıyan 6 temel disiplin.
     lead: |-
-      Markanızın dijital dünyadaki tüm temas noktalarını stratejik bir bütün olarak ele alıyoruz. Tasarımdan reklama, içerikten teknolojiye kadar ihtiyaç duyduğunuz çözümleri tek merkezden yönetiyoruz.
+      Stratejiden tasarıma, içerikten teknolojiye. İhtiyacınıza göre tek bir hizmetle veya tüm disiplinleri bir araya getirerek çalışıyoruz.
+    items:
+      - service: web-tasarim-ve-yazilim
+        title: Web Tasarım & Geliştirme
+        description: Markanızı doğru anlatan, hızlı ve dönüşüm odaklı dijital deneyimler tasarlıyor ve geliştiriyoruz.
+        image: '/src/assets/images/service-web-design.webp'
+        imageAlt: Karanlık stüdyoda süzülen katmanlı web arayüzü panelleri
+      - service: sosyal-medya-yonetimi
+        title: Sosyal Medya
+        description: Strateji, tasarım ve video üretimini bir araya getirerek markanız için güçlü bir sosyal medya dünyası oluşturuyoruz.
+        image: '/src/assets/images/service-social-media.webp'
+        imageAlt: Akıllı telefon çevresinde süzülen dikey içerik kartları
+      - service: dijital-reklam-yonetimi
+        title: Dijital Reklam
+        description: Google ve Meta reklamlarıyla daha fazla talep, satış ve ölçülebilir büyüme sağlayan kampanyalar oluşturuyoruz.
+        image: '/src/assets/images/service-digital-ads.webp'
+        imageAlt: Yükselen performans grafikleri ve hedefleme halkalarından oluşan veri heykeli
+      - service: video-ve-produksiyon
+        title: Video & Prodüksiyon
+        description: Fikirden çekime, kurgudan motion tasarıma kadar markanızı hareketle anlatan içerikler üretiyoruz.
+        image: '/src/assets/images/service-video-production.webp'
+        imageAlt: Sinema lensi, storyboard kareleri ve kurgu zaman çizelgesi katmanları
+      - service: marka-ve-kurumsal-kimlik
+        title: Marka & Kurumsal Kimlik
+        description: Logo, görsel sistem ve marka uygulamalarıyla güçlü, özgün ve tutarlı marka kimlikleri oluşturuyoruz.
+        image: '/src/assets/images/service-brand-identity.webp'
+        imageAlt: Kartvizit, tipografi örnekleri ve marka kılavuzu sayfalarından natürmort
+      - service: seo-ve-icerik-pazarlamasi
+        title: SEO & İçerik
+        description: Teknik SEO ve içerik stratejileriyle markanızın organik görünürlüğünü sürdürülebilir şekilde büyütüyoruz.
+        image: '/src/assets/images/service-seo-content.webp'
+        imageAlt: Birbirine bağlı içerik düğümleri ve arama arayüzü katmanları
     ctas:
-      - label: Tüm Hizmetlerimizi Keşfedin
+      - label: Tüm Hizmetleri Keşfet →
         href: /hizmetlerimiz
         variant: primary
 

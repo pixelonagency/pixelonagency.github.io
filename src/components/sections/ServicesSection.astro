@@ -1,7 +1,10 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
+import { t } from '../../lib/ui';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -13,6 +16,18 @@ interface Props {
 }
 
 const { section, locale = DEFAULT_LOCALE } = Astro.props;
+
+/*
+ * `showcase` = ana sayfadaki 6'lı editoryal kart vitrini. Kartlar içerikteki
+ * `items`ten gelir; her kart kendi hizmet detay sayfasına bağlanır. Şema
+ * çözümleyicisi görseli geniş tiplediği için <Image /> öncesi daraltılır.
+ */
+// İçerik katmanı önbelleği eski ayrıştırmaları taşıyabilir — `items` yoksa boş dizi.
+const showcaseItems = (section.items ?? []).map((item) => ({
+  ...item,
+  image: item.image as ImageMetadata | undefined,
+}));
+const isShowcase = section.kind === 'showcase' && showcaseItems.length > 0;
 
 // Hizmetler koleksiyondan gelir; sıra editörün belirlediği `order` alanına göredir.
 const all = await getCollection('services');
@@ -29,7 +44,57 @@ const services = section.limit ? sorted.slice(0, section.limit) : sorted;
 ---
 
 {
-  services.length > 0 && (
+  isShowcase ? (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="services-showcase">
+      {/* Editoryal giriş: büyük başlık solda, kısa açıklama sağda alt hizalı. */}
+      <div class="showcase__head">
+        <SectionHead eyebrow={section.eyebrow} heading={section.heading} />
+        {section.lead && <p class="lead showcase__lead">{section.lead}</p>}
+      </div>
+
+      <ul class="showcase" role="list">
+        {showcaseItems.map((item, index) => (
+          <li class="showcase__cell">
+            <a
+              class="showcase__card"
+              href={localizedPath('services', locale, item.service)}
+              data-reveal
+              data-reveal-index={index * 1.5}
+            >
+              <span class="showcase__num" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              {item.image && (
+                <div class="showcase__media">
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt ?? item.title}
+                    widths={[480, 760, 1140]}
+                    sizes="(max-width: 720px) 100vw, (max-width: 1020px) 50vw, 33vw"
+                    loading="lazy"
+                    decoding="async"
+                    class="showcase__image"
+                  />
+                </div>
+              )}
+
+              <div class="showcase__body">
+                <h3 class="showcase__title">{item.title}</h3>
+                <p class="showcase__text">{item.description}</p>
+                <span class="showcase__more">
+                  {t('services.viewDetails', locale)}
+                  <span class="showcase__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  ) : services.length > 0 ? (
     <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
       <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
@@ -55,10 +120,199 @@ const services = section.limit ? sorted.slice(0, section.limit) : sorted;
         ))}
       </ul>
     </Section>
-  )
+  ) : null
 }
 
 <style>
+  /* ============ Showcase (ana sayfa 6'lı vitrin) ============ */
+
+  /* Editoryal giriş: başlık solda, açıklama sağda — taban çizgisine hizalı. */
+  .showcase__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: end;
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+
+  .showcase__head :global(.section-head) {
+    margin-bottom: 0;
+  }
+
+  .showcase__lead {
+    max-width: 440px;
+    justify-self: end;
+    padding-bottom: 6px;
+  }
+
+  .showcase {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(20px, 2.5vw, 28px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .showcase__cell {
+    display: flex;
+  }
+
+  /* Kart: zeminden bir tık açık grafit, ince çerçeve, kontrollü radius. */
+  .showcase__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: color-mix(in srgb, var(--text) 3.5%, var(--bg));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 22px 22px 26px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition:
+      transform var(--t-slow) var(--ease-out),
+      border-color var(--t-slow),
+      box-shadow var(--t-slow);
+  }
+
+  /* Üst kenarda ince lime imza çizgisi — hover/focus'ta soldan sağa açılır. */
+  .showcase__card::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .showcase__card:hover,
+  .showcase__card:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(207, 255, 0, 0.45);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  .showcase__card:hover::after,
+  .showcase__card:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .showcase__card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .showcase__num {
+    font: 600 13px var(--font-display);
+    letter-spacing: 0.14em;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+    transition: color var(--t-slow);
+  }
+
+  .showcase__card:hover .showcase__num,
+  .showcase__card:focus-visible .showcase__num {
+    color: var(--accent);
+  }
+
+  /* 3:2 kapak — konteyner oranı sabit: görsel yüklenirken yerleşim kaymaz. */
+  .showcase__media {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .showcase__media :global(.showcase__image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.65s var(--ease-out);
+  }
+
+  .showcase__card:hover .showcase__image,
+  .showcase__card:focus-visible .showcase__image {
+    transform: scale(1.04);
+  }
+
+  .showcase__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    padding-top: 20px;
+  }
+
+  .showcase__title {
+    margin: 0;
+    font: 600 20px var(--font-display);
+    color: var(--text);
+  }
+
+  .showcase__text {
+    flex: 1;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  .showcase__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    font: 600 14px var(--font-display);
+    color: var(--text);
+  }
+
+  .showcase__arrow {
+    color: var(--accent);
+    transition: transform var(--t-slow) var(--ease-out);
+  }
+
+  .showcase__card:hover .showcase__arrow,
+  .showcase__card:focus-visible .showcase__arrow {
+    transform: translateX(5px);
+  }
+
+  /* CTA'nın grid ile nefes payı — Section'ın kendi ctas satırı kullanılır. */
+  :global(.services-showcase .section__ctas) {
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+
+  @media (max-width: 1020px) {
+    .showcase {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .showcase__head {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .showcase__lead {
+      justify-self: start;
+      padding-bottom: 0;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .showcase {
+      grid-template-columns: 1fr;
+    }
+
+    .showcase__card {
+      padding: 18px 18px 22px;
+    }
+  }
+
+  /* ============ Satır listesi (varsayılan) ============ */
+
   /* Referans tasarımda hizmetler kart ızgarası değil, numaralı tam genişlik satır listesidir. */
   .services {
     list-style: none;

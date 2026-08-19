@@ -200,3 +200,25 @@ describe('locale-scoped content links stay inside their own locale', () => {
     });
   }
 });
+
+describe('services showcase cards', () => {
+  // Vitrin kartındaki `service` slug'ı o dilin hizmet koleksiyonunda yoksa kart
+  // 404'e bağlanır; `image` yolu yanlışsa build kırılır. İkisini de burada yakala.
+  for (const locale of LOCALES) {
+    test(`${locale}/home.yml showcase cards point at real services and images`, async () => {
+      const raw = parse(await Bun.file(join(CONTENT, 'pages', locale, 'home.yml')).text()) as {
+        sections: { type: string; kind?: string; items?: { service: string; image?: string }[] }[];
+      };
+      const showcase = raw.sections.find((section) => section.type === 'services' && section.kind === 'showcase');
+      expect(showcase).toBeDefined();
+      expect(showcase?.items?.length).toBe(6);
+
+      for (const item of showcase?.items ?? []) {
+        expect(existsSync(join(CONTENT, 'services', locale, `${item.service}.yml`))).toBe(true);
+        if (item.image) {
+          expect(existsSync(join(CONTENT, '..', '..', item.image))).toBe(true);
+        }
+      }
+    });
+  }
+});
