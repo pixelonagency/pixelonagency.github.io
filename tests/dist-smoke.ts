@@ -583,6 +583,10 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
     }
     // Canlı mod: banner tüm ziyaretçilere açık — test modu bayrağı pakette kapalı olmalı.
     expect(bundle).toContain('testing:!1');
+    // Clarity consentv2 köprüsü pakette: ad_Storage koşulsuz denied, analytics_Storage değişken.
+    expect(bundle).toContain('consentv2');
+    expect(bundle).toContain('ad_Storage');
+    expect(bundle.includes('ad_Storage:"granted"'), 'ad_Storage asla granted üretilemez').toBe(false);
     expect(bundle).not.toContain('testing:!0');
   });
 

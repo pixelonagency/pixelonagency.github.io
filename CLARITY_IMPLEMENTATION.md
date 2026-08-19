@@ -27,29 +27,36 @@ Resmî kaynak durumu (2026-08-19'da doğrulandı):
 - Bu ikisi çelişkili olabildiği için **doküman değil, gerçek production davranışı
   source-of-truth**tur.
 
-Sıra:
+**SONUÇ (2026-08-19, GTM Preview canlı testi):** GCM otomatik yorumu GÜVENİLMEZ çıktı —
+Klaro'da Analytics=granted + Marketing=denied iken Clarity metadata'sı `ad_Storage: granted`,
+`analytics_Storage: denied` (ters) döndürdü. Bu nedenle **explicit Consent API v2 köprüsü
+AKTİF**: kaynak yalnız Klaro tercihleri; sinyal `microsoft-clarity` servis callback'indeki
+`updateClarity()` ile gönderilir (`src/lib/consent-config.ts`). Kesin eşleme:
 
-1. Clarity dashboard → Settings → Setup → **Consent Mode: cookie'leri varsayılan olarak
-   ayarlama KAPALI** (yani izin gelmeden çerez yok).
-2. Mevcut Pixelon GCM sinyalleriyle (default denied → Klaro update) tüm senaryolar canlıda
-   test edilir (aşağıdaki matris).
-3. Hepsi doğruysa ek köprü YAZILMAZ (minimum kod).
-4. Herhangi bir senaryo yanlışsa **Consent API v2 köprüsü** devreye alınır — resmî sözdizimi:
+| Klaro Analytics | consentv2                                                |
+| --------------- | -------------------------------------------------------- |
+| OFF             | `{ ad_Storage: 'denied', analytics_Storage: 'denied' }`  |
+| ON              | `{ ad_Storage: 'denied', analytics_Storage: 'granted' }` |
 
-   ```js
-   window.clarity('consentv2', {
-     ad_Storage: 'denied', // BU FAZDA HER ZAMAN denied (Microsoft Ads ayrı faz)
-     analytics_Storage: consent ? 'granted' : 'denied',
-   });
-   ```
+`ad_Storage` bu fazda **koşulsuz denied** — Klaro Marketing izni Clarity'ye hiçbir sinyal
+göndermez (Microsoft Ads/UET ayrı faz). Köprünün resmî sözdizimi:
 
-   Konum: `microsoft-clarity` Klaro servisinin `callback`'i (Klaro tercihleri
-   source-of-truth). `window.clarity` resmî template'in kendi kuyruk fonksiyonudur
-   (`c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}`) — çağrılar tag
-   yüklenmeden önce de güvenle kuyruklanır; **setTimeout/polling/retry uydurulmaz**.
-   Eski `clarity('consent', ...)` API'si deprecation yolunda — YALNIZ revoke testinde
-   consentv2'nin çerez temizliği yetersiz kalırsa, resmî dokümanın önerdiği cleanup
-   olarak değerlendirilir (önce consentv2 revoke davranışı test edilir).
+```js
+window.clarity('consentv2', {
+  ad_Storage: 'denied', // BU FAZDA HER ZAMAN denied (Microsoft Ads ayrı faz)
+  analytics_Storage: consent ? 'granted' : 'denied',
+});
+```
+
+Konum: `microsoft-clarity` Klaro servisinin `callback`'i — Klaro her uygulanışta
+(ilk yükleme, karar, revoke, kayıtlı tercihle dönen ziyaretçi) çağırır. Race
+güvenliği resmî kuyruk sözleşmesiyle sağlanır: `window.clarity` yoksa köprü, resmî
+yükleyicinin stub'ıyla birebir aynı kuyruğu kurar
+(`function(){(clarity.q=clarity.q||[]).push(arguments)}`); Clarity script'i
+yüklendiğinde kuyruğu boşaltır, script zaten yüklüyse çağrı anında uygulanır —
+**setTimeout/polling/retry yok**. Eski `clarity('consent', ...)` API'si deprecation
+yolunda — YALNIZ revoke testinde consentv2'nin çerez temizliği yetersiz kalırsa
+resmî cleanup olarak değerlendirilir.
 
 ### Beklenen consent matrisi
 

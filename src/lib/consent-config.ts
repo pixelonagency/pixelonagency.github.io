@@ -53,6 +53,43 @@ function updateMarketing(state: ConsentState): void {
   gtag('set', 'ads_data_redaction', state !== 'granted');
 }
 
+/**
+ * Microsoft Clarity Consent API v2 köprüsü — Klaro tercihleri source-of-truth.
+ *
+ * GTM Preview canlı testi (2026-08-19), Clarity'nin otomatik Google Consent Mode
+ * yorumunun güvenilmez olduğunu kanıtladı (Analytics granted + Marketing denied
+ * durumunda ters metadata) — bu yüzden sinyal resmî `consentv2` API'siyle açıkça
+ * gönderilir. `ad_Storage` bu fazda HER ZAMAN denied: Microsoft Ads/UET aktif
+ * değildir; kullanıcı Klaro'da Pazarlama'yı kabul etse bile Clarity üzerinden
+ * reklam paylaşımı açılmaz.
+ *
+ * Race güvenliği: aşağıdaki stub, resmî Clarity yükleyicisinin kendi kuyruk
+ * sözleşmesidir (`c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}`).
+ * Sinyal tag'den ÖNCE oluşursa kuyruklanır ve script yüklenince uygulanır;
+ * SONRA oluşursa gerçek fonksiyon çalışır. Polling/setTimeout gerekmez.
+ */
+type ClarityQueueFn = { (...args: unknown[]): void; q?: unknown[] };
+
+function updateClarity(state: ConsentState): void {
+  try {
+    const w = window as Window & { clarity?: ClarityQueueFn };
+    if (!w.clarity) {
+      const stub: ClarityQueueFn = function () {
+        // Resmî yükleyici kuyruğu `arguments` objeleriyle boşaltır — dizi değil.
+        // eslint-disable-next-line prefer-rest-params
+        (stub.q = stub.q || []).push(arguments);
+      };
+      w.clarity = stub;
+    }
+    w.clarity('consentv2', {
+      ad_Storage: 'denied', // Microsoft Ads ayrı faz — koşulsuz denied
+      analytics_Storage: state,
+    });
+  } catch {
+    /* consent köprüsü hiçbir kullanıcı akışını bozamaz */
+  }
+}
+
 /** Klaro service callback imzası. */
 type ServiceCallback = (consent: boolean, service: { name: string }) => void;
 
@@ -200,9 +237,9 @@ export function buildKlaroConfig(lang: Locale): KlaroConfigShape {
         /*
          * Microsoft Clarity (oturum kaydı + ısı haritası) — Analitik kategorisi.
          * Yükleme GTM'deki resmî Clarity template'i üzerinden yapılır; consent
-         * sinyali birincil olarak mevcut Google Consent Mode akışıyla taşınır
-         * (bkz. CLARITY_IMPLEMENTATION.md — GCM yetersiz kalırsa consentv2
-         * köprüsü eklenecek). `cookies` deseni, izin geri çekildiğinde Klaro'nun
+         * sinyali AÇIKÇA consentv2 köprüsüyle taşınır (updateClarity — GCM
+         * otomatik yorumu canlı testte güvenilmez çıktı, bkz.
+         * CLARITY_IMPLEMENTATION.md). `cookies` deseni, izin geri çekildiğinde Klaro'nun
          * _clck/_clsk çerezlerini google-analytics ile aynı mekanizmayla
          * temizlemesini sağlar.
          */
@@ -210,6 +247,12 @@ export function buildKlaroConfig(lang: Locale): KlaroConfigShape {
         purposes: ['analytics'],
         default: false,
         cookies: [/^_clck/, /^_clsk/],
+        callback: ((consent) => {
+          // Klaro her uygulanışta (ilk yükleme, karar, revoke, kayıtlı tercih)
+          // çağırır — dönen ziyaretçide de doğru state Clarity'ye iletilir.
+          updateClarity(consent ? 'granted' : 'denied');
+          if (consent) pushEvent('klaro-microsoft-clarity-accepted');
+        }) satisfies ServiceCallback,
         translations: {
           tr: {
             title: 'Davranış Analitiği (Microsoft Clarity)',

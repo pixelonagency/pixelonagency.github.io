@@ -39,11 +39,10 @@ CLARITY HAZIRLIĞI (2026-08-19): Proje oluşturuldu (`y4y9pvz009`); GTM'de resm�
 "Microsoft Clarity - Pixelon" hazır (Custom/Session ID boş, trigger All Pages) — Preview
 consent testleri tamamlanana dek PUBLISH EDİLMEDİ. Kurulum GTM'deki resmî "Microsoft Clarity - Official"
 template'iyle yapılacak (site koduna doğrudan clarity.ms script'i EKLENMEZ — dist testleri
-bunu yasaklar). Consent stratejisi: Clarity Consent Mode ON + birincil sinyal mevcut Google
-Consent Mode akışı (resmî consent-management dokümanı GCM'i destekli yol olarak listeler,
-son güncelleme 2026-05-21); production testinde herhangi bir senaryo yanlışsa
-`window.clarity('consentv2', {ad_Storage, analytics_Storage})` köprüsüne geçilir (bkz.
-CLARITY_IMPLEMENTATION.md). ad_Storage bu fazda HER durumda denied tutulur (Microsoft
+bunu yasaklar). Consent stratejisi: GTM Preview canlı testi (2026-08-19) GCM otomatik yorumunun
+güvenilmez olduğunu kanıtladı (Analytics granted + Marketing denied → ters metadata) —
+**explicit `consentv2` köprüsü aktif**: Klaro `microsoft-clarity` callback'i tek kaynak,
+resmî kuyruk sözleşmesiyle race-güvenli (bkz. CLARITY_IMPLEMENTATION.md). ad_Storage bu fazda HER durumda denied tutulur (Microsoft
 Ads/UET ayrı faz). Revoke'ta _clck/_clsk, Klaro servis `cookies` mekanizmasıyla silinir
 (google-analytics ile aynı desen).
 
