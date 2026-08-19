@@ -594,6 +594,24 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
     expect(offenders).toEqual([]);
   });
 
+  test('business event wiring ships as a shared chunk without direct gtag calls or IDs', () => {
+    // Helper iki script tarafından paylaşıldığı için ayrı chunk olarak çıkar.
+    const assets = readdirSync(join(DIST, 'assets')).filter((name) => name.endsWith('.js'));
+    const eventChunk = assets
+      .map((name) => readFileSync(join(DIST, 'assets', name), 'utf-8'))
+      .find((body) => body.includes('generate_lead') && body.includes('click_whatsapp'));
+    expect(eventChunk, 'iş olayı sözlüğü chunk olarak yayınlanmıyor').toBeDefined();
+    expect(eventChunk ?? '').not.toContain(GA4_MEASUREMENT_ID);
+    // Her public sayfa dinleyici script'ini yükler; admin yüklemez.
+    for (const body of [home(), enHome()]) expect(body).toContain('AnalyticsEvents');
+    expect(admin()).not.toContain('AnalyticsEvents');
+    // Site kodu GA4'ü doğrudan çağırmaz; teslimat GTM'deki Google tag'e aittir.
+    for (const file of allHtmlFiles(DIST)) {
+      const body = readFileSync(file, 'utf-8');
+      expect(body.includes("gtag('event'") || body.includes('gtag("event"'), `${file} doğrudan gtag`).toBe(false);
+    }
+  });
+
   test('the footer ships a cookie-preferences trigger on TR and EN pages', () => {
     for (const body of [home(), enHome()]) expect(body).toContain('data-cookie-prefs');
     expect(home()).toContain('Çerez Tercihleri');

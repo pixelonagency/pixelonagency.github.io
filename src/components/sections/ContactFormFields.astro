@@ -577,6 +577,7 @@ const messagesJson = JSON.stringify(formMessages(locale));
   // Doğrulama mantığı src/lib/forms.ts içinde yaşar ve birim testleriyle korunur —
   // burada yalnızca DOM'dan değer toplanır ve dönen hatalar arayüze yazılır.
   import { validateAnalysisForm, validateContactForm, type FormMessages } from '../../lib/forms';
+  import { buildEventPayload, leadTypeForForm, pushToDataLayer, resolvePageLocation } from '../../lib/analytics-events';
 
   type FieldName = keyof FormMessages;
   type FormKind = 'contact' | 'analysis';
@@ -744,6 +745,31 @@ const messagesJson = JSON.stringify(formMessages(locale));
           successPanel.hidden = false;
           successPanel.focus();
           successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        /*
+         * generate_lead'in TEK kaynağı bu doğrulanmış başarı dalıdır
+         * (response.ok && payload.success === true). Best effort: analytics'te
+         * ne olursa olsun başarı arayüzü yukarıda çoktan gösterildi ve form
+         * davranışı etkilenmez. `data-lead-tracked` bayrağı, aynı sayfa ömründe
+         * bir gerçek başarının yalnızca bir olay üretmesini garanti eder.
+         */
+        try {
+          if (!form.hasAttribute('data-lead-tracked')) {
+            form.setAttribute('data-lead-tracked', '');
+            const leadType = leadTypeForForm(formId);
+            if (leadType) {
+              const fallback = leadType === 'free_analysis' ? 'free_analysis_page' : 'contact_page';
+              const analyticsPayload = buildEventPayload('generate_lead', {
+                leadType,
+                location: resolvePageLocation(location.pathname) ?? fallback,
+                language: document.documentElement.lang,
+              });
+              if (analyticsPayload) pushToDataLayer(analyticsPayload);
+            }
+          }
+        } catch {
+          /* analytics hatası form başarısını asla etkilemez */
         }
       } catch {
         if (errorPanel) {

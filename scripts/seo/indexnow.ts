@@ -60,8 +60,8 @@ const IGNORED = [
    * davranışı değişti diye sayfaların indexlenebilir HTML'i/metadata'sı değişmez.
    * Bu dosyalar IGNORED listesinde olduğu için GLOBAL kontrolüne hiç ulaşmaz.
    */
-  /^src\/lib\/(analytics|consent-config)\.ts$/,
-  /^src\/components\/ConsentManager\.astro$/,
+  /^src\/lib\/(analytics|consent-config|analytics-events)\.ts$/,
+  /^src\/components\/(ConsentManager|AnalyticsEvents)\.astro$/,
   /^public\/admin\//,
   /^public\/[A-Za-z0-9-]{8,128}\.txt$/, // IndexNow key dosyasının kendisi
   /^public\//, // favicon vb. — sayfa içeriği değil
@@ -98,6 +98,18 @@ export function mapFile(path: string, status: 'A' | 'M' | 'D'): MappedChange {
       globalLocale: localeGlobal[1] as Locale,
       reason: `locale-global (${localeGlobal[1]}): ${path}`,
     };
+  }
+  /*
+   * Form bileşeni route-aware eşlenir: ContactFormFields yalnızca `form`/`contact`
+   * section'ı içeren sayfalarda render edilir (kaynak incelemesi: contact, analysis,
+   * website landing + ContactSection üzerinden home; TR+EN). Markup/metin değişirse
+   * yalnız bu sayfalar bildirilir — analytics/JS değişikliği için 50 URL gönderilmez.
+   */
+  if (/^src\/components\/sections\/ContactFormFields\.astro$/.test(path)) {
+    const urls = (['tr', 'en'] as Locale[]).flatMap((locale) =>
+      (['contact', 'analysis', 'website', 'home'] as PageKey[]).map((key) => abs(localizedPath(key, locale))),
+    );
+    return { urls, deletedUrls: [], global: false, reason: `form-component: ${path}` };
   }
   if (GLOBAL.some((rx) => rx.test(path))) return { urls: [], deletedUrls: [], global: true, reason: `global: ${path}` };
 

@@ -1,0 +1,54 @@
+---
+/**
+ * İş-etkinliği izleyicisi: tek delegated click dinleyicisi (CTA olayları).
+ * generate_lead burada ÜRETİLMEZ — kaynağı formların doğrulanmış başarı dalıdır
+ * (bkz. ContactFormFields.astro).
+ *
+ * ConsentManager üzerinden her sayfaya girer (izleme katmanları bir arada yaşar ve
+ * her ikisi de IndexNow'un tracking-ignore listesindedir — davranış katmanı
+ * değişiklikleri crawlable içerik saymaz). Site statik tam-yenilemeli gezinme
+ * kullandığından (View Transitions yok) dinleyiciler sayfa başına bir kez kurulur;
+ * yine de `data-analytics-bound` bayrağıyla çifte kurulum engellenir.
+ */
+---
+
+<script>
+  import { buildEventPayload, pushToDataLayer, resolveClickEvent, resolvePageLocation } from '../lib/analytics-events';
+
+  const root = document.documentElement;
+  if (!root.hasAttribute('data-analytics-bound')) {
+    root.setAttribute('data-analytics-bound', '');
+
+    // page_language yalnız <html lang> kaynağından türer (tarayıcı dili DEĞİL).
+    const language = root.lang;
+    const pageLocation = resolvePageLocation(location.pathname);
+
+    /** Konum: yapısal kapsayıcı (header/footer/yüzen buton) > sayfa düzeyi. */
+    const locationFor = (anchor: HTMLAnchorElement): string | undefined => {
+      if (anchor.closest('.wa-float')) return 'floating_cta';
+      if (anchor.closest('header')) return 'header';
+      if (anchor.closest('footer')) return 'footer';
+      return pageLocation;
+    };
+
+    /*
+     * Tek delegated dinleyici: her CTA'ya ayrı listener bağlanmaz, aynı tıklama
+     * iki kez sayılamaz. Navigasyon asla engellenmez (varsayılan davranış korunur);
+     * dış bağlantılar yeni sekmede açıldığından event kaybı riski de yoktur.
+     */
+    document.addEventListener('click', (event) => {
+      try {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+        const anchor = target.closest('a[href]');
+        if (!(anchor instanceof HTMLAnchorElement)) return;
+        const name = resolveClickEvent(anchor.getAttribute('href') ?? '');
+        if (!name) return;
+        const payload = buildEventPayload(name, { location: locationFor(anchor), language });
+        if (payload) pushToDataLayer(payload);
+      } catch {
+        /* best effort — kullanıcı aksiyonu her koşulda devam eder */
+      }
+    });
+  }
+</script>

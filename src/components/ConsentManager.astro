@@ -9,7 +9,11 @@
  * dokunulmaz (BSD-3 lisanslı vendor kodu değiştirilmez).
  */
 import 'klaro/dist/klaro.css';
+import AnalyticsEvents from './AnalyticsEvents.astro';
 ---
+
+{/* İş-etkinliği izleyicisi consent katmanıyla birlikte yaşar (bkz. AnalyticsEvents). */}
+<AnalyticsEvents />
 
 <script>
   // UMD paketi — Vite interop'u nedeniyle default/namespace ikisi de olabilir.

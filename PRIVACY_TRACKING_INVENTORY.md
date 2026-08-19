@@ -28,6 +28,12 @@ Canlı doğrulama (2026-08-19 16:0x, gerçek tarayıcı/ağ seviyesi): yalnız
 `G-61M0DZLYES` ve `AW-17843555663` istekleri tamamen kesildi; izinle yalnız `_ga` +
 `_ga_15DCDNXNG7` oluşuyor (`_ga_61M0DZLYES` artık oluşmuyor); sayfa başına tek page_view.
 
+EVENT KATMANI (2026-08-19): İş olayları site kodunda yalnız `dataLayer.push` ile üretilir
+(`src/lib/analytics-events.ts` + `src/components/AnalyticsEvents.astro`); GA4 teslimatı GTM'deki
+Google tag'e aittir. Payload şeması kapalı enum'dur (`lead_type`, `interaction_location`,
+`page_language`) — **form içeriği, ad, e-posta, telefon, şirket, mesaj veya başka hiçbir PII
+GA4'e gönderilmez**; `generate_lead` yalnız doğrulanmış Web3Forms başarısında tetiklenir.
+
 GA4 uygulama notu (2026-08-19): GA4 site koduna EKLENMEZ — ölçüm yalnızca `GTM-MWVJ2S27`
 container'ındaki "GA4 - Google Tag - Pixelon" Google tag'i (Tag ID `GT-M3K8V5NL`, hedef `G-15DCDNXNG7`, trigger:
 All Pages) üzerinden yapılır ve Consent Mode v2 `analytics_storage` sinyaline tabidir

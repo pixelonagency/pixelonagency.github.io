@@ -111,7 +111,9 @@ describe('route mapping', () => {
       // Tracking/analytics config crawlable içerik değildir → gönderim üretmez.
       'src/lib/analytics.ts',
       'src/lib/consent-config.ts',
+      'src/lib/analytics-events.ts',
       'src/components/ConsentManager.astro',
+      'src/components/AnalyticsEvents.astro',
     ]) {
       const mapped = mapFile(path, 'M');
       expect(mapped.urls, path).toEqual([]);
@@ -130,6 +132,23 @@ describe('route mapping', () => {
     ]) {
       expect(mapFile(path, 'M').global, path).toBe(true);
     }
+  });
+
+  test('ContactFormFields change maps to its exact route set, not the global sitemap', () => {
+    const mapped = mapFile('src/components/sections/ContactFormFields.astro', 'M');
+    expect(mapped.global).toBe(false);
+    expect(mapped.urls.sort()).toEqual(
+      [
+        `${SITE}/iletisim/`,
+        `${SITE}/en/contact/`,
+        `${SITE}/ucretsiz-analiz/`,
+        `${SITE}/en/free-analysis/`,
+        `${SITE}/web-sitesi-yaptir/`,
+        `${SITE}/en/get-a-website/`,
+        `${SITE}/`,
+        `${SITE}/en/`,
+      ].sort(),
+    );
   });
 
   test('locale settings changes scope the fallback to that locale only', () => {
