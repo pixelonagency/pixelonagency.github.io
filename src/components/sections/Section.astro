@@ -22,8 +22,13 @@ interface Props {
 const { anchor, background = 'dark', class: className, ctas = [], ctaAlign = 'center' }: Props = Astro.props;
 ---
 
-<section id={anchor} class:list={['section', `section--${background}`, className]} data-reveal>
-  <div class="container">
+{
+  /* data-reveal bölümün KENDİSİNE değil konteynere uygulanır: bölüm zemini her zaman
+    boyalı kalır — aksi halde kaydırma sırasında açık bölümler görünür olana dek
+    şeffaflaşıp arkadaki koyu gövde "siyah alan" olarak parlıyordu. */
+}
+<section id={anchor} class:list={['section', `section--${background}`, className]}>
+  <div class="container" data-reveal>
     <slot />
 
     {

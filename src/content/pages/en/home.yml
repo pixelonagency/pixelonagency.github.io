@@ -15,8 +15,12 @@ sections:
     headingLines:
       - "We Grow Your Brand with *Strategy*, *Design* and *Technology*."
     lead: |-
-      Pixelon is a 360° digital marketing agency that turns creative ideas into powerful design and digital strategy into measurable results. From web design to social media management, from performance advertising to SEO, we bring every digital solution your brand needs together under one roof.
+      Pixelon is a 360° digital marketing agency that turns creative ideas into powerful design and digital strategy into measurable results. We answer every digital need of your brand under one roof.
     tagline: Have an idea? Let us grow it together.
+    image: '/src/assets/images/pixelon-ekip-pixel-art.webp'
+    imageAlt: >-
+      Pixelon brand visual - pixel-art illustration representing social
+      engagement, speed and a community-driven approach
     chips:
       - '*15+* Years of Experience'
       - '*180+* Completed Projects'

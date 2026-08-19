@@ -15,8 +15,12 @@ sections:
     headingLines:
       - "Markanızı *Strateji*, *Tasarım* ve *Teknolojiyle* Büyütüyoruz."
     lead: |-
-      Pixelon; yaratıcı fikirleri güçlü tasarımlara, dijital stratejileri ölçülebilir sonuçlara dönüştüren 360° dijital pazarlama ajansıdır. Web tasarımından sosyal medya yönetimine, performans reklamlarından SEO çalışmalarına kadar markanızın dijital dünyada ihtiyaç duyduğu tüm çözümleri tek çatı altında sunuyoruz.
+      Pixelon; yaratıcı fikirleri güçlü tasarımlara, dijital stratejileri ölçülebilir sonuçlara dönüştüren 360° dijital pazarlama ajansıdır. Markanızın tüm dijital ihtiyaçlarına tek çatı altında çözüm sunar.
     tagline: Bir fikriniz mi var? Birlikte büyütelim.
+    image: '/src/assets/images/pixelon-ekip-pixel-art.webp'
+    imageAlt: >-
+      Pixelon marka görseli - sosyal etkileşim, hız ve topluluk odaklı yaklaşımı
+      simgeleyen pixel-art illüstrasyon
     chips:
       - '*15+* Yıllık Deneyim'
       - '*180+* Tamamlanan Proje'

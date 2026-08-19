@@ -231,12 +231,13 @@ const tickerItems = section.tagline?.includes('✦')
     flex-shrink: 0;
   }
 
-  /* Görselli hero: metin solda, görsel sağda (referans: 1.15fr / .85fr). */
+  /* Görselli hero: metin solda, görsel sağda (referans: 1.15fr / .85fr).
+     Görsel dikeyde ortalanmaz — üst kenarı eyebrow hizasından başlar. */
   .hero__grid--media {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     gap: clamp(32px, 5vw, 64px);
-    align-items: center;
+    align-items: start;
   }
 
   .hero__media :global(img) {
@@ -244,6 +245,25 @@ const tickerItems = section.tagline?.includes('✦')
     width: 100%;
     height: auto;
     border-radius: 28px;
+    /* Görsel yumuşakça aşağı-yukarı süzülür. */
+    animation: heroFloat 5s ease-in-out infinite;
+  }
+
+  @keyframes heroFloat {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-16px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__media :global(img) {
+      animation: none;
+    }
   }
 
   .hero__title {
