@@ -480,7 +480,8 @@ describe('analytics (GTM + GA4)', () => {
     for (const file of allHtmlFiles(DIST)) {
       expect(readFileSync(file, 'utf-8').includes(CLARITY_PROJECT_ID), `${file} Clarity kimliği içeriyor`).toBe(false);
     }
-    expect(row('Meta Pixel')).toContain('Planned / Not Active');
+    // Meta Pixel production doğrulaması 2026-08-20'de tamamlandı — Active.
+    expect(row('Meta Pixel')).toContain('**Active**');
     expect(row('Meta Pixel')).toContain('1096159972333769');
     for (const inactive of ['LinkedIn Insight', 'Yandex Metrica', 'TikTok Pixel']) {
       expect(row(inactive), `${inactive} hâlâ Not Active olmalı`).toContain('Not Active');
@@ -778,6 +779,8 @@ describe('legal pages', () => {
       // Gözlemlenen _gcl_au çerezi anlatılmalı; "pazarlama çerez yerleştirmez" iddiası kalkmış olmalı.
       expect(body.includes('_gcl_au'), `${url} _gcl_au çerezini anlatmıyor`).toBe(true);
       expect(body.includes('_clck'), `${url} Clarity çerezlerini anlatmıyor`).toBe(true);
+      expect(body.includes('_fbp'), `${url} Meta çerezlerini anlatmıyor`).toBe(true);
+      expect(body.includes('Meta Pixel'), `${url} Meta Pixel'i anlatmıyor`).toBe(true);
       expect(body.includes('Microsoft Clarity'), `${url} Clarity'yi anlatmıyor`).toBe(true);
       for (const stale of ['bu kategoriye ait çerez yerleştirilmemektedir', 'sets no cookies']) {
         expect(body.includes(stale), `${url} eski pazarlama-çerezsiz iddiasını içeriyor`).toBe(false);

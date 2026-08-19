@@ -40,15 +40,17 @@ Analitik kategorisine izin verirseniz Google Analytics 4 aşağıdaki ölçüm �
 | `_clck`          | Microsoft | Clarity kullanıcı kimliği/tercihleri  | Analitik | ~365 gün         | HTTP çerezi |
 | `_clsk`          | Microsoft | Clarity oturum kaydı birleştirme      | Analitik | ~1 gün           | HTTP çerezi |
 
-Pazarlama kategorisine izin verirseniz Google tag, reklam/dönüşüm ilişkilendirmesi ve ölçümü için aşağıdaki birinci taraf çerezi yerleştirebilir (canlı sistemde gözlemlenmiştir; yalnızca Pazarlama izni sonrasında oluşur). İzni geri çekmeniz yeni veri işlenmesini durdurur; mevcut çerezi tarayıcı ayarlarınızdan silebilirsiniz:
+Pazarlama kategorisine izin verirseniz aşağıdaki çerezler oluşabilir (canlı sistemde gözlemlenmiş değerler; yalnızca Pazarlama izni sonrasında). **Meta Pixel** izin gelmeden hiç yüklenmez; izni geri çektiğinizde `_fbp`/`_fbc` çerezleri silinir. `_gcl_au` için iznin geri çekilmesi yeni veri işlenmesini durdurur; mevcut çerezi tarayıcı ayarlarınızdan silebilirsiniz. `_fbc` her ziyaretçide oluşmaz — yalnızca siteye bir Meta reklamı tıklamasıyla (`fbclid`) gelinirse:
 
-| Ad        | Sağlayıcı | Amaç                                      | Kategori  | Süre    | Tür         |
-| --------- | --------- | ----------------------------------------- | --------- | ------- | ----------- |
-| `_gcl_au` | Google    | Reklam/dönüşüm ilişkilendirmesi ve ölçümü | Pazarlama | ~90 gün | HTTP çerezi |
+| Ad        | Sağlayıcı | Amaç                                        | Kategori  | Süre    | Tür         |
+| --------- | --------- | ------------------------------------------- | --------- | ------- | ----------- |
+| `_fbp`    | Meta      | Reklam/dönüşüm ölçümü (ziyaretçi ayrımı)    | Pazarlama | ~90 gün | HTTP çerezi |
+| `_fbc`    | Meta      | Reklam tıklaması ilişkilendirmesi (koşullu) | Pazarlama | ~90 gün | HTTP çerezi |
+| `_gcl_au` | Google    | Reklam/dönüşüm ilişkilendirmesi ve ölçümü   | Pazarlama | ~90 gün | HTTP çerezi |
 
 ## 4. Analitik ve Pazarlama Kategorileri
 
-**Analitik** kategorisinde **Google Analytics 4** (site kullanımını ve performansı anlamamıza yardımcı ölçüm hizmeti) ve **Microsoft Clarity** (anonim oturum kayıtları ve ısı haritalarıyla davranış analitiği; form içerikleri maskelenir) kullanılmaktadır. İzin vermezseniz veya izninizi geri çekerseniz `analytics_storage` sinyali "reddedildi" kalır: bu durumda Analitik çerezleri **kullanılmaz ve oluşturulmaz**; ancak Google'ın Consent Mode altyapısı gereği Google'a çerezsiz, kimliksiz ölçüm/izin sinyalleri (consent ping) gönderilebilir. İzin verdiğinizde ise çerez tabanlı Analitik ölçümü devreye girebilir. **Pazarlama** kategorisinde şu anda aktif bir reklam ölçüm hizmeti (ör. Google Ads dönüşüm takibi) yoktur; ancak bu kategoriye izin verirseniz Google tag, yukarıda listelenen `_gcl_au` çerezini yerleştirebilir. İleride bir pazarlama hizmeti etkinleştirilirse bu politika gerçek çerez listesiyle **önceden** güncellenir.
+**Analitik** kategorisinde **Google Analytics 4** (site kullanımını ve performansı anlamamıza yardımcı ölçüm hizmeti) ve **Microsoft Clarity** (anonim oturum kayıtları ve ısı haritalarıyla davranış analitiği; form içerikleri maskelenir) kullanılmaktadır. İzin vermezseniz veya izninizi geri çekerseniz `analytics_storage` sinyali "reddedildi" kalır: bu durumda Analitik çerezleri **kullanılmaz ve oluşturulmaz**; ancak Google'ın Consent Mode altyapısı gereği Google'a çerezsiz, kimliksiz ölçüm/izin sinyalleri (consent ping) gönderilebilir. İzin verdiğinizde ise çerez tabanlı Analitik ölçümü devreye girebilir. **Pazarlama** kategorisinde **Meta Pixel** (reklam performansı ve dönüşüm ölçümü) kullanılmaktadır ve **yalnızca izin verirseniz yüklenir**; izin yokken Meta'ya hiçbir istek gitmez, izni geri çektiğinizde çerezleri silinir. Form alanlarına yazdığınız içerik Meta'ya gönderilmez. Google Ads dönüşüm takibi ise henüz aktif değildir; bu kategoriye izin verirseniz Google tag yalnızca yukarıda listelenen `_gcl_au` çerezini yerleştirebilir. Yeni bir pazarlama hizmeti etkinleştirilirse bu politika gerçek çerez listesiyle **önceden** güncellenir.
 
 ## 5. Google Tag Manager ve Consent Mode
 
