@@ -1,0 +1,38 @@
+name: IndexNow Manual Submission
+
+# Acil düzeltme / yeni landing / önemli içerik güncellemesi için kontrollü manuel
+# gönderim. Script yalnızca https://pixelon.com.tr URL'lerini kabul eder.
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'Gönderilecek URL listesi (boşluk/yeni satır ayrımlı, yalnız https://pixelon.com.tr/...)'
+        required: true
+        type: string
+      dry_run:
+        description: 'Dry run (API isteği atma, yalnız listele)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    name: Submit URLs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: .bun-version
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Submit to IndexNow
+        run: bun scripts/seo/indexnow.ts --urls "${{ inputs.urls }}" ${{ inputs.dry_run && '--dry-run' || '' }}

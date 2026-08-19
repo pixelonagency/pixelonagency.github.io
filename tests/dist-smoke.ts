@@ -574,6 +574,34 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
   });
 });
 
+describe('IndexNow key file', () => {
+  test('ships at the dist root with the exact key as its only content', async () => {
+    const { INDEXNOW_KEY } = await import('../scripts/seo/indexnow-key');
+    const file = join(DIST, `${INDEXNOW_KEY}.txt`);
+    expect(existsSync(file)).toBe(true);
+    expect(readFileSync(file, 'utf-8')).toBe(INDEXNOW_KEY);
+  });
+
+  test('is not referenced by the sitemap and the key leaks into no other dist file', async () => {
+    const { INDEXNOW_KEY } = await import('../scripts/seo/indexnow-key');
+    expect(readFileSync(join(DIST, 'sitemap-0.xml'), 'utf-8')).not.toContain(INDEXNOW_KEY);
+    // Anahtar yalnız <KEY>.txt doğrulama dosyasında yaşar — bundle/HTML'e gömülmez.
+    const walk = (dir: string, out: string[] = []): string[] => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const full = join(dir, entry.name);
+        if (entry.isDirectory()) walk(full, out);
+        else if (!entry.name.endsWith('.png') && !entry.name.endsWith('.webp') && !entry.name.endsWith('.jpg'))
+          out.push(full);
+      }
+      return out;
+    };
+    const offenders = walk(DIST).filter(
+      (file) => !file.endsWith(`${INDEXNOW_KEY}.txt`) && readFileSync(file, 'latin1').includes(INDEXNOW_KEY),
+    );
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe('legal pages', () => {
   const LEGAL_ROUTES = [
     { url: '/kvkk-aydinlatma-metni/', lang: 'tr', h1: 'KVKK Aydınlatma Metni' },
