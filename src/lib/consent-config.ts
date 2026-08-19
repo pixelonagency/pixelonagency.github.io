@@ -90,6 +90,22 @@ function updateClarity(state: ConsentState): void {
   }
 }
 
+/**
+ * Meta Pixel consent köprüsü — Klaro Marketing tercihi tek kaynak.
+ *
+ * STRICT mimari: Marketing izni gelmeden Meta loader'ı HİÇ yüklenmez (Clarity'deki
+ * gibi cookieless mod da yok). Bu helper yalnızca kontrollü bir dataLayer durumu
+ * üretir; Meta yükleyicisi/istemcisi site kodunda YOKTUR — base Pixel, Lead ve micro-event
+ * tag'leri GTM'de `meta_consent_update` + `meta_marketing_consent=granted`
+ * koşuluna bağlanır (bkz. META_PIXEL_IMPLEMENTATION.md). Değerler kapalı enum:
+ * yalnız 'granted' | 'denied'. Kayıtlı tercihle dönen ziyaretçide Klaro callback'i
+ * sayfa yüklenirken çalıştığı için sinyal GTM'den önce dataLayer'a girer — race yok.
+ */
+function updateMeta(state: ConsentState): void {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'meta_consent_update', meta_marketing_consent: state });
+}
+
 /** Klaro service callback imzası. */
 type ServiceCallback = (consent: boolean, service: { name: string }) => void;
 
@@ -264,6 +280,33 @@ export function buildKlaroConfig(lang: Locale): KlaroConfigShape {
             description: 'Session recordings and heatmaps to improve the site experience (form contents are masked).',
           },
         },
+      },
+      {
+        /*
+         * Meta Pixel — Pazarlama kategorisi (Pixel ID yalnız GTM + envanterde). Loader YALNIZ
+         * GTM'de ve YALNIZ Marketing izni sonrası; izin yokken hiçbir Meta
+         * isteği/çerezi oluşmaz. `cookies` deseni revoke'ta _fbp/_fbc'yi
+         * Klaro'nun kanıtlanmış mekanizmasıyla temizler; GTM tarafı ayrıca
+         * resmî Meta consent-revoke API'sini çağırır.
+         */
+        name: 'meta-pixel',
+        purposes: ['marketing'],
+        default: false,
+        cookies: [/^_fbp/, /^_fbc/],
+        translations: {
+          tr: {
+            title: 'Reklam ve Dönüşüm Ölçümü (Meta Pixel)',
+            description: 'Reklam performansı ve dönüşüm ölçümü (form içerikleri gönderilmez).',
+          },
+          en: {
+            title: 'Advertising & Conversion Measurement (Meta Pixel)',
+            description: 'Ad performance and conversion measurement (form contents are never sent).',
+          },
+        },
+        callback: ((consent) => {
+          updateMeta(consent ? 'granted' : 'denied');
+          if (consent) pushEvent('klaro-meta-pixel-accepted');
+        }) satisfies ServiceCallback,
       },
       {
         name: 'google-ads',

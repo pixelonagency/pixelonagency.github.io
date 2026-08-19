@@ -480,7 +480,9 @@ describe('analytics (GTM + GA4)', () => {
     for (const file of allHtmlFiles(DIST)) {
       expect(readFileSync(file, 'utf-8').includes(CLARITY_PROJECT_ID), `${file} Clarity kimliği içeriyor`).toBe(false);
     }
-    for (const inactive of ['Meta Pixel', 'LinkedIn Insight', 'Yandex Metrica', 'TikTok Pixel']) {
+    expect(row('Meta Pixel')).toContain('Planned / Not Active');
+    expect(row('Meta Pixel')).toContain('1096159972333769');
+    for (const inactive of ['LinkedIn Insight', 'Yandex Metrica', 'TikTok Pixel']) {
       expect(row(inactive), `${inactive} hâlâ Not Active olmalı`).toContain('Not Active');
     }
     expect(row('Google Ads')).toContain('Not Active');
@@ -576,6 +578,10 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
       'pixelon-consent',
       'google-analytics',
       'microsoft-clarity',
+      'meta-pixel',
+      'meta_consent_update',
+      'Reklam ve Dönüşüm Ölçümü (Meta Pixel)',
+      'Advertising & Conversion Measurement (Meta Pixel)',
       'Davranış Analitiği (Microsoft Clarity)',
       'Behaviour Analytics (Microsoft Clarity)',
     ]) {
@@ -602,6 +608,9 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
         'clarity.ms',
         // Microsoft Ads/UET bu fazda yok.
         'bat.bing.com',
+        // Meta loader yalnız GTM'de ve yalnız Marketing izniyle — dist'te asla.
+        'fbevents.js',
+        'facebook.com/tr',
         'googleadservices.com',
         'googlesyndication.com',
       ]) {
