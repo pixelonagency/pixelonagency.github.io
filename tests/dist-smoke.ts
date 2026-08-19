@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, test } from 'bun:test';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, sep } from 'node:path';
-import { GA4_MEASUREMENT_ID } from '../src/lib/analytics';
+import { CLARITY_PROJECT_ID, GA4_MEASUREMENT_ID } from '../src/lib/analytics';
 
 /**
  * Build sonrası duman testleri — üretilen `dist/` çıktısı üzerinde çalışır.
@@ -473,7 +473,14 @@ describe('analytics (GTM + GA4)', () => {
     // GA4 GTM'den publish edildi ve canlıda doğrulandı (2026-08-19) — durum Active.
     expect(row('Google Analytics 4')).toContain('**Active**');
     expect(row('Google Analytics 4')).toContain(GA4);
-    for (const inactive of ['Microsoft Clarity', 'Meta Pixel', 'LinkedIn Insight', 'Yandex Metrica', 'TikTok Pixel']) {
+    // Clarity hazırlık aşamasında: production doğrulaması yapılmadan Active yazılamaz.
+    expect(row('Microsoft Clarity')).toContain('Planned / Not Active');
+    expect(row('Microsoft Clarity')).toContain(CLARITY_PROJECT_ID);
+    // Clarity yalnız GTM'den yüklenir: proje kimliği site HTML'ine girmez.
+    for (const file of allHtmlFiles(DIST)) {
+      expect(readFileSync(file, 'utf-8').includes(CLARITY_PROJECT_ID), `${file} Clarity kimliği içeriyor`).toBe(false);
+    }
+    for (const inactive of ['Meta Pixel', 'LinkedIn Insight', 'Yandex Metrica', 'TikTok Pixel']) {
       expect(row(inactive), `${inactive} hâlâ Not Active olmalı`).toContain('Not Active');
     }
     expect(row('Google Ads')).toContain('Not Active');
@@ -568,6 +575,9 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
       'Manage Preferences',
       'pixelon-consent',
       'google-analytics',
+      'microsoft-clarity',
+      'Davranış Analitiği (Microsoft Clarity)',
+      'Behaviour Analytics (Microsoft Clarity)',
     ]) {
       expect(bundle.includes(copy), `${copy} paket içinde yok`).toBe(true);
     }
@@ -584,7 +594,10 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
         'googletagmanager.com/gtag/js',
         'google-analytics.com/analytics.js',
         'connect.facebook.net',
+        // Clarity YALNIZ GTM template'inden yüklenir — HTML'de doğrudan loader yasak.
         'clarity.ms',
+        // Microsoft Ads/UET bu fazda yok.
+        'bat.bing.com',
         'googleadservices.com',
         'googlesyndication.com',
       ]) {

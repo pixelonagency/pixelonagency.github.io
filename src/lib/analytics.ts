@@ -17,6 +17,16 @@ export const GTM_ID = 'GTM-MWVJ2S27';
 export const GA4_MEASUREMENT_ID = 'G-15DCDNXNG7';
 
 /**
+ * Microsoft Clarity proje kimliği (proje: "Pixelon"). Clarity SİTE KODUNA
+ * EKLENMEZ: yükleme yalnızca GTM'deki resmî "Microsoft Clarity - Official"
+ * template'i üzerinden yapılır (tag: "Microsoft Clarity - Pixelon", trigger:
+ * All Pages). Kimlik sır değildir; buradaki sabit dokümantasyon/test/envanter
+ * senkronunun tek doğruluk kaynağıdır. Durum: GTM'de oluşturuldu, Preview
+ * consent testleri tamamlanana dek PUBLISH EDİLMEDİ (bkz. CLARITY_IMPLEMENTATION.md).
+ */
+export const CLARITY_PROJECT_ID = 'y4y9pvz009';
+
+/**
  * Yalnızca canlı alan adında veri toplanır: dist önizlemeleri ve olası
  * yansımalar (ör. *.github.io) production ölçümünü kirletmez. Build-time
  * PROD kapısıyla birlikte çalışır (dev sunucusunda hiç basılmaz).

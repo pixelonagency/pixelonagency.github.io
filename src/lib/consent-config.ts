@@ -197,6 +197,32 @@ export function buildKlaroConfig(lang: Locale): KlaroConfigShape {
         }) satisfies ServiceCallback,
       },
       {
+        /*
+         * Microsoft Clarity (oturum kaydı + ısı haritası) — Analitik kategorisi.
+         * Yükleme GTM'deki resmî Clarity template'i üzerinden yapılır; consent
+         * sinyali birincil olarak mevcut Google Consent Mode akışıyla taşınır
+         * (bkz. CLARITY_IMPLEMENTATION.md — GCM yetersiz kalırsa consentv2
+         * köprüsü eklenecek). `cookies` deseni, izin geri çekildiğinde Klaro'nun
+         * _clck/_clsk çerezlerini google-analytics ile aynı mekanizmayla
+         * temizlemesini sağlar.
+         */
+        name: 'microsoft-clarity',
+        purposes: ['analytics'],
+        default: false,
+        cookies: [/^_clck/, /^_clsk/],
+        translations: {
+          tr: {
+            title: 'Davranış Analitiği (Microsoft Clarity)',
+            description:
+              'Oturum kayıtları ve ısı haritalarıyla site deneyimini geliştirme (form içerikleri maskelenir).',
+          },
+          en: {
+            title: 'Behaviour Analytics (Microsoft Clarity)',
+            description: 'Session recordings and heatmaps to improve the site experience (form contents are masked).',
+          },
+        },
+      },
+      {
         name: 'google-ads',
         purposes: ['marketing'],
         default: false,
