@@ -45,7 +45,9 @@ Kişisel verileriniz; web sitemizdeki formlar aracılığıyla, bize e-posta gö
 - İletişim ve ücretsiz analiz formları: bir sözleşmenin kurulmasıyla doğrudan doğruya ilgili olarak, talebiniz üzerine size teklif hazırlanması ve sözleşme öncesi adımların atılması için veri işlemenin gerekli olması (KVKK m.5/2-c).
 - İşlem güvenliği kayıtları ve çerez tercihi: temel hak ve özgürlüklerinize zarar vermemek kaydıyla, sitenin güvenli ve hukuka uygun işletilmesine yönelik meşru menfaatimiz (KVKK m.5/2-f).
 
-Ayrıca açık rıza gerektiren bir işleme faaliyeti (ör. pazarlama iletişimi) şu anda yürütülmemektedir; ileride yürütülmesi hâlinde ayrıca ve açıkça rızanız istenir.
+- Analitik ölçüm (Google Analytics 4): çerez tercih panelinde Analitik kategorisine verdiğiniz izin — izin vermezseniz Analitik çerezleri kullanılmaz ve çerez tabanlı ölçüm yapılmaz (Google'ın Consent Mode altyapısı gereği Google'a çerezsiz, kimliksiz izin sinyalleri iletilebilir); izninizi dilediğiniz an geri çekebilirsiniz.
+
+Bunlar dışında açık rıza gerektiren bir işleme faaliyeti (ör. pazarlama iletişimi) şu anda yürütülmemektedir; ileride yürütülmesi hâlinde ayrıca ve açıkça rızanız istenir.
 
 ## 6. Kişisel Verilerin Aktarılması
 
@@ -53,7 +55,7 @@ Form verileriniz, iletim altyapısı olarak kullandığımız **Web3Forms** arac
 
 ## 7. Yurt Dışına Aktarım
 
-Web sitemizin barındırıldığı altyapı (GitHub Pages), form iletim hizmeti (Web3Forms) ve site üzerinde kullanılan Google altyapı bileşenlerinin (Google Tag Manager, Google Fonts) sunucuları yurt dışında bulunabilmektedir. Bu nedenle yukarıda sayılan veriler, yalnızca bu operasyonel amaçlarla sınırlı olarak yurt dışında işlenebilmektedir.
+Web sitemizin barındırıldığı altyapı (GitHub Pages), form iletim hizmeti (Web3Forms) ve site üzerinde kullanılan Google bileşenlerinin (Google Tag Manager, Google Fonts ve Google Analytics 4 — çerez tabanlı ölçüm Analitik izninize bağlıdır) sunucuları yurt dışında bulunabilmektedir. Bu nedenle yukarıda sayılan veriler, yalnızca bu operasyonel amaçlarla sınırlı olarak yurt dışında işlenebilmektedir.
 
 ## 8. Saklama Süresi
 

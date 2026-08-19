@@ -25,19 +25,26 @@ You can also delete or block cookies in your browser settings; blocking essentia
 
 ## 3. Cookies Currently in Use
 
-The website currently uses **only one first-party essential cookie**:
+Unless you give permission, the website sets **only one first-party essential cookie**:
 
 | Name              | Provider              | Purpose                         | Category  | Duration | Type        |
 | ----------------- | --------------------- | ------------------------------- | --------- | -------- | ----------- |
 | `pixelon-consent` | Pixelon (first party) | Remembering your cookie choices | Essential | 365 days | HTTP cookie |
 
+If you allow the Analytics category, Google Analytics 4 places the following measurement cookies (values verified on the live system). These cookies are only created after your permission and are deleted from your browser when you withdraw it:
+
+| Name             | Provider | Purpose                                   | Category  | Duration          | Type        |
+| ---------------- | -------- | ----------------------------------------- | --------- | ----------------- | ----------- |
+| `_ga`            | Google   | Distinguishing visitors (GA4 measurement) | Analytics | ~400 days (13 mo) | HTTP cookie |
+| `_ga_15DCDNXNG7` | Google   | Maintaining GA4 session state             | Analytics | ~400 days (13 mo) | HTTP cookie |
+
 ## 4. Analytics and Marketing Categories
 
-These categories exist in the preference panel; however, **no analytics or advertising measurement service is currently active** on the site and no cookies in these categories are set. If an analytics service (e.g. Google Analytics) or a marketing service is activated in the future, it will only run if you allow the relevant category, and this policy will be updated with the real cookie list **beforehand**.
+The **Analytics** category uses **Google Analytics 4**, a measurement service that helps us understand how the site is used and how it performs. If you do not allow the category, or if you withdraw your permission, the `analytics_storage` signal remains "denied": in that case Analytics cookies are **not used and not created**; however, as part of Google's Consent Mode infrastructure, cookieless, non-identifying measurement/consent signals (consent pings) may still be sent to Google. Once you give permission, cookie-based Analytics measurement can become active. The **Marketing** category currently has no active service and sets no cookies; if a marketing service is added in the future, this policy will be updated with the real cookie list **beforehand**.
 
 ## 5. Google Tag Manager and Consent Mode
 
-**Google Tag Manager** is loaded only as tag-management infrastructure; it does not measure anything by itself and does not set cookies. Your choices are communicated to the tag infrastructure through **Google Consent Mode v2** signals (analytics and advertising storage default to "denied"); any Google tags added in the future will behave according to these signals.
+**Google Tag Manager** is loaded only as tag-management infrastructure; it does not measure anything by itself and does not set cookies. All tags, including Google Analytics 4, are managed through this container. Your choices are communicated to the tag infrastructure through **Google Consent Mode v2** signals (analytics and advertising storage default to "denied"); tags behave according to these signals.
 
 ## 6. More Information
 

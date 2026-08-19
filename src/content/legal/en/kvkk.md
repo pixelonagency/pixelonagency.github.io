@@ -45,7 +45,9 @@ Your personal data is collected through the forms on this website, when you e-ma
 - Contact and free analysis forms: processing is necessary, at your request, to prepare a proposal for you and to take steps directly related to the establishment of a contract (Article 5/2-c of the KVKK).
 - Security logs and the consent cookie: our legitimate interest in operating the website securely and lawfully, provided that your fundamental rights and freedoms are not harmed (Article 5/2-f of the KVKK).
 
-We do not currently carry out any processing that requires explicit consent (such as marketing communications); if we do in the future, your consent will be requested separately and explicitly.
+- Analytics measurement (Google Analytics 4): the permission you give to the Analytics category in the cookie preference panel — without it, Analytics cookies are not used and no cookie-based measurement takes place (as part of Google's Consent Mode infrastructure, cookieless, non-identifying consent signals may still be sent to Google); you can withdraw your permission at any time.
+
+Beyond these, we do not currently carry out any processing that requires explicit consent (such as marketing communications); if we do in the future, your consent will be requested separately and explicitly.
 
 ## 6. Transfers
 
@@ -53,7 +55,7 @@ Form submissions are delivered to our mailbox through **Web3Forms**, the form re
 
 ## 7. International Transfers
 
-The servers of our hosting provider (GitHub Pages), our form relay service (Web3Forms) and the Google infrastructure components used on the site (Google Tag Manager, Google Fonts) may be located outside Türkiye. The data listed above may therefore be processed abroad, limited strictly to these operational purposes.
+The servers of our hosting provider (GitHub Pages), our form relay service (Web3Forms) and the Google components used on the site (Google Tag Manager, Google Fonts and Google Analytics 4 — cookie-based measurement depends on your Analytics permission) may be located outside Türkiye. The data listed above may therefore be processed abroad, limited strictly to these operational purposes.
 
 ## 8. Retention
 

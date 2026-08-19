@@ -25,19 +25,26 @@ Ayrıca tarayıcınızın ayarlarından çerezleri silebilir veya engelleyebilir
 
 ## 3. Şu Anda Kullanılan Çerezler
 
-Sitemizde hâlihazırda yalnızca **bir adet birinci taraf zorunlu çerez** kullanılmaktadır:
+İzin vermediğiniz sürece sitemiz yalnızca **bir adet birinci taraf zorunlu çerez** yerleştirir:
 
 | Ad                | Sağlayıcı               | Amaç                               | Kategori | Süre    | Tür         |
 | ----------------- | ----------------------- | ---------------------------------- | -------- | ------- | ----------- |
 | `pixelon-consent` | Pixelon (birinci taraf) | Çerez tercihlerinizin hatırlanması | Zorunlu  | 365 gün | HTTP çerezi |
 
+Analitik kategorisine izin verirseniz Google Analytics 4 aşağıdaki ölçüm çerezlerini yerleştirir (canlı sistemde doğrulanmış değerler). Bu çerezler yalnızca izniniz sonrasında oluşur ve izninizi geri çektiğinizde tarayıcınızdan silinir:
+
+| Ad               | Sağlayıcı | Amaç                                  | Kategori | Süre             | Tür         |
+| ---------------- | --------- | ------------------------------------- | -------- | ---------------- | ----------- |
+| `_ga`            | Google    | Ziyaretçileri ayırt etme (GA4 ölçümü) | Analitik | ~400 gün (13 ay) | HTTP çerezi |
+| `_ga_15DCDNXNG7` | Google    | GA4 oturum durumunun korunması        | Analitik | ~400 gün (13 ay) | HTTP çerezi |
+
 ## 4. Analitik ve Pazarlama Kategorileri
 
-Bu kategoriler tercih panelinde tanımlıdır; ancak **şu anda sitede aktif bir analitik veya reklam ölçüm hizmeti çalışmamaktadır** ve bu kategorilere ait herhangi bir çerez yerleştirilmemektedir. İleride bir analitik (ör. Google Analytics) veya pazarlama hizmeti etkinleştirilirse; bu hizmetler yalnızca ilgili kategoriye izin vermeniz hâlinde çalışır ve bu politika, gerçek çerez listesiyle **önceden** güncellenir.
+**Analitik** kategorisinde **Google Analytics 4** (site kullanımını ve performansı anlamamıza yardımcı ölçüm hizmeti) kullanılmaktadır. İzin vermezseniz veya izninizi geri çekerseniz `analytics_storage` sinyali "reddedildi" kalır: bu durumda Analitik çerezleri **kullanılmaz ve oluşturulmaz**; ancak Google'ın Consent Mode altyapısı gereği Google'a çerezsiz, kimliksiz ölçüm/izin sinyalleri (consent ping) gönderilebilir. İzin verdiğinizde ise çerez tabanlı Analitik ölçümü devreye girebilir. **Pazarlama** kategorisinde ise şu anda aktif bir hizmet yoktur ve bu kategoriye ait çerez yerleştirilmemektedir; ileride bir pazarlama hizmeti eklenirse bu politika gerçek çerez listesiyle **önceden** güncellenir.
 
 ## 5. Google Tag Manager ve Consent Mode
 
-Sitede **Google Tag Manager** yalnızca bir etiket yönetim altyapısı olarak yüklüdür; kendisi ölçüm yapmaz ve çerez yerleştirmez. Tercihleriniz, **Google Consent Mode v2** izin sinyalleriyle (analitik ve reklam depolaması varsayılan olarak "reddedildi") etiket altyapısına iletilir; ileride eklenebilecek Google etiketleri bu sinyallere göre davranır.
+Sitede **Google Tag Manager** yalnızca bir etiket yönetim altyapısı olarak yüklüdür; kendisi ölçüm yapmaz ve çerez yerleştirmez. Google Analytics 4 dâhil tüm etiketler bu container üzerinden yönetilir. Tercihleriniz, **Google Consent Mode v2** izin sinyalleriyle (analitik ve reklam depolaması varsayılan olarak "reddedildi") etiket altyapısına iletilir; etiketler bu sinyallere göre davranır.
 
 ## 6. Daha Fazla Bilgi
 

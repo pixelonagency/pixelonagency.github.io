@@ -32,7 +32,7 @@ Form gönderimleri, form iletim hizmeti **Web3Forms** üzerinden e-posta kutumuz
 
 ## 5. Çerezler ve Ölçüm
 
-Sitede çerez tercihleri, açık kaynaklı **Klaro** yönetimiyle kontrol edilir. Analitik ve pazarlama kategorileri **varsayılan olarak kapalıdır**; şu anda sitede aktif bir analitik veya reklam ölçüm hizmeti **çalışmamaktadır**. Google Tag Manager yalnızca etiket yönetim altyapısı olarak yüklüdür ve tercihinize bağlı izin sinyalleriyle (Google Consent Mode v2) uyumlu çalışır. Ayrıntılar ve güncel çerez listesi için [Çerez Politikası](/cerez-politikasi) sayfasına bakın.
+Sitede çerez tercihleri, açık kaynaklı **Klaro** yönetimiyle kontrol edilir. Analitik ve pazarlama kategorileri **varsayılan olarak kapalıdır**. Analitik kategorisinde **Google Analytics 4** kullanılır: site kullanımını anlamak ve performansı analiz etmek amacıyla ölçüm yapar. İzin vermez veya geri çekerseniz Analitik çerezleri **kullanılmaz ve oluşturulmaz**, çerez tabanlı ölçüm yapılmaz; Google'ın Consent Mode altyapısı gereği Google'a yalnızca çerezsiz, kimliksiz izin/ölçüm sinyalleri iletilebilir. İzin verdiğinizde çerez tabanlı ölçüm devreye girebilir. Pazarlama kategorisinde şu anda aktif bir hizmet yoktur. Google Tag Manager ise ölçüm yapan bir hizmet değil, bu etiketlerin yönetildiği altyapıdır; tercihiniz Google Consent Mode v2 izin sinyalleriyle etiketlere iletilir. Ayrıntılar ve güncel çerez listesi için [Çerez Politikası](/cerez-politikasi) sayfasına bakın.
 
 ## 6. Üçüncü Taraf Hizmetler
 
@@ -40,7 +40,7 @@ Sitenin çalışması için şu hizmet sağlayıcılar kullanılır:
 
 - **GitHub Pages** — web sitesinin barındırılması,
 - **Web3Forms** — form iletimi,
-- **Google** — Tag Manager altyapısı ve web fontları.
+- **Google** — Tag Manager altyapısı, web fontları ve Google Analytics 4 (çerez tabanlı ölçüm Analitik izninize bağlıdır).
 
 Bu sağlayıcıların sunucuları yurt dışında bulunabilir; kendi gizlilik politikaları kendilerine aittir ve bu politika onların uygulamalarını kapsamaz.
 

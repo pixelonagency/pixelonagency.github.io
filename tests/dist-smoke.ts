@@ -1,6 +1,7 @@
 import { beforeAll, describe, expect, test } from 'bun:test';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, sep } from 'node:path';
+import { GA4_MEASUREMENT_ID } from '../src/lib/analytics';
 
 /**
  * Build sonrası duman testleri — üretilen `dist/` çıktısı üzerinde çalışır.
@@ -450,8 +451,33 @@ describe('SEO regression suite', () => {
   });
 });
 
-describe('analytics (GTM)', () => {
+describe('analytics (GTM + GA4)', () => {
   const GTM = 'GTM-MWVJ2S27';
+  const GA4 = GA4_MEASUREMENT_ID;
+
+  test('the GA4 measurement ID single source of truth is correct and not loaded directly', () => {
+    expect(GA4).toBe('G-15DCDNXNG7');
+    // GA4 yalnızca GTM container'ından yönetilir: ölçüm kimliği ve gtag.js HTML'e girmez.
+    const offenders: string[] = [];
+    for (const file of allHtmlFiles(DIST)) {
+      const body = readFileSync(file, 'utf-8');
+      if (body.includes(GA4)) offenders.push(`${file}: ölçüm kimliği HTML'de`);
+      if (body.includes('googletagmanager.com/gtag/js')) offenders.push(`${file}: doğrudan gtag.js yükleyicisi`);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('the tracking inventory records GA4 as the only active measurement service', () => {
+    const inventory = readFileSync(join(import.meta.dir, '..', 'PRIVACY_TRACKING_INVENTORY.md'), 'utf-8');
+    const row = (name: string): string => inventory.split('\n').find((line) => line.includes(name)) ?? '';
+    // GA4 GTM'den publish edildi ve canlıda doğrulandı (2026-08-19) — durum Active.
+    expect(row('Google Analytics 4')).toContain('**Active**');
+    expect(row('Google Analytics 4')).toContain(GA4);
+    for (const inactive of ['Microsoft Clarity', 'Meta Pixel', 'LinkedIn Insight', 'Yandex Metrica', 'TikTok Pixel']) {
+      expect(row(inactive), `${inactive} hâlâ Not Active olmalı`).toContain('Not Active');
+    }
+    expect(row('Google Ads')).toContain('Not Active');
+  });
 
   test('every public page loads the GTM container exactly once (script + noscript)', () => {
     const walk = (dir: string, prefix: string, out: string[][]) => {
@@ -541,6 +567,7 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
       'Reject All',
       'Manage Preferences',
       'pixelon-consent',
+      'google-analytics',
     ]) {
       expect(bundle.includes(copy), `${copy} paket içinde yok`).toBe(true);
     }
@@ -691,6 +718,23 @@ describe('legal pages', () => {
     for (const target of ['/cerez-politikasi', '/en/cookie-policy']) {
       expect(bundle.includes(target), `Klaro paketi ${target} bağlantısını içermiyor`).toBe(true);
       expect(existsSync(join(DIST, target.replace(/^\//, ''), 'index.html')), `${target} build edilmemiş`).toBe(true);
+    }
+  });
+
+  test('cookie policy pages describe GA4 as the active consent-gated analytics service', () => {
+    const cases: Array<[string, string]> = [
+      ['/cerez-politikasi/', 'şu anda sitede aktif bir analitik veya reklam ölçüm hizmeti çalışmamaktadır'],
+      ['/en/cookie-policy/', 'no analytics or advertising measurement service is currently active'],
+    ];
+    for (const [url, staleClaim] of cases) {
+      const body = read(url);
+      expect(body.includes('Google Analytics 4'), `${url} GA4'ü anlatmıyor`).toBe(true);
+      expect(body.includes(staleClaim), `${url} eski "aktif analitik yok" iddiasını içeriyor`).toBe(false);
+      expect(body.includes('analytics_storage'), `${url} consent sinyalini anlatmıyor`).toBe(true);
+    }
+    // Gizlilik politikaları da GA4'ü GTM'den ayrı, izne bağlı ölçüm olarak anlatmalı.
+    for (const url of ['/gizlilik-politikasi/', '/en/privacy-policy/']) {
+      expect(read(url).includes('Google Analytics 4'), `${url} GA4'ü anlatmıyor`).toBe(true);
     }
   });
 
