@@ -51,6 +51,7 @@ const STRINGS = {
   },
   'blog.exploreServices': { tr: 'Hizmetlerimizi İnceleyin', en: 'Explore Our Services' },
   'services.viewDetails': { tr: 'Detayları Gör', en: 'View Details' },
+  'footer.cookiePrefs': { tr: 'Çerez Tercihleri', en: 'Cookie Preferences' },
 
   'logos.groupLabel': { tr: 'Çalıştığımız markalar', en: 'Brands we work with' },
   /** Marka adının ARDINA gelir: "Dentasay logosu" / "Dentasay logo". */

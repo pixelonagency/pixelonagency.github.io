@@ -85,6 +85,10 @@ const corporateLinks = [
     <div class="site-footer__bottom">
       <div class="site-footer__legal">
         {settings.legalLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+        {/* Klaro consent modalını yeniden açar — yeni sayfaya gitmez. */}
+        <button type="button" class="site-footer__consent" data-cookie-prefs>
+          {t('footer.cookiePrefs', locale)}
+        </button>
       </div>
       <div class="site-footer__copy">{settings.copyright}</div>
     </div>
@@ -219,6 +223,23 @@ const corporateLinks = [
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+  }
+
+  /* Çerez Tercihleri butonu yasal linklerle aynı dilde görünür. */
+  .site-footer__consent {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    transition: color var(--t-base);
+  }
+
+  .site-footer__consent:hover,
+  .site-footer__consent:focus-visible {
+    color: var(--accent);
   }
 
   .site-footer__legal a {

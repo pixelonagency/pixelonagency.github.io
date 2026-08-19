@@ -487,3 +487,69 @@ describe('analytics (GTM)', () => {
     expect(home).toContain("location.hostname==='pixelon.com.tr'");
   });
 });
+
+describe('consent management (Klaro + Consent Mode v2)', () => {
+  const home = () => readFileSync(join(DIST, 'index.html'), 'utf-8');
+  const enHome = () => readFileSync(join(DIST, 'en', 'index.html'), 'utf-8');
+  const admin = () => readFileSync(join(DIST, 'admin', 'index.html'), 'utf-8');
+
+  test('consent-mode defaults (all four denied) ship inline BEFORE the GTM loader on every public page', () => {
+    const walk = (dir: string, prefix: string, out: string[][]) => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        if (entry.isDirectory()) walk(join(dir, entry.name), `${prefix}${entry.name}/`, out);
+        else if (entry.name === 'index.html' && !prefix.startsWith('admin/'))
+          out.push([`/${prefix}`, readFileSync(join(dir, entry.name), 'utf-8')]);
+      }
+      return out;
+    };
+    const offenders: string[] = [];
+    for (const [url, body] of walk(DIST, '', [])) {
+      const defaults = body.indexOf("gtag('consent','default'");
+      if (defaults === -1) {
+        offenders.push(`${url}: default yok`);
+        continue;
+      }
+      for (const key of ['ad_storage', 'analytics_storage', 'ad_user_data', 'ad_personalization']) {
+        if (!body.includes(`${key}:'denied'`)) offenders.push(`${url}: ${key} denied değil`);
+      }
+      if (!body.includes("gtag('set','ads_data_redaction',true)")) offenders.push(`${url}: redaction yok`);
+      if (defaults > body.indexOf('googletagmanager.com/gtm.js')) offenders.push(`${url}: default GTM'den sonra`);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('the Klaro bundle is self-hosted, present on public pages and absent from /admin/', () => {
+    expect(home()).not.toContain('cdn.kiprotect.com');
+    const adminBody = admin();
+    expect(adminBody).not.toContain('klaro');
+    expect(adminBody).not.toContain("gtag('consent'");
+    // Public sayfalar Klaro'yu kendi alan adından paketlenmiş modül olarak yükler.
+    const assets = readdirSync(join(DIST, 'assets'));
+    const klaroAsset = assets.find((name) => {
+      if (!name.endsWith('.js')) return false;
+      const body = readFileSync(join(DIST, 'assets', name), 'utf-8');
+      return body.includes('klaro') && body.includes('Tümünü Kabul Et');
+    });
+    expect(klaroAsset).toBeDefined();
+    const bundle = readFileSync(join(DIST, 'assets', klaroAsset ?? ''), 'utf-8');
+    // TR + EN metinleri, test modu ve varsayılan-kapalı yapı pakette olmalı.
+    for (const copy of [
+      'Tümünü Kabul Et',
+      'Tümünü Reddet',
+      'Tercihleri Yönet',
+      'Accept All',
+      'Reject All',
+      'Manage Preferences',
+      'pixelon-consent',
+    ]) {
+      expect(bundle.includes(copy), `${copy} paket içinde yok`).toBe(true);
+    }
+    expect(bundle).toContain('testing:!0');
+  });
+
+  test('the footer ships a cookie-preferences trigger on TR and EN pages', () => {
+    for (const body of [home(), enHome()]) expect(body).toContain('data-cookie-prefs');
+    expect(home()).toContain('Çerez Tercihleri');
+    expect(enHome()).toContain('Cookie Preferences');
+  });
+});

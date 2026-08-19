@@ -5,7 +5,9 @@ import logoImage from '../assets/logo/pixelon-logo.webp';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import ConsentManager from '../components/ConsentManager.astro';
 import { ANALYTICS_HOSTNAME, GTM_ID } from '../lib/analytics';
+import { CONSENT_DEFAULTS_SNIPPET } from '../lib/consent-config';
 import { canonicalUrl, truncateDescription } from '../lib/seo';
 import { organizationSchema, toJsonLd, webPageSchema, webSiteSchema } from '../lib/schema';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
@@ -86,6 +88,9 @@ const jsonLd = toJsonLd([
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    {/* Consent Mode v2 varsayılanları (hepsi denied) — GTM'den ÖNCE kurulmak zorunda. */}
+    <script is:inline set:html={CONSENT_DEFAULTS_SNIPPET} />
+
     {/* Google Tag Manager — head açılışına olabildiğince yakın (resmî kurulum). */}
     {includeAnalytics && <script is:inline set:html={gtmScript} />}
 
@@ -162,6 +167,7 @@ const jsonLd = toJsonLd([
       message={whatsappMessage ?? settings.whatsapp.defaultMessage}
       {locale}
     />
+    <ConsentManager />
 
     <script>
       // Scroll-reveal: viewport'a giren [data-reveal] elemanlarını kademeli gecikmeyle açar.

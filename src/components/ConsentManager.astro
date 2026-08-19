@@ -1,0 +1,171 @@
+---
+/**
+ * Klaro açık kaynak consent yöneticisi — tamamen self-hosted.
+ *
+ * JS/CSS, npm bağımlılığından Vite ile paketlenir ve Pixelon alan adından
+ * sunulur; çalışma anında üçüncü taraf CDN çağrısı yoktur. Yapılandırmanın
+ * tek kaynağı src/lib/consent-config.ts'tir. Görsel katman Pixelon design
+ * token'larıyla ezilir; Klaro'nun davranış/erişilebilirlik mekanizmasına
+ * dokunulmaz (BSD-3 lisanslı vendor kodu değiştirilmez).
+ */
+import 'klaro/dist/klaro.css';
+---
+
+<script>
+  // UMD paketi — Vite interop'u nedeniyle default/namespace ikisi de olabilir.
+  import * as KlaroModule from 'klaro/dist/klaro-no-css.js';
+  import { buildKlaroConfig } from '../lib/consent-config';
+  import type { Locale } from '../lib/i18n';
+
+  type KlaroApi = {
+    setup: (config: object) => void;
+    show: (config?: object, modal?: boolean) => void;
+  };
+  const klaro = ((KlaroModule as { default?: KlaroApi }).default ?? KlaroModule) as KlaroApi;
+
+  // Consent dili sayfanın render dilinden gelir — tarayıcı dili KULLANILMAZ.
+  const lang = (document.documentElement.lang === 'en' ? 'en' : 'tr') as Locale;
+  const config = buildKlaroConfig(lang);
+
+  klaro.setup(config);
+
+  // Footer'daki "Çerez Tercihleri" bağlantısı modali yeniden açar.
+  for (const trigger of document.querySelectorAll('[data-cookie-prefs]')) {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      klaro.show(config, true);
+    });
+  }
+</script>
+
+<style is:global>
+  /* --- Klaro'yu Pixelon design system'e giydir (davranışa dokunma) --- */
+  .klaro {
+    --font-family: var(--font-body);
+    --border-radius: 12px;
+    --dark1: var(--bg);
+    --dark2: rgba(255, 255, 255, 0.08);
+    --dark3: rgba(255, 255, 255, 0.16);
+    --light1: var(--text);
+    --light2: var(--text-soft);
+    --light3: var(--text-muted);
+    --green1: var(--accent);
+    --green2: var(--accent);
+    --blue1: var(--accent);
+    --button-text-color: var(--bg);
+    --notice-max-width: 440px;
+  }
+
+  /* Bildirim paneli: sol-alt, koyu yüzey, ince çerçeve — dev modal değil. */
+  .klaro .cookie-notice:not(.cookie-modal-notice) {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    padding: 6px 4px;
+  }
+
+  .klaro .cookie-notice .cn-body p,
+  .klaro .cookie-modal .cm-modal p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .klaro .cookie-modal .cm-modal {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+  }
+
+  .klaro .cookie-modal .cm-modal .cm-header,
+  .klaro .cookie-modal .cm-modal .cm-footer {
+    border-color: var(--border);
+  }
+
+  .klaro .cookie-modal .cm-modal h1,
+  .klaro .cookie-notice h3 {
+    font: 600 18px var(--font-display);
+    color: var(--text);
+  }
+
+  .klaro .cookie-modal .cm-list-title {
+    font: 600 15px var(--font-display);
+    color: var(--text);
+  }
+
+  /* Butonlar: mevcut Pixelon buton dili — pill, lime primary, outline decline. */
+  .klaro .cm-btn {
+    border-radius: var(--radius-pill);
+    font: 600 13.5px var(--font-display);
+    padding: 11px 20px;
+    cursor: pointer;
+    transition:
+      background var(--t-base),
+      color var(--t-base),
+      border-color var(--t-base);
+  }
+
+  .klaro .cm-btn.cm-btn-success,
+  .klaro .cm-btn.cm-btn-accept-all {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .klaro .cm-btn.cm-btn-success:hover,
+  .klaro .cm-btn.cm-btn-accept-all:hover {
+    background: #fff;
+    color: var(--bg);
+  }
+
+  /* "Tümünü Reddet" açık ve erişilebilir — gizli gri link değil. */
+  .klaro .cm-btn.cm-btn-danger,
+  .klaro .cm-btn.cm-btn-decline {
+    background: transparent;
+    border: 1px solid var(--border-input);
+    color: var(--text);
+  }
+
+  .klaro .cm-btn.cm-btn-danger:hover,
+  .klaro .cm-btn.cm-btn-decline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .klaro .cookie-notice .cn-learn-more,
+  .klaro .cm-link {
+    color: var(--accent);
+    font: 600 13.5px var(--font-display);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  /* Anahtarlar (toggle) — lime aktif durum. */
+  .klaro .cm-list-input:checked + .cm-list-label .slider {
+    background-color: var(--accent);
+  }
+
+  .klaro .cm-list-input.required:checked + .cm-list-label .slider {
+    background-color: rgba(207, 255, 0, 0.45);
+    cursor: not-allowed;
+  }
+
+  .klaro .slider {
+    box-shadow: none;
+  }
+
+  /* Klavye odağı görünür kalmalı. */
+  .klaro .cm-btn:focus-visible,
+  .klaro .cn-learn-more:focus-visible,
+  .klaro .cm-list-input:focus-visible + .cm-list-label .slider {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 720px) {
+    .klaro .cookie-notice:not(.cookie-modal-notice) {
+      inset: auto 12px 12px 12px;
+      max-width: none;
+    }
+  }
+</style>
