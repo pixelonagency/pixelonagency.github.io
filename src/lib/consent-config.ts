@@ -65,11 +65,11 @@ export function buildKlaroConfig(lang: Locale): KlaroConfigShape {
     version: 1,
     elementID: 'klaro',
     /*
-     * TEST MODU (Aşama 1): banner otomatik gösterilmez; yalnızca URL'ye
-     * `#klaro-testing` eklenince açılır. Üretim onayından sonra bu bayrak
-     * kaldırılarak banner tüm ziyaretçilere açılacak.
+     * Canlı mod: banner ilk ziyarette tüm ziyaretçilere gösterilir (sahip onayı
+     * 2026-08-19). Test aşamasına dönmek gerekirse `testing: true` yapılır —
+     * o modda banner yalnızca URL'ye `#klaro-testing` eklenince açılır.
      */
-    testing: true,
+    testing: false,
     storageMethod: 'cookie',
     cookieName: 'pixelon-consent',
     cookieExpiresAfterDays: 365,

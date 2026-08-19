@@ -544,7 +544,9 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
     ]) {
       expect(bundle.includes(copy), `${copy} paket içinde yok`).toBe(true);
     }
-    expect(bundle).toContain('testing:!0');
+    // Canlı mod: banner tüm ziyaretçilere açık — test modu bayrağı pakette kapalı olmalı.
+    expect(bundle).toContain('testing:!1');
+    expect(bundle).not.toContain('testing:!0');
   });
 
   test('no analytics or marketing trackers ship beyond GTM (GA4/Meta/Clarity/Ads absent)', () => {
