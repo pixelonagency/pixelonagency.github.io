@@ -293,36 +293,6 @@ sections:
         href: /projelerimiz
         variant: outline
 
-  # 14 — MÜŞTERİ YORUMLARI (referansta 3 yer tutucu kart)
-  # Kart üstündeki dekoratif 5 yıldız rozeti (★★★★★) bilinçli olarak içeriğe alınmadı.
-  - type: cards
-    background: light
-    eyebrow: Birlikte Ürettiklerimiz
-    heading: Müşterilerimiz Pixelon İçin Ne Diyor?
-    lead: |-
-      Başarımızı yalnızca tamamladığımız projelerle değil, kurduğumuz uzun soluklu iş birlikleriyle ölçüyoruz.
-    columns: 3
-    items:
-      - eyebrow: Web Tasarım
-        title: Ad Soyad
-        rating: 5
-        description: |-
-          "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
-          Pozisyon · Marka
-      - eyebrow: Sağlık Turizmi
-        title: Ad Soyad
-        rating: 5
-        description: |-
-          "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
-          Pozisyon · Marka
-      - eyebrow: Dijital Reklam
-        title: Ad Soyad
-        rating: 5
-        description: |-
-          "Yayın izni alınmış gerçek müşteri yorumu bu alana eklenecek."
-          Pozisyon · Marka
-
-  # 15 — BLOG (posts koleksiyonundan; referansta 3 yazı)
   # ctaLabel/ctaHref, PostsSection'da ızgaranın altındaki bölüm butonudur (ok işareti
   # bileşen tarafından eklenir); kart içi "Yazıyı Okuyun →" bağlantısı kartın kendisidir.
   - type: posts

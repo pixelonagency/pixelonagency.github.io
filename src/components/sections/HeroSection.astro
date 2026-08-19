@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import type { PageSection } from '../../content/page-schema';
 import { parseHighlights } from '../../lib/highlight';
+import { breadcrumbSchema, toJsonLd } from '../../lib/schema';
 import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
 import { t } from '../../lib/ui';
 import CtaButton from '../CtaButton.astro';
@@ -26,6 +27,20 @@ const heroImage = section.image as ImageMetadata | undefined;
 const heroScale =
   section.ctas.length === 0 ? 'compact' : section.breadcrumb.length > 0 || section.ctas.length < 3 ? 'sub' : 'full';
 const isSubpage = heroScale !== 'full';
+
+/* Görünen breadcrumb ile birebir aynı BreadcrumbList JSON-LD'si. */
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const breadcrumbJsonLd =
+  section.breadcrumb.length > 0
+    ? toJsonLd([
+        breadcrumbSchema(
+          section.breadcrumb.map((crumb) => ({
+            label: crumb.label,
+            url: crumb.href ? new URL(crumb.href.replace(/\/?$/, '/'), site).toString() : undefined,
+          })),
+        ),
+      ])
+    : null;
 
 /*
  * Referans: "Strateji ✦ Yaratıcılık ✦ …" biçimindeki slogan statik metin değil,
@@ -62,6 +77,7 @@ const tickerItems = section.tagline?.includes('✦')
         </nav>
       )
     }
+    {breadcrumbJsonLd && <script is:inline type="application/ld+json" set:html={breadcrumbJsonLd} />}
 
     <div class:list={['hero__grid', heroImage && 'hero__grid--media']}>
       <div>
@@ -147,7 +163,15 @@ const tickerItems = section.tagline?.includes('✦')
       {
         heroImage && (
           <div class="hero__media" data-reveal>
-            <Image src={heroImage} alt={section.imageAlt ?? ''} class="hero__image" width={1000} densities={[1, 2]} />
+            <Image
+              src={heroImage}
+              alt={section.imageAlt ?? ''}
+              class="hero__image"
+              width={1000}
+              densities={[1, 2]}
+              loading="eager"
+              fetchpriority="high"
+            />
           </div>
         )
       }

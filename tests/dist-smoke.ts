@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, test } from 'bun:test';
-import { existsSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 /**
@@ -314,5 +314,138 @@ describe('interactive behaviour is shipped', () => {
     const items = (source.match(/class="logos__item"/g) ?? []).length;
     // 10 referans × 2 kopya
     expect(items).toBe(20);
+  });
+});
+
+describe('SEO regression suite', () => {
+  /** dist altındaki tüm gerçek sayfalar (admin hariç — noindex CMS paneli). */
+  const allPages = (): { url: string; body: string }[] => {
+    const out: { url: string; body: string }[] = [];
+    const walk = (dir: string, prefix: string) => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        if (entry.isDirectory()) {
+          walk(join(dir, entry.name), `${prefix}${entry.name}/`);
+        } else if (entry.name === 'index.html' && !prefix.startsWith('admin/')) {
+          out.push({ url: `/${prefix}`, body: readFileSync(join(dir, entry.name), 'utf-8') });
+        }
+      }
+    };
+    walk(DIST, '');
+    return out;
+  };
+
+  const pages = allPages();
+
+  test('every page has title, description, canonical, single H1 and lang', () => {
+    const offenders: string[] = [];
+    for (const { url, body } of pages) {
+      const head = body.slice(0, body.indexOf('</head>'));
+      if (!/<title>[^<]{3,}<\/title>/.test(head)) offenders.push(`${url}: title`);
+      if (!/<meta name="description" content="[^"]{20,}"/.test(head)) offenders.push(`${url}: description`);
+      if (!/rel="canonical" href="https:\/\/pixelon\.com\.tr\//.test(head)) offenders.push(`${url}: canonical`);
+      if (!/<html lang="(tr|en)">/.test(body)) offenders.push(`${url}: lang`);
+      if ((body.match(/<h1[\s>]/g) ?? []).length !== 1) offenders.push(`${url}: h1`);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('titles are unique across the site', () => {
+    const seen = new Map<string, string>();
+    const dupes: string[] = [];
+    for (const { url, body } of pages) {
+      const title = body.match(/<title>([^<]*)<\/title>/)?.[1] ?? '';
+      if (seen.has(title)) dupes.push(`${title} → ${seen.get(title)} & ${url}`);
+      seen.set(title, url);
+    }
+    expect(dupes).toEqual([]);
+  });
+
+  test('canonical is self-referential and matches the trailing-slash URL form', () => {
+    const offenders: string[] = [];
+    for (const { url, body } of pages) {
+      const canonical = body.match(/rel="canonical" href="([^"]*)"/)?.[1];
+      if (canonical !== `https://pixelon.com.tr${url}`) offenders.push(`${url} → ${canonical}`);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('every page ships a parseable JSON-LD graph with the Organization entity', () => {
+    const offenders: string[] = [];
+    for (const { url, body } of pages) {
+      const blocks = [...body.matchAll(/<script[^>]*application\/ld\+json[^>]*>([\s\S]*?)<\/script>/g)];
+      if (blocks.length === 0) {
+        offenders.push(`${url}: no JSON-LD`);
+        continue;
+      }
+      try {
+        const graphs = blocks.map(([, raw]) => JSON.parse(raw ?? ''));
+        const types = graphs.flatMap((graph) => graph['@graph']?.map((node: { '@type': string }) => node['@type']));
+        if (!types.includes('Organization')) offenders.push(`${url}: no Organization`);
+        if (!types.includes('WebPage')) offenders.push(`${url}: no WebPage`);
+      } catch {
+        offenders.push(`${url}: JSON parse error`);
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('page-type schemas are present (Service on services, BlogPosting on articles)', () => {
+    const service = readFileSync(join(DIST, 'hizmetlerimiz', 'web-tasarim-ve-yazilim', 'index.html'), 'utf-8');
+    expect(service).toContain('"@type":"Service"');
+    expect(service).toContain('"@type":"BreadcrumbList"');
+
+    const posts = readdirSync(join(DIST, 'blog'), { withFileTypes: true }).filter((entry) => entry.isDirectory());
+    for (const post of posts) {
+      const body = readFileSync(join(DIST, 'blog', post.name, 'index.html'), 'utf-8');
+      expect(body).toContain('"@type":"BlogPosting"');
+    }
+  });
+
+  test('hreflang pairs are reciprocal for the localized route table', () => {
+    const offenders: string[] = [];
+    for (const { url, body } of pages) {
+      const head = body.slice(0, body.indexOf('</head>'));
+      const links = [...head.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)];
+      if (links.length === 0) continue;
+      for (const [, , target] of links) {
+        const targetPath = target.replace('https://pixelon.com.tr', '');
+        const file = join(DIST, targetPath.replace(/^\//, ''), 'index.html');
+        if (!existsSync(file)) offenders.push(`${url} → ${target} (yok)`);
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('sitemap URLs all resolve to built pages', () => {
+    const xml = readFileSync(join(DIST, 'sitemap-0.xml'), 'utf-8');
+    const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc as string);
+    expect(locs.length).toBeGreaterThan(30);
+    const missing = locs.filter((loc) => {
+      const path = loc.replace('https://pixelon.com.tr', '').replace(/^\//, '');
+      return !existsSync(join(DIST, path, 'index.html'));
+    });
+    expect(missing).toEqual([]);
+    expect(xml).not.toContain('/admin');
+  });
+
+  test('og:image is absolute on every page', () => {
+    const offenders = pages.filter(
+      ({ body }) => !/property="og:image" content="https:\/\/pixelon\.com\.tr\//.test(body),
+    );
+    expect(offenders.map((page) => page.url)).toEqual([]);
+  });
+
+  test('stats counters render their real values in source HTML', () => {
+    const home = readFileSync(join(DIST, 'index.html'), 'utf-8');
+    const counters = [...home.matchAll(/data-counter-to="(\d+)"[^>]*>\s*(\d+)\s*</g)];
+    expect(counters.length).toBeGreaterThan(0);
+    for (const [, target, rendered] of counters) expect(rendered).toBe(target);
+  });
+
+  test('no placeholder testimonials ship to production', () => {
+    for (const { url, body } of pages) {
+      expect(body.includes('Yayın izni alınmış gerçek müşteri yorumu'), `${url} placeholder içeriyor`).toBe(false);
+      expect(body.includes('A real client testimonial'), `${url} placeholder içeriyor`).toBe(false);
+    }
   });
 });

@@ -1,9 +1,12 @@
 ---
 import { getEntry } from 'astro:content';
+import ogDefaultImage from '../assets/images/pixelon-ekip-pixel-art.webp';
+import logoImage from '../assets/logo/pixelon-logo.webp';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import { canonicalUrl, truncateDescription } from '../lib/seo';
+import { organizationSchema, toJsonLd, webPageSchema, webSiteSchema } from '../lib/schema';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/ui';
 import '../styles/global.css';
@@ -19,6 +22,10 @@ interface Props {
   whatsappMessage?: string;
   ogType?: 'website' | 'article';
   noindex?: boolean;
+  /** Sayfaya özel paylaşım görseli (kök-göreli asset yolu); yoksa marka görseli. */
+  ogImage?: string;
+  /** Sayfa tipine özel ek JSON-LD düğümleri (Service, BlogPosting…) — ana graph'a eklenir. */
+  extraSchema?: Record<string, unknown>[];
 }
 
 const {
@@ -29,6 +36,8 @@ const {
   noindex = false,
   locale = DEFAULT_LOCALE,
   alternates = {},
+  ogImage,
+  extraSchema = [],
 } = Astro.props;
 
 // Ayarlar da dile göre; çevrilmemişse varsayılan dile düşer.
@@ -40,6 +49,26 @@ const settings = settingsEntry.data;
 const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
 const canonical = canonicalUrl(Astro.url.pathname, site);
 const metaDescription = truncateDescription(description, 160);
+
+const ogImageUrl = new URL(ogImage ?? ogDefaultImage.src, site).toString();
+
+/*
+ * Site geneli entity graph: Organization + WebSite + WebPage her sayfada;
+ * sayfa tipine özel düğümler (Service, BlogPosting, BreadcrumbList) `extraSchema`
+ * ile eklenir. Tüm bilgiler görünen içerik ve site ayarlarından gelir.
+ */
+const jsonLd = toJsonLd([
+  organizationSchema({
+    site,
+    logoUrl: new URL(logoImage.src, site).toString(),
+    email: settings.email,
+    phone: settings.phone,
+    socialUrls: settings.social.map((item: { url: string }) => item.url),
+  }),
+  webSiteSchema(site),
+  webPageSchema({ url: canonical, title, description: metaDescription, locale }),
+  ...extraSchema,
+]);
 ---
 
 <!doctype html>
@@ -59,7 +88,11 @@ const metaDescription = truncateDescription(description, 160);
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={locale === 'tr' ? 'tr_TR' : 'en_US'} />
     <meta property="og:site_name" content="Pixelon" />
+    <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script is:inline type="application/ld+json" set:html={jsonLd} />
 
     <meta name="theme-color" content="#0A0A0A" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -78,8 +111,12 @@ const metaDescription = truncateDescription(description, 160);
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {
+      /* Kullanılmayan ağırlıklar yüklenmez: SG 400 ve Archivo 500 sitede hiç kullanılmıyor;
+        Archivo 600 makale içindeki <strong> için kalır. */
+    }
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Archivo:wght@400;600&display=swap"
       rel="stylesheet"
     />
 

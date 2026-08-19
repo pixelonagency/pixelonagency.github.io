@@ -293,35 +293,6 @@ sections:
         href: /en/projects
         variant: outline
 
-  # 14 — CLIENT TESTIMONIALS (3 placeholder cards in the reference)
-  # The decorative five-star badge above the card (★★★★★) was deliberately left out of the content.
-  - type: cards
-    background: light
-    eyebrow: What We Built Together
-    heading: What Do Our Clients Say About Pixelon?
-    lead: |-
-      We measure our success not only by the projects we complete, but by the long-lasting partnerships we build.
-    columns: 3
-    items:
-      - eyebrow: Web Design
-        title: Full Name
-        rating: 5
-        description: |-
-          "A real client testimonial, published with permission, will be added here."
-          Position · Brand
-      - eyebrow: Health Tourism
-        title: Full Name
-        rating: 5
-        description: |-
-          "A real client testimonial, published with permission, will be added here."
-          Position · Brand
-      - eyebrow: Digital Advertising
-        title: Full Name
-        rating: 5
-        description: |-
-          "A real client testimonial, published with permission, will be added here."
-          Position · Brand
-
   # 15 — BLOG (from the posts collection; 3 posts in the reference)
   # ctaLabel/ctaHref is the section button below the grid in PostsSection (the arrow is added
   # by the component); the in-card "Read the Article →" link is the card itself.

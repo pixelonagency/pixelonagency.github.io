@@ -4,6 +4,8 @@ import { getEntry } from 'astro:content';
 import SectionRenderer from './SectionRenderer.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import type { Locale } from '../lib/i18n';
+import { canonicalUrl } from '../lib/seo';
+import { serviceSchema } from '../lib/schema';
 import { serviceToSections } from '../lib/service-sections';
 import { buildWhatsAppUrl } from '../lib/whatsapp';
 
@@ -23,6 +25,16 @@ if (!settings) throw new Error('settings/<locale>/site.yml bulunamadı.');
 
 const whatsappUrl = buildWhatsAppUrl(settings.data.whatsapp.number, hero.whatsappMessage);
 const sections = serviceToSections(service.data, whatsappUrl, locale);
+
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const extraSchema = [
+  serviceSchema({
+    name: service.data.title,
+    description: seo.description,
+    url: canonicalUrl(Astro.url.pathname, site),
+    locale,
+  }),
+];
 ---
 
 <BaseLayout
@@ -31,6 +43,7 @@ const sections = serviceToSections(service.data, whatsappUrl, locale);
   whatsappMessage={hero.whatsappMessage}
   {locale}
   {alternates}
+  {extraSchema}
 >
   <SectionRenderer {sections} {locale} />
 </BaseLayout>

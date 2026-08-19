@@ -7,6 +7,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaButton from './CtaButton.astro';
 import { formatDate, isoDate, readingTime } from '../lib/format';
 import { localizedPath, type Locale } from '../lib/i18n';
+import { canonicalUrl } from '../lib/seo';
+import { blogPostingSchema, breadcrumbSchema } from '../lib/schema';
 import { t } from '../lib/ui';
 
 interface Props {
@@ -23,6 +25,25 @@ const minutes = readingTime(post.body ?? '');
 
 const coverImage: ImageMetadata | undefined =
   cover && typeof cover === 'object' && 'src' in cover ? (cover as ImageMetadata) : undefined;
+
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const pageUrl = canonicalUrl(Astro.url.pathname, site);
+const extraSchema = [
+  blogPostingSchema({
+    headline: title,
+    description: excerpt,
+    url: pageUrl,
+    datePublished: isoDate(date),
+    author,
+    locale,
+    imageUrl: coverImage ? new URL(coverImage.src, site).toString() : undefined,
+  }),
+  breadcrumbSchema([
+    { label: t('nav.home', locale), url: new URL(localizedPath('home', locale), site).toString() },
+    { label: t('nav.blog', locale), url: new URL(`${localizedPath('blog', locale)}/`, site).toString() },
+    { label: title },
+  ]),
+];
 ---
 
 <BaseLayout
@@ -31,6 +52,8 @@ const coverImage: ImageMetadata | undefined =
   ogType="article"
   {locale}
   {alternates}
+  ogImage={coverImage?.src}
+  {extraSchema}
 >
   <article class="post">
     {/* Referans: başlık bloğu koyu, makale gövdesi BEYAZ banttır. */}

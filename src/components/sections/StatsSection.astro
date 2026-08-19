@@ -19,10 +19,12 @@ const { section } = Astro.props;
     {
       section.items.map((item, index) => (
         <div class="stats__item" data-reveal data-reveal-index={index}>
+          {/* Gerçek değer HTML'de basılır (SEO/GEO: tarayıcılar JS olmadan okur);
+              sayaç animasyonu görünürken 0'dan yeniden sayar. */}
           <dt class="stats__value">
             {item.prefix}
             <span data-counter data-counter-to={item.value}>
-              0
+              {item.value}
             </span>
             {item.suffix}
           </dt>
