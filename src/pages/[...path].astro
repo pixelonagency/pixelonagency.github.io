@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import CmsPage from '../components/CmsPage.astro';
+import LegalPage from '../components/LegalPage.astro';
 import PostDetail from '../components/PostDetail.astro';
 import ServiceDetail from '../components/ServiceDetail.astro';
 import {
@@ -38,19 +39,23 @@ export const getStaticPaths = (async () => {
     return { locale: head as Locale, key: rest.join('/') };
   };
 
-  const [services, posts] = await Promise.all([
+  const [services, posts, legal] = await Promise.all([
     getCollection('services'),
     getCollection('posts', ({ data }) => data.status === 'published'),
+    getCollection('legal'),
   ]);
+
+  /* Yasal sayfalar `pages` koleksiyonundan değil `legal` koleksiyonundan gelir. */
+  const LEGAL_KEYS = new Set(['kvkk', 'privacy', 'cookies', 'terms']);
 
   const paths: {
     params: { path: string | undefined };
     props: Record<string, unknown>;
   }[] = [];
 
-  // --- CMS sayfaları (her dil × her sayfa anahtarı) ---
+  // --- CMS sayfaları (her dil × her sayfa anahtarı; yasal anahtarlar hariç) ---
   for (const locale of LOCALES) {
-    for (const page of Object.keys(ROUTE_SLUGS) as PageKey[]) {
+    for (const page of (Object.keys(ROUTE_SLUGS) as PageKey[]).filter((key) => !LEGAL_KEYS.has(key))) {
       paths.push({
         params: { path: toParam(localizedPath(page, locale)) },
         props: { kind: 'page', pageKey: page, locale, alternates: alternatesFor(page) },
@@ -94,16 +99,27 @@ export const getStaticPaths = (async () => {
     });
   }
 
+  // --- Yasal metinler (`legal` koleksiyonu; dosya adı = ROUTE_SLUGS anahtarı) ---
+  for (const entry of legal) {
+    const { locale, key } = splitId(entry.id);
+    if (!LEGAL_KEYS.has(key)) continue;
+    paths.push({
+      params: { path: toParam(localizedPath(key as PageKey, locale)) },
+      props: { kind: 'legal', legal: entry, locale, alternates: alternatesFor(key as PageKey) },
+    });
+  }
+
   return paths;
 }) satisfies GetStaticPaths;
 
 const props = Astro.props as {
-  kind: 'page' | 'service' | 'post';
+  kind: 'page' | 'service' | 'post' | 'legal';
   locale: Locale;
   alternates: Partial<Record<Locale, string>>;
   pageKey?: PageKey;
   service?: Parameters<typeof ServiceDetail>[0]['service'];
   post?: Parameters<typeof PostDetail>[0]['post'];
+  legal?: Parameters<typeof LegalPage>[0]['entry'];
 };
 
 const { kind, locale = DEFAULT_LOCALE, alternates } = props;
@@ -112,3 +128,4 @@ const { kind, locale = DEFAULT_LOCALE, alternates } = props;
 {kind === 'page' && props.pageKey && <CmsPage pageKey={props.pageKey} {locale} {alternates} />}
 {kind === 'service' && props.service && <ServiceDetail service={props.service} {locale} {alternates} />}
 {kind === 'post' && props.post && <PostDetail post={props.post} {locale} {alternates} />}
+{kind === 'legal' && props.legal && <LegalPage entry={props.legal} {locale} {alternates} />}

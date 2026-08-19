@@ -64,3 +64,16 @@ Kod tarafında çözülemeyen, sahibinden bilgi/karar/erişim gerektiren maddele
 **WHY:** Bing/Copilot görünürlüğü. IndexNow, GH Pages statik yapıya eklenebilir ama anahtar üretimi/doğrulaması sahibinde.
 **WHERE IT WILL BE USED:** Deploy akışı (yalnız değişen URL'ler push edilir).
 **PRIORITY:** P3
+
+---
+
+## Yasal Sayfalar (2026-08-19)
+
+- Yasal sayfalar FINAL sahip verileriyle güncellendi: veri sorumlusu Mehmet Fatih Dayan,
+  adres Sahrayıcedit Mah. Şafak Sok. No:1, Kadıköy / İstanbul, kanal info@pixelon.com.tr.
+  Saklama politikası sahip onaylı (müşteri ilişkisine dönüşmeyen talepler → en geç 2 yıl).
+- **Yapılacak:** Metinleri hukukçuya kontrol ettir — özellikle hukuki sebepler (form: m.5/2-c,
+  güvenlik/çerez: m.5/2-f) ve yetkili mahkeme yazılmaması. "Türkçe metin esastır" hükmü
+  kaldırıldı; istenirse hukukçu onayıyla geri eklenir.
+- Yeni bir izleme aracı (GA4/Meta/Clarity/Ads) eklenirse Çerez Politikası + Klaro yapılandırması
+  - PRIVACY_TRACKING_INVENTORY.md aynı committe güncellenmeli (dist-smoke testleri bunu zorlar).

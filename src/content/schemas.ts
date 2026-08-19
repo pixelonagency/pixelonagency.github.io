@@ -236,6 +236,20 @@ export function makeReferenceSchema(image: ImageResolver = defaultImage) {
 
 // --- team -----------------------------------------------------------------
 
+// --- legal ---------------------------------------------------------------
+
+/**
+ * Yasal metin sayfaları (KVKK, gizlilik, çerez, koşullar). `updated` yalnız içerik
+ * gerçekten değiştiğinde elle güncellenir — build tarihi DEĞİLDİR.
+ */
+export const legalSchema = z.object({
+  title: z.string().min(1),
+  seo: z.object({ title: z.string().min(1), description: z.string().min(1) }),
+  /** Başlık altındaki kısa giriş cümlesi. */
+  intro: opt(z.string()),
+  updated: z.coerce.date(),
+});
+
 export function makeTeamSchema(image: ImageResolver = defaultImage) {
   return z.object({
     name: nonEmpty,

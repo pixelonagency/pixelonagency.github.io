@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, test } from 'bun:test';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, sep } from 'node:path';
 
 /**
  * Build sonrası duman testleri — üretilen `dist/` çıktısı üzerinde çalışır.
@@ -547,9 +547,224 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
     expect(bundle).toContain('testing:!0');
   });
 
+  test('no analytics or marketing trackers ship beyond GTM (GA4/Meta/Clarity/Ads absent)', () => {
+    const offenders: string[] = [];
+    for (const file of allHtmlFiles(DIST)) {
+      const body = readFileSync(file, 'utf-8');
+      for (const loader of [
+        'googletagmanager.com/gtag/js',
+        'google-analytics.com/analytics.js',
+        'connect.facebook.net',
+        'clarity.ms',
+        'googleadservices.com',
+        'googlesyndication.com',
+      ]) {
+        if (body.includes(loader)) offenders.push(`${file}: ${loader}`);
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
   test('the footer ships a cookie-preferences trigger on TR and EN pages', () => {
     for (const body of [home(), enHome()]) expect(body).toContain('data-cookie-prefs');
     expect(home()).toContain('Çerez Tercihleri');
     expect(enHome()).toContain('Cookie Preferences');
+  });
+});
+
+describe('legal pages', () => {
+  const LEGAL_ROUTES = [
+    { url: '/kvkk-aydinlatma-metni/', lang: 'tr', h1: 'KVKK Aydınlatma Metni' },
+    { url: '/gizlilik-politikasi/', lang: 'tr', h1: 'Gizlilik Politikası' },
+    { url: '/cerez-politikasi/', lang: 'tr', h1: 'Çerez Politikası' },
+    { url: '/kullanim-kosullari/', lang: 'tr', h1: 'Kullanım Koşulları' },
+    { url: '/en/personal-data-processing-notice/', lang: 'en', h1: 'Personal Data Processing Notice' },
+    { url: '/en/privacy-policy/', lang: 'en', h1: 'Privacy Policy' },
+    { url: '/en/cookie-policy/', lang: 'en', h1: 'Cookie Policy' },
+    { url: '/en/terms-of-use/', lang: 'en', h1: 'Terms of Use' },
+  ] as const;
+
+  const read = (url: string): string => readFileSync(join(DIST, url.replace(/^\//, ''), 'index.html'), 'utf-8');
+
+  test('all eight legal routes are built with correct lang, H1, canonical and hreflang', () => {
+    for (const { url, lang, h1 } of LEGAL_ROUTES) {
+      const body = read(url);
+      expect(body.includes(`<html lang="${lang}"`), `${url} lang=${lang} değil`).toBe(true);
+      expect(body.includes(`>${h1}</h1>`), `${url} H1 "${h1}" içermiyor`).toBe(true);
+      expect(body).toContain(`<link rel="canonical" href="https://pixelon.com.tr${url}"`);
+      expect(body).toContain('hreflang="tr"');
+      expect(body).toContain('hreflang="en"');
+      expect(body).toContain('hreflang="x-default"');
+      expect(/<meta name="description" content="[^"]{40,}"/.test(body), `${url} meta description eksik/kısa`).toBe(
+        true,
+      );
+    }
+  });
+
+  test('legal pages carry the real controller facts and no invented registry numbers', () => {
+    const CONTROLLER = 'Mehmet Fatih Dayan';
+    const ADDRESS = 'Sahrayıcedit Mah. Şafak Sok. No:1, Kadıköy / İstanbul';
+    for (const { url } of LEGAL_ROUTES) {
+      const body = read(url);
+      expect(body).toContain('info@pixelon.com.tr');
+      // Sahip verisi gelmeden önceki geçici ad üretimde kalamaz.
+      expect(body.includes('Pixelon Agency'), `${url} eski geçici veri sorumlusu adını içeriyor`).toBe(false);
+      // MERSİS/VERBİS/KEP numarası uydurulmadığından bu etiketler hiç geçmemeli.
+      for (const banned of ['MERSİS', 'VERBİS', 'KEP adresi']) {
+        expect(body.includes(banned), `${url} doğrulanmamış kayıt bilgisi (${banned}) içeriyor`).toBe(false);
+      }
+    }
+    // Veri sorumlusunu adıyla anan sayfalar gerçek kimliği ve adresi taşımalı (TR/EN paritesi).
+    for (const url of [
+      '/kvkk-aydinlatma-metni/',
+      '/gizlilik-politikasi/',
+      '/kullanim-kosullari/',
+      '/en/personal-data-processing-notice/',
+      '/en/privacy-policy/',
+      '/en/terms-of-use/',
+    ]) {
+      expect(read(url).includes(CONTROLLER), `${url} veri sorumlusunun gerçek adını içermiyor`).toBe(true);
+    }
+    for (const url of ['/kvkk-aydinlatma-metni/', '/en/personal-data-processing-notice/']) {
+      expect(read(url).includes(ADDRESS), `${url} gerçek adresi içermiyor`).toBe(true);
+    }
+  });
+
+  test('footer legal links on TR and EN pages resolve to built legal pages', () => {
+    const cases: Array<[string, string[]]> = [
+      [
+        readFileSync(join(DIST, 'index.html'), 'utf-8'),
+        ['/kvkk-aydinlatma-metni/', '/gizlilik-politikasi/', '/cerez-politikasi/', '/kullanim-kosullari/'],
+      ],
+      [
+        readFileSync(join(DIST, 'en', 'index.html'), 'utf-8'),
+        ['/en/personal-data-processing-notice/', '/en/privacy-policy/', '/en/cookie-policy/', '/en/terms-of-use/'],
+      ],
+    ];
+    for (const [body, hrefs] of cases) {
+      for (const href of hrefs) {
+        // Site içi bağlantılar eğik çizgisiz üretilir; canonical'lar eğik çizgilidir.
+        expect(body.includes(`href="${href.replace(/\/$/, '')}"`), `footer ${href} bağlantısı yok`).toBe(true);
+        expect(existsSync(join(DIST, href.replace(/^\//, ''), 'index.html')), `${href} build edilmemiş`).toBe(true);
+      }
+    }
+  });
+
+  test('the Klaro bundle links to the cookie policy pages and both targets exist', () => {
+    const assets = readdirSync(join(DIST, 'assets'));
+    const klaroAsset = assets.find((name) => {
+      if (!name.endsWith('.js')) return false;
+      return readFileSync(join(DIST, 'assets', name), 'utf-8').includes('pixelon-consent');
+    });
+    expect(klaroAsset).toBeDefined();
+    const bundle = readFileSync(join(DIST, 'assets', klaroAsset ?? ''), 'utf-8');
+    for (const target of ['/cerez-politikasi', '/en/cookie-policy']) {
+      expect(bundle.includes(target), `Klaro paketi ${target} bağlantısını içermiyor`).toBe(true);
+      expect(existsSync(join(DIST, target.replace(/^\//, ''), 'index.html')), `${target} build edilmemiş`).toBe(true);
+    }
+  });
+
+  test('cookie policy pages ship a working manage-preferences trigger', () => {
+    for (const url of ['/cerez-politikasi/', '/en/cookie-policy/']) {
+      expect(read(url).includes('data-cookie-prefs'), `${url} tercih düğmesi içermiyor`).toBe(true);
+    }
+  });
+
+  test('form consent labels say "okudum" (not "kabul ediyorum") and link to the KVKK notice', () => {
+    const contact = readFileSync(join(DIST, 'iletisim', 'index.html'), 'utf-8');
+    const enContact = readFileSync(join(DIST, 'en', 'contact', 'index.html'), 'utf-8');
+    expect(contact).toContain('href="/kvkk-aydinlatma-metni"');
+    expect(contact.includes('okudum ve kabul ediyorum')).toBe(false);
+    expect(enContact).toContain('href="/en/personal-data-processing-notice"');
+  });
+
+  test('legal pages contain no provisional labels, wrong legal-basis pairing or unconfirmed clauses', () => {
+    const offenders: string[] = [];
+    for (const { url } of LEGAL_ROUTES) {
+      const body = read(url);
+      // "geçici" etiketi üretime sızmamalı (sahip bilgileri kesinleşmeden bu ibare metne yazılmaz).
+      if (/geçici/i.test(body)) offenders.push(`${url}: "geçici" içeriyor`);
+      // m.5/2-e "meşru menfaat" DEĞİLDİR (meşru menfaat = m.5/2-f) — yanlış eşleştirme yasak.
+      if (body.includes('5/2-e') && /meşru menfaat|legitimate interest/i.test(body)) {
+        offenders.push(`${url}: 5/2-e ile meşru menfaat aynı sayfada eşleştirilmiş`);
+      }
+      // Dil önceliği hükmü sahip/hukukçu onayı olmadan yer alamaz.
+      for (const clause of [
+        'Türkçe metin esas',
+        'Türkçe versiyon geçerli',
+        'Turkish text prevails',
+        'Turkish version prevails',
+      ]) {
+        if (body.includes(clause)) offenders.push(`${url}: onaysız dil önceliği hükmü ("${clause}")`);
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('sitemap matches the actual public build inventory both ways, including all legal pages', () => {
+    const xml = readFileSync(join(DIST, 'sitemap-0.xml'), 'utf-8');
+    const sitemapUrls = new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, loc]) => loc as string));
+
+    /*
+     * Public/indexlenebilir envanter build çıktısından dinamik türetilir: /admin/ (CMS kabuğu),
+     * 404.html ve noindex işaretli sayfalar dışında kalan her HTML bir sitemap URL'sine
+     * karşılık gelmelidir — ve tersi. Böylece yeni içerik eklendiğinde test kendini uyarlar;
+     * yalnızca gerçek bir kapsam farkı (eksik/fazla URL) kırar.
+     */
+    const builtUrls = new Set(
+      allHtmlFiles(DIST)
+        .filter((file) => !file.includes(`${sep}admin${sep}`) && !file.endsWith(`${sep}404.html`))
+        .filter((file) => !/<meta name="robots" content="[^"]*noindex/.test(readFileSync(file, 'utf-8')))
+        .map((file) => {
+          const route = file.slice(DIST.length, -'index.html'.length).split(sep).join('/');
+          return `https://pixelon.com.tr${route}`;
+        }),
+    );
+
+    const missingFromSitemap = [...builtUrls].filter((url) => !sitemapUrls.has(url));
+    const missingFromBuild = [...sitemapUrls].filter((url) => !builtUrls.has(url));
+    expect(missingFromSitemap).toEqual([]);
+    expect(missingFromBuild).toEqual([]);
+
+    // Yasal sayfalar ayrıca ve açıkça: 8/8 sitemap'te olmalı.
+    for (const { url } of LEGAL_ROUTES) expect(sitemapUrls.has(`https://pixelon.com.tr${url}`)).toBe(true);
+  });
+
+  test('no legal placeholder text leaks into any public page', () => {
+    const offenders: string[] = [];
+    for (const file of allHtmlFiles(DIST)) {
+      if (file.includes(`${sep}admin${sep}`)) continue;
+      const body = readFileSync(file, 'utf-8');
+      for (const pattern of [/\bTODO\b/, /COMPANY NAME/, /ADDRESS HERE/, /\bXXXX*\b/]) {
+        if (pattern.test(body)) offenders.push(`${file}: ${String(pattern)}`);
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+});
+
+describe('language switcher', () => {
+  test('links to the current page counterpart in the other language, not the homepage', () => {
+    const offenders: string[] = [];
+    for (const file of allHtmlFiles(DIST)) {
+      if (file.includes(`${sep}admin${sep}`) || file.endsWith(`${sep}404.html`)) continue;
+      const body = readFileSync(file, 'utf-8');
+      const isTr = body.includes('<html lang="tr"');
+      const otherLang = isTr ? 'en' : 'tr';
+      const switcher = body.match(
+        new RegExp(`<a class="lang-switch__item"[^>]*href="([^"]+)"[^>]*hreflang="${otherLang}"`),
+      );
+      if (!switcher) continue;
+      const alternate = body.match(
+        new RegExp(`<link rel="alternate" hreflang="${otherLang}" href="https://pixelon\\.com\\.tr([^"]+)"`),
+      );
+      // hreflang karşılığı yoksa (çevirisi olmayan sayfa) ana sayfaya düşmek doğru davranış.
+      const expected = alternate ? alternate[1] : otherLang === 'en' ? '/en/' : '/';
+      const normalize = (path: string): string => (path.endsWith('/') ? path : `${path}/`);
+      if (normalize(switcher[1] ?? '') !== normalize(expected)) {
+        offenders.push(`${file}: switcher ${switcher[1]} ≠ alternate ${expected}`);
+      }
+    }
+    expect(offenders).toEqual([]);
   });
 });

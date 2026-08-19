@@ -822,6 +822,44 @@ collections:
       - { label: İçerik, name: body, widget: markdown, required: false, i18n: true }
 
   # --- Blog ---------------------------------------------------------------
+  # --- Yasal Metinler -----------------------------------------------------
+  # Dosya adları TR ve EN'de AYNIDIR (kvkk.md, privacy.md, cookies.md, terms.md);
+  # URL slug'ları src/lib/i18n.ts > ROUTE_SLUGS içinde dile göre çevrilir. Bu yüzden
+  # `| localize` KULLANILMAZ (bkz. pages koleksiyonundaki aynı not).
+  #
+  # DİKKAT — hukuki içerik: bu sayfalardaki şirket bilgileri, saklama süreleri ve
+  # çerez tablosu gerçek duruma karşılık gelir; CMS'ten düzenlerken uydurma/varsayım
+  # bilgi girilmemeli, izleme araçları değiştiğinde çerez politikası birlikte
+  # güncellenmelidir (bkz. PRIVACY_TRACKING_INVENTORY.md).
+  - name: legal
+    label: Yasal Metinler
+    label_singular: Yasal Metin
+    folder: src/content/legal
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    identifier_field: title
+    i18n: true
+    fields:
+      - { label: Başlık, name: title, widget: string, i18n: true }
+      - label: SEO
+        name: seo
+        widget: object
+        i18n: true
+        fields:
+          - { label: Sayfa Başlığı, name: title, widget: string }
+          - { label: Meta Açıklama, name: description, widget: text }
+      - { label: Giriş Metni, name: intro, widget: text, required: false, i18n: true }
+      - label: Son Güncelleme
+        name: updated
+        widget: datetime
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        picker_utc: true
+        i18n: duplicate
+      - { label: İçerik, name: body, widget: markdown, i18n: true }
+
   - name: posts
     label: Blog Yazıları
     label_singular: Blog Yazısı

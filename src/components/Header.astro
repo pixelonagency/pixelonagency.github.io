@@ -8,9 +8,15 @@ import { isActiveRoute } from '../lib/nav';
 
 interface Props {
   locale?: Locale;
+  /**
+   * Sayfanın diğer dillerdeki karşılıklarının yolları (hreflang ile aynı kaynak).
+   * Dil seçici bununla mevcut sayfanın çevirisine bağlanır; karşılık yoksa
+   * (ör. 404 veya çevirisi olmayan blog yazısı) o dilin ana sayfasına düşer.
+   */
+  alternates?: Partial<Record<Locale, string>>;
 }
 
-const { locale = DEFAULT_LOCALE } = Astro.props;
+const { locale = DEFAULT_LOCALE, alternates = {} } = Astro.props;
 
 const allServices = await getCollection('services');
 const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
@@ -89,7 +95,7 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
                   {code.toUpperCase()}
                 </span>
               ) : (
-                <a class="lang-switch__item" href={localizedPath('home', code)} hreflang={code}>
+                <a class="lang-switch__item" href={alternates[code] ?? localizedPath('home', code)} hreflang={code}>
                   <span aria-hidden="true">{FLAGS[code]}</span>
                   {code.toUpperCase()}
                 </a>

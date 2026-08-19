@@ -32,6 +32,10 @@ export const ROUTE_SLUGS = {
   careers: { tr: 'kariyer', en: 'careers' },
   contact: { tr: 'iletisim', en: 'contact' },
   analysis: { tr: 'ucretsiz-analiz', en: 'free-analysis' },
+  kvkk: { tr: 'kvkk-aydinlatma-metni', en: 'personal-data-processing-notice' },
+  privacy: { tr: 'gizlilik-politikasi', en: 'privacy-policy' },
+  cookies: { tr: 'cerez-politikasi', en: 'cookie-policy' },
+  terms: { tr: 'kullanim-kosullari', en: 'terms-of-use' },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type PageKey = keyof typeof ROUTE_SLUGS;

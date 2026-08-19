@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
-import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
 import { formMessages, t } from '../../lib/ui';
 import { buildWhatsAppUrl } from '../../lib/whatsapp';
 import CtaButton from '../CtaButton.astro';
@@ -283,7 +283,13 @@ const messagesJson = JSON.stringify(formMessages(locale));
   <div class="consent">
     <label class="consent__label" for="f-consent">
       <input type="checkbox" id="f-consent" name="consent" value="1" aria-required="true" data-error-target="consent" />
-      <span>{consentText}</span>
+      <span>
+        {consentText}{' '}
+        <a href={localizedPath('kvkk', locale)} target="_blank" rel="noopener">
+          {t('form.noticeLink', locale)}
+        </a>
+        {t('form.consent.suffix', locale)}
+      </span>
     </label>
     <p class="field__error" id="err-consent" data-error-for="consent" aria-live="polite"></p>
   </div>

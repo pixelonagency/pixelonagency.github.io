@@ -12,14 +12,14 @@ social:
     short: FB
     url: https://www.facebook.com/pixelonajans
 legalLinks:
-  - label: KVKK Privacy Notice
-    href: /kvkk-aydinlatma-metni
+  - label: Personal Data Processing Notice
+    href: /en/personal-data-processing-notice
   - label: Privacy Policy
-    href: /gizlilik-politikasi
+    href: /en/privacy-policy
   - label: Cookie Policy
-    href: /cerez-politikasi
+    href: /en/cookie-policy
   - label: Terms of Use
-    href: /kullanim-kosullari
+    href: /en/terms-of-use
 footerIntro: >-
   Pixelon helps brands grow in the digital world with social media, web design, digital
   advertising, SEO, brand design and performance marketing solutions.

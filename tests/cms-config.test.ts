@@ -165,6 +165,7 @@ describe('config structure', () => {
 
   test('declares every collection the Astro content config defines', () => {
     expect(config.collections.map((entry) => entry.name).sort()).toEqual([
+      'legal',
       'pages',
       'posts',
       'projects',
@@ -185,7 +186,7 @@ describe('config structure', () => {
  */
 describe('i18n wiring', () => {
   /** İçeriği dile göre klasörlenmiş koleksiyonlar. */
-  const LOCALISED_COLLECTIONS = ['pages', 'posts', 'projects', 'services', 'settings'] as const;
+  const LOCALISED_COLLECTIONS = ['legal', 'pages', 'posts', 'projects', 'services', 'settings'] as const;
   /** Dile bağlı OLMAYAN koleksiyonlar — düz klasör, dil alt klasörü yok. */
   const PLAIN_COLLECTIONS = ['references', 'team'] as const;
   /** Dosya adı (= URL slug'ı) dile göre değişen koleksiyonlar. */
@@ -202,6 +203,7 @@ describe('i18n wiring', () => {
     'cover',
     'date',
     'email',
+    'updated',
     'featured',
     'order',
     'phone',
@@ -236,7 +238,10 @@ describe('i18n wiring', () => {
     expect(config.i18n.structure).toBe('multiple_folders');
 
     const layout = Object.fromEntries(
-      ['pages', 'posts', 'projects', 'services', 'settings'].map((name) => [name, subDirectories(join(CONTENT, name))]),
+      ['legal', 'pages', 'posts', 'projects', 'services', 'settings'].map((name) => [
+        name,
+        subDirectories(join(CONTENT, name)),
+      ]),
     );
     const expected = Object.fromEntries(Object.keys(layout).map((name) => [name, [...LOCALES].sort()]));
     expect(layout).toEqual(expected);
@@ -308,7 +313,7 @@ describe('i18n wiring', () => {
   });
 
   test('collections that share filenames across locales do not localize the slug', () => {
-    for (const name of ['pages', 'projects'] as const) {
+    for (const name of ['legal', 'pages', 'projects'] as const) {
       const perLocale = LOCALES.map((locale) => entryFiles(name, locale));
       const expected = perLocale.map(() => perLocale[0]);
       expect({ name, perLocale }).toEqual({ name, perLocale: expected as string[][] });

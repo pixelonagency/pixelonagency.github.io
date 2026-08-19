@@ -157,7 +157,7 @@ const jsonLd = toJsonLd([
       )
     }
     <a href="#main" class="skip-link">{t('nav.skipToContent', locale)}</a>
-    <Header {locale} />
+    <Header {locale} {alternates} />
     <main id="main">
       <slot />
     </main>

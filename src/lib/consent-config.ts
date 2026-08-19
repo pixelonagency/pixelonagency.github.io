@@ -83,7 +83,14 @@ export function buildKlaroConfig(lang: Locale): KlaroConfigShape {
     lang,
     translations: {
       tr: {
-        // privacyPolicyUrl bilinçli YOK: yasal sayfalar hazır olana dek link verilmez (OWNER ACTION)
+        privacyPolicyUrl: '/cerez-politikasi',
+        /* privacyPolicyUrl tanımlanınca Klaro bu metni ekler; anahtar verilmezse
+         * ekranda "[missing translation]" görünür. */
+        privacyPolicy: {
+          name: 'Çerez Politikası',
+          text: 'Ayrıntılar için {privacyPolicy} sayfamızı inceleyebilirsiniz.',
+        },
+        purposeItem: { service: 'hizmet', services: 'hizmet' },
         consentNotice: {
           title: 'Gizliliğiniz bizim için önemli.',
           description:
@@ -118,6 +125,12 @@ export function buildKlaroConfig(lang: Locale): KlaroConfigShape {
         },
       },
       en: {
+        privacyPolicyUrl: '/en/cookie-policy',
+        privacyPolicy: {
+          name: 'Cookie Policy',
+          text: 'To learn more, please read our {privacyPolicy}.',
+        },
+        purposeItem: { service: 'service', services: 'services' },
         consentNotice: {
           title: 'Your privacy matters to us.',
           description:

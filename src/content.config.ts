@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { makePageSchema } from './content/page-schema';
 import {
+  legalSchema,
   makePostSchema,
   makeProjectSchema,
   makeReferenceSchema,
@@ -51,10 +52,17 @@ const settings = defineCollection({
   schema: settingsSchema,
 });
 
+// Yasal metinler — uzun düzyazı olduğu için markdown gövdeli ayrı koleksiyon.
+// Dosya adı ROUTE_SLUGS anahtarıdır (kvkk/privacy/cookies/terms); slug dile göre çevrilir.
+const legal = defineCollection({
+  loader: glob({ pattern: '*/*.md', base: `${CONTENT}/legal` }),
+  schema: legalSchema,
+});
+
 // Sayfa gövdeleri — her biri sıralı bir `sections` listesinden oluşur (bkz. page-schema.ts).
 const pages = defineCollection({
   loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/pages` }),
   schema: ({ image }) => makePageSchema(image),
 });
 
-export const collections = { services, projects, posts, references, team, settings, pages };
+export const collections = { services, projects, posts, references, team, settings, pages, legal };

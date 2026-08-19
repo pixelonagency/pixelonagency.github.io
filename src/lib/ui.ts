@@ -52,6 +52,10 @@ const STRINGS = {
   'blog.exploreServices': { tr: 'Hizmetlerimizi İnceleyin', en: 'Explore Our Services' },
   'services.viewDetails': { tr: 'Detayları Gör', en: 'View Details' },
   'footer.cookiePrefs': { tr: 'Çerez Tercihleri', en: 'Cookie Preferences' },
+  'legal.eyebrow': { tr: 'Yasal', en: 'Legal' },
+  'legal.updated': { tr: 'Son Güncelleme', en: 'Last Updated' },
+  'legal.related': { tr: 'İlgili Yasal Metinler', en: 'Related Legal Documents' },
+  'form.noticeLink': { tr: 'KVKK Aydınlatma Metni', en: 'Personal Data Processing Notice' },
 
   'logos.groupLabel': { tr: 'Çalıştığımız markalar', en: 'Brands we work with' },
   /** Marka adının ARDINA gelir: "Dentasay logosu" / "Dentasay logo". */
@@ -108,14 +112,20 @@ const STRINGS = {
     en: 'Areas You Would Like Us to Analyse',
   },
 
+  /*
+   * Aydınlatma ONAY konusu değildir (2026/347 sayılı İlke Kararı'ndaki
+   * aydınlatma/açık rıza ayrımı): kutu "kabul" değil "okudum" beyanıdır ve
+   * metnin kendisine bağlantı verilir.
+   */
   'form.consent.analysis': {
-    tr: "Kişisel verilerimin ücretsiz analiz talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla işlenmesine ilişkin KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum.",
-    en: 'I have read and accept the KVKK (Personal Data Protection Law) Disclosure Notice regarding the processing of my personal data for the purpose of evaluating my free analysis request and contacting me.',
+    tr: 'Kişisel verilerimin ücretsiz analiz talebimin değerlendirilmesi amacıyla işlenmesine ilişkin',
+    en: 'Regarding the processing of my personal data to evaluate my free analysis request, I have read the',
   },
   'form.consent.contact': {
-    tr: "Kişisel verilerimin iletişim talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla işlenmesine ilişkin KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum.",
-    en: 'I have read and accept the KVKK (Personal Data Protection Law) Disclosure Notice regarding the processing of my personal data for the purpose of evaluating my contact request and contacting me.',
+    tr: 'Kişisel verilerimin iletişim talebimin değerlendirilmesi amacıyla işlenmesine ilişkin',
+    en: 'Regarding the processing of my personal data to evaluate my contact request, I have read the',
   },
+  'form.consent.suffix': { tr: "'ni okudum.", en: '.' },
   'form.privacy.analysis': {
     tr: 'Bilgileriniz yalnızca analiz talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla kullanılacaktır.',
     en: 'Your information will only be used to evaluate your analysis request and to contact you.',
