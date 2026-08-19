@@ -31,16 +31,22 @@ Unless you give permission, the website sets **only one first-party essential co
 | ----------------- | --------------------- | ------------------------------- | --------- | -------- | ----------- |
 | `pixelon-consent` | Pixelon (first party) | Remembering your cookie choices | Essential | 365 days | HTTP cookie |
 
-If you allow the Analytics category, Google Analytics 4 places the following measurement cookies (values verified on the live system). These cookies are only created after your permission and are deleted from your browser when you withdraw it:
+If you allow the Analytics category, Google Analytics 4 places the following measurement cookies (values verified on the live system). These cookies are only created after your permission and are deleted from your browser when you withdraw the Analytics permission:
 
 | Name             | Provider | Purpose                                   | Category  | Duration          | Type        |
 | ---------------- | -------- | ----------------------------------------- | --------- | ----------------- | ----------- |
 | `_ga`            | Google   | Distinguishing visitors (GA4 measurement) | Analytics | ~400 days (13 mo) | HTTP cookie |
 | `_ga_15DCDNXNG7` | Google   | Maintaining GA4 session state             | Analytics | ~400 days (13 mo) | HTTP cookie |
 
+If you allow the Marketing category, the Google tag may place the following first-party cookie for advertising/conversion attribution and measurement (observed on the live system; created only after Marketing permission). Withdrawing your permission stops new data processing; you can delete the existing cookie in your browser settings:
+
+| Name      | Provider | Purpose                                            | Category  | Duration | Type        |
+| --------- | -------- | -------------------------------------------------- | --------- | -------- | ----------- |
+| `_gcl_au` | Google   | Advertising/conversion attribution and measurement | Marketing | ~90 days | HTTP cookie |
+
 ## 4. Analytics and Marketing Categories
 
-The **Analytics** category uses **Google Analytics 4**, a measurement service that helps us understand how the site is used and how it performs. If you do not allow the category, or if you withdraw your permission, the `analytics_storage` signal remains "denied": in that case Analytics cookies are **not used and not created**; however, as part of Google's Consent Mode infrastructure, cookieless, non-identifying measurement/consent signals (consent pings) may still be sent to Google. Once you give permission, cookie-based Analytics measurement can become active. The **Marketing** category currently has no active service and sets no cookies; if a marketing service is added in the future, this policy will be updated with the real cookie list **beforehand**.
+The **Analytics** category uses **Google Analytics 4**, a measurement service that helps us understand how the site is used and how it performs. If you do not allow the category, or if you withdraw your permission, the `analytics_storage` signal remains "denied": in that case Analytics cookies are **not used and not created**; however, as part of Google's Consent Mode infrastructure, cookieless, non-identifying measurement/consent signals (consent pings) may still be sent to Google. Once you give permission, cookie-based Analytics measurement can become active. The **Marketing** category currently has no active advertising measurement service (e.g. Google Ads conversion tracking); however, if you allow the category, the Google tag may place the `_gcl_au` cookie listed above. If a marketing service is activated in the future, this policy will be updated with the real cookie list **beforehand**.
 
 ## 5. Google Tag Manager and Consent Mode
 

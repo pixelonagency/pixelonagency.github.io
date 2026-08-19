@@ -749,6 +749,11 @@ describe('legal pages', () => {
       expect(body.includes('Google Analytics 4'), `${url} GA4'ü anlatmıyor`).toBe(true);
       expect(body.includes(staleClaim), `${url} eski "aktif analitik yok" iddiasını içeriyor`).toBe(false);
       expect(body.includes('analytics_storage'), `${url} consent sinyalini anlatmıyor`).toBe(true);
+      // Gözlemlenen _gcl_au çerezi anlatılmalı; "pazarlama çerez yerleştirmez" iddiası kalkmış olmalı.
+      expect(body.includes('_gcl_au'), `${url} _gcl_au çerezini anlatmıyor`).toBe(true);
+      for (const stale of ['bu kategoriye ait çerez yerleştirilmemektedir', 'sets no cookies']) {
+        expect(body.includes(stale), `${url} eski pazarlama-çerezsiz iddiasını içeriyor`).toBe(false);
+      }
     }
     // Gizlilik politikaları da GA4'ü GTM'den ayrı, izne bağlı ölçüm olarak anlatmalı.
     for (const url of ['/gizlilik-politikasi/', '/en/privacy-policy/']) {
