@@ -449,3 +449,41 @@ describe('SEO regression suite', () => {
     }
   });
 });
+
+describe('analytics (GTM)', () => {
+  const GTM = 'GTM-MWVJ2S27';
+
+  test('every public page loads the GTM container exactly once (script + noscript)', () => {
+    const walk = (dir: string, prefix: string, out: string[][]) => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        if (entry.isDirectory()) walk(join(dir, entry.name), `${prefix}${entry.name}/`, out);
+        else if (entry.name === 'index.html' && !prefix.startsWith('admin/'))
+          out.push([`/${prefix}`, readFileSync(join(dir, entry.name), 'utf-8')]);
+      }
+      return out;
+    };
+    const offenders: string[] = [];
+    for (const [url, body] of walk(DIST, '', [])) {
+      const scripts = (body.match(/googletagmanager\.com\/gtm\.js/g) ?? []).length;
+      const noscripts = (body.match(/googletagmanager\.com\/ns\.html/g) ?? []).length;
+      if (scripts !== 1) offenders.push(`${url}: gtm.js ×${scripts}`);
+      if (noscripts !== 1) offenders.push(`${url}: ns.html ×${noscripts}`);
+      if (!body.includes(GTM)) offenders.push(`${url}: container ID yok`);
+      // script <head> içinde, noscript <body> açılışından hemen sonra olmalı
+      if (body.indexOf('gtm.js') > body.indexOf('</head>')) offenders.push(`${url}: script head dışında`);
+      if (body.indexOf('ns.html') < body.indexOf('<body')) offenders.push(`${url}: noscript body öncesi`);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('the admin CMS panel ships no tracking at all', () => {
+    const admin = readFileSync(join(DIST, 'admin', 'index.html'), 'utf-8');
+    expect(admin).not.toContain('googletagmanager');
+    expect(admin).not.toContain(GTM);
+  });
+
+  test('runtime guard limits collection to the production hostname', () => {
+    const home = readFileSync(join(DIST, 'index.html'), 'utf-8');
+    expect(home).toContain("location.hostname==='pixelon.com.tr'");
+  });
+});

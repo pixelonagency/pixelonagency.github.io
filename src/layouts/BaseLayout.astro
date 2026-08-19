@@ -5,6 +5,7 @@ import logoImage from '../assets/logo/pixelon-logo.webp';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { ANALYTICS_HOSTNAME, GTM_ID } from '../lib/analytics';
 import { canonicalUrl, truncateDescription } from '../lib/seo';
 import { organizationSchema, toJsonLd, webPageSchema, webSiteSchema } from '../lib/schema';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
@@ -53,6 +54,14 @@ const metaDescription = truncateDescription(description, 160);
 const ogImageUrl = new URL(ogImage ?? ogDefaultImage.src, site).toString();
 
 /*
+ * GTM yalnızca üretim build'ine basılır (dev sunucusu veri toplamaz) ve
+ * çalışma anında canlı alan adıyla sınırlanır (dist önizlemeleri toplamaz).
+ * Resmî kurulum: script <head> açılışına yakın, noscript <body> hemen sonrası.
+ */
+const includeAnalytics = import.meta.env.PROD;
+const gtmScript = `if(location.hostname==='${ANALYTICS_HOSTNAME}'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');}`;
+
+/*
  * Site geneli entity graph: Organization + WebSite + WebPage her sayfada;
  * sayfa tipine özel düğümler (Service, BlogPosting, BreadcrumbList) `extraSchema`
  * ile eklenir. Tüm bilgiler görünen içerik ve site ayarlarından gelir.
@@ -76,6 +85,10 @@ const jsonLd = toJsonLd([
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* Google Tag Manager — head açılışına olabildiğince yakın (resmî kurulum). */}
+    {includeAnalytics && <script is:inline set:html={gtmScript} />}
+
     <link rel="canonical" href={canonical} />
 
     <title>{title}</title>
@@ -124,6 +137,20 @@ const jsonLd = toJsonLd([
   </head>
 
   <body>
+    {/* Google Tag Manager (noscript) — <body> açılışının hemen ardından (resmî kurulum). */}
+    {
+      includeAnalytics && (
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden"
+            title="Google Tag Manager"
+          />
+        </noscript>
+      )
+    }
     <a href="#main" class="skip-link">{t('nav.skipToContent', locale)}</a>
     <Header {locale} />
     <main id="main">
