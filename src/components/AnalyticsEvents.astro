@@ -23,9 +23,14 @@
     const language = root.lang;
     const pageLocation = resolvePageLocation(location.pathname);
 
-    /** Konum: yapısal kapsayıcı (header/footer/yüzen buton) > sayfa düzeyi. */
+    /**
+     * Konum önceliği: en yakın `data-analytics-location` işaretlemesi > semantik
+     * kapsayıcı (header/footer) > sayfa düzeyi. Değer ne olursa olsun payload'a
+     * yalnız kontrollü enum'dan geçebilir (buildEventPayload doğrular).
+     */
     const locationFor = (anchor: HTMLAnchorElement): string | undefined => {
-      if (anchor.closest('.wa-float')) return 'floating_cta';
+      const marked = anchor.closest('[data-analytics-location]');
+      if (marked) return marked.getAttribute('data-analytics-location') ?? undefined;
       if (anchor.closest('header')) return 'header';
       if (anchor.closest('footer')) return 'footer';
       return pageLocation;

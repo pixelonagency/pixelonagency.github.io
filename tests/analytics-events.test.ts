@@ -154,6 +154,29 @@ describe('architecture guards', () => {
     expect(source.includes('preventDefault'), 'analytics navigasyonu bloklayamaz').toBe(false);
   });
 
+  test('interaction location prefers the semantic data-analytics-location attribute', () => {
+    const listener = readFileSync(join(ROOT, 'src', 'components', 'AnalyticsEvents.astro'), 'utf-8');
+    // Öncelik sırası: işaretleme > semantik kapsayıcı; kırılgan class seçicisi yok.
+    const attrIndex = listener.indexOf("closest('[data-analytics-location]')");
+    const headerIndex = listener.indexOf("closest('header')");
+    expect(attrIndex).toBeGreaterThan(-1);
+    expect(headerIndex).toBeGreaterThan(attrIndex);
+    expect(listener.includes(".closest('.wa-float')"), 'class tabanlı konum çözümü kaldırıldı').toBe(false);
+    // Yüzen WhatsApp CTA gerçek markup'ında işaretli.
+    const float = readFileSync(join(ROOT, 'src', 'components', 'WhatsAppFloat.astro'), 'utf-8');
+    expect(float).toContain('data-analytics-location="floating_cta"');
+    // İşaretleme değeri de kontrollü enum'dan geçmek zorunda: geçersiz değer düşer.
+    expect(buildEventPayload('click_whatsapp', { location: 'floating_cta', language: 'tr' })).toEqual({
+      event: 'click_whatsapp',
+      interaction_location: 'floating_cta',
+      page_language: 'tr',
+    });
+    expect(buildEventPayload('click_whatsapp', { location: 'sidebar_v2', language: 'tr' })).toEqual({
+      event: 'click_whatsapp',
+      page_language: 'tr',
+    });
+  });
+
   test('generate_lead fires only from the verified Web3Forms success branch, guarded and best-effort', () => {
     const source = readFileSync(join(ROOT, 'src', 'components', 'sections', 'ContactFormFields.astro'), 'utf-8');
     const successIndex = source.indexOf('payload.success !== true');
