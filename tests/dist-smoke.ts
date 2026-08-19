@@ -473,8 +473,8 @@ describe('analytics (GTM + GA4)', () => {
     // GA4 GTM'den publish edildi ve canlıda doğrulandı (2026-08-19) — durum Active.
     expect(row('Google Analytics 4')).toContain('**Active**');
     expect(row('Google Analytics 4')).toContain(GA4);
-    // Clarity hazırlık aşamasında: production doğrulaması yapılmadan Active yazılamaz.
-    expect(row('Microsoft Clarity')).toContain('Planned / Not Active');
+    // Clarity production doğrulaması 2026-08-19'da temiz geçti — Active.
+    expect(row('Microsoft Clarity')).toContain('**Active**');
     expect(row('Microsoft Clarity')).toContain(CLARITY_PROJECT_ID);
     // Clarity yalnız GTM'den yüklenir: proje kimliği site HTML'ine girmez.
     for (const file of allHtmlFiles(DIST)) {
@@ -768,6 +768,8 @@ describe('legal pages', () => {
       expect(body.includes('analytics_storage'), `${url} consent sinyalini anlatmıyor`).toBe(true);
       // Gözlemlenen _gcl_au çerezi anlatılmalı; "pazarlama çerez yerleştirmez" iddiası kalkmış olmalı.
       expect(body.includes('_gcl_au'), `${url} _gcl_au çerezini anlatmıyor`).toBe(true);
+      expect(body.includes('_clck'), `${url} Clarity çerezlerini anlatmıyor`).toBe(true);
+      expect(body.includes('Microsoft Clarity'), `${url} Clarity'yi anlatmıyor`).toBe(true);
       for (const stale of ['bu kategoriye ait çerez yerleştirilmemektedir', 'sets no cookies']) {
         expect(body.includes(stale), `${url} eski pazarlama-çerezsiz iddiasını içeriyor`).toBe(false);
       }

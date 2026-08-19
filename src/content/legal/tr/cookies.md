@@ -31,12 +31,14 @@ Ayrıca tarayıcınızın ayarlarından çerezleri silebilir veya engelleyebilir
 | ----------------- | ----------------------- | ---------------------------------- | -------- | ------- | ----------- |
 | `pixelon-consent` | Pixelon (birinci taraf) | Çerez tercihlerinizin hatırlanması | Zorunlu  | 365 gün | HTTP çerezi |
 
-Analitik kategorisine izin verirseniz Google Analytics 4 aşağıdaki ölçüm çerezlerini yerleştirir (canlı sistemde doğrulanmış değerler). Bu çerezler yalnızca izniniz sonrasında oluşur ve Analitik iznini geri çektiğinizde tarayıcınızdan silinir:
+Analitik kategorisine izin verirseniz Google Analytics 4 aşağıdaki ölçüm çerezlerini yerleştirir (canlı sistemde doğrulanmış değerler). Bu çerezler yalnızca izniniz sonrasında oluşur ve Analitik iznini geri çektiğinizde tarayıcınızdan silinir. Analitik kategorisinde ayrıca **Microsoft Clarity** (oturum kaydı/ısı haritası) çalışır ve izin verdiğinizde aşağıdaki çerezleri yerleştirir; izin yokken Clarity çerez KULLANMAZ (çerezsiz, sınırlı modda kalır), izni geri çektiğinizde çerezleri silinir:
 
 | Ad               | Sağlayıcı | Amaç                                  | Kategori | Süre             | Tür         |
 | ---------------- | --------- | ------------------------------------- | -------- | ---------------- | ----------- |
 | `_ga`            | Google    | Ziyaretçileri ayırt etme (GA4 ölçümü) | Analitik | ~400 gün (13 ay) | HTTP çerezi |
 | `_ga_15DCDNXNG7` | Google    | GA4 oturum durumunun korunması        | Analitik | ~400 gün (13 ay) | HTTP çerezi |
+| `_clck`          | Microsoft | Clarity kullanıcı kimliği/tercihleri  | Analitik | ~365 gün         | HTTP çerezi |
+| `_clsk`          | Microsoft | Clarity oturum kaydı birleştirme      | Analitik | ~1 gün           | HTTP çerezi |
 
 Pazarlama kategorisine izin verirseniz Google tag, reklam/dönüşüm ilişkilendirmesi ve ölçümü için aşağıdaki birinci taraf çerezi yerleştirebilir (canlı sistemde gözlemlenmiştir; yalnızca Pazarlama izni sonrasında oluşur). İzni geri çekmeniz yeni veri işlenmesini durdurur; mevcut çerezi tarayıcı ayarlarınızdan silebilirsiniz:
 
@@ -46,7 +48,7 @@ Pazarlama kategorisine izin verirseniz Google tag, reklam/dönüşüm ilişkilen
 
 ## 4. Analitik ve Pazarlama Kategorileri
 
-**Analitik** kategorisinde **Google Analytics 4** (site kullanımını ve performansı anlamamıza yardımcı ölçüm hizmeti) kullanılmaktadır. İzin vermezseniz veya izninizi geri çekerseniz `analytics_storage` sinyali "reddedildi" kalır: bu durumda Analitik çerezleri **kullanılmaz ve oluşturulmaz**; ancak Google'ın Consent Mode altyapısı gereği Google'a çerezsiz, kimliksiz ölçüm/izin sinyalleri (consent ping) gönderilebilir. İzin verdiğinizde ise çerez tabanlı Analitik ölçümü devreye girebilir. **Pazarlama** kategorisinde şu anda aktif bir reklam ölçüm hizmeti (ör. Google Ads dönüşüm takibi) yoktur; ancak bu kategoriye izin verirseniz Google tag, yukarıda listelenen `_gcl_au` çerezini yerleştirebilir. İleride bir pazarlama hizmeti etkinleştirilirse bu politika gerçek çerez listesiyle **önceden** güncellenir.
+**Analitik** kategorisinde **Google Analytics 4** (site kullanımını ve performansı anlamamıza yardımcı ölçüm hizmeti) ve **Microsoft Clarity** (anonim oturum kayıtları ve ısı haritalarıyla davranış analitiği; form içerikleri maskelenir) kullanılmaktadır. İzin vermezseniz veya izninizi geri çekerseniz `analytics_storage` sinyali "reddedildi" kalır: bu durumda Analitik çerezleri **kullanılmaz ve oluşturulmaz**; ancak Google'ın Consent Mode altyapısı gereği Google'a çerezsiz, kimliksiz ölçüm/izin sinyalleri (consent ping) gönderilebilir. İzin verdiğinizde ise çerez tabanlı Analitik ölçümü devreye girebilir. **Pazarlama** kategorisinde şu anda aktif bir reklam ölçüm hizmeti (ör. Google Ads dönüşüm takibi) yoktur; ancak bu kategoriye izin verirseniz Google tag, yukarıda listelenen `_gcl_au` çerezini yerleştirebilir. İleride bir pazarlama hizmeti etkinleştirilirse bu politika gerçek çerez listesiyle **önceden** güncellenir.
 
 ## 5. Google Tag Manager ve Consent Mode
 

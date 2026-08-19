@@ -32,7 +32,7 @@ Form submissions are relayed to our mailbox through **Web3Forms** and are read o
 
 ## 5. Cookies and Measurement
 
-Cookie preferences are managed with the open-source **Klaro** consent manager, served from our own domain. Analytics and marketing categories are **off by default**. The Analytics category uses **Google Analytics 4**: it measures how the site is used and how it performs. If you do not allow the category or withdraw your permission, Analytics cookies are **not used and not created** and no cookie-based measurement takes place; as part of Google's Consent Mode infrastructure, only cookieless, non-identifying consent/measurement signals may be sent to Google. Once you give permission, cookie-based measurement can become active. Measurement may cover, alongside page usage, anonymous interaction signals such as the successful completion of a form submission and clicks toward contact channels (WhatsApp/phone/e-mail) — **the content you type into form fields (name, e-mail, phone, message, etc.) is never sent to Google Analytics**. The Marketing category currently has no active service. Google Tag Manager itself is not a measurement service but the infrastructure these tags are managed through; your choice is communicated to the tags via Google Consent Mode v2 signals. See the [Cookie Policy](/en/cookie-policy) for the current cookie list.
+Cookie preferences are managed with the open-source **Klaro** consent manager, served from our own domain. Analytics and marketing categories are **off by default**. The Analytics category uses **Google Analytics 4**: it measures how the site is used and how it performs. If you do not allow the category or withdraw your permission, Analytics cookies are **not used and not created** and no cookie-based measurement takes place; as part of Google's Consent Mode infrastructure, only cookieless, non-identifying consent/measurement signals may be sent to Google. Once you give permission, cookie-based measurement can become active. The Analytics category also uses **Microsoft Clarity**: it helps us improve the site experience by analysing on-page behaviour (scrolling, clicks) through anonymous session recordings and heatmaps, and it operates with cookies only under your Analytics permission; without it, it stays in a limited, cookieless mode. Whatever you type into form fields is masked in recordings/measurement data and is not sent to Clarity as content. Measurement may cover, alongside page usage, anonymous interaction signals such as the successful completion of a form submission and clicks toward contact channels (WhatsApp/phone/e-mail) — **the content you type into form fields (name, e-mail, phone, message, etc.) is never sent to Google Analytics**. The Marketing category currently has no active service. Google Tag Manager itself is not a measurement service but the infrastructure these tags are managed through; your choice is communicated to the tags via Google Consent Mode v2 signals. See the [Cookie Policy](/en/cookie-policy) for the current cookie list.
 
 ## 6. Third-Party Services
 
@@ -40,7 +40,8 @@ The website relies on the following providers:
 
 - **GitHub Pages** — website hosting,
 - **Web3Forms** — form relay,
-- **Google** — Tag Manager infrastructure, web fonts and Google Analytics 4 (cookie-based measurement depends on your Analytics permission).
+- **Google** — Tag Manager infrastructure, web fonts and Google Analytics 4 (cookie-based measurement depends on your Analytics permission),
+- **Microsoft** — Clarity behaviour analytics (session recordings/heatmaps; cookie-based operation depends on your Analytics permission).
 
 Their servers may be located outside Türkiye; their privacy policies are their own and are not covered by this policy.
 
