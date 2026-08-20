@@ -1,0 +1,146 @@
+---
+/**
+ * Karşılaştırma tablosu. Masaüstünde gerçek `<table>`; dar ekranda AYNI tablo
+ * satır başına karta dönüşür (yatay kaydırma yaratmadan). Dönüşüm CSS ile
+ * yapılır, ikinci bir işaretleme kopyası üretilmez — ekran okuyucu tek tabloyu
+ * görür, hücreler `data-label` ile başlığını taşır.
+ */
+import { inlineHtml, type BlockOf } from './types';
+
+interface Props {
+  block: BlockOf<'table'>;
+}
+
+const { block } = Astro.props;
+const [criterion, ...compared] = block.columns;
+---
+
+<div class="at" data-reveal>
+  {block.heading && <h3 class="at__heading">{block.heading}</h3>}
+  {block.intro && <p class="at__intro" set:html={inlineHtml(block.intro)} />}
+
+  <table class="at__table">
+    <thead>
+      <tr>
+        <th scope="col">{criterion}</th>
+        {compared.map((label) => <th scope="col">{label}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        block.rows.map(([head, ...cells]) => (
+          <tr>
+            <th scope="row">{head}</th>
+            {cells.map((cell, index) => (
+              <td data-label={compared[index]}>{cell}</td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .at {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  .at__heading {
+    margin: 0;
+    font: 600 clamp(20px, 2.2vw, 26px) / 1.25 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .at__intro {
+    margin: 12px 0 0;
+    font: 400 var(--fs-lead) / 1.75 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+
+  .at__table {
+    width: 100%;
+    margin-top: clamp(20px, 2.4vw, 28px);
+    border-collapse: collapse;
+    font: 400 var(--fs-body) / 1.6 var(--font-body);
+  }
+
+  .at__table th,
+  .at__table td {
+    padding: 14px 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border-on-light);
+  }
+
+  .at__table thead th {
+    font: 600 var(--fs-small) var(--font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-on-light);
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .at__table tbody th {
+    font: 600 var(--fs-body) var(--font-display);
+    color: var(--text-on-light);
+    width: 28%;
+  }
+
+  .at__table td {
+    color: var(--text-muted-on-light);
+  }
+
+  /* --- Dar ekran: her satır bir kart --- */
+  @media (max-width: 760px) {
+    .at__table,
+    .at__table thead,
+    .at__table tbody,
+    .at__table tr,
+    .at__table th,
+    .at__table td {
+      display: block;
+    }
+
+    /* Başlık satırı görsel olarak gizlenir; hücreler etiketini kendi taşır. */
+    .at__table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .at__table tr {
+      margin-top: 16px;
+      border: 1px solid var(--border-on-light);
+      border-radius: var(--radius-media);
+      overflow: hidden;
+    }
+
+    .at__table tbody th {
+      width: auto;
+      background: var(--bg-tint);
+      border-bottom: 1px solid var(--border-on-light);
+    }
+
+    .at__table td {
+      border-bottom: 1px solid var(--border-on-light);
+    }
+
+    .at__table tr td:last-child {
+      border-bottom: 0;
+    }
+
+    .at__table td::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 2px;
+      font: 600 var(--fs-eyebrow) var(--font-display);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-on-light);
+    }
+  }
+</style>

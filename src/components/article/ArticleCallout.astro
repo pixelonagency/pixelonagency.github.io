@@ -1,0 +1,76 @@
+---
+/**
+ * "Pixelon Notu" tipi vurgu kutusu. Çok açık lime zemin + koyu tipografi;
+ * lime burada arka plan tonu olarak kullanılır, metin rengi olarak değil.
+ */
+import { inlineHtml, paragraphs, type BlockOf } from './types';
+
+interface Props {
+  block: BlockOf<'callout'>;
+}
+
+const { block } = Astro.props;
+const variant = block.variant ?? 'note';
+---
+
+<aside class={`aq aq--${variant}`} data-reveal>
+  <span class="aq__mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 11v5"></path>
+      <path d="M12 7.75v.5"></path>
+    </svg>
+  </span>
+
+  <div class="aq__body">
+    <p class="aq__heading">{block.heading}</p>
+    {paragraphs(block.text).map((part) => <p class="aq__text" set:html={inlineHtml(part)} />)}
+  </div>
+</aside>
+
+<style>
+  .aq {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 16px;
+    margin: clamp(32px, 4vw, 48px) 0 0;
+    padding: clamp(20px, 2.4vw, 28px);
+    border-radius: var(--radius-media);
+    background: var(--accent-soft);
+    border: 1px solid rgb(10 10 10 / 10%);
+  }
+
+  /* İpucu varyantı nötr zeminde durur — lime yalnız "not" için ayrılmıştır. */
+  .aq--tip {
+    background: var(--bg-tint);
+  }
+
+  .aq__mark {
+    color: var(--text-on-light);
+  }
+
+  .aq__mark svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+
+  .aq__heading {
+    margin: 0;
+    font: 600 var(--fs-h3) / 1.35 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .aq__text {
+    margin: 8px 0 0;
+    font: 400 var(--fs-body) / 1.7 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 520px) {
+    .aq {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+</style>

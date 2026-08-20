@@ -21,6 +21,7 @@ const ROUTES = [
   '/projelerimiz/handsforall',
   '/referanslarimiz',
   '/blog',
+  '/blog/sosyal-medya-ajanslari-ne-is-yapar',
   '/kariyer',
   '/iletisim',
   '/ucretsiz-analiz',
@@ -239,6 +240,69 @@ describe('interactive behaviour is shipped', () => {
     expect((body.match(/class="pb-card"/g) ?? []).length).toBeGreaterThanOrEqual(16);
     // Case study içeriği olan proje karta bağlanır; olmayanlar bağlantısız kalır.
     expect(body).toContain('href="/projelerimiz/handsforall"');
+  });
+
+  /**
+   * Editorial blog şablonu. Bu yazı, sonraki bütün blogların master şablonudur —
+   * bloklardan biri render edilmezse ya da yapısal veri kopar ise burada yakalanır.
+   */
+  test('the editorial blog template ships every block type', () => {
+    const body = html.get('/blog/sosyal-medya-ajanslari-ne-is-yapar') ?? '';
+
+    // Tek H1 ve doğru başlık.
+    expect((body.match(/<h1\b/g) ?? []).length).toBe(1);
+    expect(body).toContain('Sosyal medya ajansları ne iş yapar?');
+
+    // Kısa cevap + içindekiler bandı ve çıpalar.
+    expect(body).toContain('quick-answer');
+    expect(body).toContain('href="#sosyal-medya-ajanslari-ne-is-yapar"');
+    expect(body).toContain('id="sosyal-medya-ajanslari-ne-is-yapar"');
+
+    // Blok bileşenlerinin kök sınıfları (bölüm, kart, not, liste, tablo,
+    // süreç, çip, infografik, SSS, CTA, görsel, ilgili yazılar).
+    for (const cls of [
+      'as__title',
+      'ac__grid',
+      'aq__heading',
+      'al__list',
+      'at__table',
+      'ap__flow',
+      'ah__chip',
+      'ag__stage',
+      'af__trigger',
+      'ax__heading',
+      'ai__caption',
+      'ra__grid',
+    ]) {
+      expect(body).toContain(cls);
+    }
+
+    // Karşılaştırma tablosu dar ekranda etiket taşımalı (yatay kaydırma yok).
+    expect(body).toContain('data-label=');
+
+    // SSS akordiyonu erişilebilir olmalı.
+    expect(body).toContain('aria-expanded');
+    expect(body).toContain('role="region"');
+
+    // Kapak LCP adayı: eager + yüksek öncelik, AVIF kaynağıyla.
+    expect(body).toMatch(/fetchpriority="high"/);
+    expect(body).toContain('image/avif');
+
+    // Yapısal veri: BlogPosting + FAQPage + BreadcrumbList.
+    expect(body).toContain('"@type":"BlogPosting"');
+    expect(body).toContain('"dateModified"');
+    expect(body).toContain('"@type":"FAQPage"');
+    expect(body).toContain('"@type":"BreadcrumbList"');
+
+    // İç bağlantılar gerçek hizmet sayfalarına gitmeli.
+    expect(body).toContain('href="/hizmetlerimiz/sosyal-medya-yonetimi"');
+    expect(body).toContain('href="/ucretsiz-analiz"');
+  });
+
+  test('the editorial template drops the legacy markdown CTA band', () => {
+    const editorial = html.get('/blog/sosyal-medya-ajanslari-ne-is-yapar') ?? '';
+    // Blok CTA'sı varken sabit bant gizlenir — sayfada iki CTA yığını olmaz.
+    expect(editorial).toMatch(/class="post__cta"[^>]*hidden/);
   });
 
   test('the references page ships the brand wall with hero and closing CTA', () => {

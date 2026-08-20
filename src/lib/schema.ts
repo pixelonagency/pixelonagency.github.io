@@ -123,6 +123,8 @@ interface ArticleInput {
   description: string;
   url: string;
   datePublished: string;
+  /** Yalnız içerik gerçekten güncellendiyse verilir — build tarihi DEĞİLDİR. */
+  dateModified?: string | undefined;
   author: string;
   locale: Locale;
   imageUrl?: string | undefined;
@@ -133,6 +135,7 @@ export function blogPostingSchema({
   description,
   url,
   datePublished,
+  dateModified,
   author,
   locale,
   imageUrl,
@@ -146,10 +149,26 @@ export function blogPostingSchema({
     url,
     mainEntityOfPage: url,
     datePublished,
+    ...(dateModified ? { dateModified } : {}),
     inLanguage: locale,
     author: isOrgAuthor ? { '@id': ORG_ID } : { '@type': 'Person', name: author },
     publisher: { '@id': ORG_ID },
     ...(imageUrl ? { image: imageUrl } : {}),
+  };
+}
+
+/**
+ * Sayfada GÖRÜNEN soru-cevapları işaretler. Yalnız gerçekten yayımlanan SSS
+ * bloğu için çağrılır — görünmeyen ya da uydurulmuş içerik işaretlenmez.
+ */
+export function faqPageSchema(items: { question: string; answer: string }[]): Record<string, unknown> {
+  return {
+    '@type': 'FAQPage',
+    mainEntity: items.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
   };
 }
 

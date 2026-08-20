@@ -1,0 +1,55 @@
+---
+/** Platform/etiket çipleri — logo kalabalığı yerine düz metin rozetleri. */
+import { inlineHtml, type BlockOf } from './types';
+
+interface Props {
+  block: BlockOf<'chips'>;
+}
+
+const { block } = Astro.props;
+---
+
+<div class="ah" data-reveal>
+  {block.heading && <h3 class="ah__heading">{block.heading}</h3>}
+  {block.intro && <p class="ah__intro" set:html={inlineHtml(block.intro)} />}
+
+  <ul class="ah__list" role="list">
+    {block.items.map((item) => <li class="ah__chip">{item}</li>)}
+  </ul>
+</div>
+
+<style>
+  .ah {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  .ah__heading {
+    margin: 0;
+    font: 600 clamp(20px, 2.2vw, 26px) / 1.25 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .ah__intro {
+    margin: 12px 0 0;
+    font: 400 var(--fs-lead) / 1.75 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+
+  .ah__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ah__chip {
+    padding: 7px 14px;
+    border: 1px solid var(--border-on-light);
+    border-radius: var(--radius-pill);
+    font: 500 var(--fs-small) var(--font-body);
+    color: var(--text-on-light);
+    background: var(--bg-tint);
+  }
+</style>

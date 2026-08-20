@@ -45,6 +45,9 @@ const STRINGS = {
 
   'blog.readingTime': { tr: 'dk okuma', en: 'min read' },
   'blog.readPost': { tr: 'Yazıyı Okuyun', en: 'Read the Article' },
+  'blog.updated': { tr: 'Güncellenme:', en: 'Updated:' },
+  'blog.toc': { tr: 'İçindekiler', en: 'Contents' },
+  'blog.related': { tr: 'İlgili Yazılar', en: 'Related Articles' },
   'blog.applyHeading': {
     tr: 'Bu Stratejiyi Markanız İçin Uygulayalım.',
     en: "Let's Put This Strategy to Work for Your Brand.",

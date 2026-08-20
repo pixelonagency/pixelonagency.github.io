@@ -1,0 +1,134 @@
+---
+/**
+ * Hero altındaki iki kolonlu bant: solda doğrudan cevap, sağda içindekiler.
+ * Kısa cevap öne çıkan snippet ve AI aramalar için tek paragraflık net yanıttır.
+ *
+ * İçindekiler girdileri `section` bloklarından türetilir — elle liste tutulmaz,
+ * çıpa ile başlık kopamaz.
+ */
+import { type Article } from './types';
+
+interface Props {
+  quickAnswer: NonNullable<Article['quickAnswer']> | undefined;
+  tocHeading: string;
+  items: { id: string; label: string }[];
+}
+
+const { quickAnswer, tocHeading, items } = Astro.props;
+const hasToc = items.length > 1;
+---
+
+{
+  (quickAnswer || hasToc) && (
+    <div class:list={['bq', !hasToc && 'bq--single']} data-reveal>
+      {quickAnswer && (
+        <section class="bq__answer" aria-labelledby="quick-answer">
+          <h2 class="bq__answer-title" id="quick-answer">
+            {quickAnswer.heading}
+          </h2>
+          <p class="bq__answer-text">{quickAnswer.text}</p>
+        </section>
+      )}
+
+      {hasToc && (
+        <nav class="bq__toc" aria-labelledby="toc-heading">
+          <h2 class="bq__toc-title" id="toc-heading">
+            {tocHeading}
+          </h2>
+          <ol class="bq__toc-list">
+            {items.map((item) => (
+              <li>
+                <a href={`#${item.id}`}>{item.label}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+    </div>
+  )
+}
+
+<style>
+  .bq {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(20px, 3vw, 40px);
+    margin-top: clamp(32px, 4vw, 52px);
+    /* Kutular kendi yüksekliğinde kalır; eşitlenirse kısa cevabın altında
+       büyük bir boş lime alan oluşuyordu. */
+    align-items: start;
+  }
+
+  .bq--single {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Kısa cevap: lime zemin üzerinde koyu metin — lime metin rengi olarak
+     kullanılmaz, kontrast beyaz zeminde yetersiz kalır. */
+  .bq__answer {
+    padding: clamp(20px, 2.4vw, 30px);
+    border-radius: var(--radius-media);
+    background: var(--accent-soft);
+    border: 1px solid rgb(10 10 10 / 10%);
+  }
+
+  .bq__answer-title {
+    margin: 0;
+    font: 600 var(--fs-h3) / 1.3 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .bq__answer-text {
+    margin: 10px 0 0;
+    font: 400 var(--fs-lead) / 1.7 var(--font-body);
+    color: var(--text-on-light);
+  }
+
+  .bq__toc {
+    padding: clamp(20px, 2.4vw, 30px);
+    border-radius: var(--radius-media);
+    border: 1px solid var(--border-on-light);
+    background: var(--bg-tint);
+  }
+
+  .bq__toc-title {
+    margin: 0;
+    font: 600 var(--fs-small) var(--font-display);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-on-light);
+  }
+
+  .bq__toc-list {
+    margin: 14px 0 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 2px;
+  }
+
+  .bq__toc-list li {
+    font: 400 var(--fs-body) / 1.5 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+
+  .bq__toc-list a {
+    display: block;
+    /* Dokunma hedefi: 15px metin tek başına 24px eşiğinin altında kalıyordu. */
+    padding-block: 5px;
+    color: var(--text-on-light);
+    text-decoration: none;
+    transition: color var(--t-base);
+  }
+
+  .bq__toc-list a:hover {
+    color: var(--text-muted-on-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 860px) {
+    .bq {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

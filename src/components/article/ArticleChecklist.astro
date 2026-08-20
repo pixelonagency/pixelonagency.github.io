@@ -1,0 +1,94 @@
+---
+/** Başlık + açıklama çiftlerinden oluşan kontrol listesi (tanım listesi olarak). */
+import { inlineHtml, type BlockOf } from './types';
+
+interface Props {
+  block: BlockOf<'checklist'>;
+}
+
+const { block } = Astro.props;
+---
+
+<div class="al" data-reveal>
+  {block.heading && <h3 class="al__heading">{block.heading}</h3>}
+  {block.intro && <p class="al__intro" set:html={inlineHtml(block.intro)} />}
+
+  <dl class="al__list">
+    {
+      block.items.map((item) => (
+        <div class="al__item">
+          <dt class="al__term">
+            <span class="al__tick" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="m4.5 12.5 5 5 10-11" />
+              </svg>
+            </span>
+            {item.title}
+          </dt>
+          <dd class="al__desc" set:html={inlineHtml(item.text)} />
+        </div>
+      ))
+    }
+  </dl>
+</div>
+
+<style>
+  .al {
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  .al__heading {
+    margin: 0;
+    font: 600 clamp(20px, 2.2vw, 26px) / 1.25 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .al__intro {
+    margin: 12px 0 0;
+    font: 400 var(--fs-lead) / 1.75 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+
+  .al__list {
+    margin: clamp(20px, 2.4vw, 28px) 0 0;
+  }
+
+  .al__item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-on-light);
+  }
+
+  .al__item:first-child {
+    border-top: 1px solid var(--border-on-light);
+  }
+
+  .al__term {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 600 var(--fs-h3) / 1.35 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .al__tick {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: var(--text-on-light);
+  }
+
+  .al__tick svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .al__desc {
+    margin: 6px 0 0 32px;
+    font: 400 var(--fs-body) / 1.7 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+</style>

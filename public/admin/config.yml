@@ -993,6 +993,7 @@ collections:
         picker_utc: true
         i18n: duplicate
       - { label: Kapak Görseli, name: cover, widget: image, required: false, i18n: duplicate }
+      - { label: Kapak Alt Metni, name: coverAlt, widget: string, required: false, i18n: true }
       - { label: Yazar, name: author, widget: string, default: Pixelon, i18n: duplicate }
       - label: Durum
         name: status
@@ -1001,6 +1002,193 @@ collections:
         options: [draft, published]
         i18n: duplicate
       - { label: Öne Çıkan, name: featured, widget: boolean, default: false, i18n: duplicate }
+      # Modüler editorial gövde. Dolu olan yazılar blok şablonuyla render edilir;
+      # boş olanlar aşağıdaki markdown "İçerik" alanına düşer.
+      - label: Editorial Gövde (Blok Sistemi)
+        name: article
+        widget: object
+        required: false
+        collapsed: true
+        i18n: true
+        fields:
+          - label: Güncellenme Tarihi
+            name: updated
+            widget: datetime
+            required: false
+            date_format: 'YYYY-MM-DD'
+            time_format: false
+            picker_utc: true
+            i18n: duplicate
+          - label: Kısa Cevap
+            name: quickAnswer
+            widget: object
+            required: false
+            collapsed: true
+            i18n: true
+            fields:
+              - { label: Başlık, name: heading, widget: string, i18n: true }
+              - { label: Metin, name: text, widget: text, i18n: true }
+          - { label: İçindekiler Başlığı, name: tocHeading, widget: string, required: false, i18n: true }
+          - label: İlgili Yazılar
+            name: related
+            widget: list
+            required: false
+            i18n: duplicate
+            field: { label: Çeviri Anahtarı, name: key, widget: string }
+          - label: Bloklar
+            name: blocks
+            widget: list
+            required: false
+            i18n: true
+            types:
+              - label: Bölüm
+                name: section
+                widget: object
+                fields:
+                  - { label: Çıpa (id), name: id, widget: string, i18n: duplicate }
+                  - { label: Başlık, name: heading, widget: string, i18n: true }
+                  - { label: Kısa Cevap, name: lead, widget: text, required: false, i18n: true }
+                  - { label: Metin, name: text, widget: text, i18n: true }
+              - label: Görsel
+                name: image
+                widget: object
+                fields:
+                  - { label: Görsel, name: src, widget: image, i18n: duplicate }
+                  - { label: Alt Metin, name: alt, widget: string, i18n: true }
+                  - { label: Açıklama, name: caption, widget: string, required: false, i18n: true }
+              - label: Kartlar
+                name: cards
+                widget: object
+                fields:
+                  - { label: Başlık, name: heading, widget: string, required: false, i18n: true }
+                  - { label: Giriş, name: intro, widget: text, required: false, i18n: true }
+                  - label: Kartlar
+                    name: items
+                    widget: list
+                    i18n: true
+                    fields:
+                      - { label: Başlık, name: title, widget: string, i18n: true }
+                      - { label: Metin, name: text, widget: text, i18n: true }
+              - label: Not Kutusu
+                name: callout
+                widget: object
+                fields:
+                  - label: Tür
+                    name: variant
+                    widget: select
+                    required: false
+                    options: [note, tip]
+                    i18n: duplicate
+                  - { label: Başlık, name: heading, widget: string, i18n: true }
+                  - { label: Metin, name: text, widget: text, i18n: true }
+              - label: Alıntı
+                name: quote
+                widget: object
+                fields:
+                  - { label: Metin, name: text, widget: text, i18n: true }
+                  - { label: Kaynak, name: cite, widget: string, required: false, i18n: true }
+              - label: Kontrol Listesi
+                name: checklist
+                widget: object
+                fields:
+                  - { label: Başlık, name: heading, widget: string, required: false, i18n: true }
+                  - { label: Giriş, name: intro, widget: text, required: false, i18n: true }
+                  - label: Maddeler
+                    name: items
+                    widget: list
+                    i18n: true
+                    fields:
+                      - { label: Başlık, name: title, widget: string, i18n: true }
+                      - { label: Metin, name: text, widget: text, i18n: true }
+              - label: Karşılaştırma Tablosu
+                name: table
+                widget: object
+                fields:
+                  - { label: Başlık, name: heading, widget: string, required: false, i18n: true }
+                  - { label: Giriş, name: intro, widget: text, required: false, i18n: true }
+                  - label: Kolon Başlıkları
+                    name: columns
+                    widget: list
+                    i18n: true
+                    field: { label: Kolon, name: column, widget: string }
+                  - label: Satırlar
+                    name: rows
+                    widget: list
+                    i18n: true
+                    field:
+                      label: Hücreler
+                      name: cells
+                      widget: list
+                      field: { label: Hücre, name: cell, widget: string }
+              - label: Süreç Adımları
+                name: process
+                widget: object
+                fields:
+                  - { label: Başlık, name: heading, widget: string, required: false, i18n: true }
+                  - { label: Giriş, name: intro, widget: text, required: false, i18n: true }
+                  - label: Adımlar
+                    name: steps
+                    widget: list
+                    i18n: true
+                    fields:
+                      - { label: Başlık, name: title, widget: string, i18n: true }
+                      - { label: Metin, name: text, widget: text, i18n: true }
+              - label: Etiket Çipleri
+                name: chips
+                widget: object
+                fields:
+                  - { label: Başlık, name: heading, widget: string, required: false, i18n: true }
+                  - { label: Giriş, name: intro, widget: text, required: false, i18n: true }
+                  - label: Çipler
+                    name: items
+                    widget: list
+                    i18n: true
+                    field: { label: Etiket, name: item, widget: string }
+              - label: İnfografik
+                name: infographic
+                widget: object
+                fields:
+                  - { label: Başlık, name: heading, widget: string, required: false, i18n: true }
+                  - { label: Giriş, name: intro, widget: text, required: false, i18n: true }
+                  - { label: Merkez, name: center, widget: string, i18n: true }
+                  - label: Düğümler
+                    name: nodes
+                    widget: list
+                    i18n: true
+                    field: { label: Düğüm, name: node, widget: string }
+              - label: Sık Sorulan Sorular
+                name: faq
+                widget: object
+                fields:
+                  - { label: Başlık, name: heading, widget: string, required: false, i18n: true }
+                  - label: Sorular
+                    name: items
+                    widget: list
+                    i18n: true
+                    fields:
+                      - { label: Soru, name: question, widget: string, i18n: true }
+                      - { label: Cevap, name: answer, widget: text, i18n: true }
+              - label: CTA
+                name: cta
+                widget: object
+                fields:
+                  - { label: Başlık, name: heading, widget: string, i18n: true }
+                  - { label: Metin, name: text, widget: text, required: false, i18n: true }
+                  - label: Birincil Buton
+                    name: primary
+                    widget: object
+                    i18n: true
+                    fields:
+                      - { label: Etiket, name: label, widget: string, i18n: true }
+                      - { label: Bağlantı, name: href, widget: string, i18n: duplicate }
+                  - label: İkincil Buton
+                    name: secondary
+                    widget: object
+                    required: false
+                    i18n: true
+                    fields:
+                      - { label: Etiket, name: label, widget: string, i18n: true }
+                      - { label: Bağlantı, name: href, widget: string, i18n: duplicate }
       - label: SEO
         name: seo
         widget: object

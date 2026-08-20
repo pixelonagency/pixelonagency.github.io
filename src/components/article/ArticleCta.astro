@@ -1,0 +1,57 @@
+---
+/**
+ * Makale sonu dönüşüm bloğu. Butonlar mevcut CtaButton bileşenidir — blog için
+ * ayrı bir buton dili üretilmez. Koyu zemin, beyaz makale bandından çıkışı
+ * belirginleştirir.
+ */
+import CtaButton from '../CtaButton.astro';
+import { inlineHtml, paragraphs, type BlockOf } from './types';
+
+interface Props {
+  block: BlockOf<'cta'>;
+}
+
+const { block } = Astro.props;
+---
+
+<aside class="ax" data-reveal>
+  <h2 class="ax__heading">{block.heading}</h2>
+  {block.text && paragraphs(block.text).map((part) => <p class="ax__text" set:html={inlineHtml(part)} />)}
+
+  <div class="ax__actions">
+    <CtaButton label={block.primary.label} href={block.primary.href} variant="primary" />
+    {block.secondary && <CtaButton label={block.secondary.label} href={block.secondary.href} variant="outline" />}
+  </div>
+</aside>
+
+<style>
+  .ax {
+    margin: clamp(56px, 7vw, 88px) 0 0;
+    padding: clamp(28px, 4vw, 48px);
+    border-radius: var(--radius-feature);
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .ax__heading {
+    margin: 0;
+    max-width: 22ch;
+    font: 600 clamp(24px, 2.8vw, 34px) / 1.2 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .ax__text {
+    margin: 14px 0 0;
+    max-width: 60ch;
+    font: 400 var(--fs-lead) / 1.7 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  .ax__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: clamp(20px, 2.4vw, 28px);
+  }
+</style>

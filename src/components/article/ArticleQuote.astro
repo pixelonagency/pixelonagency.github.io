@@ -1,0 +1,45 @@
+---
+import { inlineHtml, paragraphs, type BlockOf } from './types';
+
+interface Props {
+  block: BlockOf<'quote'>;
+}
+
+const { block } = Astro.props;
+---
+
+<figure class="au" data-reveal>
+  <blockquote class="au__quote">
+    {paragraphs(block.text).map((part) => <p set:html={inlineHtml(part)} />)}
+  </blockquote>
+  {block.cite && <figcaption class="au__cite">{block.cite}</figcaption>}
+</figure>
+
+<style>
+  .au {
+    margin: clamp(32px, 4vw, 48px) 0 0;
+    padding-left: clamp(18px, 2.4vw, 28px);
+    border-left: 3px solid var(--accent);
+  }
+
+  .au__quote {
+    margin: 0;
+  }
+
+  .au__quote :global(p) {
+    margin: 0;
+    font: 500 clamp(18px, 2vw, 22px) / 1.55 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text-on-light);
+  }
+
+  .au__quote :global(p + p) {
+    margin-top: 12px;
+  }
+
+  .au__cite {
+    margin: 14px 0 0;
+    font: 500 var(--fs-small) var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+</style>

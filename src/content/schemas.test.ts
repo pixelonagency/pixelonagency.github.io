@@ -249,6 +249,65 @@ describe('postSchema', () => {
   test('accepts the draft status', () => {
     expect(postSchema.parse({ ...validPost, status: 'draft' }).status).toBe('draft');
   });
+
+  /**
+   * `article` dolu olan yazılar modüler editorial şablonla render edilir; boş
+   * olanlar markdown gövdesine düşer. Blok dizisi CMS'te sıralanabilir olduğu
+   * için ayrımlı birlik (discriminated union) olarak doğrulanır.
+   */
+  describe('article blocks', () => {
+    const withBlocks = (blocks: unknown[]) => ({ ...validPost, article: { blocks } });
+
+    test('a post without an article still validates', () => {
+      expect(postSchema.parse(validPost).article).toBeUndefined();
+    });
+
+    test('accepts an empty block list', () => {
+      expect(postSchema.safeParse(withBlocks([])).success).toBe(true);
+    });
+
+    test('accepts a section block and keeps its anchor id', () => {
+      const parsed = postSchema.parse(
+        withBlocks([{ type: 'section', id: 'nedir', heading: 'Nedir?', text: 'Bir paragraf.' }]),
+      );
+      expect(parsed.article?.blocks[0]).toMatchObject({ type: 'section', id: 'nedir' });
+    });
+
+    test('rejects a block whose type is unknown', () => {
+      expect(postSchema.safeParse(withBlocks([{ type: 'carousel', text: 'x' }])).success).toBe(false);
+    });
+
+    test('rejects a section block without a heading', () => {
+      expect(postSchema.safeParse(withBlocks([{ type: 'section', id: 'a', text: 'x' }])).success).toBe(false);
+    });
+
+    test('accepts each remaining block type', () => {
+      const blocks = [
+        { type: 'image', src: '/src/assets/x.webp', alt: 'Görsel' },
+        { type: 'cards', items: [{ title: 'Strateji', text: 'Analiz yapılır.' }] },
+        { type: 'callout', heading: 'Pixelon Notu', text: 'Kısa not.' },
+        { type: 'quote', text: 'Alıntı.' },
+        { type: 'checklist', items: [{ title: 'Referanslar', text: 'İncelenebiliyor mu?' }] },
+        { type: 'table', columns: ['Kriter', 'A', 'B'], rows: [['Maliyet', 'x', 'y']] },
+        { type: 'process', steps: [{ title: 'Analiz', text: 'Hesaplar incelenir.' }] },
+        { type: 'chips', items: ['Instagram', 'TikTok'] },
+        { type: 'infographic', center: 'Ajans Yönetimi', nodes: ['Strateji', 'İçerik', 'Reklam'] },
+        { type: 'faq', items: [{ question: 'Soru?', answer: 'Cevap.' }] },
+        { type: 'cta', heading: 'Başlık', text: 'Metin.', primary: { label: 'Git', href: '/iletisim' } },
+      ];
+      const result = postSchema.safeParse(withBlocks(blocks));
+      expect(result.success ? [] : result.error.issues).toEqual([]);
+    });
+
+    test('rejects a table whose row width does not match the columns', () => {
+      const bad = withBlocks([{ type: 'table', columns: ['A', 'B'], rows: [['tek']] }]);
+      expect(postSchema.safeParse(bad).success).toBe(false);
+    });
+
+    test('accepts the null the CMS writes for an untouched article group', () => {
+      expect(postSchema.safeParse({ ...validPost, article: null }).success).toBe(true);
+    });
+  });
 });
 
 describe('settingsSchema', () => {

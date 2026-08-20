@@ -1,0 +1,56 @@
+---
+/**
+ * Blok yönlendiricisi. Sıra içerikten gelir; her tür kendi bileşenine düşer.
+ * Yeni bir blok türü eklerken: zod birliği → bu switch → CMS `types` listesi.
+ */
+import ArticleCallout from './ArticleCallout.astro';
+import ArticleCards from './ArticleCards.astro';
+import ArticleChecklist from './ArticleChecklist.astro';
+import ArticleChips from './ArticleChips.astro';
+import ArticleCta from './ArticleCta.astro';
+import ArticleFaq from './ArticleFaq.astro';
+import ArticleImage from './ArticleImage.astro';
+import ArticleInfographic from './ArticleInfographic.astro';
+import ArticleProcess from './ArticleProcess.astro';
+import ArticleQuote from './ArticleQuote.astro';
+import ArticleSection from './ArticleSection.astro';
+import ArticleTable from './ArticleTable.astro';
+import type { ArticleBlock } from './types';
+
+interface Props {
+  blocks: ArticleBlock[];
+}
+
+const { blocks } = Astro.props;
+---
+
+{
+  blocks.map((block, index) => {
+    switch (block.type) {
+      case 'section':
+        return <ArticleSection {block} />;
+      case 'image':
+        return <ArticleImage {block} />;
+      case 'cards':
+        return <ArticleCards {block} />;
+      case 'callout':
+        return <ArticleCallout {block} />;
+      case 'quote':
+        return <ArticleQuote {block} />;
+      case 'checklist':
+        return <ArticleChecklist {block} />;
+      case 'table':
+        return <ArticleTable {block} />;
+      case 'process':
+        return <ArticleProcess {block} />;
+      case 'chips':
+        return <ArticleChips {block} />;
+      case 'infographic':
+        return <ArticleInfographic {block} />;
+      case 'faq':
+        return <ArticleFaq {block} uid={`faq-${index}`} />;
+      case 'cta':
+        return <ArticleCta {block} />;
+    }
+  })
+}

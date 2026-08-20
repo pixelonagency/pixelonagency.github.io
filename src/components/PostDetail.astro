@@ -1,14 +1,18 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
-import { render } from 'astro:content';
+import { Picture } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaButton from './CtaButton.astro';
+import ArticleBlocks from './article/ArticleBlocks.astro';
+import BlogQuickAnswer from './article/BlogQuickAnswer.astro';
+import RelatedArticles from './article/RelatedArticles.astro';
+import { blocksText } from './article/types';
 import { formatDate, isoDate, readingTime } from '../lib/format';
 import { localizedPath, type Locale } from '../lib/i18n';
 import { canonicalUrl } from '../lib/seo';
-import { blogPostingSchema, breadcrumbSchema } from '../lib/schema';
+import { blogPostingSchema, breadcrumbSchema, faqPageSchema } from '../lib/schema';
 import { t } from '../lib/ui';
 
 interface Props {
@@ -18,22 +22,51 @@ interface Props {
 }
 
 const { post, locale, alternates } = Astro.props;
-const { Content } = await render(post);
-const { title, excerpt, category, date, author, cover, seo } = post.data;
+const { title, excerpt, category, date, author, cover, seo, article } = post.data;
 
-const minutes = readingTime(post.body ?? '');
+/**
+ * İki mod: `article` dolu olan yazılar modüler editorial şablonla, boş olanlar
+ * mevcut markdown akışıyla render edilir. Markdown yolu bozulmadan korunur.
+ */
+const blocks = article?.blocks ?? [];
+const isEditorial = blocks.length > 0;
+
+const { Content } = await render(post);
+
+const minutes = readingTime(isEditorial ? blocksText(blocks) : (post.body ?? ''));
+
+/** İçindekiler girdileri bölüm bloklarından türetilir — elle liste tutulmaz. */
+const tocItems = blocks
+  .filter((block): block is Extract<typeof block, { type: 'section' }> => block.type === 'section')
+  .map((block) => ({ id: block.id, label: block.heading }));
+
+/** SSS yapısal verisi yalnız sayfada GERÇEKTEN görünen sorulardan üretilir. */
+const faqItems = blocks.flatMap((block) => (block.type === 'faq' ? block.items : []));
+
+const relatedKeys = article?.related ?? [];
+const relatedPosts = relatedKeys.length
+  ? await getCollection('posts', (entry) => {
+      if (entry.data.status !== 'published') return false;
+      if (!entry.id.startsWith(`${locale}/`)) return false;
+      const slug = entry.id.split('/').pop() ?? entry.id;
+      return relatedKeys.includes(slug) || relatedKeys.includes(entry.data.translationKey ?? '');
+    })
+  : [];
 
 const coverImage: ImageMetadata | undefined =
   cover && typeof cover === 'object' && 'src' in cover ? (cover as ImageMetadata) : undefined;
 
 const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
 const pageUrl = canonicalUrl(Astro.url.pathname, site);
+const updated = article?.updated;
+
 const extraSchema = [
   blogPostingSchema({
     headline: title,
     description: excerpt,
     url: pageUrl,
     datePublished: isoDate(date),
+    dateModified: updated ? isoDate(updated) : undefined,
     author,
     locale,
     imageUrl: coverImage ? new URL(coverImage.src, site).toString() : undefined,
@@ -41,8 +74,10 @@ const extraSchema = [
   breadcrumbSchema([
     { label: t('nav.home', locale), url: new URL(localizedPath('home', locale), site).toString() },
     { label: t('nav.blog', locale), url: new URL(`${localizedPath('blog', locale)}/`, site).toString() },
+    { label: category },
     { label: title },
   ]),
+  ...(faqItems.length ? [faqPageSchema(faqItems)] : []),
 ];
 ---
 
@@ -64,43 +99,129 @@ const extraSchema = [
           <span aria-hidden="true">/</span>
           <a href={localizedPath('blog', locale)}>{t('nav.blog', locale)}</a>
           <span aria-hidden="true">/</span>
+          {/* Kategori arşiv sayfası yok — bağlantı verilmez, kırık link üretilmez. */}
+          <span>{category}</span>
+          <span aria-hidden="true">/</span>
           <span aria-current="page">{title}</span>
         </nav>
 
-        <p class="eyebrow">{category}</p>
+        <p class="post__chip">{category}</p>
         <h1 class="post__title">{title}</h1>
         <p class="lead post__excerpt">{excerpt}</p>
 
         <div class="post__meta">
-          <span>{author}</span>
-          <span aria-hidden="true">•</span>
-          <time datetime={isoDate(date)}>{formatDate(date, locale)}</time>
-          <span aria-hidden="true">•</span>
-          <span>{minutes} {t('blog.readingTime', locale)}</span>
+          <span class="post__meta-item">
+            <svg
+              class="post__meta-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5 19.5c1.4-3.1 4-4.5 7-4.5s5.6 1.4 7 4.5" stroke-linecap="round"></path>
+            </svg>
+            {author}
+          </span>
+          <span class="post__meta-item">
+            <svg
+              class="post__meta-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <rect x="3.5" y="5" width="17" height="15" rx="2.5"></rect>
+              <path d="M3.5 9.5h17M8 3.5v3M16 3.5v3" stroke-linecap="round"></path>
+            </svg>
+            {updated && `${t('blog.updated', locale)} `}
+            <time datetime={isoDate(updated ?? date)}>{formatDate(updated ?? date, locale)}</time>
+          </span>
+          <span class="post__meta-item">
+            <svg
+              class="post__meta-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="8.5"></circle>
+              <path d="M12 7.5V12l3 2" stroke-linecap="round"></path>
+            </svg>
+            {minutes}
+            {t('blog.readingTime', locale)}
+          </span>
         </div>
       </div>
     </header>
 
     <div class="post__article">
-      <div class="container post__inner">
-        {
-          coverImage && (
+      {/* Kapak LCP adayıdır: lazy DEĞİL, öncelikli ve ölçüleri sabit (CLS yok). */}
+      {
+        coverImage && (
+          <div class:list={['container', isEditorial ? 'post__wide' : 'post__inner']}>
             <div class="post__cover">
-              <Image src={coverImage} alt={title} width={1200} height={675} />
+              <Picture
+                src={coverImage}
+                alt={post.data.coverAlt ?? title}
+                formats={['avif']}
+                fallbackFormat="webp"
+                widths={[640, 1024, 1440, 1920]}
+                sizes="(max-width: 720px) 100vw, (max-width: 1180px) 92vw, 1080px"
+                quality={74}
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
             </div>
-          )
-        }
+          </div>
+        )
+      }
 
-        <div class="post__body">
-          <Content />
-        </div>
+      {
+        isEditorial ? (
+          <div class="container">
+            <div class="post__grid">
+              <BlogQuickAnswer
+                quickAnswer={article?.quickAnswer}
+                tocHeading={article?.tocHeading ?? t('blog.toc', locale)}
+                items={tocItems}
+              />
 
-        <a href={localizedPath('blog', locale)} class="btn btn--outline post__back">{t('cta.allPosts', locale)}</a>
-      </div>
+              <ArticleBlocks {blocks} />
+
+              <RelatedArticles heading={t('blog.related', locale)} posts={relatedPosts} {locale} />
+
+              <p class="post__back-row">
+                <a href={localizedPath('blog', locale)} class="btn btn--outline">
+                  {t('cta.allPosts', locale)}
+                </a>
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div class="container post__inner">
+            <div class="post__body">
+              <Content />
+            </div>
+
+            <a href={localizedPath('blog', locale)} class="btn btn--outline post__back">
+              {t('cta.allPosts', locale)}
+            </a>
+          </div>
+        )
+      }
     </div>
 
-    {/* Referans: makalenin ardından koyu, ortalanmış uygulama CTA'sı gelir. */}
-    <section class="post__cta">
+    {
+      /* Referans: makalenin ardından koyu, ortalanmış uygulama CTA'sı gelir.
+        Editorial modda dönüşüm bloğu içerikten (`cta` bloğu) geldiği için bu
+        sabit bant gösterilmez — aynı sayfada iki CTA yığını olmaz. */
+    }
+    <section class="post__cta" hidden={isEditorial}>
       <div class="container post__cta-inner">
         <h2 class="post__cta-heading">{t('blog.applyHeading', locale)}</h2>
         <div class="post__cta-actions">
@@ -139,18 +260,72 @@ const extraSchema = [
     max-width: 820px;
   }
 
+  /* Kapak, editorial modda okuma kolonundan geniş medya hattını kullanır. */
+  .post__wide {
+    max-width: calc(1080px + var(--gutter) * 2);
+  }
+
+  /*
+   * Editorial ızgara: metin blokları ideal okuma genişliğinde (≈72ch) kalır,
+   * görsel / tablo / kart / süreç blokları "wide" hattına taşar. Böylece uzun
+   * satır oluşmadan geniş alan kullanılır ve sağda ölü boşluk kalmaz.
+   */
+  .post__grid {
+    --reading: 720px;
+    --wide: 1080px;
+    --bleed: calc((var(--wide) - var(--reading)) / 2);
+
+    display: grid;
+    /*
+     * Metin hattının alt sınırı `min(100%, --reading)`: yer daraldığında önce
+     * kenar (bleed) kolonları sıfıra iner, okuma kolonu gereksiz daralmaz.
+     * Böylece ayrı bir kırılım noktasına gerek kalmaz.
+     */
+    grid-template-columns:
+      [wide-start] minmax(0, var(--bleed))
+      [text-start] minmax(min(100%, var(--reading)), var(--reading)) [text-end]
+      minmax(0, var(--bleed)) [wide-end];
+    justify-content: center;
+  }
+
+  .post__grid > :global(*) {
+    grid-column: text;
+    min-width: 0;
+  }
+
+  /* Geniş hatta taşan bloklar (bileşen kök sınıflarıyla hedeflenir). */
+  .post__grid > :global(.ai),
+  .post__grid > :global(.ac),
+  .post__grid > :global(.at),
+  .post__grid > :global(.ap),
+  .post__grid > :global(.ag),
+  .post__grid > :global(.ah),
+  .post__grid > :global(.ax),
+  .post__grid > :global(.ra),
+  .post__grid > :global(.bq) {
+    grid-column: wide;
+  }
+
+  .post__back-row {
+    margin: clamp(40px, 5vw, 64px) 0 0;
+  }
+
   .post__crumbs {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px;
     font: 500 13px var(--font-display);
     color: var(--text-faint);
-    margin-bottom: 24px;
+    /* Bağlantılara dikey padding eklendi; alt boşluk ondan düşüldü. */
+    margin-bottom: 19px;
   }
 
   .post__crumbs a {
     color: var(--text-faint);
     text-decoration: none;
+    /* Dokunma hedefi: 13px metin tek başına ~17px yükseklik veriyordu. */
+    padding-block: 5px;
     transition: color var(--t-base);
   }
 
@@ -174,16 +349,50 @@ const extraSchema = [
     margin-top: 20px;
   }
 
+  /* Kategori rozeti: lime ince çerçeve, koyu zeminde lime metin (kontrast yeterli). */
+  .post__chip {
+    display: inline-block;
+    margin: 0;
+    padding: 6px 14px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-pill);
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
   .post__meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    gap: 10px 20px;
     margin-top: 24px;
     padding-bottom: 28px;
     border-bottom: 1px solid var(--border);
     font: 500 13.5px var(--font-display);
     color: var(--text-faint);
+  }
+
+  .post__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .post__meta-icon {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  /*
+   * Sticky header çıpa hedeflerini örtüyordu; kaydırma bu kadar erken durur.
+   * `scroll-behavior` global olarak tanımlıysa yumuşak kaydırma oradan gelir.
+   */
+  .post__grid :global([id]) {
+    scroll-margin-top: calc(var(--header-h) + 24px);
   }
 
   .post__cover {

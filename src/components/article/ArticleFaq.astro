@@ -1,0 +1,165 @@
+---
+/**
+ * Makale içi SSS akordiyonu. Erişilebilirlik sözleşmesi FaqSection ile aynıdır:
+ * her soru bir `<button aria-expanded>`, panel `hidden` + `role="region"`.
+ * Klavye ile açılıp kapanır; JS yüklenmezse ilk panel açık kalır.
+ */
+import { paragraphs, type BlockOf } from './types';
+
+interface Props {
+  block: BlockOf<'faq'>;
+  /** Aynı sayfada birden çok SSS bloğu olabilir — id çakışmasını önler. */
+  uid: string;
+}
+
+const { block, uid } = Astro.props;
+---
+
+<div class="af" data-reveal>
+  {block.heading && <h2 class="af__heading">{block.heading}</h2>}
+
+  <div class="af__list" data-article-faq>
+    {
+      block.items.map((item, index) => (
+        <div class="af__item">
+          <h3 class="af__q">
+            <button
+              type="button"
+              class="af__trigger"
+              aria-expanded={index === 0 ? 'true' : 'false'}
+              aria-controls={`${uid}-panel-${index}`}
+              id={`${uid}-trigger-${index}`}
+            >
+              <span>{item.question}</span>
+              <span class="af__icon" aria-hidden="true" />
+            </button>
+          </h3>
+          <div
+            class="af__panel"
+            id={`${uid}-panel-${index}`}
+            role="region"
+            aria-labelledby={`${uid}-trigger-${index}`}
+            hidden={index !== 0}
+          >
+            {paragraphs(item.answer).map((part) => (
+              <p class="af__a">{part}</p>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  /* Tek dinleyici: panel aç/kapa. Aynı anda yalnız bir panel açık kalır. */
+  document.querySelectorAll<HTMLElement>('[data-article-faq]').forEach((root) => {
+    root.addEventListener('click', (event) => {
+      const trigger = (event.target as HTMLElement).closest<HTMLButtonElement>('.af__trigger');
+      if (!trigger || !root.contains(trigger)) return;
+
+      const open = trigger.getAttribute('aria-expanded') === 'true';
+
+      root.querySelectorAll<HTMLButtonElement>('.af__trigger').forEach((other) => {
+        const panel = document.getElementById(other.getAttribute('aria-controls') ?? '');
+        const expand = other === trigger && !open;
+        other.setAttribute('aria-expanded', String(expand));
+        if (panel) panel.hidden = !expand;
+      });
+    });
+  });
+</script>
+
+<style>
+  .af {
+    margin-top: clamp(48px, 6vw, 76px);
+  }
+
+  .af__heading {
+    margin: 0 0 clamp(16px, 2vw, 24px);
+    font: 600 clamp(26px, 3.2vw, 38px) / 1.16 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text-on-light);
+  }
+
+  .af__item {
+    border-bottom: 1px solid var(--border-on-light);
+  }
+
+  .af__item:first-child {
+    border-top: 1px solid var(--border-on-light);
+  }
+
+  .af__q {
+    margin: 0;
+  }
+
+  .af__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    /* Dokunma hedefi: dikey padding ile 24px eşiğinin üzerinde. */
+    padding: 18px 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+    font: 600 var(--fs-h3) / 1.4 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .af__trigger:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* Artı → eksi: yatay çubuk sabit, dikey çubuk açılınca kaybolur. */
+  .af__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
+
+  .af__icon::before,
+  .af__icon::after {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 2px;
+    background: var(--text-on-light);
+    transition: transform var(--t-base) var(--ease-out);
+  }
+
+  .af__icon::after {
+    transform: rotate(90deg);
+  }
+
+  .af__trigger[aria-expanded='true'] .af__icon::after {
+    transform: rotate(0deg);
+  }
+
+  .af__panel {
+    padding: 0 0 20px;
+  }
+
+  .af__a {
+    margin: 0;
+    max-width: 68ch;
+    font: 400 var(--fs-body) / 1.75 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+
+  .af__a + .af__a {
+    margin-top: 10px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .af__icon::before,
+    .af__icon::after {
+      transition: none;
+    }
+  }
+</style>

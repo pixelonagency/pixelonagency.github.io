@@ -1,0 +1,68 @@
+---
+/**
+ * Ana metin bölümü: H2 + opsiyonel kısa cevap + paragraflar.
+ * `id` içindekiler bağlantısının çıpasıdır; sticky header için scroll-margin
+ * global stilde tanımlıdır.
+ */
+import { inlineHtml, paragraphs, type BlockOf } from './types';
+
+interface Props {
+  block: BlockOf<'section'>;
+}
+
+const { block } = Astro.props;
+---
+
+<section class="as" id={block.id} data-reveal>
+  <h2 class="as__title">{block.heading}</h2>
+
+  {/* Öne çıkan snippet / AI arama için doğrudan cevap. */}
+  {block.lead && <p class="as__lead" set:html={inlineHtml(block.lead)} />}
+
+  {paragraphs(block.text).map((part) => <p class="as__text" set:html={inlineHtml(part)} />)}
+</section>
+
+<style>
+  .as {
+    margin-top: clamp(48px, 6vw, 76px);
+  }
+
+  .as__title {
+    margin: 0;
+    font: 600 clamp(26px, 3.2vw, 38px) / 1.16 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text-on-light);
+  }
+
+  /* Başlığın altındaki doğrudan cevap: lime sol çizgi, gövdeden bir ton koyu. */
+  .as__lead {
+    margin: 20px 0 0;
+    padding-left: clamp(14px, 1.6vw, 20px);
+    border-left: 3px solid var(--accent);
+    font: 500 clamp(16px, 1.5vw, 18px) / 1.6 var(--font-body);
+    color: var(--text-on-light);
+  }
+
+  .as__text {
+    margin: 16px 0 0;
+    font: 400 var(--fs-lead) / 1.75 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+
+  .as__text :global(a),
+  .as__lead :global(a) {
+    color: var(--text-on-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    /* Dokunma hedefi: satır içi bağlantı ~18px yükseklikteydi. Padding satır
+       akışını kaydırmadan tıklama alanını büyütür. */
+    padding-block: 4px;
+    transition: color var(--t-base);
+  }
+
+  .as__text :global(a:hover) {
+    color: var(--text-muted-on-light);
+  }
+</style>

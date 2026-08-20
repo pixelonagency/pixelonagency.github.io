@@ -248,6 +248,116 @@ export function makeProjectSchema(image: ImageResolver = defaultImage) {
 
 // --- posts ----------------------------------------------------------------
 
+/**
+ * Blog gövdesinin modüler blok sistemi. Sıra CMS'te belirlenir; her blok kendi
+ * bileşenine karşılık gelir (`src/components/article/`). Bloklar tek bir yazıya
+ * bağlı değildir — sonraki yazılarda farklı sırayla yeniden kullanılır.
+ *
+ * `type` alanı ayrımlı birlik anahtarıdır: bilinmeyen bir tür sessizce
+ * yoksayılmaz, doğrulamada patlar.
+ */
+function makeArticleBlock(image: ImageResolver) {
+  /** Çift satır sonuyla paragraflanan düz metin (markdown değil). */
+  const prose = nonEmpty;
+
+  const linkItem = z.object({ label: nonEmpty, href: nonEmpty });
+
+  return z.discriminatedUnion('type', [
+    /** Ana metin bölümü. `id` içindekiler bağlantısının çıpasıdır. */
+    z.object({
+      type: z.literal('section'),
+      id: nonEmpty,
+      heading: nonEmpty,
+      /** Başlığın hemen altındaki kısa doğrudan cevap (öne çıkan snippet için). */
+      lead: opt(z.string()),
+      text: prose,
+    }),
+    z.object({
+      type: z.literal('image'),
+      src: image(),
+      alt: nonEmpty,
+      caption: opt(z.string()),
+    }),
+    /** Numaralı hizmet/özellik kartları. */
+    z.object({
+      type: z.literal('cards'),
+      heading: opt(z.string()),
+      intro: opt(z.string()),
+      items: z.array(z.object({ title: nonEmpty, text: prose })).min(1),
+    }),
+    z.object({
+      type: z.literal('callout'),
+      variant: opt(z.enum(['note', 'tip'])),
+      heading: nonEmpty,
+      text: prose,
+    }),
+    z.object({
+      type: z.literal('quote'),
+      text: prose,
+      cite: opt(z.string()),
+    }),
+    z.object({
+      type: z.literal('checklist'),
+      heading: opt(z.string()),
+      intro: opt(z.string()),
+      items: z.array(z.object({ title: nonEmpty, text: prose })).min(1),
+    }),
+    /** Karşılaştırma tablosu; ilk kolon kriter sütunudur. */
+    z
+      .object({
+        type: z.literal('table'),
+        heading: opt(z.string()),
+        intro: opt(z.string()),
+        columns: z.array(nonEmpty).min(2),
+        rows: z.array(z.array(nonEmpty).min(2)).min(1),
+      })
+      .superRefine((value, ctx) => {
+        const width = value.columns.length;
+        value.rows.forEach((row, index) => {
+          if (row.length !== width) {
+            ctx.addIssue({
+              code: 'custom',
+              path: ['rows', index],
+              message: `Satır ${index + 1} ${row.length} hücre içeriyor; ${width} olmalı (kolon sayısı).`,
+            });
+          }
+        });
+      }),
+    z.object({
+      type: z.literal('process'),
+      heading: opt(z.string()),
+      intro: opt(z.string()),
+      steps: z.array(z.object({ title: nonEmpty, text: prose })).min(1),
+    }),
+    z.object({
+      type: z.literal('chips'),
+      heading: opt(z.string()),
+      intro: opt(z.string()),
+      items: z.array(nonEmpty).min(1),
+    }),
+    /** Merkez + çevresel düğüm diyagramı; etiketler HTML/SVG olarak basılır. */
+    z.object({
+      type: z.literal('infographic'),
+      heading: opt(z.string()),
+      intro: opt(z.string()),
+      center: nonEmpty,
+      nodes: z.array(nonEmpty).min(3),
+    }),
+    z.object({
+      type: z.literal('faq'),
+      heading: opt(z.string()),
+      items: z.array(z.object({ question: nonEmpty, answer: prose })).min(1),
+    }),
+    z.object({
+      type: z.literal('cta'),
+      heading: nonEmpty,
+      text: opt(z.string()),
+      primary: linkItem,
+      secondary: opt(linkItem),
+    }),
+  ]);
+}
+
 export function makePostSchema(image: ImageResolver = defaultImage) {
   return z.object({
     title: nonEmpty,
@@ -261,9 +371,28 @@ export function makePostSchema(image: ImageResolver = defaultImage) {
      */
     translationKey: opt(z.string()),
     cover: opt(image()),
+    /** Kapak görselinin alt metni; verilmezse başlığa düşer. */
+    coverAlt: opt(z.string()),
     author: z.string().default('Pixelon'),
     status: z.enum(['draft', 'published']).default('published'),
     featured: z.boolean().default(false),
+    /**
+     * Modüler editorial gövde. Dolu olan yazılar blok şablonuyla render edilir;
+     * boş olanlar mevcut markdown akışında kalır (geriye dönük uyumlu).
+     */
+    article: opt(
+      z.object({
+        /** İçerik gerçekten değiştiğinde elle güncellenir — build tarihi DEĞİLDİR. */
+        updated: opt(z.coerce.date()),
+        /** Hero'nun altındaki iki kolonlu bandın sol tarafı: doğrudan cevap. */
+        quickAnswer: opt(z.object({ heading: nonEmpty, text: nonEmpty })),
+        /** İçindekiler başlığı; girdiler `section` bloklarından türetilir. */
+        tocHeading: opt(z.string()),
+        blocks: list(makeArticleBlock(image)),
+        /** İlgili yazılar — diğer post dosyalarının translationKey/slug değerleri. */
+        related: list(nonEmpty),
+      }),
+    ),
     seo: opt(seo.partial()),
   });
 }
