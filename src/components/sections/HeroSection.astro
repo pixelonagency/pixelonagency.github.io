@@ -300,6 +300,12 @@ const tickerItems = section.tagline?.includes('✦')
     animation: fadeUp 0.8s var(--ease-out) 0.1s both;
   }
 
+  /* Alt sayfa hero'su daha sıkı nefes alır — üst/alt boşluk bir kademe dar. */
+  .hero--sub {
+    padding-top: clamp(44px, 6vw, 72px);
+    padding-bottom: clamp(48px, 6vw, 76px);
+  }
+
   /* Referans: alt sayfa hero başlığı bir kademe küçüktür. */
   .hero--sub .hero__title {
     font-size: clamp(38px, 5.4vw, 74px);
