@@ -4,10 +4,92 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0a0a0a" />
     <title>Pixelon İçerik Yönetimi</title>
-    <link rel="icon" href="data:," />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      /* CMS yüklenene dek markalı karşılama ekranı (Sveltia mount olunca kaldırılır). */
+      #pxl-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        background: #0a0a0a;
+        transition: opacity 0.35s ease;
+      }
+
+      #pxl-splash.is-done {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      #pxl-splash img {
+        width: min(230px, 56vw);
+        height: auto;
+        animation: pxl-pulse 1.8s ease-in-out infinite;
+      }
+
+      #pxl-splash p {
+        margin: 0;
+        font: 500 13px/1 system-ui, sans-serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgb(255 255 255 / 55%);
+      }
+
+      #pxl-splash .pxl-bar {
+        width: 148px;
+        height: 2px;
+        border-radius: 999px;
+        background: rgb(255 255 255 / 12%);
+        overflow: hidden;
+      }
+
+      #pxl-splash .pxl-bar::before {
+        content: '';
+        display: block;
+        width: 40%;
+        height: 100%;
+        border-radius: 999px;
+        background: #cfff00;
+        animation: pxl-slide 1.2s ease-in-out infinite;
+      }
+
+      @keyframes pxl-pulse {
+        50% {
+          opacity: 0.72;
+        }
+      }
+
+      @keyframes pxl-slide {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        100% {
+          transform: translateX(360%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #pxl-splash img,
+        #pxl-splash .pxl-bar::before {
+          animation: none;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="pxl-splash" aria-hidden="true">
+      <img src="/admin/pixelon-logo.svg" alt="" />
+      <div class="pxl-bar"></div>
+      <p>İçerik Yönetimi</p>
+    </div>
+
     <!--
       Sveltia CMS — Git tabanlı headless CMS (Decap/Netlify CMS uyumlu).
 
@@ -29,5 +111,23 @@
       integrity="sha384-nsTvaoGO8XNB91u5cssx80796nRkK4mY/zGnirQLk68nmXUCaQVqYJ8B/mEOG7jr"
       crossorigin="anonymous"
     ></script>
+    <script>
+      // Sveltia kendi kök öğesini body'ye ekleyince karşılama ekranı söndürülür.
+      (() => {
+        const splash = document.getElementById('pxl-splash');
+        const done = () => {
+          splash.classList.add('is-done');
+          splash.addEventListener('transitionend', () => splash.remove(), { once: true });
+          observer.disconnect();
+        };
+        const observer = new MutationObserver(() => {
+          const mounted = [...document.body.children].some(
+            (el) => el !== splash && el.tagName !== 'SCRIPT',
+          );
+          if (mounted) done();
+        });
+        observer.observe(document.body, { childList: true });
+      })();
+    </script>
   </body>
 </html>

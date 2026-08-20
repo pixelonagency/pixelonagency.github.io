@@ -37,6 +37,9 @@ public_folder: /src/assets/uploads
 publish_mode: simple
 site_url: https://pixelon.com.tr
 display_url: https://pixelon.com.tr
+# Giriş ekranındaki marka logosu (koyu rozet — açık/koyu temada da okunur) + panel adı.
+logo_url: /admin/pixelon-logo.svg
+app_title: Pixelon İçerik Yönetimi
 
 # --- Çok dillilik ---------------------------------------------------------
 #
@@ -62,6 +65,7 @@ i18n:
 collections:
   # --- Site Ayarları (tekil) ---------------------------------------------
   - name: settings
+    icon: settings
     label: Site Ayarları
     # "file" koleksiyonlarında i18n hem koleksiyonda hem HER dosyada açılmalıdır;
     # yol elle yazıldığı için dil klasörü `{{locale}}` yer tutucusuyla belirtilir.
@@ -110,6 +114,7 @@ collections:
 
   # --- Hizmetler ----------------------------------------------------------
   - name: services
+    icon: design_services
     label: Hizmetler
     label_singular: Hizmet
     # `folder` dil klasörünü İÇERMEZ — Sveltia `src/content/services/<locale>/` yapar.
@@ -323,6 +328,7 @@ collections:
 
   # --- Sayfalar (bölüm kurgusu) ------------------------------------------
   - name: pages
+    icon: web
     label: Sayfalar
     label_singular: Sayfa
     folder: src/content/pages
@@ -808,6 +814,7 @@ collections:
 
   # --- Projeler -----------------------------------------------------------
   - name: projects
+    icon: work
     label: Projeler
     label_singular: Proje
     folder: src/content/projects
@@ -927,6 +934,7 @@ collections:
   # bilgi girilmemeli, izleme araçları değiştiğinde çerez politikası birlikte
   # güncellenmelidir (bkz. PRIVACY_TRACKING_INVENTORY.md).
   - name: legal
+    icon: gavel
     label: Yasal Metinler
     label_singular: Yasal Metin
     folder: src/content/legal
@@ -956,6 +964,7 @@ collections:
       - { label: İçerik, name: body, widget: markdown, i18n: true }
 
   - name: posts
+    icon: article
     label: Blog Yazıları
     label_singular: Blog Yazısı
     folder: src/content/posts
@@ -1008,6 +1017,7 @@ collections:
   # dil alt klasörü yok. `i18n: false` varsayılan davranış zaten, ama açıkça yazıldı ki
   # üst düzeydeki `i18n:` bloğu bu koleksiyonlara sızıyor sanılmasın.
   - name: references
+    icon: handshake
     label: Referanslar
     label_singular: Referans
     folder: src/content/references
@@ -1029,6 +1039,7 @@ collections:
 
   # --- Ekip ---------------------------------------------------------------
   - name: team
+    icon: group
     label: Ekip
     label_singular: Ekip Üyesi
     folder: src/content/team
