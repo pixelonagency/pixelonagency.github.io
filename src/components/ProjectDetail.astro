@@ -303,16 +303,20 @@ const LOOP_SCRIPT = `(() => {
   .pd-crumbs {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px;
     font: 500 13px var(--font-display);
     color: var(--text-faint);
-    margin-bottom: clamp(28px, 4vw, 44px);
+    /* Dikey padding satır yüksekliğini büyüttüğü için margin ondan düşülür. */
+    margin-bottom: clamp(20px, 4vw, 36px);
   }
 
   .pd-crumbs a {
     color: var(--text-faint);
     text-decoration: none;
     transition: color var(--t-base);
+    /* Dokunma hedefi: 13px metin tek başına ~17px yükseklik veriyordu. */
+    padding-block: 7px;
   }
 
   .pd-crumbs a:hover {

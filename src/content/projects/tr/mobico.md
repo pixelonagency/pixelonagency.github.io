@@ -2,15 +2,82 @@
 title: Mobico
 client: Mobico
 category: uxui
-categoryLabel: CRM & Yazılım · UX/UI
-excerpt: Randevu, müşteri ve işletme yönetimi süreçlerinin kolayca takip edilebildiği kullanıcı dostu ekranlar.
+categoryLabel: CRM & Yazılım · Marka Kimliği
+excerpt: CRM altyapısı geliştiren Mobico için logodan sunum şablonuna, kurumsal kimlikten sosyal medyaya uzanan marka sistemi.
 cover: '/src/assets/images/projects/mobico.webp'
 featured: false
 order: 7
 tags:
-  - UX/UI Tasarımı
+  - Logo Tasarımı
+  - Kurumsal Kimlik
+  - Sosyal Medya
   - CRM
-  - Web Arayüzü
+year: '2024–2025'
+seo:
+  title: Mobico Projesi | Pixelon 360° Dijital Ajans
+  description: CRM altyapısı geliştiren Mobico için tasarladığımız logoyu, kurumsal kimlik ve sunum sistemini ve sosyal medya tasarımlarını keşfedin.
+detail:
+  intro: Soyut bir yazılım hizmetini, ilk bakışta ne yaptığı anlaşılan bir marka kimliğine dönüştürdük.
+  description: |-
+    Mobico, işletmeler için CRM altyapısı geliştiren bir yazılım markası. Marka için logo tasarımından kurumsal kimliğe ve sosyal medya tasarım sistemine uzanan bir kimlik çalışması yaptık.
+
+    Yazılım markalarının ortak sorunu şu: ürün soyut olduğu için marka da soyutlaşıyor ve rakiplerinden ayrışamıyor. Mobico'da amacımız, kimliğin ilk bakışta bir şey söylemesiydi — amblemin kendisi markanın ne yaptığını anlatsın istedik.
+  period: 2024–2025
+  heroImage: '/src/assets/images/projects/mobico/hero.webp'
+  services:
+    - Logo Tasarımı
+    - Kurumsal Kimlik
+    - Sunum & Şablon Sistemi
+    - Sosyal Medya Tasarımları
+  meta:
+    - label: Müşteri
+      value: CRM & Yazılım Markası
+    - label: Kapsam
+      value: Marka Kimliği + İçerik Sistemi
+    - label: Hizmetler
+      value: 4 Tasarım Hizmeti
+    - label: Dönem
+      value: 2024–2025
+  approach:
+    heading: Neler Yaptık?
+    text: |-
+      Amblemi farklı objelerin birleştirilmesi fikri üzerine kurduk; bu birleşim müşteri ile yönetimin bir araya gelişine işaret ediyor — yani Mobico'nun tam olarak yaptığı işe. Amblem aynı zamanda marka isminin ilk harfi olan "M"yi taşıyor.
+
+      Logotype'ta estetik ve teknolojik bir görünüm için modern, fütüristik hatlara sahip bir font kullandık. Lacivert ve yeşil paleti ise yazılım kategorisinin kurumsal ciddiyetini enerjiyle dengeliyor.
+
+      Kimliği tek bir logodan ibaret bırakmadık: kartvizitten antetli kâğıda, sunum şablonundan tişört ve bina tabelasına kadar markanın ihtiyaç duyacağı tüm temas noktalarını sisteme dâhil ettik.
+  sections:
+    - heading: Logo Tasarımı
+      text: |-
+        Amblem, farklı objelerin birleştirilmesi konu edilerek tasarlandı; buradan müşteri ve yönetimin birleşimine işaret edildi. Aynı yapı marka isminin ilk harfi olan "M"yi de barındırıyor.
+
+        Logotype'ta kullanılan font, estetik ve teknolojik bir görünüm oluşturması için modern ve fütüristik hatlara sahip. Markayı "Müşterini Tanı, İşini Büyüt!" sloganıyla eşleştirerek kimliğe sözlü bir karşılık da kazandırdık.
+
+        Logoyu farklı ölçek ve zeminlerde test ettik: LED ekran, bina tabelası, zarf mührü, tişört ve uygulama ikonu — yeşil zeminde de lacivert zeminde de aynı tanınırlığı koruyor.
+      images:
+        - '/src/assets/images/projects/mobico/logo.webp'
+    - heading: Kurumsal Kimlik
+      text: |-
+        Marka için antetli kâğıt, kartvizit ve kurumsal sunum şablonundan oluşan bir kimlik seti hazırladık.
+
+        Sunum şablonunu bir tasarımcıya ihtiyaç duymadan kullanılabilecek şekilde kurguladık: kapak, konu başlığı, maddeli içerik, metin ağırlıklı sayfa ve kapanış olmak üzere hazır düzenler oluşturduk. Tipografi hiyerarşisini Axiforma ailesi üzerinden punto punto tanımlayarak ekibin şablonu bozmadan çoğaltmasını sağladık.
+
+        Amblemden türetilen çizgisel açı motifini tüm parçalarda tekrar ederek dokümanlar arasında görsel süreklilik kurduk.
+      images:
+        - '/src/assets/images/projects/mobico/kurumsal-kimlik.webp'
+    - heading: Sosyal Medya
+      text: |-
+        CRM altyapısı çalışmaları yapan marka için kurumsal renkleri ve font ailesiyle uyumlu, profesyonel tasarımlar ürettik.
+
+        İçerikleri ürünün soyut vaadi yerine somut yetenekleri üzerine kurduk: randevu ve müşteri yönetimi, ürün ve stok takibi, ekip ve şube yönetimi, doküman arşivi ve yetkilendirme, SMS-mail-ödeme entegrasyonları, yönetici raporları. Her içerikte ilgili ekran görüntüsünü göstererek yazılımı somutlaştırdık.
+      images:
+        - '/src/assets/images/projects/mobico/sosyal-medya.webp'
+  result:
+    heading: Sonuç
+    text: |-
+      Mobico; anlamı olan bir amblemden sunum şablonuna, sosyal medya akışından fiziksel temas noktalarına kadar tutarlı bir marka sistemine kavuştu.
+
+      Soyut bir yazılım hizmeti, hem görsel kimliğiyle hem de yeteneklerini tek tek gösteren içerik yapısıyla anlatılabilir hâle geldi.
 ---
 
-Randevu, müşteri ve işletme yönetimi süreçlerinin kolayca takip edilebildiği kullanıcı dostu ekranlar.
+CRM altyapısı geliştiren Mobico için logodan sunum şablonuna, kurumsal kimlikten sosyal medyaya uzanan marka sistemi.

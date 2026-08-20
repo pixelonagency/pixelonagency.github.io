@@ -234,9 +234,9 @@ describe('interactive behaviour is shipped', () => {
     expect(body).toContain('pb-filter');
     expect(body).toContain('aria-pressed');
     expect(body).toContain('data-services=');
-    // Wireframe ritmi: ilk satır iki büyük kart (lead + co).
-    expect((body.match(/pb-card--lead/g) ?? []).length).toBe(1);
-    expect((body.match(/pb-card--co/g) ?? []).length).toBe(1);
+    // Tek ritim: tüm kartlar eşit genişlikte ikili düzen — boyut varyantı yok.
+    expect(body).not.toContain('pb-card--');
+    expect((body.match(/class="pb-card"/g) ?? []).length).toBeGreaterThanOrEqual(16);
     // Case study içeriği olan proje karta bağlanır; olmayanlar bağlantısız kalır.
     expect(body).toContain('href="/projelerimiz/handsforall"');
   });

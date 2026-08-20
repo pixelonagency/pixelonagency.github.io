@@ -185,12 +185,10 @@ const BADGES = [
     <div class="pb-board" data-reveal data-reveal-index="2">
       {
         projects.map((project, index) => {
-          /* Wireframe ritmi: ilk iki kart büyük (7/5), kalanı 3 kolon. */
-          const variant = index === 0 ? 'lead' : index === 1 ? 'co' : 'std';
           const Tag = project.hasDetail ? 'a' : 'article';
           return (
             <Tag
-              class:list={['pb-card', `pb-card--${variant}`]}
+              class="pb-card"
               data-services={project.services.join(' ')}
               {...(project.hasDetail ? { href: localizedPath('projects', locale, project.slug) } : {})}
             >
@@ -201,7 +199,7 @@ const BADGES = [
                   alt={project.title}
                   widths={[480, 800, 1200, 1600]}
                   quality={70}
-                  sizes={variant === 'std' ? '(max-width: 768px) 100vw, 32vw' : '(max-width: 768px) 100vw, 55vw'}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   loading={index < 2 ? 'eager' : 'lazy'}
                   fetchpriority={index === 0 ? 'high' : undefined}
                 />
@@ -309,16 +307,20 @@ const BADGES = [
   .pb-crumbs {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px;
     font: 500 13px var(--font-display);
     color: var(--text-faint);
-    margin-bottom: 22px;
+    /* Dikey padding satır yüksekliğini büyüttüğü için margin ondan düşülür. */
+    margin-bottom: 15px;
   }
 
   .pb-crumbs a {
     color: var(--text-faint);
     text-decoration: none;
     transition: color var(--t-slow);
+    /* Dokunma hedefi: 13px metin tek başına ~17px yükseklik veriyordu. */
+    padding-block: 7px;
   }
 
   .pb-crumbs a:hover {
@@ -447,13 +449,9 @@ const BADGES = [
     gap: var(--gap-card);
   }
 
-  /* Wireframe ritmi: 1. satır EŞİT büyük ikili, kalanı 3 kolon. */
-  .pb-card--lead,
-  .pb-card--co {
+  /* Tek ritim: tüm kartlar eşit genişlikte ikili düzen. */
+  .pb-card {
     grid-column: span 6;
-  }
-  .pb-card--std {
-    grid-column: span 4;
   }
 
   .pb-card {
@@ -471,11 +469,6 @@ const BADGES = [
     transition:
       opacity 0.22s ease,
       transform 0.22s ease;
-  }
-
-  .pb-card--lead,
-  .pb-card--co {
-    aspect-ratio: 16 / 10;
   }
 
   .pb-card.is-leaving {
@@ -534,10 +527,6 @@ const BADGES = [
     text-shadow: 0 2px 16px rgba(10, 10, 10, 0.65);
   }
 
-  .pb-card--std .pb-card__brand {
-    font-size: clamp(19px, 1.8vw, 24px);
-  }
-
   .pb-card__chips {
     display: flex;
     flex-wrap: wrap;
@@ -545,7 +534,9 @@ const BADGES = [
   }
 
   .pb-card__chips span {
-    font: 600 10px var(--font-body);
+    /* Kartlar tek ritimde genişledi; 10px mobilde okunaklılık sınırının
+       altında kalıyordu (min 12px). */
+    font: 600 12px var(--font-body);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text);
@@ -700,20 +691,8 @@ const BADGES = [
   }
 
   /* -------------------------------------------------------- responsive --- */
-  @media (max-width: 1024px) {
-    .pb-card--lead,
-    .pb-card--co {
-      grid-column: span 12;
-    }
-    .pb-card--std {
-      grid-column: span 6;
-    }
-  }
-
   @media (max-width: 768px) {
-    .pb-card--lead,
-    .pb-card--co,
-    .pb-card--std {
+    .pb-card {
       grid-column: span 12;
 
       /* Sabit 4/3 + overflow:hidden dar ekranda içeriği (çip + açıklama +
