@@ -1,3 +1,4 @@
 name: Dentasay
 logo: '/src/assets/client-logos/dentasay-logo.webp'
 order: 1
+card: '/src/assets/client-logos/cards/dentasay-card.webp'

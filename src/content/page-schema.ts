@@ -207,6 +207,12 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     type: z.literal('logos'),
     heading: opt(z.string()),
     lead: opt(z.string()),
+    /**
+     * `marquee` = akan beyaz-ton logo şeridi (varsayılan, anasayfa).
+     * `wall` = renkli marka kartlarından ızgara (referanslar sayfası; `card`
+     * alanı dolu girdileri basar).
+     */
+    kind: opt(z.enum(['marquee', 'wall'])),
   });
 
   const projects = z.object({

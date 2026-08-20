@@ -19,6 +19,7 @@ const ROUTES = [
   '/hizmetlerimiz',
   '/projelerimiz',
   '/projelerimiz/handsforall',
+  '/referanslarimiz',
   '/blog',
   '/kariyer',
   '/iletisim',
@@ -238,6 +239,15 @@ describe('interactive behaviour is shipped', () => {
     expect((body.match(/pb-card--co/g) ?? []).length).toBe(1);
     // Case study içeriği olan proje karta bağlanır; olmayanlar bağlantısız kalır.
     expect(body).toContain('href="/projelerimiz/handsforall"');
+  });
+
+  test('the references page ships the brand wall with hero and closing CTA', () => {
+    const body = html.get('/referanslarimiz') ?? '';
+    // Duvar: renkli marka kartları (marquee değil) + hero breadcrumb + spot CTA.
+    expect((body.match(/logo-wall__item/g) ?? []).length).toBeGreaterThanOrEqual(18);
+    expect(body.includes('logos__track')).toBe(false);
+    expect(body).toContain('hero__crumbs');
+    expect(body).toContain('cta-spot');
   });
 
   test('the project case study pages ship the full detail flow in both locales', async () => {

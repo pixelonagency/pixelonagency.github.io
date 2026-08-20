@@ -274,7 +274,10 @@ export function makeReferenceSchema(image: ImageResolver = defaultImage) {
   return z.object({
     name: nonEmpty,
     sector: opt(z.string()),
-    logo: image(),
+    /** Beyaz tonlu şerit logosu — anasayfa marquee'sinde kullanılır. */
+    logo: opt(image()),
+    /** Renkli marka kartı (kendi zeminiyle) — referans duvarında kullanılır. */
+    card: opt(image()),
     order: z.number().default(0),
   });
 }

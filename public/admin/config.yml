@@ -545,6 +545,12 @@ collections:
               - *s_ctas
               - *s_heading_opt
               - *s_lead
+              # marquee = akan logo şeridi (varsayılan); wall = renkli marka kartı ızgarası.
+              - label: Görünüm
+                name: kind
+                widget: select
+                required: false
+                options: [marquee, wall]
               - label: Rakamlar
                 name: items
                 widget: list
@@ -1015,7 +1021,10 @@ collections:
     fields:
       - { label: Marka Adı, name: name, widget: string }
       - { label: Sektör, name: sector, widget: string, required: false }
-      - { label: Logo, name: logo, widget: image }
+      # Beyaz tonlu şerit logosu (anasayfa marquee) — duvar-yalnız markalarda boş kalabilir.
+      - { label: Logo (şerit), name: logo, widget: image, required: false }
+      # Renkli marka kartı (kendi zeminiyle) — referans duvarı bunu basar.
+      - { label: Marka Kartı (duvar), name: card, widget: image, required: false }
       - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
 
   # --- Ekip ---------------------------------------------------------------

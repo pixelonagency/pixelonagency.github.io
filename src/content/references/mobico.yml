@@ -1,3 +1,4 @@
 name: Mobico
 logo: '/src/assets/client-logos/mobico-logo.webp'
 order: 8
+card: '/src/assets/client-logos/cards/mobico-card.webp'

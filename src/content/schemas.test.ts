@@ -289,8 +289,15 @@ describe('referenceSchema', () => {
     expect(parsed.name).toBe('Opet');
   });
 
-  test('rejects a reference with no logo', () => {
-    expect(referenceSchema.safeParse({ name: 'Opet', sector: 'Enerji' }).success).toBe(false);
+  test('accepts a wall-only reference (card without a strip logo)', () => {
+    // Şerit logosu olmayan marka marquee'de yer almaz ama duvarda basılır.
+    expect(
+      referenceSchema.safeParse({ name: 'TEB', card: 'src/assets/client-logos/cards/teb-card.webp' }).success,
+    ).toBe(true);
+  });
+
+  test('rejects a reference with no name', () => {
+    expect(referenceSchema.safeParse({ sector: 'Enerji' }).success).toBe(false);
   });
 });
 

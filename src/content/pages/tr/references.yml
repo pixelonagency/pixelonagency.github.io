@@ -1,0 +1,53 @@
+seo:
+  title: Referanslarımız | Pixelon 360° Dijital Ajans
+  description: >-
+    Sağlıktan finansa, e-ticaretten sivil topluma farklı sektörlerden markaların dijital yolculuğuna eşlik ediyoruz. Pixelon'un birlikte çalıştığı markaları keşfedin.
+whatsappMessage: Merhaba Pixelon, Referanslarımız sayfasından yazıyorum.
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: Referanslarımız
+    headingLines:
+      - 'Markaların Büyüme Yolculuğundaki Ortağıyız.'
+    lead: >-
+      Sağlıktan finansa, e-ticaretten sivil topluma farklı sektörlerden markalarla çalışıyor; her birinin hedefine stratejiden tasarıma, reklamdan prodüksiyona uçtan uca eşlik ediyoruz. Bizim için her referans, birlikte büyüttüğümüz bir hikâyedir.
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Referanslarımız
+    ctas:
+      - label: Projelerimizi İnceleyin
+        href: /projelerimiz
+        variant: primary
+      - label: Bize Ulaşın
+        href: /iletisim
+        variant: outline
+
+  # 2 — MARKA DUVARI
+  - type: logos
+    kind: wall
+    anchor: markalar
+    background: dark
+    eyebrow: Birlikte Çalıştığımız Markalar
+    heading: Güvenin Görsel Hali
+    lead: >-
+      Küçük işletmelerden kurumsal markalara kadar her ölçekten iş ortağımızla aynı özenle çalışıyoruz.
+
+  # 3 — KAPANIŞ CTA
+  - type: cta
+    kind: spot
+    anchor: iletisim
+    background: dark
+    eyebrow: Sıradaki referansımız siz olun
+    heading: Markanızı birlikte büyütelim mi?
+    lead: >-
+      Hedefinizi anlatın; strateji, tasarım ve teknolojiyi tek çatı altında birleştiren ekibimizle yol haritanızı çıkaralım.
+    ctas:
+      - label: Projeni Anlat →
+        href: /iletisim
+        variant: primary
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline

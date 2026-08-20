@@ -28,6 +28,7 @@ export const ROUTE_SLUGS = {
   services: { tr: 'hizmetlerimiz', en: 'services' },
   website: { tr: 'web-sitesi-yaptir', en: 'get-a-website' },
   projects: { tr: 'projelerimiz', en: 'projects' },
+  references: { tr: 'referanslarimiz', en: 'references' },
   blog: { tr: 'blog', en: 'blog' },
   careers: { tr: 'kariyer', en: 'careers' },
   contact: { tr: 'iletisim', en: 'contact' },

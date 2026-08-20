@@ -18,15 +18,26 @@ interface Props {
 const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
 const references = await getCollection('references');
+const sorted = [...references].sort((a, b) => a.data.order - b.data.order);
+
+/*
+ * İki görünüm, iki varlık kümesi: marquee beyaz tonlu `logo` alanını, duvar
+ * renkli `card` kartlarını basar. Alanı boş olan girdi ilgili görünümde yer almaz.
+ */
+const isWall = section.kind === 'wall';
 
 // `image()` çözümleyicisi şema tarafında `ZodTypeAny` ile tiplendiği için
-// derleyiciye logonun bir ImageMetadata olduğu burada bildirilir.
-const logos = [...references]
-  .sort((a, b) => a.data.order - b.data.order)
+// derleyiciye görselin bir ImageMetadata olduğu burada bildirilir.
+const logos = sorted
+  .filter((entry) => Boolean(entry.data.logo))
   .map((entry) => ({ name: entry.data.name, logo: entry.data.logo as ImageMetadata }));
 
-// Koleksiyon boşsa bölüm hiç basılmaz — boş bir şerit build'i kırmasın.
-const hasLogos = logos.length > 0;
+const cards = sorted
+  .filter((entry) => Boolean(entry.data.card))
+  .map((entry) => ({ name: entry.data.name, card: entry.data.card as ImageMetadata }));
+
+// Koleksiyon boşsa bölüm hiç basılmaz — boş bir şerit/duvar build'i kırmasın.
+const hasLogos = isWall ? cards.length > 0 : logos.length > 0;
 
 /*
  * Referans tasarımda bu bölümün başlığı iki sütundur: solda eyebrow + başlık,
@@ -54,44 +65,101 @@ const stripArrow = (label: string) => label.replace(/\s*→\s*$/, '');
         </div>
       </div>
 
-      <div
-        class="logos"
-        role="group"
-        aria-label={t('logos.groupLabel', locale)}
-        tabindex="0"
-        data-reveal
-        data-reveal-index={1}
-      >
-        <div class="logos__track">
-          <ul class="logos__group">
-            {logos.map((ref) => (
-              <li class="logos__item">
-                <Image
-                  class="logos__logo"
-                  src={ref.logo}
-                  alt={`${ref.name} ${t('logos.altSuffix', locale)}`}
-                  height={44}
-                  densities={[1, 2]}
-                />
-              </li>
-            ))}
-          </ul>
+      {isWall && (
+        <ul class="logo-wall" data-reveal data-reveal-index={1}>
+          {cards.map((ref) => (
+            <li class="logo-wall__item">
+              <Image
+                src={ref.card}
+                alt={`${ref.name} ${t('logos.altSuffix', locale)}`}
+                widths={[320, 640]}
+                sizes="(max-width: 720px) 45vw, 220px"
+                loading="lazy"
+              />
+            </li>
+          ))}
+        </ul>
+      )}
 
-          {/* Sonsuz akış için ikinci kopya — ekran okuyucudan gizli. */}
-          <ul class="logos__group" aria-hidden="true">
-            {logos.map((ref) => (
-              <li class="logos__item">
-                <Image class="logos__logo" src={ref.logo} alt="" height={44} densities={[1, 2]} />
-              </li>
-            ))}
-          </ul>
+      {!isWall && (
+        <div
+          class="logos"
+          role="group"
+          aria-label={t('logos.groupLabel', locale)}
+          tabindex="0"
+          data-reveal
+          data-reveal-index={1}
+        >
+          <div class="logos__track">
+            <ul class="logos__group">
+              {logos.map((ref) => (
+                <li class="logos__item">
+                  <Image
+                    class="logos__logo"
+                    src={ref.logo}
+                    alt={`${ref.name} ${t('logos.altSuffix', locale)}`}
+                    height={44}
+                    densities={[1, 2]}
+                  />
+                </li>
+              ))}
+            </ul>
+
+            {/* Sonsuz akış için ikinci kopya — ekran okuyucudan gizli. */}
+            <ul class="logos__group" aria-hidden="true">
+              {logos.map((ref) => (
+                <li class="logos__item">
+                  <Image class="logos__logo" src={ref.logo} alt="" height={44} densities={[1, 2]} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
     </Section>
   )
 }
 
 <style>
+  /* --- Duvar: renkli marka kartlarından ızgara --- */
+  .logo-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: clamp(14px, 1.8vw, 22px);
+    margin: clamp(32px, 4.5vw, 52px) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .logo-wall__item {
+    transition: transform var(--t-slow);
+  }
+
+  .logo-wall__item :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  @media (hover: hover) {
+    .logo-wall__item:hover {
+      transform: translateY(-6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-wall__item {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .logo-wall {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
   /* Referans: bu bölümün başlığı bir kademe küçüktür (max 48px). */
   .logos-head :global(.section-head .h2) {
     font-size: clamp(30px, 3.6vw, 48px);

@@ -1,0 +1,53 @@
+seo:
+  title: Our References | Pixelon 360° Digital Agency
+  description: >-
+    From healthcare to finance, e-commerce to non-profits, we partner with brands across industries. Explore the brands Pixelon works with.
+whatsappMessage: Hello Pixelon, I am writing from your References page.
+
+sections:
+  # 1 — HERO
+  - type: hero
+    background: dark
+    eyebrow: Our References
+    headingLines:
+      - "A Partner in Every Brand's Growth Journey."
+    lead: >-
+      We work with brands from healthcare to finance, e-commerce to non-profits — supporting each goal end to end, from strategy and design to advertising and production. To us, every reference is a story we grew together.
+    breadcrumb:
+      - label: Home
+        href: /en/
+      - label: References
+    ctas:
+      - label: Explore Our Projects
+        href: /en/projects
+        variant: primary
+      - label: Contact Us
+        href: /en/contact
+        variant: outline
+
+  # 2 — BRAND WALL
+  - type: logos
+    kind: wall
+    anchor: brands
+    background: dark
+    eyebrow: Brands We Work With
+    heading: What Trust Looks Like
+    lead: >-
+      From small businesses to enterprise brands, we bring the same care to every partner, at every scale.
+
+  # 3 — CLOSING CTA
+  - type: cta
+    kind: spot
+    anchor: contact
+    background: dark
+    eyebrow: Be our next reference
+    heading: Shall we grow your brand together?
+    lead: >-
+      Tell us your goal — and let's map the road ahead with a team that unites strategy, design and technology under one roof.
+    ctas:
+      - label: Tell Us About Your Project →
+        href: /en/contact
+        variant: primary
+      - label: Message Us on WhatsApp
+        href: https://wa.me/905065229034
+        variant: outline

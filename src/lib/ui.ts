@@ -238,7 +238,7 @@ export function buildPrimaryNav(locale: Locale): NavItem[] {
     item('nav.about', 'about'),
     item('nav.services', 'services', { hasDropdown: true }),
     item('nav.projects', 'projects'),
-    { label: t('nav.references', locale), href: `${localizedPath('projects', locale)}#referanslar` },
+    { label: t('nav.references', locale), href: localizedPath('references', locale) },
     item('nav.careers', 'careers'),
     item('nav.contact', 'contact'),
   ];
