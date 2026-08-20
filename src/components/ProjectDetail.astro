@@ -181,12 +181,17 @@ const LOOP_SCRIPT = `(() => {
         {
           detail.sections.map((block, index) => (
             <div class="pd-block">
+              {/* Editoryal iki kolon: solda numara + başlık, sağda gövde.
+                  Metin tek kolonda kalsaydı satır uzunluğu korunurken sağda
+                  ~420px ölü alan oluşuyordu. */}
               <div class="pd-block__head" data-reveal>
-                <span class="pd-block__no" aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div>
+                <div class="pd-block__lead">
+                  <span class="pd-block__no" aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                   <h2 class="h2 pd-block__title">{block.heading}</h2>
+                </div>
+                <div class="pd-block__body">
                   {paragraphs(block.text).map((part) => (
                     <p class="body-text pd-block__text">{part}</p>
                   ))}
@@ -463,11 +468,18 @@ const LOOP_SCRIPT = `(() => {
     margin-bottom: 0;
   }
 
+  /* Solda numara + başlık, sağda gövde; ikisi birlikte kapsayıcıyı doldurur. */
   .pd-block__head {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: clamp(28px, 4vw, 64px);
+    align-items: start;
+  }
+
+  .pd-block__lead {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     gap: clamp(16px, 2.4vw, 32px);
-    max-width: 860px;
   }
 
   .pd-block__no {
@@ -480,9 +492,15 @@ const LOOP_SCRIPT = `(() => {
     margin: 0;
   }
 
+  /* Satır uzunluğu okunabilir aralıkta tutulur (~50–75 karakter); iki kolonlu
+     düzende kolon genişliği zaten bu sınırın civarında kalır. */
   .pd-block__text {
-    margin: 14px 0 0;
-    max-width: 62ch;
+    margin: 16px 0 0;
+    max-width: 72ch;
+  }
+
+  .pd-block__text:first-child {
+    margin-top: 0;
   }
 
   .pd-block__media {
@@ -570,8 +588,16 @@ const LOOP_SCRIPT = `(() => {
     }
   }
 
-  @media (max-width: 720px) {
+  /* Dar ekranda iki kolon tek kolona iner; başlık üstte, gövde altında. */
+  @media (max-width: 980px) {
     .pd-block__head {
+      grid-template-columns: 1fr;
+      gap: clamp(14px, 2vw, 20px);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .pd-block__lead {
       grid-template-columns: 1fr;
       gap: 8px;
     }
