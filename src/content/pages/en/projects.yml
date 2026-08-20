@@ -1,82 +1,30 @@
 seo:
   title: Our Projects | Pixelon 360° Digital Agency
-  description: Explore Pixelon's web design, social media, digital advertising, brand identity, UX/UI, production and health tourism projects.
-whatsappMessage: Hello Pixelon, I am writing from your Projects page.
+  description: Explore Pixelon's selected work across web design, social media, digital advertising, brand identity, UX/UI, production and health tourism.
+whatsappMessage: Hi Pixelon, I'm writing from your Projects page.
 sections:
-  - type: hero
-    eyebrow: Selected Work
-    background: dark
-    breadcrumb:
-      - label: Home
-        href: /en
-      - label: Our Projects
-    headingLines:
-      - "We Turn Ideas Into Brands, and Brands Into Powerful Experiences."
-    lead: Every project starts with understanding the brand's goals, its industry and its users. By bringing strategy, design, technology and performance together, we create work that does not just look good but delivers real value to the brand.
-    tagline: From web design to social media, from brand identity to digital growth, explore selected projects signed by Pixelon.
-    ctas:
-      - label: Explore the Projects
-        href: '#projeler'
-        variant: primary
-      - label: Let's Talk About Your Project
-        href: https://wa.me/905065229034
-        variant: outline
-
   - type: projects
+    kind: board
     anchor: projeler
     background: dark
-    eyebrow: The Pixelon Touch
-    heading: Selected Work That Adds Value to Brands
-    lead: Discover the digital experiences, creative solutions and conversion-focused projects we have built for brands across different industries.
+    eyebrow: Portfolio
+    heading: Our Projects
+    lead: For every brand we deliver end-to-end work — from strategy and design to production and launch — and share the whole journey as single-page case studies.
+    tagline: Web · Brand · Social Media
     showFilters: true
-    ctaLabel: View Project →
-
-  - type: stats
-    background: light
-    eyebrow: From Idea to Result With Pixelon
-    heading: Our Work in Numbers
-    items:
-      - value: 180
-        suffix: '+'
-        label: Completed projects
-      - value: 120
-        suffix: '+'
-        label: Success stories
-      - value: 50
-        suffix: '+'
-        label: Brands we have worked with
-      - value: 15
-        suffix: '+ Years'
-        label: Industry experience
-
-  - type: steps
-    background: dark
-    eyebrow: The Same Care in Every Project
-    heading: Not Just Delivered Work, but Success Stories Written Together
-    lead: We never start a project with an off-the-shelf solution; we start by understanding what the brand genuinely needs.
-    items:
-      - title: We Understand the Brand
-        description: We analyse the goals, the industry, the users and the current problems.
-      - title: We Build the Right Strategy
-        description: We prepare a design, content, technology and communication roadmap that fits the project.
-      - title: We Create Together
-        description: We run the process with transparent communication and regular feedback.
-      - title: We Improve the Results
-        description: After delivery we track performance and evaluate new opportunities for growth.
+    ctaLabel: View Project
 
   - type: cta
+    kind: spot
     anchor: iletisim
     background: dark
-    eyebrow: The Next Project Could Be Yours
-    heading: Let's Create Value for Your Brand Together.
-    lead: Get in touch with the Pixelon team for a new website, a strong brand identity, effective social media communication or a comprehensive digital project that will grow your brand. Let us listen to your project and build the roadmap that matches your goals together.
+    eyebrow: The next project could be yours
+    heading: What can we build together?
+    lead: Let's talk about a new website, a strong brand identity or a full digital project that grows your brand.
     ctas:
-      - label: Message Us on WhatsApp
-        href: https://wa.me/905065229034
-        variant: primary
-      - label: Tell Us About Your Project
+      - label: Tell Us About Your Project →
         href: /en/contact
+        variant: primary
+      - label: Write on WhatsApp
+        href: https://wa.me/905065229034
         variant: outline
-      - label: Call Us Now
-        href: 'tel:+905065229034'
-        variant: link

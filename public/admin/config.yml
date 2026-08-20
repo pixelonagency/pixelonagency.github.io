@@ -577,6 +577,11 @@ collections:
               - *s_heading
               - *s_lead
               - *s_ctas
+              - label: Görünüm
+                name: kind
+                widget: select
+                required: false
+                options: [classic, spot]
 
           - label: Referans Logoları
             name: logos
@@ -599,8 +604,14 @@ collections:
               - *s_ctas
               - *s_heading
               - *s_lead
+              - { label: Meta Satırı (board), name: tagline, widget: string, required: false }
               - &s_limit { label: Adet Sınırı, name: limit, widget: number, value_type: int, required: false }
               - { label: Kategori Filtresi Göster, name: showFilters, widget: boolean, default: false }
+              - label: Görünüm
+                name: kind
+                widget: select
+                required: false
+                options: [grid, board]
               - &s_cta_label { label: Buton Etiketi, name: ctaLabel, widget: string, required: false }
               - &s_cta_href { label: Buton Bağlantısı, name: ctaHref, widget: string, required: false }
 

@@ -4,7 +4,7 @@ client: HandsForAll
 category: marka
 categoryLabel: Sosyal Fayda · Kurumsal Kimlik
 excerpt: Toplumsal fayda yaklaşımını modern, enerjik ve kolay tanınan bir görsel sistemle buluşturduk.
-cover: '/src/assets/images/handsforall.webp'
+cover: '/src/assets/images/projects/handsforall.webp'
 featured: true
 order: 3
 tags:

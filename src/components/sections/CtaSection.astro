@@ -20,9 +20,54 @@ const { section } = Astro.props;
  * - eyebrow+lead içeren daha büyük "kapanış" blokları (ör. sayfa sonu iletişim çağrısı):
  *   ortalanmış, alt alta.
  */
-const isSlim = !section.eyebrow && !section.lead;
+const isSpot = section.kind === 'spot';
+const isSlim = !isSpot && !section.eyebrow && !section.lead;
 const headingSegments = isSlim ? parseHighlights(section.heading) : [];
+/* Spot panelin marquee bandı birincil CTA etiketini tekrarlar. */
+const spotMarquee = section.ctas[0]?.label?.replace(/\s*→\s*$/, '') ?? section.heading;
 ---
+
+{
+  isSpot && (
+    <Section anchor={section.anchor} background={section.background}>
+      {/* Yüksek-dikkat lime panel: siyah sayfa akışında kaybolmayan kapanış. */}
+      <div class="cta-spot" data-reveal>
+        <span class="cta-spot__glow" aria-hidden="true" />
+        <span class="cta-spot__arrow" aria-hidden="true">
+          ↗
+        </span>
+        {section.eyebrow && <p class="cta-spot__eyebrow">{section.eyebrow}</p>}
+        <h2 class="cta-spot__heading">{section.heading}</h2>
+        {section.lead && <p class="cta-spot__lead">{section.lead}</p>}
+        {section.ctas.length > 0 && (
+          <div class="cta-spot__actions">
+            {section.ctas.map((item, index) => (
+              <a
+                href={item.href}
+                class:list={['cta-spot__btn', index === 0 ? 'cta-spot__btn--solid' : 'cta-spot__btn--ghost']}
+                {...(item.external || /^https?:/.test(item.href)
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+              >
+                {item.label.replace(/\s*→\s*$/, '')}
+                <span class="cta-spot__btn-arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            ))}
+          </div>
+        )}
+        <div class="cta-spot__marquee" aria-hidden="true">
+          <div class="cta-spot__marquee-track">
+            {Array.from({ length: 10 }).map(() => (
+              <span>{spotMarquee} ✦</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Section>
+  )
+}
 
 {
   isSlim ? (
@@ -49,7 +94,7 @@ const headingSegments = isSlim ? parseHighlights(section.heading) : [];
         )}
       </div>
     </Section>
-  ) : (
+  ) : isSpot ? null : (
     <Section anchor={section.anchor} background={section.background}>
       <div class="cta-box" data-reveal data-reveal-index={0}>
         <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
@@ -186,6 +231,200 @@ const headingSegments = isSlim ? parseHighlights(section.heading) : [];
 
     .cta-box__actions :global(.btn) {
       width: 100%;
+    }
+  }
+
+  /* ------------------------------------------------------------ spot --- */
+  .cta-spot {
+    position: relative;
+    overflow: hidden;
+    border-radius: calc(var(--radius-card) * 1.4);
+    background: var(--accent);
+    color: var(--text-on-light);
+    padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 72px) 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-spot__glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 80% at 85% 10%, rgba(10, 10, 10, 0.16), transparent 60%),
+      radial-gradient(50% 70% at 8% 90%, rgba(255, 255, 255, 0.35), transparent 55%);
+    pointer-events: none;
+  }
+
+  .cta-spot__arrow {
+    position: absolute;
+    right: clamp(-30px, -2vw, -10px);
+    top: -34px;
+    font: 700 clamp(160px, 24vw, 340px) var(--font-display);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(10, 10, 10, 0.18);
+    pointer-events: none;
+    animation: cta-spot-float 5s ease-in-out infinite;
+  }
+
+  @keyframes cta-spot-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(14px);
+    }
+  }
+
+  .cta-spot__eyebrow {
+    position: relative;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cta-spot__eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-on-light);
+  }
+
+  .cta-spot__heading {
+    position: relative;
+    margin-top: 18px;
+    font: 600 clamp(38px, 6vw, 84px) var(--font-display);
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    max-width: 15ch;
+  }
+
+  .cta-spot__lead {
+    position: relative;
+    margin-top: 18px;
+    max-width: 560px;
+    font: 400 var(--fs-lead) var(--font-body);
+    color: rgba(10, 10, 10, 0.72);
+    line-height: 1.6;
+  }
+
+  .cta-spot__actions {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: clamp(28px, 4vw, 40px);
+  }
+
+  .cta-spot__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 26px;
+    border-radius: 999px;
+    font: 600 15px var(--font-display);
+    text-decoration: none;
+    transition:
+      transform var(--t-slow),
+      background var(--t-slow),
+      color var(--t-slow);
+  }
+
+  .cta-spot__btn--solid {
+    background: var(--text-on-light);
+    color: var(--accent);
+  }
+
+  .cta-spot__btn--ghost {
+    border: 1.5px solid rgba(10, 10, 10, 0.55);
+    color: var(--text-on-light);
+  }
+
+  .cta-spot__btn-arrow {
+    transition: transform var(--t-slow);
+  }
+
+  @media (hover: hover) {
+    .cta-spot__btn:hover {
+      transform: translateY(-2px);
+    }
+    .cta-spot__btn--ghost:hover {
+      background: rgba(10, 10, 10, 0.08);
+    }
+    .cta-spot__btn:hover .cta-spot__btn-arrow {
+      transform: translateX(4px);
+    }
+  }
+
+  .cta-spot__btn:focus-visible {
+    outline: 2px solid var(--text-on-light);
+    outline-offset: 3px;
+  }
+
+  /* Panelin altında akan koyu bant — kapanışı sahneye çevirir. */
+  .cta-spot__marquee {
+    position: relative;
+    width: calc(100% + 2 * clamp(24px, 5vw, 72px));
+    margin: clamp(40px, 6vw, 64px) calc(-1 * clamp(24px, 5vw, 72px)) 0;
+    background: var(--text-on-light);
+    color: var(--accent);
+    overflow: hidden;
+    padding: 14px 0;
+  }
+
+  .cta-spot__marquee-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: cta-spot-marquee 26s linear infinite;
+    font: 600 15px var(--font-display);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .cta-spot__marquee-track span {
+    display: inline-flex;
+    gap: 40px;
+  }
+
+  @keyframes cta-spot-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-spot__arrow,
+    .cta-spot__marquee-track {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cta-spot {
+      text-align: left;
+      align-items: flex-start;
+    }
+    .cta-spot__actions {
+      justify-content: flex-start;
+    }
+    .cta-spot__arrow {
+      font-size: 160px;
+      right: -30px;
+      top: auto;
+      bottom: 90px;
     }
   }
 </style>

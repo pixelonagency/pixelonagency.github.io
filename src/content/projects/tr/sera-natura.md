@@ -4,6 +4,7 @@ client: Sera Natura
 category: marka
 categoryLabel: Doğal Ürün · Marka Kimliği
 excerpt: Ürünlerin doğallığını ve premium algısını destekleyen marka dili, ambalaj ve dijital içerikler.
+cover: '/src/assets/images/projects/sera-natura.webp'
 featured: false
 order: 6
 tags:

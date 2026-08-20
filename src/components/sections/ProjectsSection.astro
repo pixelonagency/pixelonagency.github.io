@@ -9,6 +9,7 @@ import { slugify } from '../../lib/slug';
 import { t } from '../../lib/ui';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
+import ProjectsBoard from './ProjectsBoard.astro';
 
 type Projects = Extract<PageSection, { type: 'projects' }>;
 
@@ -62,8 +63,9 @@ const panelId = `${uid}-panel`;
 const tabId = (slug: string) => `${uid}-tab-${slug}`;
 ---
 
+{section.kind === 'board' && <ProjectsBoard {section} {locale} />}
 {
-  projects.length > 0 && (
+  section.kind !== 'board' && projects.length > 0 && (
     <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
       {/* Referans: başlık solda, bölüm bağlantısı sağda — taban çizgisine hizalı. */}
       <div class="projects__head">

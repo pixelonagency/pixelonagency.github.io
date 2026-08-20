@@ -4,6 +4,7 @@ client: Çağla Aytaç
 category: saglik
 categoryLabel: Consulting · Health Tourism
 excerpt: We supported consulting services across different cities with a multilingual website and a complete digital marketing system.
+cover: '/src/assets/images/projects/cagla-aytac.webp'
 featured: false
 order: 9
 tags:

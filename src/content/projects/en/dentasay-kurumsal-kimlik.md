@@ -4,6 +4,7 @@ client: Dentasay
 category: marka
 categoryLabel: Healthcare · Corporate Identity
 excerpt: Corporate design work and printed materials that keep the brand consistent across every market it speaks to.
+cover: '/src/assets/images/projects/dentasay-kurumsal-kimlik.webp'
 featured: false
 order: 10
 tags:

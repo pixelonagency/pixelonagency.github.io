@@ -4,6 +4,7 @@ client: Xray Groupe
 category: web
 categoryLabel: Construction & Engineering · Web Design
 excerpt: A multilingual website, corporate identity and digital communication system for an architecture, engineering and construction group.
+cover: '/src/assets/images/projects/xray-groupe.webp'
 featured: false
 order: 4
 tags:

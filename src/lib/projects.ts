@@ -55,3 +55,59 @@ export function buildCategoryFilters(projects: ProjectLike[], labels: Record<str
     })),
   ];
 }
+
+// --- hizmet taksonomisi (board görünümü) ----------------------------------
+
+/**
+ * Board filtreleri MARKA bazlı çoklu üyelikle çalışır: bir proje birden çok
+ * hizmet filtresinde görünür ama hiçbir zaman çoğaltılmaz. Hizmetler ayrı bir
+ * içerik alanından DEĞİL, projelerin zaten beyan ettiği `tags` + `category`
+ * verisinden türetilir — CMS'e yeni zorunlu alan eklemeden geleceğe uyumludur.
+ */
+export const SERVICE_KEYS = ['web', 'marka', 'sosyal', 'performance', 'video', 'seo'] as const;
+export type ServiceKey = (typeof SERVICE_KEYS)[number];
+
+const SERVICE_MATCHERS: Record<ServiceKey, RegExp> = {
+  web: /web|site|ux|ui|e-?ticaret|e-?commerce/i,
+  marka: /marka|kimlik|logo|brand|identity/i,
+  sosyal: /sosyal|social/i,
+  performance: /reklam|ads|advertis|performans|performance/i,
+  video: /video|prod(ü|u)ksiyon|production|foto(ğ|g)raf|photo/i,
+  seo: /\bseo\b|i(ç|c)erik pazarlama|content marketing/i,
+};
+
+const CATEGORY_TO_SERVICE: Record<string, ServiceKey> = {
+  web: 'web',
+  uxui: 'web',
+  marka: 'marka',
+  sosyal: 'sosyal',
+};
+
+export const SERVICE_LABELS: Record<ServiceKey, Record<'tr' | 'en', string>> = {
+  web: { tr: 'Web Tasarım', en: 'Web Design' },
+  marka: { tr: 'Kurumsal Kimlik', en: 'Brand Identity' },
+  sosyal: { tr: 'Sosyal Medya', en: 'Social Media' },
+  performance: { tr: 'Reklam', en: 'Advertising' },
+  video: { tr: 'Video & Fotoğraf', en: 'Video & Photo' },
+  seo: { tr: 'SEO', en: 'SEO' },
+};
+
+export const ALL_SERVICE_LABEL: Record<'tr' | 'en', string> = { tr: 'Tümü', en: 'All' };
+
+/** Projenin etiket/kategori beyanından hizmet anahtarlarını türetir (sıra sabit). */
+export function deriveServices(tags: readonly string[], category: string): ServiceKey[] {
+  const haystack = tags.join(' ');
+  const derived = SERVICE_KEYS.filter((key) => SERVICE_MATCHERS[key].test(haystack));
+  const fromCategory = CATEGORY_TO_SERVICE[category];
+  if (fromCategory && !derived.includes(fromCategory)) derived.unshift(fromCategory);
+  return derived;
+}
+
+/** Board filtresi: `all` tüm listeyi döner; aksi halde hizmete üyelikle süzer. */
+export function filterByService<T extends { services: readonly ServiceKey[] }>(
+  projects: readonly T[],
+  service: ServiceKey | 'all',
+): T[] {
+  if (service === 'all') return [...projects];
+  return projects.filter((project) => project.services.includes(service));
+}

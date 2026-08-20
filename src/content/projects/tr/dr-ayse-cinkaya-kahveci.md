@@ -4,6 +4,7 @@ client: Dr. Ayşe Cinkaya Kahveci
 category: sosyal
 categoryLabel: Dermatoloji · Sosyal Medya
 excerpt: Dermatoloji ve estetik uzmanlığını çok dilli web sitesi, sosyal medya ve dijital reklamla hedef kitleye aktardık.
+cover: '/src/assets/images/projects/dr-ayse-cinkaya-kahveci.webp'
 featured: false
 order: 5
 tags:

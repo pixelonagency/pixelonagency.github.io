@@ -197,6 +197,8 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     type: z.literal('cta'),
     heading: nonEmpty,
     lead: opt(z.string()),
+    /* classic: mevcut koyu kapanış bloğu · spot: lime zeminli yüksek-dikkat panel. */
+    kind: opt(z.enum(['classic', 'spot'])),
     // `ctas` sectionBase'ten gelir.
   });
 
@@ -212,8 +214,12 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     type: z.literal('projects'),
     heading: nonEmpty,
     lead: opt(z.string()),
+    /* Hero altı küçük metadata satırı (yalnız board görünümünde kullanılır). */
+    tagline: opt(z.string()),
     limit: opt(z.number()),
     showFilters: z.boolean().default(false),
+    /* grid: mevcut kompakt liste (ana sayfa) · board: tam sayfa editoryal vitrin. */
+    kind: z.enum(['grid', 'board']).default('grid'),
     ctaLabel: opt(z.string()),
     ctaHref: opt(z.string()),
   });

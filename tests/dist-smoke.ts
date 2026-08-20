@@ -226,8 +226,15 @@ describe('service detail pages', () => {
 });
 
 describe('interactive behaviour is shipped', () => {
-  test('the projects page ships the category filter', () => {
-    expect(html.get('/projelerimiz')).toContain('role="tablist"');
+  test('the projects page ships the service filter board', () => {
+    const body = html.get('/projelerimiz') ?? '';
+    // Board görünümü: hizmet filtreleri (çoklu üyelik) + kart hizmet üyelik verisi.
+    expect(body).toContain('pb-filter');
+    expect(body).toContain('aria-pressed');
+    expect(body).toContain('data-services=');
+    // Wireframe ritmi: ilk satır iki büyük kart (lead + co).
+    expect((body.match(/pb-card--lead/g) ?? []).length).toBe(1);
+    expect((body.match(/pb-card--co/g) ?? []).length).toBe(1);
   });
 
   test('both forms post to Web3Forms and carry its required fields', () => {

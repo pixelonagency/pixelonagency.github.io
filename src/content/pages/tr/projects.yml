@@ -3,80 +3,28 @@ seo:
   description: Pixelon'un web tasarım, sosyal medya, dijital reklam, marka kimliği, UX/UI, prodüksiyon ve sağlık turizmi projelerini keşfedin.
 whatsappMessage: Merhaba Pixelon, Projelerimiz sayfasından yazıyorum.
 sections:
-  - type: hero
-    eyebrow: Seçili Çalışmalarımız
-    background: dark
-    breadcrumb:
-      - label: Ana Sayfa
-        href: /
-      - label: Projelerimiz
-    headingLines:
-      - "Fikirleri Markalara, Markaları Güçlü Deneyimlere Dönüştürüyoruz."
-    lead: Her projeye markanın hedeflerini, sektörünü ve kullanıcılarını anlayarak başlıyoruz. Strateji, tasarım, teknoloji ve performansı bir araya getirerek yalnızca iyi görünen değil, markaya gerçek değer kazandıran işler üretiyoruz.
-    tagline: Web tasarımından sosyal medyaya, marka kimliğinden dijital büyümeye kadar Pixelon imzalı seçili projeleri inceleyin.
-    ctas:
-      - label: Projeleri Keşfedin
-        href: '#projeler'
-        variant: primary
-      - label: Projenizi Konuşalım
-        href: https://wa.me/905065229034
-        variant: outline
-
   - type: projects
+    kind: board
     anchor: projeler
     background: dark
-    eyebrow: Pixelon Dokunuşu
-    heading: Markalara Değer Katan Seçili Çalışmalar
-    lead: Farklı sektörlerdeki markalar için hazırladığımız dijital deneyimleri, yaratıcı çözümleri ve dönüşüm odaklı projeleri keşfedin.
+    eyebrow: Portfolyo
+    heading: Projelerimiz
+    lead: Her marka için stratejiden tasarıma, üretimden yayına kadar uçtan uca çözümler üretiyor; tüm süreci tek bir sayfada anlatan case study'lerle paylaşıyoruz.
+    tagline: Web · Marka · Sosyal Medya
     showFilters: true
-    ctaLabel: Projeyi İncele →
-
-  - type: stats
-    background: light
-    eyebrow: Fikirden Sonuca Pixelon
-    heading: Rakamlarla Üretim Alanımız
-    items:
-      - value: 180
-        suffix: '+'
-        label: Tamamlanan proje
-      - value: 120
-        suffix: '+'
-        label: Başarı hikâyesi
-      - value: 50
-        suffix: '+'
-        label: Birlikte çalışılan marka
-      - value: 15
-        suffix: '+ Yıl'
-        label: Sektör deneyimi
-
-  - type: steps
-    background: dark
-    eyebrow: Her Projede Aynı Özen
-    heading: Sadece Teslim Edilen İşler Değil, Birlikte Yazılan Başarı Hikâyeleri
-    lead: Her projeye hazır bir çözümle değil, markanın gerçek ihtiyacını anlayarak başlıyoruz.
-    items:
-      - title: Markayı Anlıyoruz
-        description: Hedefleri, sektörü, kullanıcıları ve mevcut sorunları analiz ediyoruz.
-      - title: Doğru Stratejiyi Kuruyoruz
-        description: Projeye uygun tasarım, içerik, teknoloji ve iletişim yol haritası hazırlıyoruz.
-      - title: Birlikte Üretiyoruz
-        description: Süreci şeffaf iletişim ve düzenli geri bildirimlerle yürütüyoruz.
-      - title: Sonuçları Geliştiriyoruz
-        description: Teslim sonrasında performansı takip ediyor ve yeni büyüme fırsatlarını değerlendiriyoruz.
+    ctaLabel: Projeyi İncele
 
   - type: cta
+    kind: spot
     anchor: iletisim
     background: dark
-    eyebrow: Sıradaki Proje Sizin Olabilir
-    heading: Markanız İçin Birlikte Değer Üretelim.
-    lead: Yeni bir web sitesi, güçlü bir marka kimliği, etkili bir sosyal medya iletişimi veya markanızı büyütecek kapsamlı bir dijital proje için Pixelon ekibiyle iletişime geçin. Projenizi dinleyelim ve hedeflerinize uygun yol haritasını birlikte oluşturalım.
+    eyebrow: Sıradaki proje sizin olabilir
+    heading: Birlikte ne üretebiliriz?
+    lead: Yeni bir web sitesi, güçlü bir marka kimliği veya markanızı büyütecek kapsamlı bir dijital proje için konuşalım.
     ctas:
+      - label: Projeni Anlat →
+        href: /iletisim
+        variant: primary
       - label: WhatsApp'tan Yazın
         href: https://wa.me/905065229034
-        variant: primary
-      - label: Projenizi Anlatın
-        href: /iletisim
         variant: outline
-      - label: Hemen Arayın
-        href: 'tel:+905065229034'
-        variant: link

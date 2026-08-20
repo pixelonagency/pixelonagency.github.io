@@ -4,6 +4,7 @@ client: Mobico
 category: uxui
 categoryLabel: CRM & Yazılım · UX/UI
 excerpt: Randevu, müşteri ve işletme yönetimi süreçlerinin kolayca takip edilebildiği kullanıcı dostu ekranlar.
+cover: '/src/assets/images/projects/mobico.webp'
 featured: false
 order: 7
 tags:

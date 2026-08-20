@@ -1,5 +1,14 @@
 import { describe, expect, test } from 'bun:test';
-import { buildCategoryFilters, filterProjects, sortProjects } from './projects';
+import {
+  buildCategoryFilters,
+  filterProjects,
+  sortProjects,
+  deriveServices,
+  filterByService,
+  SERVICE_KEYS,
+  SERVICE_LABELS,
+  type ServiceKey,
+} from './projects';
 
 type P = Parameters<typeof filterProjects>[0][number];
 
@@ -63,5 +72,39 @@ describe('sortProjects', () => {
 
   test('orders non-featured projects by their order field', () => {
     expect(sortProjects(projects).map((p) => p.title)).toEqual(['Dentasay', 'Enda Clinic', 'Opet', 'PTT']);
+  });
+});
+
+describe('board hizmet taksonomisi', () => {
+  test('etiketlerden çoklu hizmet üyeliği türetilir — proje çoğaltılmaz', () => {
+    const services = deriveServices(['Web Tasarım', 'Sosyal Medya', 'Dijital Reklam'], 'saglik');
+    expect(services).toEqual(['web', 'sosyal', 'performance']);
+  });
+
+  test('kategori, etiketlerde karşılığı yoksa hizmet olarak eklenir', () => {
+    expect(deriveServices(['İçerik Sistemi'], 'marka')).toEqual(['marka']);
+    expect(deriveServices([], 'uxui')).toEqual(['web']);
+  });
+
+  test('video/prodüksiyon/fotoğraf ve SEO kalıpları yakalanır', () => {
+    expect(deriveServices(['Video Prodüksiyon', 'Fotoğraf Çekimi'], 'web')).toContain('video');
+    expect(deriveServices(['SEO Danışmanlığı'], 'web')).toContain('seo');
+  });
+
+  test('filterByService: all hepsini döner, hizmet üyeliği süzer', () => {
+    const items = [
+      { name: 'a', services: ['web', 'marka'] as ServiceKey[] },
+      { name: 'b', services: ['sosyal'] as ServiceKey[] },
+    ];
+    expect(filterByService(items, 'all')).toHaveLength(2);
+    expect(filterByService(items, 'marka').map((i) => i.name)).toEqual(['a']);
+    expect(filterByService(items, 'seo')).toHaveLength(0);
+  });
+
+  test('etiket sözlüğü TR/EN tam ve anahtarlarla eşleşir', () => {
+    for (const key of SERVICE_KEYS) {
+      expect(SERVICE_LABELS[key]?.tr.length).toBeGreaterThan(0);
+      expect(SERVICE_LABELS[key]?.en.length).toBeGreaterThan(0);
+    }
   });
 });
