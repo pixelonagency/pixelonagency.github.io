@@ -368,6 +368,13 @@ const messagesJson = JSON.stringify(formMessages(locale));
     max-width: 720px;
   }
 
+  /* Dokunma hedefi: onay metnindeki KVKK bağlantısı ~14px yükseklikteydi
+     (WCAG 2.2 AA asgari 24px). Satır içi kaldığı için padding metin akışını
+     kaydırmadan tıklama alanını büyütür. */
+  .consent__label a {
+    padding-block: 5px;
+  }
+
   .checks__item input,
   .consent__label input {
     flex-shrink: 0;

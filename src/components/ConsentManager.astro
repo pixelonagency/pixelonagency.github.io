@@ -144,6 +144,16 @@ import AnalyticsEvents from './AnalyticsEvents.astro';
     text-underline-offset: 4px;
   }
 
+  /* Dokunma hedefi: banttaki bağlantılar ~14–18px yükseklikteydi (WCAG 2.2
+     AA asgari 24px). Satır içi eleman olarak kaldıkları için padding metin
+     akışını kaydırmadan tıklama alanını büyütür. */
+  .klaro .cookie-notice .cn-learn-more,
+  .klaro .cm-link,
+  .klaro .cn-body a,
+  .klaro .cm-modal a {
+    padding-block: 5px;
+  }
+
   /* Anahtarlar (toggle) — lime aktif durum. */
   .klaro .cm-list-input:checked + .cm-list-label .slider {
     background-color: var(--accent);

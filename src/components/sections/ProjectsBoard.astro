@@ -206,11 +206,10 @@ const BADGES = [
               )}
               <span class="pb-card__scrim" aria-hidden="true" />
 
-              <span class="pb-card__top">
-                <h2 class="pb-card__brand">{project.client}</h2>
-              </span>
-
+              {/* Marka adı alt blokta: kapak görselleri sol üst köşede markanın
+                  kendi logosunu taşıyor, başlık orada üstüne biniyordu. */}
               <span class="pb-card__bottom">
+                <h2 class="pb-card__brand">{project.client}</h2>
                 {project.year && <span class="pb-card__year">{project.year}</span>}
                 <span class="pb-card__chips" role="list">
                   {chipsFor(project.services).map((chip) => (
@@ -458,7 +457,8 @@ const BADGES = [
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* Tek metin bloğu var ve dibe yaslanır (üst blok kaldırıldı). */
+    justify-content: flex-end;
     overflow: hidden;
     border-radius: var(--radius-card);
     background: rgba(255, 255, 255, 0.04);
@@ -507,7 +507,6 @@ const BADGES = [
     transition: opacity 0.35s ease;
   }
 
-  .pb-card__top,
   .pb-card__bottom {
     position: relative;
     display: flex;

@@ -516,7 +516,8 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
   }
 
   .projects__tag {
-    font: 500 11px var(--font-display);
+    /* 11px mobilde okunaklılık alt sınırının altındaydı (min 12px). */
+    font: 500 12px var(--font-display);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);

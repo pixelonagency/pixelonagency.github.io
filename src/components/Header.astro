@@ -299,6 +299,9 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
     align-items: center;
     gap: 6px;
     text-decoration: none;
+    /* Dokunma hedefi: bayrak+kod tek başına ~20px yükseklik veriyordu
+       (WCAG 2.2 AA asgari 24px). */
+    padding-block: 4px;
     /* Pasif dil soluk beyaz; etkin dil lime (referans). */
     color: rgba(255, 255, 255, 0.55);
     transition: color var(--t-base);

@@ -183,7 +183,9 @@ const corporateLinks = [
   .site-footer__links {
     display: flex;
     flex-direction: column;
-    gap: 11px;
+    /* Bağlantılara dikey padding eklendi; satır aralığı ondan düşüldü ki
+       liste ritmi aynı kalsın. */
+    gap: 1px;
   }
 
   .site-footer__links a,
@@ -195,6 +197,13 @@ const corporateLinks = [
     transition: color var(--t-base);
   }
 
+  /* Dokunma hedefi: 14px metin tek başına ~16px yükseklik veriyordu
+     (WCAG 2.2 AA asgari 24px). */
+  .site-footer__links a {
+    display: block;
+    padding-block: 5px;
+  }
+
   .site-footer__links a:hover,
   .site-footer__contact a:hover {
     color: var(--accent);
@@ -203,9 +212,16 @@ const corporateLinks = [
   .site-footer__contact {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    /* Bağlantılara dikey padding eklendi; aralık ondan düşüldü. */
+    gap: 4px;
     font-size: 14px;
     font-style: normal;
+  }
+
+  /* Dokunma hedefi: 14px metin tek başına ~16px yükseklik veriyordu. */
+  .site-footer__contact a {
+    display: inline-block;
+    padding-block: 5px;
   }
 
   .site-footer__bottom {
@@ -222,6 +238,7 @@ const corporateLinks = [
   .site-footer__legal {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 20px;
   }
 
@@ -229,7 +246,8 @@ const corporateLinks = [
   .site-footer__consent {
     background: none;
     border: none;
-    padding: 0;
+    /* Dokunma hedefi: 12px metin ~13px yükseklik veriyordu. */
+    padding: 6px 0;
     cursor: pointer;
     font: inherit;
     font-size: 12px;
@@ -246,6 +264,8 @@ const corporateLinks = [
     color: var(--text-faint);
     text-decoration: none;
     font-size: 12px;
+    /* Dokunma hedefi: consent butonuyla aynı yükseklik. */
+    padding-block: 6px;
     transition: color var(--t-base);
   }
 

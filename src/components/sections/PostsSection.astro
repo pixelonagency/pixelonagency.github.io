@@ -91,6 +91,8 @@ const hasCta = Boolean(section.ctaLabel && section.ctaHref);
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    /* Dokunma hedefi: 15px metin ~20px yükseklik veriyordu. */
+    padding-block: 5px;
     color: var(--text);
     font: 600 15px var(--font-display);
     text-decoration: none;
@@ -149,7 +151,8 @@ const hasCta = Boolean(section.ctaLabel && section.ctaHref);
   }
 
   .posts__category {
-    font: 600 11px var(--font-display);
+    /* 11px mobilde okunaklılık alt sınırının altındaydı (min 12px). */
+    font: 600 12px var(--font-display);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);

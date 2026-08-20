@@ -28,6 +28,9 @@ const target = isExternal && href.startsWith('http') ? '_blank' : undefined;
 
 <style>
   .cta-link {
+    /* Dokunma hedefi: 15px metin ~20px yükseklik veriyordu. */
+    display: inline-block;
+    padding-block: 5px;
     color: rgba(255, 255, 255, 0.7);
     font: 600 15px var(--font-display);
     text-decoration: underline;

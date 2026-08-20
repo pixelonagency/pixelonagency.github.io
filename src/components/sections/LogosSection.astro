@@ -180,7 +180,10 @@ const stripArrow = (label: string) => label.replace(/\s*→\s*$/, '');
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 18px;
+    /* Dokunma hedefi: 15px metin ~20px yükseklik veriyordu; padding
+       eklendi, üst boşluk ondan düşüldü. */
+    margin-top: 13px;
+    padding-block: 5px;
     color: var(--text);
     font: 600 15px var(--font-display);
     text-decoration: none;
