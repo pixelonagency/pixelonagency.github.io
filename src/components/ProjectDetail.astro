@@ -1,0 +1,586 @@
+---
+/**
+ * Proje case study (detay) sayfası — /projelerimiz/<slug>.
+ *
+ * Akış, sahibin verdiği sayfa taslağını izler:
+ *   breadcrumb + hero (dönem, marka adı, konumlama, tanıtım, hizmet çipleri,
+ *   sunum hero görseli) → künye şeridi (Müşteri/Hizmetler/Süre/Teslimatlar)
+ *   → "Neler Yaptık?" (beyaz bant, editoryal iki kolon) → numaralı disiplin
+ *   bölümleri (başlık + metin + sunum boardları) → Sonuç → spot CTA.
+ *
+ * İçeriğin tamamı projects koleksiyonundaki `detail` alanından gelir; CTA,
+ * projeler sayfasının (pages/<locale>/projects.yml) spot CTA'sını yeniden
+ * kullanır — kopya tek kaynakta kalır.
+ */
+import type { CollectionEntry } from 'astro:content';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaSection from './sections/CtaSection.astro';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
+import { breadcrumbSchema } from '../lib/schema';
+import { t } from '../lib/ui';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+}
+
+const { project, locale, alternates } = Astro.props;
+const { title, client, excerpt, seo, detail } = project.data;
+if (!detail) throw new Error(`detail alanı olmadan proje detay sayfası üretilemez: ${project.id}`);
+
+const asImage = (value: unknown): ImageMetadata | undefined =>
+  value && typeof value === 'object' && 'src' in (value as Record<string, unknown>)
+    ? (value as ImageMetadata)
+    : undefined;
+
+const heroImage = asImage(detail.heroImage);
+
+/* Metin alanları çift satır sonuyla paragraflanır (schema: text — markdown değil). */
+const paragraphs = (text: string): string[] =>
+  text
+    .split(/\n{2,}/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const extraSchema = [
+  breadcrumbSchema([
+    { label: t('nav.home', locale), url: new URL(localizedPath('home', locale), site).toString() },
+    {
+      label: t('nav.projects', locale),
+      url: new URL(`${localizedPath('projects', locale)}/`, site).toString(),
+    },
+    { label: title },
+  ]),
+];
+
+/* Kapanış CTA'sı projeler sayfasının spot CTA'sıyla aynı — tek içerik kaynağı. */
+const projectsPage =
+  (await getEntry('pages', `${locale}/projects`)) ?? (await getEntry('pages', `${DEFAULT_LOCALE}/projects`));
+const ctaSection = projectsPage?.data.sections.find((section) => section.type === 'cta');
+
+/* Vitrin loop videosu kullanan bölüm varsa oynatma script'i eklenir. */
+const hasLoopVideo = detail.sections.some((section) => Boolean(section.video));
+
+/*
+ * Loop davranışı: görünürken oynat, değilken durdur; reduced-motion'da poster
+ * kalır. JSX ifadesi içindeki <script> gövdesini prettier ayrıştıramadığı için
+ * içerik set:html ile basılır.
+ */
+const LOOP_SCRIPT = `(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) entry.target.play().catch(() => {});
+      else entry.target.pause();
+    }
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.pd-loop').forEach((video) => io.observe(video));
+})();`;
+---
+
+<BaseLayout
+  title={seo?.title ?? `${title} | Pixelon`}
+  description={seo?.description ?? excerpt}
+  ogType="article"
+  {locale}
+  {alternates}
+  ogImage={heroImage?.src}
+  {extraSchema}
+>
+  <article class="pd">
+    {/* ------------------------------------------------------------ HERO --- */}
+    <header class="section pd-hero">
+      <div class="container">
+        <nav class="pd-crumbs" aria-label={t('nav.breadcrumb', locale)}>
+          <a href={localizedPath('home', locale)}>{t('nav.home', locale)}</a>
+          <span aria-hidden="true">/</span>
+          <a href={localizedPath('projects', locale)}>{t('nav.projects', locale)}</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{client}</span>
+        </nav>
+
+        <div class="pd-hero__grid">
+          <div class="pd-hero__copy" data-reveal>
+            <p class="eyebrow">
+              Case Study
+              {detail.period && <span class="pd-hero__period"> · {detail.period}</span>}
+            </p>
+            <h1 class="h1 pd-hero__title">{client}</h1>
+            <p class="pd-hero__intro">{detail.intro}</p>
+            {paragraphs(detail.description).map((part) => <p class="body-text pd-hero__desc">{part}</p>)}
+
+            {
+              detail.services.length > 0 && (
+                <ul class="pd-hero__chips" aria-label={locale === 'tr' ? 'Proje kapsamı' : 'Project scope'}>
+                  {detail.services.map((service) => (
+                    <li>{service}</li>
+                  ))}
+                </ul>
+              )
+            }
+          </div>
+
+          {
+            heroImage && (
+              <div class="pd-hero__media" data-reveal data-reveal-index="1">
+                <Image
+                  src={heroImage}
+                  alt={`${client} — ${locale === 'tr' ? 'web sitesi tasarımı' : 'website design'}`}
+                  widths={[640, 960, 1280, 1600]}
+                  sizes="(max-width: 900px) 100vw, 46vw"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </div>
+            )
+          }
+        </div>
+
+        {
+          detail.meta.length > 0 && (
+            <dl class="pd-meta" data-reveal data-reveal-index="2">
+              {detail.meta.map((item) => (
+                <div class="pd-meta__item">
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )
+        }
+      </div>
+    </header>
+
+    {/* ------------------------------------------------- NELER YAPTIK? --- */}
+    {
+      detail.approach && (
+        <section class="section section--light pd-approach">
+          <div class="container pd-approach__grid">
+            <div class="pd-approach__head" data-reveal>
+              <p class="eyebrow">{locale === 'tr' ? 'Yaklaşım' : 'Approach'}</p>
+              <h2 class="h2 pd-approach__title">{detail.approach.heading}</h2>
+            </div>
+            <div class="pd-approach__body" data-reveal data-reveal-index="1">
+              {paragraphs(detail.approach.text).map((part) => (
+                <p>{part}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    {/* --------------------------------------------- DİSİPLİN BÖLÜMLERİ --- */}
+    <section class="section pd-work">
+      <div class="container">
+        {
+          detail.sections.map((block, index) => (
+            <div class="pd-block">
+              <div class="pd-block__head" data-reveal>
+                <span class="pd-block__no" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h2 class="h2 pd-block__title">{block.heading}</h2>
+                  {paragraphs(block.text).map((part) => (
+                    <p class="body-text pd-block__text">{part}</p>
+                  ))}
+                </div>
+              </div>
+
+              {(block.video || block.images.length > 0) && (
+                <div
+                  class:list={[
+                    'pd-block__media',
+                    block.images.length + (block.video ? 1 : 0) > 1 && 'pd-block__media--pair',
+                  ]}
+                  data-reveal
+                >
+                  {block.video && (
+                    <video
+                      class="pd-loop"
+                      poster={block.video.poster}
+                      width={block.video.width}
+                      height={block.video.height}
+                      muted
+                      loop
+                      playsinline
+                      preload="metadata"
+                      disablepictureinpicture
+                      aria-label={`${client} — ${block.heading}`}
+                    >
+                      {block.video.webm && <source src={block.video.webm} type="video/webm" />}
+                      <source src={block.video.mp4} type="video/mp4" />
+                    </video>
+                  )}
+                  {block.images.map((img) => {
+                    const meta = asImage(img);
+                    return (
+                      meta && (
+                        <Image
+                          src={meta}
+                          alt={`${client} — ${block.heading}`}
+                          widths={[640, 1040, 1600]}
+                          sizes={
+                            block.images.length > 1
+                              ? '(max-width: 900px) 100vw, 48vw'
+                              : '(max-width: 1100px) 100vw, 1040px'
+                          }
+                          loading="lazy"
+                        />
+                      )
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    {/* ----------------------------------------------------------- SONUÇ --- */}
+    {
+      detail.result && (
+        <section class="section pd-result">
+          <div class="container pd-result__inner" data-reveal>
+            <span class="pd-result__mark" aria-hidden="true">
+              ✦
+            </span>
+            <p class="eyebrow">{detail.result.heading}</p>
+            {paragraphs(detail.result.text).map((part, index) => (
+              <p class:list={['pd-result__text', index === 0 && 'pd-result__text--lead']}>{part}</p>
+            ))}
+            <a href={localizedPath('projects', locale)} class="btn btn--outline pd-result__back">
+              {locale === 'tr' ? 'Tüm Projeler' : 'All Projects'}
+            </a>
+          </div>
+        </section>
+      )
+    }
+
+    {ctaSection && <CtaSection section={ctaSection} />}
+
+    {hasLoopVideo && <script is:inline set:html={LOOP_SCRIPT} />}
+  </article>
+</BaseLayout>
+
+<style>
+  /* --- Hero: projeler sayfasıyla aynı grid + lime parıltı zemini --- */
+  .pd-hero {
+    position: relative;
+    padding-top: clamp(36px, 5vw, 60px);
+    padding-bottom: clamp(44px, 6vw, 72px);
+    overflow: hidden;
+  }
+
+  .pd-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 50% at 75% 20%, rgb(207 255 0 / 10%), transparent 70%),
+      linear-gradient(to right, rgb(255 255 255 / 3%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 3%) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      72px 72px,
+      72px 72px;
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+
+  .pd-hero > .container {
+    position: relative;
+  }
+
+  .pd-crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font: 500 13px var(--font-display);
+    color: var(--text-faint);
+    margin-bottom: clamp(28px, 4vw, 44px);
+  }
+
+  .pd-crumbs a {
+    color: var(--text-faint);
+    text-decoration: none;
+    transition: color var(--t-base);
+  }
+
+  .pd-crumbs a:hover {
+    color: var(--accent);
+  }
+
+  .pd-crumbs [aria-current] {
+    color: var(--text-soft);
+  }
+
+  .pd-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: clamp(28px, 4vw, 56px);
+    align-items: center;
+  }
+
+  .pd-hero__period {
+    color: var(--text-soft);
+  }
+
+  .pd-hero__title {
+    margin: 14px 0 0;
+  }
+
+  /* Konumlama cümlesi — H1 altındaki büyük vurgu satırı. */
+  .pd-hero__intro {
+    margin: 18px 0 0;
+    font: 500 clamp(19px, 2.2vw, 24px) / 1.45 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    max-width: 34ch;
+  }
+
+  .pd-hero__desc {
+    margin: 16px 0 0;
+    max-width: 56ch;
+  }
+
+  .pd-hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pd-hero__chips li {
+    padding: 7px 14px;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 999px;
+    font: 500 13px var(--font-display);
+    color: var(--text-soft);
+    white-space: nowrap;
+  }
+
+  .pd-hero__media {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 10%);
+    box-shadow: 0 30px 80px rgb(0 0 0 / 45%);
+  }
+
+  .pd-hero__media :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* --- Künye şeridi --- */
+  .pd-meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 28px);
+    margin: clamp(36px, 5vw, 56px) 0 0;
+    padding: clamp(20px, 2.6vw, 28px) clamp(20px, 2.6vw, 32px);
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: var(--radius-card);
+    background: rgb(255 255 255 / 3%);
+  }
+
+  .pd-meta__item dt {
+    font: 600 11px var(--font-display);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .pd-meta__item dd {
+    margin: 8px 0 0;
+    font: 600 clamp(15px, 1.6vw, 17px) var(--font-display);
+    color: var(--text);
+  }
+
+  /* --- Neler Yaptık? — beyaz bant, editoryal iki kolon --- */
+  /* Konvansiyon: .section--light yalnız tipografiyi çevirir; zemini bileşen verir. */
+  .pd-approach {
+    background: var(--bg-light);
+    color: var(--text-on-light);
+  }
+
+  .pd-approach__title {
+    color: var(--text-on-light);
+  }
+
+  .pd-approach__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: clamp(28px, 4vw, 64px);
+    align-items: start;
+  }
+
+  .pd-approach__head {
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+  }
+
+  .pd-approach__title {
+    margin-top: 14px;
+  }
+
+  .pd-approach__body p {
+    margin: 0 0 20px;
+    font-size: 18px;
+    line-height: 1.75;
+    color: rgb(10 10 10 / 80%);
+  }
+
+  .pd-approach__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* --- Disiplin blokları --- */
+  .pd-work {
+    padding-top: clamp(56px, 7vw, 96px);
+  }
+
+  .pd-block {
+    margin-bottom: clamp(64px, 8vw, 110px);
+  }
+
+  .pd-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .pd-block__head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(16px, 2.4vw, 32px);
+    max-width: 860px;
+  }
+
+  .pd-block__no {
+    font: 600 clamp(15px, 1.6vw, 17px) var(--font-display);
+    color: var(--accent);
+    line-height: 1.9;
+  }
+
+  .pd-block__title {
+    margin: 0;
+  }
+
+  .pd-block__text {
+    margin: 14px 0 0;
+    max-width: 62ch;
+  }
+
+  .pd-block__media {
+    display: grid;
+    gap: clamp(16px, 2vw, 28px);
+    margin-top: clamp(28px, 3.6vw, 44px);
+  }
+
+  /* Tek board ortalanır ve genişliği sınırlanır — sayfa boyu makul kalır. */
+  .pd-block__media:not(.pd-block__media--pair) {
+    max-width: 1040px;
+    margin-inline: auto;
+  }
+
+  .pd-block__media--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .pd-block__media :global(img),
+  .pd-block__media :global(video) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-card);
+    border: 1px solid rgb(255 255 255 / 8%);
+  }
+
+  /* --- Sonuç --- */
+  .pd-result {
+    padding-top: clamp(64px, 9vw, 120px);
+  }
+
+  .pd-result__inner {
+    max-width: 880px;
+    text-align: center;
+  }
+
+  .pd-result__mark {
+    display: block;
+    font-size: clamp(22px, 2.6vw, 30px);
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .pd-result__text {
+    margin: 18px 0 0;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-soft);
+  }
+
+  .pd-result__text--lead {
+    margin-top: 20px;
+    font: 500 clamp(21px, 2.6vw, 30px) / 1.45 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .pd-result__back {
+    margin-top: 36px;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 1024px) {
+    .pd-hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pd-hero__media {
+      order: -1;
+      max-width: 640px;
+    }
+
+    .pd-meta {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pd-approach__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pd-approach__head {
+      position: static;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .pd-block__head {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .pd-block__media--pair {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .pd-meta {
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 14px;
+    }
+  }
+</style>

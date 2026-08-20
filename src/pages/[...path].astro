@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import CmsPage from '../components/CmsPage.astro';
 import LegalPage from '../components/LegalPage.astro';
 import PostDetail from '../components/PostDetail.astro';
+import ProjectDetail from '../components/ProjectDetail.astro';
 import ServiceDetail from '../components/ServiceDetail.astro';
 import {
   alternatesFor,
@@ -39,10 +40,12 @@ export const getStaticPaths = (async () => {
     return { locale: head as Locale, key: rest.join('/') };
   };
 
-  const [services, posts, legal] = await Promise.all([
+  const [services, posts, legal, projects] = await Promise.all([
     getCollection('services'),
     getCollection('posts', ({ data }) => data.status === 'published'),
     getCollection('legal'),
+    // Detay sayfası yalnız case study içeriği (detail) dolu projeler için üretilir.
+    getCollection('projects', ({ data }) => Boolean(data.detail)),
   ]);
 
   /* Yasal sayfalar `pages` koleksiyonundan değil `legal` koleksiyonundan gelir. */
@@ -81,6 +84,24 @@ export const getStaticPaths = (async () => {
     });
   }
 
+  // --- Proje detayları (case study): dosya adı iki dilde AYNI slug'tır ---
+  const projectKeys = new Map<string, Partial<Record<Locale, string>>>();
+  for (const entry of projects) {
+    const { locale, key } = splitId(entry.id);
+    const group = projectKeys.get(key) ?? {};
+    group[locale] = key;
+    projectKeys.set(key, group);
+  }
+
+  for (const entry of projects) {
+    const { locale, key } = splitId(entry.id);
+    const siblings = projectKeys.get(key) ?? { [locale]: key };
+    paths.push({
+      params: { path: toParam(localizedPath('projects', locale, key)) },
+      props: { kind: 'project', project: entry, locale, alternates: alternatesFor('projects', siblings) },
+    });
+  }
+
   // --- Blog yazıları ---
   const postKeys = new Map<string, Partial<Record<Locale, string>>>();
   for (const entry of posts) {
@@ -113,12 +134,13 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const props = Astro.props as {
-  kind: 'page' | 'service' | 'post' | 'legal';
+  kind: 'page' | 'service' | 'post' | 'project' | 'legal';
   locale: Locale;
   alternates: Partial<Record<Locale, string>>;
   pageKey?: PageKey;
   service?: Parameters<typeof ServiceDetail>[0]['service'];
   post?: Parameters<typeof PostDetail>[0]['post'];
+  project?: Parameters<typeof ProjectDetail>[0]['project'];
   legal?: Parameters<typeof LegalPage>[0]['entry'];
 };
 
@@ -128,4 +150,5 @@ const { kind, locale = DEFAULT_LOCALE, alternates } = props;
 {kind === 'page' && props.pageKey && <CmsPage pageKey={props.pageKey} {locale} {alternates} />}
 {kind === 'service' && props.service && <ServiceDetail service={props.service} {locale} {alternates} />}
 {kind === 'post' && props.post && <PostDetail post={props.post} {locale} {alternates} />}
+{kind === 'project' && props.project && <ProjectDetail project={props.project} {locale} {alternates} />}
 {kind === 'legal' && props.legal && <LegalPage entry={props.legal} {locale} {alternates} />}

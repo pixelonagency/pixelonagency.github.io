@@ -18,6 +18,7 @@ const ROUTES = [
   '/biz-kimiz',
   '/hizmetlerimiz',
   '/projelerimiz',
+  '/projelerimiz/handsforall',
   '/blog',
   '/kariyer',
   '/iletisim',
@@ -235,6 +236,25 @@ describe('interactive behaviour is shipped', () => {
     // Wireframe ritmi: ilk satır iki büyük kart (lead + co).
     expect((body.match(/pb-card--lead/g) ?? []).length).toBe(1);
     expect((body.match(/pb-card--co/g) ?? []).length).toBe(1);
+    // Case study içeriği olan proje karta bağlanır; olmayanlar bağlantısız kalır.
+    expect(body).toContain('href="/projelerimiz/handsforall"');
+  });
+
+  test('the project case study pages ship the full detail flow in both locales', async () => {
+    // ROUTES haritası TR varsayımlıdır (lang testleri); EN sayfası burada ayrıca okunur.
+    const en = await Bun.file(join(DIST, 'en/projects/handsforall/index.html')).text();
+    const pages: Array<[string, string]> = [
+      ['/projelerimiz/handsforall', html.get('/projelerimiz/handsforall') ?? ''],
+      ['/en/projects/handsforall', en],
+    ];
+    for (const [route, body] of pages) {
+      for (const marker of ['pd-hero', 'pd-meta', 'pd-approach', 'pd-block', 'pd-result', 'cta-spot']) {
+        expect({ route, marker, present: body.includes(marker) }).toEqual({ route, marker, present: true });
+      }
+      // Künye + numaralı 5 disiplin bölümü + breadcrumb şeması.
+      expect((body.match(/pd-block__no/g) ?? []).length).toBe(5);
+      expect(body).toContain('BreadcrumbList');
+    }
   });
 
   test('both forms post to Web3Forms and carry its required fields', () => {

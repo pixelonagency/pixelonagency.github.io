@@ -198,6 +198,51 @@ export function makeProjectSchema(image: ImageResolver = defaultImage) {
     tags: list(z.string()),
     year: opt(z.string()),
     url: opt(z.string()),
+    seo: opt(seo.partial()),
+    /**
+     * Case study (detay sayfası) içeriği. Bu alan dolu olan projeler
+     * /projelerimiz/<slug> altında kendi sayfasını alır; boş olanlar
+     * listede bağlantısız kart olarak kalır (kırık link üretilmez).
+     */
+    detail: opt(
+      z.object({
+        /** Hero'daki tek cümlelik konumlama (H1 altı vurgu). */
+        intro: nonEmpty,
+        /** Hero paragrafı — projenin bağlamı ve hedefi. */
+        description: nonEmpty,
+        period: opt(z.string()),
+        heroImage: opt(image()),
+        /** Proje kapsamındaki hizmet çipleri. */
+        services: list(z.string()),
+        /** Künye şeridi: Müşteri / Hizmetler / Süre / Teslimatlar. */
+        meta: list(z.object({ label: nonEmpty, value: nonEmpty })),
+        /** "Neler Yaptık?" — yaklaşım anlatısı (\n\n ile paragraflanır). */
+        approach: opt(z.object({ heading: nonEmpty, text: nonEmpty })),
+        /** Disiplin bölümleri: başlık + metin + sunum görselleri (+ opsiyonel loop video). */
+        sections: list(
+          z.object({
+            heading: nonEmpty,
+            text: nonEmpty,
+            images: list(image()),
+            /**
+             * Sessiz vitrin animasyonu (public/ altındaki kök-göreli yollar).
+             * Görünür olunca oynar, görünmez olunca durur; reduced-motion'da poster kalır.
+             */
+            video: opt(
+              z.object({
+                mp4: nonEmpty,
+                webm: opt(z.string()),
+                poster: opt(z.string()),
+                width: opt(z.number()),
+                height: opt(z.number()),
+              }),
+            ),
+          }),
+        ),
+        /** Kapanış — sonuç/etki anlatısı. */
+        result: opt(z.object({ heading: nonEmpty, text: nonEmpty })),
+      }),
+    ),
   });
 }
 

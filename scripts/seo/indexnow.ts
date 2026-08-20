@@ -130,8 +130,13 @@ export function mapFile(path: string, status: 'A' | 'M' | 'D'): MappedChange {
       urls.push(abs(localizedPath('services', locale, slug)), abs(localizedPath('services', locale)));
       break;
     case 'projects':
-      // Proje detay sayfası yok: listeleme + (öne çıkanların gösterildiği) ana sayfa.
-      urls.push(abs(localizedPath('projects', locale)), abs(localizedPath('home', locale)));
+      // Detay URL'si yalnız case study içeriği olan projelerde üretilir; olmayanlar
+      // sitemap guard'ında elenir. Listeleme + (öne çıkanların olduğu) ana sayfa da değişir.
+      urls.push(
+        abs(localizedPath('projects', locale, slug)),
+        abs(localizedPath('projects', locale)),
+        abs(localizedPath('home', locale)),
+      );
       break;
     case 'legal':
       if (slug in ROUTE_SLUGS) urls.push(abs(localizedPath(slug as PageKey, locale)));

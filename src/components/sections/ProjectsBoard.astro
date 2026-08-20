@@ -14,9 +14,9 @@
  * case study kartında toplanır; filtreler çoklu üyelikle çalışır ve proje asla
  * çoğaltılmaz (bkz. src/lib/projects.ts → deriveServices).
  *
- * Kartlar ileride /projelerimiz/<slug> detayına bağlanacak; sayfalar henüz
- * üretilmediği için kırık link yayınlamamak adına <article> olarak çıkar —
- * detay fazında DETAIL_ROUTES_READY true yapılır.
+ * Kart, projenin case study içeriği (detail) varsa /projelerimiz/<slug>
+ * detayına bağlanır; içerik girilmemiş projeler kırık link yayınlamamak
+ * adına <article> olarak kalır.
  */
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
@@ -43,9 +43,6 @@ interface Props {
 
 const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
-/* Detay sayfaları yayınlanınca true yapılacak. */
-const DETAIL_ROUTES_READY = false;
-
 const all = await getCollection('projects');
 const inLocale = all.filter((entry) => entry.id.startsWith(`${locale}/`));
 const entries = inLocale.length > 0 ? inLocale : all.filter((entry) => entry.id.startsWith(`${DEFAULT_LOCALE}/`));
@@ -53,6 +50,7 @@ const entries = inLocale.length > 0 ? inLocale : all.filter((entry) => entry.id.
 const projects = sortProjects(
   entries.map((entry) => ({
     slug: entry.id.split('/').slice(1).join('/').replace(/\.md$/, ''),
+    hasDetail: Boolean(entry.data.detail),
     title: entry.data.title,
     category: entry.data.category,
     client: entry.data.client,
@@ -189,12 +187,12 @@ const BADGES = [
         projects.map((project, index) => {
           /* Wireframe ritmi: ilk iki kart büyük (7/5), kalanı 3 kolon. */
           const variant = index === 0 ? 'lead' : index === 1 ? 'co' : 'std';
-          const Tag = DETAIL_ROUTES_READY ? 'a' : 'article';
+          const Tag = project.hasDetail ? 'a' : 'article';
           return (
             <Tag
               class:list={['pb-card', `pb-card--${variant}`]}
               data-services={project.services.join(' ')}
-              {...(DETAIL_ROUTES_READY ? { href: `/projelerimiz/${project.slug}` } : {})}
+              {...(project.hasDetail ? { href: localizedPath('projects', locale, project.slug) } : {})}
             >
               {project.cover && (
                 <Image
@@ -224,14 +222,18 @@ const BADGES = [
                 <span class="pb-card__excerpt">{project.excerpt}</span>
               </span>
 
-              <span class="pb-card__cta" aria-hidden="true">
-                {viewLabel}
-                <span class="pb-card__cta-arrow">→</span>
-              </span>
+              {project.hasDetail && (
+                <span class="pb-card__cta" aria-hidden="true">
+                  {viewLabel}
+                  <span class="pb-card__cta-arrow">→</span>
+                </span>
+              )}
 
-              <span class="pb-card__corner" aria-hidden="true">
-                ↗
-              </span>
+              {project.hasDetail && (
+                <span class="pb-card__corner" aria-hidden="true">
+                  ↗
+                </span>
+              )}
             </Tag>
           );
         })
@@ -636,8 +638,9 @@ const BADGES = [
       transform: translateY(0);
     }
 
-    /* Açıklama+çipler, beliren CTA ile çakışmasın diye yukarı süzülür. */
-    .pb-card:hover .pb-card__bottom {
+    /* Açıklama+çipler, beliren CTA ile çakışmasın diye yukarı süzülür
+       (yalnız detay bağlantılı kartlarda — CTA'sız kartta kayma olmaz). */
+    .pb-card:has(.pb-card__cta):hover .pb-card__bottom {
       transform: translateY(-56px);
     }
 

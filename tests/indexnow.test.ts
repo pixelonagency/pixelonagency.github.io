@@ -78,8 +78,13 @@ describe('route mapping', () => {
     expect(mapFile('src/content/legal/en/cookies.md', 'M').urls).toEqual([`${SITE}/en/cookie-policy/`]);
   });
 
-  test('project content maps to the listing and home (no detail routes exist)', () => {
-    expect(mapFile('src/content/projects/tr/dentasay.md', 'M').urls).toEqual([`${SITE}/projelerimiz/`, `${SITE}/`]);
+  test('project content maps to its detail URL, the listing and home', () => {
+    // Detay sayfası olmayan projelerin URL'si sitemap guard'ında elenir — eşleme yine de üretir.
+    expect(mapFile('src/content/projects/tr/dentasay.md', 'M').urls).toEqual([
+      `${SITE}/projelerimiz/dentasay/`,
+      `${SITE}/projelerimiz/`,
+      `${SITE}/`,
+    ]);
   });
 
   test('deleted post keeps its old URL for submission while the listing stays guarded', () => {
