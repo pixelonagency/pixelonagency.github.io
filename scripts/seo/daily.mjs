@@ -7,21 +7,17 @@
  *
  * Yayın gerektiren işler `seo/APPROVAL_QUEUE.md` üzerinden insana taşınır.
  */
-import { readFileSync, writeFileSync, existsSync, globSync, appendFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, globSync, appendFileSync, mkdirSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 import { connectionHealth, classifyQueries } from './sources.mjs';
+import { assertPublicSafe, countOpportunities, splitState, summariseGSC } from './privacy.mjs';
+import { stampFor } from './clock.mjs';
 
 const ROOT = process.cwd();
 const MODE = process.argv[2] ?? 'daily'; // daily | weekly | monthly
 const now = new Date();
-const tz = 'Europe/Istanbul';
-const stamp = new Intl.DateTimeFormat('en-CA', {
-  timeZone: tz,
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-}).format(now);
+const stamp = stampFor(now);
 const iso = now.toISOString();
 
 const log = (m) => {
@@ -29,8 +25,17 @@ const log = (m) => {
   appendFileSync(join(ROOT, 'seo/logs', `${stamp}.log`), `[${iso}] ${m}\n`);
 };
 
+// State iki katmanlı: public dosya git'e girer, private dosya makinede kalır.
+// Çalışma sırasında ikisi birleştirilir; yazarken tekrar ayrılır.
 const statePath = join(ROOT, 'seo/SEO_STATE.json');
-const state = JSON.parse(readFileSync(statePath, 'utf8'));
+const privateDir = join(ROOT, 'seo/private');
+const privateStatePath = join(privateDir, 'SEO_STATE.private.json');
+const privateReportDir = join(privateDir, 'reports');
+mkdirSync(privateReportDir, { recursive: true });
+
+const publicStored = JSON.parse(readFileSync(statePath, 'utf8'));
+const privateStored = existsSync(privateStatePath) ? JSON.parse(readFileSync(privateStatePath, 'utf8')) : {};
+const state = { ...publicStored, ...privateStored };
 
 log(`SEO ${MODE.toUpperCase()} başladı — mod: ${state.mode}`);
 
@@ -118,7 +123,10 @@ const opportunityBlock = opportunities
     }`
   : '**UNKNOWN** — GSC verisi olmadan fırsat sınıflandırması yapılamaz. Tahmin üretilmedi.';
 
-const report = `# PIXELON SEO — ${MODE.toUpperCase()} REPORT · ${stamp}
+const privateReport = `# PIXELON SEO — ${MODE.toUpperCase()} REPORT (PRIVATE) · ${stamp}
+
+> **Bu dosya git'e girmez.** Sorgu, sıralama ve fırsat detayı içerir.
+> Public özet aynı adla \`seo/reports/\` altındadır ve yalnızca toplam metrik içerir.
 
 ## DATA SOURCES USED
 
@@ -190,7 +198,66 @@ ${state.blockedTasks.map((b) => `* ${b.id} — ${b.reason} (açılış: ${b.unbl
 
 const reportName =
   MODE === 'daily' ? `DAILY-${stamp}.md` : MODE === 'weekly' ? `WEEKLY-${stamp}.md` : `MONTHLY-${stamp.slice(0, 7)}.md`;
-writeFileSync(join(ROOT, 'seo/reports', reportName), report);
+
+// Detaylı rapor → private (gitignored)
+writeFileSync(join(privateReportDir, reportName), privateReport);
+
+// Public özet → yalnızca toplam/anonim metrik. Sorgu metni, URL+pozisyon eşleşmesi yok.
+const gscSummary = hasGSC ? summariseGSC(health.gsc.datasets) : null;
+const oppCount = countOpportunities(opportunities);
+const publicReport = `# PIXELON SEO — ${MODE.toUpperCase()} SUMMARY · ${stamp}
+
+> Toplam/anonim metrikler. Sorgu, sıralama ve fırsat detayı **bilinçli olarak** dışarıda
+> bırakılmıştır — repo public. Detay: \`seo/private/reports/${reportName}\` (yalnızca yerel).
+
+\`\`\`text
+Organic clicks:            ${gscSummary?.clicks ?? 'UNKNOWN'}
+Organic impressions:       ${gscSummary?.impressions ?? 'UNKNOWN'}
+CTR:                       ${gscSummary ? gscSummary.ctr + '%' : 'UNKNOWN'}
+Average position:          ${gscSummary?.avgPosition ?? 'UNKNOWN'}
+Measured window:           ${gscSummary ? `${gscSummary.days} gün` : 'UNKNOWN'}
+Indexed URLs:              ${tot.indexable ?? 'UNKNOWN'}
+Technical errors (P0/P1):  ${sev.P0}/${sev.P1}
+Orphan pages:              ${tot.orphans ?? 'UNKNOWN'}
+Broken internal links:     ${tot.brokenLinks ?? 'UNKNOWN'}
+High-priority opportunities: ${oppCount?.highPriority ?? 'UNKNOWN'}
+Approval queue:            ${readyCount}
+Plan progress:             ${done}/${done + open}
+\`\`\`
+
+## Data sources
+
+\`\`\`text
+Google Search Console: ${hasGSC ? 'YES' : 'NO'}
+SEMrush:               ${hasSemrush ? 'YES' : 'NO'}
+Live SERP:             YES
+Google Search Central: YES
+\`\`\`
+
+## Published today
+
+No production content published.
+`;
+
+// Son savunma hattı: gerçek sorgu metni public özete sızmış mı? Sızmışsa çök.
+// Marka sorguları listeye alınmaz: "pixelon" zaten alan adında ve rapor başlığında geçiyor,
+// rakip için bilgi değeri yok. Korunması gereken şey marka DIŞI sorgular.
+const forbidden = [
+  ...(opportunities
+    ? [
+        ...opportunities.quickWin,
+        ...opportunities.strikingDistance,
+        ...opportunities.ctrOpportunity,
+        ...opportunities.nonBrand,
+      ].map((o) => o.q)
+    : []),
+  ...(state.currentKeywordClusters ?? []),
+];
+assertPublicSafe(publicReport, forbidden);
+// Public özet BİLEREK farklı adla yazılır: `DAILY-*` deseni gitignore'da private tarafa
+// ayrılmış durumda. Ad farkı, yanlış dosyanın yanlış katmana düşmesini imkânsız kılar.
+const publicName = `SUMMARY-${reportName}`;
+writeFileSync(join(ROOT, 'seo/reports', publicName), publicReport);
 
 // 7) State güncelle
 state.lastRun = iso;
@@ -212,7 +279,15 @@ if (audit)
     orphans: audit.totals.orphans,
     brokenLinks: audit.totals.brokenLinks,
   };
-writeFileSync(statePath, JSON.stringify(state, null, 2) + '\n');
+// GSC özeti public state'e toplam olarak, fırsat detayı private state'e yazılır.
+if (gscSummary) state.gscSummary = gscSummary;
+if (oppCount) state.opportunityCounts = oppCount;
+if (opportunities) state.opportunities = opportunities;
+
+const { publicState, privateState } = splitState(state);
+assertPublicSafe(JSON.stringify(publicState), forbidden);
+writeFileSync(statePath, JSON.stringify(publicState, null, 2) + '\n');
+writeFileSync(privateStatePath, JSON.stringify(privateState, null, 2) + '\n');
 
 // 8) Kısa terminal özeti
 console.log(`\nPIXELON SEO — ${MODE.toUpperCase()} COMPLETE\n`);
@@ -226,5 +301,6 @@ console.log(
 console.log(`PLAN       ${done} tamam / ${open} açık`);
 console.log(`SOURCES    GSC:${hasGSC ? 'YES' : 'NO'} SEMrush:${hasSemrush ? 'YES' : 'NO'} SERP:YES`);
 console.log(`BLOCKED    ${state.blockedTasks.length} (GSC + SEMrush ana blocker)`);
-console.log(`\nRapor: seo/reports/${reportName}`);
+console.log(`\nRapor  public : seo/reports/${publicName}  (toplam metrik)`);
+console.log(`Rapor  private: seo/private/reports/${reportName}  (sorgu + fırsat detayı, gitignored)`);
 log(`SEO ${MODE.toUpperCase()} bitti — rapor: ${reportName}`);

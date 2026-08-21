@@ -9,6 +9,7 @@
  */
 import { readFileSync, writeFileSync, globSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { stampFor } from './clock.mjs';
 
 const ROOT = process.cwd();
 const DIST = join(ROOT, 'dist');
@@ -172,7 +173,7 @@ const report = {
   inventory,
 };
 
-const stamp = new Date().toISOString().slice(0, 10);
+const stamp = stampFor();
 const out = join(ROOT, 'seo/reports', `TECHNICAL-AUDIT-${stamp}.json`);
 writeFileSync(out, JSON.stringify(report, null, 2));
 

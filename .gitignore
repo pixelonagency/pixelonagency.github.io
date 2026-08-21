@@ -23,10 +23,25 @@ design_handoff_astro_site/
 .playwright-mcp/
 .claude/
 
-# SEO operasyon logları (rapor ve veri commit edilir, log edilmez)
+# SEO operasyon logları (log hiçbir zaman commit edilmez)
 seo/logs/
 
 # Google service account anahtarları — repo dışında (~/.config/pixelon/) durmalı.
 # Bu kalıplar yanlışlıkla içeri düşen bir key'i commit'ten korur.
 *gsc-sa*.json
 *service-account*.json
+
+# ---- SEO GİZLİLİK POLİTİKASI (repo PUBLIC) ----
+# Rakip bir insanın işine yarayacak hiçbir şey git'e girmez.
+# Ayrıntı ve gerekçe: scripts/seo/privacy.mjs
+# PRIVATE / LOCAL ONLY:
+#   Search Console ham CSV/JSON · query bazlı sonuçlar
+#   URL + keyword + position kombinasyonları · competitor keyword gap detayları
+#   backlink prospect listeleri · conversion/lead verileri · detaylı fırsat listeleri
+seo/private/
+seo/data/gsc/
+seo/data/gsc-export.csv
+seo/data/semrush/
+seo/reports/DAILY-*.md
+seo/reports/WEEKLY-*.md
+seo/reports/MONTHLY-*.md

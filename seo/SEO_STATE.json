@@ -2,8 +2,8 @@
   "version": 1,
   "mode": "APPROVAL_REQUIRED",
   "site": "https://pixelon.com.tr",
-  "lastRun": "2026-08-21T20:21:41.023Z",
-  "lastSuccessfulRun": "2026-08-21T20:21:41.023Z",
+  "lastRun": "2026-08-21T21:27:40.586Z",
+  "lastSuccessfulRun": "2026-08-21T21:27:40.586Z",
   "currentPhase": "PHASE_16_AUTOMATION",
   "phasesCompleted": [
     "PHASE_0_DISCOVERY",
@@ -58,10 +58,10 @@
     "SEO-2026-0061"
   ],
   "nextTaskIdCounter": 64,
-  "lastGSCFetch": null,
+  "lastGSCFetch": "2026-08-21T21:27:43.029Z",
   "lastSemrushFetch": null,
   "lastCompetitorAnalysis": "2026-08-21",
-  "lastTechnicalAudit": "2026-08-21",
+  "lastTechnicalAudit": "2026-08-22",
   "lastContentPublish": "2026-08-21",
   "lastContentRefresh": null,
   "technicalHealth": {
@@ -73,22 +73,6 @@
     "orphans": 0,
     "brokenLinks": 0
   },
-  "currentKeywordClusters": [
-    "web-tasarim",
-    "sosyal-medya",
-    "saglik-turizmi",
-    "dijital-reklam",
-    "seo-icerik",
-    "marka-kimlik",
-    "crm-dijital-donusum"
-  ],
-  "warnings": [
-    "Blog TR/EN dengesizliği: 23 TR / 2 EN — EN sağlık turizmi fırsatı kullanılmıyor",
-    "Ticari sorgular için özel landing page yok; sadece geniş hizmet sayfaları var",
-    "23 blog yazısı 2026-08-21'de yayınlandı; sıralama ölçüm penceresi henüz açılmadı",
-    "Blog görsellerinde yanlış aksan değeri (#C8F04B) kullanılmış; doğrusu #cfff00 — SEO-2026-0062",
-    "SEMrush MCP yapılandırıldı (v2) — auth + oturum yeniden başlatma bekliyor; veri henüz çekilemiyor"
-  ],
   "blockedTasks": [
     {
       "id": "SEO-2026-0009",
@@ -127,8 +111,8 @@
     }
   ],
   "dataSources": {
-    "checkedAt": "2026-08-21T20:21:43.467Z",
-    "googleSearchConsole": false,
+    "checkedAt": "2026-08-21T21:27:43.030Z",
+    "googleSearchConsole": true,
     "semrush": false,
     "liveSerp": true,
     "googleSearchCentral": true
@@ -168,5 +152,22 @@
     "realAssetsFirst": true,
     "autoPublishVisuals": false,
     "knownIssue": "Ağustos 2026 blog görsellerinde #C8F04B kullanıldı; doğrusu #cfff00"
+  },
+  "gscSummary": {
+    "clicks": 12,
+    "impressions": 651,
+    "ctr": 1.84,
+    "avgPosition": 32.6,
+    "queryCount": 62,
+    "pageCount": 64,
+    "days": 28,
+    "rangeStart": "2026-07-22",
+    "rangeEnd": "2026-08-18"
+  },
+  "opportunityCounts": {
+    "quickWin": 3,
+    "strikingDistance": 5,
+    "ctrOpportunity": 0,
+    "highPriority": 8
   }
 }
