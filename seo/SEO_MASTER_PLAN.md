@@ -36,8 +36,8 @@ Araştırma/analiz/hazırlık otonom · yayın ve riskli değişiklik onaya bağ
 - [x] `SEO-2026-0006` SERP'ten listede olmayan 14 gerçek rakip keşfet
 - [x] `SEO-2026-0007` Gap analizi — çıktı yerel gizli katmanda
 - [x] `SEO-2026-0008` SEO işletim sistemi dosya yapısını kur
-- [x] `SEO-2026-0009` **Google Search Console erişimi aç** — BLOCKED, sahip aksiyonu gerekiyor
-- [ ] `SEO-2026-0010` **SEMrush veya eşdeğer keyword/backlink verisi sağla** — BLOCKED
+- [x] `SEO-2026-0009` **Google Search Console erişimi aç** — service account ile bağlandı (2026-08-22)
+- [x] `SEO-2026-0010` **SEMrush verisi sağla** — MCP çalışıyor; script katmanına köprü kuruldu (2026-08-22)
 
 ## P1 — High Impact
 

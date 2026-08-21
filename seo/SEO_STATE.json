@@ -2,8 +2,8 @@
   "version": 1,
   "mode": "APPROVAL_REQUIRED",
   "site": "https://pixelon.com.tr",
-  "lastRun": "2026-08-21T22:41:09.371Z",
-  "lastSuccessfulRun": "2026-08-21T22:41:09.371Z",
+  "lastRun": "2026-08-21T22:58:33.434Z",
+  "lastSuccessfulRun": "2026-08-21T22:58:33.434Z",
   "currentPhase": "PHASE_16_AUTOMATION",
   "phasesCompleted": [
     "PHASE_0_DISCOVERY",
@@ -58,8 +58,8 @@
     "SEO-2026-0061"
   ],
   "nextTaskIdCounter": 68,
-  "lastGSCFetch": "2026-08-21T22:41:33.552Z",
-  "lastSemrushFetch": null,
+  "lastGSCFetch": "2026-08-21T22:58:35.555Z",
+  "lastSemrushFetch": "2026-08-21T22:58:35.557Z",
   "lastCompetitorAnalysis": "2026-08-21",
   "lastTechnicalAudit": "2026-08-22",
   "lastContentPublish": "2026-08-21",
@@ -111,9 +111,9 @@
     }
   ],
   "dataSources": {
-    "checkedAt": "2026-08-21T22:41:33.553Z",
+    "checkedAt": "2026-08-21T22:58:35.557Z",
     "googleSearchConsole": true,
-    "semrush": false,
+    "semrush": true,
     "liveSerp": true,
     "googleSearchCentral": true
   },

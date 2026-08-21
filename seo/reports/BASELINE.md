@@ -10,15 +10,15 @@ Rakam güncellemesi yapılmaz; yeni ölçüm yeni rapor dosyasına yazılır.
 
 ## 1. Erişilebilen ve erişilemeyen veri kaynakları
 
-| Kaynak                      | Durum         | Not                                                              |
-| --------------------------- | ------------- | ---------------------------------------------------------------- |
-| Repository / build çıktısı  | ✅ TAM        | Teknik denetimin tamamı buradan yapılıyor                        |
-| Canlı site (HTTP)           | ✅ TAM        | Durum kodu, robots, sitemap, redirect                            |
-| Google SERP gözlemi         | ⚠️ KISITLI    | Arama aracı ABD merkezli; Google Türkiye SERP'i birebir değil    |
-| **Google Search Console**   | ❌ **BLOKLU** | Kimlik bilgisi yok. Impression/click/position/CTR verisi **yok** |
-| **SEMrush**                 | ❌ **BLOKLU** | MCP/API/CLI yok. Hacim, KD, DR, backlink verisi **yok**          |
-| **Google Business Profile** | ❌ **BLOKLU** | Erişim yok                                                       |
-| Google Analytics / GTM      | ⚠️ KISITLI    | Sitede dataLayer olayları var; rapor erişimi yok                 |
+| Kaynak                      | Durum         | Not                                                                                                                    |
+| --------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Repository / build çıktısı  | ✅ TAM        | Teknik denetimin tamamı buradan yapılıyor                                                                              |
+| Canlı site (HTTP)           | ✅ TAM        | Durum kodu, robots, sitemap, redirect                                                                                  |
+| Google SERP gözlemi         | ⚠️ KISITLI    | Arama aracı ABD merkezli; Google Türkiye SERP'i birebir değil                                                          |
+| **Google Search Console**   | ✅ **BAĞLI**  | Service account (2026-08-22). Bu baseline GSC öncesi donduruldu; arama metrikleri için karşılaştırma tabanı 2026-08-22 |
+| **SEMrush**                 | ❌ **BLOKLU** | MCP/API/CLI yok. Hacim, KD, DR, backlink verisi **yok**                                                                |
+| **Google Business Profile** | ❌ **BLOKLU** | Erişim yok                                                                                                             |
+| Google Analytics / GTM      | ⚠️ KISITLI    | Sitede dataLayer olayları var; rapor erişimi yok                                                                       |
 
 > **Kritik uyarı:** GSC ve SEMrush olmadan arama hacmi, gerçek sıralama, tıklama ve
 > backlink otoritesi **ölçülemez**. Bu dosyadaki hiçbir yerde tahmini hacim veya
@@ -86,7 +86,7 @@ GSC erişimi olmadığı için aşağıdakiler **boş bırakılmıştır**. Tahm
 - [ ] En çok trafik alan sayfalar
 - [ ] Organik dönüşüm
 
-**Bunu açmak için gereken:** `sosyal@pixelon.com.tr` hesabıyla Search Console API erişimi
+**Durum:** Açıldı — service account `pixelon-seo-gsc@…` Search Console'a eklendi. Tarihsel not: bu satır
 (servis hesabı JSON'u `.env` üzerinden) veya GSC performans dışa aktarımının CSV olarak
 `seo/data/gsc-export.csv` yoluna konması.
 

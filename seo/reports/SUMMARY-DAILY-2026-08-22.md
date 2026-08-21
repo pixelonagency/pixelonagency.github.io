@@ -19,7 +19,7 @@ Checks run:                0
 Checks OK:                 0
 Checks needing attention:  0
 Checks blocked (no data):  0
-Plan progress:             30/67
+Plan progress:             31/67
 ```
 
 ## Data sources

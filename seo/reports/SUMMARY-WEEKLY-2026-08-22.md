@@ -16,17 +16,17 @@ Broken internal links:     0
 High-priority opportunities: 8
 Approval queue:            0
 Checks run:                13
-Checks OK:                 8
+Checks OK:                 9
 Checks needing attention:  2
-Checks blocked (no data):  3
-Plan progress:             30/67
+Checks blocked (no data):  2
+Plan progress:             32/67
 ```
 
 ## Data sources
 
 ```text
 Google Search Console: YES
-SEMrush:               NO
+SEMrush:               YES
 Live SERP:             YES
 Google Search Central: YES
 ```

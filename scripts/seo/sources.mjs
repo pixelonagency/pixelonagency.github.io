@@ -104,13 +104,23 @@ export function classifyQueries(rows) {
   return out;
 }
 
-/** SEMrush: MCP/API/CLI hiçbiri yoksa dosya tabanlı dışa aktarım kabul edilir. */
+/**
+ * SEMrush: MCP Claude oturumunda çalışır ama script'ler onu göremez.
+ * Köprü `scripts/seo/semrush-bridge.mjs` ile kurulur; burada yalnızca köprünün
+ * yazdığı normalize dosyalar okunur.
+ */
 export function loadSemrush() {
-  const files = globSync('seo/data/semrush/*/*.csv').sort();
-  if (!files.length) return { available: false, reason: 'SEMrush MCP/API yok ve seo/data/semrush/ boş', files: [] };
+  // Köprü çıktısı gizli katmanda tutulur: keyword/rakip verisi public repoya girmez.
+  const files = globSync('seo/private/data/semrush/*/*.json').sort();
+  if (!files.length)
+    return {
+      available: false,
+      reason: 'SEMrush köprü verisi yok — MCP oturumda çalışıyor, `seo:semrush-import` ile aktarılmalı',
+      files: [],
+    };
   const datasets = {};
   for (const f of files)
-    datasets[f.split('/').pop().replace('.csv', '').toLowerCase()] = parseCsv(readFileSync(f, 'utf8'));
+    datasets[f.split('/').pop().replace('.json', '').toLowerCase()] = JSON.parse(readFileSync(f, 'utf8'));
   return { available: true, files, datasets, fetchedAt: new Date().toISOString() };
 }
 
