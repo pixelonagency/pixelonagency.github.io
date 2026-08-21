@@ -25,3 +25,8 @@ design_handoff_astro_site/
 
 # SEO operasyon logları (rapor ve veri commit edilir, log edilmez)
 seo/logs/
+
+# Google service account anahtarları — repo dışında (~/.config/pixelon/) durmalı.
+# Bu kalıplar yanlışlıkla içeri düşen bir key'i commit'ten korur.
+*gsc-sa*.json
+*service-account*.json
