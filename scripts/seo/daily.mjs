@@ -10,6 +10,7 @@
 import { readFileSync, writeFileSync, existsSync, globSync, appendFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
+import { connectionHealth, classifyQueries } from './sources.mjs';
 
 const ROOT = process.cwd();
 const MODE = process.argv[2] ?? 'daily'; // daily | weekly | monthly
@@ -62,9 +63,23 @@ if (audit && prior.length) {
   };
 }
 
-// 3) GSC verisi var mı? (dışa aktarım konursa otomatik devreye girer)
-const gscPath = join(ROOT, 'seo/data/gsc-export.csv');
-const hasGSC = existsSync(gscPath);
+// 3) Veri kaynağı sağlık kontrolü — politika: her run başında zorunlu.
+const health = connectionHealth();
+const hasGSC = health.sources.googleSearchConsole.available;
+const hasSemrush = health.sources.semrush.available;
+
+// GSC varsa fırsat sınıflandırması yap — bu, günün önceliğini DEĞİŞTİRİR.
+let opportunities = null;
+if (hasGSC) {
+  const qRows = Object.entries(health.gsc.datasets).find(([n]) => /quer|sorgu/.test(n))?.[1];
+  if (qRows) {
+    opportunities = classifyQueries(qRows);
+    log(
+      `GSC işlendi — quickWin:${opportunities.quickWin.length} striking:${opportunities.strikingDistance.length} ctr:${opportunities.ctrOpportunity.length}`,
+    );
+  }
+}
+log(`Kaynaklar — GSC:${hasGSC ? 'YES' : 'NO'} SEMrush:${hasSemrush ? 'YES' : 'NO'} SERP:YES SearchCentral:YES`);
 
 // 4) Master plan durumu
 const plan = readFileSync(join(ROOT, 'seo/SEO_MASTER_PLAN.md'), 'utf8');
@@ -80,7 +95,43 @@ const sev = audit?.severity ?? { P0: '?', P1: '?', P2: '?', P3: '?' };
 const tot = audit?.totals ?? {};
 const arrow = (n) => (n === null || n === undefined ? '→' : n > 0 ? `↑${n}` : n < 0 ? `↓${Math.abs(n)}` : '→');
 
+const src = health.sources;
+const srcLine = (label, o) =>
+  `${label}: ${o.available ? 'YES' : 'NO'}${o.available ? '' : `\n  Reason: ${o.reason}`}${o.note ? `\n  Note: ${o.note}` : ''}`;
+
+const opportunityBlock = opportunities
+  ? `### Position 4–10 (quick win)\n${
+      opportunities.quickWin
+        .slice(0, 10)
+        .map((o) => `* ${o.q} — pos ${o.pos.toFixed(1)}, ${o.imp} gösterim`)
+        .join('\n') || '* Yok.'
+    }\n\n### Position 11–20 (striking distance)\n${
+      opportunities.strikingDistance
+        .slice(0, 10)
+        .map((o) => `* ${o.q} — pos ${o.pos.toFixed(1)}, ${o.imp} gösterim`)
+        .join('\n') || '* Yok.'
+    }\n\n### Yüksek gösterim / düşük CTR\n${
+      opportunities.ctrOpportunity
+        .slice(0, 10)
+        .map((o) => `* ${o.q} — CTR ${o.ctr}%, ${o.imp} gösterim`)
+        .join('\n') || '* Yok.'
+    }`
+  : '**UNKNOWN** — GSC verisi olmadan fırsat sınıflandırması yapılamaz. Tahmin üretilmedi.';
+
 const report = `# PIXELON SEO — ${MODE.toUpperCase()} REPORT · ${stamp}
+
+## DATA SOURCES USED
+
+\`\`\`text
+${srcLine('Google Search Console', src.googleSearchConsole)}
+${srcLine('SEMrush MCP', src.semrush)}
+${srcLine('Live SERP Research', src.liveSerp)}
+${srcLine('Google Search Central', src.googleSearchCentral)}
+\`\`\`
+
+## Search Opportunities (GSC)
+
+${opportunityBlock}
 
 ## Executive Summary
 
@@ -145,6 +196,15 @@ writeFileSync(join(ROOT, 'seo/reports', reportName), report);
 state.lastRun = iso;
 if (!auditFailed) state.lastSuccessfulRun = iso;
 state.lastTechnicalAudit = stamp;
+state.dataSources = {
+  checkedAt: health.checkedAt,
+  googleSearchConsole: health.sources.googleSearchConsole.available,
+  semrush: health.sources.semrush.available,
+  liveSerp: true,
+  googleSearchCentral: true,
+};
+if (hasGSC) state.lastGSCFetch = health.gsc.fetchedAt;
+if (hasSemrush) state.lastSemrushFetch = health.semrush.fetchedAt;
 if (audit)
   state.technicalHealth = {
     ...audit.severity,
@@ -164,6 +224,7 @@ console.log(
   `\nTECHNICAL  P0:${sev.P0} P1:${sev.P1} P2:${sev.P2} · indexable:${tot.indexable ?? '?'} · orphan:${tot.orphans ?? '?'} · broken:${tot.brokenLinks ?? '?'}`,
 );
 console.log(`PLAN       ${done} tamam / ${open} açık`);
+console.log(`SOURCES    GSC:${hasGSC ? 'YES' : 'NO'} SEMrush:${hasSemrush ? 'YES' : 'NO'} SERP:YES`);
 console.log(`BLOCKED    ${state.blockedTasks.length} (GSC + SEMrush ana blocker)`);
 console.log(`\nRapor: seo/reports/${reportName}`);
 log(`SEO ${MODE.toUpperCase()} bitti — rapor: ${reportName}`);

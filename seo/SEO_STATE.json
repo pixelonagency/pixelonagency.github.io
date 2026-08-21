@@ -2,8 +2,8 @@
   "version": 1,
   "mode": "APPROVAL_REQUIRED",
   "site": "https://pixelon.com.tr",
-  "lastRun": "2026-08-21T20:07:33.355Z",
-  "lastSuccessfulRun": "2026-08-21T20:07:33.355Z",
+  "lastRun": "2026-08-21T20:21:41.023Z",
+  "lastSuccessfulRun": "2026-08-21T20:21:41.023Z",
   "currentPhase": "PHASE_16_AUTOMATION",
   "phasesCompleted": [
     "PHASE_0_DISCOVERY",
@@ -22,7 +22,12 @@
     "PHASE_9_BACKLINK_GAP": "Backlink API'si yok"
   },
   "currentTask": "SEO-2026-0011",
-  "nextTaskIds": ["SEO-2026-0011", "SEO-2026-0014", "SEO-2026-0023", "SEO-2026-0024"],
+  "nextTaskIds": [
+    "SEO-2026-0011",
+    "SEO-2026-0014",
+    "SEO-2026-0023",
+    "SEO-2026-0024"
+  ],
   "completedTaskIds": [
     "SEO-2026-0001",
     "SEO-2026-0002",
@@ -42,9 +47,17 @@
     "SEO-2026-0034",
     "SEO-2026-0037",
     "SEO-2026-0040",
-    "SEO-2026-0049"
+    "SEO-2026-0049",
+    "SEO-2026-0052",
+    "SEO-2026-0053",
+    "SEO-2026-0054",
+    "SEO-2026-0055",
+    "SEO-2026-0056",
+    "SEO-2026-0059",
+    "SEO-2026-0060",
+    "SEO-2026-0061"
   ],
-  "nextTaskIdCounter": 52,
+  "nextTaskIdCounter": 64,
   "lastGSCFetch": null,
   "lastSemrushFetch": null,
   "lastCompetitorAnalysis": "2026-08-21",
@@ -72,7 +85,9 @@
   "warnings": [
     "Blog TR/EN dengesizliği: 23 TR / 2 EN — EN sağlık turizmi fırsatı kullanılmıyor",
     "Ticari sorgular için özel landing page yok; sadece geniş hizmet sayfaları var",
-    "23 blog yazısı 2026-08-21'de yayınlandı; sıralama ölçüm penceresi henüz açılmadı"
+    "23 blog yazısı 2026-08-21'de yayınlandı; sıralama ölçüm penceresi henüz açılmadı",
+    "Blog görsellerinde yanlış aksan değeri (#C8F04B) kullanılmış; doğrusu #cfff00 — SEO-2026-0062",
+    "SEMrush MCP yapılandırıldı (v2) — auth + oturum yeniden başlatma bekliyor; veri henüz çekilemiyor"
   ],
   "blockedTasks": [
     {
@@ -82,8 +97,8 @@
     },
     {
       "id": "SEO-2026-0010",
-      "reason": "SEMrush erişimi yok",
-      "unblockedBy": "SEMrush MCP kurulumu veya API anahtarı"
+      "reason": "SEMrush MCP eklendi ancak kimlik doğrulaması bekliyor ve bu oturuma yüklenmedi",
+      "unblockedBy": "Claude Code yeniden başlat → SEMrush OAuth'u tamamla → seo:daily çalıştır"
     },
     {
       "id": "SEO-2026-0036",
@@ -99,6 +114,59 @@
       "id": "SEO-2026-0042",
       "reason": "Case study sonuç metrikleri sahipte",
       "unblockedBy": "Gerçek proje sonuç verisi"
+    },
+    {
+      "id": "SEO-2026-0057",
+      "reason": "GSC verisi yok",
+      "unblockedBy": "seo/data/gsc/<tarih>/ altına Search Console CSV dışa aktarımı"
+    },
+    {
+      "id": "SEO-2026-0058",
+      "reason": "Cross-validation için en az iki kaynak gerekli",
+      "unblockedBy": "SEO-2026-0009 veya SEO-2026-0010"
     }
-  ]
+  ],
+  "dataSources": {
+    "checkedAt": "2026-08-21T20:21:43.467Z",
+    "googleSearchConsole": false,
+    "semrush": false,
+    "liveSerp": true,
+    "googleSearchCentral": true
+  },
+  "dataSourcePolicy": {
+    "priority": [
+      "googleSearchConsole",
+      "liveSerp",
+      "semrush",
+      "repository",
+      "googleSearchCentral"
+    ],
+    "noDataNoAssumption": true,
+    "unknownLabel": "UNKNOWN",
+    "estimateLabel": "ESTIMATED",
+    "ingestPaths": {
+      "gsc": "seo/data/gsc/<tarih>/*.csv",
+      "semrush": "seo/data/semrush/<tarih>/*.csv"
+    },
+    "authority": {
+      "pixelonPerformance": "googleSearchConsole",
+      "competitorResearch": "semrush",
+      "serpIntent": "liveSerp",
+      "policy": "googleSearchCentral"
+    }
+  },
+  "visualPolicy": {
+    "accent": "#cfff00",
+    "bgDark": "#0a0a0a",
+    "bgLight": "#ffffff",
+    "bgTint": "#f5f5ef",
+    "fontDisplay": "Space Grotesk",
+    "fontBody": "Archivo",
+    "coverSize": "1920x1080",
+    "inlineSize": "1600x900",
+    "format": "webp q86",
+    "realAssetsFirst": true,
+    "autoPublishVisuals": false,
+    "knownIssue": "Ağustos 2026 blog görsellerinde #C8F04B kullanıldı; doğrusu #cfff00"
+  }
 }

@@ -6,6 +6,9 @@ Görev tamamlandığında checkbox anında `[ ] → [x]` yapılır ve `SEO_CHANG
 **Çalışma modu:** `APPROVAL_REQUIRED`
 Araştırma/analiz/hazırlık otonom · yayın ve riskli değişiklik onaya bağlı.
 
+**Veri kaynağı önceliği:** GSC → gerçek SERP → SEMrush → repo/site → Google Search Central
+**Kural:** veri yoksa `UNKNOWN` yazılır, tahmin `ESTIMATED` etiketlenir. Sayı uydurulmaz.
+
 **Son güncelleme:** 2026-08-21
 
 ---
@@ -106,6 +109,24 @@ Araştırma/analiz/hazırlık otonom · yayın ve riskli değişiklik onaya bağ
 - [ ] `SEO-2026-0046` Backlink gap analizi — BLOCKED (API yok)
 - [ ] `SEO-2026-0047` Linkable asset fırsat araştırması
 - [ ] `SEO-2026-0048` Ajans dizini / tasarım galerisi prospect listesi (iletişim ONAY gerektirir)
+
+## Data Sources
+
+- [x] `SEO-2026-0052` Veri kaynağı sağlık kontrol modülü (`scripts/seo/sources.mjs`)
+- [x] `SEO-2026-0053` Daily rapora `DATA SOURCES USED` bloğu eklendi
+- [x] `SEO-2026-0054` GSC alım yolu hazır — `seo/data/gsc/` dolduğu an otomatik devreye girer
+- [x] `SEO-2026-0055` GSC fırsat sınıflandırıcı (pos 4–10 / 11–20 / düşük CTR / brand ayrımı)
+- [x] `SEO-2026-0056` SEMrush alım yolu hazır — `seo/data/semrush/`
+- [ ] `SEO-2026-0057` GSC verisi geldiğinde ilk fırsat turunu çalıştır — BLOCKED
+- [ ] `SEO-2026-0058` Cross-validation: GSC ↔ SERP ↔ SEMrush çelişki kaydı — BLOCKED
+
+## Visual System
+
+- [x] `SEO-2026-0059` Görsel sistem dokümanı (`seo/VISUAL-SYSTEM.md`) — gerçek tokenlarla
+- [x] `SEO-2026-0060` Visual brief şablonu (`seo/visual-briefs/_TEMPLATE.md`)
+- [x] `SEO-2026-0061` Marka aksan rengi düzeltildi: `#C8F04B` → **`#cfff00`** (tokens.css doğrulandı)
+- [ ] `SEO-2026-0062` Mevcut 32 blog görselini gerçek aksan değeriyle gözden geçir
+- [ ] `SEO-2026-0063` Gerçek proje materyali envanteri — AI üretimi öncesi kontrol listesi
 
 ## Measurement
 

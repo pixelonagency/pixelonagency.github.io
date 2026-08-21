@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T20:07:35.724Z",
+  "generatedAt": "2026-08-21T20:21:43.462Z",
   "site": "https://pixelon.com.tr",
   "totals": {
     "htmlPages": 101,
@@ -39,7 +39,14 @@
       "noindex": true,
       "h1": 1,
       "hreflang": 0,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 3
     },
     {
@@ -234,7 +241,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 27
     },
     {
@@ -751,7 +765,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 6
     },
     {
@@ -763,7 +784,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 3
     },
     {
@@ -775,7 +803,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 3
     },
     {
@@ -808,7 +843,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 3
     },
     {
@@ -820,7 +862,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 6
     },
     {
@@ -832,7 +881,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 36
     },
     {
@@ -1725,7 +1781,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 3
     },
     {
@@ -1737,7 +1800,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 37
     },
     {
@@ -1749,7 +1819,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 3
     },
     {
@@ -2118,7 +2195,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 3
     },
     {
@@ -2130,7 +2214,14 @@
       "noindex": false,
       "h1": 1,
       "hreflang": 3,
-      "schemaTypes": ["Organization", "ImageObject", "PostalAddress", "ContactPoint", "WebSite", "WebPage"],
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage"
+      ],
       "images": 6
     }
   ]

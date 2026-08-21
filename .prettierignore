@@ -22,3 +22,4 @@ src/content/pages
 seo/data/*.json
 seo/reports/*.json
 seo/logs/
+seo/SEO_STATE.json
