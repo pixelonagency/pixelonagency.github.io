@@ -86,6 +86,15 @@ if (hasGSC) {
 }
 log(`Kaynaklar — GSC:${hasGSC ? 'YES' : 'NO'} SEMrush:${hasSemrush ? 'YES' : 'NO'} SERP:YES SearchCentral:YES`);
 
+// 3b) Haftalık ve aylık koşuda eski URL izlemesi — 404 kararının bedeli ölçülür.
+if (MODE !== 'daily' && hasGSC) {
+  try {
+    execSync('bun scripts/seo/redirect-watch.mjs', { stdio: 'inherit' });
+  } catch {
+    log('redirect-watch çalışmadı — atlandı');
+  }
+}
+
 // 4) Master plan durumu
 const plan = readFileSync(join(ROOT, 'seo/SEO_MASTER_PLAN.md'), 'utf8');
 const done = (plan.match(/^- \[x\]/gm) ?? []).length;
