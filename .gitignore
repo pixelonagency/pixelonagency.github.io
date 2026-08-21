@@ -22,3 +22,6 @@ design_handoff_astro_site/
 # playwright-mcp geçici çıktıları
 .playwright-mcp/
 .claude/
+
+# SEO operasyon logları (rapor ve veri commit edilir, log edilmez)
+seo/logs/

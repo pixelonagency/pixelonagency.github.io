@@ -1,5 +1,7 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "ignoreDependencies": ["@secretlint/secretlint-rule-preset-recommend", "@types/bun"],
-  "ignore": ["design_handoff_astro_site/**", "public/admin/**"]
+  "ignore": ["design_handoff_astro_site/**", "public/admin/**"],
+  "entry": ["scripts/seo/audit.mjs", "scripts/seo/competitors.mjs", "scripts/seo/daily.mjs"],
+  "ignoreUnresolved": ["scripts/seo/audit.mjs"]
 }

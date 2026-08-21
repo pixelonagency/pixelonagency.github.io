@@ -22,7 +22,13 @@
     "audit": "bun audit",
     "prepare": "git config core.hooksPath .githooks",
     "test:dist": "bun test ./tests/dist-smoke.ts",
-    "verify": "bun run build && bun run test:dist"
+    "verify": "bun run build && bun run test:dist",
+    "seo:audit": "bun scripts/seo/audit.mjs",
+    "seo:comp": "bun scripts/seo/competitors.mjs",
+    "seo:daily": "bun scripts/seo/daily.mjs daily",
+    "seo:weekly": "bun scripts/seo/daily.mjs weekly",
+    "seo:monthly": "bun scripts/seo/daily.mjs monthly",
+    "seo:run": "bun scripts/seo/daily.mjs daily"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",

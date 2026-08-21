@@ -17,3 +17,8 @@ src/content/settings
 src/content/pages
 
 .playwright-mcp
+
+# SEO araçlarının ürettiği çıktılar — biçim generator tarafından belirlenir
+seo/data/*.json
+seo/reports/*.json
+seo/logs/
