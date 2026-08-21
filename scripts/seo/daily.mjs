@@ -13,6 +13,8 @@ import { join } from 'node:path';
 import { connectionHealth, classifyQueries } from './sources.mjs';
 import { assertPublicSafe, countOpportunities, splitState, summariseGSC } from './privacy.mjs';
 import { stampFor } from './clock.mjs';
+import { checkSummary, loadWindow, runChecks } from './analysis.mjs';
+import { extractWatched, totals as watchTotals } from './redirect-watch.mjs';
 
 const ROOT = process.cwd();
 const MODE = process.argv[2] ?? 'daily'; // daily | weekly | monthly
@@ -93,6 +95,32 @@ if (MODE !== 'daily' && hasGSC) {
   } catch {
     log('redirect-watch çalışmadı — atlandı');
   }
+}
+
+// 3c) Haftalık/aylık kontrol defteri — GSC karşılaştırma pencerelerinden beslenir.
+let checks = null;
+let checkStats = null;
+if (MODE !== 'daily') {
+  const gscDir = (globSync('seo/data/gsc/*/queries.csv').sort().pop() ?? '').replace('/queries.csv', '');
+  const w = (n) => (gscDir ? loadWindow(join(ROOT, gscDir), n) : null);
+  const pageRows = hasGSC ? Object.entries(health.gsc.datasets).find(([n]) => /page|sayfa/.test(n))?.[1] : null;
+  checks = runChecks(MODE, {
+    w7: w('w7'),
+    w7prev: w('w7-prev'),
+    w28: w('w28'),
+    w28prev: w('w28-prev'),
+    d90: w('d90'),
+    audit,
+    regression,
+    readyCount: Number(
+      readFileSync(join(ROOT, 'seo/APPROVAL_QUEUE.md'), 'utf8').match(/READY FOR APPROVAL:\s*(\d+)/)?.[1] ?? 0,
+    ),
+    watch: pageRows ? watchTotals(extractWatched(pageRows)) : null,
+    hasSemrush,
+    geo: audit ? { indexable: audit.totals?.indexable ?? null } : null,
+  });
+  checkStats = checkSummary(checks);
+  log(`${MODE} kontrolleri — OK:${checkStats.ok} DİKKAT:${checkStats.attention} BİLİNMEYEN:${checkStats.unknown}`);
 }
 
 // 4) Master plan durumu
@@ -200,6 +228,21 @@ ${hasGSC ? '* GSC verisi işlendi — detay aşağıda.' : '* **GSC erişimi yok
 * **SEMrush erişimi yok** — hacim/KD/backlink ölçülemiyor.
 * 23 blog yazısı 2026-08-21'de yayınlandı; sıralama penceresi açılıyor.
 
+## Checks (${MODE.toUpperCase()})
+
+${
+  checks
+    ? checks
+        .map((c) => {
+          const head = `### ${c.status === 'OK' ? '✅' : c.status === 'ATTENTION' ? '⚠️' : '❔'} ${c.title}`;
+          if (c.status === 'UNKNOWN') return `${head}\n\n**UNKNOWN** — ${c.reason}`;
+          const body = '```json\n' + JSON.stringify(c.detail ?? c.value, null, 2) + '\n```';
+          return `${head}\n\n${body}`;
+        })
+        .join('\n\n')
+    : '_Bu koşuda kontrol defteri çalışmadı (yalnızca weekly/monthly)._'
+}
+
 ## Blocked
 
 ${state.blockedTasks.map((b) => `* ${b.id} — ${b.reason} (açılış: ${b.unblockedBy})`).join('\n')}
@@ -230,7 +273,7 @@ Technical errors (P0/P1):  ${sev.P0}/${sev.P1}
 Orphan pages:              ${tot.orphans ?? 'UNKNOWN'}
 Broken internal links:     ${tot.brokenLinks ?? 'UNKNOWN'}
 High-priority opportunities: ${oppCount?.highPriority ?? 'UNKNOWN'}
-Approval queue:            ${readyCount}
+Approval queue:            ${readyCount}\nChecks run:                ${checkStats?.total ?? 0}\nChecks OK:                 ${checkStats?.ok ?? 0}\nChecks needing attention:  ${checkStats?.attention ?? 0}\nChecks blocked (no data):  ${checkStats?.unknown ?? 0}
 Plan progress:             ${done}/${done + open}
 \`\`\`
 

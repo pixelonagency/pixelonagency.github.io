@@ -19,13 +19,23 @@ import { createSign } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
+import { LAG_DAYS, windowFor, windowPlan } from './periods.mjs';
+
+export { LAG_DAYS };
+
+/** Geriye dönük uyumluluk: tek pencere hesabı. */
+export const dateRange = (end, days) => windowFor(end, days);
 
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 const API = 'https://searchconsole.googleapis.com/webmasters/v3/sites';
 
-/** GSC verisi ~2 gün gecikmeli gelir; son günler eksik sayılmasın diye pencere geriden başlar. */
-export const LAG_DAYS = 3;
+/** Karşılaştırma pencerelerinde yalnızca dönem farkı için gerekenler çekilir. */
+export const COMPARE_PULLS = [
+  { file: 'queries', dimensions: ['query'] },
+  { file: 'pages', dimensions: ['page'] },
+  { file: 'dates', dimensions: ['date'] },
+];
 
 export const PULLS = [
   { file: 'queries', dimensions: ['query'] },
@@ -37,14 +47,6 @@ export const PULLS = [
 
 export function base64url(buf) {
   return Buffer.from(buf).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-/** @param {Date} end @param {number} days */
-export function dateRange(end, days) {
-  const iso = (d) => d.toISOString().slice(0, 10);
-  const endDate = new Date(end.getTime() - LAG_DAYS * 86400000);
-  const startDate = new Date(endDate.getTime() - (days - 1) * 86400000);
-  return { startDate: iso(startDate), endDate: iso(endDate) };
 }
 
 export function buildClaim(clientEmail, nowSec) {
@@ -130,7 +132,8 @@ async function main() {
     process.exit(2);
   }
 
-  const { startDate, endDate } = dateRange(new Date(), days);
+  const now = new Date();
+  const { startDate, endDate } = dateRange(now, days);
   const token = await getToken(key);
   const outDir = join(process.cwd(), 'seo/data/gsc', endDate);
   mkdirSync(outDir, { recursive: true });
@@ -144,6 +147,23 @@ async function main() {
     writeFileSync(join(outDir, `${pull.file}.csv`), toCsv(rows));
     console.log(`  ${pull.file}.csv — ${rows.length} satır`);
   }
+
+  // Karşılaştırma pencereleri: haftalık/aylık analiz bunlar olmadan dönem farkı üretemez.
+  // Alt klasöre yazılır; loadGSC'nin `gsc/*/*.csv` globu bunları görmez, çakışma olmaz.
+  const plan = windowPlan(now);
+  for (const [name, w] of Object.entries(plan)) {
+    const dir = join(outDir, name);
+    mkdirSync(dir, { recursive: true });
+    for (const pull of COMPARE_PULLS) {
+      const rows = toRows(
+        pull.dimensions,
+        await query(token, siteUrl, { startDate: w.startDate, endDate: w.endDate, dimensions: pull.dimensions }),
+      );
+      writeFileSync(join(dir, `${pull.file}.csv`), toCsv(rows));
+    }
+    console.log(`  ${name.padEnd(9)} ${w.startDate} → ${w.endDate}`);
+  }
+
   console.log(`✔ ${outDir}`);
   console.log('  sources.mjs bu dosyaları kendiliğinden kullanır; kod değişikliği gerekmez.');
 }

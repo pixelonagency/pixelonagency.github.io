@@ -2,8 +2,8 @@
   "version": 1,
   "mode": "APPROVAL_REQUIRED",
   "site": "https://pixelon.com.tr",
-  "lastRun": "2026-08-21T22:00:52.183Z",
-  "lastSuccessfulRun": "2026-08-21T22:00:52.183Z",
+  "lastRun": "2026-08-21T22:12:52.602Z",
+  "lastSuccessfulRun": "2026-08-21T22:12:52.602Z",
   "currentPhase": "PHASE_16_AUTOMATION",
   "phasesCompleted": [
     "PHASE_0_DISCOVERY",
@@ -58,7 +58,7 @@
     "SEO-2026-0061"
   ],
   "nextTaskIdCounter": 68,
-  "lastGSCFetch": "2026-08-21T22:00:54.654Z",
+  "lastGSCFetch": "2026-08-21T22:12:54.820Z",
   "lastSemrushFetch": null,
   "lastCompetitorAnalysis": "2026-08-21",
   "lastTechnicalAudit": "2026-08-22",
@@ -116,7 +116,7 @@
     }
   ],
   "dataSources": {
-    "checkedAt": "2026-08-21T22:00:54.655Z",
+    "checkedAt": "2026-08-21T22:12:54.820Z",
     "googleSearchConsole": true,
     "semrush": false,
     "liveSerp": true,
@@ -174,5 +174,14 @@
     "strikingDistance": 5,
     "ctrOpportunity": 0,
     "highPriority": 8
+  },
+  "scheduler": {
+    "weekly": {
+      "lastRun": "2026-08-22T01:12:41+0300",
+      "lastExitCode": 0,
+      "lastLog": "/Users/mfd/Documents/websites/pixelon/seo/logs/weekly-2026-08-22.log",
+      "lastSuccessfulRun": "2026-08-22T01:12:41+0300",
+      "consecutiveFailures": 0
+    }
   }
 }

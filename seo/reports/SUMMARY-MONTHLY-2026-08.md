@@ -1,7 +1,7 @@
-# PIXELON SEO — WEEKLY SUMMARY · 2026-08-22
+# PIXELON SEO — MONTHLY SUMMARY · 2026-08-22
 
 > Toplam/anonim metrikler. Sorgu, sıralama ve fırsat detayı **bilinçli olarak** dışarıda
-> bırakılmıştır — repo public. Detay: `seo/private/reports/WEEKLY-2026-08-22.md` (yalnızca yerel).
+> bırakılmıştır — repo public. Detay: `seo/private/reports/MONTHLY-2026-08.md` (yalnızca yerel).
 
 ```text
 Organic clicks:            12
@@ -15,10 +15,10 @@ Orphan pages:              0
 Broken internal links:     0
 High-priority opportunities: 8
 Approval queue:            0
-Checks run:                13
-Checks OK:                 8
+Checks run:                28
+Checks OK:                 16
 Checks needing attention:  2
-Checks blocked (no data):  3
+Checks blocked (no data):  10
 Plan progress:             30/67
 ```
 
