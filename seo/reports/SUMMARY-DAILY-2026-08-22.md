@@ -15,7 +15,11 @@ Orphan pages:              0
 Broken internal links:     0
 High-priority opportunities: 8
 Approval queue:            0
-Plan progress:             27/63
+Checks run:                0
+Checks OK:                 0
+Checks needing attention:  0
+Checks blocked (no data):  0
+Plan progress:             30/67
 ```
 
 ## Data sources
