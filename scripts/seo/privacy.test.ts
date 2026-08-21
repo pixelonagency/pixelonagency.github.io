@@ -7,6 +7,7 @@
  */
 import { describe, expect, test } from 'bun:test';
 import {
+  MUST_NOT_BE_TRACKED,
   PRIVATE_PATHS,
   PRIVATE_STATE_KEYS,
   assertPublicSafe,
@@ -15,6 +16,7 @@ import {
   summariseGSC,
 } from './privacy.mjs';
 import { readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 
 describe('splitState', () => {
   const state = {
@@ -128,4 +130,35 @@ describe('.gitignore sözleşmesi', () => {
       expect(ignore).toContain(p.replace(/\/$/, ''));
     });
   }
+});
+
+describe('git takip sözleşmesi', () => {
+  // `git rm --cached` ile takipten çıkarılan hassas belgeler bir daha içeri sızmamalı.
+  // Bu test, bir sonraki kişinin (ya da benim) yanlışlıkla `git add -A` yapmasına karşı kapı.
+  const tracked = new Set(execFileSync('git', ['ls-files'], { encoding: 'utf8' }).split('\n'));
+
+  for (const path of MUST_NOT_BE_TRACKED) {
+    test(`${path} git tarafından TAKİP EDİLMİYOR`, () => {
+      expect(tracked.has(path)).toBe(false);
+    });
+  }
+
+  test('takip edilen hiçbir dosya seo/private/ altında değil', () => {
+    expect([...tracked].filter((f) => f.startsWith('seo/private/'))).toEqual([]);
+  });
+
+  test('takip edilen hiçbir GSC ham veri dosyası yok', () => {
+    expect([...tracked].filter((f) => f.startsWith('seo/data/gsc'))).toEqual([]);
+  });
+
+  test('public dosyalar private strateji belgelerinin adını açık etmiyor', () => {
+    const leaky = ['SEO_KEYWORD_MAP', 'SEO_CONTENT_ROADMAP', 'SEO_OFFSITE_ROADMAP', 'COMPETITORS.md'];
+    const offenders: string[] = [];
+    for (const f of tracked) {
+      if (!f.endsWith('.md') || f.startsWith('seo/private/')) continue;
+      const text = readFileSync(f, 'utf8');
+      if (leaky.some((n) => text.includes(n))) offenders.push(f);
+    }
+    expect(offenders).toEqual([]);
+  });
 });

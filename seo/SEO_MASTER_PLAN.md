@@ -34,16 +34,16 @@ Araştırma/analiz/hazırlık otonom · yayın ve riskli değişiklik onaya bağ
 - [x] `SEO-2026-0004` Rakip yapısal tarama aracı yaz (`scripts/seo/competitors.mjs`)
 - [x] `SEO-2026-0005` Verilen 10 rakibi analiz et
 - [x] `SEO-2026-0006` SERP'ten listede olmayan 14 gerçek rakip keşfet
-- [x] `SEO-2026-0007` Gap analizi (`seo/COMPETITORS.md`)
+- [x] `SEO-2026-0007` Gap analizi — çıktı yerel gizli katmanda
 - [x] `SEO-2026-0008` SEO işletim sistemi dosya yapısını kur
 - [ ] `SEO-2026-0009` **Google Search Console erişimi aç** — BLOCKED, sahip aksiyonu gerekiyor
 - [ ] `SEO-2026-0010` **SEMrush veya eşdeğer keyword/backlink verisi sağla** — BLOCKED
 
 ## P1 — High Impact
 
-- [ ] `SEO-2026-0011` Sağlık turizmi ticari landing page — sorgu odaklı, hizmet sayfasından ayrı `READY_FOR_APPROVAL` bekliyor
-- [ ] `SEO-2026-0012` Web tasarım ticari landing page — sorgu odaklı
-- [ ] `SEO-2026-0013` Klinik / doktor web sitesi sektör sayfası
+- [ ] `SEO-2026-0011` Ticari landing page A — kapsam yerel gizli katmanda `READY_FOR_APPROVAL` bekliyor
+- [ ] `SEO-2026-0012` Ticari landing page B — kapsam yerel gizli katmanda
+- [ ] `SEO-2026-0013` Sektör sayfası — kapsam yerel gizli katmanda
 - [ ] `SEO-2026-0014` Web tasarım fiyatları — ticari sayfa (blog yazısı var, ticari sayfa yok; SERP'te boş alan)
 - [ ] `SEO-2026-0015` Hizmet sayfalarına `Service` schema ekle
 - [ ] `SEO-2026-0016` EN sağlık turizmi içerik derinliği (uluslararası hasta kümesi)

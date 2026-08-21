@@ -69,7 +69,7 @@ semantik HTML, `astro:assets` ile responsive görseller, gerçek 404.
 | Yasal             | 4                                             | 4   | 8      |
 
 **Not:** Blog TR/EN dengesizliği belirgin — 23 TR'ye karşı 2 EN. EN tarafı sağlık turizminde
-uluslararası talep için stratejik önem taşıyor (bkz. COMPETITORS.md).
+uluslararası talep için stratejik önem taşıyor (detay: yerel gizli katman).
 
 ---
 
@@ -115,5 +115,5 @@ bakımından eksik** bir sitedir.
 - Teknik borç neredeyse sıfır — bu, SEO çalışmasının teknik düzeltmeye değil
   **ticari sayfa mimarisi ve otoriteye** ayrılabileceği anlamına gelir.
 - 23 blog yazısı yeni yayınlandı; henüz sıralama verisi oluşmadı (ölçüm penceresi başlıyor).
-- Asıl açık: hedeflenen ticari sorgular için **özel landing page yok**; hizmet sayfaları
-  geniş intent'e hizmet ediyor.
+- Ticari sayfa mimarisiyle ilgili açık tespit edildi; ayrıntı ve hedefleme yerel gizli
+  katmanda tutulur.

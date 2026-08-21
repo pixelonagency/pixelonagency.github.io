@@ -6,7 +6,7 @@
  * toplanır: konumlandırma metni, hizmet mimarisi, blog varlığı, schema, dil, teknik hijyen.
  * Tahmini trafik/otorite rakamı ÜRETİLMEZ — uydurma veri stratejiyi bozar.
  */
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 
 const targets = [
   'https://www.keepkind.co/',
@@ -78,5 +78,7 @@ for (const url of targets) {
   );
 }
 
-writeFileSync('seo/data/competitors-raw.json', JSON.stringify(results, null, 2));
-console.log('\n→ seo/data/competitors-raw.json');
+// Çıktı gizli katmana yazılır: rakip taraması istihbarattır, public repoya girmez.
+mkdirSync('seo/private/data', { recursive: true });
+writeFileSync('seo/private/data/competitors-raw.json', JSON.stringify(results, null, 2));
+console.log('\n→ seo/private/data/competitors-raw.json (gitignored)');

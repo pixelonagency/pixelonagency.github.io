@@ -20,7 +20,7 @@ Kod tarafında çözülemeyen, sahibinden bilgi/karar/erişim gerektiren maddele
 
 **NEEDED:** Google Business Profile oluşturma/erişimi.
 **WHY:** Local SEO + Knowledge Panel + AI yanıt sistemleri için en güçlü dış sinyal.
-**WHERE IT WILL BE USED:** Off-site (bkz. SEO_OFFSITE_ROADMAP #1).
+**WHERE IT WILL BE USED:** Off-site otorite çalışması (plan yerel gizli katmanda).
 **PRIORITY:** P0 (off-site)
 
 ---
@@ -34,7 +34,7 @@ Kod tarafında çözülemeyen, sahibinden bilgi/karar/erişim gerektiren maddele
 
 **NEEDED:** Google Search Console erişimi/exportları (Performance + Page Indexing + CWV) ve varsa GA4 organik veri.
 **WHY:** Keyword map şu an içerik temelli tahmin; gerçek query/impression verisiyle FINAL SEO PASS önceliklendirilecek. CWV alan verisi lab ölçümünden daha değerli.
-**WHERE IT WILL BE USED:** SEO_KEYWORD_MAP güncellemesi, içerik yol haritası, performans doğrulaması.
+**WHERE IT WILL BE USED:** Hedefleme haritası ve içerik yol haritası güncellemesi (ikisi de yerel gizli katmanda), performans doğrulaması.
 **PRIORITY:** P1
 
 ---

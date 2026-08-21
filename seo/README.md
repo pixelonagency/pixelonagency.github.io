@@ -10,7 +10,7 @@ Bu klasör Pixelon'ın sürekli çalışan SEO sisteminin hafızası ve kontrol 
 | `SEO_STATE.json`      | Makine hafızası — yeni oturum nerede kaldığını buradan bilir |
 | `APPROVAL_QUEUE.md`   | Onay bekleyen işler + onay komutları                         |
 | `SEO_CHANGELOG.md`    | Yapılan her gerçek değişiklik                                |
-| `COMPETITORS.md`      | Rakip analizi ve gap analizi                                 |
+| _(private)_           | Rekabet analizi yerel gizli katmanda tutulur                 |
 | `reports/BASELINE.md` | Dondurulmuş başlangıç ölçümü                                 |
 | `reports/DAILY-*.md`  | Günlük raporlar                                              |
 | `data/`               | Ham veri (rakip taraması, keyword master, GSC dışa aktarımı) |

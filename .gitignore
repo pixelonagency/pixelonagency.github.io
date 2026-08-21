@@ -45,3 +45,7 @@ seo/data/semrush/
 seo/reports/DAILY-*.md
 seo/reports/WEEKLY-*.md
 seo/reports/MONTHLY-*.md
+# Kökte yeniden oluşturulursa diye savunma — bu belgeler seo/private/strategy/ altında durur.
+SEO_KEYWORD_MAP.md
+SEO_CONTENT_ROADMAP.md
+SEO_OFFSITE_ROADMAP.md

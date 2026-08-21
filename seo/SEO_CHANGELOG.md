@@ -81,3 +81,33 @@ Kod hazır, kimlik bilgisi yok. Sırasıyla:
 
 Üçüncü parti GSC MCP sunucuları değerlendirildi ve **reddedildi**: hiçbiri Google resmi değil
 ve tamamı service account key'ine tam erişim istiyor. Kendi çekicimiz ek bağımlılık da getirmiyor.
+
+## 2026-08-22 — gizlilik katmanı + forward-only temizlik
+
+Repo public. Search Console bağlantısı açıldığı an gerçek sorgu, sıralama ve fırsat verisi
+üretilmeye başladı; bunların git'e girmesi rakibe hazır istihbarat vermek olurdu.
+
+| Alan                          | Değişiklik                                                    | Gerekçe                                            |
+| ----------------------------- | ------------------------------------------------------------- | -------------------------------------------------- |
+| `scripts/seo/privacy.mjs`     | public/private ayrımı tek noktadan tanımlandı                 | Politika dokümanda değil kodda yaşamalı            |
+| `scripts/seo/clock.mjs`       | Tek tarih kaynağı (Europe/Istanbul)                           | UTC ayrışması teknik metrikleri sessizce siliyordu |
+| `seo/SEO_STATE.json`          | İki katmana ayrıldı; public tarafta yalnızca operasyon durumu | Hedefleme ve fırsat verisi yerelde kalır           |
+| `seo/reports/`                | Public tarafa yalnızca `SUMMARY-*` toplam metrik yazılır      | Sorgu ve sıralama detayı yerelde kalır             |
+| `scripts/seo/competitors.mjs` | Çıktı gizli katmana yazılır                                   | Rakip taraması istihbarattır                       |
+| 6 belge                       | `git rm --cached` ile takipten çıkarıldı, yerelde korundu     | Hedefleme, rekabet ve off-site planları            |
+
+**Site içeriğinde değişiklik yapılmadı.** Bu tur da yalnızca operasyon altyapısı.
+
+### Forward-only temizlik — ne yapıldı, ne yapılmadı
+
+Hedefleme haritası, içerik yol haritası, off-site planı, rekabet analizi, rakip ham verisi ve
+eski detaylı günlük rapor yerel gizli katmana taşındı ve takipten çıkarıldı. Dosyalar
+makinede duruyor; hiçbir bilgi kaybolmadı.
+
+**History rewrite YAPILMADI.** Bu belgeler bugüne kadar public'ti ve commit geçmişinde
+kalmaya devam ediyor — klonlarda, fork'larda ve GitHub cache'inde de öyle. Forward-only
+temizlik geçmiş maruziyeti kaldırmaz, yalnızca bugünden sonrasını kapatır. Kapatılması
+gereken bir kimlik bilgisi yok; maruziyet strateji ile sınırlı, rotasyon gerekmiyor.
+
+Public belgeler artık gizli belgelerin **adını da** anmıyor; dosya adı bile stratejiyi
+ele verebilir. Bu kural `privacy.test.ts` ile kapıda doğrulanıyor.

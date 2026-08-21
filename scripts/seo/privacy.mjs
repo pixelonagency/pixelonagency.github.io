@@ -34,7 +34,30 @@ export const PRIVATE_PATHS = [
   'seo/data/gsc/',
   'seo/data/gsc-export.csv',
   'seo/data/semrush/',
-  // seo/private/reports/ ayrıca listelenmez — 'seo/private/' zaten tüm alt ağacı kapsar.
+  // Kökte tutulmuş strateji belgeleri; asılları seo/private/strategy/ altında.
+  'SEO_KEYWORD_MAP.md',
+  'SEO_CONTENT_ROADMAP.md',
+  'SEO_OFFSITE_ROADMAP.md',
+  // seo/private/reports/ ve seo/private/strategy/ ayrıca listelenmez —
+  // 'seo/private/' zaten tüm alt ağacı kapsar.
+];
+
+/**
+ * Public repoda ASLA takip edilmemesi gereken yollar. `git ls-files` çıktısında
+ * bunlardan biri görünürse gizlilik politikası delinmiş demektir.
+ */
+export const MUST_NOT_BE_TRACKED = [
+  'SEO_KEYWORD_MAP.md',
+  'SEO_CONTENT_ROADMAP.md',
+  'SEO_OFFSITE_ROADMAP.md',
+  'seo/COMPETITORS.md',
+  'seo/data/competitors-raw.json',
+  'seo/private/COMPETITORS.md',
+  'seo/private/data/competitors-raw.json',
+  'seo/private/strategy/SEO_KEYWORD_MAP.md',
+  'seo/private/strategy/SEO_CONTENT_ROADMAP.md',
+  'seo/private/strategy/SEO_OFFSITE_ROADMAP.md',
+  'seo/reports/DAILY-2026-08-21.md',
 ];
 
 const num = (v) => Number(String(v ?? '').replace(/[%,]/g, '')) || 0;
