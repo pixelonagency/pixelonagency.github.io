@@ -73,7 +73,7 @@ article:
 
         Talep kaynağı CRM'de kaydedildiğinde bütçe, çok talep getiren kampanyadan çok müşteri getiren kampanyaya kayıyor. Bu tek değişiklik, çoğu işletmede reklam veriminde belirgin fark yaratıyor.
 
-        Ölçüm tarafının nasıl kurulduğunu [dönüşüm takibi](/blog/donusum-takibi-nedir) yazısında, bunun kârlılığa nasıl çevrildiğini ise [ROAS](/blog/roas-nedir-nasil-hesaplanir) yazısında ele aldık.
+        Ölçüm tarafının nasıl kurulduğunu [dönüşüm takibi](/blog/donusum-takibi-nedir/) yazısında, bunun kârlılığa nasıl çevrildiğini ise [ROAS](/blog/roas-nedir-nasil-hesaplanir/) yazısında ele aldık.
 
     - type: callout
       variant: note

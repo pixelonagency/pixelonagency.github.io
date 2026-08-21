@@ -68,8 +68,8 @@ For healthcare brands, social media is about more than sharing attractive visual
 
 We manage multilingual websites, international ad campaigns, social media content and patient communication systems under a single strategy.
 
-- [Explore Our Health Tourism Service](/en/services/health-tourism-consulting)
-- [Get in Touch on WhatsApp](/en/contact)
+- [Explore Our Health Tourism Service](/en/services/health-tourism-consulting/)
+- [Get in Touch on WhatsApp](/en/contact/)
 
 ## How Should Google Ads and Meta Ads Be Used?
 
@@ -109,7 +109,7 @@ For Dentasay we built multilingual ad campaigns for several European countries, 
 - WhatsApp patient communication templates
 - Form and conversion tracking
 
-[Explore the Project →](/en/services/health-tourism-consulting)
+[Explore the Project →](/en/services/health-tourism-consulting/)
 
 > "Successful digital marketing is not about reaching more people; it is about moving the right person with the right message."
 >

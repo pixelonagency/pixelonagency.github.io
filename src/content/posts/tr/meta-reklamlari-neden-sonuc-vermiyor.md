@@ -33,7 +33,7 @@ article:
 
         Bu yüzden ilk soru şu: son iki haftada gelen talepleri nereden öğrendiniz? WhatsApp'tan mı, telefondan mı, formdan mı? Bu taleplerin kaçı reklamdan geliyor?
 
-        Bu soru cevaplanmadan yapılan her optimizasyon, olmayan bir soruna müdahale ediyor. Ölçüm kurulumunu [dönüşüm takibi](/blog/donusum-takibi-nedir) yazısında adım adım anlatıyoruz.
+        Bu soru cevaplanmadan yapılan her optimizasyon, olmayan bir soruna müdahale ediyor. Ölçüm kurulumunu [dönüşüm takibi](/blog/donusum-takibi-nedir/) yazısında adım adım anlatıyoruz.
 
     - type: section
       id: kreatif
@@ -118,7 +118,7 @@ article:
 
         Kullanıcı akışta bir vaat görüp tıklıyor, sonra on hizmetin sıralandığı kurumsal bir sayfaya düşüyor. O vaadi tekrar bulmak zorunda kalıyor ve çoğu kişi bunu yapmadan geri dönüyor.
 
-        Çözüm, reklamla aynı dili konuşan tek amaçlı bir sayfa. Bu sayfanın nasıl kurgulanacağını [landing page nedir](/blog/landing-page-nedir) yazısında ele aldık.
+        Çözüm, reklamla aynı dili konuşan tek amaçlı bir sayfa. Bu sayfanın nasıl kurgulanacağını [landing page nedir](/blog/landing-page-nedir/) yazısında ele aldık.
 
         İkinci bir kontrol noktası mobil hız. Meta trafiğinin neredeyse tamamı mobilden geliyor ve geç açılan bir sayfa, tıklamanın parasını ödediğiniz hâlde ziyaretçiyi kaybetmenize yol açıyor.
 

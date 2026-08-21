@@ -51,7 +51,7 @@ Markanız bu sorulara açık, tutarlı ve profesyonel cevaplar veremiyorsa rekla
 
 ## Profesyonel ve Çok Dilli Bir Web Sitesi Oluşturun
 
-Uluslararası hastaların önemli bir bölümü kliniğinizle ilk kez [çok dilli web siteniz](/hizmetlerimiz/web-tasarim-ve-yazilim) üzerinden karşılaşır. Bu nedenle web sitesi yalnızca kurumsal bir tanıtım alanı değil, hastanın karar sürecini yönlendiren temel güven merkezi olmalıdır. Eski görünen, yavaş açılan veya mobilde düzgün çalışmayan bir web sitesi, klinik deneyiminiz güçlü olsa bile olumsuz bir ilk izlenim oluşturabilir.
+Uluslararası hastaların önemli bir bölümü kliniğinizle ilk kez [çok dilli web siteniz](/hizmetlerimiz/web-tasarim-ve-yazilim/) üzerinden karşılaşır. Bu nedenle web sitesi yalnızca kurumsal bir tanıtım alanı değil, hastanın karar sürecini yönlendiren temel güven merkezi olmalıdır. Eski görünen, yavaş açılan veya mobilde düzgün çalışmayan bir web sitesi, klinik deneyiminiz güçlü olsa bile olumsuz bir ilk izlenim oluşturabilir.
 
 ### Güven Veren Bir Sitede Neler Bulunmalı?
 
@@ -127,10 +127,10 @@ Sağlık turizmi iletişiminde yalnızca metni başka bir dile çevirmek yeterli
 
 ### Uluslararası Hasta Kazanım Sürecinizi Birlikte Planlayalım
 
-Çok dilli web sitesi, [uluslararası reklam kampanyaları](/hizmetlerimiz/dijital-reklam-yonetimi), [hasta iletişim sistemleri](/hizmetlerimiz/crm-ve-dijital-donusum) ve içerik üretimini tek bir strateji altında yönetiyoruz.
+Çok dilli web sitesi, [uluslararası reklam kampanyaları](/hizmetlerimiz/dijital-reklam-yonetimi/), [hasta iletişim sistemleri](/hizmetlerimiz/crm-ve-dijital-donusum/) ve içerik üretimini tek bir strateji altında yönetiyoruz.
 
-- [Sağlık Turizmi Hizmetini İnceleyin](/hizmetlerimiz/saglik-turizmi-danismanligi)
-- [WhatsApp'tan Bilgi Alın](/iletisim)
+- [Sağlık Turizmi Hizmetini İnceleyin](/hizmetlerimiz/saglik-turizmi-danismanligi/)
+- [WhatsApp'tan Bilgi Alın](/iletisim/)
 
 ## Reklam ve Web Sitesinde Aynı Sözü Verin
 
@@ -152,7 +152,7 @@ Uluslararası hasta aynı anda birden fazla klinikle görüşebilir; bu nedenle 
 
 ## CRM ile Hasta Taleplerini Düzenli Takip Edin
 
-Hasta talepleri yalnızca WhatsApp konuşmalarında veya kişisel notlarda tutulduğunda önemli fırsatlar kaybolabilir. Bir [CRM sistemi](/hizmetlerimiz/crm-ve-dijital-donusum) sayesinde her hastanın hangi aşamada olduğu görülebilir: yeni talep, ilk iletişim, fotoğraf bekleniyor, doktor değerlendirmesinde, teklif paylaşıldı, seyahat tarihi belirlendi, tedavi tamamlandı ve tedavi sonrası takip.
+Hasta talepleri yalnızca WhatsApp konuşmalarında veya kişisel notlarda tutulduğunda önemli fırsatlar kaybolabilir. Bir [CRM sistemi](/hizmetlerimiz/crm-ve-dijital-donusum/) sayesinde her hastanın hangi aşamada olduğu görülebilir: yeni talep, ilk iletişim, fotoğraf bekleniyor, doktor değerlendirmesinde, teklif paylaşıldı, seyahat tarihi belirlendi, tedavi tamamlandı ve tedavi sonrası takip.
 
 Bu sistem yalnızca operasyonu düzenlemez, hangi reklam ve pazarların daha nitelikli hasta talepleri oluşturduğunu da gösterir.
 
@@ -166,7 +166,7 @@ Hasta, tedavi dışında seyahat operasyonunun nasıl ilerleyeceğini de bilmek 
 
 ## Tedavi Sonrasında İletişimi Sürdürün
 
-Uluslararası hasta güveni, hastanın klinikten ayrılmasıyla sona ermez. Kullanım ve bakım talimatlarının yazılı paylaşılması, belirli aralıklarla hastaya ulaşılması, sorular için erişilebilir bir iletişim kanalı sunulması ve gerekli durumlarda [video içerikleriyle](/hizmetlerimiz/video-ve-produksiyon) desteklenen online kontroller planlanması hem hasta memnuniyeti hem de marka itibarı açısından önemlidir.
+Uluslararası hasta güveni, hastanın klinikten ayrılmasıyla sona ermez. Kullanım ve bakım talimatlarının yazılı paylaşılması, belirli aralıklarla hastaya ulaşılması, sorular için erişilebilir bir iletişim kanalı sunulması ve gerekli durumlarda [video içerikleriyle](/hizmetlerimiz/video-ve-produksiyon/) desteklenen online kontroller planlanması hem hasta memnuniyeti hem de marka itibarı açısından önemlidir.
 
 **Sağlık Turizminde Güven Kontrol Listesi**
 

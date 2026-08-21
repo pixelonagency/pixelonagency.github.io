@@ -93,7 +93,7 @@ article:
 
         Pratik ölçü şu: kılavuzu ilk kez okuyan bir tasarımcı, markaya uygun bir görsel üretebiliyor mu? Cevap evetse kılavuz görevini yapıyor.
 
-        Kılavuzun dijital tarafı ise web sitesine yansıyor. Renk, tipografi ve bileşen kararlarının siteyle tutarlı olması gerekiyor; bu konuyu [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali) yazısında ele aldık.
+        Kılavuzun dijital tarafı ise web sitesine yansıyor. Renk, tipografi ve bileşen kararlarının siteyle tutarlı olması gerekiyor; bu konuyu [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali/) yazısında ele aldık.
 
     - type: table
       heading: Marka kimliği ile ilgili sık karışan kavramlar

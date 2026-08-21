@@ -99,7 +99,7 @@ describe('cards section', () => {
       sections: [{ ...cards, items: [{ title: 'SEO', description: 'X', href: '/hizmetlerimiz/seo' }] }],
     });
     const section = parsed.sections[0];
-    expect(section?.type === 'cards' && section.items[0]?.href).toBe('/hizmetlerimiz/seo');
+    expect(section?.type === 'cards' && section.items[0]?.href).toBe('/hizmetlerimiz/seo/');
   });
 });
 

@@ -118,7 +118,7 @@ article:
 
         Ölçmek için üç şeye bakmak gerekiyor.
 
-        Birincisi, blogdan hizmet sayfasına geçiş. Bir yazıyı okuyan kaç kişi ilgili hizmet sayfasına gidiyor? Bu geçişin ayrıca izlenmesi gerekiyor; kurulumu [dönüşüm takibi](/blog/donusum-takibi-nedir) yazısında anlattık.
+        Birincisi, blogdan hizmet sayfasına geçiş. Bir yazıyı okuyan kaç kişi ilgili hizmet sayfasına gidiyor? Bu geçişin ayrıca izlenmesi gerekiyor; kurulumu [dönüşüm takibi](/blog/donusum-takibi-nedir/) yazısında anlattık.
 
         İkincisi, yazıların hangi sorgularda gösterim aldığı. Arama konsolundaki bu veri, hedeflenen sorguya girilip girilmediğini gösteriyor.
 

@@ -70,9 +70,9 @@ article:
       text: |-
         Kanalları ayrı ayrı iyi yönetmek tek başına yeterli olmuyor. Örnek üzerinden bakalım.
 
-        Diyelim ki bir marka [dijital reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi) tarafında iyi bir iş çıkardı; tıklama maliyeti düştü, trafik arttı. Ama o trafiğin indiği sayfa markanın ne yaptığını ilk ekranda anlatmıyorsa, kazanılan verimlilik sayfada kayboluyor.
+        Diyelim ki bir marka [dijital reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) tarafında iyi bir iş çıkardı; tıklama maliyeti düştü, trafik arttı. Ama o trafiğin indiği sayfa markanın ne yaptığını ilk ekranda anlatmıyorsa, kazanılan verimlilik sayfada kayboluyor.
 
-        Ya da tam tersi: [web sitesi](/hizmetlerimiz/web-tasarim-ve-yazilim) çok iyi kurgulanmış, formlar çalışıyor, mesaj net. Ama ölçümleme kurulmadığı için hangi kampanyanın talep getirdiği bilinmiyor. Bu durumda bütçe, sonucu belli olmayan yere akmaya devam ediyor.
+        Ya da tam tersi: [web sitesi](/hizmetlerimiz/web-tasarim-ve-yazilim/) çok iyi kurgulanmış, formlar çalışıyor, mesaj net. Ama ölçümleme kurulmadığı için hangi kampanyanın talep getirdiği bilinmiyor. Bu durumda bütçe, sonucu belli olmayan yere akmaya devam ediyor.
 
         Bu iki örnekte de tek tek işler doğru yapılmış. Eksik olan şey aralarındaki bağ.
 
@@ -138,7 +138,7 @@ article:
 
         Üçüncü soru özellikle önemli. Reklam bütçesi sabitken talep sayısı artıyorsa, bu genellikle hedefleme ve açılış sayfası tarafında gerçek bir iyileşme olduğu anlamına geliyor.
 
-        Ölçümleme kurulu değilse bu soruların hiçbirine güvenilir cevap veremezsiniz. Bu yüzden çalışmanın ilk haftalarında [dönüşüm takibi](/blog/donusum-takibi-nedir) kurulumu, kampanya optimizasyonundan daha önceliklidir.
+        Ölçümleme kurulu değilse bu soruların hiçbirine güvenilir cevap veremezsiniz. Bu yüzden çalışmanın ilk haftalarında [dönüşüm takibi](/blog/donusum-takibi-nedir/) kurulumu, kampanya optimizasyonundan daha önceliklidir.
 
     - type: faq
       heading: Sık Sorulan Sorular

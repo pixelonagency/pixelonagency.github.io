@@ -35,7 +35,8 @@ sections:
     heading: Recently Published Articles
     lead: |-
       Discover what is happening in the digital world, what we have learned along the way and the practical insights you can apply to your own brand.
-    limit: 12
+    # No limit: the listing shows every published post. With a limit, the posts left
+    # out received no internal links at all and were discoverable only via the sitemap.
     ctaLabel: Read the Article →
     ctaHref: /en/blog
 

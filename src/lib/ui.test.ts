@@ -70,11 +70,11 @@ describe('formMessages', () => {
 
 describe('serviceHref', () => {
   test('varsayılan dilde Türkçe yol üretir', () => {
-    expect(serviceHref('seo-ve-icerik-pazarlamasi', 'tr')).toBe('/hizmetlerimiz/seo-ve-icerik-pazarlamasi');
+    expect(serviceHref('seo-ve-icerik-pazarlamasi', 'tr')).toBe('/hizmetlerimiz/seo-ve-icerik-pazarlamasi/');
   });
 
   test('ikincil dilde ön ekli ve çevrilmiş yol üretir', () => {
-    expect(serviceHref('seo-and-content-marketing', 'en')).toBe('/en/services/seo-and-content-marketing');
+    expect(serviceHref('seo-and-content-marketing', 'en')).toBe('/en/services/seo-and-content-marketing/');
   });
 });
 

@@ -30,8 +30,9 @@ export const getStaticPaths = (async () => {
    * modüle çıkarıp çalıştırdığı için frontmatter'ın geri kalanındaki değişkenler
    * burada görünmez ("toParam is not defined").
    */
+  /* `localizedPath()` kanonik (eğik çizgili) yol döner; rota parametresi çıplak olmalıdır. */
   const toParam = (path: string): string | undefined => {
-    const clean = path.replace(/^\/+/, '');
+    const clean = path.replace(/^\/+/, '').replace(/\/+$/, '');
     return clean === '' ? undefined : clean;
   };
 

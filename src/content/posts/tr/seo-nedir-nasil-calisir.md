@@ -122,7 +122,7 @@ article:
 
         Üçüncüsü ise birikim etkisi. Bugün yazılan bir sayfa, doğru kurgulanmışsa bir yıl sonra da trafik getiriyor. Bu, reklamla elde edilemeyen bir özellik.
 
-        Bunun karşılığında ödenen bedel zaman. SEO'nun en zor tarafı teknik zorluğu değil, sonucun geç görünmesi. Bu konuyu [SEO ne kadar sürede sonuç verir](/blog/seo-ne-kadar-surede-sonuc-verir) yazısında ayrıntılı ele aldık.
+        Bunun karşılığında ödenen bedel zaman. SEO'nun en zor tarafı teknik zorluğu değil, sonucun geç görünmesi. Bu konuyu [SEO ne kadar sürede sonuç verir](/blog/seo-ne-kadar-surede-sonuc-verir/) yazısında ayrıntılı ele aldık.
 
     - type: faq
       heading: Sık Sorulan Sorular

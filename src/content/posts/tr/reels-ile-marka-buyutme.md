@@ -99,7 +99,7 @@ article:
 
         Üçüncüsü, mevcut içerikten türetmek. Bir blog yazısındaki her ana başlık bir video konusu olabiliyor. Bu yaklaşım fikir üretme yükünü ortadan kaldırıyor.
 
-        Dördüncüsü, mükemmeliyetten vazgeçmek. Profesyonel prodüksiyon her video için gerekli değil; telefonla çekilmiş içerikler çoğu zaman daha iyi performans gösteriyor. Yüksek prodüksiyon, [video ve prodüksiyon](/hizmetlerimiz/video-ve-produksiyon) tarafında marka filmi gibi belirli işler için anlamlı.
+        Dördüncüsü, mükemmeliyetten vazgeçmek. Profesyonel prodüksiyon her video için gerekli değil; telefonla çekilmiş içerikler çoğu zaman daha iyi performans gösteriyor. Yüksek prodüksiyon, [video ve prodüksiyon](/hizmetlerimiz/video-ve-produksiyon/) tarafında marka filmi gibi belirli işler için anlamlı.
 
     - type: table
       heading: Reels ile diğer formatların işi

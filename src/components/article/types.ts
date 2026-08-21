@@ -1,5 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
 
+import { internalHref } from '../../lib/url';
+
 /**
  * Blok birliği doğrudan koleksiyon tipinden türetilir — zod şeması değişirse
  * bileşenler derlemede patlar, elle tutulan bir kopya sessizce kaymaz.
@@ -89,5 +91,6 @@ export const inlineHtml = (text: string): string =>
     if (!isSafeHref(href)) return match;
     const external = href.startsWith('https://');
     const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
-    return `<a href="${href}"${attrs}>${label}</a>`;
+    // Site içi yollar kanonik biçime çekilir; aksi halde her makale bağlantısı bir 301 harcar.
+    return `<a href="${internalHref(href)}"${attrs}>${label}</a>`;
   });

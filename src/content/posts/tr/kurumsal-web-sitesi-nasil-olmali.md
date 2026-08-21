@@ -82,7 +82,7 @@ article:
 
         Aynı alana hizmetin ne olduğunu söyleyen bir cümle ve tek bir buton koymak, çoğu zaman görselden daha fazla iş görüyor.
 
-        Bu konuyu ayrıntılı ele aldığımız bir yazı da var: [web sitesi neden dönüşüm getirmiyor](/blog/web-sitesi-neden-donusum-getirmiyor).
+        Bu konuyu ayrıntılı ele aldığımız bir yazı da var: [web sitesi neden dönüşüm getirmiyor](/blog/web-sitesi-neden-donusum-getirmiyor/).
 
     - type: callout
       variant: note
@@ -97,7 +97,7 @@ article:
 
         Kurumsal sitede amaç genellikle güven kurmak ve nitelikli bir talep almak. Ziyaretçi sayfada karar vermiyor; sizinle iletişime geçip konuşarak karar veriyor. Bu yüzden hizmet anlatımı, referanslar ve iletişim akışı öne çıkıyor.
 
-        [E-ticaret sitesinde](/hizmetlerimiz/e-ticaret-cozumleri) ise satın alma sayfanın kendisinde tamamlanıyor. Ürün listeleme, filtreleme, sepet akışı ve ödeme adımları belirleyici hâle geliyor.
+        [E-ticaret sitesinde](/hizmetlerimiz/e-ticaret-cozumleri/) ise satın alma sayfanın kendisinde tamamlanıyor. Ürün listeleme, filtreleme, sepet akışı ve ödeme adımları belirleyici hâle geliyor.
 
         Bu ayrım önemli çünkü kurumsal bir siteyi e-ticaret mantığıyla kurgulamak, ziyaretçiyi hazır olmadığı bir karara zorluyor.
 

@@ -13,7 +13,7 @@ updated: 2026-08-19
 
 ## 1. Kapsam
 
-Bu politika, Mehmet Fatih Dayan tarafından "Pixelon" markasıyla işletilen pixelon.com.tr web sitesi için geçerlidir. Kişisel verilerin işlenmesine ilişkin yasal bilgilendirme için [KVKK Aydınlatma Metni](/kvkk-aydinlatma-metni) esastır; bu sayfa uygulamaları daha geniş ve okunur biçimde özetler.
+Bu politika, Mehmet Fatih Dayan tarafından "Pixelon" markasıyla işletilen pixelon.com.tr web sitesi için geçerlidir. Kişisel verilerin işlenmesine ilişkin yasal bilgilendirme için [KVKK Aydınlatma Metni](/kvkk-aydinlatma-metni/) esastır; bu sayfa uygulamaları daha geniş ve okunur biçimde özetler.
 
 ## 2. Hangi Bilgileri Topluyoruz?
 
@@ -32,7 +32,7 @@ Form gönderimleri, form iletim hizmeti **Web3Forms** üzerinden e-posta kutumuz
 
 ## 5. Çerezler ve Ölçüm
 
-Sitede çerez tercihleri, açık kaynaklı **Klaro** yönetimiyle kontrol edilir. Analitik ve pazarlama kategorileri **varsayılan olarak kapalıdır**. Analitik kategorisinde **Google Analytics 4** kullanılır: site kullanımını anlamak ve performansı analiz etmek amacıyla ölçüm yapar. İzin vermez veya geri çekerseniz Analitik çerezleri **kullanılmaz ve oluşturulmaz**, çerez tabanlı ölçüm yapılmaz; Google'ın Consent Mode altyapısı gereği Google'a yalnızca çerezsiz, kimliksiz izin/ölçüm sinyalleri iletilebilir. İzin verdiğinizde çerez tabanlı ölçüm devreye girebilir. Analitik kategorisinde ayrıca **Microsoft Clarity** kullanılır: sayfa içi davranışları (kaydırma, tıklama) anonim oturum kayıtları ve ısı haritalarıyla analiz ederek site deneyimini geliştirmemize yardımcı olur ve yalnızca Analitik izninizle çerez tabanlı çalışır; izin yokken sınırlı, çerezsiz modda kalır. Form alanlarına yazdıklarınız kayıtlar/ölçüm verisi içinde maskelenir ve Clarity'ye içerik olarak gönderilmez. Ölçüm; sayfa kullanımıyla birlikte form gönderiminin başarıyla tamamlanması ve WhatsApp/telefon/e-posta gibi iletişim kanallarına yönelim türünden anonim etkileşim sinyallerini kapsayabilir — **form alanlarına yazdığınız içerik (ad, e-posta, telefon, mesaj vb.) Google Analytics'e gönderilmez**. Pazarlama kategorisinde **Meta Pixel** kullanılır: reklam performansını ve dönüşümleri ölçmek içindir ve **yalnızca Pazarlama izninizle yüklenir** — izin vermezseniz Meta'ya ait hiçbir kod çalışmaz, istek gitmez; izni geri çektiğinizde Meta çerezleri silinir. Form alanlarına yazdıklarınız (ad, e-posta, telefon, mesaj vb.) Meta'ya gönderilmez. Google Tag Manager ise ölçüm yapan bir hizmet değil, bu etiketlerin yönetildiği altyapıdır; tercihiniz Google Consent Mode v2 izin sinyalleriyle etiketlere iletilir. Ayrıntılar ve güncel çerez listesi için [Çerez Politikası](/cerez-politikasi) sayfasına bakın.
+Sitede çerez tercihleri, açık kaynaklı **Klaro** yönetimiyle kontrol edilir. Analitik ve pazarlama kategorileri **varsayılan olarak kapalıdır**. Analitik kategorisinde **Google Analytics 4** kullanılır: site kullanımını anlamak ve performansı analiz etmek amacıyla ölçüm yapar. İzin vermez veya geri çekerseniz Analitik çerezleri **kullanılmaz ve oluşturulmaz**, çerez tabanlı ölçüm yapılmaz; Google'ın Consent Mode altyapısı gereği Google'a yalnızca çerezsiz, kimliksiz izin/ölçüm sinyalleri iletilebilir. İzin verdiğinizde çerez tabanlı ölçüm devreye girebilir. Analitik kategorisinde ayrıca **Microsoft Clarity** kullanılır: sayfa içi davranışları (kaydırma, tıklama) anonim oturum kayıtları ve ısı haritalarıyla analiz ederek site deneyimini geliştirmemize yardımcı olur ve yalnızca Analitik izninizle çerez tabanlı çalışır; izin yokken sınırlı, çerezsiz modda kalır. Form alanlarına yazdıklarınız kayıtlar/ölçüm verisi içinde maskelenir ve Clarity'ye içerik olarak gönderilmez. Ölçüm; sayfa kullanımıyla birlikte form gönderiminin başarıyla tamamlanması ve WhatsApp/telefon/e-posta gibi iletişim kanallarına yönelim türünden anonim etkileşim sinyallerini kapsayabilir — **form alanlarına yazdığınız içerik (ad, e-posta, telefon, mesaj vb.) Google Analytics'e gönderilmez**. Pazarlama kategorisinde **Meta Pixel** kullanılır: reklam performansını ve dönüşümleri ölçmek içindir ve **yalnızca Pazarlama izninizle yüklenir** — izin vermezseniz Meta'ya ait hiçbir kod çalışmaz, istek gitmez; izni geri çektiğinizde Meta çerezleri silinir. Form alanlarına yazdıklarınız (ad, e-posta, telefon, mesaj vb.) Meta'ya gönderilmez. Google Tag Manager ise ölçüm yapan bir hizmet değil, bu etiketlerin yönetildiği altyapıdır; tercihiniz Google Consent Mode v2 izin sinyalleriyle etiketlere iletilir. Ayrıntılar ve güncel çerez listesi için [Çerez Politikası](/cerez-politikasi/) sayfasına bakın.
 
 ## 6. Üçüncü Taraf Hizmetler
 
@@ -56,7 +56,7 @@ Teklif veya iletişim talebiniz bir müşteri ilişkisine dönüşmezse, ilgili 
 
 ## 9. Haklarınız
 
-KVKK kapsamındaki haklarınız ve başvuru yöntemi [KVKK Aydınlatma Metni](/kvkk-aydinlatma-metni) sayfasında açıklanmıştır. Sorularınız için [info@pixelon.com.tr](mailto:info@pixelon.com.tr) adresine yazabilirsiniz.
+KVKK kapsamındaki haklarınız ve başvuru yöntemi [KVKK Aydınlatma Metni](/kvkk-aydinlatma-metni/) sayfasında açıklanmıştır. Sorularınız için [info@pixelon.com.tr](mailto:info@pixelon.com.tr) adresine yazabilirsiniz.
 
 ## 10. Dış Bağlantılar
 

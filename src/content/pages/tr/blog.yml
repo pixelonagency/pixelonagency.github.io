@@ -34,7 +34,9 @@ sections:
     heading: Son Eklenen Yazılar
     lead: |-
       Dijital dünyadaki gelişmeleri, deneyimlerimizi ve markanızda uygulayabileceğiniz pratik bilgileri keşfedin.
-    limit: 12
+    # Sınır YOK: blog listesi yayımlanan her yazıyı gösterir. `limit` verildiğinde
+    # listeye girmeyen yazılar hiçbir sayfadan bağlantı almıyor, yalnız sitemap
+    # üzerinden keşfedilebiliyordu.
     ctaLabel: Yazıyı Oku →
     ctaHref: /blog
 

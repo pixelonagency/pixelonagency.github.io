@@ -11,6 +11,7 @@ import RelatedArticles from './article/RelatedArticles.astro';
 import { blocksText } from './article/types';
 import { formatDate, isoDate, readingTime } from '../lib/format';
 import { localizedPath, type Locale } from '../lib/i18n';
+import { pickRelatedPosts } from '../lib/related-posts';
 import { canonicalUrl } from '../lib/seo';
 import { blogPostingSchema, breadcrumbSchema, faqPageSchema } from '../lib/schema';
 import { t } from '../lib/ui';
@@ -22,6 +23,9 @@ interface Props {
 }
 
 const { post, locale, alternates } = Astro.props;
+
+/** Kart ızgarası üçlü ritimde akar (bkz. RelatedArticles.astro). */
+const RELATED_COUNT = 3;
 const { title, excerpt, category, date, author, cover, seo, article } = post.data;
 
 /**
@@ -43,15 +47,22 @@ const tocItems = blocks
 /** SSS yapısal verisi yalnız sayfada GERÇEKTEN görünen sorulardan üretilir. */
 const faqItems = blocks.flatMap((block) => (block.type === 'faq' ? block.items : []));
 
-const relatedKeys = article?.related ?? [];
-const relatedPosts = relatedKeys.length
-  ? await getCollection('posts', (entry) => {
-      if (entry.data.status !== 'published') return false;
-      if (!entry.id.startsWith(`${locale}/`)) return false;
-      const slug = entry.id.split('/').pop() ?? entry.id;
-      return relatedKeys.includes(slug) || relatedKeys.includes(entry.data.translationKey ?? '');
-    })
-  : [];
+/*
+ * İlgili yazılar: editörün seçimi önce gelir, eksik kalan yer aynı kategoriden
+ * (sonra blogun geri kalanından) en yeni yazılarla tamamlanır. Böylece `related`
+ * alanı boş bırakılan yazılar da blog ağına bağlanır — seçim mantığı ve gerekçesi
+ * için bkz. `src/lib/related-posts.ts`.
+ */
+const sameLocalePosts = await getCollection(
+  'posts',
+  (entry) => entry.data.status === 'published' && entry.id.startsWith(`${locale}/`),
+);
+const relatedPosts = pickRelatedPosts({
+  current: post,
+  all: sameLocalePosts,
+  keys: article?.related ?? [],
+  count: RELATED_COUNT,
+});
 
 const coverImage: ImageMetadata | undefined =
   cover && typeof cover === 'object' && 'src' in cover ? (cover as ImageMetadata) : undefined;
@@ -73,7 +84,7 @@ const extraSchema = [
   }),
   breadcrumbSchema([
     { label: t('nav.home', locale), url: new URL(localizedPath('home', locale), site).toString() },
-    { label: t('nav.blog', locale), url: new URL(`${localizedPath('blog', locale)}/`, site).toString() },
+    { label: t('nav.blog', locale), url: new URL(localizedPath('blog', locale), site).toString() },
     { label: category },
     { label: title },
   ]),
@@ -207,6 +218,10 @@ const extraSchema = [
             <div class="post__body">
               <Content />
             </div>
+
+            {/* Klasik şablonda da ilgili yazılar basılır — aksi halde bu yazılar
+                blog ağına hiç bağlanmıyor, karşılığında bağlantı da almıyordu. */}
+            <RelatedArticles heading={t('blog.related', locale)} posts={relatedPosts} {locale} />
 
             <a href={localizedPath('blog', locale)} class="btn btn--outline post__back">
               {t('cta.allPosts', locale)}

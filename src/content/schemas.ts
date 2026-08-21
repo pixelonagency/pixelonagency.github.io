@@ -1,5 +1,7 @@
 import { z } from 'astro/zod';
 
+import { internalHref } from '../lib/url';
+
 /**
  * Görsel alanları için çözümleyici. Astro içinde `image()` yardımcısı geçilir;
  * birim testlerinde varsayılan string şeması kullanılır — böylece şemalar
@@ -28,6 +30,20 @@ export const opt = <T extends z.ZodTypeAny>(schema: T) => z.preprocess(blankToUn
 
 /** Opsiyonel liste: `null` / `''` boş listeye düşer. */
 export const list = <T extends z.ZodTypeAny>(schema: T) => z.preprocess(blankToUndefined, z.array(schema).default([]));
+
+/**
+ * Bağlantı alanı.
+ *
+ * Site dizin biçiminde yayınlandığı için kanonik adres sonda eğik çizgi taşır ve
+ * sunucu eğik çizgisiz isteği 301 ile oraya götürür. Editör Sveltia'da bağlantıyı
+ * hangi biçimde yazarsa yazsın (`/iletisim` ya da `/iletisim/`) çıktı kanonik olur —
+ * böylece site içinde tek bir yönlendirme doğmaz. Dış adresler, `mailto:`/`tel:`
+ * bağlantıları ve dosya yolları olduğu gibi kalır (bkz. `src/lib/url.ts`).
+ */
+export const href = z.string().min(1).transform(internalHref);
+
+/** Opsiyonel bağlantı alanı — `null` / `''` "verilmemiş" sayılır. */
+export const optHref = opt(href);
 
 // Not: `z.string().email()` / `.url()` bu zod sürümünde deprecate edilmiş durumda —
 // `astro check` çıktısını temiz tutmak için düz regex doğrulaması kullanılır.
@@ -147,7 +163,7 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
               eyebrow: opt(z.string()),
               title: nonEmpty,
               description: nonEmpty,
-              href: opt(z.string()),
+              href: optHref,
             }),
           )
           .min(1),
@@ -260,7 +276,7 @@ function makeArticleBlock(image: ImageResolver) {
   /** Çift satır sonuyla paragraflanan düz metin (markdown değil). */
   const prose = nonEmpty;
 
-  const linkItem = z.object({ label: nonEmpty, href: nonEmpty });
+  const linkItem = z.object({ label: nonEmpty, href });
 
   return z.discriminatedUnion('type', [
     /** Ana metin bölümü. `id` içindekiler bağlantısının çıpasıdır. */
@@ -456,7 +472,7 @@ export const settingsSchema = z.object({
   legalLinks: list(
     z.object({
       label: nonEmpty,
-      href: nonEmpty,
+      href,
     }),
   ),
   footerIntro: opt(z.string()),

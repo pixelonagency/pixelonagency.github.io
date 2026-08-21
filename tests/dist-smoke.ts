@@ -223,7 +223,7 @@ describe('service detail pages', () => {
     });
 
     test(`${slug} links to the contact page from its CTA`, () => {
-      expect(html.get(route)?.includes('href="/iletisim"')).toBe(true);
+      expect(html.get(route)?.includes('href="/iletisim/"')).toBe(true);
     });
   }
 });
@@ -239,7 +239,7 @@ describe('interactive behaviour is shipped', () => {
     expect(body).not.toContain('pb-card--');
     expect((body.match(/class="pb-card"/g) ?? []).length).toBeGreaterThanOrEqual(16);
     // Case study içeriği olan proje karta bağlanır; olmayanlar bağlantısız kalır.
-    expect(body).toContain('href="/projelerimiz/handsforall"');
+    expect(body).toContain('href="/projelerimiz/handsforall/"');
   });
 
   /**
@@ -295,8 +295,8 @@ describe('interactive behaviour is shipped', () => {
     expect(body).toContain('"@type":"BreadcrumbList"');
 
     // İç bağlantılar gerçek hizmet sayfalarına gitmeli.
-    expect(body).toContain('href="/hizmetlerimiz/sosyal-medya-yonetimi"');
-    expect(body).toContain('href="/ucretsiz-analiz"');
+    expect(body).toContain('href="/hizmetlerimiz/sosyal-medya-yonetimi/"');
+    expect(body).toContain('href="/ucretsiz-analiz/"');
   });
 
   test('the editorial template drops the legacy markdown CTA band', () => {
@@ -871,8 +871,8 @@ describe('legal pages', () => {
     ];
     for (const [body, hrefs] of cases) {
       for (const href of hrefs) {
-        // Site içi bağlantılar eğik çizgisiz üretilir; canonical'lar eğik çizgilidir.
-        expect(body.includes(`href="${href.replace(/\/$/, '')}"`), `footer ${href} bağlantısı yok`).toBe(true);
+        // Site içi bağlantılar da canonical'lar da eğik çizgiyle biter — arada 301 yoktur.
+        expect(body.includes(`href="${href}"`), `footer ${href} bağlantısı yok`).toBe(true);
         expect(existsSync(join(DIST, href.replace(/^\//, ''), 'index.html')), `${href} build edilmemiş`).toBe(true);
       }
     }
@@ -927,9 +927,9 @@ describe('legal pages', () => {
   test('form consent labels say "okudum" (not "kabul ediyorum") and link to the KVKK notice', () => {
     const contact = readFileSync(join(DIST, 'iletisim', 'index.html'), 'utf-8');
     const enContact = readFileSync(join(DIST, 'en', 'contact', 'index.html'), 'utf-8');
-    expect(contact).toContain('href="/kvkk-aydinlatma-metni"');
+    expect(contact).toContain('href="/kvkk-aydinlatma-metni/"');
     expect(contact.includes('okudum ve kabul ediyorum')).toBe(false);
-    expect(enContact).toContain('href="/en/personal-data-processing-notice"');
+    expect(enContact).toContain('href="/en/personal-data-processing-notice/"');
   });
 
   test('legal pages contain no provisional labels, wrong legal-basis pairing or unconfirmed clauses', () => {
@@ -1020,5 +1020,91 @@ describe('language switcher', () => {
       }
     }
     expect(offenders).toEqual([]);
+  });
+});
+
+describe('site içi bağlantılar kanoniktir', () => {
+  /**
+   * Site dizin biçiminde yayınlanır: `/biz-kimiz` isteği sunucuda 301 ile
+   * `/biz-kimiz/` adresine taşınır. Bağlantı eğik çizgisiz yazıldığında bu 301
+   * site içinde tetiklenir — Semrush taramasında 2.383 kalıcı yönlendirme bu
+   * yüzden oluşmuştu. Bu test o kaymanın geri gelmesini kapıda durdurur.
+   */
+  test('hiçbir <a href> yönlendirmeye düşen eğik çizgisiz yol içermez', () => {
+    const offenders: string[] = [];
+
+    for (const file of allHtmlFiles(DIST)) {
+      if (file.includes(`${sep}admin${sep}`)) continue;
+      const body = readFileSync(file, 'utf-8');
+
+      for (const match of body.matchAll(/<a\b[^>]*\shref="([^"]*)"/g)) {
+        const value = match[1] ?? '';
+        // Yalnız site içi, kök-göreli yollar denetlenir.
+        if (!value.startsWith('/') || value.startsWith('//')) continue;
+        const path = value.split(/[?#]/)[0] ?? '';
+        if (path === '' || path.endsWith('/')) continue;
+        // Dosya yolu dizin değildir (`/sitemap-index.xml`).
+        if (/\.[a-z\d]{1,8}$/i.test(path.slice(path.lastIndexOf('/') + 1))) continue;
+        offenders.push(`${file.replace(DIST, '')}: ${value}`);
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
+
+  test('canonical ve hreflang adresleri de eğik çizgiyle biter', () => {
+    const offenders: string[] = [];
+
+    for (const file of allHtmlFiles(DIST)) {
+      if (file.includes(`${sep}admin${sep}`)) continue;
+      const body = readFileSync(file, 'utf-8');
+
+      for (const match of body.matchAll(/<link rel="(?:canonical|alternate)"[^>]*href="([^"]+)"/g)) {
+        const value = match[1] ?? '';
+        if (!value.endsWith('/')) offenders.push(`${file.replace(DIST, '')}: ${value}`);
+      }
+    }
+
+    expect(offenders).toEqual([]);
+  });
+});
+
+describe('yetim sayfa yoktur', () => {
+  /**
+   * Sitemap'te olup hiçbir sayfadan bağlantı almayan sayfa, tarayıcı için de
+   * kullanıcı için de erişilemez sayılır: bağlantı değeri almaz, keşfedilmesi
+   * yalnız sitemap'e kalır. Semrush taramasında `/web-sitesi-yaptir/` ve
+   * `/en/get-a-website/` bu durumdaydı.
+   */
+  test('yayınlanan her sayfaya en az bir başka sayfadan bağlantı gelir', () => {
+    const files = allHtmlFiles(DIST).filter((file) => !file.includes(`${sep}admin${sep}`));
+
+    /** `/dist/biz-kimiz/index.html` → `/biz-kimiz/` */
+    const routeOf = (file: string): string => {
+      const relative = file.replace(DIST, '').split(sep).join('/');
+      return relative.replace(/index\.html$/, '');
+    };
+
+    const linked = new Set<string>();
+    for (const file of files) {
+      const source = routeOf(file);
+      for (const match of readFileSync(file, 'utf-8').matchAll(/<a\b([^>]*)\shref="([^"]*)"/g)) {
+        // Dil değiştirici sayfanın kendi çeviri karşılığına gider; bu editoryal bir
+        // iç bağlantı değildir, sayfayı kendi dil ağacında yetimlikten kurtarmaz.
+        if ((match[1] ?? '').includes('lang-switch__item')) continue;
+        const value = match[2] ?? '';
+        if (!value.startsWith('/') || value.startsWith('//')) continue;
+        const path = value.split(/[?#]/)[0] ?? '';
+        // Kendi kendine bağlantı da sayfayı yetimlikten kurtarmaz.
+        if (path !== '' && path !== source) linked.add(path);
+      }
+    }
+
+    const orphans = files
+      .map(routeOf)
+      .filter((route) => route !== '/' && !route.endsWith('404.html'))
+      .filter((route) => !linked.has(route));
+
+    expect(orphans).toEqual([]);
   });
 });

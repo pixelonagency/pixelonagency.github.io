@@ -80,7 +80,7 @@ article:
 
         Pratikte bu, iki içerik türünü öne çıkarıyor. Birincisi öğretici içerik: sık sorulan bir sorunun net cevabı. İkincisi kanıt içeriği: gerçek bir işin öncesi ve sonrası.
 
-        Buna karşılık en zayıf performansı genellikle doğrudan reklam niteliğindeki paylaşımlar veriyor. Bunlar gerekli ama takvimin tamamını kaplamamalı. Dengeyi [içerik takvimi](/blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir) yazısında ele aldık.
+        Buna karşılık en zayıf performansı genellikle doğrudan reklam niteliğindeki paylaşımlar veriyor. Bunlar gerekli ama takvimin tamamını kaplamamalı. Dengeyi [içerik takvimi](/blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir/) yazısında ele aldık.
 
     - type: callout
       variant: note
@@ -97,7 +97,7 @@ article:
 
         Birincisi, içeriğin sonunda ne yapılacağını söylemek. "Detaylı bilgi için mesaj atabilirsiniz" gibi net bir cümle, ilgi duyan kişinin adım atmasını kolaylaştırıyor.
 
-        İkincisi, profildeki bağlantının doğru yere gitmesi. Belirli bir hizmeti anlatan içerikten sonra ana sayfaya yönlendirmek, ziyaretçiyi tekrar arama yapmak zorunda bırakıyor. Tek amaçlı bir sayfaya yönlendirmek daha iyi çalışıyor; nedenini [landing page nedir](/blog/landing-page-nedir) yazısında anlattık.
+        İkincisi, profildeki bağlantının doğru yere gitmesi. Belirli bir hizmeti anlatan içerikten sonra ana sayfaya yönlendirmek, ziyaretçiyi tekrar arama yapmak zorunda bırakıyor. Tek amaçlı bir sayfaya yönlendirmek daha iyi çalışıyor; nedenini [landing page nedir](/blog/landing-page-nedir/) yazısında anlattık.
 
         Üçüncüsü, mesajlara hızlı ve düzenli dönmek. Sık sorulan sorular için hazır cevaplar hazırlamak, hem hızı artırıyor hem tutarlılık sağlıyor.
 
@@ -137,7 +137,7 @@ article:
 
         Pratikte işe yarayan yaklaşım şu: organik olarak iyi performans gösteren içerikleri reklamla desteklemek. Sıfırdan reklam kreatifi üretmek yerine, zaten ilgi gördüğü kanıtlanmış içeriği kullanmak hem daha ucuz hem daha etkili oluyor.
 
-        Reklam tarafındaki sık hataları [Meta reklamları neden sonuç vermiyor](/blog/meta-reklamlari-neden-sonuc-vermiyor) yazısında topladık.
+        Reklam tarafındaki sık hataları [Meta reklamları neden sonuç vermiyor](/blog/meta-reklamlari-neden-sonuc-vermiyor/) yazısında topladık.
 
     - type: faq
       heading: Sık Sorulan Sorular

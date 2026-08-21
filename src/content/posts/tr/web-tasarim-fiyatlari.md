@@ -131,7 +131,7 @@ article:
 
         İkinci adım, bütçeyi tek seferlik bir tutar olarak değil, ilk yılın toplamı olarak planlamak. Yapım maliyetinin yanına alan adı, barındırma, bakım ve içerik güncellemesi de ekleniyor.
 
-        Bütçe sınırlıysa doğru hamle kapsamı küçültmek, kaliteyi düşürmek değil. Az sayıda sayfayla düzgün kurulmuş bir site, çok sayfalı ama yarım kalmış bir siteden daha iyi çalışıyor. Tek bir hedefe odaklı bir başlangıç için [landing page](/blog/landing-page-nedir) yaklaşımı da değerlendirilebilir.
+        Bütçe sınırlıysa doğru hamle kapsamı küçültmek, kaliteyi düşürmek değil. Az sayıda sayfayla düzgün kurulmuş bir site, çok sayfalı ama yarım kalmış bir siteden daha iyi çalışıyor. Tek bir hedefe odaklı bir başlangıç için [landing page](/blog/landing-page-nedir/) yaklaşımı da değerlendirilebilir.
 
     - type: faq
       heading: Sık Sorulan Sorular

@@ -1,3 +1,5 @@
+import { internalHref } from './url';
+
 export interface NavItem {
   label: string;
   href: string;
@@ -11,17 +13,17 @@ export interface ServiceNavEntry {
 
 /** Header ve mobil menüdeki ana gezinme — referans tasarımdaki sırayla. */
 export const PRIMARY_NAV: readonly NavItem[] = [
-  { label: 'Biz Kimiz?', href: '/biz-kimiz' },
-  { label: 'Hizmetlerimiz', href: '/hizmetlerimiz', hasDropdown: true },
-  { label: 'Projelerimiz', href: '/projelerimiz' },
-  { label: 'Referanslarımız', href: '/projelerimiz#referanslar' },
-  { label: 'Kariyer', href: '/kariyer' },
-  { label: 'İletişim', href: '/iletisim' },
+  { label: 'Biz Kimiz?', href: '/biz-kimiz/' },
+  { label: 'Hizmetlerimiz', href: '/hizmetlerimiz/', hasDropdown: true },
+  { label: 'Projelerimiz', href: '/projelerimiz/' },
+  { label: 'Referanslarımız', href: '/projelerimiz/#referanslar' },
+  { label: 'Kariyer', href: '/kariyer/' },
+  { label: 'İletişim', href: '/iletisim/' },
 ];
 
-/** Bir hizmet slug'ının route'u. */
+/** Bir hizmet slug'ının route'u — kanonik biçimde (sonda eğik çizgi). */
 export function serviceHref(slug: string): string {
-  return `/hizmetlerimiz/${slug}`;
+  return internalHref(`/hizmetlerimiz/${slug}`);
 }
 
 /** "Hizmetlerimiz" dropdown'ı — koleksiyon girdilerinden `order` sırasına göre üretilir. */

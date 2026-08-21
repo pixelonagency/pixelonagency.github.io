@@ -134,7 +134,7 @@ article:
 
         Bütün kanallarda oran düşükse sayfaya bakmak gerekiyor.
 
-        Reklam trafiği için ayrı bir sayfa kurmanın neden işe yaradığını [landing page nedir](/blog/landing-page-nedir) yazısında ele almıştık. Kurumsal sitenin genel yapısına dair kontrol listesi ise [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali) yazısında.
+        Reklam trafiği için ayrı bir sayfa kurmanın neden işe yaradığını [landing page nedir](/blog/landing-page-nedir/) yazısında ele almıştık. Kurumsal sitenin genel yapısına dair kontrol listesi ise [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali/) yazısında.
 
     - type: section
       id: yenileme-ne-zaman

@@ -78,7 +78,7 @@ article:
       text: |-
         Her sayfa landing page olmak zorunda değil. Ama şu durumlarda ayrı bir sayfa kurmak, kurumsal siteye yönlendirmekten belirgin şekilde daha iyi çalışıyor.
 
-        Reklam yayınlıyorsanız gerekiyor. [Google Ads veya Meta reklamlarıyla](/hizmetlerimiz/dijital-reklam-yonetimi) gelen ziyaretçi belirli bir vaatle tıklıyor; ana sayfada o vaadin karşılığını bulamazsa geri dönüyor.
+        Reklam yayınlıyorsanız gerekiyor. [Google Ads veya Meta reklamlarıyla](/hizmetlerimiz/dijital-reklam-yonetimi/) gelen ziyaretçi belirli bir vaatle tıklıyor; ana sayfada o vaadin karşılığını bulamazsa geri dönüyor.
 
         Tek bir hizmeti öne çıkaracaksanız gerekiyor. Kurumsal sitede on hizmet arasında kaybolan bir hizmet, kendi sayfasında anlatıldığında hak ettiği ilgiyi görüyor.
 
@@ -149,7 +149,7 @@ article:
 
         Üçüncüsü, reklam metniyle sayfa başlığının uyuşmaması. Bu, ziyaretçinin yanlış yere geldiğini düşünmesine yol açıyor.
 
-        Dördüncüsü, ölçümlemenin kurulmamış olması. Sayfanın işe yarayıp yaramadığı ölçülemediğinde, iyileştirme kararları tahmine kalıyor. Bu konuyu [web sitesi neden dönüşüm getirmiyor](/blog/web-sitesi-neden-donusum-getirmiyor) yazısında ayrıntılı ele alıyoruz.
+        Dördüncüsü, ölçümlemenin kurulmamış olması. Sayfanın işe yarayıp yaramadığı ölçülemediğinde, iyileştirme kararları tahmine kalıyor. Bu konuyu [web sitesi neden dönüşüm getirmiyor](/blog/web-sitesi-neden-donusum-getirmiyor/) yazısında ayrıntılı ele alıyoruz.
 
     - type: faq
       heading: Sık Sorulan Sorular

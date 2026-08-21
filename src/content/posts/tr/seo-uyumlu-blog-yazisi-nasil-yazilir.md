@@ -123,7 +123,7 @@ article:
 
         Bu ifadeleri yazıya eklemek, mevcut sayfayı güçlendiriyor ve yeni yazı yazmaktan çok daha hızlı sonuç veriyor.
 
-        İkinci adım, güncelleme. Eskiyen bilgileri tazelemek ve yeni bölüm eklemek, o sayfanın konumunu koruyor. Blogun SEO'daki gerçek katkısını [blog yazmak SEO'ya yarar mı](/blog/blog-yazmak-seoya-yarar-mi) yazısında ele aldık.
+        İkinci adım, güncelleme. Eskiyen bilgileri tazelemek ve yeni bölüm eklemek, o sayfanın konumunu koruyor. Blogun SEO'daki gerçek katkısını [blog yazmak SEO'ya yarar mı](/blog/blog-yazmak-seoya-yarar-mi/) yazısında ele aldık.
 
     - type: faq
       heading: Sık Sorulan Sorular

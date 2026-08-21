@@ -43,7 +43,7 @@ Pixelon, sitenin kullanımından doğabilecek dolaylı zararlardan, hukukun izin
 
 ## 8. Kişisel Veriler
 
-Kişisel verilerin işlenmesi bu koşulların değil, [KVKK Aydınlatma Metni](/kvkk-aydinlatma-metni) ile [Gizlilik Politikası](/gizlilik-politikasi)'nın konusudur.
+Kişisel verilerin işlenmesi bu koşulların değil, [KVKK Aydınlatma Metni](/kvkk-aydinlatma-metni/) ile [Gizlilik Politikası](/gizlilik-politikasi/)'nın konusudur.
 
 ## 9. Uygulanacak Hukuk
 

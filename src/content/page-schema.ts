@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { list, opt, type ImageResolver } from './schemas';
+import { href, list, opt, optHref, type ImageResolver } from './schemas';
 
 /**
  * Sayfa gövdesi "bölüm sözlüğü".
@@ -15,7 +15,7 @@ const nonEmpty = z.string().min(1);
 
 const cta = z.object({
   label: nonEmpty,
-  href: nonEmpty,
+  href,
   /** `link` = altı çizili düz bağlantı (referanstaki "Hemen Arayın" gibi). */
   variant: z.enum(['primary', 'outline', 'link']).default('primary'),
   /** Etiketin solunda gösterilen küçük satır içi SVG. */
@@ -46,7 +46,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     headingLines: z.array(nonEmpty).min(1),
     lead: opt(z.string()),
     tagline: opt(z.string()),
-    breadcrumb: list(z.object({ label: nonEmpty, href: opt(z.string()) })),
+    breadcrumb: list(z.object({ label: nonEmpty, href: optHref })),
     /** Hero altındaki kısa güven rozetleri ("15+ Yıllık Deneyim" …). */
     chips: list(nonEmpty),
     /** Referans: kariyer gibi bazı alt sayfa hero'ları ortalanmıştır. */
@@ -77,7 +77,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
           eyebrow: opt(z.string()),
           title: nonEmpty,
           description: nonEmpty,
-          href: opt(z.string()),
+          href: optHref,
           /** Kart başlığının üstünde gösterilen küçük çizgi ikon (bkz. SectorIcon.astro). */
           icon: opt(z.enum(['health', 'tourism', 'ecommerce', 'construction', 'sme', 'education'])),
           /** Sürekli (yalnızca hover'da değil) lime çerçeveyle öne çıkarılan kart. */
@@ -227,7 +227,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     /* grid: mevcut kompakt liste (ana sayfa) · board: tam sayfa editoryal vitrin. */
     kind: z.enum(['grid', 'board']).default('grid'),
     ctaLabel: opt(z.string()),
-    ctaHref: opt(z.string()),
+    ctaHref: optHref,
   });
 
   const posts = z.object({
@@ -237,7 +237,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     lead: opt(z.string()),
     limit: opt(z.number()),
     ctaLabel: opt(z.string()),
-    ctaHref: opt(z.string()),
+    ctaHref: optHref,
   });
 
   /**
@@ -314,7 +314,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     type: z.literal('contact'),
     heading: nonEmpty,
     lead: opt(z.string()),
-    contactItems: z.array(z.object({ label: nonEmpty, value: nonEmpty, href: opt(z.string()) })).min(1),
+    contactItems: z.array(z.object({ label: nonEmpty, value: nonEmpty, href: optHref })).min(1),
     formHeading: nonEmpty,
     formLead: opt(z.string()),
     formId: z.enum(['contact', 'analysis']),
@@ -332,7 +332,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     type: z.literal('contactInfo'),
     heading: opt(z.string()),
     lead: opt(z.string()),
-    items: z.array(z.object({ label: nonEmpty, value: nonEmpty, href: opt(z.string()) })).min(1),
+    items: z.array(z.object({ label: nonEmpty, value: nonEmpty, href: optHref })).min(1),
   });
 
   const media = z.object({
@@ -357,7 +357,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
           location: opt(z.string()),
           employmentType: opt(z.string()),
           description: nonEmpty,
-          href: opt(z.string()),
+          href: optHref,
         }),
       )
       .min(1),

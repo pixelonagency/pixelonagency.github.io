@@ -132,7 +132,7 @@ article:
 
         İkinci kaynak yapılan işin kendisi. Tamamlanan her proje birden fazla içerik çıkarıyor: süreç, karşılaşılan zorluk, sonuç.
 
-        Üçüncü kaynak blog içerikleri. Uzun bir yazıdan birkaç ana fikir çıkarılıp kısa içeriğe dönüştürülebiliyor. Bu, iki kanalı da besleyen verimli bir yöntem. Blogun bu roldeki katkısını [blog yazmak SEO'ya yarar mı](/blog/blog-yazmak-seoya-yarar-mi) yazısında ele aldık.
+        Üçüncü kaynak blog içerikleri. Uzun bir yazıdan birkaç ana fikir çıkarılıp kısa içeriğe dönüştürülebiliyor. Bu, iki kanalı da besleyen verimli bir yöntem. Blogun bu roldeki katkısını [blog yazmak SEO'ya yarar mı](/blog/blog-yazmak-seoya-yarar-mi/) yazısında ele aldık.
 
         Dördüncü kaynak yorumlar ve gelen mesajlar. Takipçinin sorduğu soru, aynı soruyu soran ama sormayan onlarca kişiye hitap ediyor.
 

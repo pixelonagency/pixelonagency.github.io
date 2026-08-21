@@ -120,7 +120,7 @@ article:
 
         Üçüncüsü, erken müdahale. Kampanya öğrenme aşamasındayken her gün teklif ve hedefleme değiştirmek, sistemi sürekli başa döndürüyor.
 
-        Dördüncüsü, açılış sayfasını düzeltmeden bütçe artırmak. Dönüşmeyen bir sayfaya daha fazla trafik göndermek, kaybı büyütmekten başka bir işe yaramıyor. Bu konuyu [web sitesi neden dönüşüm getirmiyor](/blog/web-sitesi-neden-donusum-getirmiyor) yazısında ele almıştık.
+        Dördüncüsü, açılış sayfasını düzeltmeden bütçe artırmak. Dönüşmeyen bir sayfaya daha fazla trafik göndermek, kaybı büyütmekten başka bir işe yaramıyor. Bu konuyu [web sitesi neden dönüşüm getirmiyor](/blog/web-sitesi-neden-donusum-getirmiyor/) yazısında ele almıştık.
 
     - type: faq
       heading: Sık Sorulan Sorular

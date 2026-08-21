@@ -51,7 +51,7 @@ If your brand cannot answer these questions clearly, consistently and profession
 
 ## Build a Professional, Multilingual Website
 
-A significant share of international patients meet your clinic for the first time through your [multilingual website](/en/services/web-design-and-development). That makes the site far more than a corporate showcase: it is the central hub of trust that guides the patient's decision. A site that looks dated, loads slowly or does not work properly on mobile can create a poor first impression even when your clinical experience is outstanding.
+A significant share of international patients meet your clinic for the first time through your [multilingual website](/en/services/web-design-and-development/). That makes the site far more than a corporate showcase: it is the central hub of trust that guides the patient's decision. A site that looks dated, loads slowly or does not work properly on mobile can create a poor first impression even when your clinical experience is outstanding.
 
 ### What Should a Trustworthy Site Include?
 
@@ -127,10 +127,10 @@ Rather than simply translating a campaign written in Turkish into English, for e
 
 ### Let's Plan Your International Patient Acquisition Together
 
-We manage multilingual websites, [international ad campaigns](/en/services/digital-advertising), [patient communication systems](/en/services/crm-and-digital-transformation) and content production under a single strategy.
+We manage multilingual websites, [international ad campaigns](/en/services/digital-advertising/), [patient communication systems](/en/services/crm-and-digital-transformation/) and content production under a single strategy.
 
-- [Explore Our Health Tourism Service](/en/services/health-tourism-consulting)
-- [Get in Touch on WhatsApp](/en/contact)
+- [Explore Our Health Tourism Service](/en/services/health-tourism-consulting/)
+- [Get in Touch on WhatsApp](/en/contact/)
 
 ## Make the Same Promise in Your Ads and on Your Website
 
@@ -152,7 +152,7 @@ An international patient may be speaking to several clinics at once, which makes
 
 ## Track Patient Enquiries Properly With a CRM
 
-When patient enquiries live only in WhatsApp conversations or personal notes, valuable opportunities get lost. A [CRM system](/en/services/crm-and-digital-transformation) shows you exactly which stage each patient is at: new enquiry, first contact, waiting for photographs, under doctor review, quotation shared, travel date set, treatment completed and post-treatment follow-up.
+When patient enquiries live only in WhatsApp conversations or personal notes, valuable opportunities get lost. A [CRM system](/en/services/crm-and-digital-transformation/) shows you exactly which stage each patient is at: new enquiry, first contact, waiting for photographs, under doctor review, quotation shared, travel date set, treatment completed and post-treatment follow-up.
 
 That system does more than organise your operations; it also shows you which campaigns and which markets generate the most qualified patient enquiries.
 
@@ -166,7 +166,7 @@ Beyond the treatment itself, patients want to know how the travel side will work
 
 ## Keep in Touch After Treatment
 
-International patient trust does not end when the patient leaves the clinic. Sharing aftercare instructions in writing, checking in with the patient at set intervals, offering an accessible channel for questions and, where needed, scheduling online check-ups supported by [video content](/en/services/video-and-production) all matter for patient satisfaction and brand reputation alike.
+International patient trust does not end when the patient leaves the clinic. Sharing aftercare instructions in writing, checking in with the patient at set intervals, offering an accessible channel for questions and, where needed, scheduling online check-ups supported by [video content](/en/services/video-and-production/) all matter for patient satisfaction and brand reputation alike.
 
 **Trust Checklist for Health Tourism**
 

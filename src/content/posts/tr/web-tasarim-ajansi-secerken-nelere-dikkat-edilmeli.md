@@ -69,7 +69,7 @@ article:
 
         İkinci adım, işin arkasındaki kararı sormak. "Bu projede neyi çözdünüz?" sorusuna verilen cevap, ajansın işi estetik bir teslim olarak mı yoksa bir problem çözümü olarak mı gördüğünü gösteriyor.
 
-        Bizim [projelerimiz](/projelerimiz) sayfasında her işin yanında hangi ihtiyaçtan yola çıkıldığını da yazmamızın nedeni bu: ekran görüntüsü tek başına bir şey anlatmıyor.
+        Bizim [projelerimiz](/projelerimiz/) sayfasında her işin yanında hangi ihtiyaçtan yola çıkıldığını da yazmamızın nedeni bu: ekran görüntüsü tek başına bir şey anlatmıyor.
 
     - type: table
       heading: Görüşmede sorulacak sorular ve cevapların okunması
@@ -125,7 +125,7 @@ article:
 
         İkincisi, ilk aramada sorulmadan verilen kesin fiyat. İhtiyaç anlaşılmadan çıkan rakam, projenin gerçek kapsamıyla ilişkili olmuyor.
 
-        Üçüncüsü, arama motorlarında ilk sıra garantisi. Sıralama üçüncü tarafın algoritmasına bağlı; hiçbir ajans bunu taahhüt edemez. Bu konuda gerçekçi bir çerçeveyi [SEO ve içerik pazarlaması](/hizmetlerimiz/seo-ve-icerik-pazarlamasi) sayfasında anlatıyoruz.
+        Üçüncüsü, arama motorlarında ilk sıra garantisi. Sıralama üçüncü tarafın algoritmasına bağlı; hiçbir ajans bunu taahhüt edemez. Bu konuda gerçekçi bir çerçeveyi [SEO ve içerik pazarlaması](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) sayfasında anlatıyoruz.
 
         Dördüncüsü, referans paylaşmaktan kaçınmak. Memnun müşterisi olan ajans, konuşulmasından rahatsız olmuyor.
 

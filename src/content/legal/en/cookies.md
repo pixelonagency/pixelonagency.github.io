@@ -58,4 +58,4 @@ The **Analytics** category uses **Google Analytics 4**, a measurement service th
 
 ## 6. More Information
 
-See the [Personal Data Processing Notice](/en/personal-data-processing-notice) for the legal disclosure on personal data and the [Privacy Policy](/en/privacy-policy) for our general practices. Questions: [info@pixelon.com.tr](mailto:info@pixelon.com.tr)
+See the [Personal Data Processing Notice](/en/personal-data-processing-notice/) for the legal disclosure on personal data and the [Privacy Policy](/en/privacy-policy/) for our general practices. Questions: [info@pixelon.com.tr](mailto:info@pixelon.com.tr)

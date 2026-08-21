@@ -11,6 +11,8 @@
  * Latin harfli olmayan diller için slug transliterasyonla yazılır (ör. ar → `al-khadamat`).
  */
 
+import { internalHref } from './url';
+
 export const LOCALES = ['tr', 'en'] as const;
 export type Locale = (typeof LOCALES)[number];
 
@@ -48,7 +50,11 @@ export function localePrefix(locale: Locale): string {
 
 /**
  * Bir sayfanın (ve isteğe bağlı alt kaynağın) verilen dildeki yolu.
- * Sondaki eğik çizgi eklenmez — canonical üretimi `canonicalUrl()` işidir.
+ *
+ * Dönen değer KANONİK biçimdedir: sonda her zaman eğik çizgi bulunur. Site dizin
+ * biçiminde yayınlandığı için sunucu eğik çizgisiz isteği 301 ile buraya taşır;
+ * bağlantıyı baştan kanonik yazmak o yönlendirmeyi site içinde hiç doğurmaz.
+ * Rota üretimi (`getStaticPaths`) yol parametresini kendi normalize eder.
  */
 export function localizedPath(page: PageKey, locale: Locale, child?: string): string {
   const prefix = localePrefix(locale);
@@ -57,8 +63,8 @@ export function localizedPath(page: PageKey, locale: Locale, child?: string): st
   const segments = [slug, child].filter((part): part is string => Boolean(part));
   const tail = segments.join('/');
 
-  if (!tail) return prefix || '/';
-  return `${prefix}/${tail}`;
+  if (!tail) return internalHref(prefix || '/');
+  return internalHref(`${prefix}/${tail}`);
 }
 
 /** `/en/services/` → `{ locale: 'en', rest: 'services' }` */

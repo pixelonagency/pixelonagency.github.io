@@ -93,7 +93,7 @@ article:
 
         Üçüncüsü, kitleniz demografik olarak net tanımlanabiliyorsa. Yaş, konum, ilgi alanı ve davranış üzerinden kurulan hedefleme, arama hacmi düşük nişlerde alternatif bir yol açıyor.
 
-        [Sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi) tarafındaki organik içerik üretimiyle birlikte yürütüldüğünde Meta reklamlarının performansı genellikle daha istikrarlı oluyor.
+        [Sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) tarafındaki organik içerik üretimiyle birlikte yürütüldüğünde Meta reklamlarının performansı genellikle daha istikrarlı oluyor.
 
     - type: callout
       variant: note
@@ -112,7 +112,7 @@ article:
 
         İkinci bir birleşim noktası yeniden pazarlama. Sitenizi ziyaret edip ayrılan kişiye Meta üzerinden yeniden ulaşmak, ilk temasta karar vermeyen kullanıcıyı geri getiriyor.
 
-        Ancak bu kurgunun çalışması için [dönüşüm takibinin](/blog/donusum-takibi-nedir) iki platformda da düzgün kurulmuş olması gerekiyor. Ölçüm yoksa hangi platformun neyi ürettiği bilinemiyor.
+        Ancak bu kurgunun çalışması için [dönüşüm takibinin](/blog/donusum-takibi-nedir/) iki platformda da düzgün kurulmuş olması gerekiyor. Ölçüm yoksa hangi platformun neyi ürettiği bilinemiyor.
 
     - type: process
       heading: Bütçeyi nasıl dağıtmalı?

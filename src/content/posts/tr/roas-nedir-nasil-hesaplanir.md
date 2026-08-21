@@ -105,7 +105,7 @@ article:
 
         Üçüncüsü, atıf penceresi. Platform, kendisine atfettiği satışları raporluyor. Aynı satış hem Google hem Meta panelinde görünebiliyor. İki panelin ROAS'ını toplamak, olmayan bir ciro üretiyor.
 
-        Dördüncüsü, ölçümün eksik kurulması. Bazı dönüşümler kaydedilmiyorsa gerçek ROAS panelde görünenden yüksek oluyor ve kampanya haksız yere kapatılabiliyor. Kurulum için [dönüşüm takibi](/blog/donusum-takibi-nedir) yazısına bakabilirsiniz.
+        Dördüncüsü, ölçümün eksik kurulması. Bazı dönüşümler kaydedilmiyorsa gerçek ROAS panelde görünenden yüksek oluyor ve kampanya haksız yere kapatılabiliyor. Kurulum için [dönüşüm takibi](/blog/donusum-takibi-nedir/) yazısına bakabilirsiniz.
 
     - type: section
       id: hizmet-isleri

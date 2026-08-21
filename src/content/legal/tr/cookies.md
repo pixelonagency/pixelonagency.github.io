@@ -58,4 +58,4 @@ Sitede **Google Tag Manager** yalnızca bir etiket yönetim altyapısı olarak y
 
 ## 6. Daha Fazla Bilgi
 
-Kişisel verilerin işlenmesine ilişkin yasal bilgilendirme için [KVKK Aydınlatma Metni](/kvkk-aydinlatma-metni), genel uygulamalar için [Gizlilik Politikası](/gizlilik-politikasi) sayfalarına bakabilirsiniz. Sorularınız için: [info@pixelon.com.tr](mailto:info@pixelon.com.tr)
+Kişisel verilerin işlenmesine ilişkin yasal bilgilendirme için [KVKK Aydınlatma Metni](/kvkk-aydinlatma-metni/), genel uygulamalar için [Gizlilik Politikası](/gizlilik-politikasi/) sayfalarına bakabilirsiniz. Sorularınız için: [info@pixelon.com.tr](mailto:info@pixelon.com.tr)

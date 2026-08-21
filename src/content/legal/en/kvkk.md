@@ -69,4 +69,4 @@ You have the right to learn whether your personal data is processed; to request 
 
 You can submit requests regarding your rights by e-mailing [info@pixelon.com.tr](mailto:info@pixelon.com.tr) or in writing to Sahrayıcedit Mah. Şafak Sok. No:1, Kadıköy / İstanbul. Applications are concluded as soon as possible and within the statutory periods.
 
-For cookie details see the [Cookie Policy](/en/cookie-policy); for our general practices see the [Privacy Policy](/en/privacy-policy).
+For cookie details see the [Cookie Policy](/en/cookie-policy/); for our general practices see the [Privacy Policy](/en/privacy-policy/).

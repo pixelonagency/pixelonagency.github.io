@@ -48,15 +48,15 @@ describe('localizedPath', () => {
   });
 
   test('ikincil dilde ana sayfa yalnızca dil ön ekidir', () => {
-    expect(localizedPath('home', 'en')).toBe('/en');
+    expect(localizedPath('home', 'en')).toBe('/en/');
   });
 
   test('varsayılan dilde sayfa slug’ı Türkçedir', () => {
-    expect(localizedPath('services', 'tr')).toBe('/hizmetlerimiz');
+    expect(localizedPath('services', 'tr')).toBe('/hizmetlerimiz/');
   });
 
   test('ikincil dilde slug o dile çevrilir', () => {
-    expect(localizedPath('services', 'en')).toBe('/en/services');
+    expect(localizedPath('services', 'en')).toBe('/en/services/');
   });
 
   test('her sayfa anahtarı her dilde bir slug tanımlar', () => {
@@ -68,13 +68,15 @@ describe('localizedPath', () => {
 
   test('alt kaynak (detay sayfası) slug’ı sona eklenir', () => {
     expect(localizedPath('services', 'tr', 'seo-ve-icerik-pazarlamasi')).toBe(
-      '/hizmetlerimiz/seo-ve-icerik-pazarlamasi',
+      '/hizmetlerimiz/seo-ve-icerik-pazarlamasi/',
     );
-    expect(localizedPath('services', 'en', 'seo-and-content-marketing')).toBe('/en/services/seo-and-content-marketing');
+    expect(localizedPath('services', 'en', 'seo-and-content-marketing')).toBe(
+      '/en/services/seo-and-content-marketing/',
+    );
   });
 
   test('blog detayında da aynı kural geçerlidir', () => {
-    expect(localizedPath('blog', 'en', 'a-post')).toBe('/en/blog/a-post');
+    expect(localizedPath('blog', 'en', 'a-post')).toBe('/en/blog/a-post/');
   });
 });
 
@@ -117,20 +119,20 @@ describe('stripLocale', () => {
 describe('alternatesFor — hreflang', () => {
   test('her dil için karşılık üretir', () => {
     expect(alternatesFor('services')).toEqual({
-      tr: '/hizmetlerimiz',
-      en: '/en/services',
+      tr: '/hizmetlerimiz/',
+      en: '/en/services/',
     });
   });
 
   test('detay sayfasında dile özgü slug kullanılabilir', () => {
     expect(alternatesFor('blog', { tr: 'yazi', en: 'post' })).toEqual({
-      tr: '/blog/yazi',
-      en: '/en/blog/post',
+      tr: '/blog/yazi/',
+      en: '/en/blog/post/',
     });
   });
 
   test('bir dilde karşılık yoksa o dil listeden düşer', () => {
-    expect(alternatesFor('blog', { tr: 'yazi' })).toEqual({ tr: '/blog/yazi' });
+    expect(alternatesFor('blog', { tr: 'yazi' })).toEqual({ tr: '/blog/yazi/' });
   });
 });
 

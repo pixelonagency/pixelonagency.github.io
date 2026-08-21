@@ -50,7 +50,7 @@ describe('serviceToSections', () => {
   test('gives the hero a quote CTA and a WhatsApp CTA using the supplied link', () => {
     const hero = build()[0];
     expect(hero?.type === 'hero' && hero.ctas).toEqual([
-      { label: 'Hemen Teklif Al', href: '/iletisim', variant: 'primary', external: false },
+      { label: 'Hemen Teklif Al', href: '/iletisim/', variant: 'primary', external: false },
       { label: "WhatsApp'tan Yazın", href: WA, variant: 'outline', icon: 'whatsapp', external: true },
     ]);
   });

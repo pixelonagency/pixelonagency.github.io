@@ -1,5 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import {
+  href,
+  optHref,
   makePostSchema,
   makeProjectSchema,
   makeReferenceSchema,
@@ -367,5 +369,34 @@ describe('teamSchema', () => {
 
   test('rejects a team member with no role', () => {
     expect(teamSchema.safeParse({ name: 'Fatih' }).success).toBe(false);
+  });
+});
+
+describe('bağlantı alanları — kanonik biçim', () => {
+  /**
+   * CMS editörü bağlantıyı `/iletisim` diye yazar; site dizin biçiminde yayınlandığı
+   * için sunucu bunu `/iletisim/` adresine 301 ile taşır. Normalizasyon şema
+   * seviyesinde yapılır: editör hangi biçimde yazarsa yazsın çıktı kanoniktir.
+   */
+  test('site içi bağlantı sonuna eğik çizgi alır', () => {
+    expect(href.parse('/iletisim')).toBe('/iletisim/');
+    expect(href.parse('/hizmetlerimiz/seo-ve-icerik-pazarlamasi')).toBe('/hizmetlerimiz/seo-ve-icerik-pazarlamasi/');
+    expect(href.parse('/projelerimiz#referanslar')).toBe('/projelerimiz/#referanslar');
+  });
+
+  test('dış bağlantı ve protokollü adres olduğu gibi kalır', () => {
+    expect(href.parse('https://wa.me/905065229034')).toBe('https://wa.me/905065229034');
+    expect(href.parse('mailto:sosyal@pixelon.com.tr')).toBe('mailto:sosyal@pixelon.com.tr');
+    expect(href.parse('tel:+905065229034')).toBe('tel:+905065229034');
+  });
+
+  test('boş bağlantı reddedilir', () => {
+    expect(href.safeParse('').success).toBe(false);
+  });
+
+  test('opsiyonel bağlantı alanı da normalize edilir, boşluk “verilmemiş” sayılır', () => {
+    expect(optHref.parse('/kariyer')).toBe('/kariyer/');
+    expect(optHref.parse(null)).toBeUndefined();
+    expect(optHref.parse('')).toBeUndefined();
   });
 });

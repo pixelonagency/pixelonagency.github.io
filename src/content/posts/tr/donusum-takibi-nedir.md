@@ -132,7 +132,7 @@ article:
 
         İzin reddedildiğinde ölçüm verisi eksik kalıyor; bu beklenen bir durum ve kurulumun bozuk olduğu anlamına gelmiyor.
 
-        Bu yapının siteyle birlikte kurgulanması, sonradan eklenmesinden hem daha sağlıklı hem daha az maliyetli oluyor. Kurumsal sitede aranması gereken diğer temel özellikleri [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali) yazısında topladık.
+        Bu yapının siteyle birlikte kurgulanması, sonradan eklenmesinden hem daha sağlıklı hem daha az maliyetli oluyor. Kurumsal sitede aranması gereken diğer temel özellikleri [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali/) yazısında topladık.
 
     - type: faq
       heading: Sık Sorulan Sorular

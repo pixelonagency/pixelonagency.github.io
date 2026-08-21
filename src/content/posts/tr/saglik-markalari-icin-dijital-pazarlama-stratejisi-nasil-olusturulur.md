@@ -68,8 +68,8 @@ Sağlık markaları için sosyal medya, yalnızca estetik görseller paylaşmakt
 
 Çok dilli web sitesi, uluslararası reklam kampanyaları, sosyal medya içerikleri ve hasta iletişim sistemlerini tek bir strateji altında yönetiyoruz.
 
-- [Sağlık Turizmi Hizmetimizi İnceleyin](/hizmetlerimiz/saglik-turizmi-danismanligi)
-- [WhatsApp'tan Bilgi Alın](/iletisim)
+- [Sağlık Turizmi Hizmetimizi İnceleyin](/hizmetlerimiz/saglik-turizmi-danismanligi/)
+- [WhatsApp'tan Bilgi Alın](/iletisim/)
 
 ## Google Ads ve Meta Ads Nasıl Kullanılmalıdır?
 
@@ -109,7 +109,7 @@ Dentasay için farklı Avrupa ülkelerine yönelik çok dilli reklam kampanyalar
 - WhatsApp hasta iletişim şablonları
 - Form ve dönüşüm takibi
 
-[Projeyi İnceleyin →](/hizmetlerimiz/saglik-turizmi-danismanligi#projeler)
+[Projeyi İnceleyin →](/hizmetlerimiz/saglik-turizmi-danismanligi/#projeler)
 
 > "Başarılı dijital pazarlama, daha fazla kişiye ulaşmak değil; doğru kişiyi doğru mesajla harekete geçirmektir."
 > >

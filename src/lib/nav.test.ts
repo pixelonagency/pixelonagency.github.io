@@ -3,7 +3,7 @@ import { buildServicesNav, isActiveRoute, PRIMARY_NAV, serviceHref } from './nav
 
 describe('serviceHref', () => {
   test('nests a service slug under /hizmetlerimiz', () => {
-    expect(serviceHref('seo-ve-icerik-pazarlamasi')).toBe('/hizmetlerimiz/seo-ve-icerik-pazarlamasi');
+    expect(serviceHref('seo-ve-icerik-pazarlamasi')).toBe('/hizmetlerimiz/seo-ve-icerik-pazarlamasi/');
   });
 });
 
@@ -23,7 +23,7 @@ describe('buildServicesNav', () => {
   });
 
   test('builds an href for each service', () => {
-    expect(buildServicesNav(entries)[0]?.href).toBe('/hizmetlerimiz/web-tasarim-ve-yazilim');
+    expect(buildServicesNav(entries)[0]?.href).toBe('/hizmetlerimiz/web-tasarim-ve-yazilim/');
   });
 
   test('returns an empty list when there are no services yet', () => {
@@ -50,6 +50,8 @@ describe('PRIMARY_NAV', () => {
   test('points every entry at a real internal route', () => {
     for (const item of PRIMARY_NAV) {
       expect(item.href.startsWith('/')).toBe(true);
+      // Kanonik biçim: yol kısmı eğik çizgiyle biter, aksi halde her tıklama 301 harcar.
+      expect(item.href.split('#')[0]?.endsWith('/')).toBe(true);
     }
   });
 });

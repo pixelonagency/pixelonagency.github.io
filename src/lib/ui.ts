@@ -16,6 +16,7 @@ const STRINGS = {
   'nav.careers': { tr: 'Kariyer', en: 'Careers' },
   'nav.contact': { tr: 'İletişim', en: 'Contact' },
   'nav.blog': { tr: 'Blog', en: 'Blog' },
+  'nav.website': { tr: 'Web Sitesi Yaptır', en: 'Get a Website' },
   'nav.allServices': { tr: 'Tüm Hizmetlerimiz →', en: 'All Services →' },
   'nav.analysis': { tr: 'Ücretsiz Analiz', en: 'Free Analysis' },
   'nav.openMenu': { tr: 'Menüyü aç', en: 'Open menu' },

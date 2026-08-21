@@ -90,7 +90,7 @@ const breadcrumbJsonLd = toJsonLd([
   breadcrumbSchema([
     {
       label: locale === 'tr' ? 'Ana Sayfa' : 'Home',
-      url: new URL(localizedPath('home', locale).replace(/\/?$/, '/'), site).toString(),
+      url: new URL(localizedPath('home', locale), site).toString(),
     },
     { label: section.heading },
   ]),

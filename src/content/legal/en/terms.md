@@ -43,7 +43,7 @@ To the extent permitted by law, Pixelon is not liable for indirect damages arisi
 
 ## 8. Personal Data
 
-The processing of personal data is governed not by these terms but by the [Personal Data Processing Notice](/en/personal-data-processing-notice) and the [Privacy Policy](/en/privacy-policy).
+The processing of personal data is governed not by these terms but by the [Personal Data Processing Notice](/en/personal-data-processing-notice/) and the [Privacy Policy](/en/privacy-policy/).
 
 ## 9. Governing Law
 

@@ -52,7 +52,7 @@ const extraSchema = [
     { label: t('nav.home', locale), url: new URL(localizedPath('home', locale), site).toString() },
     {
       label: t('nav.projects', locale),
-      url: new URL(`${localizedPath('projects', locale)}/`, site).toString(),
+      url: new URL(localizedPath('projects', locale), site).toString(),
     },
     { label: title },
   ]),

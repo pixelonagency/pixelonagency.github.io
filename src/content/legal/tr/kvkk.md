@@ -69,4 +69,4 @@ Kişisel verilerinizle ilgili olarak; işlenip işlenmediğini öğrenme, işlen
 
 Haklarınıza ilişkin taleplerinizi [info@pixelon.com.tr](mailto:info@pixelon.com.tr) adresine e-posta göndererek veya yazılı olarak Sahrayıcedit Mah. Şafak Sok. No:1, Kadıköy / İstanbul adresine ileterek kullanabilirsiniz. Başvurunuz, niteliğine göre mümkün olan en kısa sürede ve en geç mevzuattaki süreler içinde sonuçlandırılır.
 
-Çerezlere ilişkin ayrıntılar için [Çerez Politikası](/cerez-politikasi), genel gizlilik uygulamalarımız için [Gizlilik Politikası](/gizlilik-politikasi) sayfalarını inceleyebilirsiniz.
+Çerezlere ilişkin ayrıntılar için [Çerez Politikası](/cerez-politikasi/), genel gizlilik uygulamalarımız için [Gizlilik Politikası](/gizlilik-politikasi/) sayfalarını inceleyebilirsiniz.

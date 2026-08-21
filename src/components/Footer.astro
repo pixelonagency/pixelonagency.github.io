@@ -31,6 +31,13 @@ const corporateLinks = [
   { label: t('nav.careers', locale), href: localizedPath('careers', locale) },
   { label: t('nav.contact', locale), href: localizedPath('contact', locale) },
   { label: t('nav.blog', locale), href: localizedPath('blog', locale) },
+  /*
+   * Web sitesi açılış sayfası hiçbir gezinme öğesinde yer almıyordu ve yalnız
+   * sitemap üzerinden erişilebiliyordu (Semrush: "orphaned sitemap page").
+   * Footer her sayfada olduğu için sayfa hem tarama derinliğinde öne çıkar hem de
+   * site içi bağlantı değeri alır.
+   */
+  { label: t('nav.website', locale), href: localizedPath('website', locale) },
 ];
 ---
 

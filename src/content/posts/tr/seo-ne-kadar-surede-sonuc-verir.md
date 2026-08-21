@@ -122,7 +122,7 @@ article:
 
         İkincisi, aynı konuyu birkaç sayfada tekrar anlatmak. Sayfalar birbirinin sıralamasını düşürüyor ve hiçbiri öne çıkamıyor.
 
-        Üçüncüsü, içerik üretirken kullanıcı yerine arama motoru için yazmak. Anahtar kelimeyle doldurulmuş ama soruyu cevaplamayan sayfalar sıralanmıyor. Doğru yaklaşımı [SEO uyumlu blog yazısı nasıl yazılır](/blog/seo-uyumlu-blog-yazisi-nasil-yazilir) yazısında ele aldık.
+        Üçüncüsü, içerik üretirken kullanıcı yerine arama motoru için yazmak. Anahtar kelimeyle doldurulmuş ama soruyu cevaplamayan sayfalar sıralanmıyor. Doğru yaklaşımı [SEO uyumlu blog yazısı nasıl yazılır](/blog/seo-uyumlu-blog-yazisi-nasil-yazilir/) yazısında ele aldık.
 
         Dördüncüsü, site yapısını sık değiştirmek. URL değişiklikleri yönlendirme yapılmadan uygulandığında kazanılan konumlar kaybediliyor.
 
