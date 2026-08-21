@@ -133,3 +133,12 @@ Araştırma/analiz/hazırlık otonom · yayın ve riskli değişiklik onaya bağ
 - [x] `SEO-2026-0049` Baseline donduruldu
 - [ ] `SEO-2026-0050` Haftalık rapor otomasyonu
 - [ ] `SEO-2026-0051` Aylık strateji gözden geçirme
+
+## Legacy URL Recovery
+
+- [x] `SEO-2026-0064` Eski URL envanteri GSC ile çıkarıldı — 8 URL 404, bir kısmı ilk sırada
+- [x] `SEO-2026-0065` Redirect haritası hazırlandı ve onaylandı — 6 APPROVED, 2 HOLD
+- [x] `SEO-2026-0066` Haftalık izleme kuruldu (`bun run seo:watch404`) — gösterim/tıklama/pozisyon
+- [ ] `SEO-2026-0067` **Uygulama BLOCKED** — gerçek 301 için TLS mimarisi kararı bekleniyor
+      (GitHub Pages origin sertifikası DNS kontrolüne bağlı; proxy açmak sertifika
+      yenilemesini riske atıyor). Karar verilene kadar 404'ler ölçülüyor, kapatılmıyor.

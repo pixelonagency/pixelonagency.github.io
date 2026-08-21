@@ -26,6 +26,7 @@
     "seo:audit": "bun scripts/seo/audit.mjs",
     "seo:comp": "bun scripts/seo/competitors.mjs",
     "seo:gsc": "bun scripts/seo/gsc.mjs",
+    "seo:watch404": "bun scripts/seo/redirect-watch.mjs",
     "seo:daily": "bun scripts/seo/daily.mjs daily",
     "seo:weekly": "bun scripts/seo/daily.mjs weekly",
     "seo:monthly": "bun scripts/seo/daily.mjs monthly",
