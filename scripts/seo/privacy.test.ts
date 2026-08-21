@@ -147,6 +147,23 @@ describe('git takip sözleşmesi', () => {
     expect([...tracked].filter((f) => f.startsWith('seo/private/'))).toEqual([]);
   });
 
+  test('takip edilen hiçbir dosya kullanıcı ev dizini yolu içermiyor', () => {
+    // `scheduler` bloğu mutlak log yolu taşıyor ve bir kez public state'e sızdı.
+    // Bu test o sızıntının tekrarını kapıda durdurur.
+    const offenders: string[] = [];
+    for (const f of tracked) {
+      if (!f || /\.(png|jpe?g|webp|avif|svg|ico|woff2?|mp4|webm)$/i.test(f)) continue;
+      let text = '';
+      try {
+        text = readFileSync(f, 'utf8');
+      } catch {
+        continue;
+      }
+      if (/\/Users\/[a-z0-9_-]+\//i.test(text)) offenders.push(f);
+    }
+    expect(offenders).toEqual([]);
+  });
+
   test('takip edilen hiçbir GSC ham veri dosyası yok', () => {
     expect([...tracked].filter((f) => f.startsWith('seo/data/gsc'))).toEqual([]);
   });

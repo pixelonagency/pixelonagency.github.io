@@ -18,6 +18,8 @@
 
 /** Public `SEO_STATE.json` içinde ASLA bulunmayacak anahtarlar. */
 export const PRIVATE_STATE_KEYS = [
+  // Zamanlayıcı muhasebesi mutlak log yolu taşır (ev dizini dahil) — public repoya girmez.
+  'scheduler',
   'currentKeywordClusters',
   'warnings',
   'opportunities',
