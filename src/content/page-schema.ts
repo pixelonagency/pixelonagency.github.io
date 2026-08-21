@@ -240,6 +240,21 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     ctaHref: opt(z.string()),
   });
 
+  /**
+   * Öne çıkan tek yazı kartı. Başlık, özet, tarih, okuma süresi ve kapak
+   * KOLEKSİYONDAN gelir — bu bölümde elle metin alanı YOKTUR. Aksi hâlde
+   * kartın anlattığı yazı ile açtığı yazı zamanla ayrışıyor.
+   *
+   * `slug` verilirse o yazı sabitlenir; verilmezse `featured: true` olan en
+   * yeni yazı, o da yoksa genel olarak en yeni yazı gösterilir.
+   */
+  const featuredPost = z.object({
+    ...sectionBase,
+    type: z.literal('featuredPost'),
+    slug: opt(z.string()),
+    ctaLabel: opt(z.string()),
+  });
+
   const team = z.object({
     ...sectionBase,
     type: z.literal('team'),
@@ -362,6 +377,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     logos,
     projects,
     posts,
+    featuredPost,
     team,
     services,
     form,
@@ -402,6 +418,7 @@ export const PAGE_SECTION_TYPES = [
   'logos',
   'projects',
   'posts',
+  'featuredPost',
   'team',
   'services',
   'form',

@@ -16,19 +16,12 @@ sections:
       Dijital pazarlama, tasarım, teknoloji ve marka iletişimindeki güncel gelişmeleri; deneyimlerimiz, rehberlerimiz ve uygulanabilir önerilerimizle paylaşıyoruz.
 
   # ÖNE ÇIKAN YAZI
-  # Referansta tek büyük link kartı: kategori rozeti (eyebrow) + başlık + özet + meta + buton.
-  - type: text
+  # İçerik koleksiyondan gelir: "Öne Çıkan" işaretli en yeni yazı, kapağıyla.
+  # Belirli bir yazıyı sabitlemek için `slug` alanını doldurun.
+  - type: featuredPost
     background: light
-    eyebrow: Dijital Pazarlama
-    heading: 2026'da Markaların Dijital Pazarlamada Dikkat Etmesi Gereken 10 Trend
-    body: |-
-      Yapay zekâ destekli içeriklerden kısa video stratejilerine, kişiselleştirmeden dönüşüm ölçümüne kadar markaların dijital dünyada öne çıkmasını sağlayacak gelişmeleri inceliyoruz.
-
-      12 dk. okuma · 18 Temmuz 2026 · Pixelon Ekibi
-    ctas:
-      - label: Yazıyı Okuyun →
-        href: /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur
-        variant: primary
+    eyebrow: Öne Çıkan
+    ctaLabel: Yazıyı Okuyun
 
   # KATEGORİ FİLTRELERİ + SON YAZILAR (posts koleksiyonundan)
   # Referanstaki filtre çipleri (posts şemasında karşılığı yok):

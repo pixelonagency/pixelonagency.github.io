@@ -17,18 +17,12 @@ sections:
 
   # FEATURED ARTICLE
   # A single large link card in the reference: category badge (eyebrow) + title + summary + meta + button.
-  - type: text
+  # Content comes from the collection: the newest post flagged "featured",
+  # with its cover. Pin a specific post with the `slug` field.
+  - type: featuredPost
     background: light
-    eyebrow: Digital Marketing
-    heading: 10 Trends Brands Should Watch in Digital Marketing in 2026
-    body: |-
-      From AI-assisted content to short-form video strategies, from personalisation to conversion measurement, we look at the developments that will help brands stand out in the digital world.
-
-      12 min read · July 18, 2026 · Pixelon Team
-    ctas:
-      - label: Read the Article →
-        href: /en/blog
-        variant: primary
+    eyebrow: Featured
+    ctaLabel: Read the Article
 
   # CATEGORY FILTERS + LATEST ARTICLES (from the posts collection)
   # Filter chips in the reference (no equivalent in the posts schema):

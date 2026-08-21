@@ -305,6 +305,31 @@ describe('interactive behaviour is shipped', () => {
     expect(editorial).toMatch(/class="post__cta"[^>]*hidden/);
   });
 
+  /**
+   * Blog sayfasındaki öne çıkan yazı bloğu koleksiyondan beslenir. Daha önce
+   * sabit metinle yazılmıştı ve kartın anlattığı yazı ile açtığı yazı
+   * ayrışmıştı; bu test o duruma geri dönülmesini engeller.
+   */
+  test('the blog featured block is collection-driven, not hand-written copy', () => {
+    const body = html.get('/blog') ?? '';
+
+    expect(body).toContain('class="fp"');
+
+    // Kartın bağlantısı gerçek bir yazı sayfasına gitmeli.
+    const href = /class="fp" href="([^"]+)"/.exec(body)?.[1] ?? '';
+    expect(href.startsWith('/blog/')).toBe(true);
+    expect(existsSync(htmlPath(href))).toBe(true);
+
+    // Kartta gösterilen başlık, bağlantının açtığı yazının başlığıyla aynı olmalı.
+    const target = readFileSync(htmlPath(href), 'utf8');
+    const cardTitle = /<h2 class="fp__title"[^>]*>([^<]+)<\/h2>/.exec(body)?.[1]?.trim() ?? '';
+    expect(cardTitle.length).toBeGreaterThan(0);
+    expect(target).toContain(cardTitle);
+
+    // Tasarım referansından kalan sahte içerik geri gelmemeli.
+    expect(body).not.toContain('10 Trend');
+  });
+
   test('the references page ships the brand wall with hero and closing CTA', () => {
     const body = html.get('/referanslarimiz') ?? '';
     // Duvar: renkli marka kartları (marquee değil) + hero breadcrumb + spot CTA.

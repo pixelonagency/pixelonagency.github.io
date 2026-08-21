@@ -641,6 +641,24 @@ collections:
               - *s_cta_label
               - *s_cta_href
 
+          # Öne Çıkan Yazı — başlık/özet/tarih/kapak KOLEKSİYONDAN gelir.
+          # Bilinçli olarak metin alanı yoktur: elle yazılınca kartın anlattığı
+          # yazı ile açtığı yazı zamanla ayrışıyor.
+          - label: Öne Çıkan Yazı
+            name: featuredPost
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - label: Sabitlenecek Yazı Slug'ı
+                name: slug
+                widget: string
+                required: false
+                hint: Boş bırakılırsa "Öne Çıkan" işaretli en yeni yazı gösterilir.
+              - *s_cta_label
+
           - label: Ekip
             name: team
             widget: object

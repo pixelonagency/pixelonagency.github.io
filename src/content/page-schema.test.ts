@@ -171,6 +171,25 @@ describe('collection-backed sections', () => {
     expect(parseSection({ type: 'posts', heading: 'Blog', limit: 3 }).success).toBe(true);
   });
 
+  /**
+   * Öne çıkan yazı bloğu içeriği koleksiyondan çeker — başlık/özet/tarih elle
+   * yazılmaz, böylece kartın anlattığı yazı ile açtığı yazı ayrışamaz.
+   */
+  test('accepts a featuredPost section with no pinned slug', () => {
+    expect(parseSection({ type: 'featuredPost', ctaLabel: 'Yazıyı Okuyun →' }).success).toBe(true);
+  });
+
+  test('accepts a featuredPost section pinned to a slug', () => {
+    const result = parseSection({ type: 'featuredPost', slug: 'sosyal-medya-ajanslari-ne-is-yapar' });
+    expect(result.success).toBe(true);
+  });
+
+  test('rejects a featuredPost section that carries hand-written body copy', () => {
+    // `body`/`heading` kabul edilseydi sabit metin geri sızardı.
+    const result = parseSection({ type: 'featuredPost', heading: 'Elle yazılmış başlık' });
+    expect(result.success && !('heading' in result.data)).toBe(true);
+  });
+
   test('accepts a logos marquee backed by the references collection', () => {
     expect(parseSection({ type: 'logos', heading: 'Referanslarımız' }).success).toBe(true);
   });

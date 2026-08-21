@@ -7,6 +7,7 @@ import ContactSection from './sections/ContactSection.astro';
 import ContactInfoSection from './sections/ContactInfoSection.astro';
 import CtaSection from './sections/CtaSection.astro';
 import FaqSection from './sections/FaqSection.astro';
+import FeaturedPostSection from './sections/FeaturedPostSection.astro';
 import FormSection from './sections/FormSection.astro';
 import HeroSection from './sections/HeroSection.astro';
 import JobsSection from './sections/JobsSection.astro';
@@ -60,6 +61,8 @@ const { sections, locale = DEFAULT_LOCALE } = Astro.props;
         return <ProjectsSection section={section} {locale} />;
       case 'posts':
         return <PostsSection section={section} {locale} />;
+      case 'featuredPost':
+        return <FeaturedPostSection section={section} {locale} />;
       case 'team':
         return <TeamSection section={section} {locale} />;
       case 'services':
