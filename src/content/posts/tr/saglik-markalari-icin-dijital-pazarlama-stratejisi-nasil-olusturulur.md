@@ -4,6 +4,8 @@ category: Sağlık Pazarlaması
 excerpt: Sağlık sektöründe güven veren bir marka oluşturmak, doğru hedef kitleye ulaşmak ve daha fazla randevu talebi elde etmek için web sitesi, içerik, reklam ve hasta iletişim süreçlerinin birlikte planlanması gerekir.
 date: 2026-07-18
 translationKey: healthcare-digital-marketing-strategy
+cover: '/src/assets/images/blog/saglik-markalari-dijital-pazarlama-cover.webp'
+coverAlt: Sağlık markasının dijital pazarlama performansını değerlendiren ajans ekibi
 author: Pixelon Ekibi
 status: published
 featured: false

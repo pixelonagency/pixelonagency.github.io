@@ -4,6 +4,8 @@ category: Healthcare Marketing
 excerpt: When international patients decide to travel abroad for treatment, they are not simply choosing a clinic or a doctor; they are looking for an organisation they can trust with their health, their budget and their time.
 date: 2026-07-10
 translationKey: health-tourism-patient-trust
+cover: '/src/assets/images/blog/saglik-turizminde-hasta-guveni-cover.webp'
+coverAlt: A clinic patient coordinator explaining a treatment plan to an international patient
 author: Pixelon Team
 status: published
 featured: false

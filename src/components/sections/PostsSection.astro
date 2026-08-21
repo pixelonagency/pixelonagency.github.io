@@ -1,5 +1,7 @@
 ---
+import type { ImageMetadata } from 'astro';
 import { getCollection } from 'astro:content';
+import { Picture } from 'astro:assets';
 import type { PageSection } from '../../content/page-schema';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
 import { t } from '../../lib/ui';
@@ -26,6 +28,12 @@ const sorted = [...entries].sort((a, b) => b.data.date.getTime() - a.data.date.g
 const posts = section.limit ? sorted.slice(0, section.limit) : sorted;
 
 const hasCta = Boolean(section.ctaLabel && section.ctaHref);
+
+/** Kapak alanı opsiyonel; kapağı olmayan yazı kartı görselsiz akar. */
+const coverOf = (value: unknown): ImageMetadata | undefined =>
+  value && typeof value === 'object' && 'src' in (value as Record<string, unknown>)
+    ? (value as ImageMetadata)
+    : undefined;
 ---
 
 {
@@ -42,23 +50,41 @@ const hasCta = Boolean(section.ctaLabel && section.ctaHref);
       </div>
 
       <ul class="posts" role="list">
-        {posts.map((post, index) => (
-          <li class="posts__cell">
-            <a
-              class="posts__item"
-              href={localizedPath('blog', locale, slugOf(post.id))}
-              data-reveal
-              data-reveal-index={index}
-            >
-              <span class="posts__category">{post.data.category}</span>
-              <h3 class="posts__title">{post.data.title}</h3>
-              <p class="posts__excerpt">{post.data.excerpt}</p>
-              <span class="posts__read">
-                {t('blog.readPost', locale)} <span aria-hidden="true">→</span>
-              </span>
-            </a>
-          </li>
-        ))}
+        {posts.map((post, index) => {
+          const cover = coverOf(post.data.cover);
+          return (
+            <li class="posts__cell">
+              <a
+                class="posts__item"
+                href={localizedPath('blog', locale, slugOf(post.id))}
+                data-reveal
+                data-reveal-index={index}
+              >
+                {cover && (
+                  <span class="posts__media">
+                    <Picture
+                      src={cover}
+                      alt={post.data.coverAlt ?? post.data.title}
+                      formats={['avif']}
+                      fallbackFormat="webp"
+                      widths={[320, 480, 720]}
+                      sizes="(max-width: 620px) 100vw, (max-width: 900px) 50vw, 33vw"
+                      quality={70}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </span>
+                )}
+                <span class="posts__category">{post.data.category}</span>
+                <h3 class="posts__title">{post.data.title}</h3>
+                <p class="posts__excerpt">{post.data.excerpt}</p>
+                <span class="posts__read">
+                  {t('blog.readPost', locale)} <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </Section>
   )
@@ -136,6 +162,31 @@ const hasCta = Boolean(section.ctaLabel && section.ctaHref);
       transform var(--t-slow);
   }
 
+  /* Kapak kartın üst kenarına yaslanır: kart dolgusu negatif marjla iptal edilir.
+     Sabit 16/9 oranı, kaynak oranı ne olursa olsun kartları aynı hizada tutar. */
+  .posts__media {
+    display: block;
+    margin: -30px -30px 4px;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    overflow: hidden;
+    background: rgb(255 255 255 / 4%);
+  }
+
+  .posts__media :global(img) {
+    display: block;
+    width: 100%;
+    /* `height: auto` şart: Astro `height` özniteliği yazıyor ve o kalırsa
+       yükseklik kesin sayılıp `aspect-ratio` yok sayılıyor. */
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform var(--t-slow) var(--ease-out);
+  }
+
+  .posts__item:hover .posts__media :global(img) {
+    transform: scale(1.03);
+  }
+
   .posts__item:hover {
     border-color: var(--accent);
     transform: translateY(-6px);
@@ -197,6 +248,21 @@ const hasCta = Boolean(section.ctaLabel && section.ctaHref);
   @media (max-width: 720px) {
     .posts {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .posts__item,
+    .posts__media :global(img) {
+      transition: none;
+    }
+
+    .posts__item:hover {
+      transform: none;
+    }
+
+    .posts__item:hover .posts__media :global(img) {
+      transform: none;
     }
   }
 </style>

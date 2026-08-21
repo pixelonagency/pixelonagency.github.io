@@ -4,6 +4,8 @@ category: Healthcare Marketing
 excerpt: Building a trusted brand in healthcare, reaching the right audience and generating more appointment requests all depend on planning your website, content, advertising and patient communication together.
 date: 2026-07-18
 translationKey: healthcare-digital-marketing-strategy
+cover: '/src/assets/images/blog/saglik-markalari-dijital-pazarlama-cover.webp'
+coverAlt: Agency team reviewing the digital marketing performance of a healthcare brand
 author: Pixelon Team
 status: published
 featured: false

@@ -4,6 +4,8 @@ category: Sağlık Pazarlaması
 excerpt: Uluslararası bir hasta, tedavi olmak için başka bir ülkeye gitmeye karar verdiğinde yalnızca klinik veya doktor seçmez; sağlığını, bütçesini ve zamanını emanet edebileceği güvenilir bir kurum arar.
 date: 2026-07-10
 translationKey: health-tourism-patient-trust
+cover: '/src/assets/images/blog/saglik-turizminde-hasta-guveni-cover.webp'
+coverAlt: Uluslararası hastaya tedavi planını anlatan klinik hasta danışmanı
 author: Pixelon Ekibi
 status: published
 featured: false
