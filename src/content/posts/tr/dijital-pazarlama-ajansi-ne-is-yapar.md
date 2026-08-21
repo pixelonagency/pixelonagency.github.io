@@ -138,7 +138,7 @@ article:
 
         Üçüncü soru özellikle önemli. Reklam bütçesi sabitken talep sayısı artıyorsa, bu genellikle hedefleme ve açılış sayfası tarafında gerçek bir iyileşme olduğu anlamına geliyor.
 
-        Ölçümleme kurulu değilse bu soruların hiçbirine güvenilir cevap veremezsiniz. Bu yüzden çalışmanın ilk haftalarında [dönüşüm ölçümünün kurulması](/blog/web-sitesi-neden-donusum-getirmiyor), kampanya optimizasyonundan daha önceliklidir.
+        Ölçümleme kurulu değilse bu soruların hiçbirine güvenilir cevap veremezsiniz. Bu yüzden çalışmanın ilk haftalarında [dönüşüm takibi](/blog/donusum-takibi-nedir) kurulumu, kampanya optimizasyonundan daha önceliklidir.
 
     - type: faq
       heading: Sık Sorulan Sorular
