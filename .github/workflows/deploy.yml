@@ -1,11 +1,24 @@
 name: Deploy to GitHub Pages
 
-# `main` dalına giden HER commit otomatik olarak yayına alınır.
+# `main` dalına giden commit'ler otomatik olarak yayına alınır — ANCAK yalnızca
+# production çıktısını etkileyen dosyalar değiştiyse. SEO operasyon altyapısı
+# (seo/, scripts/seo/) ve kök dizindeki dokümanlar yayına çıkmadığı için deploy
+# tetiklemez; push ile production deploy artık aynı şey değildir.
+#
+# Not: paths-ignore YALNIZCA push'taki TÜM dosyalar listeye uyuyorsa devreye girer.
+# Karma bir commit (örn. seo/ + src/) normal şekilde deploy olur.
+# `src/content/**/*.md` (blog yazıları) bilerek listeye ALINMAMIŞTIR — onlar yayına çıkar.
+# Operasyon commit'ini elle yayına almak gerekirse: workflow_dispatch.
+#
 # Kapı yine de önce çalışır: gate veya build başarısızsa deploy adımı hiç çalışmaz,
 # dolayısıyla bozuk bir commit canlıya çıkamaz.
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'seo/**'
+      - 'scripts/seo/**'
+      - '*.md'
   workflow_dispatch:
 
 permissions:
