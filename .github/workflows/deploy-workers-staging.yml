@@ -1,0 +1,76 @@
+name: Deploy Workers Staging
+
+# Cloudflare Workers Static Assets STAGING yayını — SEO-2026-0069.
+#
+# Bu iş akışı `deploy.yml`'dan TAMAMEN BAĞIMSIZDIR. GitHub Pages üretimi
+# `pixelon.com.tr` üzerinde çalışmaya devam eder; burada custom domain veya
+# route bağlanmaz, DNS'e dokunulmaz. Hedef yalnızca `*.workers.dev`.
+#
+# Şimdilik sadece elle tetiklenir. Otomatik tetikleyici, cutover kararından
+# sonra ve ayrı bir onayla eklenecek.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: workers-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Gate, Build & Deploy to workers.dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: .bun-version
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Gate (typecheck → format → lint → knip → test)
+        run: bun run gate
+
+      - name: Secret scan
+        run: bun run secrets
+
+      - name: Build
+        run: bun run build
+
+      # Yönlendirme haritası sitemap'ten üretilir; sayfa eklendiğinde kural
+      # sayısı kendiliğinden güncellenir. Build'den SONRA çalışmalı.
+      - name: Generate redirect map
+        run: bun run seo:redirects
+
+      # `_redirects` üretimi dist'e girmediyse yeniden derlenir.
+      - name: Rebuild with generated redirects
+        run: bun run build
+
+      - name: Verify redirect map is sane
+        run: |
+          test -f dist/_redirects || { echo "dist/_redirects yok"; exit 1; }
+          test -f dist/_headers   || { echo "dist/_headers yok";   exit 1; }
+          if grep -q '\*' dist/_redirects; then echo "wildcard kuralı bulundu — beklenmiyor"; exit 1; fi
+          echo "kural sayısı: $(grep -cE '^/' dist/_redirects)"
+
+      - name: Dist smoke tests
+        run: bun run test:dist
+
+      - name: Deploy to workers.dev
+        # `wrangler.jsonc` içinde route/custom domain tanımlı DEĞİL; bu komut
+        # yalnızca *.workers.dev adresine yayın yapar.
+        run: bunx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

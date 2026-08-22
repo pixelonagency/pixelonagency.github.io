@@ -1,0 +1,33 @@
+# Cloudflare Workers Static Assets — özel yanıt başlıkları.
+# GitHub Pages bu dosyayı OKUMAZ; yalnızca Workers/Pages üzerinde etkilidir.
+# Sınırlar: dosya başına en fazla 100 kural, URL başına tek splat (*).
+
+# ---------------------------------------------------------------------------
+# 1) STAGING NOINDEX — yalnızca workers.dev host'u
+#
+# Kurallar HOST'a göre eşleşir. `pixelon.com.tr` bu kalıplara UYMAZ, dolayısıyla
+# production bu başlığı ASLA almaz. Cutover'dan sonra bile staging noindex kalır,
+# production temiz kalır — dosyayı düzenlemeye gerek olmaz.
+#
+# İkinci kural sürümlü önizleme URL'lerini (preview deployments) da kapsar.
+# ---------------------------------------------------------------------------
+# Tek kural yeterli: `pixelon-web-staging.m-fatihdayan.workers.dev` de,
+# sürümlü önizleme URL'leri de bu kalıba uyar. İki ayrı kural yazmak aynı
+# başlığı iki kez bastırıyordu.
+https://:version.:subdomain.workers.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+# ---------------------------------------------------------------------------
+# 2) PARMAK İZLİ ASSET'LER — bir yıl, değişmez
+#
+# Astro tüm asset'leri içerik hash'iyle üretiyor (astro.config → build.assets).
+# 893 dosyanın tamamı hash'li; hash'siz tek dosya yok. İçerik değişirse dosya adı
+# değişir, bu yüzden uzun cache güvenli.
+#
+# Bilinçli olarak KAPSAM DIŞI (varsayılan `max-age=0, must-revalidate` kalır):
+#   HTML · / · robots.txt · sitemap*.xml · llms.txt · IndexNow key · favicon.svg
+#   CNAME · _redirects · /admin/* (CMS)
+# Bunlar ya hash'siz ya da değişebilir; uzun cache yanlış içerik servis ettirir.
+# ---------------------------------------------------------------------------
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
