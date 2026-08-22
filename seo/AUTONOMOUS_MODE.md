@@ -95,3 +95,23 @@ Yeni yayınlanan sayfalar ve yönlendirmeler **MEASURING** durumundadır.
 Yeterli veri oluşmadan büyük yeniden yazım yapılmaz. Kontrol noktaları: **+7 / +14 / +28 gün**.
 
 Sıralama değişimi bir değişikliğe **atfedilmez**; yalnızca gözlenen sinyal raporlanır.
+
+---
+
+## Maliyet politikası
+
+İlk koşu 46 tur / 12,5 dk / **4,19 USD** ile geçti. Bu bootstrap maliyetiydi; günlük
+denge durumu bundan ucuz olmalı. **Yeniden kullanım, yeniden çekmeye tercih edilir.**
+
+| Koşu                 | Veri tazeleme                                                                                                                                                                                                                                                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Günlük**           | Normalize SEMrush paketi yeniden kullanılır. Yeni çağrı yalnızca seçilen görev paketin kapsamadığı bir kelime/domain gerektiriyorsa ya da paket ~7 günden eskiyse. Rakip ve backlink araştırması her gün tekrarlanmaz. Geniş web araştırması yalnızca görev gerektiriyorsa. Kaynak ağacı değişmediyse teknik denetim tekrar koşulmaz. |
+| **Haftalık** (Pazar) | Daha derin rakip / backlink / SERP tazelemesi uygun.                                                                                                                                                                                                                                                                                  |
+| **Aylık**            | Kapsamlı pazar tazelemesi uygun.                                                                                                                                                                                                                                                                                                      |
+
+Her koşu sonunda raporlanır: tur · süre · maliyet · ilerletilen görev ·
+**anlamlı görev başına maliyet** · **yeniden kullanılan vs yeni çekilen veri**.
+
+İlk hafta sert tavan **5,00 USD**. Hedef, günlük koşunun bu tavana sürekli
+yaklaşmaması. 3–5 günlük gerçek veriden sonra bütçe yeniden değerlendirilecek.
+Bütçe bir tavandır, hedef değildir.

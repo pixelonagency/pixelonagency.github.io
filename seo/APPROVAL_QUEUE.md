@@ -48,6 +48,14 @@ penceresini temiz tutmak için beklemek tercih edilir. Karar sahibindedir.
 
 **Açık madde:** kapak görseli seçilmedi — bkz. `SEO-2026-0082`.
 
+### `SEO-2026-0083` — Dentasay vaka çalışması · **P0** · OWNER_INPUT_REQUIRED
+
+Kaynak denetimi tamamlandı: `seo/private/drafts/SEO-2026-0083-source-audit.md`
+
+7 hizmet sayfasında doğrulanmış anlatım + blog teslimat listesi mevcut → **PARTIAL**,
+5 sorulukla tamamlanabilir. Diğer iki proje (`dentasay-kurumsal-kimlik`, `ella-scarf`)
+**NO** — kaynak tek cümle, yazmak uydurmak olur.
+
 ---
 
 ## Ölçümde (müdahale edilmeyecek)

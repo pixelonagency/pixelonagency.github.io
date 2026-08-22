@@ -65,6 +65,9 @@ fi
 # --- Koşu öncesi durum (son kapı için) -----------------------------------------
 HEAD_BEFORE="$(git rev-parse HEAD)"
 PROTECTED_BEFORE="$(git status --porcelain -- "${PROTECTED[@]}" | shasum -a256 | cut -d' ' -f1)"
+# Kök dizin dosya listesi. `bun -e` argv kayması bir kez kökte `0` adlı dosya
+# üretmişti; kimse bakmadığı için fark edilmesi zor. Artık kapıda tutuluyor.
+ROOT_FILES_BEFORE="$(ls -A1 | sort | shasum -a256 | cut -d' ' -f1)"
 
 log "BAŞLADI pid=$$ bütçe=\$$BUDGET_USD süre=${TIMEOUT_SEC}s"
 
@@ -104,6 +107,13 @@ fi
 if git status --porcelain -- src/content | grep -q .; then
   VIOLATION="${VIOLATION:+$VIOLATION; }src/content'e yazıldı"
 fi
+# Kökte beklenmeyen dosya oluştu mu?
+ROOT_FILES_AFTER="$(ls -A1 | sort | shasum -a256 | cut -d' ' -f1)"
+if [ "$ROOT_FILES_BEFORE" != "$ROOT_FILES_AFTER" ]; then
+  NEWROOT="$(git status --porcelain --untracked-files=all -- ':(top)*' 2>/dev/null | grep -E '^\?\? [^/]+$' | sed 's/^?? //' | tr '\n' ' ')"
+  VIOLATION="${VIOLATION:+$VIOLATION; }kök dizinde beklenmeyen dosya: ${NEWROOT:-bilinmiyor}"
+  log "İHLAL — kökte yeni dosya: ${NEWROOT:-bilinmiyor}"
+fi
 
 if [ -n "$VIOLATION" ]; then
   log "SINIR İHLALİ: $VIOLATION — koşu FAILED sayıldı, değişiklikler geri alındı"
@@ -120,6 +130,15 @@ log "maliyet=\$$COST"
 
 bun "$ROOT/scripts/seo/record-run.mjs" "$PRIVATE_STATE" "agent" "$CLAUDE_EXIT" "$NOW" "$LOG" \
   "$COST" "$BUDGET_USD" "$VIOLATION" >>"$LOG" 2>&1
+
+# Koşu metrikleri — bütçe ayarı için gerçek veri
+python3 -c "
+import json,sys
+try:
+    d=json.load(open(sys.argv[1]))
+    print('turns=%s duration=%.1fdk cost=\$%.4f' % (d.get('num_turns'), (d.get('duration_ms') or 0)/60000, d.get('total_cost_usd') or 0))
+except Exception as e: print('metrik okunamadı:', e)
+" "$LOG_DIR/agent-$STAMP.json" >>"$LOG" 2>&1
 
 log "BİTTİ exit=$CLAUDE_EXIT"
 exit 0   # başarısız koşu launchd'i throttle etmesin
