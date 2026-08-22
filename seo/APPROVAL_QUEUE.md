@@ -62,14 +62,16 @@ hizmet sayfalarında mevcut Dentasay kartına `href`. Bileşen değişikliği yo
 
 ### `SEO-2026-0082` — 0081 kapak görseli · **READY_FOR_APPROVAL**
 
-Özgün kapak üretimi onay bekliyor. **Eski healthcare kapağı tekrar kullanılmayacak.**
-Brief 0081 taslağının "Görsel brief" bölümünde. `SEO-2026-0081`'i bloklıyor.
+Görsel **üretildi**: `src/assets/images/blog/healthcare-digital-advertising-cover.webp`
+1920×1080 · WebP q86 · 181 KB. Eski healthcare kapağı kullanılmadı.
+QA: metin yok · logo yok · insan yok · tıbbi görsel yok · aksan `#cfff00`, %0,11 alan.
+Yayınlanmadı — hiçbir sayfadan referans verilmiyor.
 
 ### `SEO-2026-0081` — EN healthcare digital advertising · **APPROVED_FOR_PREPARATION**
 
 İçerik paketi REV-2 ile hazır: 3 birinci el resmî kaynak, koşullu politika dili,
 3 canlı iç bağlantı (Dentasay dâhil), yamyamlık + YMYL QA temiz, ~1.657 kelime.
-Tek blokaj kapak görseli → `SEO-2026-0082`.
+Kapak görseli bağlandı. **Blokaj kalmadı — yayın için sahip onayı bekleniyor.**
 
 `SEO-2026-0084` (dentasay-kurumsal-kimlik) ve `SEO-2026-0085` (ella-scarf) **DEFERRED** —
 kaynak yetersiz, otonom kuyruğu meşgul etmiyorlar.
