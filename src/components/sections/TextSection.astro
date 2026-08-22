@@ -3,6 +3,7 @@ import type { PageSection } from '../../content/page-schema';
 import { parseHighlights } from '../../lib/highlight';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
 
 type Text = Extract<PageSection, { type: 'text' }>;
 
@@ -35,9 +36,9 @@ const highlightSegments = section.highlight ? parseHighlights(section.highlight)
         </div>
         <div class="tsplit__body" data-reveal data-reveal-index={1}>
           {paragraphs.map((paragraph) => (
-            <p class="tsplit__paragraph">{paragraph}</p>
+            <p class="tsplit__paragraph" set:html={inlineHtml(paragraph)} />
           ))}
-          {section.highlight && <p class="tsplit__closing">{section.highlight}</p>}
+          {section.highlight && <p class="tsplit__closing" set:html={inlineHtml(section.highlight)} />}
         </div>
       </div>
     </Section>

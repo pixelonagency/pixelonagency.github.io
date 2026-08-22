@@ -1,0 +1,197 @@
+title: Healthcare Marketing
+navLabel: Healthcare Marketing
+order: 11
+
+seo:
+  title: Healthcare Marketing Agency | Pixelon
+  description: >-
+    Pixelon is a healthcare marketing agency helping clinics and healthcare
+    brands grow with websites, content, paid media and enquiry systems.
+
+hero:
+  eyebrow: Healthcare Marketing
+  headingLines:
+    - "Healthcare Marketing That Turns Attention Into Patient Enquiries."
+  lead: >-
+    We work with clinics and healthcare brands that want steady, measurable
+    growth in their target market — not just more traffic, but more qualified
+    enquiries.
+  tagline: >-
+    Website, content, paid media and enquiry tracking planned as one system,
+    with communication that stays careful and honest.
+  whatsappMessage: "Hello Pixelon, I would like to talk about healthcare marketing for our clinic."
+
+intro:
+  eyebrow: Why It Is Different
+  heading: In Healthcare, Trust Comes Before Traffic
+  body: |-
+    People choosing a clinic behave differently from people choosing a product. They research for longer, compare more carefully, and look for reasons to trust before they look for reasons to book. A campaign that performs well in another sector can underperform here for reasons that have nothing to do with the media buying.
+
+    So we treat this as one connected system rather than a set of separate channels. The website has to answer the questions people actually ask. The content has to be accurate and readable. The advertising has to reach people while they are still deciding. And the enquiry has to reach a human quickly, or the rest of the work is wasted. We wrote about [how we approach this planning](/en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands/) in more detail.
+
+    We also keep the communication careful. We do not promise medical outcomes, we do not publish claims we cannot support, and we do not use patient stories without permission. In this sector, careless marketing is a risk to the brand, not just an ineffective use of budget.
+
+scope:
+  eyebrow: What We Do
+  heading: The Parts of a Healthcare Growth System
+  items:
+    - title: Website and User Experience
+      description: >-
+        Treatment pages that explain rather than sell, visible practitioner and
+        clinic credentials, and an enquiry path that works on a phone. Many
+        clinic websites lose people at the point where they have already
+        decided but cannot find how to get in touch.
+    - title: Content and Search Visibility
+      description: >-
+        Content built around the questions patients actually search for,
+        written to be accurate and readable rather than stuffed with keywords.
+        Technical structure and multilingual setup where the audience needs it.
+    - title: Google Ads and Meta Ads
+      description: >-
+        Search captures people already looking for a treatment; social builds
+        awareness and consideration. We plan them for different jobs rather
+        than running the same message on both.
+    - title: Enquiry Tracking and CRM
+      description: >-
+        Form, phone and WhatsApp enquiries collected in one place, with
+        response times visible. The speed of the first reply often decides the
+        outcome.
+    - title: Conversion Measurement
+      description: >-
+        Where a project needs it, analytics and conversion tracking are set up
+        before campaigns start, so spend can be judged on enquiries rather than
+        on clicks.
+    - title: Brand and Visual Identity
+      description: >-
+        Consistent identity across website, social and print, so a clinic looks
+        like the same organisation everywhere a patient encounters it.
+
+why:
+  eyebrow: How We Work
+  heading: Standards We Do Not Bend
+  items:
+    - title: Evidence Before Claims
+      description: >-
+        We publish what can be supported. No invented statistics, no "leading"
+        or "number one" language, no borrowed case study numbers.
+    - title: No Medical Promises
+      description: >-
+        Marketing communication describes the service, the process and the
+        experience — not the clinical outcome. We do not write copy that
+        implies a guaranteed result.
+    - title: Sector-Specific Sensitivity
+      description: >-
+        Healthcare advertising carries expectations that other sectors do not,
+        and each platform applies its own rules. We write with that in mind and
+        flag anything that looks risky, then work with your own advisors on the
+        wording where it matters.
+    - title: Measured, Not Assumed
+      description: >-
+        Enquiries are tracked and attributed. If a channel is not working we
+        say so, rather than reallocating the budget quietly.
+    - title: Multilingual Where It Matters
+      description: >-
+        Where a clinic serves more than one language group, content is written
+        for each audience rather than machine-translated.
+    - title: Patient Privacy
+      description: >-
+        Patient information and imagery are used only with explicit permission,
+        and never as a marketing convenience.
+
+process:
+  eyebrow: Step by Step
+  heading: How an Engagement Runs
+  steps:
+    - title: Discovery
+      description: >-
+        Services, patient profile, referral sources, competitive position and
+        what has already been tried.
+    - title: Audit
+      description: >-
+        Website, content, tracking setup and existing campaigns. We look at
+        what the data says before recommending anything.
+    - title: Strategy
+      description: >-
+        Which audiences, which channels, which messages, and how success will
+        be measured.
+    - title: Build and Launch
+      description: >-
+        Website changes, content production, campaign setup and tracking
+        implementation.
+    - title: Measure and Adjust
+      description: >-
+        Regular reporting on enquiries rather than vanity metrics, with
+        adjustments made on evidence.
+
+projects:
+  eyebrow: Healthcare Work
+  heading: Clinics and Practitioners We Have Worked With
+  items:
+    - eyebrow: Dermatology
+      title: Dr. Ayşe Çinkaya Kahveci
+      description: >-
+        We conveyed dermatology and aesthetics expertise to the target audience
+        through a multilingual website, social media and digital advertising.
+      href: /en/projects/dr-ayse-cinkaya-kahveci/
+    - eyebrow: Plastic Surgery
+      title: Op. Dr. İsmail Büyükçayır
+      description: >-
+        Personal brand identity and social media management for a plastic and
+        reconstructive surgeon.
+      href: /en/projects/op-dr-ismail-buyukcayir/
+
+value:
+  eyebrow: Fit
+  heading: Who This Service Is For
+  lead: >-
+    This service is built for healthcare organisations growing in their target
+    market. If most of your patients travel from other countries, our [health
+    tourism consulting](/en/services/health-tourism-consulting/) service is the
+    closer fit — and we will tell you so.
+  bullets:
+    - Private clinics and polyclinics building a steady flow of local enquiries
+    - Practitioners establishing a professional presence under their own name
+    - Dental, dermatology and aesthetics practices in competitive local markets
+    - Healthcare groups that need consistent communication across several locations
+    - Clinics running ads without knowing which spend produces enquiries
+    - Healthcare brands whose website no longer reflects the standard of their care
+
+cta:
+  eyebrow: Let's Talk
+  heading: Let's Look at Where Your Enquiries Are Coming From
+  lead: >-
+    We can review your current website, campaigns and enquiry flow and tell you
+    what we would change. The first conversation is a diagnosis, not a pitch.
+
+faq:
+  eyebrow: Common Questions
+  heading: Frequently Asked Questions
+  items:
+    - question: What does a healthcare marketing agency actually do?
+      answer: >-
+        It plans and runs the parts that bring patients to a clinic and turn
+        interest into an enquiry: the website, the content, the advertising and
+        the systems that track what happens next. The value is in connecting
+        them, not in running each one separately.
+    - question: How is healthcare marketing different from other sectors?
+      answer: >-
+        The decision takes longer and trust matters more than persuasion.
+        Tactics that work in retail can damage a clinic's credibility, so the
+        tone and the evidence behind every claim need more care.
+    - question: Do you work with clinics outside Turkey?
+      answer: >-
+        Yes. We already run multilingual websites and campaigns for clinics
+        reaching audiences in more than one language, and content is produced
+        for each market rather than translated. If most of your patients travel
+        internationally, our health tourism consulting service is usually the
+        better starting point.
+    - question: How do you measure whether it is working?
+      answer: >-
+        By tracked enquiries — form, phone and WhatsApp — attributed back to
+        their source, with response times visible. Impressions and clicks are
+        diagnostic, not the goal.
+    - question: Can you guarantee more patients?
+      answer: >-
+        No, and we would be careful with anyone who does. We can commit to a
+        measured system, honest reporting and adjustments based on evidence.
+        Clinical and commercial outcomes depend on far more than marketing.

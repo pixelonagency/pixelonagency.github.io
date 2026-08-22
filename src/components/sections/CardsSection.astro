@@ -4,6 +4,7 @@ import SectionHead from '../SectionHead.astro';
 import SectorIcon from '../SectorIcon.astro';
 import StarRating from '../StarRating.astro';
 import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
 
 type Cards = Extract<PageSection, { type: 'cards' }>;
 
@@ -76,7 +77,7 @@ const numberedCards = kind === 'grid' && !hasRatings;
           {section.items.map((item, index) => (
             <div class="split__item" data-reveal data-reveal-index={index}>
               <h3 class="split__title">{item.title}</h3>
-              <p class="split__text">{item.description}</p>
+              <p class="split__text" set:html={inlineHtml(item.description)} />
             </div>
           ))}
         </div>
@@ -101,7 +102,7 @@ const numberedCards = kind === 'grid' && !hasRatings;
               </p>
             )}
             <h3 class="panels__title">{item.title}</h3>
-            <p class="panels__text">{item.description}</p>
+            <p class="panels__text" set:html={inlineHtml(item.description)} />
           </div>
         ))}
       </div>
@@ -150,8 +151,18 @@ const numberedCards = kind === 'grid' && !hasRatings;
                 <>
                   {item.eyebrow && <p class="cards__eyebrow">{item.eyebrow}</p>}
                   <h3 class="h3 cards__title">{item.title}</h3>
-                  <p class="cards__text">{content?.body}</p>
-                  {content?.strong && <p class="cards__strong">{content.strong}</p>}
+                  {/* Kartın kendisi bağlantıysa gövdeye bağlantı basılmaz: iç içe <a> geçersiz HTML. */}
+                  {item.href ? (
+                    <p class="cards__text">{content?.body}</p>
+                  ) : (
+                    <p class="cards__text" set:html={inlineHtml(content?.body ?? '')} />
+                  )}
+                  {content?.strong &&
+                    (item.href ? (
+                      <p class="cards__strong">{content.strong}</p>
+                    ) : (
+                      <p class="cards__strong" set:html={inlineHtml(content.strong)} />
+                    ))}
                   {item.href && (
                     <span class="cards__arrow" aria-hidden="true">
                       →

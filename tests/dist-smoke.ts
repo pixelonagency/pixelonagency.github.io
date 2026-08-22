@@ -38,6 +38,7 @@ const SERVICE_SLUGS = [
   'video-ve-produksiyon',
   'saglik-turizmi-danismanligi',
   'crm-ve-dijital-donusum',
+  'kurumsal-web-tasarim',
 ] as const;
 
 const htmlPath = (route: string): string => join(DIST, route === '/' ? 'index.html' : `${route.slice(1)}/index.html`);
@@ -205,6 +206,51 @@ describe('prototype leftovers', () => {
     for (const [route, source] of html) {
       const body = source.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '');
       expect({ route, found: />[^<]*\bundefined\b/.test(body) }).toEqual({ route, found: false });
+    }
+  });
+
+  test('no page renders raw Markdown link syntax', () => {
+    // YAML içerik alanları (hizmet sayfalarındaki intro/scope/faq metinleri) Markdown
+    // RENDER ETMEZ; oraya yazılan bir bağlantı sayfaya `[metin](/yol)` olarak basılır.
+    // Bu bir kez yaşandı ve yalnızca gözle fark edildi. Kapıda tutuyoruz.
+    for (const [route, source] of html) {
+      const body = source.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '');
+      const match = /\[[^\]\n]{2,80}\]\((?:\/|https?:)[^)\s]{2,120}\)/.exec(body);
+      expect({ route, rawMarkdown: match?.[0] ?? null }).toEqual({ route, rawMarkdown: null });
+    }
+  });
+});
+
+describe('inline links in body copy', () => {
+  // Hizmet YAML gövde metinlerinde `[etiket](/yol)` yazılabilir; SEO-2026-0070.
+  // `html` haritası yalnızca TR rotalarını tuttuğu için dosyalar doğrudan okunur.
+  const read = (route: string): string => {
+    const file = join(DIST, `${route.slice(1)}/index.html`);
+    return existsSync(file) ? readFileSync(file, 'utf8') : '';
+  };
+
+  const BODY_LINKS: Array<[string, string]> = [
+    ['/hizmetlerimiz/kurumsal-web-tasarim', '/blog/kurumsal-web-sitesi-nasil-olmali/'],
+    ['/hizmetlerimiz/kurumsal-web-tasarim', '/hizmetlerimiz/ux-ui-tasarimi/'],
+    ['/hizmetlerimiz/kurumsal-web-tasarim', '/web-sitesi-yaptir/'],
+    ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/kurumsal-web-tasarim/'],
+    ['/en/services/healthcare-marketing', '/en/services/health-tourism-consulting/'],
+    ['/en/services/health-tourism-consulting', '/en/services/healthcare-marketing/'],
+  ];
+
+  for (const [route, target] of BODY_LINKS) {
+    test(`${route} → ${target} gerçek bağlantı olarak render edilir`, () => {
+      const source = read(route);
+      expect({ route, target, linked: source.includes(`href="${target}"`) }).toEqual({ route, target, linked: true });
+    });
+  }
+
+  test('hiçbir sayfada iç içe <a> yok', () => {
+    for (const file of allHtmlFiles(DIST)) {
+      if (file.includes('/admin/')) continue;
+      const source = readFileSync(file, 'utf8');
+      const nested = /<a\b[^>]*>(?:(?!<\/a>).)*?<a\b/s.test(source);
+      expect({ file, nested }).toEqual({ file, nested: false });
     }
   });
 });

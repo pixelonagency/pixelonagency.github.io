@@ -131,6 +131,8 @@ article:
 
         Net mesaj, sade menü, mobil uyum, hız ve belirgin bir eylem çağrısı; bu beşi yerindeyse geri kalan iyileştirmeler çok daha kolay ilerliyor. Ölçüm altyapısı kuruluysa da hangi iyileştirmenin işe yaradığı tahmin edilmiyor, görülüyor.
 
+        Bu maddeleri kendi sitenizde tek tek uygulamak hem zaman hem teknik karar gerektiriyor. Siteyi baştan kurmayı ya da mevcut yapıyı bu standarda taşımayı düşünüyorsanız, [nasıl çalıştığımızı burada anlattık](/hizmetlerimiz/kurumsal-web-tasarim/).
+
     - type: cta
       heading: Mevcut sitenizi birlikte gözden geçirelim.
       text: Sitenizin hangi noktada ziyaretçi kaybettiğini ve hangi düzenlemelerin öncelikli olduğunu birlikte çıkaralım.

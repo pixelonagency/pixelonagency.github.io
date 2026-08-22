@@ -42,8 +42,13 @@ const strippedKeys = (raw: Record<string, unknown>, parsed: Record<string, unkno
 describe('services collection', () => {
   const files = yamlFiles('services');
 
-  test('varsayılan dilde on hizmet sayfası bulunur', () => {
-    expect(files.filter((f) => f.startsWith('tr/'))).toHaveLength(10);
+  test('her dilde aynı sayıda hizmet sayfası bulunur', () => {
+    // Sabit sayı yerine diller arası eşitlik: yeni hizmet eklendiğinde test
+    // kırılmaz, ama bir dilde eklenip diğerinde unutulursa kırılır.
+    const tr = files.filter((f) => f.startsWith('tr/')).length;
+    const en = files.filter((f) => f.startsWith('en/')).length;
+    expect({ tr, en }).toEqual({ tr: en, en });
+    expect(tr).toBeGreaterThanOrEqual(10);
   });
 
   for (const file of files) {
@@ -103,13 +108,17 @@ describe('every page and service has a usable hero heading', () => {
     });
   }
 
-  test('her dilde hizmet sıraları 1..N kesintisizdir', async () => {
-    const orders: number[] = [];
-    for (const file of yamlFiles('services').filter((f) => f.startsWith('tr/'))) {
-      orders.push(makeServiceSchema().parse(await readYaml('services', file)).order);
-    }
-    expect([...orders].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-  });
+  for (const lang of ['tr', 'en']) {
+    test(`${lang}: hizmet sıraları 1..N kesintisizdir`, async () => {
+      const orders: number[] = [];
+      for (const file of yamlFiles('services').filter((f) => f.startsWith(`${lang}/`))) {
+        orders.push(makeServiceSchema().parse(await readYaml('services', file)).order);
+      }
+      // Beklenen dizi dosya sayısından türetilir; boşluk veya tekrar hâlâ kırar.
+      const expected = Array.from({ length: orders.length }, (_, i) => i + 1);
+      expect([...orders].sort((a, b) => a - b)).toEqual(expected);
+    });
+  }
 });
 
 describe('team collection', () => {

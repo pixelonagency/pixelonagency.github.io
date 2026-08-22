@@ -4,6 +4,7 @@ import { parseHighlights } from '../../lib/highlight';
 import CtaButton from '../CtaButton.astro';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
 
 type Cta = Extract<PageSection, { type: 'cta' }>;
 
@@ -38,7 +39,7 @@ const spotMarquee = section.ctas[0]?.label?.replace(/\s*→\s*$/, '') ?? section
         </span>
         {section.eyebrow && <p class="cta-spot__eyebrow">{section.eyebrow}</p>}
         <h2 class="cta-spot__heading">{section.heading}</h2>
-        {section.lead && <p class="cta-spot__lead">{section.lead}</p>}
+        {section.lead && <p class="cta-spot__lead" set:html={inlineHtml(section.lead)} />}
         {section.ctas.length > 0 && (
           <div class="cta-spot__actions">
             {section.ctas.map((item, index) => (

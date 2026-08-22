@@ -2,6 +2,7 @@
 import type { PageSection } from '../../content/page-schema';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
 
 type Faq = Extract<PageSection, { type: 'faq' }>;
 
@@ -38,7 +39,7 @@ const { section } = Astro.props;
             aria-labelledby={`faq-trigger-${index}`}
             hidden={index !== 0}
           >
-            <p class="faq__answer">{item.answer}</p>
+            <p class="faq__answer" set:html={inlineHtml(item.answer)} />
           </div>
         </div>
       ))

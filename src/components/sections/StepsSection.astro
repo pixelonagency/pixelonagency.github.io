@@ -2,6 +2,7 @@
 import type { PageSection } from '../../content/page-schema';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
 
 type Steps = Extract<PageSection, { type: 'steps' }>;
 
@@ -29,7 +30,7 @@ const steps = section.items.map((item, index) => ({
             {item.number}
           </span>
           <h3 class="h3 steps__title">{item.title}</h3>
-          <p class="body-text steps__text">{item.description}</p>
+          <p class="body-text steps__text" set:html={inlineHtml(item.description)} />
         </li>
       ))
     }
