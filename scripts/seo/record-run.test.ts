@@ -48,3 +48,22 @@ describe('recordRun', () => {
     expect(s.warnings).toEqual(['x']);
   });
 });
+
+describe('ajan metrikleri', () => {
+  test('maliyet, bütçe ve ihlal kaydedilir', () => {
+    const s = recordRun({}, 'agent', 0, 'T1', '/log', { costUsd: '4.1897', budgetUsd: '5.00', violation: '' });
+    expect(s.scheduler.agent).toMatchObject({ lastCostUsd: 4.1897, budgetUsd: 5, lastViolation: null });
+  });
+
+  test('ihlal varsa metin olarak saklanır ve koşu başarısız sayılır', () => {
+    const s = recordRun({}, 'agent', 90, 'T1', '/log', { violation: 'korunan yollar değişti' });
+    expect(s.scheduler.agent.lastViolation).toBe('korunan yollar değişti');
+    expect(s.scheduler.agent.consecutiveFailures).toBe(1);
+  });
+
+  test('ekstra verilmezse ajan alanları YAZILMAZ — diğer modlar kirlenmez', () => {
+    const s = recordRun({}, 'daily', 0, 'T1', '/log');
+    expect(s.scheduler.daily).not.toHaveProperty('lastCostUsd');
+    expect(s.scheduler.daily).not.toHaveProperty('budgetUsd');
+  });
+});

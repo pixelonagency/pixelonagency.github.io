@@ -1,9 +1,9 @@
 # PIXELON SEO — APPROVAL QUEUE
 
 ```text
-READY FOR APPROVAL: 0
+READY FOR APPROVAL: 1
 MEASURING: 2
-OWNER DECISION: 1
+OWNER DECISION: 2
 LIMIT: 3
 ```
 
@@ -26,7 +26,27 @@ REVISE SEO-2026-00XX: [talimat]         revize et, tekrar onaya sun
 
 ## Onay bekleyen
 
-Şu anda onay bekleyen iş yok. Kuyruk boş — sistem yeni yayınlanabilir iş üretebilir.
+### `SEO-2026-0081` — Yeni EN blog yazısı: sağlık sektöründe dijital reklam · READY_FOR_APPROVAL
+
+Taslak hazır, yerel gizli katmanda (`seo/private/drafts/`). ~1.450 kelime,
+2 iç bağlantı (ikisi de canlı doğrulandı), SSS bloğu dahil.
+
+**Gerekçe (toplulaştırılmış):** Son 90 günde sitenin toplam arama gösteriminin
+**%72,5'i** İngilizce sağlık pazarlaması kümesinden geliyor ve bu kümenin
+tıklaması **0**. Gösterimin %94'ü 21. sıranın altında — bu bir başlık/CTR sorunu
+değil, sıralama derinliği sorunu. Küme 47 sorgu içeriyor ve neredeyse tamamı
+**tek bir mevcut yazıya** düşüyor.
+
+Taslak, bu kümenin **kapsanmamış ve ilk sayfaya en yakın** alt kümesini
+hedefliyor (80 gösterim, ağırlıklı ortalama pozisyon 26,4; sitede karşılığı olan
+özel bir sayfa yok). Mevcut yazının konumunu koruduğu alt kümeye dokunulmuyor —
+niyet çakışması yok.
+
+**Yayın zamanlaması önerisi:** 29 Ağustos kontrol noktasından **sonra**.
+Yazı, şu anda MEASURING durumundaki hizmet sayfasına bağlantı veriyor; ölçüm
+penceresini temiz tutmak için beklemek tercih edilir. Karar sahibindedir.
+
+**Açık madde:** kapak görseli seçilmedi — bkz. `SEO-2026-0082`.
 
 ---
 
@@ -38,6 +58,8 @@ REVISE SEO-2026-00XX: [talimat]         revize et, tekrar onaya sun
 Yayın: 2026-08-22 11:40 · Kontrol: **29 Ağu** / **5 Eyl** / **19 Eyl**
 Ölçülen: gösterim · tıklama · CTR · ortalama konum · sorgular · landing page performansı
 
+Bugün canlı doğrulama: her iki URL de **200**, yönlendirme yok.
+
 **Kural:** yeterli veri oluşmadan büyük yeniden yazım yapılmaz.
 
 ### `SEO-2026-0069` — Eski URL yönlendirmeleri · MEASURING
@@ -45,13 +67,16 @@ Yayın: 2026-08-22 11:40 · Kontrol: **29 Ağu** / **5 Eyl** / **19 Eyl**
 12 kural canlı, 301 → tek hop → 200. Baseline 2026-08-22 11:40'ta donduruldu.
 Kontrol: **29 Ağu** / **5 Eyl** / **19 Eyl**
 
+Bugün canlı doğrulama: örneklenen eski URL'ler **301, tek hop**; kanonik
+sondaki-bölü yönlendirmeleri de **301, tek hop**; `http://` → `https://` çalışıyor.
+
 **Kural:** sıralama değişimi 301'e atfedilmez; yalnızca gözlenen sinyal raporlanır.
 
 ---
 
 ## Sahip kararı bekleyen
 
-### `SEO-2026-0073` — İki yeni sayfa için hero görseli · P2
+### `SEO-2026-0073` — Hizmet sayfalarında hero görseli · P2
 
 22 hizmet sayfasının hiçbirinde hero görseli yok ve `ServiceDetail` `cover` alanını
 okumuyor. İki sayfaya görsel eklemek site bütünlüğünü bozardı.
@@ -59,4 +84,10 @@ okumuyor. İki sayfaya görsel eklemek site bütünlüğünü bozardı.
 **Seçenekler:** (a) görselsiz devam — mevcut desene uyar; (b) 22 hizmet sayfasına
 birden görsel sistemi kur — ayrı ve büyük bir iş. Brief'ler hazır bekliyor.
 
-_Bu kayıt onay kuyruğu limitine sayılmaz; yayın engellemez._
+### `SEO-2026-0082` — `SEO-2026-0081` için kapak görseli · P2
+
+**Seçenekler:** (a) mevcut sağlık pazarlaması kapak görselini paylaş — sıfır
+maliyet, iki yazı aynı görseli kullanır; (b) `seo/VISUAL-SYSTEM.md` kurallarına
+göre yeni görsel üret — ayrı iş.
+
+_Sahip kararı kayıtları onay kuyruğu limitine sayılmaz; yayın engellemez._
