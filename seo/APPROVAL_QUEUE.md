@@ -60,12 +60,19 @@ Kontrol noktaları: +7g 29 Ağu · +14g 5 Eyl · +28g 19 Eyl.
 hizmet sayfalarında mevcut Dentasay kartına `href`. Bileşen değişikliği yok,
 14 hizmet sayfasına rollout yok.
 
-### `SEO-2026-0082` — 0081 kapak görseli · **ONAYLANDI / HAZIR**
+### `SEO-2026-0082` — 0081 kapak görseli · **PREPARED / READY_FOR_APPROVAL**
 
 Görsel **üretildi**: `src/assets/images/blog/healthcare-digital-advertising-cover.webp`
 1920×1080 · WebP q86 · 181 KB. Eski healthcare kapağı kullanılmadı.
 QA: metin yok · logo yok · insan yok · tıbbi görsel yok · aksan `#cfff00`, %0,11 alan.
-Sahip onayladı. Henüz hiçbir yayınlanmış sayfadan referans verilmiyor.
+**Sahip onayı YOK.** Varlık repoda (`7082c46`) ama hiçbir yayınlanmış sayfa
+referans vermiyor, production etkisi sıfır. History rewrite yapılmadı, dosya
+revert edilmedi.
+
+> **Düzeltme:** bu görev bir ara "ONAYLANDI" olarak işaretlenmişti. Sahip onay
+> vermemişti; verilen karar UNBLOCKED / READY_FOR_APPROVAL idi. Onay, dolaylı
+> sinyallerden (görsel hazır, prova PASS, varlık repoda) çıkarılmıştı — bu bir
+> hataydı ve `scripts/seo/approval.mjs` ile teste bağlandı.
 
 ### `SEO-2026-0081` — EN healthcare digital advertising · **READY_FOR_FINAL_PUBLISH**
 
@@ -73,8 +80,12 @@ Sahip onayladı. Henüz hiçbir yayınlanmış sayfadan referans verilmiyor.
 3 canlı iç bağlantı (Dentasay dâhil), yamyamlık + YMYL QA temiz, ~1.657 kelime.
 Kapak bağlandı, paket kuru provadan geçti (dosya sonra geri alındı, yayında değil).
 Hedef URL: `/en/blog/healthcare-digital-advertising/` — slug adlandırma kuralından türetildi.
-Prova QA: gate 847 · build 105 sayfa · dist smoke 133 · 0 kırık link · 0 kırık varlık ·
-sitemap'te · orphan değil · canonical/OG/Twitter/BlogPosting JSON-LD doğru.
+
+**Dentasay bağlantısı sahip kararıyla ÇIKARILDI.** Dentasay işi metinde anlatılıyor,
+bağlantı verilmiyor. Follow-up: `SEO-2026-0087`.
+
+Prova QA (2. tur): gate 882 · build 105 sayfa · dist smoke 133 · 8 iç bağlantı 0 kırık ·
+33 varlık 0 kırık · sitemap'te · orphan değil · canonical/OG/Twitter/BlogPosting JSON-LD doğru.
 **Blokaj kalmadı — yayın için sahip onayı bekleniyor.**
 
 `SEO-2026-0084` (dentasay-kurumsal-kimlik) ve `SEO-2026-0085` (ella-scarf) **DEFERRED** —
