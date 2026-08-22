@@ -60,18 +60,22 @@ Kontrol noktaları: +7g 29 Ağu · +14g 5 Eyl · +28g 19 Eyl.
 hizmet sayfalarında mevcut Dentasay kartına `href`. Bileşen değişikliği yok,
 14 hizmet sayfasına rollout yok.
 
-### `SEO-2026-0082` — 0081 kapak görseli · **READY_FOR_APPROVAL**
+### `SEO-2026-0082` — 0081 kapak görseli · **ONAYLANDI / HAZIR**
 
 Görsel **üretildi**: `src/assets/images/blog/healthcare-digital-advertising-cover.webp`
 1920×1080 · WebP q86 · 181 KB. Eski healthcare kapağı kullanılmadı.
 QA: metin yok · logo yok · insan yok · tıbbi görsel yok · aksan `#cfff00`, %0,11 alan.
-Yayınlanmadı — hiçbir sayfadan referans verilmiyor.
+Sahip onayladı. Henüz hiçbir yayınlanmış sayfadan referans verilmiyor.
 
-### `SEO-2026-0081` — EN healthcare digital advertising · **APPROVED_FOR_PREPARATION**
+### `SEO-2026-0081` — EN healthcare digital advertising · **READY_FOR_FINAL_PUBLISH**
 
 İçerik paketi REV-2 ile hazır: 3 birinci el resmî kaynak, koşullu politika dili,
 3 canlı iç bağlantı (Dentasay dâhil), yamyamlık + YMYL QA temiz, ~1.657 kelime.
-Kapak görseli bağlandı. **Blokaj kalmadı — yayın için sahip onayı bekleniyor.**
+Kapak bağlandı, paket kuru provadan geçti (dosya sonra geri alındı, yayında değil).
+Hedef URL: `/en/blog/healthcare-digital-advertising/` — slug adlandırma kuralından türetildi.
+Prova QA: gate 847 · build 105 sayfa · dist smoke 133 · 0 kırık link · 0 kırık varlık ·
+sitemap'te · orphan değil · canonical/OG/Twitter/BlogPosting JSON-LD doğru.
+**Blokaj kalmadı — yayın için sahip onayı bekleniyor.**
 
 `SEO-2026-0084` (dentasay-kurumsal-kimlik) ve `SEO-2026-0085` (ella-scarf) **DEFERRED** —
 kaynak yetersiz, otonom kuyruğu meşgul etmiyorlar.
