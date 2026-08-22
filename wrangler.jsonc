@@ -10,6 +10,14 @@
   // Staging yayını : bunx wrangler deploy  → *.workers.dev (Cloudflare oturumu gerekir).
   "name": "pixelon-web-staging",
   "compatibility_date": "2026-08-22",
+  // Üretim ortamı — `wrangler deploy --env production`.
+  // Custom domain/route BURADA DA TANIMLI DEĞİL: alan adı bağlama runbook'ta
+  // insan eliyle yapılır, iş akışına gömülmez.
+  "env": {
+    "production": {
+      "name": "pixelon-web",
+    },
+  },
   "assets": {
     "directory": "./dist",
     // GitHub Pages davranışıyla eşleşsin: /yol → /yol/ (301) ve dizin index'i servis edilir.

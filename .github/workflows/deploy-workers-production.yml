@@ -66,12 +66,19 @@ jobs:
         run: bun run secrets
 
       - name: Build
+        env:
+          # `deploy.yml` ile aynı: form erişim anahtarı build zamanında enjekte edilir.
+          # Bu adım olmadan iletişim formu boş anahtarla render edilir ve her gönderim
+          # sessizce başarısız olur. Cutover parity testinde yakalandı.
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: bun run build
 
       - name: Generate redirect map
         run: bun run seo:redirects
 
       - name: Rebuild with generated redirects
+        env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: bun run build
 
       - name: Validate redirect and header maps
@@ -85,6 +92,14 @@ jobs:
           # Staging noindex kuralı üretim host'una uygulanmamalı: kural host bazlı olmalı.
           if grep -qE '^/\*' dist/_headers; then
             echo "host'suz genel kural bulundu — noindex üretime sızabilir"; exit 1
+          fi
+          # Form anahtarı gömülmemişse üretime çıkmamalı: her lead gönderimi sessizce
+          # başarısız olurdu. Anahtarın DEĞERİ değil, boş olmadığı kontrol edilir.
+          if grep -qE 'name="access_key" value(=""|>)' dist/index.html; then
+            echo "HATA: Web3Forms anahtarı boş — secret build'e ulaşmamış"; exit 1
+          fi
+          if grep -q 'local-test-key' dist/index.html; then
+            echo "HATA: yerel test anahtarı derlemeye sızmış"; exit 1
           fi
           echo "yönlendirme kuralı: $(grep -cE '^/' dist/_redirects)"
 

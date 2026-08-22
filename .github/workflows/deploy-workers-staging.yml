@@ -46,6 +46,11 @@ jobs:
         run: bun run secrets
 
       - name: Build
+        env:
+          # `deploy.yml` ile aynı: form erişim anahtarı build zamanında enjekte edilir.
+          # Bu adım olmadan iletişim formu boş anahtarla render edilir ve her gönderim
+          # sessizce başarısız olur. Cutover parity testinde yakalandı.
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: bun run build
 
       # Yönlendirme haritası sitemap'ten üretilir; sayfa eklendiğinde kural
@@ -55,6 +60,8 @@ jobs:
 
       # `_redirects` üretimi dist'e girmediyse yeniden derlenir.
       - name: Rebuild with generated redirects
+        env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: bun run build
 
       - name: Verify redirect map is sane
@@ -62,6 +69,14 @@ jobs:
           test -f dist/_redirects || { echo "dist/_redirects yok"; exit 1; }
           test -f dist/_headers   || { echo "dist/_headers yok";   exit 1; }
           if grep -q '\*' dist/_redirects; then echo "wildcard kuralı bulundu — beklenmiyor"; exit 1; fi
+          # Form anahtarı gömülmemişse üretime çıkmamalı: her lead gönderimi sessizce
+          # başarısız olurdu. Anahtarın DEĞERİ değil, boş olmadığı kontrol edilir.
+          if grep -qE 'name="access_key" value(=""|>)' dist/index.html; then
+            echo "HATA: Web3Forms anahtarı boş — secret build'e ulaşmamış"; exit 1
+          fi
+          if grep -q 'local-test-key' dist/index.html; then
+            echo "HATA: yerel test anahtarı derlemeye sızmış"; exit 1
+          fi
           echo "kural sayısı: $(grep -cE '^/' dist/_redirects)"
 
       - name: Dist smoke tests
