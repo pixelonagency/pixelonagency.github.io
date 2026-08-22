@@ -48,24 +48,23 @@ penceresini temiz tutmak için beklemek tercih edilir. Karar sahibindedir.
 
 **Açık madde:** kapak görseli seçilmedi — bkz. `SEO-2026-0082`.
 
-### `SEO-2026-0083` — Dentasay vaka çalışması · **P0** · READY_FOR_APPROVAL
+### `SEO-2026-0083` — Dentasay vaka çalışması · **P0** · READY_FOR_APPROVAL · REV-2
 
-TR ve EN taslak hazır, **metriksiz**, yalnız doğrulanmış bilgiyle:
+TR ve EN taslak hazır, **uydurulmuş metrik yok**:
 `seo/private/drafts/SEO-2026-0083-dentasay-{TR,EN}.md`
 Kaynak denetimi: `seo/private/drafts/SEO-2026-0083-source-audit.md`
 
-12 bölüm, 7 doğrulanmış hizmet, 6 içerik bölümü. Görsel alanları placeholder olarak
-işaretli — **görsel eksikliği taslağı bloklamadı.**
+Sahip girdisi **tamamlandı (22 Ağu 2026)** — açık soru kalmadı:
 
-**Açık sahip girdisi (3):** dönem · 7 hizmet listesi teyidi · yayınlanabilir çıktı.
-Üçü de gelmeden yayınlanmaz; `result` bloğu çıktı yoksa hiç eklenmez.
+- 9 hizmet teyit edildi (SEO ve Influencer Marketing eklendi)
+- Doğrulanmış çıktılar: 20 ülke / 13 dil reklam operasyonu
+- Bağlamsal büyüme: tek klinik → 12 klinik, **nedensellik iddiası olmadan**
+- `period` **OMITTED** — şema opsiyonel, yayını bloklamıyor
+
+Görsel alanları placeholder — **görsel eksikliği taslağı bloklamadı.**
 
 `SEO-2026-0084` (dentasay-kurumsal-kimlik) ve `SEO-2026-0085` (ella-scarf) **DEFERRED** —
 kaynak yetersiz, otonom kuyruğu meşgul etmiyorlar.
-
----
-
-## Ölçümde (müdahale edilmeyecek)
 
 ### `SEO-2026-0068` — İki yeni hizmet sayfası · MEASURING
 
