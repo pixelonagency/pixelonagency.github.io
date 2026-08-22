@@ -2,8 +2,8 @@
   "version": 1,
   "mode": "APPROVAL_REQUIRED",
   "site": "https://pixelon.com.tr",
-  "lastRun": "2026-08-21T22:58:33.434Z",
-  "lastSuccessfulRun": "2026-08-21T22:58:33.434Z",
+  "lastRun": "2026-08-22T02:00:17.337Z",
+  "lastSuccessfulRun": "2026-08-22T02:00:17.337Z",
   "currentPhase": "PHASE_16_AUTOMATION",
   "phasesCompleted": [
     "PHASE_0_DISCOVERY",
@@ -58,8 +58,8 @@
     "SEO-2026-0061"
   ],
   "nextTaskIdCounter": 68,
-  "lastGSCFetch": "2026-08-21T22:58:35.555Z",
-  "lastSemrushFetch": "2026-08-21T22:58:35.557Z",
+  "lastGSCFetch": "2026-08-22T02:00:46.150Z",
+  "lastSemrushFetch": "2026-08-22T02:00:46.153Z",
   "lastCompetitorAnalysis": "2026-08-21",
   "lastTechnicalAudit": "2026-08-22",
   "lastContentPublish": "2026-08-21",
@@ -69,7 +69,7 @@
     "P1": 0,
     "P2": 2,
     "P3": 0,
-    "indexable": 99,
+    "indexable": 101,
     "orphans": 0,
     "brokenLinks": 0
   },
@@ -111,7 +111,7 @@
     }
   ],
   "dataSources": {
-    "checkedAt": "2026-08-21T22:58:35.557Z",
+    "checkedAt": "2026-08-22T02:00:46.153Z",
     "googleSearchConsole": true,
     "semrush": true,
     "liveSerp": true,
@@ -154,20 +154,56 @@
     "knownIssue": "Ağustos 2026 blog görsellerinde #C8F04B kullanıldı; doğrusu #cfff00"
   },
   "gscSummary": {
-    "clicks": 12,
-    "impressions": 651,
-    "ctr": 1.84,
+    "clicks": 15,
+    "impressions": 719,
+    "ctr": 2.09,
     "avgPosition": 32.6,
-    "queryCount": 62,
-    "pageCount": 64,
+    "queryCount": 64,
+    "pageCount": 67,
     "days": 28,
-    "rangeStart": "2026-07-22",
-    "rangeEnd": "2026-08-18"
+    "rangeStart": "2026-07-23",
+    "rangeEnd": "2026-08-19"
   },
   "opportunityCounts": {
     "quickWin": 3,
     "strikingDistance": 5,
     "ctrOpportunity": 0,
     "highPriority": 8
+  },
+  "overnight": {
+    "date": "2026-08-22",
+    "mode": "SAFE_AUTONOMOUS",
+    "tasksAdvanced": 3,
+    "productionChanges": 0,
+    "deploys": 0,
+    "completed": [
+      "Yeni iki sayfanın son QA'sı + ham markdown regresyon testi (kanıtlandı: gerçek kusuru yakalıyor)",
+      "Backlink gap derinleştirildi; basework.studio değerlendirmesi düzeltildi (38 PBN domain tespit edildi)",
+      "Eski 404 URL kanibalizasyonu ölçüldü: 5/5 çiftte 404 canlıdan yüksek sıralıyor"
+    ],
+    "findings": {
+      "legacy404OutranksLive": {
+        "pairsMeasured": 5,
+        "pairsWhere404Wins": 5,
+        "worstGapPositions": 59
+      },
+      "pixelonBacklinkSources": {
+        "referringDomains": 5,
+        "allClientFooters": true,
+        "editorial": 0,
+        "portfolio": 0,
+        "directory": 0
+      },
+      "competitorSpamExposure": {
+        "domain": "basework.studio",
+        "pbnDomains": 38,
+        "firstSeen": "2026-07-01"
+      }
+    },
+    "readyForApproval": [
+      "SEO-2026-0068",
+      "SEO-2026-0069",
+      "SEO-2026-0070"
+    ]
   }
 }

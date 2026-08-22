@@ -142,3 +142,13 @@ Araştırma/analiz/hazırlık otonom · yayın ve riskli değişiklik onaya bağ
 - [ ] `SEO-2026-0067` **Uygulama BLOCKED** — gerçek 301 için TLS mimarisi kararı bekleniyor
       (GitHub Pages origin sertifikası DNS kontrolüne bağlı; proxy açmak sertifika
       yenilemesini riske atıyor). Karar verilene kadar 404'ler ölçülüyor, kapatılmıyor.
+
+## Legacy URL Recovery — güncelleme (2026-08-22)
+
+- [x] `SEO-2026-0071` Eski/canlı URL görünürlüğü ölçüldü — ölçülen 5 çiftin 5'inde de eski
+      404 URL, karşılığı olan canlı URL'den daha güçlü Google görünürlüğüne sahip; iki canlı
+      sayfa arama verisinde hiç görünmüyor. 301 taşımasının sinyalleri birleştirmesi
+      _bekleniyor_; nedensellik ve yönlendirme sonrası kazanç ancak yayından sonra ölçülecek.
+- [x] `SEO-2026-0072` Backlink kaynak sınıflandırması tamamlandı — kaynak listesi ve kalite
+      değerlendirmesi yerel gizli katmanda. Sayı hedefi konmadı.
+- [ ] `SEO-2026-0070` Hizmet sayfalarında satır içi bağlantı desteği — READY_FOR_APPROVAL

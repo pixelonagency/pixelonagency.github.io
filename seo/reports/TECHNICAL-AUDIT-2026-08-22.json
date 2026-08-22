@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-21T22:58:35.547Z",
+  "generatedAt": "2026-08-22T06:45:52.799Z",
   "site": "https://pixelon.com.tr",
   "totals": {
-    "htmlPages": 101,
-    "indexable": 99,
+    "htmlPages": 103,
+    "indexable": 101,
     "noindex": 2,
-    "sitemapUrls": 99,
+    "sitemapUrls": 101,
     "orphans": 0,
     "brokenLinks": 0
   },
@@ -714,8 +714,8 @@
     },
     {
       "url": "/en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands/",
-      "title": "Digital Marketing Strategy for Healthcare Brands | Pixelon",
-      "description": "A digital marketing guide for healthcare brands covering websites, social media, digital advertising, patient trust and appointment conversion.",
+      "title": "Healthcare Digital Marketing Strategy: A Guide | Pixelon",
+      "description": "A practical healthcare digital marketing strategy guide covering website trust, content, paid media, patient enquiry tracking and measurement.",
       "canonical": "https://pixelon.com.tr/en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands/",
       "lang": "en",
       "noindex": false,
@@ -1359,6 +1359,28 @@
       "images": 3
     },
     {
+      "url": "/en/services/healthcare-marketing/",
+      "title": "Healthcare Marketing Agency | Pixelon",
+      "description": "Pixelon is a healthcare marketing agency helping clinics and healthcare brands grow with websites, content, paid media and enquiry systems.",
+      "canonical": "https://pixelon.com.tr/en/services/healthcare-marketing/",
+      "lang": "en",
+      "noindex": false,
+      "h1": 1,
+      "hreflang": 1,
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "ListItem"
+      ],
+      "images": 3
+    },
+    {
       "url": "/en/services/",
       "title": "Digital Marketing Services | Pixelon 360° Digital Agency",
       "description": "Explore our web design, social media, digital advertising, SEO, brand design, e-commerce, production and health tourism solutions.",
@@ -1613,6 +1635,28 @@
         "ContactPoint",
         "WebSite",
         "WebPage",
+        "BreadcrumbList",
+        "ListItem"
+      ],
+      "images": 3
+    },
+    {
+      "url": "/hizmetlerimiz/kurumsal-web-tasarim/",
+      "title": "Kurumsal Web Tasarım Hizmeti | Pixelon",
+      "description": "Kurumsal kimliğinizi doğru yansıtan, hızlı ve yönetilebilir web siteleri tasarlıyoruz. Bilgi mimarisi, SEO altyapısı ve içerik yönetimi bir arada.",
+      "canonical": "https://pixelon.com.tr/hizmetlerimiz/kurumsal-web-tasarim/",
+      "lang": "tr",
+      "noindex": false,
+      "h1": 1,
+      "hreflang": 2,
+      "schemaTypes": [
+        "Organization",
+        "ImageObject",
+        "PostalAddress",
+        "ContactPoint",
+        "WebSite",
+        "WebPage",
+        "Service",
         "BreadcrumbList",
         "ListItem"
       ],
