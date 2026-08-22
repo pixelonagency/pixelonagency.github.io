@@ -27,6 +27,7 @@
     "seo:comp": "bun scripts/seo/competitors.mjs",
     "seo:semrush-import": "bun scripts/seo/semrush-bridge.mjs",
     "seo:gsc": "bun scripts/seo/gsc.mjs",
+    "seo:redirects": "bun scripts/seo/build-redirects.mjs",
     "seo:watch404": "bun scripts/seo/redirect-watch.mjs",
     "seo:daily": "bun scripts/seo/daily.mjs daily",
     "seo:weekly": "bun scripts/seo/daily.mjs weekly",

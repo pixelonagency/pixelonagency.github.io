@@ -1,0 +1,124 @@
+# OTOMATİK ÜRETİLDİ — elle düzenlemeyin.
+# Üretici: scripts/seo/build-redirects.mjs  (bun run seo:redirects)
+#
+# GitHub Pages bu dosyayı OKUMAZ; yalnızca Cloudflare Workers/Pages üzerinde etkilidir.
+#
+# 1) ESKİ URL YÖNLENDİRMELERİ — sırası önemli, kanonik kurallardan ÖNCE gelir.
+#    HOLD (bilinçli olarak yok): /hizmet/markalasma-kreatif-cozumler/, /hizmet/mobil-uygulama/
+
+/hizmet/web-tasarim-yazilim                                                 /hizmetlerimiz/web-tasarim-ve-yazilim/                                      301
+/hizmet/web-tasarim-yazilim/                                                /hizmetlerimiz/web-tasarim-ve-yazilim/                                      301
+/hizmet/sosyal-medya-yonetimi                                               /hizmetlerimiz/sosyal-medya-yonetimi/                                       301
+/hizmet/sosyal-medya-yonetimi/                                              /hizmetlerimiz/sosyal-medya-yonetimi/                                       301
+/hizmet/dijital-reklam-yonetimi                                             /hizmetlerimiz/dijital-reklam-yonetimi/                                     301
+/hizmet/dijital-reklam-yonetimi/                                            /hizmetlerimiz/dijital-reklam-yonetimi/                                     301
+/hizmet/seo-icerik-uretimi                                                  /hizmetlerimiz/seo-ve-icerik-pazarlamasi/                                   301
+/hizmet/seo-icerik-uretimi/                                                 /hizmetlerimiz/seo-ve-icerik-pazarlamasi/                                   301
+/hizmet/fotograf-video-produksiyon                                          /hizmetlerimiz/video-ve-produksiyon/                                        301
+/hizmet/fotograf-video-produksiyon/                                         /hizmetlerimiz/video-ve-produksiyon/                                        301
+/referanslar                                                                /referanslarimiz/                                                           301
+/referanslar/                                                               /referanslarimiz/                                                           301
+
+# 2) KANONİK SLASH NORMALİZASYONU — Workers auto-trailing-slash 307 döndürüyor;
+#    Google kanonikleştirmesi için kalıcı 301 gerekiyor. Wildcard kullanılmaz.
+
+/biz-kimiz                                                                  /biz-kimiz/                                                                 301
+/blog                                                                       /blog/                                                                      301
+/blog/blog-yazmak-seoya-yarar-mi                                            /blog/blog-yazmak-seoya-yarar-mi/                                           301
+/blog/crm-nedir-ne-ise-yarar                                                /blog/crm-nedir-ne-ise-yarar/                                               301
+/blog/dijital-pazarlama-ajansi-ne-is-yapar                                  /blog/dijital-pazarlama-ajansi-ne-is-yapar/                                 301
+/blog/donusum-takibi-nedir                                                  /blog/donusum-takibi-nedir/                                                 301
+/blog/google-ads-butcesi-nasil-belirlenir                                   /blog/google-ads-butcesi-nasil-belirlenir/                                  301
+/blog/google-ads-mi-meta-ads-mi                                             /blog/google-ads-mi-meta-ads-mi/                                            301
+/blog/instagramda-marka-nasil-buyutulur                                     /blog/instagramda-marka-nasil-buyutulur/                                    301
+/blog/kurumsal-web-sitesi-nasil-olmali                                      /blog/kurumsal-web-sitesi-nasil-olmali/                                     301
+/blog/landing-page-nedir                                                    /blog/landing-page-nedir/                                                   301
+/blog/marka-kimligi-nedir-neleri-kapsar                                     /blog/marka-kimligi-nedir-neleri-kapsar/                                    301
+/blog/meta-reklamlari-neden-sonuc-vermiyor                                  /blog/meta-reklamlari-neden-sonuc-vermiyor/                                 301
+/blog/reels-ile-marka-buyutme                                               /blog/reels-ile-marka-buyutme/                                              301
+/blog/roas-nedir-nasil-hesaplanir                                           /blog/roas-nedir-nasil-hesaplanir/                                          301
+/blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur  /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/ 301
+/blog/saglik-turizminde-uluslararasi-hasta-guveni-nasil-kazanilir           /blog/saglik-turizminde-uluslararasi-hasta-guveni-nasil-kazanilir/          301
+/blog/seo-ne-kadar-surede-sonuc-verir                                       /blog/seo-ne-kadar-surede-sonuc-verir/                                      301
+/blog/seo-nedir-nasil-calisir                                               /blog/seo-nedir-nasil-calisir/                                              301
+/blog/seo-uyumlu-blog-yazisi-nasil-yazilir                                  /blog/seo-uyumlu-blog-yazisi-nasil-yazilir/                                 301
+/blog/sosyal-medya-ajanslari-ne-is-yapar                                    /blog/sosyal-medya-ajanslari-ne-is-yapar/                                   301
+/blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir                          /blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir/                         301
+/blog/web-sitesi-neden-donusum-getirmiyor                                   /blog/web-sitesi-neden-donusum-getirmiyor/                                  301
+/blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli                    /blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/                   301
+/blog/web-tasarim-fiyatlari                                                 /blog/web-tasarim-fiyatlari/                                                301
+/cerez-politikasi                                                           /cerez-politikasi/                                                          301
+/en                                                                         /en/                                                                        301
+/en/about-us                                                                /en/about-us/                                                               301
+/en/blog                                                                    /en/blog/                                                                   301
+/en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands    /en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands/   301
+/en/blog/how-to-earn-international-patient-trust-in-health-tourism          /en/blog/how-to-earn-international-patient-trust-in-health-tourism/         301
+/en/careers                                                                 /en/careers/                                                                301
+/en/contact                                                                 /en/contact/                                                                301
+/en/cookie-policy                                                           /en/cookie-policy/                                                          301
+/en/free-analysis                                                           /en/free-analysis/                                                          301
+/en/get-a-website                                                           /en/get-a-website/                                                          301
+/en/personal-data-processing-notice                                         /en/personal-data-processing-notice/                                        301
+/en/privacy-policy                                                          /en/privacy-policy/                                                         301
+/en/projects                                                                /en/projects/                                                               301
+/en/projects/anneligin-hikayesi                                             /en/projects/anneligin-hikayesi/                                            301
+/en/projects/cagla-aytac                                                    /en/projects/cagla-aytac/                                                   301
+/en/projects/dr-ayse-cinkaya-kahveci                                        /en/projects/dr-ayse-cinkaya-kahveci/                                       301
+/en/projects/handsforall                                                    /en/projects/handsforall/                                                   301
+/en/projects/mobico                                                         /en/projects/mobico/                                                        301
+/en/projects/op-dr-ismail-buyukcayir                                        /en/projects/op-dr-ismail-buyukcayir/                                       301
+/en/projects/redex-glass                                                    /en/projects/redex-glass/                                                   301
+/en/projects/sekoya                                                         /en/projects/sekoya/                                                        301
+/en/projects/sera-natura                                                    /en/projects/sera-natura/                                                   301
+/en/projects/touch-consulting                                               /en/projects/touch-consulting/                                              301
+/en/projects/valueset                                                       /en/projects/valueset/                                                      301
+/en/projects/vennyx                                                         /en/projects/vennyx/                                                        301
+/en/projects/xray-groupe                                                    /en/projects/xray-groupe/                                                   301
+/en/references                                                              /en/references/                                                             301
+/en/services                                                                /en/services/                                                               301
+/en/services/brand-and-corporate-identity                                   /en/services/brand-and-corporate-identity/                                  301
+/en/services/crm-and-digital-transformation                                 /en/services/crm-and-digital-transformation/                                301
+/en/services/digital-advertising                                            /en/services/digital-advertising/                                           301
+/en/services/e-commerce-solutions                                           /en/services/e-commerce-solutions/                                          301
+/en/services/health-tourism-consulting                                      /en/services/health-tourism-consulting/                                     301
+/en/services/healthcare-marketing                                           /en/services/healthcare-marketing/                                          301
+/en/services/seo-and-content-marketing                                      /en/services/seo-and-content-marketing/                                     301
+/en/services/social-media-management                                        /en/services/social-media-management/                                       301
+/en/services/ux-ui-design                                                   /en/services/ux-ui-design/                                                  301
+/en/services/video-and-production                                           /en/services/video-and-production/                                          301
+/en/services/web-design-and-development                                     /en/services/web-design-and-development/                                    301
+/en/terms-of-use                                                            /en/terms-of-use/                                                           301
+/gizlilik-politikasi                                                        /gizlilik-politikasi/                                                       301
+/hizmetlerimiz                                                              /hizmetlerimiz/                                                             301
+/hizmetlerimiz/crm-ve-dijital-donusum                                       /hizmetlerimiz/crm-ve-dijital-donusum/                                      301
+/hizmetlerimiz/dijital-reklam-yonetimi                                      /hizmetlerimiz/dijital-reklam-yonetimi/                                     301
+/hizmetlerimiz/e-ticaret-cozumleri                                          /hizmetlerimiz/e-ticaret-cozumleri/                                         301
+/hizmetlerimiz/kurumsal-web-tasarim                                         /hizmetlerimiz/kurumsal-web-tasarim/                                        301
+/hizmetlerimiz/marka-ve-kurumsal-kimlik                                     /hizmetlerimiz/marka-ve-kurumsal-kimlik/                                    301
+/hizmetlerimiz/saglik-turizmi-danismanligi                                  /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
+/hizmetlerimiz/seo-ve-icerik-pazarlamasi                                    /hizmetlerimiz/seo-ve-icerik-pazarlamasi/                                   301
+/hizmetlerimiz/sosyal-medya-yonetimi                                        /hizmetlerimiz/sosyal-medya-yonetimi/                                       301
+/hizmetlerimiz/ux-ui-tasarimi                                               /hizmetlerimiz/ux-ui-tasarimi/                                              301
+/hizmetlerimiz/video-ve-produksiyon                                         /hizmetlerimiz/video-ve-produksiyon/                                        301
+/hizmetlerimiz/web-tasarim-ve-yazilim                                       /hizmetlerimiz/web-tasarim-ve-yazilim/                                      301
+/iletisim                                                                   /iletisim/                                                                  301
+/kariyer                                                                    /kariyer/                                                                   301
+/kullanim-kosullari                                                         /kullanim-kosullari/                                                        301
+/kvkk-aydinlatma-metni                                                      /kvkk-aydinlatma-metni/                                                     301
+/projelerimiz                                                               /projelerimiz/                                                              301
+/projelerimiz/anneligin-hikayesi                                            /projelerimiz/anneligin-hikayesi/                                           301
+/projelerimiz/cagla-aytac                                                   /projelerimiz/cagla-aytac/                                                  301
+/projelerimiz/dr-ayse-cinkaya-kahveci                                       /projelerimiz/dr-ayse-cinkaya-kahveci/                                      301
+/projelerimiz/handsforall                                                   /projelerimiz/handsforall/                                                  301
+/projelerimiz/mobico                                                        /projelerimiz/mobico/                                                       301
+/projelerimiz/op-dr-ismail-buyukcayir                                       /projelerimiz/op-dr-ismail-buyukcayir/                                      301
+/projelerimiz/redex-glass                                                   /projelerimiz/redex-glass/                                                  301
+/projelerimiz/sekoya                                                        /projelerimiz/sekoya/                                                       301
+/projelerimiz/sera-natura                                                   /projelerimiz/sera-natura/                                                  301
+/projelerimiz/touch-consulting                                              /projelerimiz/touch-consulting/                                             301
+/projelerimiz/valueset                                                      /projelerimiz/valueset/                                                     301
+/projelerimiz/vennyx                                                        /projelerimiz/vennyx/                                                       301
+/projelerimiz/xray-groupe                                                   /projelerimiz/xray-groupe/                                                  301
+/referanslarimiz                                                            /referanslarimiz/                                                           301
+/ucretsiz-analiz                                                            /ucretsiz-analiz/                                                           301
+/web-sitesi-yaptir                                                          /web-sitesi-yaptir/                                                         301

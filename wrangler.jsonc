@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Cloudflare Workers Static Assets — SEO-2026-0069 STAGING.
+  //
+  // Bu yapılandırma yalnızca staging doğrulaması içindir. pixelon.com.tr üretimi
+  // GitHub Pages üzerinde çalışmaya DEVAM EDER; burada custom domain/route TANIMLI DEĞİL.
+  // Cutover ancak parity ve redirect testleri geçtikten ve açık onay alındıktan sonra.
+  //
+  // Yerel doğrulama: bunx wrangler dev  → gerçek workerd runtime, hesap gerekmez.
+  // Staging yayını : bunx wrangler deploy  → *.workers.dev (Cloudflare oturumu gerekir).
+  "name": "pixelon-web-staging",
+  "compatibility_date": "2026-08-22",
+  "assets": {
+    "directory": "./dist",
+    // GitHub Pages davranışıyla eşleşsin: /yol → /yol/ (301) ve dizin index'i servis edilir.
+    "html_handling": "auto-trailing-slash",
+    // Eşleşmeyen istekte 404.html, 404 durum koduyla döner (soft-404 üretmez).
+    "not_found_handling": "404-page",
+  },
+}
