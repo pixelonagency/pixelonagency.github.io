@@ -107,9 +107,10 @@ jobs:
         run: bun run test:dist
 
       - name: Deploy Worker
-        # `wrangler.jsonc` içinde route/custom domain TANIMLI DEĞİL.
-        # Bu komut yalnızca Worker'ı ve varlıklarını günceller; DNS'e dokunmaz.
-        run: bunx wrangler deploy
+        # `--env production` ZORUNLU: bayraksız komut staging Worker'ının üzerine
+        # yazardı. `wrangler.jsonc` içinde route/custom domain TANIMLI DEĞİL;
+        # bu komut yalnızca Worker'ı ve varlıklarını günceller, DNS'e dokunmaz.
+        run: bunx wrangler deploy --env production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
