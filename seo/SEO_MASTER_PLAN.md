@@ -152,3 +152,19 @@ Araştırma/analiz/hazırlık otonom · yayın ve riskli değişiklik onaya bağ
 - [x] `SEO-2026-0072` Backlink kaynak sınıflandırması tamamlandı — kaynak listesi ve kalite
       değerlendirmesi yerel gizli katmanda. Sayı hedefi konmadı.
 - [ ] `SEO-2026-0070` Hizmet sayfalarında satır içi bağlantı desteği — READY_FOR_APPROVAL
+
+## Faz durumu — 2026-08-22
+
+- [x] `SEO-2026-0068` İki yeni hizmet sayfası yayınlandı — **MEASURING** (+7/+14/+28 gün)
+- [x] `SEO-2026-0069` Eski URL yönlendirmeleri yayında — **MEASURING**
+- [x] `SEO-2026-0070` Satır içi bağlantı desteği tamamlandı
+- [x] `SEO-2026-0080` Altyapı fazı **KAPALI** — hosting, CI/CD, yönlendirme ve TLS taşındı;
+      yeni bir üretim sorunu çıkmadıkça bu alanda iş üretilmez
+- [ ] `SEO-2026-0073` Hero görseli — sahip kararı bekliyor
+
+## Otonom büyüme modu
+
+Günlük koşu her sabah en fazla 3 anlamlı görevi ilerletir. Çalışma kuralları
+`seo/AUTONOMOUS_MODE.md` dosyasında; onay sınırları ve backlink politikası dahil.
+Onay kuyruğu en fazla 3 kayıt tutar; kuyruk dolduğunda analiz ve ölçüm devam eder,
+yalnızca yeni yayınlanabilir iş üretimi durur.
