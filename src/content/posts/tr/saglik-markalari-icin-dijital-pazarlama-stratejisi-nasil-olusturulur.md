@@ -99,7 +99,7 @@ Gösterim ve tıklama sayıları yeterli değildir; WhatsApp mesajı, form doldu
 
 ### Dentasay İçin Çok Dilli Hasta Kazanım Sistemi
 
-Dentasay için farklı Avrupa ülkelerine yönelik çok dilli reklam kampanyaları, tedavi sayfaları, WhatsApp iletişim akışları ve ülke bazlı içerikler oluşturduk.
+Dentasay için farklı Avrupa ülkelerine yönelik çok dilli reklam kampanyaları, tedavi sayfaları, WhatsApp iletişim akışları ve ülke bazlı içerikler oluşturduk; çalışmanın tamamı [Dentasay vaka çalışmasında](/projelerimiz/dentasay/).
 
 **Uygulanan Çözümler**
 

@@ -100,7 +100,7 @@ Impressions and clicks are not enough. Concrete actions such as WhatsApp message
 
 ### A Multilingual Patient Acquisition System for Dentasay
 
-For Dentasay we built multilingual ad campaigns for several European countries, together with treatment pages, WhatsApp communication flows and country-specific content.
+For Dentasay we built multilingual ad campaigns for several European countries, together with treatment pages, WhatsApp communication flows and country-specific content — the full scope is in [our work with Dentasay](/en/projects/dentasay/).
 
 **What We Delivered**
 
