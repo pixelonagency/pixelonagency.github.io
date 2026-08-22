@@ -1,7 +1,7 @@
 # PIXELON SEO — APPROVAL QUEUE
 
 ```text
-READY FOR APPROVAL: 1
+READY FOR APPROVAL: 2
 MEASURING: 2
 OWNER DECISION: 2
 LIMIT: 3
@@ -48,13 +48,20 @@ penceresini temiz tutmak için beklemek tercih edilir. Karar sahibindedir.
 
 **Açık madde:** kapak görseli seçilmedi — bkz. `SEO-2026-0082`.
 
-### `SEO-2026-0083` — Dentasay vaka çalışması · **P0** · OWNER_INPUT_REQUIRED
+### `SEO-2026-0083` — Dentasay vaka çalışması · **P0** · READY_FOR_APPROVAL
 
-Kaynak denetimi tamamlandı: `seo/private/drafts/SEO-2026-0083-source-audit.md`
+TR ve EN taslak hazır, **metriksiz**, yalnız doğrulanmış bilgiyle:
+`seo/private/drafts/SEO-2026-0083-dentasay-{TR,EN}.md`
+Kaynak denetimi: `seo/private/drafts/SEO-2026-0083-source-audit.md`
 
-7 hizmet sayfasında doğrulanmış anlatım + blog teslimat listesi mevcut → **PARTIAL**,
-5 sorulukla tamamlanabilir. Diğer iki proje (`dentasay-kurumsal-kimlik`, `ella-scarf`)
-**NO** — kaynak tek cümle, yazmak uydurmak olur.
+12 bölüm, 7 doğrulanmış hizmet, 6 içerik bölümü. Görsel alanları placeholder olarak
+işaretli — **görsel eksikliği taslağı bloklamadı.**
+
+**Açık sahip girdisi (3):** dönem · 7 hizmet listesi teyidi · yayınlanabilir çıktı.
+Üçü de gelmeden yayınlanmaz; `result` bloğu çıktı yoksa hiç eklenmez.
+
+`SEO-2026-0084` (dentasay-kurumsal-kimlik) ve `SEO-2026-0085` (ella-scarf) **DEFERRED** —
+kaynak yetersiz, otonom kuyruğu meşgul etmiyorlar.
 
 ---
 
