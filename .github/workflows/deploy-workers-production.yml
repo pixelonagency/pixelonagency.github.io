@@ -1,8 +1,9 @@
 name: Deploy Workers Production
 
-# Cloudflare Workers Static Assets ÜRETİM yayını — SEO-2026-0069 cutover hattı.
+# Cloudflare Workers Static Assets — ÜRETİM YAYIN HATTI.
 #
-# DURUM: HAZIR AMA PASİF. Yalnızca elle tetiklenir.
+# 2026-08-22'den itibaren `pixelon.com.tr`'nin tek deploy hattı budur.
+# GitHub Pages (`deploy.yml`) rollback amacıyla korunuyor ama otomatik çalışmıyor.
 #
 # Bu iş akışı YALNIZCA Worker kodunu ve statik varlıkları yayınlar.
 # Bilinçli olarak YAPMADIKLARI:
@@ -12,16 +13,25 @@ name: Deploy Workers Production
 #   - GitHub Pages'i kapatmaz
 # Bu adımlar cutover runbook'unda insan eliyle ve ayrı onayla yapılır.
 #
-# `deploy.yml` (GitHub Pages) hâlâ üretim yayın hattıdır ve bu dosya ona dokunmaz.
-# İkisi aynı anda çalışabilir: Pages `pixelon.com.tr`'yi, bu iş akışı Worker'ı besler.
-# Cutover ancak DNS custom domain'e çevrildiğinde gerçekleşir.
+# Alan adı Worker'a Custom Domain olarak bağlıdır; DNS'e bu iş akışı dokunmaz.
+# Alan adı/TLS değişiklikleri runbook'ta insan eliyle yapılır.
+# `main` dalına giden commit'ler otomatik olarak yayına alınır — ANCAK yalnızca
+# production çıktısını etkileyen dosyalar değiştiyse. SEO operasyon altyapısı
+# (seo/, scripts/seo/) ve kök dizindeki dokümanlar yayına çıkmadığı için deploy
+# tetiklemez. Bu mantık `deploy.yml`'dan devralındı; push ile production deploy
+# hâlâ aynı şey değildir.
+#
+# Not: paths-ignore YALNIZCA push'taki TÜM dosyalar listeye uyuyorsa devreye girer.
+# Karma bir commit (örn. seo/ + src/) normal şekilde deploy olur.
+# `src/content/**/*.md` (blog yazıları) bilerek listeye ALINMAMIŞTIR — yayına çıkar.
 on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'seo/**'
+      - 'scripts/seo/**'
+      - '*.md'
   workflow_dispatch:
-    inputs:
-      confirm:
-        description: "Üretim Worker'ına yayın yapmak için 'deploy' yazın"
-        required: true
-        default: ''
 
 permissions:
   contents: read
@@ -35,14 +45,6 @@ jobs:
     name: Gate, Build & Deploy Worker
     runs-on: ubuntu-latest
     steps:
-      - name: Confirm intent
-        # Yanlışlıkla tetiklemeye karşı kapı. Elle 'deploy' yazılmadan iş akışı ilerlemez.
-        run: |
-          if [ "${{ inputs.confirm }}" != "deploy" ]; then
-            echo "Onay girdisi 'deploy' değil — çıkılıyor."
-            exit 1
-          fi
-
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -114,3 +116,56 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # Deploy başarılı dönse bile canlı site bozulmuş olabilir. Bu adım gerçek
+      # `pixelon.com.tr` üzerinde koşar; başarısız olursa iş akışı KIRILIR ve
+      # bozulma sessiz kalmaz.
+      - name: Post-deploy smoke (canlı site)
+        run: |
+          set -euo pipefail
+          P=https://pixelon.com.tr
+          fail() { echo "SMOKE FAIL: $1"; exit 1; }
+
+          # Yayın yayılımı için kısa bekleme
+          sleep 10
+
+          echo "— sayfalar 200 mü?"
+          for u in / /en/ /hizmetlerimiz/kurumsal-web-tasarim/ /en/services/healthcare-marketing/; do
+            c=$(curl -sS -o /dev/null -w '%{http_code}' "$P$u" --max-time 30)
+            [ "$c" = "200" ] || fail "$u → $c"
+            echo "  $u → $c"
+          done
+
+          echo "— altyapı dosyaları"
+          for u in /robots.txt /sitemap-index.xml /c4d8be782a330e643cd1d33da84aa6104e6df9e2965c5adf83561763668f4328.txt; do
+            c=$(curl -sS -o /dev/null -w '%{http_code}' "$P$u" --max-time 30)
+            [ "$c" = "200" ] || fail "$u → $c"
+            echo "  $u → $c"
+          done
+
+          echo "— eski URL yönlendirmesi: 301 → tek hop → 200"
+          code=$(curl -sS -o /dev/null -w '%{http_code}' -I "$P/hizmet/web-tasarim-yazilim/" --max-time 30)
+          hops=$(curl -sS -o /dev/null -w '%{num_redirects}' -L "$P/hizmet/web-tasarim-yazilim/" --max-time 30)
+          final=$(curl -sS -o /dev/null -w '%{http_code}' -L "$P/hizmet/web-tasarim-yazilim/" --max-time 30)
+          [ "$code" = "301" ] && [ "$hops" = "1" ] && [ "$final" = "200" ] || fail "legacy 301: $code/$hops/$final"
+          echo "  301 → 1 hop → 200"
+
+          echo "— kanonik slash: 301 → slash → 200"
+          code=$(curl -sS -o /dev/null -w '%{http_code}' -I "$P/biz-kimiz" --max-time 30)
+          final=$(curl -sS -o /dev/null -w '%{http_code}' -L "$P/biz-kimiz" --max-time 30)
+          [ "$code" = "301" ] && [ "$final" = "200" ] || fail "canonical 301: $code/$final"
+          echo "  301 → 200"
+
+          echo "— production'da noindex OLMAMALI"
+          n=$(curl -sS -I "$P/" --max-time 30 | grep -ci '^x-robots-tag' || true)
+          [ "$n" = "0" ] || fail "production'da X-Robots-Tag var"
+          echo "  X-Robots-Tag yok"
+
+          echo "— form anahtarı üretim güvenli mi?"
+          body=$(curl -sS "$P/iletisim/" --max-time 30)
+          echo "$body" | grep -qE 'name="access_key" value(=""|>)' && fail "form anahtarı BOŞ"
+          echo "$body" | grep -q 'local-test-key' && fail "yerel test anahtarı canlıda"
+          echo "$body" | grep -q 'api.web3forms.com/submit' || fail "form action bulunamadı"
+          echo "  form anahtarı dolu, test anahtarı yok"
+
+          echo "SMOKE PASS"
