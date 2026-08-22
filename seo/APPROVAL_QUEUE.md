@@ -50,19 +50,26 @@ penceresini temiz tutmak için beklemek tercih edilir. Karar sahibindedir.
 
 ### `SEO-2026-0083` — Dentasay vaka çalışması · **YAYINDA / ÖLÇÜMDE**
 
-Sahip onayıyla 22 Ağu 2026 13:15 +03'te yayınlandı:
+22 Ağu 2026 13:15 +03 · `/projelerimiz/dentasay/` · `/en/projects/dentasay/`
+Kontrol noktaları: +7g 29 Ağu · +14g 5 Eyl · +28g 19 Eyl.
+**Sıralama değişimi vaka çalışmasına atfedilmez.**
 
-- `/projelerimiz/dentasay/`
-- `/en/projects/dentasay/`
+### `SEO-2026-0086` — Bağlamsal iç bağlantı · **YAYINDA**
 
-Ölçüm kontrol noktaları: +7g 29 Ağu · +14g 5 Eyl · +28g 19 Eyl.
-Takip edilen: gösterim, tık, sorgu, yönlendiren iç sayfa.
-**Sıralama değişimi vaka çalışmasına atfedilmez** — yalnız gözlenen sinyal raporlanır.
+22 Ağu 2026 20:45 +03 · 4 sayfa. Blog yazılarında mevcut cümleye doğal çapa,
+hizmet sayfalarında mevcut Dentasay kartına `href`. Bileşen değişikliği yok,
+14 hizmet sayfasına rollout yok.
 
-Takip işi: `SEO-2026-0086` — bağlamsal iç bağlantı, **onay bekliyor**.
-Kapsam bilinçli olarak dar: yalnız TR+EN sağlık turizmi hizmet sayfası ve
-2 healthcare blog yazısı. Dentasay'dan söz eden **14 hizmet sayfasının tamamına
-rollout yapılmayacak.**
+### `SEO-2026-0082` — 0081 kapak görseli · **READY_FOR_APPROVAL**
+
+Özgün kapak üretimi onay bekliyor. **Eski healthcare kapağı tekrar kullanılmayacak.**
+Brief 0081 taslağının "Görsel brief" bölümünde. `SEO-2026-0081`'i bloklıyor.
+
+### `SEO-2026-0081` — EN healthcare digital advertising · **APPROVED_FOR_PREPARATION**
+
+İçerik paketi REV-2 ile hazır: 3 birinci el resmî kaynak, koşullu politika dili,
+3 canlı iç bağlantı (Dentasay dâhil), yamyamlık + YMYL QA temiz, ~1.657 kelime.
+Tek blokaj kapak görseli → `SEO-2026-0082`.
 
 `SEO-2026-0084` (dentasay-kurumsal-kimlik) ve `SEO-2026-0085` (ella-scarf) **DEFERRED** —
 kaynak yetersiz, otonom kuyruğu meşgul etmiyorlar.
