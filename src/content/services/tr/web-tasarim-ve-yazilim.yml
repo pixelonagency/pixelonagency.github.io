@@ -9,6 +9,13 @@ seo:
     Pixelon ile hızlı, mobil uyumlu, SEO altyapılı ve dönüşüm odaklı web
     sitelerine sahip olun. Markanıza özel web tasarım çözümlerini keşfedin.
 
+heroVideo:
+  desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
+  desktopWebm: /media/hero/web-tasarim/hero-web-design-desktop.webm
+  desktopPoster: /media/hero/web-tasarim/hero-web-design-desktop-poster.webp
+  mobileMp4: /media/hero/web-tasarim/hero-web-design-mobile.mp4
+  mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
+  mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
 hero:
   eyebrow: Web Tasarım ve Yazılım
   headingLines:

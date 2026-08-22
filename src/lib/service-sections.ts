@@ -29,6 +29,7 @@ export interface ServiceLike {
     lead: string;
     tagline?: string | undefined;
   };
+  heroVideo?: Extract<PageSection, { type: 'hero' }>['video'];
   intro?: (Block & { body: string; highlight?: string | undefined }) | undefined;
   why: Block & { items: TitledItem[] };
   scope: Block & { items: TitledItem[] };
@@ -78,6 +79,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     type: 'hero',
     eyebrow: service.hero.eyebrow,
     background: 'dark',
+    video: service.heroVideo,
     chips: [],
     headingLines: service.hero.headingLines,
     lead: service.hero.lead,

@@ -9,6 +9,13 @@ seo:
     Get fast, mobile-friendly, SEO-ready and conversion-focused websites with
     Pixelon. Discover web design solutions built around your brand.
 
+heroVideo:
+  desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
+  desktopWebm: /media/hero/web-tasarim/hero-web-design-desktop.webm
+  desktopPoster: /media/hero/web-tasarim/hero-web-design-desktop-poster.webp
+  mobileMp4: /media/hero/web-tasarim/hero-web-design-mobile.mp4
+  mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
+  mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
 hero:
   eyebrow: Web Design and Development
   headingLines:

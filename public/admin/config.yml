@@ -179,6 +179,20 @@ collections:
           - { label: Giriş Metni, name: lead, widget: text }
           - { label: Alt Slogan, name: tagline, widget: string, required: false }
           - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text }
+      # Hero arka plan loop videosu (Pixelon Miniature Digital World) — yollar dile bağlı değil.
+      - label: Hero Videosu
+        name: heroVideo
+        widget: object
+        required: false
+        collapsed: true
+        i18n: duplicate
+        fields:
+          - { label: 'Masaüstü MP4', name: desktopMp4, widget: string, i18n: duplicate }
+          - { label: 'Masaüstü WebM', name: desktopWebm, widget: string, required: false, i18n: duplicate }
+          - { label: 'Masaüstü Poster', name: desktopPoster, widget: string, required: false, i18n: duplicate }
+          - { label: 'Mobil MP4', name: mobileMp4, widget: string, required: false, i18n: duplicate }
+          - { label: 'Mobil WebM', name: mobileWebm, widget: string, required: false, i18n: duplicate }
+          - { label: 'Mobil Poster', name: mobilePoster, widget: string, required: false, i18n: duplicate }
       - label: Giriş Bölümü
         name: intro
         widget: object
@@ -371,6 +385,20 @@ collections:
                 field: { label: Satır, name: line, widget: string }
               - &s_lead { label: Giriş Metni, name: lead, widget: text, required: false }
               - { label: Alt Slogan, name: tagline, widget: string, required: false }
+              # Hero arka plan loop videosu — kök-göreli public yolları, dile bağlı değil.
+              - label: Hero Videosu
+                name: video
+                widget: object
+                required: false
+                collapsed: true
+                i18n: duplicate
+                fields:
+                  - { label: 'Masaüstü MP4', name: desktopMp4, widget: string, i18n: duplicate }
+                  - { label: 'Masaüstü WebM', name: desktopWebm, widget: string, required: false, i18n: duplicate }
+                  - { label: 'Masaüstü Poster', name: desktopPoster, widget: string, required: false, i18n: duplicate }
+                  - { label: 'Mobil MP4', name: mobileMp4, widget: string, required: false, i18n: duplicate }
+                  - { label: 'Mobil WebM', name: mobileWebm, widget: string, required: false, i18n: duplicate }
+                  - { label: 'Mobil Poster', name: mobilePoster, widget: string, required: false, i18n: duplicate }
               - label: Hizalama
                 name: align
                 widget: select

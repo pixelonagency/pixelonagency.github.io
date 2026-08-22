@@ -67,6 +67,20 @@ const faqItem = z.object({
 
 // --- services -------------------------------------------------------------
 
+/**
+ * Hero arka plan videosu — public/ altındaki kök-göreli varlık yolları.
+ * Masaüstü ve mobil AYRI kompozisyonlardır (crop değil); poster reduced-motion
+ * ve ilk boya için kullanılır. Alanlar dile göre değişmez (i18n: duplicate).
+ */
+export const heroVideoSchema = z.object({
+  desktopMp4: nonEmpty,
+  desktopWebm: opt(z.string()),
+  desktopPoster: opt(z.string()),
+  mobileMp4: opt(z.string()),
+  mobileWebm: opt(z.string()),
+  mobilePoster: opt(z.string()),
+});
+
 export function makeServiceSchema(image: ImageResolver = defaultImage) {
   return z.object({
     title: nonEmpty,
@@ -87,6 +101,8 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
       tagline: opt(z.string()),
       whatsappMessage: nonEmpty,
     }),
+    /** Hero arka plan loop videosu (Pixelon Miniature Digital World). */
+    heroVideo: opt(heroVideoSchema),
     // Hizmet sayfalarındaki giriş/manşet bölümü (referans HTML'lerde "GİRİŞ").
     intro: opt(
       z.object({

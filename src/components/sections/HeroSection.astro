@@ -46,6 +46,45 @@ const breadcrumbJsonLd =
  * Referans: "Strateji ✦ Yaratıcılık ✦ …" biçimindeki slogan statik metin değil,
  * lime ✦ ayraçlı KAYAN şerittir. '✦' içeren tagline bu şeride dönüşür.
  */
+const heroVideo = section.video;
+
+/*
+ * Hero video yükleyicisi: viewport'a göre TEK varyantı indirir (masaüstü varlığı
+ * mobile inmez), reduced-motion'da video hiç yüklenmez (poster kalır). <video>
+ * içinde <source media> desteklenmediği için seçim script'le yapılır; JSX ifadesi
+ * içindeki <script> gövdesini prettier ayrıştıramadığından set:html kullanılır.
+ */
+const HERO_VIDEO_SCRIPT = `(() => {
+  const video = document.currentScript.previousElementSibling.querySelector('.hero__video');
+  if (!video) return;
+  const init = () => {
+  const d = video.dataset;
+  const mobile = matchMedia('(max-width: 768px)').matches;
+  const poster = (mobile ? d.mPoster : d.dPoster) || d.dPoster;
+  if (poster) video.poster = poster;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const webm = mobile ? d.mWebm : d.dWebm;
+  const mp4 = (mobile ? d.mMp4 : d.dMp4) || d.dMp4;
+  if (webm) {
+    const s = document.createElement('source');
+    s.src = webm; s.type = 'video/webm';
+    video.appendChild(s);
+  }
+  if (mp4) {
+    const s = document.createElement('source');
+    s.src = mp4; s.type = 'video/mp4';
+    video.appendChild(s);
+  }
+  video.load();
+  const start = () => { video.play().catch(() => {}); };
+  video.readyState >= 3 ? start() : video.addEventListener('canplay', start, { once: true });
+  };
+  // Viewport genişliği yerleşim oturmadan yanlış okunabilir — seçim DCL'e ertelenir.
+  document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', init, { once: true })
+    : init();
+})();`;
+
 const tickerItems = section.tagline?.includes('✦')
   ? section.tagline
       .split('✦')
@@ -64,6 +103,30 @@ const tickerItems = section.tagline?.includes('✦')
     section.align === 'center' && 'hero--center',
   ]}
 >
+  {
+    heroVideo && (
+      <>
+        <div class="hero__media-bg" aria-hidden="true">
+          <video
+            class="hero__video"
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            disablepictureinpicture
+            data-d-mp4={heroVideo.desktopMp4}
+            data-d-webm={heroVideo.desktopWebm}
+            data-d-poster={heroVideo.desktopPoster}
+            data-m-mp4={heroVideo.mobileMp4}
+            data-m-webm={heroVideo.mobileWebm}
+            data-m-poster={heroVideo.mobilePoster}
+          />
+          <span class="hero__video-scrim" />
+        </div>
+        <script is:inline set:html={HERO_VIDEO_SCRIPT} data-hero-video />
+      </>
+    )
+  }
   <div class="hero__inner">
     {
       section.breadcrumb.length > 0 && (
@@ -203,7 +266,50 @@ const tickerItems = section.tagline?.includes('✦')
       linear-gradient(90deg, rgb(10 10 10 / 4%) 1px, transparent 1px);
   }
 
+  /* --- Hero arka plan videosu: metnin altında, etkileşimsiz katman --- */
+  .hero__media-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Okunabilirlik örtüsü: sol koyu → sağ görünür; hero zeminiyle kaynaşır. */
+  .hero__video-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgb(5 5 5 / 94%) 0%,
+      rgb(5 5 5 / 86%) 35%,
+      rgb(5 5 5 / 68%) 62%,
+      rgb(5 5 5 / 34%) 100%
+    );
+  }
+
+  @media (max-width: 768px) {
+    /* Mobil kompozisyon: üst koyu (metin), alt görünür (sahne). */
+    .hero__video-scrim {
+      background: linear-gradient(
+        180deg,
+        rgb(5 5 5 / 95%) 0%,
+        rgb(5 5 5 / 85%) 42%,
+        rgb(5 5 5 / 45%) 70%,
+        rgb(5 5 5 / 25%) 100%
+      );
+    }
+  }
+
   .hero__inner {
+    position: relative;
+    z-index: 1;
     max-width: var(--container);
     margin: 0 auto;
   }

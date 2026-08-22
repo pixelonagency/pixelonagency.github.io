@@ -203,6 +203,8 @@ describe('i18n wiring', () => {
     'cover',
     'date',
     'email',
+    // Video varlık yolları dile bağlı değildir (public/media altındaki dosyalar).
+    'heroVideo',
     'updated',
     'featured',
     'order',

@@ -1,5 +1,5 @@
 import { z } from 'astro/zod';
-import { href, list, opt, optHref, type ImageResolver } from './schemas';
+import { heroVideoSchema, href, list, opt, optHref, type ImageResolver } from './schemas';
 
 /**
  * Sayfa gövdesi "bölüm sözlüğü".
@@ -47,6 +47,8 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     lead: opt(z.string()),
     tagline: opt(z.string()),
     breadcrumb: list(z.object({ label: nonEmpty, href: optHref })),
+    /** Hero arka plan loop videosu — metnin arkasında, overlay ile. */
+    video: opt(heroVideoSchema),
     /** Hero altındaki kısa güven rozetleri ("15+ Yıllık Deneyim" …). */
     chips: list(nonEmpty),
     /** Referans: kariyer gibi bazı alt sayfa hero'ları ortalanmıştır. */
