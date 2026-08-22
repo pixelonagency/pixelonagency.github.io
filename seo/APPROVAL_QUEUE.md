@@ -60,33 +60,29 @@ Kontrol noktaları: +7g 29 Ağu · +14g 5 Eyl · +28g 19 Eyl.
 hizmet sayfalarında mevcut Dentasay kartına `href`. Bileşen değişikliği yok,
 14 hizmet sayfasına rollout yok.
 
-### `SEO-2026-0082` — 0081 kapak görseli · **PREPARED / READY_FOR_APPROVAL**
+### `SEO-2026-0081` — EN healthcare digital advertising · **YAYINDA / ÖLÇÜMDE**
 
-Görsel **üretildi**: `src/assets/images/blog/healthcare-digital-advertising-cover.webp`
-1920×1080 · WebP q86 · 181 KB. Eski healthcare kapağı kullanılmadı.
-QA: metin yok · logo yok · insan yok · tıbbi görsel yok · aksan `#cfff00`, %0,11 alan.
-**Sahip onayı YOK.** Varlık repoda (`7082c46`) ama hiçbir yayınlanmış sayfa
-referans vermiyor, production etkisi sıfır. History rewrite yapılmadı, dosya
-revert edilmedi.
+22 Ağu 2026 21:52 +03 · `/en/blog/healthcare-digital-advertising/`
+Sahip açık onayı: _"OWNER APPROVAL — FINAL · SEO-2026-0081 APPROVED FOR PUBLISH"_.
 
-> **Düzeltme:** bu görev bir ara "ONAYLANDI" olarak işaretlenmişti. Sahip onay
-> vermemişti; verilen karar UNBLOCKED / READY_FOR_APPROVAL idi. Onay, dolaylı
-> sinyallerden (görsel hazır, prova PASS, varlık repoda) çıkarılmıştı — bu bir
-> hataydı ve `scripts/seo/approval.mjs` ile teste bağlandı.
+3 iç bağlantı (healthcare-marketing · digital-advertising · **Dentasay vaka çalışması**),
+3 birinci el resmî dış kaynak, 5 SSS, özgün kapak. Eski strateji yazısındaki
+Google/Meta Ads bölümüne yeni yazıya tek bağlamsal bağlantı eklendi.
 
-### `SEO-2026-0081` — EN healthcare digital advertising · **READY_FOR_FINAL_PUBLISH**
+Ölçüm: +7g 29 Ağu · +14g 5 Eyl · +28g 19 Eyl. İzlenen sorgular:
+`healthcare digital advertising` · `digital advertising in healthcare` ·
+`digital advertising healthcare` + türeyen sorgular.
+**Nedensellik iddiası yapılmayacak.**
 
-İçerik paketi REV-2 ile hazır: 3 birinci el resmî kaynak, koşullu politika dili,
-3 canlı iç bağlantı (Dentasay dâhil), yamyamlık + YMYL QA temiz, ~1.657 kelime.
-Kapak bağlandı, paket kuru provadan geçti (dosya sonra geri alındı, yayında değil).
-Hedef URL: `/en/blog/healthcare-digital-advertising/` — slug adlandırma kuralından türetildi.
+### `SEO-2026-0082` — 0081 kapak görseli · **ONAYLI / KULLANIMDA**
 
-**Dentasay bağlantısı sahip kararıyla ÇIKARILDI.** Dentasay işi metinde anlatılıyor,
-bağlantı verilmiyor. Follow-up: `SEO-2026-0087`.
+Sahip onayı **yalnız 0081 kapak kullanımıyla sınırlı**. Başka sayfaya rollout yok,
+yeni görsel üretimi yok. Varlık artık production'da referanslı.
 
-Prova QA (2. tur): gate 882 · build 105 sayfa · dist smoke 133 · 8 iç bağlantı 0 kırık ·
-33 varlık 0 kırık · sitemap'te · orphan değil · canonical/OG/Twitter/BlogPosting JSON-LD doğru.
-**Blokaj kalmadı — yayın için sahip onayı bekleniyor.**
+### `SEO-2026-0087` — Dentasay bağlantısı · **SUPERSEDED**
+
+Dentasay canlı (200) doğrulandı; bağlantı doğrudan 0081 yayın paketine girdi.
+Ayrı görev gereksiz kaldı.
 
 `SEO-2026-0084` (dentasay-kurumsal-kimlik) ve `SEO-2026-0085` (ella-scarf) **DEFERRED** —
 kaynak yetersiz, otonom kuyruğu meşgul etmiyorlar.

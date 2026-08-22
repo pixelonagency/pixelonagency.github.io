@@ -74,7 +74,7 @@ Planning is one thing; running the website, the content, the campaigns and the e
 
 ## How Should Google Ads and Meta Ads Be Used?
 
-The two platforms serve different purposes. Google Ads reaches users who are actively searching for treatment, while Meta Ads is stronger at building awareness and warming up an audience.
+The two platforms serve different purposes. Google Ads reaches users who are actively searching for treatment, while Meta Ads is stronger at building awareness and warming up an audience — we cover the policy limits, creative and measurement side of this in more depth in our guide to [healthcare digital advertising](/en/blog/healthcare-digital-advertising/).
 
 | Criterion | Google Ads | Meta Ads |
 | --- | --- | --- |
