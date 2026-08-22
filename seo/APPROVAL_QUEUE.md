@@ -48,20 +48,21 @@ penceresini temiz tutmak için beklemek tercih edilir. Karar sahibindedir.
 
 **Açık madde:** kapak görseli seçilmedi — bkz. `SEO-2026-0082`.
 
-### `SEO-2026-0083` — Dentasay vaka çalışması · **P0** · READY_FOR_APPROVAL · REV-2
+### `SEO-2026-0083` — Dentasay vaka çalışması · **YAYINDA / ÖLÇÜMDE**
 
-TR ve EN taslak hazır, **uydurulmuş metrik yok**:
-`seo/private/drafts/SEO-2026-0083-dentasay-{TR,EN}.md`
-Kaynak denetimi: `seo/private/drafts/SEO-2026-0083-source-audit.md`
+Sahip onayıyla 22 Ağu 2026 13:15 +03'te yayınlandı:
 
-Sahip girdisi **tamamlandı (22 Ağu 2026)** — açık soru kalmadı:
+- `/projelerimiz/dentasay/`
+- `/en/projects/dentasay/`
 
-- 9 hizmet teyit edildi (SEO ve Influencer Marketing eklendi)
-- Doğrulanmış çıktılar: 20 ülke / 13 dil reklam operasyonu
-- Bağlamsal büyüme: tek klinik → 12 klinik, **nedensellik iddiası olmadan**
-- `period` **OMITTED** — şema opsiyonel, yayını bloklamıyor
+Ölçüm kontrol noktaları: +7g 29 Ağu · +14g 5 Eyl · +28g 19 Eyl.
+Takip edilen: gösterim, tık, sorgu, yönlendiren iç sayfa.
+**Sıralama değişimi vaka çalışmasına atfedilmez** — yalnız gözlenen sinyal raporlanır.
 
-Görsel alanları placeholder — **görsel eksikliği taslağı bloklamadı.**
+Takip işi: `SEO-2026-0086` — bağlamsal iç bağlantı, **onay bekliyor**.
+Kapsam bilinçli olarak dar: yalnız TR+EN sağlık turizmi hizmet sayfası ve
+2 healthcare blog yazısı. Dentasay'dan söz eden **14 hizmet sayfasının tamamına
+rollout yapılmayacak.**
 
 `SEO-2026-0084` (dentasay-kurumsal-kimlik) ve `SEO-2026-0085` (ella-scarf) **DEFERRED** —
 kaynak yetersiz, otonom kuyruğu meşgul etmiyorlar.
