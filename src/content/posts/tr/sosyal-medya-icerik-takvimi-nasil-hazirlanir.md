@@ -156,7 +156,7 @@ article:
 
         Amacı belirleyin, üç ila beş sütun tanımlayın, her sütuna haftalık yer ayırın ve üretimi topluca yapın.
 
-        Takvimi ayakta tutan şey iddialı bir plan değil; sürdürülebilir bir ritim ve gündeme yer bırakan esneklik.
+        Takvimi ayakta tutan şey iddialı bir plan değil; sürdürülebilir bir ritim ve gündeme yer bırakan esneklik. Takvimin kurulmasını ve işletilmesini [hesap yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) kapsamında üstleniyoruz.
 
     - type: cta
       heading: Takviminizi birlikte kuralım.

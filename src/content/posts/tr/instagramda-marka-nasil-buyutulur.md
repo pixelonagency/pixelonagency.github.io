@@ -159,7 +159,7 @@ article:
 
         Profili net kurun, tek bir konuda düzenli üretin, kaydedilen ve paylaşılan içerikle erişimi büyütün, gelen ilgiyi karşılıksız bırakmayın.
 
-        Ve göstergeye bakarken beğeniyi değil kaydetme, paylaşma ve mesajı takip edin; büyümenin gerçek işareti orada.
+        Ve göstergeye bakarken beğeniyi değil kaydetme, paylaşma ve mesajı takip edin; büyümenin gerçek işareti orada. Üretimi ve bu takibi düzene bağlamak isteyen markalarla [sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) kapsamında çalışıyoruz.
 
     - type: cta
       heading: Hesabınızı birlikte gözden geçirelim.

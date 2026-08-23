@@ -146,7 +146,7 @@ article:
 
         Önce dizine giriş, sonra gösterim, ardından uzun kuyruk trafiği, en son rekabetli sorgularda konum. Nerede olduğunuzu bu sıra gösteriyor.
 
-        Süreyi en çok kısaltan iki şey ise şaşırtıcı olmayacak kadar basit: teknik engelleri baştan temizlemek ve düzenli üretimi kesmemek.
+        Süreyi en çok kısaltan iki şey ise şaşırtıcı olmayacak kadar basit: teknik engelleri baştan temizlemek ve düzenli üretimi kesmemek. İkisini de [SEO çalışmalarının](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) ilk ayına koyuyoruz.
 
     - type: cta
       heading: Sürecin neresinde olduğunuzu birlikte görelim.

@@ -154,7 +154,7 @@ article:
 
         Hangi eylemlerin sayılacağını yazıya dökün, etiket yöneticisi üzerinden kurun, reklam platformlarına bağlayın ve her dönüşümü kendiniz test edin.
 
-        Kurulum tamamlandığında bütçe kararları tahmine değil veriye dayanıyor; ve genellikle ilk bulgu, sanılandan farklı bir kanalın talep ürettiği oluyor.
+        Kurulum tamamlandığında bütçe kararları tahmine değil veriye dayanıyor; ve genellikle ilk bulgu, sanılandan farklı bir kanalın talep ürettiği oluyor. Kurulumu ve sonrasındaki kampanya kararlarını [reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) kapsamında birlikte yürütüyoruz.
 
     - type: cta
       heading: Ölçüm kurulumunuzu birlikte kontrol edelim.

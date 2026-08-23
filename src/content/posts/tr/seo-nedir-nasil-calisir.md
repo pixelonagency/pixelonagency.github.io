@@ -144,7 +144,7 @@ article:
 
         Sıralamada belirleyici olan şey anahtar kelimeyi metne yerleştirmek değil, arayan kişinin sorusunu gerçekten cevaplamak.
 
-        Getirisi yavaş ama birikimli. Bu yüzden SEO'ya bakarken doğru soru "ne zaman ilk sıraya çıkarız" değil, "önümüzdeki bir yıl içinde reklam bağımlılığımızı ne kadar azaltabiliriz".
+        Getirisi yavaş ama birikimli. Bu yüzden SEO'ya bakarken doğru soru "ne zaman ilk sıraya çıkarız" değil, "önümüzdeki bir yıl içinde reklam bağımlılığımızı ne kadar azaltabiliriz". Bu soruya yol haritasıyla cevap vermek [SEO hizmetimizin](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) temel işi.
 
     - type: cta
       heading: Sitenizin arama görünürlüğünü birlikte inceleyelim.

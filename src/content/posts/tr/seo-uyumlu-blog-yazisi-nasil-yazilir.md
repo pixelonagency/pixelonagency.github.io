@@ -145,7 +145,7 @@ article:
 
         Önce niyeti anlayın, cevabı başta verin, yapıyı taranabilir kurun, iç bağlantıları ihmal etmeyin ve görselleri hafif tutun.
 
-        Yayınladıktan sonra arama konsoluna dönüp gerçek sorguları yazıya eklemek ise en az yazının kendisi kadar değerli bir adım.
+        Yayınladıktan sonra arama konsoluna dönüp gerçek sorguları yazıya eklemek ise en az yazının kendisi kadar değerli bir adım. Üretim ve güncelleme döngüsünü [içerik tarafında](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) düzenli bir işleyişe bağlıyoruz.
 
     - type: cta
       heading: İçerik planınızı birlikte çıkaralım.

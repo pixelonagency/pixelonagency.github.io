@@ -168,7 +168,7 @@ article:
 
         Önce ölçümün kurulu olduğunu doğrulayın, sonra trafiğin niteliğine bakın, ardından mesajın netliğini ve mobil deneyimi test edin. Tasarım müdahalesi bu sıranın sonunda geliyor.
 
-        Bu sıra izlendiğinde yapılan her değişikliğin neyi düzelttiği de görülebiliyor.
+        Bu sıra izlendiğinde yapılan her değişikliğin neyi düzelttiği de görülebiliyor. Teşhisten uygulamaya kadar süreci [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) tarafında birlikte yürütüyoruz.
 
     - type: cta
       heading: Sitenizin nerede talep kaybettiğini bulalım.

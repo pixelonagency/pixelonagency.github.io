@@ -158,7 +158,7 @@ article:
 
         Görsel katman tanınmayı, sözel katman anlaşılmayı sağlıyor. İkisi bir kılavuzda toplanıyor ve asıl işi tutarlılığı korumak.
 
-        Çalışmanın başarısını ölçen soru da basit: farklı kişilerin ürettiği işler aynı markadan çıkmış gibi duruyor mu?
+        Çalışmanın başarısını ölçen soru da basit: farklı kişilerin ürettiği işler aynı markadan çıkmış gibi duruyor mu? Bu tutarlılığı kurmak, [marka ve kurumsal kimlik](/hizmetlerimiz/marka-ve-kurumsal-kimlik/) çalışmalarımızın çıkış noktası.
 
     - type: cta
       heading: Markanızın kimliğini birlikte kuralım.

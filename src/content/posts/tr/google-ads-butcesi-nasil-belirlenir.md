@@ -142,7 +142,7 @@ article:
 
         Bu veriler yoksa önce dar kapsamlı bir testle ölçülmeli. Varsa, hedeflenen talep sayısı doğrudan bütçeye çevrilebiliyor.
 
-        Ve her durumda bütçeyi büyütmeden önce bakılacak yer dönüşüm oranı; çünkü orada yapılan iyileştirme, bütçe artışından daha ucuza aynı sonucu veriyor.
+        Ve her durumda bütçeyi büyütmeden önce bakılacak yer dönüşüm oranı; çünkü orada yapılan iyileştirme, bütçe artışından daha ucuza aynı sonucu veriyor. Hesabın kurulumunu ve sürekli optimizasyonunu devretmek isteyenler için [kampanya yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) ayrı bir hizmet başlığı.
 
     - type: cta
       heading: Bütçenizi rakamlar üzerinden çıkaralım.

@@ -157,7 +157,7 @@ article:
 
         Önce ölçümün kurulu olduğunu doğrulayın, sonra trafiğin indiği sayfayı reklamla aynı vaade getirin, ardından kreatifi çoğaltın. Kitle ayarı bu üçünden sonra geliyor.
 
-        Ve kampanya öğrenme aşamasındayken en verimli müdahale, müdahale etmemek.
+        Ve kampanya öğrenme aşamasındayken en verimli müdahale, müdahale etmemek. Bu sabrı süreç hâline getirmeyi [dijital reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) tarafında ayrı bir disiplin olarak ele alıyoruz.
 
     - type: cta
       heading: Kampanyanızı birlikte gözden geçirelim.

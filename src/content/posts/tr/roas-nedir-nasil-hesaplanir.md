@@ -156,7 +156,7 @@ article:
 
         Ama tek başına kârlılığı anlatmıyor. Sizin için iyi bir ROAS değeri, kâr marjınızın tersinden çıkıyor ve başka markanın rakamıyla karşılaştırılamıyor.
 
-        Düşük ROAS'ta ilk hamle bütçeyi kısmak değil; ölçümü doğrulamak ve dönüşüm oranını yükseltmek. İkisi de aynı bütçeden daha fazla sonuç çıkarıyor.
+        Düşük ROAS'ta ilk hamle bütçeyi kısmak değil; ölçümü doğrulamak ve dönüşüm oranını yükseltmek. İkisi de aynı bütçeden daha fazla sonuç çıkarıyor. Ölçüm ve optimizasyon tarafını [performans odaklı reklam çalışmalarımızda](/hizmetlerimiz/dijital-reklam-yonetimi/) birlikte kurguluyoruz.
 
     - type: cta
       heading: Kendi başabaş ROAS'ınızı birlikte çıkaralım.

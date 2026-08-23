@@ -159,7 +159,7 @@ article:
 
         Gelen talepleri tek yerde toplayıp aşamalarını ve sorumlusunu belirlediğinizde, üretilen talebin takipsizlikten kaybolması duruyor.
 
-        En değerli çıktısı ise kaynak bilgisi: hangi kanalın çok talep değil, çok müşteri getirdiğini göstermesi. Bütçeyi doğru yere kaydıran bilgi tam olarak bu.
+        En değerli çıktısı ise kaynak bilgisi: hangi kanalın çok talep değil, çok müşteri getirdiğini göstermesi. Bütçeyi doğru yere kaydıran bilgi tam olarak bu; kurulum ve süreç tasarımını [CRM ve dijital dönüşüm](/hizmetlerimiz/crm-ve-dijital-donusum/) tarafında birlikte ele alıyoruz.
 
     - type: cta
       heading: Talep akışınızı birlikte kuralım.

@@ -159,7 +159,7 @@ article:
 
         Hizmetle ilişkili konular, birbirine bağlanan yazılar ve hizmet sayfasına giden iç bağlantılar varsa blog hem yeni sorgulara giriyor hem mevcut sayfaları güçlendiriyor.
 
-        Bu yapı yoksa üretilen içerik sitede birikiyor ama hiçbir işe yaramıyor. Farkı yaratan şey yazı sayısı değil, yazıların birbiriyle kurduğu ilişki.
+        Bu yapı yoksa üretilen içerik sitede birikiyor ama hiçbir işe yaramıyor. Farkı yaratan şey yazı sayısı değil, yazıların birbiriyle kurduğu ilişki; bu ilişkiyi kurmayı [SEO ve içerik pazarlaması](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) çalışmalarının merkezine alıyoruz.
 
     - type: cta
       heading: İçerik kümenizi birlikte planlayalım.

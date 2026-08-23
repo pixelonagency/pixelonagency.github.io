@@ -2,7 +2,7 @@
 title: 'Web Tasarım Fiyatları Neye Göre Değişiyor?'
 category: Web Tasarım
 translationKey: what-drives-web-design-pricing
-excerpt: Aynı işe gelen teklifler neden birbirinden kat kat farklı? Web tasarım fiyatını belirleyen şey sayfa sayısı değil; kapsam, içerik sorumluluğu, entegrasyon derinliği ve teslim sonrası sürekliliktir.
+excerpt: Aynı işe gelen teklifler neden birbirinden kat kat farklı? Web sitesi fiyatlarını belirleyen şey sayfa sayısı değil; kapsam, içerik sorumluluğu, entegrasyon derinliği ve teslim sonrası sürekliliktir.
 date: 2026-08-21
 cover: '/src/assets/images/blog/web-tasarim-fiyatlari-cover.webp'
 coverAlt: İki kişinin koyu bir masada basılı kapsam dokümanını kalemle satır satır işaretlediği, dizüstü bilgisayarda aynı kalem listesinin açık olduğu fotoğraf
@@ -11,7 +11,7 @@ status: published
 featured: false
 seo:
   title: 'Web Tasarım Fiyatları Neye Göre Değişiyor? | Pixelon'
-  description: 'Web tasarım fiyatlarını belirleyen kalemler: kapsam, tasarım yaklaşımı, içerik üretimi, entegrasyonlar, çok dillilik, ölçümleme ve teslim sonrası destek.'
+  description: 'Web sitesi fiyatları neye göre değişir? Web tasarım fiyatlarını belirleyen kalemleri anlatıyoruz: kapsam, tasarım seviyesi, içerik üretimi, entegrasyonlar, e-ticaret ve teslim sonrası destek.'
 article:
   updated: 2026-08-21
   quickAnswer:
@@ -110,6 +110,30 @@ article:
           - Sürekli geliştirme anlaşması
 
     - type: section
+      id: web-sitesi-fiyatlari-aralik
+      heading: Web sitesi fiyatları neden bu kadar geniş bir aralıkta?
+      lead: 'Çünkü "web sitesi" tek bir ürün değil. Aynı isim, birbirinden çok farklı işleri tarif ediyor.'
+      text: |-
+        Beş sayfalık tanıtım sitesiyle, ürün kataloğu ve ödeme altyapısı olan bir e-ticaret sitesi aynı başlık altında anılıyor. Bir teklif ilkini, diğeri ikincisini anlatıyor olabilir; rakamlar arasındaki fark buradan doğuyor.
+
+        Aralığı genişleten ikinci şey içeriğin kime ait olduğu. Metinleri ve görselleri siz sağlıyorsanız iş tasarım ve geliştirmeyle sınırlı kalıyor. İçerik üretimi de kapsama giriyorsa, bu genellikle projenin en çok emek isteyen kısmı oluyor.
+
+        Üçüncüsü ise sitenin yayına alındıktan sonra ne olacağı. Teslimle biten bir işle, güncelleme ve destek içeren bir çalışma arasındaki fark ilk faturada değil, altıncı ayda görünüyor.
+
+    - type: section
+      id: web-sitesi-fiyatlari-karsilastirma
+      heading: Teklifleri karşılaştırırken neye bakmalı?
+      lead: 'En düşük rakamı seçmek yerine, rakamların aynı işi tarif edip etmediğini kontrol etmek gerekiyor.'
+      text: |-
+        Karşılaştırmayı anlamlı kılan tek şey, tekliflerin aynı kapsamı yazmış olması. Farklı kapsamları rakam üzerinden kıyaslamak, farklı ürünlerin fiyatını kıyaslamak anlamına geliyor.
+
+        Bakılacak dört nokta şu: teklif kaç sayfa ve hangi şablonları içeriyor, içerik ve görsel sorumluluğu kimde, hangi entegrasyonlar dahil, ve teslim sonrası hangi süre boyunca hangi destek veriliyor.
+
+        E-ticaret söz konusuysa ayrı bir başlık daha var: ürün sayısı, varyant yapısı ve ödeme-kargo entegrasyonları fiyatı belirleyen ana kalemler hâline geliyor.
+
+        Teklifte bu kalemler yazılı değilse, eksik olan bilgi sonradan ek maliyet olarak geri geliyor.
+
+    - type: section
       id: ucuzun-maliyeti
       heading: Ucuz teklifin gizli maliyeti nerede ortaya çıkıyor?
       text: |-
@@ -153,7 +177,7 @@ article:
 
         Tasarım yaklaşımı, içerik sorumluluğu, entegrasyonlar, dil sayısı ve teslim sonrası destek; bu beş kalem netleştiğinde teklifler karşılaştırılabilir hâle geliyor ve aradaki fark anlam kazanıyor.
 
-        Bütçeyi de tek seferlik bir gider yerine ilk yılın toplamı olarak planlamak, sonradan çıkan kalemleri sürpriz olmaktan çıkarıyor.
+        Bütçeyi de tek seferlik bir gider yerine ilk yılın toplamı olarak planlamak, sonradan çıkan kalemleri sürpriz olmaktan çıkarıyor. Projenizin kapsamını kalem kalem çıkarmayı [web projeleri](/hizmetlerimiz/web-tasarim-ve-yazilim/) sürecimizin ilk adımı olarak yapıyoruz.
 
     - type: cta
       heading: Projenizin kapsamını birlikte çıkaralım.
