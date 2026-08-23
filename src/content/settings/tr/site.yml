@@ -7,10 +7,13 @@ whatsapp:
 social:
   - label: Instagram
     short: IG
-    url: https://www.instagram.com/pixelonajans
+    url: https://www.instagram.com/pixelonagency/
   - label: Facebook
     short: FB
-    url: https://www.facebook.com/pixelonajans
+    url: https://www.facebook.com/pixelonagency
+  - label: LinkedIn
+    short: IN
+    url: https://www.linkedin.com/company/pixelonagency
 legalLinks:
   - label: KVKK Aydınlatma Metni
     href: /kvkk-aydinlatma-metni

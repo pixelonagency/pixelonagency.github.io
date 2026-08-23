@@ -55,7 +55,8 @@ sections:
         value: |-
           Instagram: @pixelonagency
           Facebook: pixelonagency
-        href: https://www.instagram.com/pixelonajans
+          LinkedIn: pixelonagency
+        href: https://www.instagram.com/pixelonagency/
 
   - type: form
     background: light
