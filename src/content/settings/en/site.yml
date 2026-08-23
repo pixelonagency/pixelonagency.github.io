@@ -14,9 +14,6 @@ social:
   - label: LinkedIn
     short: IN
     url: https://www.linkedin.com/company/pixelonagency
-  - label: Dribbble
-    short: DR
-    url: https://dribbble.com/pixelon
 legalLinks:
   - label: Personal Data Processing Notice
     href: /en/personal-data-processing-notice
