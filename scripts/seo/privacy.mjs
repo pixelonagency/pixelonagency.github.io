@@ -16,7 +16,57 @@
  *                                 detaylı fırsat listeleri
  */
 
-/** Public `SEO_STATE.json` içinde ASLA bulunmayacak anahtarlar. */
+/**
+ * Public `SEO_STATE.json` içinde bulunmasına İZİN VERİLEN anahtarlar.
+ *
+ * Kural bilerek TERSİNE çevrildi: eskiden bir kara liste vardı ve listede
+ * olmayan her yeni anahtar sessizce public tarafa düşüyordu. 23 Ağustos 2026'da
+ * `seoTasks` ve `healthcareEnCluster` gibi 11 sınıflandırılmamış anahtar bu
+ * yolla public state'e yazılmak üzereydi; sızıntıyı `assertPublicSafe` son anda
+ * yakaladı ve daily/weekly koşuları kırıldı.
+ *
+ * Beyaz liste güvenli tarafa düşer: tanımadığı anahtarı public yapmaz, private
+ * yapar. Yeni bir alanın public olması isteniyorsa bilinçli olarak buraya
+ * eklenir — unutulduğunda kaybedilen şey görünürlüktür, gizlilik değil.
+ */
+export const PUBLIC_STATE_KEYS = [
+  // Kimlik ve sürüm
+  'version',
+  'mode',
+  'site',
+  // Koşu muhasebesi (mutlak yol taşımaz — `scheduler` public DEĞİL)
+  'lastRun',
+  'lastSuccessfulRun',
+  'lastGSCFetch',
+  'lastSemrushFetch',
+  'lastCompetitorAnalysis',
+  'lastTechnicalAudit',
+  'lastContentPublish',
+  'lastContentRefresh',
+  // Faz / görev kimlikleri — yalnız ID, içerik veya sorgu yok
+  'currentPhase',
+  'phasesCompleted',
+  'phasesBlocked',
+  'currentTask',
+  'nextTaskIds',
+  'completedTaskIds',
+  'nextTaskIdCounter',
+  'blockedTasks',
+  // Toplam / anonim metrikler ve ilkeler
+  'technicalHealth',
+  'dataSources',
+  'dataSourcePolicy',
+  'visualPolicy',
+  'gscSummary',
+  'opportunityCounts',
+  'overnight',
+];
+
+/**
+ * Geriye dönük uyumluluk ve dokümantasyon için tutulan açık kara liste.
+ * Beyaz liste zaten bunları dışarıda bırakır; buradaki değer, bir anahtarın
+ * NEDEN private olduğunu tek yerde okunur kılmasıdır.
+ */
 export const PRIVATE_STATE_KEYS = [
   // Zamanlayıcı muhasebesi mutlak log yolu taşır (ev dizini dahil) — public repoya girmez.
   'scheduler',
@@ -28,6 +78,18 @@ export const PRIVATE_STATE_KEYS = [
   'competitorGaps',
   'backlinkProspects',
   'conversions',
+  // 23 Ağu 2026'da eklendi — hedef sorgu, onay kaynağı, taslak yolu ve rakip notu taşıyor.
+  'seoTasks',
+  'healthcareEnCluster',
+  'autonomous',
+  'autonomousBacklog',
+  'lastAutonomousRun',
+  'cutover',
+  'infrastructure',
+  'liveVerification',
+  'measurementPolicy',
+  'costPolicy',
+  'dataQualityNotes',
 ];
 
 /** Gitignore'a giren yollar — dokümantasyon ve test için tek kaynak. */
@@ -72,7 +134,9 @@ export function splitState(state) {
   /** @type {Record<string, unknown>} */ const pub = {};
   /** @type {Record<string, unknown>} */ const priv = {};
   for (const [k, v] of Object.entries(state)) {
-    (PRIVATE_STATE_KEYS.includes(k) ? priv : pub)[k] = v;
+    // Beyaz liste: tanınmayan anahtar private tarafa düşer, public'e SIZMAZ.
+    const isPublic = PUBLIC_STATE_KEYS.includes(k) && !PRIVATE_STATE_KEYS.includes(k);
+    (isPublic ? pub : priv)[k] = v;
   }
   return { publicState: pub, privateState: priv };
 }

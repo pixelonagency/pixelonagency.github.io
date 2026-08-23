@@ -13,6 +13,7 @@ import {
   assertPublicSafe,
   countOpportunities,
   splitState,
+  PUBLIC_STATE_KEYS,
   summariseGSC,
 } from './privacy.mjs';
 import { readFileSync } from 'node:fs';
@@ -43,6 +44,39 @@ describe('splitState', () => {
   test('iki parça birleşince orijinal state geri gelir', () => {
     const { publicState, privateState } = splitState(state);
     expect({ ...publicState, ...privateState }).toEqual(state);
+  });
+
+  /**
+   * 23 Ağu 2026 regresyonu: split kara listeydi, listede olmayan her yeni anahtar
+   * sessizce public tarafa düşüyordu. `seoTasks` hedef sorgu listesi taşıyordu ve
+   * public state'e yazılmak üzereydi. Artık beyaz liste var — tanınmayan anahtar
+   * private'a düşer.
+   */
+  test('TANINMAYAN anahtar public DEĞİL private tarafa düşer', () => {
+    const { publicState, privateState } = splitState({
+      ...state,
+      seoTasks: { 'SEO-2026-0081': { measureQueries: ['healthcare digital advertising'] } },
+      healthcareEnCluster: { primary: 'gizli küme' },
+      birGunEklenenYeniAlan: { gizli: 'veri' },
+    });
+    expect(publicState).not.toHaveProperty('seoTasks');
+    expect(publicState).not.toHaveProperty('healthcareEnCluster');
+    expect(publicState).not.toHaveProperty('birGunEklenenYeniAlan');
+    expect(privateState).toHaveProperty('seoTasks');
+    expect(privateState).toHaveProperty('birGunEklenenYeniAlan');
+  });
+
+  test('public state yalnız beyaz listedeki anahtarları içerir', () => {
+    const { publicState } = splitState({
+      ...state,
+      seoTasks: {},
+      rastgeleAlan: 1,
+    });
+    for (const k of Object.keys(publicState)) expect(PUBLIC_STATE_KEYS).toContain(k);
+  });
+
+  test('beyaz liste ile kara liste çakışmaz', () => {
+    for (const k of PUBLIC_STATE_KEYS) expect(PRIVATE_STATE_KEYS).not.toContain(k);
   });
 });
 
@@ -160,6 +194,39 @@ describe('git takip sözleşmesi', () => {
         continue;
       }
       if (/\/Users\/[a-z0-9_-]+\//i.test(text)) offenders.push(f);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  /**
+   * 23 Ağu 2026: otonom ajan `seo/APPROVAL_QUEUE.md` içinde ham GSC metriği buldu —
+   * gösterim sayısı ve ondalıklı ortalama pozisyon. Dosya git'te izleniyor ve repo
+   * public. Kural: sıralama/gösterim düzeyinde sayı hiçbir izlenen dosyaya yazılmaz;
+   * bant ifadesi kullanılır ("iki haneli gösterim", "3. sayfa bandında").
+   */
+  test('takip edilen SEO belgeleri ham GSC metriği içermiyor', () => {
+    const METRIC_PATTERNS = [
+      /\b\d+\s*gösterim/i,
+      // Pozisyon sızıntısı ondalıklı gelir (26,4 / 36.07). "3. sayfa bandında" gibi
+      // sıra sayıları kasıtlı bant ifadesidir, metrik değildir — yakalanmaz.
+      /ortalama pozisyon\s*\d+[,.]\d/i,
+      /\bpoz(?:isyon)?\s*\d+[,.]\d/i,
+      /\bavg(?:\.|erage)?\s*position\s*\d/i,
+      /\b\d+\s*impressions?\b/i,
+    ];
+    const offenders: string[] = [];
+    for (const f of tracked) {
+      if (!f.startsWith('seo/') || !f.endsWith('.md')) continue;
+      let text = '';
+      try {
+        text = readFileSync(f, 'utf8');
+      } catch {
+        continue;
+      }
+      for (const re of METRIC_PATTERNS) {
+        const hit = text.match(re);
+        if (hit) offenders.push(`${f}: "${hit[0]}"`);
+      }
     }
     expect(offenders).toEqual([]);
   });
