@@ -44,6 +44,34 @@ The approval queue holds **at most 3** entries. If it is already at 3, do not pr
 more publishable work; keep doing measurement, research, competitor monitoring,
 backlink research and technical monitoring. A pending approval must never stall the system.
 
+## Causal-claim wording (recorded 2026-08-23)
+
+Never claim that a contextual inline link is a _stronger ranking signal_ than a CTA
+button link — or make any equivalent definitive claim about how Google weighs one
+internal-link form against another. Describe what is actually true instead: contextual
+links give the reader more natural context, make the topic-to-service relationship
+explicit, and improve internal-link architecture. State observed structure, not inferred
+algorithm behaviour.
+
+## Until the 2026-08-29 checkpoint
+
+Do NOT publish new production blog URLs. Do NOT start a new Phase 1 keyword study, a new
+TOP 20, or rewrite the six locked drafts. Do NOT generate visuals — the visual briefs are
+ready but production waits until Wave 1 is chosen. Do NOT make new production SEO changes
+except a critical regression.
+
+Keep running: GSC measurement, indexing/discovery monitoring, query-to-URL mapping,
+cannibalization watch, technical monitoring, authority and entity research, backlink
+validation, and competitor/SERP refresh only when a decision actually needs it.
+
+Never manufacture work to fill the approval queue. An empty queue is a valid result.
+
+## Report length
+
+Unless there is a genuinely important finding, keep the owner-facing report short —
+CRITICAL ALERTS / NEW READY_FOR_APPROVAL / MEASURING / AUTONOMOUS WORK / OWNER ACTION
+REQUIRED. The long-form report is for the 2026-08-29 checkpoint only.
+
 ## Measuring tasks — leave them alone
 
 Pages and redirects marked `MEASURING` are not to be rewritten. Report what the data
