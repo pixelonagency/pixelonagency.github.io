@@ -13,6 +13,7 @@ import { join } from 'node:path';
 import { connectionHealth, classifyQueries } from './sources.mjs';
 import { assertPublicSafe, countOpportunities, splitState, summariseGSC } from './privacy.mjs';
 import { stampFor } from './clock.mjs';
+import { checkCounter, maxTaskNumber } from './task-id.mjs';
 import { checkSummary, loadWindow, runChecks } from './analysis.mjs';
 import { extractWatched, totals as watchTotals } from './redirect-watch.mjs';
 
@@ -335,6 +336,14 @@ if (audit)
 if (gscSummary) state.gscSummary = gscSummary;
 if (oppCount) state.opportunityCounts = oppCount;
 if (opportunities) state.opportunities = opportunities;
+
+/* Görev kimliği sayacı türetilir, elle tutulmaz. 24 Ağu 2026'da elle tutulan
+   sayaç 68'de kalmış, gerçek en yüksek kimlik 105'ti ve ajan `SEO-2026-0093`'ü
+   ikinci kez kullanarak önceki kaydın üzerine yazdı. Artık her koşuda gerçek
+   tablodan yeniden hesaplanıyor; kayarsa koşu sessizce devam etmez. */
+state.nextTaskIdCounter = maxTaskNumber(state.seoTasks) + 1;
+const counterCheck = checkCounter(state.nextTaskIdCounter, state.seoTasks);
+if (!counterCheck.ok) throw new Error(`GÖREV KİMLİĞİ SAYACI: ${counterCheck.reason}`);
 
 const { publicState, privateState } = splitState(state);
 assertPublicSafe(JSON.stringify(publicState), forbidden);

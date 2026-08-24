@@ -44,6 +44,14 @@ The approval queue holds **at most 3** entries. If it is already at 3, do not pr
 more publishable work; keep doing measurement, research, competitor monitoring,
 backlink research and technical monitoring. A pending approval must never stall the system.
 
+## Task IDs — never invent one
+
+Take the next task ID from `nextTaskId(state.seoTasks)` in `scripts/seo/task-id.mjs`,
+or compute it as `max(existing SEO-YYYY-NNNN) + 1` from the task table itself. Never
+guess a number, and never reuse an ID that already exists — on 2026-08-24 `SEO-2026-0093`
+was written twice and the previous record was overwritten. The public
+`nextTaskIdCounter` is derived on every daily run; do not hand-edit it.
+
 ## Causal-claim wording (recorded 2026-08-23)
 
 Never claim that a contextual inline link is a _stronger ranking signal_ than a CTA
