@@ -370,6 +370,18 @@ const tickerItems = section.tagline?.includes('✦')
     align-items: start;
   }
 
+  /* Grid ÖĞESİ varsayılan olarak `min-width: auto` taşır: içeriğinin
+     min-content genişliğinin altına inmez. Hero'daki marquee şeridi
+     (`.hero__ticker-track`, `width: max-content`) ~2000px olduğu için öğe
+     track'i aşıyor ve başlık, paragraf ile butonlar da onunla birlikte
+     ekran dışına taşıyordu — 390px'te buton 1985px genişleyip ortalanmış
+     metni görünmez hâle getiriyordu. `overflow: hidden` yalnız `section`
+     düzeyinde olduğundan sayfa kaymıyor, içerik sessizce kırpılıyordu. */
+  .hero__grid > *,
+  .hero__grid--media > * {
+    min-width: 0;
+  }
+
   .hero__media :global(img) {
     display: block;
     width: 100%;
