@@ -13,10 +13,10 @@ const rows = [
 ];
 
 describe('extractWatched', () => {
-  test('izlenen URL listesi 6 APPROVED + 2 HOLD içerir', () => {
-    expect(WATCHED).toHaveLength(8);
-    expect(WATCHED.filter((w) => w.status === 'APPROVED')).toHaveLength(6);
-    expect(WATCHED.filter((w) => w.status === 'HOLD')).toHaveLength(2);
+  test('izlenen URL listesi 9 APPROVED + 0 HOLD içerir', () => {
+    expect(WATCHED).toHaveLength(9);
+    expect(WATCHED.filter((w) => w.status === 'APPROVED')).toHaveLength(9);
+    expect(WATCHED.filter((w) => w.status === 'HOLD')).toHaveLength(0);
   });
 
   test('GSC satırından metrikleri okur', () => {
@@ -61,7 +61,7 @@ describe('diffAgainst', () => {
 describe('totals', () => {
   test("yalnızca GSC'de görülenleri toplar", () => {
     const t = totals(extractWatched(rows));
-    expect(t).toMatchObject({ watchedCount: 8, seenInGsc: 2, impressions: 10, clicks: 1, bestPosition: 1.14 });
+    expect(t).toMatchObject({ watchedCount: 9, seenInGsc: 2, impressions: 10, clicks: 1, bestPosition: 1.14 });
   });
 
   test('ÇIKTIDA HİÇBİR URL BULUNMAZ — public rapora güvenle girebilir', () => {

@@ -24,7 +24,20 @@ export const SITEMAP = 'dist/sitemap-0.xml';
 export const OUT = 'public/_redirects';
 const ORIGIN = 'https://pixelon.com.tr';
 
-/** Eski URL → yeni URL. Onaylı 6 kalem; HOLD'lar bilinçli olarak yok. */
+/**
+ * Eski URL → yeni URL. Onaylı 9 kalem; HOLD kalmadı.
+ *
+ * İlk 6 kalem 22 Ağu 2026'da onaylandı. Son 3'ü 24 Ağu 2026'da sahip kararıyla
+ * eklendi — otonom ajan bu üç URL'in canlıda 404 verdiğini ve GSC'de hâlâ
+ * sinyal aldığını (61 gösterim, sitenin %4,2'si) ölçtükten sonra:
+ *   · saglik-turizm-danismanligi  — belgelenmemiş boşluk; slug tek harf farklı
+ *   · markalasma-kreatif-cozumler — eski sayfanın kapsamı sahip tarafından teyit edildi
+ *   · mobil-uygulama              — UX/UI sayfası "Mobil Uygulama Tasarımı" kalemini
+ *                                   içeriyor. Not: bu URL'in GSC gösterimlerinin
+ *                                   tamamı MARKA sorgusuydu, konu sorgusu değil;
+ *                                   yönlendirme konu trafiği kazandırmaz, marka
+ *                                   aramasındaki 404'ü kapatır.
+ */
 export const LEGACY = [
   ['/hizmet/web-tasarim-yazilim', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
   ['/hizmet/sosyal-medya-yonetimi', '/hizmetlerimiz/sosyal-medya-yonetimi/'],
@@ -32,6 +45,9 @@ export const LEGACY = [
   ['/hizmet/seo-icerik-uretimi', '/hizmetlerimiz/seo-ve-icerik-pazarlamasi/'],
   ['/hizmet/fotograf-video-produksiyon', '/hizmetlerimiz/video-ve-produksiyon/'],
   ['/referanslar', '/referanslarimiz/'],
+  ['/hizmet/saglik-turizm-danismanligi', '/hizmetlerimiz/saglik-turizmi-danismanligi/'],
+  ['/hizmet/markalasma-kreatif-cozumler', '/hizmetlerimiz/marka-ve-kurumsal-kimlik/'],
+  ['/hizmet/mobil-uygulama', '/hizmetlerimiz/ux-ui-tasarimi/'],
 ];
 
 /** Sitemap XML → kanonik yol listesi (alfabetik, deterministik). */
@@ -60,7 +76,7 @@ export function render(legacy, slash) {
     '# GitHub Pages bu dosyayı OKUMAZ; yalnızca Cloudflare Workers/Pages üzerinde etkilidir.',
     '#',
     '# 1) ESKİ URL YÖNLENDİRMELERİ — sırası önemli, kanonik kurallardan ÖNCE gelir.',
-    '#    HOLD (bilinçli olarak yok): /hizmet/markalasma-kreatif-cozumler/, /hizmet/mobil-uygulama/',
+    '#    HOLD kalmadı: üç eski URL 24 Ağu 2026 sahip kararıyla yönlendirildi.',
     '',
     ...legacy.flatMap(([from, to]) => [line([from, to]), line([`${from}/`, to])]),
     '',
@@ -78,7 +94,7 @@ if (import.meta.main) {
   writeFileSync(OUT, render(LEGACY, slash));
   const total = LEGACY.length * 2 + slash.length;
   console.log(`✔ ${OUT}`);
-  console.log(`  eski URL kuralı   : ${LEGACY.length * 2}  (6 kalem × slash'lı/slash'sız)`);
+  console.log(`  eski URL kuralı   : ${LEGACY.length * 2}  (kalem × slash'lı/slash'sız)`);
   console.log(`  kanonik slash     : ${slash.length}`);
   console.log(`  TOPLAM            : ${total}  (Cloudflare statik yönlendirme sınırı: 2000)`);
 }

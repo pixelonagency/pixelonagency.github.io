@@ -4,7 +4,7 @@
 # GitHub Pages bu dosyayı OKUMAZ; yalnızca Cloudflare Workers/Pages üzerinde etkilidir.
 #
 # 1) ESKİ URL YÖNLENDİRMELERİ — sırası önemli, kanonik kurallardan ÖNCE gelir.
-#    HOLD (bilinçli olarak yok): /hizmet/markalasma-kreatif-cozumler/, /hizmet/mobil-uygulama/
+#    HOLD kalmadı: üç eski URL 24 Ağu 2026 sahip kararıyla yönlendirildi.
 
 /hizmet/web-tasarim-yazilim                                                 /hizmetlerimiz/web-tasarim-ve-yazilim/                                      301
 /hizmet/web-tasarim-yazilim/                                                /hizmetlerimiz/web-tasarim-ve-yazilim/                                      301
@@ -18,6 +18,12 @@
 /hizmet/fotograf-video-produksiyon/                                         /hizmetlerimiz/video-ve-produksiyon/                                        301
 /referanslar                                                                /referanslarimiz/                                                           301
 /referanslar/                                                               /referanslarimiz/                                                           301
+/hizmet/saglik-turizm-danismanligi                                          /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
+/hizmet/saglik-turizm-danismanligi/                                         /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
+/hizmet/markalasma-kreatif-cozumler                                         /hizmetlerimiz/marka-ve-kurumsal-kimlik/                                    301
+/hizmet/markalasma-kreatif-cozumler/                                        /hizmetlerimiz/marka-ve-kurumsal-kimlik/                                    301
+/hizmet/mobil-uygulama                                                      /hizmetlerimiz/ux-ui-tasarimi/                                              301
+/hizmet/mobil-uygulama/                                                     /hizmetlerimiz/ux-ui-tasarimi/                                              301
 
 # 2) KANONİK SLASH NORMALİZASYONU — Workers auto-trailing-slash 307 döndürüyor;
 #    Google kanonikleştirmesi için kalıcı 301 gerekiyor. Wildcard kullanılmaz.

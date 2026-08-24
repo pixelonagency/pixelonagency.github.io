@@ -26,8 +26,9 @@ export const WATCHED = [
   { path: '/hizmet/seo-icerik-uretimi/', status: 'APPROVED' },
   { path: '/hizmet/fotograf-video-produksiyon/', status: 'APPROVED' },
   { path: '/referanslar/', status: 'APPROVED' },
-  { path: '/hizmet/markalasma-kreatif-cozumler/', status: 'HOLD' },
-  { path: '/hizmet/mobil-uygulama/', status: 'HOLD' },
+  { path: '/hizmet/saglik-turizm-danismanligi/', status: 'APPROVED' },
+  { path: '/hizmet/markalasma-kreatif-cozumler/', status: 'APPROVED' },
+  { path: '/hizmet/mobil-uygulama/', status: 'APPROVED' },
 ];
 
 const num = (v) => Number(String(v ?? '').replace(/[%,]/g, '')) || 0;
