@@ -51,4 +51,15 @@ const target = isExternal && href.startsWith('http') ? '_blank' : undefined;
   :global(.hero--light) .cta-link:hover {
     color: var(--text-on-light);
   }
+
+  /* Dokunmatik hedef: 29px'lik metin bağlantısı parmakla isabetli
+     tıklanamıyordu. Apple HIG ve WCAG 2.5.5 en az 44px öneriyor; dikey
+     dolgu yalnız dokunmatik girdide artırılır, masaüstü tipografisi
+     değişmez. Aynı kalıp `.pb-filter` için zaten kullanılıyordu. */
+  @media (pointer: coarse) {
+    .cta-link {
+      min-height: 44px;
+      padding-block: 11px;
+    }
+  }
 </style>

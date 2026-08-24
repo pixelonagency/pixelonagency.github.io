@@ -167,7 +167,7 @@ const stripArrow = (label: string) => label.replace(/\s*→\s*$/, '');
 
   .logos-head {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: clamp(28px, 5vw, 80px);
     align-items: start;
   }
@@ -274,6 +274,17 @@ const stripArrow = (label: string) => label.replace(/\s*→\s*$/, '');
 
     .logos__item :global(img) {
       height: 32px;
+    }
+  }
+
+  /* Dokunmatik hedef: 29px'lik metin bağlantısı parmakla isabetli
+     tıklanamıyordu. Apple HIG ve WCAG 2.5.5 en az 44px öneriyor; dikey
+     dolgu yalnız dokunmatik girdide artırılır, masaüstü tipografisi
+     değişmez. Aynı kalıp `.pb-filter` için zaten kullanılıyordu. */
+  @media (pointer: coarse) {
+    .logos-head__link {
+      min-height: 44px;
+      padding-block: 11px;
     }
   }
 </style>

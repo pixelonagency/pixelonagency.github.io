@@ -265,4 +265,15 @@ const coverOf = (value: unknown): ImageMetadata | undefined =>
       transform: none;
     }
   }
+
+  /* Dokunmatik hedef: 29px'lik metin bağlantısı parmakla isabetli
+     tıklanamıyordu. Apple HIG ve WCAG 2.5.5 en az 44px öneriyor; dikey
+     dolgu yalnız dokunmatik girdide artırılır, masaüstü tipografisi
+     değişmez. Aynı kalıp `.pb-filter` için zaten kullanılıyordu. */
+  @media (pointer: coarse) {
+    .posts__head-link {
+      min-height: 44px;
+      padding-block: 11px;
+    }
+  }
 </style>

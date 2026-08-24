@@ -176,6 +176,18 @@ const ariaRequired = required ? 'true' : undefined;
     border-color: var(--danger);
   }
 
+  /* iOS Safari, 16px'ten küçük yazı tipli bir metin alanına odaklanıldığında
+     sayfayı otomatik yakınlaştırıyor; kullanıcı her alandan sonra geri
+     çimdiklemek zorunda kalıyor. `--fs-body` 15px olduğu için üç formdaki
+     bütün metin alanları bu davranışı tetikliyordu. Dokunmatik girdide
+     16px'e çıkarmak yakınlaştırmayı kapatır; fare/masaüstünde tipografi
+     olduğu gibi kalır. */
+  @media (pointer: coarse) {
+    .field__control {
+      font-size: 16px;
+    }
+  }
+
   /* --- Seçim kutusu: yerel ok yerine metin oku --- */
   .field__select {
     position: relative;

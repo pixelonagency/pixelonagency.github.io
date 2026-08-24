@@ -184,7 +184,7 @@ const numberedCards = kind === 'grid' && !hasRatings;
   /* --- Split liste (columns:1) — başlık solda sticky, maddeler sağda --- */
   .split {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: clamp(32px, 5vw, 80px);
     align-items: start;
   }
@@ -231,7 +231,7 @@ const numberedCards = kind === 'grid' && !hasRatings;
   /* --- Panels (vizyon/misyon): üst çizgili açık bloklar --- */
   .panels {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: clamp(28px, 5vw, 72px);
   }
 
