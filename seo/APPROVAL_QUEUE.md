@@ -3,11 +3,11 @@
 ```text
 READY FOR APPROVAL: 0
 MEASURING: 5
-OWNER DECISION: 3
+OWNER DECISION: 4
 LIMIT: 3
 ```
 
-**Son güncelleme:** 2026-08-23
+**Son güncelleme:** 2026-08-24
 
 > **Sayaç düzeltmesi (2026-08-23):** başlık `READY FOR APPROVAL: 2` diyordu; gerçek sayı
 > **0**. `SEO-2026-0081` 22 Ağu 21:52'de sahip onayıyla yayınlandı, `SEO-2026-0082`
@@ -105,6 +105,24 @@ ama taban kayıtlı değildi — bu haliyle 29 Ağustos karşılaştırması yap
 Taban penceresi tüm yayınlardan **öncesini** kapsıyor; içinde yayın sonrası tek gün yok.
 Yeni yayınlanan beş sayfanın hepsi tabanda **sıfır** — ölçüm açısından en temiz durum.
 
+### `SEO-2026-0094` — 23 Ağustos değişiklik paketinin ölçüm tabanı · **DONE** (2026-08-24)
+
+23 Ağustos'ta üretime giren dört sahip commit'inin (14 yazıya bağlamsal hizmet
+bağlantısı · fiyat yazısı kapsam genişletmesi · entity `sameAs` düzeltmesi)
+**değişiklik öncesi tabanı** kayıt altına alındı. `SEO-2026-0090` yalnızca 22 Ağustos
+paketini kapsıyordu; bu paketin tabanı yoktu.
+
+Taban penceresi tüm değişikliklerden **öncesini** kapsıyor. Bağlantı eklenen 14 yazının
+tamamı tabanda **sıfır** — temiz durum. Hedef hizmet sayfalarının tabanı ise **çok küçük**;
+bu, ölçümün duyarlılığını sınırlıyor ve raporda böyle işaretlendi.
+
+Entity düzeltmesi için **sayısal taban yok** — entity sinyali GSC'de ayrı metrik üretmez.
+Bunun yerine durum doğrulaması yapıldı: kanonik sosyal profillerin **3/3'ü canlı**,
+kırık `sameAs` kalmadı.
+
+**22 ve 23 Ağustos paketleri aynı ölçüm penceresini paylaşıyor; etkileri birbirinden
+ayrılamaz.** 29 Ağustos'ta atıf yapılmayacak.
+
 ### `SEO-2026-0068` — İki yeni hizmet sayfası · MEASURING
 
 `/hizmetlerimiz/kurumsal-web-tasarim/` · `/en/services/healthcare-marketing/`
@@ -128,6 +146,29 @@ sondaki-bölü yönlendirmeleri de **301, tek hop**; `http://` → `https://` ç
 ---
 
 ## Sahip kararı bekleyen
+
+### `SEO-2026-0093` — Eski URL kapsama boşluğu: 3 adres canlı 404 · **YENİ, P1**
+
+`public/_redirects` eski `/hizmet/*` şemasından **5** adresi yönlendiriyor. Google
+hâlâ **8** adrese gösterim veriyor. Kalan üçü canlı **404**. Canlı `curl` ile doğrulandı;
+eşlenmiş kurallarda **regresyon yok** (301, tek hop, 200).
+
+Üç 404 adres birlikte, sitenin son 90 günlük arama gösteriminin **%4'ünden fazlasını**
+tutuyor ve bu dönemdeki **tıklamalardan birini** getiriyor — bir 404 sayfası üzerinden.
+
+Üçü aynı şey değil:
+
+| Adres                                  | Durum                                                                                                                                                                                 |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/hizmet/saglik-turizm-danismanligi/`  | **Belgelenmemiş boşluk** — dosyadaki HOLD notunda da kural listesinde de yok, atlanmış görünüyor. 1:1 karşılığı canlı ve 200. Kararı en kolay olan.                                   |
+| `/hizmet/markalasma-kreatif-cozumler/` | Bilinçli HOLD. Ancak üçü içinde ilk sayfaya **en yakın** olanı. HOLD gerekçesi dosyada yazılı değil — burada varsayım olarak işaretlendi.                                             |
+| `/hizmet/mobil-uygulama/`              | **En yüksek sinyalli, çözümü en zor.** Pixelon'ın 10 hizmet slug'ı içinde mobil uygulama yok. Gerçek karşılık olmadan yönlendirme yapmak sinyali taşımayabilir. Bu bir **iş kararı**. |
+
+**Otonom taraf hiçbir şey yapmadı ve yapamaz:** yönlendirme eklemek sınırların dışında,
+`_redirects` script üretimi ve elle düzenleme dosyanın başında yasaklanmış.
+
+**Öneri sunulmuyor — veri sunuluyor.** Ayrıntı ve seçenek değerlendirmesi özel katmanda
+(`seo/private/redirects/`). Yönlendirilirse sonraki değişim 301'e **atfedilmeyecek**.
 
 ### `SEO-2026-0073` — Hizmet sayfalarında hero görseli · P2
 
