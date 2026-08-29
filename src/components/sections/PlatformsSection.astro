@@ -1,0 +1,200 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import { platformSpans } from '../../lib/platform-grid';
+import PlatformLogo, { PLATFORM_COLORS } from '../PlatformLogo.astro';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Platforms = Extract<PageSection, { type: 'platforms' }>;
+
+interface Props {
+  section: Platforms;
+}
+
+const { section } = Astro.props;
+
+/* Genişlikler burada hesaplanır ki ızgaranın sağ kenarı hiçbir satırda kırılmasın. */
+const spans = platformSpans(section.items);
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <ul class="plat" role="list">
+    {
+      section.items.map((item, index) => (
+        <li
+          class:list={['plat__card', item.featured && 'plat__card--featured']}
+          data-reveal
+          data-reveal-index={index}
+          style={`--brand: ${PLATFORM_COLORS[item.logo]}; --span: ${spans[index]}`}
+        >
+          {/* Marka renginden doğan yumuşak parıltı — yalnız üzerine gelindiğinde. */}
+          <span class="plat__glow" aria-hidden="true" />
+
+          <span class="plat__mark">
+            <PlatformLogo name={item.logo} />
+          </span>
+
+          <div class="plat__body">
+            <h3 class="plat__title">{item.title}</h3>
+            <p class="plat__text">{item.description}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .plat {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin: 48px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /*
+   * Izgara asimetriktir: öne çıkan kart 3, diğerleri 2 sütun kaplar. Ölçülen
+   * talebin %91'i Google ve Instagram'da — düzen bunu yansıtır, hepsini eşit
+   * kutulara dizmez.
+   */
+  .plat__card {
+    position: relative;
+    grid-column: span var(--span);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    overflow: hidden;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    transition:
+      border-color var(--t-base),
+      transform var(--t-base);
+  }
+
+  .plat__card:hover {
+    border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+    transform: translateY(-6px);
+  }
+
+  .plat__glow {
+    position: absolute;
+    inset: -40% 40% 55% -25%;
+    background: radial-gradient(circle, var(--brand) 0%, transparent 68%);
+    opacity: 0;
+    transition: opacity var(--t-base);
+    pointer-events: none;
+  }
+
+  .plat__card:hover .plat__glow {
+    opacity: 0.16;
+  }
+
+  /*
+   * Logo bölümün yıldızıdır: kartın en büyük öğesi ve marka renginde basılır.
+   * İlk kurgu logoları soluk gri yapıp rengi hover'a saklıyordu; dokunmatikte
+   * hover yok ve sayfaya bakan kişi hiçbir zaman renkli hâlini görmüyordu.
+   */
+  .plat__mark {
+    position: relative;
+    display: block;
+    color: var(--brand);
+    transition: transform var(--t-base);
+  }
+
+  .plat__mark :global(svg) {
+    display: block;
+    width: 64px;
+    height: 64px;
+    filter: drop-shadow(0 0 26px color-mix(in srgb, var(--brand) 40%, transparent));
+  }
+
+  .plat__card--featured .plat__mark :global(svg) {
+    width: 92px;
+    height: 92px;
+  }
+
+  .plat__card:hover .plat__mark {
+    transform: scale(1.08);
+  }
+
+  .plat__body {
+    position: relative;
+  }
+
+  .plat__title {
+    margin: 0 0 10px;
+    font: 600 clamp(17px, 1.5vw, 21px) / 1.25 var(--font-display);
+    color: var(--text);
+  }
+
+  .plat__text {
+    margin: 0;
+    font: 400 15px/1.65 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  /* Açık zeminli bölümde metin ve çerçeve tonları döner. */
+  :global(.section--light) .plat__card {
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .plat__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .plat__text {
+    color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 1020px) {
+    .plat {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .plat__card {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .plat {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .plat__card {
+      grid-column: span 1;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px;
+    }
+
+    .plat__mark :global(svg),
+    .plat__card--featured .plat__mark :global(svg) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plat__card,
+    .plat__mark,
+    .plat__glow {
+      transition: none;
+    }
+
+    .plat__card:hover {
+      transform: none;
+    }
+
+    .plat__card:hover .plat__mark {
+      transform: none;
+    }
+  }
+</style>

@@ -118,13 +118,26 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
       lead: opt(z.string()),
       items: z.array(titledItem).min(1),
     }),
-    // Platform/kanal kartları — yalnızca bazı hizmetlerde bulunur.
+    /*
+     * Platform/kanal kartları — yalnızca bazı hizmetlerde bulunur.
+     * Her girdi bir marka işareti taşır (bkz. PlatformLogo.astro); `featured`
+     * olan kart ızgarada iki sütun kaplar.
+     */
     platforms: opt(
       z.object({
         eyebrow: nonEmpty,
         heading: nonEmpty,
         lead: opt(z.string()),
-        items: z.array(titledItem).min(1),
+        items: z
+          .array(
+            z.object({
+              title: nonEmpty,
+              description: nonEmpty,
+              logo: opt(z.enum(['google', 'instagram', 'facebook', 'tiktok', 'yandex', 'linkedin', 'snapchat'])),
+              featured: z.boolean().default(false),
+            }),
+          )
+          .min(1),
       }),
     ),
     scope: z.object({

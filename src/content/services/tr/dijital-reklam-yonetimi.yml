@@ -40,7 +40,7 @@ hero:
   lead: |-
     Google Ads ve Meta reklam kampanyalarınızı doğru hedef kitle, güçlü reklam içerikleri ve düzenli optimizasyonlarla yönetiyoruz. Daha fazla talep, satış ve randevu için markanıza özel performans stratejileri oluşturuyoruz.
   tagline: |-
-    20+ ülkede, 13 dilde, 6 platformda kampanya yönetiyoruz — Google, Instagram, Facebook, TikTok, Yandex ve LinkedIn.
+    20+ ülkede, 13 dilde, 7 platformda kampanya yönetiyoruz — Google, Instagram, Facebook, TikTok, Yandex, LinkedIn ve Snapchat.
   whatsappMessage: |-
     Merhaba Pixelon, Dijital Reklam Yönetimi hizmeti hakkında bilgi almak istiyorum.
 
@@ -108,28 +108,40 @@ principles:
 
 platforms:
   eyebrow: Reklam Verdiğimiz Platformlar
-  heading: Altı Platformda Kampanya Kuruyor ve Yönetiyoruz
+  heading: Yedi Platformda Kampanya Kuruyor ve Yönetiyoruz
   lead: |-
     Hedef kitlenizin bulunduğu yere göre platform seçiyoruz. Bütçeyi tek kanala yığmak yerine, hangi kanalın hangi işi yaptığını ölçerek dağıtıyoruz.
   items:
-    - title: Google Reklam Yönetimi (Google Ads)
+    - title: Google Reklam Yönetimi
+      logo: google
+      featured: true
       description: |-
         Google'da reklam verme sürecinin tamamını kuruyoruz: arama ağı, görüntülü reklam, alışveriş, YouTube video ve Performance Max kampanyaları. Hizmetinizi o an arayan kullanıcıya, arama anında ulaşırsınız.
     - title: Instagram Reklam Verme
+      logo: instagram
+      featured: true
       description: |-
         Instagram'da reklam vermek isteyen markalar için görsel ve video odaklı kampanyalar kuruyoruz. Keşfet, Reels ve hikâye yerleşimleriyle mesaj, form ve randevu talebi topluyoruz.
-    - title: Facebook Reklamları (Meta Ads)
+    - title: Facebook Reklamları
+      logo: facebook
       description: |-
         Meta reklam yöneticisi üzerinden ilgi alanı, davranış ve benzer kitle hedeflemeleriyle geniş erişim ve talep toplama kampanyaları yürütüyoruz.
     - title: TikTok Reklam Yönetimi
+      logo: tiktok
       description: |-
-        TikTok'ta reklam vermek için platformun diline uygun dikey video kreatifleri üretiyor, genç ve yüksek etkileşimli kitleye ulaşan kampanyalar kuruyoruz.
-    - title: Yandex Reklamları (Yandex Direct)
+        Platformun diline uygun dikey video kreatifleri üretiyor, genç ve yüksek etkileşimli kitleye ulaşan kampanyalar kuruyoruz.
+    - title: Yandex Reklamları
+      logo: yandex
       description: |-
-        Rusça konuşulan pazarlara açılan markalar için Yandex Direct üzerinde arama ve görüntülü kampanyalar yönetiyoruz. Sağlık turizmi ve ihracatta karşılığı olan bir kanal.
-    - title: LinkedIn ve Snapchat Reklamları
+        Rusça konuşulan pazarlara açılan markalar için Yandex Direct üzerinde arama ve görüntülü kampanyalar yönetiyoruz.
+    - title: LinkedIn Reklamları
+      logo: linkedin
       description: |-
-        B2B hedeflemede sektör, pozisyon ve şirket kırılımıyla LinkedIn; genç kitleye ulaşan kampanyalarda Snapchat reklamları kuruyoruz.
+        B2B hedeflemede sektör, pozisyon ve şirket kırılımıyla karar vericilere doğrudan ulaşan kampanyalar kuruyoruz.
+    - title: Snapchat Reklamları
+      logo: snapchat
+      description: |-
+        Genç kitleye ulaşan markalar için dikey video ve artırılmış gerçeklik yerleşimleriyle kampanyalar yürütüyoruz.
 
 process:
   eyebrow: Dijital Reklam Yönetim Sürecimiz

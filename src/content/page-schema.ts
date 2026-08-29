@@ -204,6 +204,29 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     // `ctas` sectionBase'ten gelir.
   });
 
+  /*
+   * Reklam platformları — kart listesinden ayrı bir tip, çünkü her girdi bir
+   * marka işareti taşır ve ızgara asimetriktir. `featured` olan kart iki sütun
+   * kaplar: Google ve Instagram ölçülen talebin %91'ini oluşturuyor, düzen de
+   * bunu yansıtır.
+   */
+  const platforms = z.object({
+    ...sectionBase,
+    type: z.literal('platforms'),
+    heading: nonEmpty,
+    lead: opt(z.string()),
+    items: z
+      .array(
+        z.object({
+          title: nonEmpty,
+          description: nonEmpty,
+          logo: z.enum(['google', 'instagram', 'facebook', 'tiktok', 'yandex', 'linkedin', 'snapchat']),
+          featured: z.boolean().default(false),
+        }),
+      )
+      .min(1),
+  });
+
   const logos = z.object({
     ...sectionBase,
     type: z.literal('logos'),
@@ -378,6 +401,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     bullets,
     marquee,
     worldMap,
+    platforms,
     text,
     stats,
     faq,
@@ -419,6 +443,7 @@ export const PAGE_SECTION_TYPES = [
   'bullets',
   'marquee',
   'worldMap',
+  'platforms',
   'text',
   'stats',
   'faq',

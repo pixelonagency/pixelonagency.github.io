@@ -33,7 +33,14 @@ export interface ServiceLike {
   intro?: (Block & { body: string; highlight?: string | undefined }) | undefined;
   why: Block & { items: TitledItem[] };
   scope: Block & { items: TitledItem[] };
-  platforms?: (Block & { items: TitledItem[] }) | undefined;
+  platforms?:
+    | (Block & {
+        items: (TitledItem & {
+          logo?: 'google' | 'instagram' | 'facebook' | 'tiktok' | 'yandex' | 'linkedin' | 'snapchat' | undefined;
+          featured?: boolean | undefined;
+        })[];
+      })
+    | undefined;
   principles?: (Block & { items: TitledItem[] }) | undefined;
   comparison?: (Block & { items: TitledItem[]; note?: string | undefined }) | undefined;
   contentTypes?: (Block & { items: string[] }) | undefined;
@@ -155,7 +162,38 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
   sections.push(cards(service.why));
   sections.push(cards(service.scope));
 
-  if (service.platforms) sections.push(cards(service.platforms));
+  /*
+   * Platformlar, marka işaretleri VARSA kendi bölüm tipiyle basılır: büyük
+   * logolu, asimetrik ızgara. Düz kart listesi olarak basıldığında bölüm
+   * sayfanın en kuru yeriydi.
+   *
+   * Logo eksikse eski kart ızgarasına düşülür — sosyal medya ve sağlık
+   * turizmi sayfaları da bu alanı kullanıyor ama marka işaretleri yok;
+   * logoyu zorunlu tutmak o sayfaları kırıyordu.
+   */
+  if (service.platforms) {
+    const items = service.platforms.items;
+    const hepsiLogolu = items.length > 0 && items.every((item) => Boolean(item.logo));
+
+    if (hepsiLogolu) {
+      sections.push({
+        type: 'platforms',
+        eyebrow: service.platforms.eyebrow,
+        heading: service.platforms.heading,
+        lead: service.platforms.lead,
+        background: nextBg(),
+        ctas: [],
+        items: items.map((item) => ({
+          title: item.title,
+          description: item.description,
+          logo: item.logo!,
+          featured: item.featured ?? false,
+        })),
+      });
+    } else {
+      sections.push(cards(service.platforms));
+    }
+  }
 
   if (service.principles) {
     // Referans: ilkeler/standartlar beyaz zeminde krem dolgulu kartlardır.

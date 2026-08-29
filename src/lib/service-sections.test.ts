@@ -144,7 +144,7 @@ describe('serviceToSections', () => {
   test('renders every optional section when a service supplies all of them', () => {
     const full = types({
       intro: { eyebrow: 'e', heading: 'h', body: 'b' },
-      platforms: { eyebrow: 'e', heading: 'h', items: [{ title: 't', description: 'd' }] },
+      platforms: { eyebrow: 'e', heading: 'h', items: [{ title: 't', description: 'd', logo: 'google' }] },
       principles: { eyebrow: 'e', heading: 'h', items: [{ title: 't', description: 'd' }] },
       comparison: { eyebrow: 'e', heading: 'h', items: [{ title: 't', description: 'd' }] },
       contentTypes: { eyebrow: 'e', heading: 'h', items: ['x'] },
@@ -157,7 +157,7 @@ describe('serviceToSections', () => {
       'text', // intro
       'cards', // why
       'cards', // scope
-      'cards', // platforms
+      'platforms', // platforms — kart değil kendi tipi (30 Ağu 2026)
       'cards', // principles
       'cards', // comparison
       'bullets', // contentTypes
@@ -243,5 +243,73 @@ describe('serviceToSections — zengin bölümler', () => {
     expect(list[0]).toBe('hero');
     expect(list.at(-1)).toBe('faq');
     expect(list.at(-2)).toBe('cta');
+  });
+});
+
+/**
+ * Platform bölümü — 30 Ağu 2026'da kart listesinden ayrıldı.
+ *
+ * Gerekçe: sahip "kuru duruyor, logolar büyük ve dikkat çekici olsun" dedi.
+ * Platformlar artık `cards` değil kendi bölüm tipi; her kart marka işaretini
+ * taşır ve `featured` olanlar ızgarada iki sütun kaplar.
+ */
+describe('serviceToSections — platform bölümü', () => {
+  const platforms = {
+    eyebrow: 'Platformlar',
+    heading: 'Altı platformda kampanya',
+    items: [
+      { title: 'Google Ads', description: 'a', logo: 'google', featured: true },
+      { title: 'TikTok', description: 'b', logo: 'tiktok' },
+    ],
+  };
+
+  test('kendi bölüm tipiyle basılır, kart listesi değil', () => {
+    expect(types({ platforms })).toContain('platforms');
+  });
+
+  test('logo ve featured alanları bölüme taşınır', () => {
+    const section = build({ platforms }).find((s) => s.type === 'platforms');
+    expect(section?.type === 'platforms' && section.items).toEqual([
+      { title: 'Google Ads', description: 'a', logo: 'google', featured: true },
+      { title: 'TikTok', description: 'b', logo: 'tiktok', featured: false },
+    ]);
+  });
+
+  test('platforms verilmezse bölüm hiç basılmaz', () => {
+    expect(types()).not.toContain('platforms');
+  });
+});
+
+describe('serviceToSections — logosuz platform listesi', () => {
+  /*
+   * Sosyal medya ve sağlık turizmi sayfaları da `platforms` kullanıyor ama
+   * marka işaretleri yok. Logo zorunlu tutulduğunda o sayfalar kırılıyordu:
+   * bölüm, logo TAM olduğunda yeni tipe geçer, aksi hâlde kart ızgarası kalır.
+   */
+  const logosuz = {
+    eyebrow: 'e',
+    heading: 'h',
+    items: [{ title: 'YouTube', description: 'd' }],
+  };
+  const karisik = {
+    eyebrow: 'e',
+    heading: 'h',
+    items: [
+      { title: 'Google', description: 'd', logo: 'google' },
+      { title: 'YouTube', description: 'd' },
+    ],
+  };
+
+  test('logo yoksa eski kart ızgarası basılır', () => {
+    expect(types({ platforms: logosuz })).not.toContain('platforms');
+  });
+
+  test('logo eksik olan tek bir kart bile varsa kart ızgarasına düşer', () => {
+    expect(types({ platforms: karisik })).not.toContain('platforms');
+  });
+
+  test('logosuz liste yine de bir bölüm üretir — sessizce kaybolmaz', () => {
+    const before = types().length;
+    expect(types({ platforms: logosuz }).length).toBe(before + 1);
   });
 });

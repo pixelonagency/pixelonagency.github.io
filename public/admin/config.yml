@@ -232,7 +232,24 @@ collections:
         required: false
         collapsed: true
         i18n: true
-        fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          - label: Platformlar
+            name: items
+            widget: list
+            fields:
+              - { label: Başlık, name: title, widget: string }
+              - { label: Açıklama, name: description, widget: text }
+              # Marka işareti verilirse bölüm büyük logolu ızgaraya geçer;
+              # boş bırakılan tek bir kart bile varsa klasik kart listesi basılır.
+              - label: Marka İşareti
+                name: logo
+                widget: select
+                required: false
+                options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat]
+              - { label: Öne Çıkar, name: featured, widget: boolean, default: false, required: false }
       - label: İlkeler
         name: principles
         widget: object
@@ -613,6 +630,28 @@ collections:
                   - { label: Öne Çıkar, name: highlighted, widget: boolean, default: false, required: false }
               - { label: Kapanış Cümlesi, name: closingLine, widget: text, required: false }
               - { label: Harita Görseli Alt Metni, name: mapImageAlt, widget: string, required: false }
+
+          - label: Reklam Platformları
+            name: platforms
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: Platformlar
+                name: items
+                widget: list
+                fields:
+                  - { label: Başlık, name: title, widget: string }
+                  - { label: Açıklama, name: description, widget: text }
+                  - label: Marka İşareti
+                    name: logo
+                    widget: select
+                    options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat]
+                  - { label: Öne Çıkar, name: featured, widget: boolean, default: false, required: false }
 
           - label: Metin
             name: text
