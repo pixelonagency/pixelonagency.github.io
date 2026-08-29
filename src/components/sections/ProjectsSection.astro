@@ -3,7 +3,7 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
-import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
 import { ALL_CATEGORY, buildCategoryFilters, sortProjects } from '../../lib/projects';
 import { slugify } from '../../lib/slug';
 import { t } from '../../lib/ui';
@@ -27,8 +27,29 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
 const all = await getCollection('projects');
 const inLocale = all.filter((entry) => entry.id.startsWith(`${locale}/`));
 const entries = inLocale.length > 0 ? inLocale : all.filter((entry) => entry.id.startsWith(`${DEFAULT_LOCALE}/`));
-const sorted = sortProjects(entries.map((entry) => entry.data));
-const limited = section.limit ? sorted.slice(0, section.limit) : sorted;
+/*
+ * Slug ve `detail` varlığı veriyle birlikte taşınır: kart, case study sayfası
+ * olan projelerde ona bağlanır (board görünümünün zaten yaptığı şey). Olmayanda
+ * bağlantı basılmaz — kırık link üretilmez.
+ */
+const withMeta = entries.map((entry) => ({
+  ...entry.data,
+  slug: entry.id.split('/').slice(1).join('/'),
+  hasDetail: Boolean(entry.data.detail),
+}));
+const sorted = sortProjects(withMeta);
+
+/*
+ * `slugs` verilmişse yalnızca o projeler, VERİLEN SIRAYLA basılır. Hizmet
+ * sayfaları bunu kullanır: reklam sayfasında yalnızca reklam işi yapılan
+ * vakalar çıkmalı. Eşleşmeyen slug sessizce düşer — silinmiş bir proje
+ * sayfayı kırmaz.
+ */
+const bySlug = new Map(withMeta.map((project) => [project.slug, project]));
+const picked = section.slugs?.length
+  ? section.slugs.map((slug) => bySlug.get(slug)).filter((p): p is NonNullable<typeof p> => Boolean(p))
+  : sorted;
+const limited = section.limit ? picked.slice(0, section.limit) : picked;
 
 // `cover` şemada çözümleyici fonksiyonla tanımlandığı için tipi genişler —
 // <Image /> için tekrar daraltıyoruz.
@@ -195,10 +216,16 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
                     ))}
                   </div>
                 )}
-                {project.url && (
-                  <a class="projects__link" href={project.url} target="_blank" rel="noopener noreferrer">
+                {project.hasDetail ? (
+                  <a class="projects__link" href={localizedPath('projects', locale, project.slug)}>
                     {t('projects.view', locale)} <span aria-hidden="true">→</span>
                   </a>
+                ) : (
+                  project.url && (
+                    <a class="projects__link" href={project.url} target="_blank" rel="noopener noreferrer">
+                      {t('projects.view', locale)} <span aria-hidden="true">→</span>
+                    </a>
+                  )
                 )}
               </div>
             </article>

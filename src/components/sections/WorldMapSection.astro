@@ -129,6 +129,14 @@ const closingSegments = section.closingLine ? parseHighlights(section.closingLin
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  /*
+   * Kaynak harita koyu çizgilidir; ters çevirme YALNIZCA koyu zeminde gerekir.
+   * Filtre koşulsuz uygulandığında açık zeminli bölümde harita beyaza dönüp
+   * görünmez oluyordu — yerinde kocaman boş bir alan kalıyordu.
+   */
+  :global(.section--dark) .worldmap__image {
     filter: invert(1) hue-rotate(180deg) saturate(1.4) brightness(1.05);
   }
 

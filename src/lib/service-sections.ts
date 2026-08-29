@@ -43,6 +43,32 @@ export interface ServiceLike {
     | undefined;
   value?: (Block & { bullets: string[] }) | undefined;
   sectors?: (Block & { body: string }) | undefined;
+  /* --- Zengin kanıt bölümleri (opsiyonel) — bkz. schemas.ts gerekçesi. --- */
+  stats?:
+    | {
+        eyebrow?: string | undefined;
+        heading?: string | undefined;
+        lead?: string | undefined;
+        items: {
+          value: number;
+          prefix?: string | undefined;
+          suffix?: string | undefined;
+          label: string;
+          description?: string | undefined;
+        }[];
+      }
+    | undefined;
+  reach?: (Block & { countries: { label: string; flag: string; highlighted?: boolean }[] }) | undefined;
+  showcase?: (Block & { slugs: string[]; ctaLabel?: string | undefined; ctaHref?: string | undefined }) | undefined;
+  spotlight?:
+    | {
+        eyebrow?: string | undefined;
+        heading: string;
+        lead?: string | undefined;
+        image?: unknown;
+        alt?: string | undefined;
+      }
+    | undefined;
   cta: Block;
   faq: Block & { items: { question: string; answer: string }[] };
 }
@@ -94,6 +120,23 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       { label: t('cta.whatsapp', locale), href: whatsappUrl, variant: 'outline', icon: 'whatsapp', external: true },
     ],
   });
+
+  /*
+   * Kanıt bandı hero'nun hemen altındadır. Ziyaretçinin gördüğü ikinci şey
+   * iddia değil rakam olsun diye: sayfanın ilk ekranında "biz iyiyiz" yazan
+   * bir paragraf yerine sayılan bir sayaç durur.
+   */
+  if (service.stats) {
+    sections.push({
+      type: 'stats',
+      eyebrow: service.stats.eyebrow,
+      heading: service.stats.heading,
+      lead: service.stats.lead,
+      background: 'dark',
+      ctas: [],
+      items: service.stats.items,
+    });
+  }
 
   if (service.intro) {
     // Referans: giriş bölümü beyazdır — başlık solda sticky, paragraflar sağda.
@@ -174,6 +217,52 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       background: nextBg(),
       ctas: [],
       items: service.projects.items,
+    });
+  }
+
+  /*
+   * Kanıt sırası: önce nasıl çalıştığımızı anlatırız (steps), sonra sonucu
+   * gösteririz. Vitrin süreçten önce gelirse ziyaretçi "güzel işler ama nasıl
+   * yapıyorsunuz" sorusuyla kalır.
+   */
+  if (service.showcase) {
+    sections.push({
+      type: 'projects',
+      eyebrow: service.showcase.eyebrow,
+      heading: service.showcase.heading,
+      lead: service.showcase.lead,
+      slugs: service.showcase.slugs,
+      kind: 'grid',
+      showFilters: false,
+      background: nextBg(),
+      ctas: [],
+      ctaLabel: service.showcase.ctaLabel,
+      ctaHref: service.showcase.ctaHref,
+    });
+  }
+
+  if (service.spotlight) {
+    sections.push({
+      type: 'media',
+      heading: service.spotlight.heading,
+      lead: service.spotlight.lead,
+      eyebrow: service.spotlight.eyebrow,
+      image: service.spotlight.image,
+      alt: service.spotlight.alt,
+      background: nextBg(),
+      ctas: [],
+    } as PageSection);
+  }
+
+  if (service.reach) {
+    sections.push({
+      type: 'worldMap',
+      eyebrow: service.reach.eyebrow,
+      heading: service.reach.heading,
+      lead: service.reach.lead,
+      background: nextBg(),
+      ctas: [],
+      countries: service.reach.countries.map((c) => ({ ...c, highlighted: c.highlighted ?? false })),
     });
   }
 

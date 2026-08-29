@@ -225,6 +225,12 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     /* Hero altı küçük metadata satırı (yalnız board görünümünde kullanılır). */
     tagline: opt(z.string()),
     limit: opt(z.number()),
+    /**
+     * Belirli projeleri, verilen sırayla göster. Hizmet sayfaları bunu kullanır:
+     * reklam sayfasında yalnızca reklam işi yapılan vakalar çıkmalı, tüm portföy
+     * değil. Boş bırakılırsa koleksiyonun tamamı sıralanır (ana sayfa davranışı).
+     */
+    slugs: opt(list(z.string())),
     showFilters: z.boolean().default(false),
     /* grid: mevcut kompakt liste (ana sayfa) · board: tam sayfa editoryal vitrin. */
     kind: z.enum(['grid', 'board']).default('grid'),

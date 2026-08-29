@@ -182,3 +182,66 @@ describe('serviceToSections', () => {
     expect(result.success ? [] : result.error.issues).toEqual([]);
   });
 });
+
+/**
+ * Zengin bölümler — 29 Ağu 2026'da Dijital Reklam Yönetimi sayfası için eklendi.
+ *
+ * Gerekçe: rakip analizinde 1. sıradaki sayfa 992 kelimeydi, 5. sıradaki 3.157.
+ * Uzunluk sıralama getirmiyor; kanıt getiriyor. Bu bölümler metin yerine sayı,
+ * harita, görsel ve vaka kartı basar. Hepsi OPSİYONEL — diğer 10 hizmet sayfası
+ * etkilenmez.
+ */
+describe('serviceToSections — zengin bölümler', () => {
+  const stats = {
+    items: [{ value: 80, prefix: '₺', suffix: 'M+', label: 'yönetilen reklam bütçesi' }],
+  };
+  const reach = {
+    eyebrow: 'Erişim',
+    heading: '20+ ülkede reklam yayınladık',
+    countries: [{ label: 'Almanya', flag: '🇩🇪' }],
+  };
+  const showcase = {
+    eyebrow: 'Vakalar',
+    heading: 'Reklam projelerimiz',
+    slugs: ['cagla-aytac', 'sera-natura'],
+  };
+
+  test('stats bölümü hero ile ilk içerik bölümü arasına girer', () => {
+    expect(types({ stats })).toEqual(['hero', 'stats', 'cards', 'cards', 'steps', 'cta', 'faq']);
+  });
+
+  test('stats verilmezse hiç basılmaz', () => {
+    expect(types()).not.toContain('stats');
+  });
+
+  test('reach, worldMap bölümü olarak basılır', () => {
+    expect(types({ reach })).toContain('worldMap');
+  });
+
+  test('showcase, seçilen slug listesiyle projects bölümü basar', () => {
+    const section = build({ showcase }).find((s) => s.type === 'projects');
+    expect(section?.type === 'projects' && section.slugs).toEqual(['cagla-aytac', 'sera-natura']);
+  });
+
+  test('showcase görsel vitrin olduğu için grid görünümü kullanır', () => {
+    const section = build({ showcase }).find((s) => s.type === 'projects');
+    expect(section?.type === 'projects' && section.kind).toBe('grid');
+  });
+
+  test('showcase, süreç bölümünden SONRA gelir — önce nasıl çalıştığımız, sonra kanıt', () => {
+    const list = types({ showcase });
+    expect(list.indexOf('projects')).toBeGreaterThan(list.indexOf('steps'));
+  });
+
+  test('spotlight, görselli media bölümü basar', () => {
+    const spotlight = { heading: 'Sağlık turizmi', lead: 'Kliniklere özel.', alt: 'Klinik' };
+    expect(types({ spotlight })).toContain('media');
+  });
+
+  test('zengin bölümlerin hiçbiri zorunlu akışı bozmaz', () => {
+    const list = types({ stats, reach, showcase });
+    expect(list[0]).toBe('hero');
+    expect(list.at(-1)).toBe('faq');
+    expect(list.at(-2)).toBe('cta');
+  });
+});

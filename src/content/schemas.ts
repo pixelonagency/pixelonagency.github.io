@@ -202,6 +202,74 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
         body: nonEmpty,
       }),
     ),
+    /*
+     * --- Zengin kanıt bölümleri (hepsi opsiyonel) -------------------------
+     * Rakip analizi (29 Ağu 2026): "google ads ajansı" sorgusunda 1. sıradaki
+     * sayfa 992 kelime, 5. sıradaki 3.157. Uzunluk sıralama getirmiyor. Fark
+     * yaratan şey kanıt: sayı, harita, gerçek vaka. Bu üç blok metin yerine
+     * kanıt basar; verilmediklerinde sayfa eskisi gibi davranır.
+     */
+    /** Animasyonlu sayaç bandı — hero'nun hemen altında. */
+    stats: opt(
+      z.object({
+        eyebrow: opt(z.string()),
+        heading: opt(z.string()),
+        lead: opt(z.string()),
+        items: z
+          .array(
+            z.object({
+              value: z.number(),
+              prefix: opt(z.string()),
+              suffix: opt(z.string()),
+              label: nonEmpty,
+              description: opt(z.string()),
+            }),
+          )
+          .min(1),
+      }),
+    ),
+    /** Ülke/dil erişimi — bayrak çipli dünya haritası. */
+    reach: opt(
+      z.object({
+        eyebrow: nonEmpty,
+        heading: nonEmpty,
+        lead: opt(z.string()),
+        countries: z
+          .array(
+            z.object({
+              label: nonEmpty,
+              flag: nonEmpty,
+              highlighted: z.boolean().default(false),
+            }),
+          )
+          .min(1),
+      }),
+    ),
+    /**
+     * Görselli vaka vitrini. `projects` alanından farkı: o elle yazılmış kart
+     * metnidir, bu ise projects koleksiyonundan kapak görseli ve bağlantısıyla
+     * gerçek vaka sayfalarını çeker. `slugs` sırası korunur.
+     */
+    showcase: opt(
+      z.object({
+        eyebrow: nonEmpty,
+        heading: nonEmpty,
+        lead: opt(z.string()),
+        slugs: list(z.string()),
+        ctaLabel: opt(z.string()),
+        ctaHref: optHref,
+      }),
+    ),
+    /** Tek konuya odaklanan görselli blok (ör. sağlık turizmi). */
+    spotlight: opt(
+      z.object({
+        eyebrow: opt(z.string()),
+        heading: nonEmpty,
+        lead: opt(z.string()),
+        image: opt(image()),
+        alt: opt(z.string()),
+      }),
+    ),
     cta: z.object({
       eyebrow: nonEmpty,
       heading: nonEmpty,

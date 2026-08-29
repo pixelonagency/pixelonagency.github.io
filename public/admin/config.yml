@@ -318,6 +318,70 @@ collections:
           - *f_eyebrow
           - *f_heading
           - { label: Gövde, name: body, widget: text }
+      - label: Rakamlar (Kanıt Bandı)
+        name: stats
+        widget: object
+        required: false
+        collapsed: true
+        i18n: true
+        fields:
+          - { label: Üst Etiket, name: eyebrow, widget: string, required: false }
+          - { label: Başlık, name: heading, widget: string, required: false }
+          - { label: Giriş, name: lead, widget: text, required: false }
+          - label: Rakamlar
+            name: items
+            widget: list
+            fields:
+              - { label: Değer, name: value, widget: number, value_type: int }
+              - { label: Ön Ek, name: prefix, widget: string, required: false }
+              - { label: Son Ek, name: suffix, widget: string, required: false }
+              - { label: Etiket, name: label, widget: string }
+              - { label: Açıklama, name: description, widget: text, required: false }
+      - label: Erişim (Ülke Haritası)
+        name: reach
+        widget: object
+        required: false
+        collapsed: true
+        i18n: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          - label: Ülkeler
+            name: countries
+            widget: list
+            fields:
+              - { label: Ülke, name: label, widget: string }
+              - { label: Bayrak, name: flag, widget: string }
+              - { label: Vurgulu, name: highlighted, widget: boolean, required: false, default: false }
+      - label: Vaka Vitrini
+        name: showcase
+        widget: object
+        required: false
+        collapsed: true
+        i18n: true
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          - label: Proje Slugları
+            name: slugs
+            widget: list
+            field: { label: Slug, name: slug, widget: string }
+          - { label: Buton Metni, name: ctaLabel, widget: string, required: false }
+          - { label: Buton Bağlantısı, name: ctaHref, widget: string, required: false }
+      - label: Odak Bölümü
+        name: spotlight
+        widget: object
+        required: false
+        collapsed: true
+        i18n: true
+        fields:
+          - { label: Üst Etiket, name: eyebrow, widget: string, required: false }
+          - *f_heading
+          - *f_lead
+          - { label: Görsel, name: image, widget: image, required: false }
+          - { label: Görsel Alt Metni, name: alt, widget: string, required: false }
       - label: Kapanış Çağrısı
         name: cta
         widget: object
