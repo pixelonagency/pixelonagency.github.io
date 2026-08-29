@@ -103,14 +103,17 @@ for (const file of pages) {
     if (h1s.length > 1) add('P1', 'content', url, `${h1s.length} adet H1 (tek olmalı)`);
     if (!lang) add('P1', 'i18n', url, 'html lang yok');
     if (!ogImage) add('P2', 'social', url, 'og:image yok');
-  }
 
-  for (const img of imgs) {
-    // Astro `alt=""` çıktısını çıplak `alt` olarak basar; ikisi de "dekoratif" demektir
-    // ve geçerli işaretlemedir. Eksik sayılması gereken tek durum alt'ın hiç olmaması.
-    const hasAlt = /\balt(=|[\s>])/.test(img);
-    if (!hasAlt) add('P1', 'images', url, 'alt özniteliği hiç yok');
-    if (!/\bwidth=/.test(img) || !/\bheight=/.test(img)) add('P2', 'images', url, 'width/height yok (CLS riski)');
+    // Görsel kontrolleri de noindex korumasının İÇİNDE: arama motorunun hiç görmediği
+    // bir sayfada (CMS arayüzü gibi) alt metni ya da CLS ölçmenin karşılığı yok.
+    // Dışarıda kaldığı sürece `/admin/` her koşuda kalıcı bir P2 üretiyordu.
+    for (const img of imgs) {
+      // Astro `alt=""` çıktısını çıplak `alt` olarak basar; ikisi de "dekoratif" demektir
+      // ve geçerli işaretlemedir. Eksik sayılması gereken tek durum alt'ın hiç olmaması.
+      const hasAlt = /\balt(=|[\s>])/.test(img);
+      if (!hasAlt) add('P1', 'images', url, 'alt özniteliği hiç yok');
+      if (!/\bwidth=/.test(img) || !/\bheight=/.test(img)) add('P2', 'images', url, 'width/height yok (CLS riski)');
+    }
   }
 
   inventory.push({

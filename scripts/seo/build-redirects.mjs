@@ -48,6 +48,11 @@ export const LEGACY = [
   ['/hizmet/saglik-turizm-danismanligi', '/hizmetlerimiz/saglik-turizmi-danismanligi/'],
   ['/hizmet/markalasma-kreatif-cozumler', '/hizmetlerimiz/marka-ve-kurumsal-kimlik/'],
   ['/hizmet/mobil-uygulama', '/hizmetlerimiz/ux-ui-tasarimi/'],
+  /* 28 Ağu 2026 — marka adı düzeltmesi: müşterinin adı "Annelik Hikayesi", slug
+     "anneligin-hikayesi" yanlış yazımdı. Sayfanın GSC gösterimi 0 olduğu için
+     değişim maliyetsiz; yine de eski URL canlıda olduğundan 301 gerekiyor. */
+  ['/projelerimiz/anneligin-hikayesi', '/projelerimiz/annelik-hikayesi/'],
+  ['/en/projects/anneligin-hikayesi', '/en/projects/annelik-hikayesi/'],
 ];
 
 /** Sitemap XML → kanonik yol listesi (alfabetik, deterministik). */
