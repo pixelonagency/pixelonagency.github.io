@@ -1,6 +1,6 @@
 ---
 title: 'Sosyal medya ajansları ne iş yapar?'
-category: Sosyal Medya Yönetimi
+category: Sosyal Medya
 translationKey: what-social-media-agencies-do
 excerpt: Sosyal medya ajansları; strateji oluşturma, içerik üretimi, tasarım, reklam yönetimi, topluluk yönetimi ve performans raporlaması gibi süreçleri markalar adına planlayan ve yürüten profesyonel ekiplerdir.
 date: 2026-08-20

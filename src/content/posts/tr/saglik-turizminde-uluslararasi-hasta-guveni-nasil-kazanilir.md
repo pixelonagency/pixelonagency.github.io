@@ -10,7 +10,7 @@ author: Pixelon Ekibi
 status: published
 featured: false
 seo:
-  title: 'Sağlık Turizminde Uluslararası Hasta Güveni Nasıl Kazanılır? | Pixelon'
+  title: 'Sağlık Turizminde Uluslararası Hasta Güveni Nasıl Kazanılır?'
   description: Uluslararası hastaların kliniğinize güvenmesini sağlayan web sitesi, doktor tanıtımı, hasta iletişimi, şeffaf fiyatlandırma ve takip stratejilerini keşfedin.
 ---
 
