@@ -924,6 +924,17 @@ collections:
             fields:
               - { label: Etiket, name: label, widget: string, i18n: true }
               - { label: Değer, name: value, widget: string, i18n: true }
+          # Ölçülen sonuç rakamları. `value` STRING: biçim değişken ("%25", "9,2M", "2.886")
+          # ve sayaç animasyonu sayısal çekirdeği kendisi ayrıştırır.
+          - label: Ölçülen Sonuç
+            name: stats
+            widget: list
+            required: false
+            i18n: true
+            fields:
+              - { label: Rakam, name: value, widget: string, i18n: true }
+              - { label: Etiket, name: label, widget: string, i18n: true }
+              - { label: Kapsam Notu, name: note, widget: string, required: false, i18n: true }
           - label: Neler Yaptık?
             name: approach
             widget: object
@@ -946,6 +957,19 @@ collections:
                 required: false
                 i18n: duplicate
                 field: { label: Görsel, name: image, widget: image }
+              # Tıklanarak SESLİ oynatılan videolar (loop videodan ayrı). Poster zorunlu —
+              # tıklamadan önce görünen tek şey odur. En-boy verilmezse 9:16 varsayılır.
+              - label: Reels / Videolar
+                name: reels
+                widget: list
+                required: false
+                i18n: duplicate
+                fields:
+                  - { label: 'MP4 Yolu', name: src, widget: string, i18n: duplicate }
+                  - { label: 'Poster Yolu', name: poster, widget: string, i18n: duplicate }
+                  - { label: Başlık, name: title, widget: string, i18n: true }
+                  - { label: Genişlik (px), name: width, widget: number, value_type: int, required: false, i18n: duplicate }
+                  - { label: Yükseklik (px), name: height, widget: number, value_type: int, required: false, i18n: duplicate }
               # Sessiz vitrin animasyonu — public/ altındaki kök-göreli dosya yolları.
               - label: Loop Video
                 name: video

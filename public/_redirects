@@ -24,6 +24,10 @@
 /hizmet/markalasma-kreatif-cozumler/                                        /hizmetlerimiz/marka-ve-kurumsal-kimlik/                                    301
 /hizmet/mobil-uygulama                                                      /hizmetlerimiz/ux-ui-tasarimi/                                              301
 /hizmet/mobil-uygulama/                                                     /hizmetlerimiz/ux-ui-tasarimi/                                              301
+/projelerimiz/anneligin-hikayesi                                            /projelerimiz/annelik-hikayesi/                                             301
+/projelerimiz/anneligin-hikayesi/                                           /projelerimiz/annelik-hikayesi/                                             301
+/en/projects/anneligin-hikayesi                                             /en/projects/annelik-hikayesi/                                              301
+/en/projects/anneligin-hikayesi/                                            /en/projects/annelik-hikayesi/                                              301
 
 # 2) KANONİK SLASH NORMALİZASYONU — Workers auto-trailing-slash 307 döndürüyor;
 #    Google kanonikleştirmesi için kalıcı 301 gerekiyor. Wildcard kullanılmaz.
@@ -37,6 +41,10 @@
 /blog/google-ads-butcesi-nasil-belirlenir                                   /blog/google-ads-butcesi-nasil-belirlenir/                                  301
 /blog/google-ads-mi-meta-ads-mi                                             /blog/google-ads-mi-meta-ads-mi/                                            301
 /blog/instagramda-marka-nasil-buyutulur                                     /blog/instagramda-marka-nasil-buyutulur/                                    301
+/blog/kategori/dijital-reklam                                               /blog/kategori/dijital-reklam/                                              301
+/blog/kategori/seo                                                          /blog/kategori/seo/                                                         301
+/blog/kategori/sosyal-medya                                                 /blog/kategori/sosyal-medya/                                                301
+/blog/kategori/web-tasarim                                                  /blog/kategori/web-tasarim/                                                 301
 /blog/kurumsal-web-sitesi-nasil-olmali                                      /blog/kurumsal-web-sitesi-nasil-olmali/                                     301
 /blog/landing-page-nedir                                                    /blog/landing-page-nedir/                                                   301
 /blog/marka-kimligi-nedir-neleri-kapsar                                     /blog/marka-kimligi-nedir-neleri-kapsar/                                    301
@@ -57,6 +65,7 @@
 /en                                                                         /en/                                                                        301
 /en/about-us                                                                /en/about-us/                                                               301
 /en/blog                                                                    /en/blog/                                                                   301
+/en/blog/category/healthcare-marketing                                      /en/blog/category/healthcare-marketing/                                     301
 /en/blog/healthcare-digital-advertising                                     /en/blog/healthcare-digital-advertising/                                    301
 /en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands    /en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands/   301
 /en/blog/how-to-earn-international-patient-trust-in-health-tourism          /en/blog/how-to-earn-international-patient-trust-in-health-tourism/         301
@@ -68,7 +77,7 @@
 /en/personal-data-processing-notice                                         /en/personal-data-processing-notice/                                        301
 /en/privacy-policy                                                          /en/privacy-policy/                                                         301
 /en/projects                                                                /en/projects/                                                               301
-/en/projects/anneligin-hikayesi                                             /en/projects/anneligin-hikayesi/                                            301
+/en/projects/annelik-hikayesi                                               /en/projects/annelik-hikayesi/                                              301
 /en/projects/cagla-aytac                                                    /en/projects/cagla-aytac/                                                   301
 /en/projects/dentasay                                                       /en/projects/dentasay/                                                      301
 /en/projects/dr-ayse-cinkaya-kahveci                                        /en/projects/dr-ayse-cinkaya-kahveci/                                       301
@@ -114,7 +123,7 @@
 /kullanim-kosullari                                                         /kullanim-kosullari/                                                        301
 /kvkk-aydinlatma-metni                                                      /kvkk-aydinlatma-metni/                                                     301
 /projelerimiz                                                               /projelerimiz/                                                              301
-/projelerimiz/anneligin-hikayesi                                            /projelerimiz/anneligin-hikayesi/                                           301
+/projelerimiz/annelik-hikayesi                                              /projelerimiz/annelik-hikayesi/                                             301
 /projelerimiz/cagla-aytac                                                   /projelerimiz/cagla-aytac/                                                  301
 /projelerimiz/dentasay                                                      /projelerimiz/dentasay/                                                     301
 /projelerimiz/dr-ayse-cinkaya-kahveci                                       /projelerimiz/dr-ayse-cinkaya-kahveci/                                      301

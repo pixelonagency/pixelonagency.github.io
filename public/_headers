@@ -25,9 +25,43 @@ https://:version.:subdomain.workers.dev/*
 # değişir, bu yüzden uzun cache güvenli.
 #
 # Bilinçli olarak KAPSAM DIŞI (varsayılan `max-age=0, must-revalidate` kalır):
-#   HTML · / · robots.txt · sitemap*.xml · llms.txt · IndexNow key · favicon.svg
+#   HTML · / · robots.txt · sitemap*.xml · llms.txt · IndexNow key · favicon* · apple-touch-icon
 #   CNAME · _redirects · /admin/* (CMS)
 # Bunlar ya hash'siz ya da değişebilir; uzun cache yanlış içerik servis ettirir.
 # ---------------------------------------------------------------------------
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+# ---------------------------------------------------------------------------
+# 3) MEDYA — bir ay
+#
+# Vaka sayfalarındaki video ve posterler (`/media/**`). Parmak izli DEĞİLLER, bu
+# yüzden bir yıl verilmez; ama içerik yayınlandıktan sonra pratikte değişmiyor ve
+# tek video 9-12 MB. Bir aylık cache, tekrar ziyarette yeniden indirmeyi önler.
+# Değişirse dosya adı değiştirilir.
+# ---------------------------------------------------------------------------
+/media/*
+  Cache-Control: public, max-age=2592000
+
+# ---------------------------------------------------------------------------
+# 4) GÜVENLİK BAŞLIKLARI — tüm yollar
+#
+# Sıralama etkisi YOKTUR; Google güvenlik başlığına göre sıralamaz. Buradaki
+# gerekçe denetim gürültüsünü kesmek (Semrush/Lighthouse bunları uyarı yazıyor)
+# ve tarayıcı tarafında ucuz, geri alınabilir korumalar sağlamaktır.
+#
+# Panelden DEĞİL burada tutulur: Cloudflare'ın yönetilen robots.txt ayarı
+# repo'nun ürettiği dosyayı eziyordu ve kimse fark etmemişti (26 Ağu 2026).
+# Yapılandırma versiyon kontrolünde kalsın.
+#
+# Bilinçli olarak EKLENMEYENLER:
+#   Strict-Transport-Security — geri alması zordur (tarayıcı max-age boyunca
+#     hatırlar). Sahip onayı bekliyor; önce kısa max-age ile denenmeli.
+#   Content-Security-Policy — sitede Clarity, Meta Pixel ve dış font var;
+#     körlemesine CSP siteyi bozar. Ayrı ve ölçülü bir iş.
+# ---------------------------------------------------------------------------
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
