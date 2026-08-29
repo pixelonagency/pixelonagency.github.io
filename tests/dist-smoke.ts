@@ -108,7 +108,9 @@ describe('routes', () => {
   test('at least one blog post detail page is rendered', () => {
     const blogDir = join(DIST, 'blog');
     expect(existsSync(blogDir)).toBe(true);
-    const posts = readdirSync(blogDir).filter((entry) => statSync(join(blogDir, entry)).isDirectory());
+    const posts = readdirSync(blogDir)
+      .filter((entry) => statSync(join(blogDir, entry)).isDirectory())
+      .filter((entry) => entry !== 'kategori');
     expect(posts.length).toBeGreaterThan(0);
   });
 });
@@ -286,6 +288,26 @@ describe('interactive behaviour is shipped', () => {
     expect((body.match(/class="pb-card"/g) ?? []).length).toBeGreaterThanOrEqual(16);
     // Case study içeriği olan proje karta bağlanır; olmayanlar bağlantısız kalır.
     expect(body).toContain('href="/projelerimiz/handsforall/"');
+  });
+
+  /**
+   * Vaka sayfasının kapanışı: sonuç bloğundan sonra diğer projeler yatay bir
+   * raya gelir, "Tüm Projeler" bağlantısı rayın ALTINDA kalır. Ray boşsa hiç
+   * basılmaz — tek projeli bir dilde kendine bağlanan kart oluşmasın.
+   */
+  test('a case study closes with a rail of sibling projects above the archive link', () => {
+    const body = html.get('/projelerimiz/handsforall') ?? '';
+
+    expect(body).toContain('pd-more__rail');
+    // Ray kaydırılabilir olduğunu ekran okuyucuya da bildirir.
+    expect(body).toContain('aria-label');
+    // Kendi kendine bağlanan kart olmamalı.
+    expect(body).not.toContain('class="pd-more__card" href="/projelerimiz/handsforall/"');
+    // Arşiv bağlantısı raydan SONRA gelir.
+    const rail = body.indexOf('pd-more__rail');
+    const archive = body.indexOf('pd-more__all');
+    expect(rail).toBeGreaterThan(-1);
+    expect(archive).toBeGreaterThan(rail);
   });
 
   /**
@@ -567,10 +589,22 @@ describe('SEO regression suite', () => {
     expect(service).toContain('"@type":"Service"');
     expect(service).toContain('"@type":"BreadcrumbList"');
 
-    const posts = readdirSync(join(DIST, 'blog'), { withFileTypes: true }).filter((entry) => entry.isDirectory());
+    // `/blog/kategori/` yazı değil, kategori merkezlerini tutan kapsayıcıdır:
+    // kendi `index.html`'i yoktur ve BlogPosting taşımaz.
+    const posts = readdirSync(join(DIST, 'blog'), { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .filter((entry) => entry.name !== 'kategori');
+    expect(posts.length).toBeGreaterThan(0);
     for (const post of posts) {
       const body = readFileSync(join(DIST, 'blog', post.name, 'index.html'), 'utf-8');
       expect(body).toContain('"@type":"BlogPosting"');
+    }
+
+    // Kategori merkezleri ayrı doğrulanır: yazı şeması taşımazlar ama kırıntı taşırlar.
+    for (const group of readdirSync(join(DIST, 'blog', 'kategori'), { withFileTypes: true })) {
+      const body = readFileSync(join(DIST, 'blog', 'kategori', group.name, 'index.html'), 'utf-8');
+      expect(body).toContain('"@type":"BreadcrumbList"');
+      expect(body).not.toContain('"@type":"BlogPosting"');
     }
   });
 
@@ -1152,5 +1186,52 @@ describe('yetim sayfa yoktur', () => {
       .filter((route) => !linked.has(route));
 
     expect(orphans).toEqual([]);
+  });
+});
+
+describe('favicon seti', () => {
+  /**
+   * Google'ın favicon dokümanı "geçerli herhangi bir favicon formatı" diyor ancak
+   * SVG'yi AÇIKÇA saymıyor. Arama sonucundaki site simgesi yalnızca SVG'ye
+   * bırakılırsa garanti değil; bu yüzden raster geri düşüşler zorunlu tutulur.
+   * Üretici: `scripts/favicon.py` (build'in parçası değil, elle çalıştırılır).
+   */
+  const FILES = ['favicon.svg', 'favicon.ico', 'favicon-96x96.png', 'apple-touch-icon.png'];
+
+  test('setin tamamı yayınlanıyor', () => {
+    const missing = FILES.filter((name) => !existsSync(join(DIST, name)));
+    expect(missing).toEqual([]);
+  });
+
+  test('ico gerçek bir ICO ve boş değil', () => {
+    const buf = readFileSync(join(DIST, 'favicon.ico'));
+    // ICO başlığı: 00 00 01 00 (reserved=0, type=1) — uzantıya güvenilmez.
+    expect([...buf.subarray(0, 4)]).toEqual([0, 0, 1, 0]);
+    expect(buf.length).toBeGreaterThan(1000);
+  });
+
+  test('ico Google’ın istediği 48px kareyi içeriyor', () => {
+    const buf = readFileSync(join(DIST, 'favicon.ico'));
+    const count = buf.readUInt16LE(4);
+    // Her dizin girdisi 16 bayt; ilk iki bayt genişlik ve yükseklik (0 = 256).
+    const sizes = Array.from({ length: count }, (_, i) => {
+      const at = 6 + i * 16;
+      const w = buf[at] === 0 ? 256 : buf[at];
+      const h = buf[at + 1] === 0 ? 256 : buf[at + 1];
+      return `${w}x${h}`;
+    });
+    expect(sizes).toContain('48x48');
+  });
+
+  test('her sayfa ico ve apple-touch-icon bildiriyor', () => {
+    // `/admin/` CMS arayüzüdür ve BaseLayout kullanmaz — kapsam dışı.
+    const pages = allHtmlFiles(DIST).filter((file) => !file.includes(`${sep}admin${sep}`));
+    expect(pages.length).toBeGreaterThan(0);
+
+    for (const file of pages) {
+      const page = readFileSync(file, 'utf-8');
+      expect(page).toContain('href="/favicon.ico"');
+      expect(page).toContain('rel="apple-touch-icon"');
+    }
   });
 });

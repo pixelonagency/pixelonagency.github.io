@@ -1,11 +1,13 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
+import BlogCategory from '../components/BlogCategory.astro';
 import CmsPage from '../components/CmsPage.astro';
 import LegalPage from '../components/LegalPage.astro';
 import PostDetail from '../components/PostDetail.astro';
 import ProjectDetail from '../components/ProjectDetail.astro';
 import ServiceDetail from '../components/ServiceDetail.astro';
+import { categoriesWithPages, categoryPath } from '../lib/blog-categories';
 import {
   alternatesFor,
   DEFAULT_LOCALE,
@@ -121,6 +123,26 @@ export const getStaticPaths = (async () => {
     });
   }
 
+  // --- Blog kategori merkezleri ---
+  //
+  // Yalnızca eşiği geçen kategoriler sayfa alır (bkz. `blog-categories.ts`); eşiğin
+  // altındakiler etiket olarak kalır. Kategoriler diller arasında EŞLEŞMEZ (Türkçe
+  // "Web Tasarım"ın İngilizce karşılığı yok), bu yüzden hreflang alternatifi verilmez.
+  for (const locale of LOCALES) {
+    for (const group of categoriesWithPages(posts, locale)) {
+      paths.push({
+        params: { path: toParam(categoryPath(locale, group.name)) },
+        props: {
+          kind: 'category',
+          category: group,
+          others: categoriesWithPages(posts, locale).filter((other) => other.slug !== group.slug),
+          locale,
+          alternates: {},
+        },
+      });
+    }
+  }
+
   // --- Yasal metinler (`legal` koleksiyonu; dosya adı = ROUTE_SLUGS anahtarı) ---
   for (const entry of legal) {
     const { locale, key } = splitId(entry.id);
@@ -135,7 +157,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const props = Astro.props as {
-  kind: 'page' | 'service' | 'post' | 'project' | 'legal';
+  kind: 'page' | 'service' | 'post' | 'project' | 'legal' | 'category';
   locale: Locale;
   alternates: Partial<Record<Locale, string>>;
   pageKey?: PageKey;
@@ -143,6 +165,8 @@ const props = Astro.props as {
   post?: Parameters<typeof PostDetail>[0]['post'];
   project?: Parameters<typeof ProjectDetail>[0]['project'];
   legal?: Parameters<typeof LegalPage>[0]['entry'];
+  category?: Parameters<typeof BlogCategory>[0]['group'];
+  others?: Parameters<typeof BlogCategory>[0]['others'];
 };
 
 const { kind, locale = DEFAULT_LOCALE, alternates } = props;
@@ -153,3 +177,8 @@ const { kind, locale = DEFAULT_LOCALE, alternates } = props;
 {kind === 'post' && props.post && <PostDetail post={props.post} {locale} {alternates} />}
 {kind === 'project' && props.project && <ProjectDetail project={props.project} {locale} {alternates} />}
 {kind === 'legal' && props.legal && <LegalPage entry={props.legal} {locale} {alternates} />}
+{
+  kind === 'category' && props.category && (
+    <BlogCategory group={props.category} others={props.others ?? []} {locale} {alternates} />
+  )
+}

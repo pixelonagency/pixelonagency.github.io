@@ -86,12 +86,26 @@ export interface Crumb {
   url?: string | undefined;
 }
 
-/** Görünen breadcrumb ile birebir aynı sırayı bekler — görünmeyen kırıntı eklenmez. */
+/**
+ * Görünen breadcrumb ile birebir aynı sırayı bekler — görünmeyen kırıntı eklenmez.
+ *
+ * Google `BreadcrumbList` içinde SON eleman dışındaki her `ListItem` için `item`
+ * alanını zorunlu tutar; yalnızca son eleman hedefsiz kalabilir (zaten bulunulan
+ * sayfadır). Hedefi olmayan bir ARA kırıntı bu yüzden şemadan düşürülür —
+ * Search Console aksi hâlde "item alanı eksik" hatası veriyordu.
+ *
+ * Düşürme çağıran tarafta değil burada yapılır: kırıntı listesi birden çok
+ * bileşenden geliyor ve hedefi olmayan ara kırıntının geçerli bir kullanımı yok.
+ * Kategori sayfaları yayına girip kırıntı bir hedef kazandığında otomatik döner.
+ */
 export function breadcrumbSchema(crumbs: Crumb[]): Record<string, unknown> {
+  const kept = crumbs.filter((crumb, index) => crumb.url || index === crumbs.length - 1);
+
   return {
     '@type': 'BreadcrumbList',
-    itemListElement: crumbs.map((crumb, index) => ({
+    itemListElement: kept.map((crumb, index) => ({
       '@type': 'ListItem',
+      // Ara kırıntı düşürülmüş olabilir; sıra numarası boşluksuz kalmalı.
       position: index + 1,
       name: crumb.label,
       ...(crumb.url ? { item: crumb.url } : {}),
@@ -106,9 +120,20 @@ interface ServiceInput {
   locale: Locale;
 }
 
+/**
+ * Bir hizmet sayfasının kalıcı düğüm kimliği.
+ *
+ * Hizmet düğümlerinin kimliği yoktu; dolayısıyla hiçbir şey onlara referans
+ * veremiyordu — vaka sayfaları "bu iş şu hizmetin kapsamındadır" diyemiyordu.
+ */
+function serviceNodeId(serviceUrl: string): string {
+  return `${serviceUrl}#service`;
+}
+
 export function serviceSchema({ name, description, url, locale }: ServiceInput): Record<string, unknown> {
   return {
     '@type': 'Service',
+    '@id': serviceNodeId(url),
     name,
     description,
     url,
@@ -116,6 +141,80 @@ export function serviceSchema({ name, description, url, locale }: ServiceInput):
     provider: { '@id': ORG_ID },
     areaServed: 'TR',
   };
+}
+
+/**
+ * Proje kategorisi → hizmet `translationKey` eşlemesi.
+ *
+ * Neden `category`: proje `detail.services` çipleri serbest metindir ("Web Sitesi
+ * Tasarımı & Geliştirme"), hizmet sayfası adlarıyla eşleşmez ve 37 farklı çipten
+ * yalnızca ikisi birebir tutar. Oradan bağ kurmak uydurma veri olurdu. `category`
+ * ise beş değerli kontrollü bir sözlüktür ve işin ana hizmet hattını gösterir.
+ *
+ * Eşleşmeyen kategori sessizce bağsız kalır — yanlış bağ kurmaktansa bağ kurmamak.
+ * `translationKey` kullanılır çünkü hizmet slug'ı dile göre değişir.
+ */
+export const SERVICE_BY_PROJECT_CATEGORY: Record<string, string> = {
+  marka: 'branding',
+  web: 'web-design',
+  sosyal: 'social-media',
+  saglik: 'health-tourism',
+  uxui: 'ux-ui',
+};
+
+interface CaseStudyInput {
+  url: string;
+  title: string;
+  description: string;
+  /** Künyede görünen müşteri adı. */
+  client: string;
+  locale: Locale;
+  year?: string | undefined;
+  tags?: readonly string[] | undefined;
+  imageUrl?: string | undefined;
+  /** İşin ait olduğu hizmet; kategori eşleşmezse verilmez. */
+  service?: { name: string; url: string } | undefined;
+}
+
+/**
+ * Vaka (proje detay) sayfasının varlık düğümleri.
+ *
+ * Dönen dizi bir `CreativeWork` ve — hizmet bağı varsa — o hizmeti tanıtan kısa bir
+ * `Service` düğümü içerir. İkincisi referansın havada kalmaması içindir: `@id` başka
+ * sayfadaki düğümü gösterir, yanına adı ve adresi konunca graf kendi kendini anlatır.
+ */
+export function caseStudySchema({
+  url,
+  title,
+  description,
+  client,
+  locale,
+  year,
+  tags,
+  imageUrl,
+  service,
+}: CaseStudyInput): Record<string, unknown>[] {
+  const serviceId = service ? serviceNodeId(service.url) : undefined;
+
+  const work: Record<string, unknown> = {
+    '@type': 'CreativeWork',
+    '@id': `${url}#project`,
+    name: title,
+    description,
+    url,
+    inLanguage: locale,
+    /* İşi Pixelon üretti; sayfa müşteriyi ve verilen hizmeti konu alır. */
+    creator: { '@id': ORG_ID },
+    isPartOf: { '@id': WEBSITE_ID },
+    about: [{ '@type': 'Organization', name: client }, ...(serviceId ? [{ '@id': serviceId }] : [])],
+    ...(year ? { dateCreated: year } : {}),
+    ...(tags && tags.length > 0 ? { keywords: [...tags] } : {}),
+    ...(imageUrl ? { image: imageUrl } : {}),
+  };
+
+  if (!service || !serviceId) return [work];
+
+  return [work, { '@type': 'Service', '@id': serviceId, name: service.name, url: service.url }];
 }
 
 interface ArticleInput {

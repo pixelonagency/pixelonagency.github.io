@@ -113,7 +113,25 @@ const jsonLd = toJsonLd([
     <script is:inline type="application/ld+json" set:html={jsonLd} />
 
     <meta name="theme-color" content="#0A0A0A" />
+
+    {
+      /*
+      Favicon seti. SVG modern tarayıcılarda önce gelir ve her boyutta net kalır;
+      `.ico` ise geri düşüş: Google'ın favicon dokümanı "geçerli herhangi bir favicon
+      formatı" diyor ama SVG'yi AÇIKÇA saymıyor, dolayısıyla arama sonucundaki site
+      simgesini yalnızca SVG'ye bırakmak garanti değil. `.ico` 16/32/48/64/128/256
+      boyutlarını birlikte taşır — Google kare ve en az 48px istiyor.
+
+      apple-touch-icon KÖŞESİZ üretilir: iOS ikona kendi maskesini uyguluyor, köşe
+      bizde de yuvarlatılırsa çift yuvarlama olup kenarda boşluk kalıyor.
+
+      Üçü de `public/favicon.svg`'deki geometriden türetildi (scripts/favicon.py).
+    */
+    }
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     {

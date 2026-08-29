@@ -49,6 +49,13 @@ const STRINGS = {
   'blog.updated': { tr: 'Güncellenme:', en: 'Updated:' },
   'blog.toc': { tr: 'İçindekiler', en: 'Contents' },
   'blog.related': { tr: 'İlgili Yazılar', en: 'Related Articles' },
+  'blog.category.eyebrow': { tr: 'Kategori', en: 'Category' },
+  /* Başlık kalıbının ikinci parçası: 'Web Tasarım Yazıları'. Tek başına kategori adı
+     kısa kategorilerde ('SEO') SERP başlığını 20 karakterin altına düşürüyordu. */
+  'blog.category.titleSuffix': { tr: 'Yazıları', en: 'Articles' },
+  'blog.category.posts': { tr: 'yazı', en: 'articles' },
+  'blog.category.other': { tr: 'Diğer Kategoriler', en: 'Other Categories' },
+  'blog.category.all': { tr: 'Tüm Blog Yazıları →', en: 'All Blog Articles →' },
   'blog.applyHeading': {
     tr: 'Bu Stratejiyi Markanız İçin Uygulayalım.',
     en: "Let's Put This Strategy to Work for Your Brand.",
@@ -68,6 +75,7 @@ const STRINGS = {
   'projects.all': { tr: 'Tümü', en: 'All' },
   'projects.categories': { tr: 'Proje kategorileri', en: 'Project categories' },
   'projects.view': { tr: 'Projeyi İncele', en: 'View Project' },
+  'projects.measured': { tr: 'Ölçülen Sonuç', en: 'Measured Results' },
   'projects.empty': {
     tr: 'Bu kategoride henüz proje bulunmuyor.',
     en: 'There are no projects in this category yet.',
