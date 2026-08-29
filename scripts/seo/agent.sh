@@ -64,7 +64,11 @@ fi
 
 # --- Koşu öncesi durum (son kapı için) -----------------------------------------
 HEAD_BEFORE="$(git rev-parse HEAD)"
-PROTECTED_BEFORE="$(git status --porcelain -- "${PROTECTED[@]}" | shasum -a256 | cut -d' ' -f1)"
+# Ham porcelain çıktısı saklanır: geri alma hash karşılaştırmasıyla değil, yol
+# farkıyla yapılır. Sahibin koşu öncesinde zaten kirli olan dosyalarına
+# dokunulmaması bunu gerektiriyor (bkz. scripts/seo/protected-paths.mjs).
+PROTECTED_BEFORE_RAW="$(git status --porcelain -- "${PROTECTED[@]}")"
+PROTECTED_BEFORE="$(printf '%s' "$PROTECTED_BEFORE_RAW" | shasum -a256 | cut -d' ' -f1)"
 # Kök dizin dosya listesi. `bun -e` argv kayması bir kez kökte `0` adlı dosya
 # üretmişti; kimse bakmadığı için fark edilmesi zor. Artık kapıda tutuluyor.
 ROOT_FILES_BEFORE="$(ls -A1 | sort | shasum -a256 | cut -d' ' -f1)"
@@ -93,15 +97,36 @@ log "ajan bitti exit=$CLAUDE_EXIT"
 # --- SON KAPI: üretim yollarına dokunuldu mu? ----------------------------------
 VIOLATION=""
 HEAD_AFTER="$(git rev-parse HEAD)"
-PROTECTED_AFTER="$(git status --porcelain -- "${PROTECTED[@]}" | shasum -a256 | cut -d' ' -f1)"
+PROTECTED_AFTER_RAW="$(git status --porcelain -- "${PROTECTED[@]}")"
+PROTECTED_AFTER="$(printf '%s' "$PROTECTED_AFTER_RAW" | shasum -a256 | cut -d' ' -f1)"
 
 [ "$HEAD_BEFORE" != "$HEAD_AFTER" ] && VIOLATION="commit yapıldı ($HEAD_BEFORE → $HEAD_AFTER)"
 if [ "$PROTECTED_BEFORE" != "$PROTECTED_AFTER" ]; then
   VIOLATION="${VIOLATION:+$VIOLATION; }korunan yollar değişti"
-  log "İHLAL — korunan yollardaki değişiklikler geri alınıyor:"
-  git status --porcelain -- "${PROTECTED[@]}" >>"$LOG"
-  git checkout -- "${PROTECTED[@]}" 2>>"$LOG" || true
-  git clean -fd -- "${PROTECTED[@]}" 2>>"$LOG" || true
+
+  # CERRAHİ GERİ ALMA — yalnızca koşu SIRASINDA yeni kirlenen yollar.
+  # Toptan `git checkout -- src public` sahibin commit'lenmemiş işini de
+  # siliyordu; 29 Ağu 2026'da o yollarda sahibe ait 137 dosya duruyordu.
+  # Girdi ortam değişkeniyle geçilir, argv ile değil — `bun -e` argv kayması
+  # riski (bkz. yukarıdaki FAILS notu) bu yolla tamamen dışarıda kalır.
+  AGENT_PATHS="$(
+    PROTECTED_BEFORE_RAW="$PROTECTED_BEFORE_RAW" PROTECTED_AFTER_RAW="$PROTECTED_AFTER_RAW" \
+      bun scripts/seo/protected-paths.mjs 2>>"$LOG"
+  )"
+
+  OWNER_COUNT="$(printf '%s' "$PROTECTED_BEFORE_RAW" | grep -c . || true)"
+  if [ "$OWNER_COUNT" -gt 0 ]; then
+    log "NOT — korunan yollarda sahibe ait $OWNER_COUNT commit'lenmemiş dosya var; onlara DOKUNULMADI."
+  fi
+
+  if [ -n "$AGENT_PATHS" ]; then
+    log "İHLAL — ajanın kirlettiği yollar geri alınıyor:"
+    printf '%s\n' "$AGENT_PATHS" >>"$LOG"
+    printf '%s\n' "$AGENT_PATHS" | tr '\n' '\0' | xargs -0 git checkout -- 2>>"$LOG" || true
+    printf '%s\n' "$AGENT_PATHS" | tr '\n' '\0' | xargs -0 git clean -fd -- 2>>"$LOG" || true
+  else
+    log "İHLAL — korunan yollar değişti ama yeni kirlenen yol yok; sahibin mevcut dosyaları değişmiş olabilir. Geri alma YAPILMADI, sahip incelemeli."
+  fi
 fi
 # Taslak src/content'e sızmış mı?
 if git status --porcelain -- src/content | grep -q .; then
