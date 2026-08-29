@@ -128,3 +128,26 @@ export function pickLocalized<T>(values: Partial<Record<Locale, T>>, locale: Loc
   if (wanted !== undefined && wanted !== '') return wanted;
   return values[DEFAULT_LOCALE];
 }
+
+/**
+ * Dil değiştiricide çizilecek diller.
+ *
+ * Kural: **karşılığı olmayan dile buton konmaz.** Sayfanın başka dilde
+ * gerçek bir karşılığı yoksa boş dizi döner ve anahtar hiç çizilmez.
+ *
+ * Neden: eski davranış, karşılık bulunamayınca o dilin **ana sayfasına**
+ * düşüyordu. Bunun iki maliyeti vardı — okuyucu, açtığı yazıyı kaybedip
+ * ana sayfaya düşüyordu; ve çevirisi olmayan her Türkçe sayfa İngilizce
+ * ana sayfaya bir iç bağlantı veriyordu. 2026-08-29 ölçümünde bu, sıfır
+ * dış bağlantısı olan `/en/` sayfasını Türkçe ana sayfayla eşit iç
+ * bağlantı ağırlığına taşımıştı (65'e 65) ve Google marka sorgusunda
+ * Türkiye'de İngilizce ana sayfayı 1. sırada gösteriyordu.
+ */
+export function languageSwitcherLocales(locale: Locale, alternates: Partial<Record<Locale, string>>): Locale[] {
+  const hasAlternate = LOCALES.some((code) => code !== locale && Boolean(alternates[code]));
+  if (!hasAlternate) return [];
+
+  // Üçüncü bir dil eklendiğinde karşılığı olmayanı yine dışarıda bırak —
+  // aksi hâlde o dil için ana sayfaya düşme davranışı geri gelir.
+  return LOCALES.filter((code) => code === locale || Boolean(alternates[code]));
+}

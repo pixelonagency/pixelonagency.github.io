@@ -3,6 +3,7 @@ import {
   alternatesFor,
   DEFAULT_LOCALE,
   isLocale,
+  languageSwitcherLocales,
   localePrefix,
   LOCALES,
   localizedPath,
@@ -172,5 +173,31 @@ describe('pickLocalized — alan bazlı yedekleme', () => {
 
   test('hiçbiri yoksa undefined döner', () => {
     expect(pickLocalized({}, 'en')).toBeUndefined();
+  });
+});
+
+describe('languageSwitcherLocales', () => {
+  test('karşılığı olan dilleri, geçerli dille birlikte döner', () => {
+    expect(languageSwitcherLocales('tr', { tr: '/blog/x/', en: '/en/blog/x/' })).toEqual(['tr', 'en']);
+  });
+
+  test('çevirisi olmayan sayfada boş dizi döner — anahtar hiç çizilmez', () => {
+    expect(languageSwitcherLocales('tr', { tr: '/blog/x/' })).toEqual([]);
+  });
+
+  test('alternates hiç verilmezse boş dizi döner', () => {
+    expect(languageSwitcherLocales('tr', {})).toEqual([]);
+  });
+
+  test('boş dizeli karşılık yok sayılır', () => {
+    expect(languageSwitcherLocales('tr', { tr: '/blog/x/', en: '' })).toEqual([]);
+  });
+
+  test('İngilizce sayfada Türkçe karşılığı yoksa da gizlenir — kural simetrik', () => {
+    expect(languageSwitcherLocales('en', { en: '/en/only/' })).toEqual([]);
+  });
+
+  test('geçerli dilin kendi girdisi eksik olsa bile karşılık varsa gösterilir', () => {
+    expect(languageSwitcherLocales('tr', { en: '/en/blog/x/' })).toEqual(['tr', 'en']);
   });
 });

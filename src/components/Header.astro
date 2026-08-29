@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import logo from '../assets/logo/pixelon-logo.webp';
-import { DEFAULT_LOCALE, LOCALES, localizedPath, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, languageSwitcherLocales, localizedPath, type Locale } from '../lib/i18n';
 import { buildPrimaryNav, serviceHref, t } from '../lib/ui';
 import { isActiveRoute } from '../lib/nav';
 
@@ -11,12 +11,14 @@ interface Props {
   /**
    * Sayfanın diğer dillerdeki karşılıklarının yolları (hreflang ile aynı kaynak).
    * Dil seçici bununla mevcut sayfanın çevirisine bağlanır; karşılık yoksa
-   * (ör. 404 veya çevirisi olmayan blog yazısı) o dilin ana sayfasına düşer.
+   * (ör. 404 veya çevirisi olmayan blog yazısı) **seçici hiç çizilmez**.
+   * Gerekçe: `languageSwitcherLocales` (src/lib/i18n.ts).
    */
   alternates?: Partial<Record<Locale, string>>;
 }
 
 const { locale = DEFAULT_LOCALE, alternates = {} } = Astro.props;
+const switcherLocales = languageSwitcherLocales(locale, alternates);
 
 const allServices = await getCollection('services');
 const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
@@ -82,7 +84,7 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
     <div class="site-header__actions">
       <div class="lang-switch" data-hide-mobile>
         {
-          LOCALES.map((code, index) => (
+          switcherLocales.map((code, index) => (
             <>
               {index > 0 && (
                 <span class="lang-switch__sep" aria-hidden="true">
