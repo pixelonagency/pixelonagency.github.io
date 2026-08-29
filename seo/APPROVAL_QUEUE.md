@@ -3,11 +3,19 @@
 ```text
 READY FOR APPROVAL: 0
 MEASURING: 5
-OWNER DECISION: 4
+OWNER DECISION: 5
 LIMIT: 3
 ```
 
-**Son güncelleme:** 2026-08-24
+**Son güncelleme:** 2026-08-28
+
+> **2026-08-28 koşusu:** kuyruğa yeni giriş yok, sayaç **0/3**. Kontrol noktası
+> **yarın** (29 Ağustos); bugünkü koşu karar paketinin veri tarafını önceden derledi.
+> Yeni yayınlanabilir iş üretilmedi — sözleşme gereği. Boş kuyruk geçerli sonuçtur.
+
+> **2026-08-27 koşusu:** kuyruğa yeni giriş yok, sayaç **0/3**. Kontrol noktasına
+> (29 Ağustos) kadar yeni yayınlanabilir iş üretilmiyor — sözleşme gereği.
+> Bu koşu yalnızca ölçüm ve teknik izleme yaptı; boş kuyruk geçerli sonuçtur.
 
 > **Sayaç düzeltmesi (2026-08-23):** başlık `READY FOR APPROVAL: 2` diyordu; gerçek sayı
 > **0**. `SEO-2026-0081` 22 Ağu 21:52'de sahip onayıyla yayınlandı, `SEO-2026-0082`
@@ -123,13 +131,50 @@ kırık `sameAs` kalmadı.
 **22 ve 23 Ağustos paketleri aynı ölçüm penceresini paylaşıyor; etkileri birbirinden
 ayrılamaz.** 29 Ağustos'ta atıf yapılmayacak.
 
+### `SEO-2026-0107` — 29 Ağustos kontrol noktası penceresi düzeltmesi · **BİLGİ**
+
+Ölçüm sırasında doğrulandı: GSC verisi **3 gün gecikmeli** geliyor (08-18'den bu
+yana tüm günlerde tutarlı — bugün 26 Ağustos, en yeni tam gün 23 Ağustos).
+
+**Sonuç:** 29 Ağustos'ta elde olacak en yeni GSC günü **26 Ağustos** olacak.
+22 Ağustos 11:40 yayınından sonra **4 tam gün** demek — kontrol noktasının
+`+7g` etiketi gerçek ölçüm penceresini fazla gösteriyor. Gerçek 7 günlük veri
+**1 Eylül**'de elde olur.
+
+Kontrol noktası iptal edilmiyor. Ancak "yeterli veri" eşiği gerektiren kararlar
+(özellikle `SEO-2026-0077` → PUBLISH / REVISE / WAIT) 29 Ağustos'ta **4 günlük**
+veriye dayanacak; karar bu kısıt açıkça yazılarak verilmeli.
+
+### `SEO-2026-0114` — 29 Ağustos karar paketinin veri tarafı derlendi · **DONE** (2026-08-28)
+
+Kontrol noktasının altı bölümü ve sahip commit paketlerinin tamamı, elde olan en yeni
+GSC günüyle önceden ölçüldü. Yarınki koşuya kalan iş: bir gün daha eklemek ve bölümleri
+`OBSERVED CHANGE / CONFIDENCE / ACTION` formatına dökmek.
+
+Derleme sırasında kayda geçen iki kısıt:
+
+- **Veri penceresi.** `SEO-2026-0107` değişmedi — yarın elde olacak veri **4 tam gün**.
+  Karar verilecekse metne bu kısıt açıkça yazılmalı, ya da karar 1 Eylül'e alınmalı.
+  **Ajan seçim yapmadı.**
+- **İç bağlantı kapsamı atfedilemez.** Bağlantı eklenen yazıların tamamı aynı hafta
+  içinde yayınlanmıştı; sıfır tabandan gelen hareketin ne kadarının yayınlanmış
+  olmaktan, ne kadarının bağlantıdan geldiği **bu veriyle ayrılamaz**. Kontrol
+  noktasında "ölçüldü ama atfedilemez" olarak sunulacak.
+- Hedef hizmet sayfalarının hareketi **ölçüm duyarlılığının altında** kaldı; bu kapsam
+  bu pencerede karar üretemez.
+
+Ayrıntı ve sayısal kırılım özel katmanda.
+
 ### `SEO-2026-0068` — İki yeni hizmet sayfası · MEASURING
 
 `/hizmetlerimiz/kurumsal-web-tasarim/` · `/en/services/healthcare-marketing/`
 Yayın: 2026-08-22 11:40 · Kontrol: **29 Ağu** / **5 Eyl** / **19 Eyl**
 Ölçülen: gösterim · tıklama · CTR · ortalama konum · sorgular · landing page performansı
 
-Bugün canlı doğrulama: her iki URL de **200**, yönlendirme yok.
+**2026-08-28 okuması (+3 gün):** yeni yayınlanan beş URL'den **biri** ilk kez arama
+gösterimi aldı; kalan dördü hâlâ sıfır. Bu bir **indeksleme** sinyalidir, sıralama
+sinyali değildir. Sitenin gösterim alan URL sayısı beş gün üst üste arttı — keşif
+kanalı tıkalı değil.
 
 **Kural:** yeterli veri oluşmadan büyük yeniden yazım yapılmaz.
 
@@ -138,14 +183,33 @@ Bugün canlı doğrulama: her iki URL de **200**, yönlendirme yok.
 12 kural canlı, 301 → tek hop → 200. Baseline 2026-08-22 11:40'ta donduruldu.
 Kontrol: **29 Ağu** / **5 Eyl** / **19 Eyl**
 
-Bugün canlı doğrulama: örneklenen eski URL'ler **301, tek hop**; kanonik
-sondaki-bölü yönlendirmeleri de **301, tek hop**; `http://` → `https://` çalışıyor.
+**2026-08-28 okuması — `SEO-2026-0113`:** çift URL sayısı ve bu çiftlerdeki toplam
+gösterim **ilk kez birlikte düştü**. Bu, konsolidasyonla **tutarlı ilk gündür**.
+Ancak tek gün, düşüş küçük ve gürültü bandında; oransal düşüşün büyük kısmı site
+toplamının büyümesinden geliyor. Doğrulama için üç gün üst üste düşüş gerekiyor —
+en erken **1 Eylül**. Bugün bir sonuç açıklanmıyor.
 
 **Kural:** sıralama değişimi 301'e atfedilmez; yalnızca gözlenen sinyal raporlanır.
 
 ---
 
 ## Sahip kararı bekleyen
+
+### `SEO-2026-0106` — Otonom koşu makine uykusuna dayanıklı değil · **YENİ, P1 (operasyonel)**
+
+25 Ağustos koşusu 26. turda düştü. Kök neden koşu çıktısında yazılı:
+oturum **makine uyku durumuna geçtiği için** API tarafında sonlandı
+(`terminal_reason: api_error`). **Sınır ihlali yok** — koruma katmanlarının
+tamamı çalıştı, bütçe aşılmadı. O gün için rapor üretilmedi, state güncellenmedi
+ve **1,60 USD karşılıksız harcandı**.
+
+**Asıl risk kaybedilen gün değil:** `scripts/seo/agent.sh` üst üste **3** hatadan
+sonra koşuyu `BLOCKED` işaretliyor ve sahip müdahalesine kadar hiç çalışmıyor.
+Sayaç şu anda **1**. Arka arkaya üç uykulu sabah, otonom sistemi sessizce durdurur.
+
+**Ajan bunu kendi düzeltemez** — çözüm launchd / güç yönetimi tarafında
+(uyku sırasında koşu izni veya kaçırılan koşu için tekrar deneme). Kod
+değişikliği önerilmiyor, karar sahibinde.
 
 ### `SEO-2026-0093` — Eski URL kapsama boşluğu: 3 adres canlı 404 · **YENİ, P1**
 

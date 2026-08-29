@@ -2,8 +2,8 @@
   "version": 1,
   "mode": "AUTONOMOUS_GROWTH",
   "site": "https://pixelon.com.tr",
-  "lastRun": "2026-08-24T11:05:53.934Z",
-  "lastSuccessfulRun": "2026-08-24T11:05:53.934Z",
+  "lastRun": "2026-08-29T09:59:16.495Z",
+  "lastSuccessfulRun": "2026-08-29T09:59:16.495Z",
   "currentPhase": "PHASE_16_AUTOMATION",
   "phasesCompleted": [
     "PHASE_0_DISCOVERY",
@@ -57,19 +57,19 @@
     "SEO-2026-0060",
     "SEO-2026-0061"
   ],
-  "nextTaskIdCounter": 106,
-  "lastGSCFetch": "2026-08-24T11:05:56.827Z",
-  "lastSemrushFetch": "2026-08-24T11:05:56.828Z",
+  "nextTaskIdCounter": 115,
+  "lastGSCFetch": "2026-08-29T09:59:20.003Z",
+  "lastSemrushFetch": "2026-08-29T09:59:20.004Z",
   "lastCompetitorAnalysis": "2026-08-21",
-  "lastTechnicalAudit": "2026-08-24",
+  "lastTechnicalAudit": "2026-08-29",
   "lastContentPublish": "2026-08-21",
   "lastContentRefresh": null,
   "technicalHealth": {
     "P0": 0,
     "P1": 0,
-    "P2": 3,
+    "P2": 0,
     "P3": 0,
-    "indexable": 104,
+    "indexable": 109,
     "orphans": 0,
     "brokenLinks": 0
   },
@@ -111,7 +111,7 @@
     }
   ],
   "dataSources": {
-    "checkedAt": "2026-08-24T11:05:56.828Z",
+    "checkedAt": "2026-08-29T09:59:20.004Z",
     "googleSearchConsole": true,
     "semrush": true,
     "liveSerp": true,
@@ -154,21 +154,21 @@
     "knownIssue": "Ağustos 2026 blog görsellerinde #C8F04B kullanıldı; doğrusu #cfff00"
   },
   "gscSummary": {
-    "clicks": 17,
-    "impressions": 873,
-    "ctr": 1.95,
-    "avgPosition": 31.4,
-    "queryCount": 71,
-    "pageCount": 70,
+    "clicks": 23,
+    "impressions": 1896,
+    "ctr": 1.21,
+    "avgPosition": 28,
+    "queryCount": 140,
+    "pageCount": 107,
     "days": 28,
-    "rangeStart": "2026-07-25",
-    "rangeEnd": "2026-08-21"
+    "rangeStart": "2026-07-30",
+    "rangeEnd": "2026-08-26"
   },
   "opportunityCounts": {
-    "quickWin": 2,
-    "strikingDistance": 6,
+    "quickWin": 14,
+    "strikingDistance": 19,
     "ctrOpportunity": 0,
-    "highPriority": 8
+    "highPriority": 33
   },
   "overnight": {
     "date": "2026-08-22",
