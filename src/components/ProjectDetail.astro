@@ -15,11 +15,12 @@
 import type { CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaSection from './sections/CtaSection.astro';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
-import { breadcrumbSchema } from '../lib/schema';
+import { canonicalUrl } from '../lib/seo';
+import { breadcrumbSchema, caseStudySchema, SERVICE_BY_PROJECT_CATEGORY } from '../lib/schema';
 import { t } from '../lib/ui';
 
 interface Props {
@@ -29,7 +30,7 @@ interface Props {
 }
 
 const { project, locale, alternates } = Astro.props;
-const { title, client, excerpt, seo, detail } = project.data;
+const { title, client, category, excerpt, tags, year, cover, seo, detail } = project.data;
 if (!detail) throw new Error(`detail alanı olmadan proje detay sayfası üretilemez: ${project.id}`);
 
 const asImage = (value: unknown): ImageMetadata | undefined =>
@@ -47,6 +48,51 @@ const paragraphs = (text: string): string[] =>
     .filter(Boolean);
 
 const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+
+/*
+ * Kapanış rayı: aynı dildeki DİĞER vaka sayfaları. Yalnızca `detail`'i olanlar
+ * alınır — case study'si olmayan projeye bağlanacak sayfa yok. Aynı kategori
+ * öne çekilir (okuyucu benzer işi görmek ister), gerisi yıla göre yeniden eski.
+ * Ray en fazla 8 kart taşır; daha fazlası kaydırmayı ödev hâline getiriyor.
+ */
+const RAIL_LIMIT = 8;
+const railProjects = (await getCollection('projects'))
+  .filter((entry) => entry.id.startsWith(`${locale}/`) && entry.id !== project.id && Boolean(entry.data.detail))
+  .sort((a, b) => {
+    const sameCategory = Number(b.data.category === category) - Number(a.data.category === category);
+    return sameCategory !== 0 ? sameCategory : (b.data.year ?? '').localeCompare(a.data.year ?? '');
+  })
+  .slice(0, RAIL_LIMIT)
+  .map((entry) => ({
+    href: localizedPath('projects', locale, entry.id.slice(locale.length + 1)),
+    title: entry.data.title,
+    client: entry.data.client,
+    /* Kart altı satırı: müşteri adı başlıkla birebir aynı olduğu için sektör
+     * etiketi taşınır — aynı kelimeyi iki kez yazmak bilgi vermiyor. */
+    categoryLabel: entry.data.categoryLabel,
+    cover: asImage(entry.data.cover),
+  }));
+
+/*
+ * Vakayı hizmet hattına bağla: proje `category`'si bir hizmet `translationKey`'ine
+ * düşer (bkz. SERVICE_BY_PROJECT_CATEGORY), o anahtarın BU dildeki hizmet girdisi
+ * bulunur. Girdi yoksa bağ hiç kurulmaz — yanlış bağ kurmaktansa bağ kurmamak.
+ */
+const serviceKey = SERVICE_BY_PROJECT_CATEGORY[category];
+const serviceEntry = serviceKey
+  ? (await getCollection('services')).find(
+      (entry) => entry.id.startsWith(`${locale}/`) && entry.data.translationKey === serviceKey,
+    )
+  : undefined;
+const caseService = serviceEntry
+  ? {
+      name: serviceEntry.data.title,
+      url: new URL(localizedPath('services', locale, serviceEntry.id.split('/').slice(1).join('/')), site).toString(),
+    }
+  : undefined;
+
+const coverImage = asImage(cover);
+
 const extraSchema = [
   breadcrumbSchema([
     { label: t('nav.home', locale), url: new URL(localizedPath('home', locale), site).toString() },
@@ -56,6 +102,17 @@ const extraSchema = [
     },
     { label: title },
   ]),
+  ...caseStudySchema({
+    url: canonicalUrl(Astro.url.pathname, site),
+    title,
+    description: excerpt,
+    client,
+    locale,
+    year,
+    tags,
+    imageUrl: coverImage ? new URL(coverImage.src, site).toString() : undefined,
+    service: caseService,
+  }),
 ];
 
 /* Kapanış CTA'sı projeler sayfasının spot CTA'sıyla aynı — tek içerik kaynağı. */
@@ -80,6 +137,157 @@ const LOOP_SCRIPT = `(() => {
     }
   }, { threshold: 0.15 });
   document.querySelectorAll('.pd-loop').forEach((video) => io.observe(video));
+})();`;
+
+/*
+ * Diğer vakalar rayı: kendi kendine ilerleyen sonsuz döngü. Kart kümesi JS ile
+ * bir kez klonlanır, ray bir "periyot" (özgün küme genişliği) sonuna geldiğinde
+ * scrollLeft sessizce bir periyot geri alınır — kullanıcı dikişi görmez. Klonlar
+ * aria-hidden + tabindex=-1: ekran okuyucu ve klavye aynı kartı iki kez görmez.
+ * Otomatik ilerleme; imleç üstteyken, odak içerideyken, sekme arkadayken ve ray
+ * ekran dışındayken durur. prefers-reduced-motion'da hiç başlamaz — oklar çalışır.
+ */
+const RAIL_SCRIPT = `(() => {
+  const DELAY = 4000;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll('[data-rail]').forEach((rail) => {
+    const root = rail.closest('[data-rail-root]');
+    if (!root) return;
+    const count = rail.children.length;
+    if (!count) return;
+
+    let cloned = false;
+    let step = 0;
+    let period = 0;
+    let content = 0;
+    let timer = 0;
+    let settle = 0;
+    let hovered = false;
+    let focused = false;
+    let onscreen = true;
+
+    const clone = () => {
+      if (cloned) return;
+      const source = Array.from(rail.children);
+      for (const node of source) {
+        const copy = node.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        copy.setAttribute('tabindex', '-1');
+        copy.setAttribute('data-rail-clone', '');
+        rail.append(copy);
+      }
+      cloned = true;
+    };
+
+    const unclone = () => {
+      if (!cloned) return;
+      for (const node of rail.querySelectorAll('[data-rail-clone]')) node.remove();
+      rail.scrollLeft = 0;
+      cloned = false;
+    };
+
+    const measure = () => {
+      const items = rail.children;
+      const first = items[0];
+      const last = items[count - 1];
+      step = count > 1 ? items[1].offsetLeft - first.offsetLeft : first.offsetWidth;
+      content = last.offsetLeft + last.offsetWidth - first.offsetLeft;
+      period = content + (count > 1 ? step - first.offsetWidth : 0);
+      const box = getComputedStyle(rail);
+      const inner = rail.clientWidth - parseFloat(box.paddingLeft) - parseFloat(box.paddingRight);
+      return content - inner > 8;
+    };
+
+    const normalise = () => {
+      if (!cloned || !period) return;
+      if (rail.scrollLeft >= period - 1) rail.scrollLeft -= period;
+    };
+
+    const go = (dir) => {
+      if (!cloned || !step) return;
+      if (rail.scrollLeft + dir * step < -1) rail.scrollLeft += period;
+      rail.scrollBy({ left: dir * step, behavior: reduce.matches ? 'auto' : 'smooth' });
+    };
+
+    const stop = () => {
+      if (timer) {
+        clearTimeout(timer);
+        clearInterval(timer);
+      }
+      timer = 0;
+    };
+
+    const start = () => {
+      stop();
+      if (!cloned || reduce.matches) return;
+      const tick = () => {
+        if (hovered || focused || !onscreen || document.hidden) return;
+        go(1);
+      };
+      /* İlk adım daha erken: 4 sn kıpırdamayan ray "bozuk" gibi okunuyor. */
+      timer = setTimeout(() => {
+        tick();
+        timer = setInterval(tick, DELAY);
+      }, 1400);
+    };
+
+    const refresh = () => {
+      const overflowing = measure();
+      if (!overflowing) {
+        stop();
+        unclone();
+        root.setAttribute('data-rail-static', '');
+        return;
+      }
+      root.removeAttribute('data-rail-static');
+      clone();
+      measure();
+      start();
+    };
+
+    rail.addEventListener('scroll', () => {
+      clearTimeout(settle);
+      settle = setTimeout(normalise, 160);
+    }, { passive: true });
+
+    /*
+     * Duraklatma KARTLARIN üstüne bağlı, bölümün tamamına değil: .pd-more şeridi
+     * ekran genişliğini ve alttaki buton boşluğunu da kapsıyor, imleç o boşlukta
+     * dururken ray hiç kaymıyordu. Odak duraklatması bölüm genelinde kalır —
+     * klavye kullanıcısı okla gezerken ray altından kaymasın.
+     */
+    const hoverZone = root.querySelector('.pd-more__viewport') || rail;
+    hoverZone.addEventListener('pointerenter', () => { hovered = true; });
+    hoverZone.addEventListener('pointerleave', () => { hovered = false; });
+    root.addEventListener('focusin', () => { focused = true; });
+    root.addEventListener('focusout', () => { focused = false; });
+
+    for (const button of root.querySelectorAll('[data-rail-step]')) {
+      button.addEventListener('click', () => {
+        go(Number(button.dataset.railStep));
+        start();
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        for (const entry of entries) onscreen = entry.isIntersecting;
+      }, { threshold: 0.2 }).observe(root);
+    }
+
+    if ('ResizeObserver' in window) {
+      let queued = 0;
+      new ResizeObserver(() => {
+        clearTimeout(queued);
+        queued = setTimeout(refresh, 200);
+      }).observe(rail);
+    } else {
+      addEventListener('resize', () => { clearTimeout(settle); refresh(); });
+    }
+
+    refresh();
+  });
 })();`;
 ---
 
@@ -113,24 +321,18 @@ const LOOP_SCRIPT = `(() => {
             <h1 class="h1 pd-hero__title">{client}</h1>
             <p class="pd-hero__intro">{detail.intro}</p>
             {paragraphs(detail.description).map((part) => <p class="body-text pd-hero__desc">{part}</p>)}
-
-            {
-              detail.services.length > 0 && (
-                <ul class="pd-hero__chips" aria-label={locale === 'tr' ? 'Proje kapsamı' : 'Project scope'}>
-                  {detail.services.map((service) => (
-                    <li>{service}</li>
-                  ))}
-                </ul>
-              )
-            }
           </div>
 
+          {
+            /* Hero alt metni projeye göre türetilir: her vakada web sitesi yok,
+              sabit "web sitesi tasarımı" ifadesi yanlış bilgi veriyordu. */
+          }
           {
             heroImage && (
               <div class="pd-hero__media" data-reveal data-reveal-index="1">
                 <Image
                   src={heroImage}
-                  alt={`${client} — ${locale === 'tr' ? 'web sitesi tasarımı' : 'website design'}`}
+                  alt={`${client} — ${detail.intro}`}
                   widths={[640, 960, 1280, 1600]}
                   sizes="(max-width: 900px) 100vw, 46vw"
                   loading="eager"
@@ -142,8 +344,27 @@ const LOOP_SCRIPT = `(() => {
         </div>
 
         {
+          /* Kapsam çipleri ızgaranın DIŞINDA: metin kolonuna sıkışınca üç satıra
+            taşıyor ve görselin altındaki alan boş kalıyordu. Tam genişlik. */
+        }
+        {
+          detail.services.length > 0 && (
+            <ul
+              class="pd-hero__chips"
+              data-reveal
+              data-reveal-index="2"
+              aria-label={locale === 'tr' ? 'Proje kapsamı' : 'Project scope'}
+            >
+              {detail.services.map((service) => (
+                <li>{service}</li>
+              ))}
+            </ul>
+          )
+        }
+
+        {
           detail.meta.length > 0 && (
-            <dl class="pd-meta" data-reveal data-reveal-index="2">
+            <dl class="pd-meta" data-reveal data-reveal-index="3">
               {detail.meta.map((item) => (
                 <div class="pd-meta__item">
                   <dt>{item.label}</dt>
@@ -169,6 +390,43 @@ const LOOP_SCRIPT = `(() => {
               {paragraphs(detail.approach.text).map((part) => (
                 <p>{part}</p>
               ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    {/* ------------------------------------------------- ÖLÇÜLEN SONUÇ --- */}
+    {
+      detail.stats.length > 0 && (
+        <section class="section pd-stats" aria-label={t('projects.measured', locale)}>
+          <div class="container">
+            <p class="eyebrow">{t('projects.measured', locale)}</p>
+
+            {/* Ana rakam solda tek başına büyük; diğerleri sağda 2x2.
+                Tek satır hâlinde dizilince ana rakamın sağı boş kalıyordu. */}
+            <div class="pd-stats__grid">
+              <div class="pd-stat pd-stat--hero" data-reveal>
+                <span class="pd-stat__value" data-count={detail.stats[0]?.value}>
+                  {detail.stats[0]?.value}
+                </span>
+                <span class="pd-stat__label">{detail.stats[0]?.label}</span>
+                {detail.stats[0]?.note && <span class="pd-stat__note">{detail.stats[0].note}</span>}
+              </div>
+
+              {detail.stats.length > 1 && (
+                <div class="pd-stats__rest">
+                  {detail.stats.slice(1).map((stat, index) => (
+                    <div class="pd-stat" data-reveal data-reveal-index={index + 1}>
+                      <span class="pd-stat__value" data-count={stat.value}>
+                        {stat.value}
+                      </span>
+                      <span class="pd-stat__label">{stat.label}</span>
+                      {stat.note && <span class="pd-stat__note">{stat.note}</span>}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -202,7 +460,9 @@ const LOOP_SCRIPT = `(() => {
                 <div
                   class:list={[
                     'pd-block__media',
-                    block.images.length + (block.video ? 1 : 0) > 1 && 'pd-block__media--pair',
+                    /* Yalnızca İKİ board yan yana durur. Üç ve fazlası alt alta
+                       tam genişlik akar — sıkışıp küçülmesinler. */
+                    block.images.length + (block.video ? 1 : 0) === 2 && 'pd-block__media--pair',
                   ]}
                   data-reveal
                 >
@@ -243,6 +503,56 @@ const LOOP_SCRIPT = `(() => {
                   })}
                 </div>
               )}
+
+              {/* Sosyal medya reel'leri: poster görünür, tıklayınca sesli oynar. */}
+              {block.reels.length > 0 && (
+                <div
+                  class:list={[
+                    'pd-reels',
+                    /* Bir tanesi bile yataysa ızgara geniş karta geçer — dikey ve yatay
+                       filmi aynı dar sütuna sıkıştırmak yatay olanı okunmaz yapıyor. */
+                    block.reels.some((reel) => reel.width && reel.height && reel.width > reel.height) &&
+                      'pd-reels--wide',
+                  ]}
+                  data-reels
+                  data-reveal
+                >
+                  {block.reels.map((reel) => (
+                    <figure class="pd-reel">
+                      {/*
+                        `controls` işaretlemede AÇIK gelir: JS çalışmazsa video yine
+                        oynatılabilir. Betik çalışınca kontrolleri kaldırıp aşağıdaki
+                        özel play butonunu açar — ilerleyici geliştirme.
+                      */}
+                      <div
+                        class="pd-reel__frame"
+                        style={
+                          reel.width && reel.height ? `--pd-reel-ratio: ${reel.width} / ${reel.height}` : undefined
+                        }
+                      >
+                        <video
+                          class="pd-reel__video"
+                          poster={reel.poster}
+                          controls
+                          playsinline
+                          preload="none"
+                          width={reel.width}
+                          height={reel.height}
+                          aria-label={reel.title}
+                        >
+                          <source src={reel.src} type="video/mp4" />
+                        </video>
+                        <button class="pd-reel__play" type="button" hidden aria-label={`${reel.title} — videoyu oynat`}>
+                          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M9 6.5 18 12l-9 5.5z" fill="currentColor" />
+                          </svg>
+                        </button>
+                      </div>
+                      <figcaption class="pd-reel__title">{reel.title}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
             </div>
           ))
         }
@@ -261,9 +571,87 @@ const LOOP_SCRIPT = `(() => {
             {paragraphs(detail.result.text).map((part, index) => (
               <p class:list={['pd-result__text', index === 0 && 'pd-result__text--lead']}>{part}</p>
             ))}
-            <a href={localizedPath('projects', locale)} class="btn btn--outline pd-result__back">
-              {locale === 'tr' ? 'Tüm Projeler' : 'All Projects'}
-            </a>
+          </div>
+        </section>
+      )
+    }
+
+    {/* ------------------------------------------------- DİĞER PROJELER --- */}
+    {
+      railProjects.length > 0 && (
+        <section class="section pd-more" aria-labelledby={`${project.id}-more`} data-rail-root>
+          <div class="container">
+            <p class="eyebrow" id={`${project.id}-more`}>
+              {locale === 'tr' ? 'Diğer Vakalar' : 'More Cases'}
+            </p>
+
+            <div class="pd-more__viewport">
+              <button
+                type="button"
+                class="pd-more__nav pd-more__nav--prev"
+                data-rail-step="-1"
+                aria-label={locale === 'tr' ? 'Önceki vakalar' : 'Previous cases'}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    d="M15 5 8 12l7 7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <div
+                class="pd-more__rail"
+                tabindex="0"
+                role="group"
+                data-rail
+                aria-label={locale === 'tr' ? 'Diğer projeler — yatay kaydırın' : 'More projects — scroll horizontally'}
+              >
+                {railProjects.map((item) => (
+                  <a class="pd-more__card" href={item.href}>
+                    <span class="pd-more__media">
+                      {item.cover ? (
+                        <Image src={item.cover} alt="" loading="lazy" decoding="async" class="pd-more__image" />
+                      ) : (
+                        <span class="pd-more__placeholder" aria-hidden="true">
+                          {item.client}
+                        </span>
+                      )}
+                    </span>
+                    <span class="pd-more__title">{item.title}</span>
+                    {item.categoryLabel && <span class="pd-more__meta">{item.categoryLabel}</span>}
+                  </a>
+                ))}
+              </div>
+
+              <button
+                type="button"
+                class="pd-more__nav pd-more__nav--next"
+                data-rail-step="1"
+                aria-label={locale === 'tr' ? 'Sonraki vakalar' : 'Next cases'}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    d="m9 5 7 7-7 7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div class="pd-more__footer">
+              <a href={localizedPath('projects', locale)} class="btn btn--outline pd-more__all">
+                {locale === 'tr' ? 'Tüm Projeler' : 'All Projects'}
+              </a>
+            </div>
           </div>
         </section>
       )
@@ -272,6 +660,7 @@ const LOOP_SCRIPT = `(() => {
     {ctaSection && <CtaSection section={ctaSection} />}
 
     {hasLoopVideo && <script is:inline set:html={LOOP_SCRIPT} />}
+    {railProjects.length > 0 && <script is:inline set:html={RAIL_SCRIPT} />}
   </article>
 </BaseLayout>
 
@@ -364,8 +753,8 @@ const LOOP_SCRIPT = `(() => {
   .pd-hero__chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 24px 0 0;
+    gap: 9px;
+    margin: clamp(30px, 4vw, 46px) 0 0;
     padding: 0;
     list-style: none;
   }
@@ -520,18 +909,201 @@ const LOOP_SCRIPT = `(() => {
     align-items: start;
   }
 
+  /*
+   * Board görselleri alfa kanallı kesim: kenarlık, görselin kendi sınırını değil
+   * şeffaf tuvalin sınırını çiziyor ve etrafına hayalet bir çerçeve koyuyordu.
+   */
   .pd-block__media :global(img),
   .pd-block__media :global(video) {
     display: block;
     width: 100%;
     height: auto;
     border-radius: var(--radius-card);
-    border: 1px solid rgb(255 255 255 / 8%);
   }
 
   /* --- Sonuç --- */
+  /* --- Sosyal medya reel'leri --- */
+  /*
+   * Reel ızgarası: `auto-fit` tek reel kaldığında onu bütün satıra yayıp
+   * dev bir dikey video çıkarıyordu. Kart genişliğine tavan konur, ızgara
+   * ortalanır — bir reel de üç reel de aynı ölçekte durur.
+   */
+  .pd-reels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 340px));
+    justify-content: center;
+    gap: clamp(14px, 2vw, 22px);
+    margin-top: clamp(22px, 3vw, 34px);
+  }
+
+  /* Yatay filmler 340px'lik dikey karta sıkışınca okunmuyor — onlara geniş kart. */
+  .pd-reels--wide {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 520px));
+  }
+
+  .pd-reel {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pd-reel__frame {
+    position: relative;
+    line-height: 0;
+  }
+
+  /*
+   * En-boy içerikten gelir; verilmezse dikey sosyal medya reel'i varsayılır. Sabit
+   * 9:16, kurgulanmış 16:9 saha filmini dikey bir şeride kırpıyordu.
+   */
+  .pd-reel__video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--pd-reel-ratio, 9 / 16);
+    border-radius: var(--radius-card);
+    background: #000;
+    object-fit: cover;
+  }
+
+  .pd-reel__play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    /*
+     * Yüzde ölçü DİKEYDE kapsayıcının yüksekliğine çözülür; 9:16 çerçevede aynı
+     * yüzde genişlikte ve yükseklikte farklı piksel verip butonu ovalleştiriyordu.
+     * Ölçü tek eksenden (genişlik) gelir, ikinci ekseni aspect-ratio kilitler.
+     */
+    width: clamp(58px, 22%, 88px);
+    height: auto;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 12px 38px rgb(0 0 0 / 38%);
+    transition:
+      transform var(--t-base),
+      box-shadow var(--t-base);
+  }
+
+  .pd-reel__play svg {
+    width: 42%;
+    height: 42%;
+    /* Üçgenin görsel ağırlık merkezi solda kalır; dairede ortalamak için kaydırılır. */
+    margin-left: 7%;
+  }
+
+  .pd-reel__play:hover {
+    transform: scale(1.07);
+    box-shadow: 0 16px 46px rgb(0 0 0 / 46%);
+  }
+
+  .pd-reel__play:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pd-reel__play {
+      transition: none;
+    }
+
+    .pd-reel__play:hover {
+      transform: none;
+    }
+  }
+
+  .pd-reel__title {
+    font: 500 clamp(13px, 1.4vw, 14.5px) var(--font-display);
+    color: var(--text-soft);
+    line-height: 1.4;
+  }
+
+  /* --- Ölçülen sonuç: ölçek kontrastı tek vurgudur; süsleme yok --- */
+  .pd-stats {
+    padding-top: clamp(56px, 7vw, 96px);
+    padding-bottom: 0;
+  }
+
+  .pd-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pd-stats__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(30px, 5vw, 72px);
+    align-items: center;
+    margin-top: clamp(22px, 3vw, 36px);
+  }
+
+  .pd-stat--hero {
+    padding-right: clamp(0px, 2vw, 32px);
+    border-right: 1px solid var(--border);
+  }
+
+  .pd-stat__value {
+    font: 700 clamp(38px, 6vw, 68px) / 0.94 var(--font-display);
+    letter-spacing: -0.035em;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pd-stat--hero .pd-stat__value {
+    font-size: clamp(68px, 13vw, 156px);
+    color: var(--accent);
+  }
+
+  .pd-stat__label {
+    font: 500 clamp(14px, 1.5vw, 16px) var(--font-display);
+    color: var(--text-soft);
+  }
+
+  .pd-stat--hero .pd-stat__label {
+    font-size: clamp(17px, 2vw, 22px);
+    color: var(--text);
+  }
+
+  .pd-stat__note {
+    font-size: 13px;
+    color: var(--text-faint);
+  }
+
+  .pd-stats__rest {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 3.4vw, 44px) clamp(20px, 3vw, 40px);
+  }
+
+  @media (max-width: 900px) {
+    .pd-stats__grid {
+      grid-template-columns: 1fr;
+      gap: clamp(28px, 5vw, 40px);
+    }
+
+    .pd-stat--hero {
+      padding: 0 0 clamp(26px, 5vw, 34px);
+      border-right: 0;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+
+  /*
+   * Sonuç, tek cümlelik bir kapanış — kendi başına bir bölüm kadar hava
+   * istemiyor. Altındaki proje rayı zaten nefes alanı verdiği için dikey
+   * boşluk bölüm ritminin altına indirilir.
+   */
   .pd-result {
-    padding-top: clamp(64px, 9vw, 120px);
+    padding: clamp(46px, 5vw, 72px) 0 clamp(34px, 3.6vw, 50px);
   }
 
   .pd-result__inner {
@@ -553,15 +1125,187 @@ const LOOP_SCRIPT = `(() => {
     color: var(--text-soft);
   }
 
+  /* Kapanış cümlesi sayfanın en yüksek sesli satırıdır — ölçeği ona göre. */
   .pd-result__text--lead {
-    margin-top: 20px;
-    font: 500 clamp(21px, 2.6vw, 30px) / 1.45 var(--font-display);
-    letter-spacing: -0.01em;
+    margin-top: 22px;
+    font: 600 clamp(28px, 4.4vw, 54px) / 1.15 var(--font-display);
+    letter-spacing: -0.028em;
     color: var(--text);
+    text-wrap: balance;
   }
 
-  .pd-result__back {
-    margin-top: 36px;
+  /* --- Diğer vakalar rayı --- */
+  .pd-more {
+    padding-top: 0;
+  }
+
+  .pd-more .eyebrow {
+    margin-bottom: 22px;
+  }
+
+  /*
+   * Yatay ray: kart genişliği viewport'a göre esner, snap ile hizalanır.
+   * Kendi kendine döner (bkz. RAIL_SCRIPT); dokunmatikte parmak, masaüstünde
+   * shift+tekerlek, klavyede tabindex ve kenardaki oklar da aynı rayı sürer.
+   */
+  .pd-more__viewport {
+    position: relative;
+    --pd-more-card: clamp(240px, 26vw, 330px);
+  }
+
+  /*
+   * Oklar kartın GÖRSEL alanının dikey ortasında durur: görsel yüksekliği kart
+   * genişliğinin 3/4'ü (aspect-ratio 4/3), yarısı da 0.375 katı. Başlık+meta
+   * satırları hesaba katılmaz — ok kapağın ortasına oturur, rayın değil.
+   */
+  .pd-more__nav {
+    position: absolute;
+    top: calc(var(--pd-more-card) * 0.375);
+    transform: translateY(-50%);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(10px);
+    color: var(--text);
+    cursor: pointer;
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+  .pd-more__nav svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pd-more__nav:hover,
+  .pd-more__nav:focus-visible {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+  }
+
+  .pd-more__nav--prev {
+    left: 10px;
+  }
+
+  .pd-more__nav--next {
+    right: 10px;
+  }
+
+  /* Ray taşmıyorsa (az kart / geniş ekran) oklar da döngü de kapanır. */
+  [data-rail-static] .pd-more__nav {
+    display: none;
+  }
+
+  .pd-more__rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--pd-more-card);
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: clamp(20px, 6vw, 80px);
+    padding-bottom: 12px;
+    margin: 0 calc(-1 * clamp(20px, 6vw, 80px));
+    padding-inline: clamp(20px, 6vw, 80px);
+  }
+
+  .pd-more__rail:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+  }
+
+  /* Ray otomatik döndüğü için çubuk gürültü: gizlenir, kaydırma açık kalır. */
+  .pd-more__rail {
+    scrollbar-width: none;
+  }
+
+  .pd-more__rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pd-more__card {
+    scroll-snap-align: start;
+    display: grid;
+    gap: 6px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .pd-more__media {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    aspect-ratio: 4 / 3;
+    margin-bottom: 12px;
+    transition: border-color 0.3s ease;
+  }
+
+  .pd-more__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .pd-more__placeholder {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    font: 600 15px/1.3 var(--font-display);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .pd-more__title {
+    font: 600 17px/1.35 var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  .pd-more__meta {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-muted);
+  }
+
+  .pd-more__card:hover .pd-more__media,
+  .pd-more__card:focus-visible .pd-more__media {
+    border-color: var(--accent);
+  }
+
+  .pd-more__card:hover .pd-more__image {
+    transform: scale(1.05);
+  }
+
+  .pd-more__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 34px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pd-more__rail {
+      scroll-snap-type: none;
+    }
+
+    .pd-more__image {
+      transition: none;
+    }
+
+    .pd-more__card:hover .pd-more__image {
+      transform: none;
+    }
   }
 
   /* --- Responsive --- */
@@ -596,6 +1340,13 @@ const LOOP_SCRIPT = `(() => {
     }
   }
 
+  /* Dokunmatikte parmak zaten var; okları kartın üstünden kaldır. */
+  @media (max-width: 720px), (hover: none) {
+    .pd-more__nav {
+      display: none;
+    }
+  }
+
   @media (max-width: 720px) {
     .pd-block__lead {
       grid-template-columns: 1fr;
@@ -614,3 +1365,91 @@ const LOOP_SCRIPT = `(() => {
     }
   }
 </style>
+
+<script>
+  import { parseStatValue } from '../lib/stat-counter';
+
+  /*
+   * Sonuç rakamları için sayaç. Rakam HTML'de ZATEN son hâliyle basılıdır; bu betik
+   * yalnızca üstüne biner. JS çalışmazsa ya da hata verirse sayfada doğru değer kalır.
+   *
+   * `prefers-reduced-motion` açıksa animasyon hiç başlamaz.
+   * Biçim korunur: "%25" → "%" ön eki ve sayı ayrı ayrı ele alınır; "9,2M" → "M" son eki kalır.
+   * Sayı biçimi DİLE BAĞLI (bkz. parseStatValue): Türkçe'de binlik nokta / ondalık virgül,
+   * İngilizce'de tersi. Sabit Türkçe ayrıştırma, EN sayfada "9.2M" değerini 92 yapıyordu.
+   */
+  const nodes = document.querySelectorAll('[data-count]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const locale = document.documentElement.lang === 'en' ? 'en' : 'tr';
+
+  if (nodes.length > 0 && !reduce && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          observer.unobserve(entry.target);
+
+          const el = entry.target as HTMLElement;
+          const raw = el.dataset.count ?? '';
+          const parsed = parseStatValue(raw, locale);
+          if (!parsed) continue;
+
+          const { prefix, suffix, target, decimals } = parsed;
+          const format = new Intl.NumberFormat(locale === 'en' ? 'en-GB' : 'tr-TR', {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals,
+          });
+
+          const duration = 1100;
+          const start = performance.now();
+          const step = (now: number) => {
+            const progress = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = prefix + format.format(target * eased) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = raw;
+          };
+          requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.4 },
+    );
+
+    nodes.forEach((node) => observer.observe(node));
+  }
+</script>
+
+<script>
+  /*
+   * Reel oynatma. İşaretlemede `controls` açıktır (JS yoksa video yine çalışır);
+   * betik çalışınca kontrolleri kaldırıp büyük play butonunu devreye alır.
+   * Butona basıldığında kontroller geri gelir ve video sesli oynar.
+   */
+  const frames = document.querySelectorAll('[data-reels] .pd-reel__frame');
+  const videos: HTMLVideoElement[] = [];
+
+  frames.forEach((frame) => {
+    const video = frame.querySelector('video');
+    const button = frame.querySelector('button');
+    if (!video || !button) return;
+
+    videos.push(video);
+    video.removeAttribute('controls');
+    button.hidden = false;
+
+    button.addEventListener('click', () => {
+      video.controls = true;
+      button.hidden = true;
+      void video.play();
+    });
+  });
+
+  /* Bir reel oynarken diğerleri durur — üç ses üst üste binmesin. */
+  videos.forEach((video) => {
+    video.addEventListener('play', () => {
+      videos.forEach((other) => {
+        if (other !== video) other.pause();
+      });
+    });
+  });
+</script>

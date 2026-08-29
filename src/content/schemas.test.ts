@@ -199,6 +199,117 @@ describe('projectSchema', () => {
     expect(projectSchema.safeParse(validProject).success).toBe(true);
   });
 
+  /*
+   * Sonuç rakamları (`detail.stats`) düzyazının içinde kayboluyordu. Ayrı bir alan
+   * olarak tutulur ki sayfada sayaç bloğu olarak vurgulanabilsin ve metin kısalabilsin.
+   * `value` metindir çünkü biçim değişiyor: "%25", "9,2M", "2.886", "6".
+   */
+  test('detail.stats verilebilir', () => {
+    const parsed = projectSchema.safeParse({
+      ...validProject,
+      detail: {
+        intro: 'Kısa konumlama.',
+        description: 'Bağlam.',
+        stats: [
+          { value: '%25', label: 'hasta artışı', note: 'ilk yılda' },
+          { value: '9,2M', label: 'içerik görüntülenmesi' },
+        ],
+      },
+    });
+    expect(parsed.success).toBe(true);
+  });
+
+  test('stats verilmezse boş dizi olur — çağıran taraf kontrol etmek zorunda kalmaz', () => {
+    const parsed = projectSchema.safeParse({
+      ...validProject,
+      detail: { intro: 'Kısa konumlama.', description: 'Bağlam.' },
+    });
+    expect(parsed.success && parsed.data.detail?.stats).toEqual([]);
+  });
+
+  /*
+   * Sosyal medya videoları bölüm içinde gösterilir. Mevcut `video` alanı sessiz
+   * vitrin döngüsü içindir; bunlar konuşmalı, altyazılı ve 30+ saniyelik reel'ler —
+   * poster üzerinden tıklanarak sesli oynatılır. Bu yüzden ayrı alan.
+   */
+  test('bölüme reels verilebilir', () => {
+    const parsed = projectSchema.safeParse({
+      ...validProject,
+      detail: {
+        intro: 'Kısa konumlama.',
+        description: 'Bağlam.',
+        sections: [
+          {
+            heading: 'Sosyal Medya',
+            text: 'Metin.',
+            reels: [{ src: '/media/a.mp4', poster: '/media/a.webp', title: 'Cilt bariyeri' }],
+          },
+        ],
+      },
+    });
+    expect(parsed.success).toBe(true);
+  });
+
+  /*
+   * Yatay reel: kaynak 16:9 olabiliyor (kurgulanmış saha filmi). Oynatıcı çerçevesi
+   * 9:16 sabitlenirse yatay film dikey bir şeride kırpılıyor — en-boy içerikten gelmeli.
+   */
+  test('reel en-boy oranı width/height ile verilebilir', () => {
+    const parsed = projectSchema.safeParse({
+      ...validProject,
+      detail: {
+        intro: 'Kısa konumlama.',
+        description: 'Bağlam.',
+        sections: [
+          {
+            heading: 'Video',
+            text: 'Metin.',
+            reels: [{ src: '/media/a.mp4', poster: '/media/a.webp', title: 'Saha filmi', width: 1920, height: 1080 }],
+          },
+        ],
+      },
+    });
+    expect(parsed.success).toBe(true);
+    expect(parsed.success && parsed.data.detail?.sections[0]?.reels[0]?.width).toBe(1920);
+    expect(parsed.success && parsed.data.detail?.sections[0]?.reels[0]?.height).toBe(1080);
+  });
+
+  test('reels verilmezse boş dizi olur', () => {
+    const parsed = projectSchema.safeParse({
+      ...validProject,
+      detail: {
+        intro: 'Kısa konumlama.',
+        description: 'Bağlam.',
+        sections: [{ heading: 'Sosyal Medya', text: 'Metin.' }],
+      },
+    });
+    expect(parsed.success && parsed.data.detail?.sections[0]?.reels).toEqual([]);
+  });
+
+  test('posteri olmayan reel reddedilir — poster zorunlu, tıklamadan önce görünen o', () => {
+    const parsed = projectSchema.safeParse({
+      ...validProject,
+      detail: {
+        intro: 'Kısa konumlama.',
+        description: 'Bağlam.',
+        sections: [{ heading: 'Sosyal Medya', text: 'Metin.', reels: [{ src: '/media/a.mp4', title: 'X' }] }],
+      },
+    });
+    expect(parsed.success).toBe(false);
+  });
+
+  test('değeri boş olan istatistik reddedilir', () => {
+    const parsed = projectSchema.safeParse({
+      ...validProject,
+      detail: {
+        intro: 'Kısa konumlama.',
+        description: 'Bağlam.',
+        stats: [{ value: '', label: 'hasta artışı' }],
+      },
+    });
+    expect(parsed.success).toBe(false);
+  });
+
   test('defaults featured to false', () => {
     expect(projectSchema.parse(validProject).featured).toBe(false);
   });

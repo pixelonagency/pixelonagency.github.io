@@ -248,6 +248,22 @@ export function makeProjectSchema(image: ImageResolver = defaultImage) {
         services: list(z.string()),
         /** Künye şeridi: Müşteri / Hizmetler / Süre / Teslimatlar. */
         meta: list(z.object({ label: nonEmpty, value: nonEmpty })),
+        /**
+         * Ölçülen sonuç rakamları — sayfada sayaç bloğu olarak vurgulanır.
+         *
+         * Düzyazının içinde kalan rakam kayboluyordu; ayrı alan olunca hem ekranda
+         * öne çıkıyor hem de anlatı metni kısalabiliyor. `value` METİNDİR çünkü biçim
+         * projeden projeye değişir: "%25", "9,2M", "2.886", "6". Sayaç animasyonu
+         * sayısal çekirdeği kendisi ayıklar; ön/son ek olduğu gibi korunur.
+         */
+        stats: list(
+          z.object({
+            value: nonEmpty,
+            label: nonEmpty,
+            /** Rakamın kapsamı — "ilk yılda", "reklamdan" gibi. */
+            note: opt(z.string()),
+          }),
+        ),
         /** "Neler Yaptık?" — yaklaşım anlatısı (\n\n ile paragraflanır). */
         approach: opt(z.object({ heading: nonEmpty, text: nonEmpty })),
         /** Disiplin bölümleri: başlık + metin + sunum görselleri (+ opsiyonel loop video). */
@@ -256,6 +272,28 @@ export function makeProjectSchema(image: ImageResolver = defaultImage) {
             heading: nonEmpty,
             text: nonEmpty,
             images: list(image()),
+            /**
+             * Sosyal medya videoları — konuşmalı, altyazılı, 30+ saniyelik reel'ler.
+             *
+             * `video` alanından ayrıdır: o sessiz vitrin döngüsüdür, bunlar TIKLANARAK
+             * sesli oynatılır. Otomatik oynatılmaz çünkü uzunlar ve üçü birden döngüye
+             * girerse mobilde üç video çözücü aynı anda çalışır. `poster` zorunludur —
+             * tıklamadan önce görünen tek şey odur.
+             */
+            reels: list(
+              z.object({
+                src: nonEmpty,
+                poster: nonEmpty,
+                title: nonEmpty,
+                /**
+                 * Kaynak en-boyu. Verilmezse oynatıcı 9:16 varsayar (dikey sosyal medya
+                 * reel'i). Kurgulanmış saha filmleri 16:9 gelebiliyor; sabit çerçeve
+                 * onları dikey bir şeride kırpıyordu.
+                 */
+                width: opt(z.number()),
+                height: opt(z.number()),
+              }),
+            ),
             /**
              * Sessiz vitrin animasyonu (public/ altındaki kök-göreli yollar).
              * Görünür olunca oynar, görünmez olunca durur; reduced-motion'da poster kalır.
