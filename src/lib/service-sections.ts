@@ -77,7 +77,14 @@ export interface ServiceLike {
       }
     | undefined;
   reach?: (Block & { countries: { label: string; flag: string; highlighted?: boolean }[] }) | undefined;
-  showcase?: (Block & { slugs: string[]; ctaLabel?: string | undefined; ctaHref?: string | undefined }) | undefined;
+  showcase?:
+    | (Block & {
+        slugs: string[];
+        columns?: number | undefined;
+        ctaLabel?: string | undefined;
+        ctaHref?: string | undefined;
+      })
+    | undefined;
   spotlight?:
     | {
         eyebrow?: string | undefined;
@@ -330,6 +337,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       heading: service.showcase.heading,
       lead: service.showcase.lead,
       slugs: service.showcase.slugs,
+      columns: service.showcase.columns,
       kind: 'grid',
       showFilters: false,
       background: nextBg(),

@@ -179,7 +179,7 @@ showcase:
     - cagla-aytac
     - dr-ayse-cinkaya-kahveci
     - sera-natura
-    - touch-consulting
+  columns: 2
   ctaLabel: Tüm projelerimizi inceleyin
   ctaHref: /projelerimiz/
 

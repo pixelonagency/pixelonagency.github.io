@@ -410,6 +410,9 @@ collections:
             name: slugs
             widget: list
             field: { label: Slug, name: slug, widget: string }
+          # Boş bırakılırsa ızgara sütunları kendi doldurur; 2 verilirse kartlar
+          # geniş kalır (az sayıda vakayı öne çıkarmak için).
+          - { label: Sütun Sayısı, name: columns, widget: number, value_type: int, required: false }
           - { label: Buton Metni, name: ctaLabel, widget: string, required: false }
           - { label: Buton Bağlantısı, name: ctaHref, widget: string, required: false }
       - label: Odak Bölümü

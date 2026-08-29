@@ -165,6 +165,7 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
 
         <div
           class="projects__grid"
+          style={section.columns ? `--cols: ${section.columns}` : undefined}
           id={panelId}
           role={filters.length > 0 ? 'tabpanel' : undefined}
           aria-labelledby={filters.length > 0 ? tabId(ALL_CATEGORY) : undefined}
@@ -418,9 +419,13 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
   }
 
   /* --- Izgara --- */
+  /*
+   * Varsayılan `auto-fit`: kart sayısı kadar sütun açılır. `--cols` verilirse
+   * sütun sayısı sabitlenir — az sayıda vakayı geniş göstermek için (2×2).
+   */
   .projects__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(var(--cols, auto-fit), minmax(300px, 1fr));
     gap: 28px;
   }
 

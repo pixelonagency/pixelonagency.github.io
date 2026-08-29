@@ -288,6 +288,8 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
         heading: nonEmpty,
         lead: opt(z.string()),
         slugs: list(z.string()),
+        /* Sabit sütun sayısı — verilmezse ızgara kendi doldurur. */
+        columns: opt(z.number()),
         ctaLabel: opt(z.string()),
         ctaHref: optHref,
       }),

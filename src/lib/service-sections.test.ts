@@ -409,3 +409,22 @@ describe('serviceToSections — neden bölümü', () => {
     });
   });
 });
+
+describe('serviceToSections — vitrin sütun sayısı', () => {
+  /*
+   * Vitrin varsayılan olarak `auto-fit` ızgara kullanır ve geniş ekranda kartlar
+   * daralır. Az sayıda vakada (2×2) kartların geniş durması istendiğinde sütun
+   * sayısı içerikten verilebilir.
+   */
+  const base = { eyebrow: 'e', heading: 'h', slugs: ['a', 'b', 'c', 'd'] };
+
+  test('columns verilirse bölüme taşınır', () => {
+    const section = build({ showcase: { ...base, columns: 2 } }).find((s) => s.type === 'projects');
+    expect(section?.type === 'projects' && section.columns).toBe(2);
+  });
+
+  test('columns verilmezse tanımsız kalır — bileşen kendi varsayılanını kullanır', () => {
+    const section = build({ showcase: base }).find((s) => s.type === 'projects');
+    expect(section?.type === 'projects' && section.columns).toBeUndefined();
+  });
+});

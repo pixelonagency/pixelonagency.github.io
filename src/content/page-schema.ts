@@ -296,6 +296,11 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
      * değil. Boş bırakılırsa koleksiyonun tamamı sıralanır (ana sayfa davranışı).
      */
     slugs: opt(list(z.string())),
+    /**
+     * Sabit sütun sayısı. Verilmezse ızgara `auto-fit` ile kendi doldurur.
+     * Az sayıda vakayı geniş göstermek isteyen bölümler bunu 2 verir.
+     */
+    columns: opt(z.number()),
     showFilters: z.boolean().default(false),
     /* grid: mevcut kompakt liste (ana sayfa) · board: tam sayfa editoryal vitrin. */
     kind: z.enum(['grid', 'board']).default('grid'),
