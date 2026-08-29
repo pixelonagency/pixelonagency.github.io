@@ -4,6 +4,9 @@ client: Dentasay
 category: saglik
 categoryLabel: Health Tourism · Featured Project
 excerpt: For Dentasay we brought the website, social media, digital advertising, content production and international patient communication together under a single strategy.
+seo:
+  # Görünen başlık uzun kalır; yalnızca SERP başlığı 65 karakterin altına çekilir.
+  title: Dentasay — Multi-Channel Growth in Health Tourism | Pixelon
 cover: '/src/assets/images/projects/dentasay.webp'
 featured: true
 order: 2

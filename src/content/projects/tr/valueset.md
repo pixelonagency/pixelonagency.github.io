@@ -13,8 +13,8 @@ tags:
   - Sunum Tasarımı
 year: '2024–2025'
 seo:
-  title: Valueset Projesi | Pixelon 360° Dijital Ajans
-  description: Yazılım ve danışmanlık markası Valueset için tasarladığımız logoyu, kurumsal kimliği ve satış sunumu sistemini keşfedin.
+  title: 'Kurumsal Kimlik Vakası: Valueset | Pixelon'
+  description: "Yazılım ve danışmanlık markası için kimlik sistemi: parantez işaretini imzaya çeviren logo, monogram ve işi kazandıran satış sunumu."
 detail:
   intro: Markanın imzasını kod diline saklayan bir kimlik.
   description: |-
@@ -40,15 +40,15 @@ detail:
   approach:
     heading: Neler Yaptık?
     text: |-
-      Kimliğin merkezine parantez işaretini koyduk. Logonun imzası olan "()" en sona yerleştirildi ve renkle ana metinden ayrıldı — yazılımcının her gün yazdığı işaret, markanın imzası hâline geldi.
+      Kurumsal yazılım kategorisinde ayrışmak zor: ürün görünmüyor, hizmet karmaşık ve rakiplerin tamamı aynı mavi-gri kurumsal şablonu kullanıyor. Bir sembol icat etmek de çözüm değil — kategoride zaten çok fazla soyut işaret var.
 
-      Logotype'ta teknoloji sektöründe sık kullanılan font sınıfından yola çıktık ancak özgünlük için harf düzeyinde düzeltmeler yaptık. "Software | Consulting" alt başlığını ise yan yana ve hafif soluk konumlandırarak ana isme baskı yapmasını engelledik.
+      Bu yüzden yeni bir şey uydurmadık, markanın adının içinde zaten duran şeyi kullandık. "Valueset" bir fonksiyon çağrısı gibi okunuyor; yazılımcının her gün yazdığı parantez işaretini markanın imzası hâline getirdik.
 
-      Aynı parantez fikrini monograma taşıdık: "V" harfini saran "( )" formu, markanın her ölçekte tanınmasını sağlayan bağımsız bir amblem oldu. Kimliği promosyon ürünlerden LED ekrana kadar farklı yüzeylerde test ettik.
+      İkinci karar ağırlığın nereye verileceğiydi. Kurumsal yazılım işi kartvizitle değil, satış görüşmesindeki sunumla kazanılıyor. Kimliğin merkezine o dokümanı koyduk.
   sections:
     - heading: Logo Tasarımı
       text: |-
-        Logonun imzası olan "()" işaretini en sona yerleştirip renkle ana metinden ayırdık; teknoloji sektöründe sık kullanılan font sınıfından yola çıkıp özgünlük için gerekli düzeltmeleri yaptık. "Software | Consulting" alt başlığını yan yana ve hafif soluk bir şekilde konumlandırdık.
+        "()" işaretini en sona yerleştirip renkle ana metinden ayırdık — logonun imzası o. Logotype'ta teknoloji sektöründe sık kullanılan sade yapılı font sınıfından yola çıktık, özgünlük için bazı harflerde estetik düzeltmeler yaptık. "Software | Consulting" alt başlığını yan yana ve hafif soluk konumlandırarak ana isme baskı yapmasını engelledik.
 
         Yazılı logonun yanına "V" harfini parantez içine alan bir monogram kurguladık. Turkuazdan maviye giden gradyan, kurumsal yazılım kategorisinin durgun mavisinden ayrışan bir enerji katıyor.
 

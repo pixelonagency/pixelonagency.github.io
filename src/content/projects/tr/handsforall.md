@@ -3,7 +3,7 @@ title: Hands For All
 client: Hands For All
 category: marka
 categoryLabel: Sivil Toplum · Marka Deneyimi
-excerpt: İyiliği daha görünür, güvenilir ve erişilebilir kılan bütünsel bir marka deneyimi.
+excerpt: Amerika merkezli bir yardım kuruluşu için logodan bağış akışına uzanan, bağışçıyı sayfadan çıkarmayan bir marka deneyimi.
 cover: '/src/assets/images/projects/handsforall.webp'
 featured: true
 order: 3
@@ -15,81 +15,107 @@ tags:
   - Video & Fotoğraf
 year: '2024–2025'
 seo:
-  title: Hands For All Projesi | Pixelon 360° Dijital Ajans
-  description: Hands For All için logo ve kurumsal kimlikten web sitesine, sosyal medya iletişiminden video prodüksiyona uzanan bütünsel marka deneyimini keşfedin.
+  title: 'Sivil Toplum Marka Vakası: Hands For All | Pixelon'
+  description: "Amerika merkezli yardım kuruluşu için kurduğumuz sistem: iki figürden türeyen logo, kurumsal kimlik, bağış odaklı web sitesi ve saha prodüksiyonu."
 detail:
   intro: İyiliği daha görünür, güvenilir ve erişilebilir kılan bütünsel bir marka deneyimi.
   description: |-
-    Hands For All'un insani yardım çalışmalarını dijital dünyada daha güçlü anlatabilmesi için markanın görsel kimliğinden web deneyimine, sosyal medya iletişiminden prodüksiyona kadar tüm temas noktalarını yeniden ele aldık. Amacımız; yapılan çalışmaların etkisini doğru anlatan, güven veren ve bağışçıları harekete geçiren güçlü bir iletişim yapısı oluşturmaktı.
+    Hands For All, Amerika merkezli bir yardım kuruluşu; su kuyusundan yetim desteğine, eğitimden gıda paketine uzanan projeleri farklı kıtalarda yürütüyor. Marka için logo ve kurumsal kimlikten web sitesine, sosyal medya tasarım diline kadar bütün temas noktalarını yeniden ele aldık.
+
+    Yardım kuruluşlarında iletişimin zorluğu tek bir yerde toplanıyor: bağışçı ikna olduğu anla bağış yaptığı an arasında kayboluyor. Aradaki her ekran, her tıklama, her form alanı bir çıkış kapısı.
   period: 2024–2025
   heroImage: '/src/assets/images/projects/handsforall/hero.webp'
   services:
-    - Web Sitesi Tasarımı & Geliştirme
-    - UI/UX Tasarımı
     - Logo Tasarımı
     - Kurumsal Kimlik
+    - Web Sitesi Tasarımı & Geliştirme
+    - UI/UX Tasarımı
     - Sosyal Medya Tasarımları
     - Video & Fotoğraf Prodüksiyonu
   meta:
     - label: Müşteri
       value: Sivil Toplum Kuruluşu
+    - label: Kapsam
+      value: Marka Kimliği + Dijital Deneyim
     - label: Hizmetler
-      value: 6+ Dijital & Tasarım Hizmeti
-    - label: Proje Süresi
-      value: 6 Ay
-    - label: Teslimatlar
-      value: 40+ Tasarım & İçerik
+      value: 6 Tasarım & Dijital Hizmet
+    - label: Dönem
+      value: 2024–2025
   approach:
     heading: Neler Yaptık?
     text: |-
-      Pixelon olarak Hands For All için yalnızca bir web sitesi ya da görsel kimlik değil, markanın tüm dijital ve fiziksel temas noktalarında kullanılabilecek bütünsel bir iletişim sistemi oluşturduk.
+      Sistemi tek bir karar üzerine kurduk: bağışçı ikna olduğu ekranda bağış yapabilmeli.
 
-      Markanın insani yardım alanındaki çalışmalarını daha anlaşılır ve etkileyici biçimde aktarabilmesi için logo ve kurumsal kimlik çalışmalarından başlayarak web sitesi, sosyal medya içerikleri ve saha prodüksiyonlarına kadar uzanan kapsamlı bir yapı geliştirdik.
+      Bu yüzden bağış formu ayrı bir sayfaya değil, ana sayfanın açılış ekranına gömüldü — tutar, isim, e-posta ve tek buton. Üst şeritte kampanyanın o anki toplamı duruyor; ziyaretçi katkısının nereye eklendiğini görmeden karar vermek zorunda kalmıyor.
 
-      Her tasarım kararında güven, şeffaflık ve insani etkiyi merkeze aldık. Bağış süreçlerini kolaylaştıran kullanıcı deneyimi, yardım projelerini ön plana çıkaran içerik yapısı ve markanın enerjik renk dünyasını destekleyen görsel dil ile Hands For All'un dijitalde daha güçlü ve tutarlı bir kimliğe kavuşmasını sağladık.
+      İkinci karar dildeydi. Yardım kuruluşlarının görsel dili genelde iki uçtan birine düşüyor: ya acıyı öne çıkarıp bağışçıyı suçluluk üzerinden zorluyor, ya da kurumsallaşıp mesafeli kalıyor. Markayı ikisinin de dışında, enerjik ve umut veren bir yere konumlandırdık — logodan renk paletine, fotoğraf seçiminden içerik tonuna kadar.
   sections:
+    - heading: Logo Tasarımı
+      text: |-
+        Amblemi kelimenin kendi içinden çıkardık: "all" kelimesinin son iki harfi, el ele tutuşan iki figüre dönüşüyor. Ayrı bir sembol eklemeye gerek kalmadı — isim ve işaret aynı şey.
+
+        İşaretten türeyen kesintisiz halka deseni kimliğin ikinci katmanı oldu; tek başına bir doku olarak sırt çantasından bayrağa kadar her yüzeyde çalışıyor.
+
+        Logo sistemini farklı zemin ve ölçeklerde kurguladık: yatay kullanım, iki satırlı kompakt kullanım ve yalnız amblem. Uygulama ikonunu mavi ve turuncu iki varyantla verdik.
+      images:
+        - '/src/assets/images/projects/handsforall/logo.webp'
+    - heading: Kurumsal Kimlik
+      text: |-
+        Kimliği kuruluşun gerçekten kullandığı yüzeylere uyguladık: antetli kâğıt, kartvizit, tanıtım kalemleri, etkinlik bayrakları ve saha dağıtımlarında kullanılan sırt çantası.
+
+        Sivil toplumda kimliğin sınavı ofiste değil sahada veriliyor. Sırt çantası ve bayrak gibi uygulamalar, markayı bağış kutusunun ötesine, yardımın ulaştığı yere taşıyor.
+
+        Halka deseni bu noktada işe yarıyor: logo okunacak kadar büyük olamadığı yüzeylerde bile marka tanınır kalıyor.
+      images:
+        - '/src/assets/images/projects/handsforall/kurumsal-kimlik.webp'
     - heading: Web Sitesi
       text: |-
-        Hands For All'un farklı yardım projelerini anlaşılır şekilde sunan, bağış süreçlerini kolaylaştıran ve ziyaretçiyi harekete geçiren kullanıcı odaklı bir web deneyimi tasarladık.
+        Ana sayfayı kampanya odaklı kurguladık. Açılış ekranı o dönemin kampanyasını taşıyor — Ramazan döneminde "One Iftar, A Thousand Hopes" — ve bağış formu doğrudan onun yanında duruyor.
 
-        Projeler, bağış alanları, kurumsal bilgiler ve sahadan içerikleri güçlü bir görsel hiyerarşi içerisinde bir araya getirerek markanın dijital merkezini oluşturduk.
+        Yardım alanlarını renk kodlu kartlara ayırdık: iftar, ramazan gıda paketi, su kuyusu, zekât ve yetim desteği. Bağışçı "genel bağış" kutusuna değil, desteklemek istediği işe tıklıyor.
+
+        Tamamlanmış işler ayrı bir şeritte, kanıt kartları hâlinde duruyor: eğitim girişimi, su kuyuları, gıda paketleri, yetim desteği. Alt kısımda saha fotoğraf galerisi, blog, bülten kaydı ve üye olunan kuruluşların logoları güveni tamamlıyor.
       images:
         - '/src/assets/images/projects/handsforall/web-1.webp'
         - '/src/assets/images/projects/handsforall/web-2.webp'
-    - heading: Kurumsal Kimlik
-      text: |-
-        Hands For All'un yardım odaklı yaklaşımını farklı mecralarda aynı güçle yansıtabilmesi için kapsamlı bir kurumsal kimlik sistemi oluşturduk.
-
-        Basılı materyallerden etkinlik uygulamalarına, bağış kutularından tanıtım materyallerine kadar markanın ihtiyaç duyduğu farklı kullanım alanlarını ortak bir görsel dil altında topladık.
-      images:
-        - '/src/assets/images/projects/handsforall/kurumsal-kimlik.webp'
-    - heading: Logo Tasarımı
-      text: |-
-        İnsanları bir araya getirme, dayanışma ve yardımlaşma fikrinden hareketle Hands For All'un değerlerini temsil eden güçlü ve kolay hatırlanabilir bir marka kimliği geliştirdik.
-
-        Logo sistemini farklı renk, zemin ve kullanım senaryolarında markanın bütünlüğünü koruyacak şekilde yapılandırdık.
-      images:
-        - '/src/assets/images/projects/handsforall/logo.webp'
+        - '/src/assets/images/projects/handsforall/web-3.webp'
     - heading: Sosyal Medya
       text: |-
-        Hands For All'un yürüttüğü yardım projelerini daha görünür hale getirmek ve yapılan çalışmaların etkisini hedef kitlesine güçlü bir görsel dille aktarmak için sosyal medya iletişim sistemini oluşturduk.
+        Akışı kuruluşun çalışma alanlarıyla birebir eşleştirdik: su kuyusu, eğitim, yetim desteği, gıda paketi, kurban. Profildeki öne çıkan hikâye grupları da aynı ayrımı taşıyor, ziyaretçi ilgilendiği alana tek dokunuşla gidiyor.
 
-        Su kuyuları, eğitim, yetim desteği, gıda yardımları ve dönemsel bağış kampanyaları için markanın kimliğine uygun, dikkat çekici ve aksiyona yönlendiren içerikler tasarladık.
+        İçeriğin bir hattını dinî takvime bağladık — Adak Kurban'ın ne olduğunu anlatan açıklayıcı gönderiler, Kadir Gecesi ve Kurban Bayramı paylaşımları. Bağış davranışının yoğunlaştığı dönemler bunlar; kampanya o günlerde kurulmuyor, o günlere hazırlanılıyor.
+
+        Bayram sonrası teşekkür gönderilerini de akışa dâhil ettik. Bağışçıya yalnızca isteneceği zaman değil, verdikten sonra da dokunan bir hesap.
+
+        Gönderilerin görselleri stoktan değil, kendi saha çekimlerimizden geliyor — kuyudan ilk kez su içen çocuk, sofraya oturan aile, elden ele geçen gıda paketi.
       images:
         - '/src/assets/images/projects/handsforall/sosyal-medya.webp'
     - heading: Video & Fotoğraf
       text: |-
-        Hands For All'un sahadaki çalışmalarını gerçek hikâyeler ve güçlü görüntülerle anlatabilmesi için profesyonel video ve fotoğraf prodüksiyonları gerçekleştirdik.
+        Sahaya gittik. Kenya'daki su kuyusu açılışlarını, gıda paketi dağıtımlarını ve iftar sofralarını yerinde çektik — fotoğraf da video da bize ait.
 
-        Sahadan elde edilen özgün içerikleri sosyal medya, web sitesi ve dijital iletişim çalışmalarında kullanılabilecek güçlü marka materyallerine dönüştürdük.
+        Sivil toplumda özgün saha görüntüsü en pahalı varlık. Stok fotoğrafla anlatılan bir yardım kuruluşu, gerçekten sahada olan bir kuruluştan ayırt edilemiyor; fark ancak kuyunun başında çekilmiş kareyle kuruluyor.
+
+        Malzeme tek yerde kalmadı: web sitesindeki galeri, sosyal medya akışı ve basılı materyaller aynı çekimlerden besleniyor. Ramazan kampanyaları için kurguladığımız iki film ise bağış çağrısını doğrudan taşıyor.
+      reels:
+        - src: /media/projects/handsforall/iftar-sofrasi.mp4
+          poster: /media/projects/handsforall/iftar-sofrasi.webp
+          title: İftar ve sahur sofrası — Kenya
+          width: 1280
+          height: 720
+        - src: /media/projects/handsforall/ramazan-gida-paketi.mp4
+          poster: /media/projects/handsforall/ramazan-gida-paketi.webp
+          title: Ramazan gıda paketi dağıtımı
+          width: 1280
+          height: 720
       images:
         - '/src/assets/images/projects/handsforall/video-foto.webp'
   result:
     heading: Sonuç
     text: |-
-      Hands For All için oluşturduğumuz yapı; markanın dijital varlığından kurumsal kimliğine, sosyal medya iletişiminden saha içeriklerine kadar tüm temas noktalarında aynı hikâyeyi anlatan bütünsel bir marka deneyimine dönüştü.
+      Bağış artık ana sayfadan ayrılmadan yapılabiliyor; ziyaretçi hangi işe katkı verdiğini seçerek ilerliyor.
 
-      Ortaya çıkan sistem, Hands For All'un gerçekleştirdiği yardım çalışmalarını daha güçlü anlatmasını, bağışçılarla daha güvenilir bir iletişim kurmasını ve farklı ülkelerde yürüttüğü projeleri tek bir marka çatısı altında sunmasını sağladı.
+      Logo, desen, web deneyimi ve sosyal medya dili aynı yerden besleniyor: Amerika'dan yola çıkan bir yardımın, ulaştığı yerde de aynı markayı taşıması.
 ---
 
 İyiliği daha görünür, güvenilir ve erişilebilir kılan bütünsel bir marka deneyimi.

@@ -12,14 +12,14 @@ tags:
   - Kurumsal Kimlik
 year: '2025'
 seo:
-  title: Sekoya Projesi | Pixelon 360° Dijital Ajans
-  description: Yazılım markası Sekoya için tasarladığımız, kodlama işaretlerini marka isminin ilk harfiyle birleştiren amblemi ve uygulama setini keşfedin.
+  title: 'Yazılım Logo Tasarımı Vakası: Sekoya | Pixelon'
+  description: "Yeni kurulan bir dijital dönüşüm şirketi için amblem: kodlama işaretini marka adının ilk harfine dönüştüren, ikon ölçeğinde de okunan bir işaret."
 detail:
   intro: Kodlama işaretini marka isminin ilk harfine dönüştüren bir amblem.
   description: |-
-    Sekoya, yazılım alanında çalışan bir teknoloji markası. Marka için amblem ve logotype tasarımı yaparak farklı yüzeylerde çalışan bir uygulama seti hazırladık.
+    Sekoya, İstanbul merkezli bir dijital dönüşüm şirketi; mobil ve web uygulama geliştirmeden IoT, yapay zekâ ve bulut çözümlerine uzanan bir hizmet gamı var. Marka için amblem ve logotype tasarlayıp farklı yüzeylerde çalışan bir uygulama seti hazırladık.
 
-    Yazılım markalarında amblem çoğunlukla ya fazla soyut kalıyor ya da sektörün klişelerini tekrarlıyor. Sekoya'da tek bir fikirde birleşen bir işaret aradık: hem markanın adını hem de yaptığı işi aynı formda söyleyen bir amblem.
+    İşi yeni kurulan bir şirket için yaptık — yani markanın ilk izlenimini kuran şey bu amblem oldu. Yazılım kategorisinde amblem çoğunlukla ya fazla soyut kalıyor ya da sektörün klişelerini tekrarlıyor; burada tek bir fikirde birleşen bir işaret aradık.
   period: '2025'
   heroImage: '/src/assets/images/projects/sekoya/hero.webp'
   services:
@@ -38,17 +38,17 @@ detail:
   approach:
     heading: Neler Yaptık?
     text: |-
-      Amblemi iki fikrin kesişiminde kurduk: bir yanda `</>` kodlama işaretleri, diğer yanda marka isminin ilk harfi olan "S". Ortaya çıkan form, altıgen bir çerçeve içinde her iki okumayı da aynı anda taşıyor.
+      Yeni kurulan bir yazılım şirketinin ilk problemi tanınmak değil, hatırlanmak. Kategoride yüzlerce mavi, soyut, birbirinin yerine geçebilecek işaret var; bir tane daha eklemenin anlamı yok.
 
-      Logotype'ta yumuşak köşeli, geometrik bir font tercih ettik; amblemin keskin açılarını dengeleyerek markayı erişilebilir kılıyor.
+      Bu yüzden amblemin tek bir işi olsun istedik: adı ve işi aynı anda söylemek. Ayrı bir sembol icat etmek yerine iki okumayı tek forma bindirdik.
 
-      Renk tarafında turuncuyu ana renk olarak konumlandırdık — yazılım kategorisinin mavi hâkimiyetinden ayrışan bilinçli bir tercih. Koyu kahve ve maviye giden gradyan varyasyonlarıyla da paleti tek bir tona bağımlı olmaktan çıkardık.
+      Renk de aynı ayrışma mantığıyla seçildi. Yazılım kategorisi maviyle dolu; turuncuyu ana renk yaparak markayı daha ilk bakışta farklı bir yere koyduk.
   sections:
     - heading: Logo Tasarımı
       text: |-
-        Amblem, `</>` kodlama işaretleri konu edilerek tasarlandı; aynı form, marka isminin ilk harfi olan "S" harfi temelinde kurgulandı. Altıgen çerçeve işareti bir arada tutarak amblemi ikon ölçeğinde de tanınır kılıyor.
+        Amblem `</>` kodlama işaretleri üzerine kuruldu; aynı form aynı anda marka adının ilk harfi "S"yi çiziyor. Yazılımcının her gün gördüğü işaret ile şirketin adı tek bir çizgide birleşti. Altıgen çerçeve işareti bir arada tutuyor, böylece amblem uygulama ikonu boyutunda da okunuyor.
 
-        Logotype'ta yumuşak geometrik bir font kullanarak amblemin teknik keskinliğini dengeledik. Turuncu ana rengi koyu kahve zeminle eşleştirerek markaya sıcak ama kurumsal bir zemin kazandırdık.
+        Logotype'ta yumuşak köşeli geometrik bir font kullanarak amblemin teknik keskinliğini dengeledik. Turuncuyu koyu kahve zeminle eşleştirmek markaya sıcak ama kurumsal bir taban verdi; maviye giden gradyan varyasyonu ise paleti tek tona bağımlı olmaktan çıkardı.
 
         Kimliği farklı yüzey ve ölçeklerde uyguladık: kartvizit, tanıtım broşürü, sticker, tekstil ve gradyanlı uygulama ikonu. Amblemin hem tek renk hem gradyanlı, hem açık hem koyu zeminde çalıştığını doğruladık.
       images:
@@ -56,9 +56,9 @@ detail:
   result:
     heading: Sonuç
     text: |-
-      Sekoya; adını ve işini aynı formda söyleyen, ikon ölçeğinden tabelaya kadar tanınırlığını koruyan bir amblem kazandı.
+      Sekoya; adını ve işini aynı formda söyleyen, ikon ölçeğinden tekstile kadar tanınırlığını koruyan bir amblem kazandı.
 
-      Turuncu merkezli palet, markayı yazılım kategorisinin alışılmış görsel dilinden ayrıştırdı.
+      Turuncu merkezli palet markayı kategorinin mavi kalabalığından ayırdı — yeni kurulan bir şirket için, hatırlanmanın en ucuz yolu.
 ---
 
 Yazılım markası Sekoya için kodlama işaretlerini "S" harfiyle birleştiren amblem ve uygulama seti.

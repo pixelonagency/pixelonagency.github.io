@@ -14,8 +14,8 @@ tags:
   - CRM
 year: '2024–2025'
 seo:
-  title: Mobico Projesi | Pixelon 360° Dijital Ajans
-  description: CRM altyapısı geliştiren Mobico için tasarladığımız logoyu, kurumsal kimlik ve sunum sistemini ve sosyal medya tasarımlarını keşfedin.
+  title: 'Yazılım Markası Vakası: Mobico | Pixelon'
+  description: "CRM yazılımı geliştiren bir marka için kimlik sistemi: anlamı olan amblem, tasarımcısız kullanılabilen sunum şablonu ve yeteneği gösteren içerik."
 detail:
   intro: Soyut bir yazılım hizmetini, ilk bakışta ne yaptığı anlaşılan bir marka kimliğine dönüştürdük.
   description: |-
@@ -41,22 +41,22 @@ detail:
   approach:
     heading: Neler Yaptık?
     text: |-
-      Amblemi farklı objelerin birleştirilmesi fikri üzerine kurduk; bu birleşim müşteri ile yönetimin bir araya gelişine işaret ediyor — yani Mobico'nun tam olarak yaptığı işe. Amblem aynı zamanda marka isminin ilk harfi olan "M"yi taşıyor.
+      Yazılım markalarının ortak çıkmazı şu: ürün soyut olduğu için marka da soyutlaşıyor. Ekranda görünmeyen bir hizmeti anlatmak için çoğu marka jenerik teknoloji görsellerine sığınıyor ve hepsi birbirine benziyor.
 
-      Logotype'ta estetik ve teknolojik bir görünüm için modern, fütüristik hatlara sahip bir font kullandık. Lacivert ve yeşil paleti ise yazılım kategorisinin kurumsal ciddiyetini enerjiyle dengeliyor.
+      Buradaki kararımız, işi amblemin kendisine yaptırmaktı. Marka ne yapıyorsa işaret onu söylesin istedik — açıklama metnine ihtiyaç duymadan.
 
-      Kimliği tek bir logodan ibaret bırakmadık: kartvizitten antetli kâğıda, sunum şablonundan tişört ve bina tabelasına kadar markanın ihtiyaç duyacağı tüm temas noktalarını sisteme dâhil ettik.
+      İkinci karar teslimatın biçimiyle ilgiliydi. Kimliği bir logo dosyası olarak değil, ekibin kendi başına çoğaltabileceği bir sistem olarak verdik: sunum şablonundan bina tabelasına, markanın ihtiyaç duyacağı her temas noktası kural altında.
   sections:
     - heading: Logo Tasarımı
       text: |-
-        Amblem, farklı objelerin birleştirilmesi konu edilerek tasarlandı; buradan müşteri ve yönetimin birleşimine işaret edildi. Aynı yapı marka isminin ilk harfi olan "M"yi de barındırıyor.
+        Amblem, farklı objelerin birleşmesi fikri üzerine kuruldu: müşteri ile yönetimin bir araya gelişi — yani Mobico'nun tam olarak yaptığı iş. Aynı yapı marka isminin ilk harfi "M"yi de barındırıyor, yani işaret hem anlamı hem adı taşıyor.
 
-        Logotype'ta kullanılan font, estetik ve teknolojik bir görünüm oluşturması için modern ve fütüristik hatlara sahip. Markayı "Müşterini Tanı, İşini Büyüt!" sloganıyla eşleştirerek kimliğe sözlü bir karşılık da kazandırdık.
+        Logotype'ta modern ve fütüristik hatlara sahip bir font kullandık; lacivert–yeşil palet ise yazılım kategorisinin kurumsal ciddiyetini enerjiyle dengeliyor. Kimliği "Müşterini Tanı, İşini Büyüt!" sloganıyla eşleştirerek görsel karşılığın yanına sözlü bir karşılık koyduk.
 
         Logoyu farklı ölçek ve zeminlerde test ettik: LED ekran, bina tabelası, zarf mührü, tişört ve uygulama ikonu — yeşil zeminde de lacivert zeminde de aynı tanınırlığı koruyor.
       images:
         - '/src/assets/images/projects/mobico/logo.webp'
-    - heading: Kurumsal Kimlik
+    - heading: Kurumsal Kimlik & Sunum Sistemi
       text: |-
         Marka için antetli kâğıt, kartvizit ve kurumsal sunum şablonundan oluşan bir kimlik seti hazırladık.
 

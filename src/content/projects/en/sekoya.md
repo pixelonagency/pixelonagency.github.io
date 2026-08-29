@@ -3,7 +3,7 @@ title: Sekoya
 client: Sekoya
 category: marka
 categoryLabel: Software · Logo Design
-excerpt: An emblem merging coding brackets with the letter "S", plus an application set, for the software brand Sekoya.
+excerpt: An emblem and application set for a software brand, merging the coding brackets with the initial "S".
 cover: '/src/assets/images/projects/sekoya.webp'
 featured: false
 order: 16
@@ -12,14 +12,14 @@ tags:
   - Kurumsal Kimlik
 year: '2025'
 seo:
-  title: Sekoya Case Study | Pixelon 360° Digital Agency
-  description: Explore the emblem and application set Pixelon designed for the software brand Sekoya, merging coding brackets with the first letter of the brand name.
+  title: 'Software Logo Design Case Study: Sekoya | Pixelon'
+  description: "An emblem for a newly founded digital transformation company: a mark that turns the coding bracket into the brand's initial and still reads at icon size."
 detail:
-  intro: An emblem that turns the coding bracket into the first letter of the brand name.
+  intro: An emblem that turns the coding bracket into the brand's initial.
   description: |-
-    Sekoya is a technology brand working in software. For the brand we designed an emblem and logotype, and prepared an application set that works across different surfaces.
+    Sekoya is an Istanbul-based digital transformation company, with a range running from mobile and web application development through to IoT, artificial intelligence and cloud services. We designed the emblem and logotype, and prepared an application set that works across different surfaces.
 
-    In software brands the emblem often either stays too abstract or repeats the clichés of the sector. With Sekoya we looked for a mark uniting a single idea: an emblem stating both the brand's name and what it does within the same form.
+    We did the work for a newly founded company — which means this emblem is what forms the brand's first impression. In the software category the emblem usually either stays too abstract or repeats the sector's clichés; here we looked for a mark that resolves into a single idea.
   period: '2025'
   heroImage: '/src/assets/images/projects/sekoya/hero.webp'
   services:
@@ -28,7 +28,7 @@ detail:
     - Corporate Identity Applications
   meta:
     - label: Client
-      value: Software Brand
+      value: Software Company
     - label: Scope
       value: Logo Design
     - label: Services
@@ -38,27 +38,27 @@ detail:
   approach:
     heading: What We Did
     text: |-
-      We built the emblem at the intersection of two ideas: on one side the `</>` coding brackets, on the other the "S" that begins the brand name. The resulting form carries both readings at once within a hexagonal frame.
+      The first problem for a newly founded software company is not being recognised but being remembered. The category holds hundreds of blue, abstract, interchangeable marks; adding one more achieves nothing.
 
-      For the logotype we chose a soft-cornered geometric font; by balancing the sharp angles of the emblem, it keeps the brand approachable.
+      So we wanted the emblem to do a single job: say the name and the work at the same time. Rather than inventing a separate symbol, we loaded both readings onto one form.
 
-      On colour we positioned orange as the primary — a deliberate choice separating the brand from the blue dominance of the software category. With gradient variations running into deep brown and blue, we freed the palette from depending on a single tone.
+      The colour was chosen by the same logic of separation. The software category is full of blue; making orange the primary colour put the brand somewhere different at first glance.
   sections:
     - heading: Logo Design
       text: |-
-        The emblem was designed around the theme of `</>` coding brackets; the same form was constructed on the basis of the "S" that begins the brand name. The hexagonal frame holds the mark together, keeping the emblem recognisable even at icon scale.
+        The emblem is built on the `</>` coding brackets; the same form simultaneously draws the "S" of the brand name. The mark a developer sees every day and the company's name meet in one line. A hexagonal frame holds it together, so the emblem still reads at app-icon size.
 
-        By using a soft geometric font in the logotype, we balanced the technical sharpness of the emblem. Pairing the primary orange with a deep brown ground gave the brand a warm but corporate foundation.
+        For the logotype we used a soft-cornered geometric face to balance the technical sharpness of the emblem. Pairing the orange with a dark brown ground gave the brand a warm but corporate base, while a gradient variant running into blue freed the palette from depending on a single tone.
 
-        We applied the identity across different surfaces and scales: business cards, a promotional brochure, stickers, textiles and a gradient app icon. We confirmed that the emblem works in single colour and in gradient, on light grounds and on dark.
+        We applied the identity across surfaces and scales: business card, brochure, sticker, textile and a gradient app icon. We confirmed the emblem works in single colour and in gradient, on light grounds and dark.
       images:
         - '/src/assets/images/projects/sekoya/logo.webp'
   result:
     heading: The Outcome
     text: |-
-      Sekoya gained an emblem stating its name and its work within the same form, holding its recognisability from icon scale up to signage.
+      Sekoya gained an emblem that says its name and its work in the same form, holding its recognisability from icon size through to textile.
 
-      The orange-centred palette separated the brand from the familiar visual language of the software category.
+      The orange-centred palette separated the brand from the blue crowd of its category — for a newly founded company, the cheapest route to being remembered.
 ---
 
-An emblem merging coding brackets with the letter "S", plus an application set, for the software brand Sekoya.
+An emblem and application set for a software brand, merging the coding brackets with the initial "S".

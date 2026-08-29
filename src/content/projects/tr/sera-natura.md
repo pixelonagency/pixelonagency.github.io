@@ -3,7 +3,7 @@ title: Sera Natura
 client: Sera Natura
 category: marka
 categoryLabel: Doğal Ürün · Marka Kimliği
-excerpt: Ürünlerin doğallığını ve premium algısını destekleyen marka dili, ambalaj ve dijital içerikler.
+excerpt: 20+ ürünlük bir doğal ürün markasının aylık satışını reklam öncesine göre %87 artıran ambalaj, içerik ve reklam sistemi.
 cover: '/src/assets/images/projects/sera-natura.webp'
 featured: false
 order: 6
@@ -12,10 +12,12 @@ tags:
   - Ambalaj Tasarımı
   - Sosyal Medya
   - Video & Fotoğraf
+  - Dijital Reklam
+  - E-Ticaret
 year: '2024–2025'
 seo:
-  title: Sera Natura Projesi | Pixelon 360° Dijital Ajans
-  description: 20'den fazla doğal ürüne sahip Sera Natura için tasarladığımız ambalaj sistemini, sosyal medya içeriklerini ve influencer iş birlikli prodüksiyonları keşfedin.
+  title: 'Doğal Ürün Vakası: Aylık Satışta %87 Artış | Pixelon'
+  description: "20+ ürünlü bir doğal ürün markası için kurduğumuz sistem: etiket tasarımı, UGC prodüksiyon, e-posta pazarlama ve reklam. Aylık satışta %87 artış."
 detail:
   intro: Rafta ve akışta aynı doğallığı ve premium algıyı taşıyan bütünsel bir ürün markası dili.
   description: |-
@@ -27,17 +29,27 @@ detail:
   services:
     - Ambalaj & Etiket Tasarımı
     - Sosyal Medya Tasarımları
-    - Video & Fotoğraf Prodüksiyonu
-    - Influencer İş Birliği Yönetimi
+    - Reklam Tasarımı & Yönetimi
+    - UGC Prodüksiyon
+    - E-posta Pazarlama
   meta:
     - label: Müşteri
       value: Doğal Ürün & Uçucu Yağ Markası
     - label: Ürün Gamı
       value: 20+ Ürün
     - label: Hizmetler
-      value: 4 Tasarım & Prodüksiyon Hizmeti
+      value: 5 Tasarım & Pazarlama Hizmeti
     - label: Dönem
       value: 2024–2025
+  stats:
+    - value: '%87'
+      label: aylık satışta artış
+      note: reklam öncesi taban ile karşılaştırıldı
+    - value: '1M+'
+      label: reklam izlenmesi
+    - value: '20+'
+      label: ürünlük gam
+      note: tek etiket sisteminde
   approach:
     heading: Neler Yaptık?
     text: |-
@@ -45,7 +57,7 @@ detail:
 
       Sistemi tek bir üründe değil, gamın tamamında çalışacak şekilde tasarladık: aynı yerleşim, aynı tipografi, aynı rozet düzeni — değişen yalnızca bitki illüstrasyonu ve renk aksanı. Böylece yeni ürün eklendiğinde tasarım yeniden kurgulanmıyor.
 
-      Aynı dili sosyal medyaya ve prodüksiyona taşıdık. Ürün tanıtımlarını sadece görselle değil, hangi yağın ne işe yaradığını anlatan bilgi içerikleriyle destekledik; influencer iş birlikleriyle de markaya gerçek kullanım hikâyeleri kazandırdık.
+      Aynı dili sosyal medyaya, reklama ve e-postaya taşıdık. Doğal ürün alıcısı ikna olmadan almıyor; bu yüzden her kanalda önce ürünün ne işe yaradığını anlattık, sonra satın almayı istedik. Reklam öncesi aylık satış tabanına göre en yüksek ayda %87 artış ölçtük.
   sections:
     - heading: Ambalaj Tasarımı
       text: |-
@@ -63,19 +75,44 @@ detail:
         İçerikleri ürün tanıtımının ötesine taşıdık: MCT yağının enerji desteği, lavantanın kullanım alanları, tamanu yağının cilde etkisi, tatil çantasında bulunması gereken doğal destekler gibi kullanım odaklı bilgi içerikleriyle akışı besledik. Her içerik marka armasını ve web adresini taşıyarak tanınırlığı pekiştirdi.
       images:
         - '/src/assets/images/projects/sera-natura/sosyal-medya.webp'
-    - heading: Video & Fotoğraf
+    - heading: UGC & Video
       text: |-
-        Marka adına ürünleri için influencerlar ile iş birliği yaparak video ve fotoğraf çekimleri gerçekleştirdik.
+        Ürünler için UGC formatında videolar ürettik: stüdyo kurgusu değil, gerçek kullanıcının kendi evinde, kendi diliyle anlattığı içerikler.
 
-        Gerçek kullanım anlarını merkeze alan bu özgün içeriklerle markanın sosyal medya ve dijital iletişim süreçlerini destekledik; ürün anlatımını stüdyo dilinden çıkarıp günlük hayatın içine taşıdık.
+        Doğal ürün kategorisinde bu formatın karşılığı yüksek, çünkü alıcı ürünü değil ürünü kullanan insanı izliyor. Udi Hindi yağının kokusu, Mite-End'in evdeki kullanımı, Nioli yağının cilde uygulanışı — hepsi anlatılan değil, gösterilen şeyler.
+
+        Bu videolar hem organik akışta hem reklamda kullanıldı; reklam tarafında bir milyonun üzerinde izlenmeye ulaştı.
+      reels:
+        - src: /media/projects/sera-natura/udi-hindi.mp4
+          poster: /media/projects/sera-natura/udi-hindi.webp
+          title: Udi Hindi yağı
+          width: 608
+          height: 1080
+        - src: /media/projects/sera-natura/mite-end.mp4
+          poster: /media/projects/sera-natura/mite-end.webp
+          title: Mite-End akar kovucu sprey
+          width: 608
+          height: 1080
+        - src: /media/projects/sera-natura/nioli.mp4
+          poster: /media/projects/sera-natura/nioli.webp
+          title: Nioli yağı
+          width: 608
+          height: 1080
+    - heading: E-posta Pazarlama
+      text: |-
+        Markanın kendi müşteri listesine ulaşabilmesi için e-posta pazarlama hattını kurduk ve kampanya tasarımlarını ürettik.
+
+        E-ticarette en ucuz satış, zaten senden almış müşteriden gelir — reklamla yeniden bulmana gerek yoktur. "1 Alana 1 Bedava" gibi dönemsel kampanyaları bu mantıkla kurguladık: ürün görselleri, kampanya koşulları ve tek bir net çağrı.
+
+        Tasarım dili ambalajla aynı: aynı arma, aynı botanik sıcaklık. Gelen kutusunda görülen marka ile raftaki marka aynı görünüyor.
       images:
-        - '/src/assets/images/projects/sera-natura/video-foto.webp'
+        - '/src/assets/images/projects/sera-natura/email-marketing.webp'
   result:
     heading: Sonuç
     text: |-
       Sera Natura; rafta duran ambalajından sosyal medya akışına ve influencer içeriklerine kadar aynı doğallık ve premium algıyı konuşan bütünsel bir ürün markasına kavuştu.
 
-      Kurduğumuz etiket sistemi sayesinde gama eklenen her yeni ürün, tasarımı yeniden kurgulamaya gerek kalmadan aynı marka dilini taşıyor.
+      Marka artık ürününü üç yerde birden anlatıyor: raftaki etiket alıcının elindeyken, akıştaki içerik daha o rafa gitmeden, e-posta ise bir kez almış olan herkese.
 ---
 
-Ürünlerin doğallığını ve premium algısını destekleyen marka dili, ambalaj ve dijital içerikler.
+20+ ürünlük bir doğal ürün markasının aylık satışını reklam öncesine göre %87 artıran ambalaj, içerik ve reklam sistemi.

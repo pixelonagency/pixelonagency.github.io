@@ -3,7 +3,7 @@ title: Redex Glass
 client: Redex Glass
 category: web
 categoryLabel: Glass Packaging Manufacturing · Corporate Web and Social Media
-excerpt: A corporate site and social media system bringing the technical catalogue online for Redex Glass, a China-based glass packaging supplier to the pharmaceutical and cosmetics industries.
+excerpt: A multilingual corporate site that brings a technical catalogue into digital, for a glass packaging maker exporting from China to 30+ countries.
 cover: '/src/assets/images/projects/redex-glass.webp'
 featured: false
 order: 12
@@ -12,16 +12,17 @@ tags:
   - Sosyal Medya
   - Çok Dilli Yapı
   - Ürün Kataloğu
+  - Video & Fotoğraf
 year: '2023–2025'
 seo:
-  title: Redex Glass Case Study | Pixelon 360° Digital Agency
-  description: Explore the multilingual corporate website and social media system Pixelon built for Redex Glass, a glass packaging supplier to the pharmaceutical and cosmetics industries.
+  title: 'Glass Packaging Case Study: Redex Glass | Pixelon'
+  description: "For a glass packaging maker exporting from China to 30+ countries: a multilingual site carrying spec tables and downloadable technical drawings."
 detail:
   intro: We turned a technical product catalogue into a digital showcase an international buyer can decide from with confidence.
   description: |-
-    Redex Glass has supplied glass packaging to the pharmaceutical and cosmetics industries since 2001. For a brand operating internationally with a Shanghai office, a Yancheng factory and an Uzbekistan office, we built a multilingual corporate website and a social media content system.
+    Redex Glass is a Turkish company founded in 2001, with its production in China. Its factory in Yancheng manufactures glass bottles, aluminium caps and silicone droppers for the pharmaceutical and cosmetics industries, exporting from there to more than thirty countries — Turkey, the United Kingdom, the United States and Uzbekistan among them. We built a multilingual corporate website and a social media content system for the brand.
 
-    The real difficulty in this project was technical: from injection vials to dropper bottles there are dozens of product families, each with its own capacity, dimension and neck-finish table. We had to structure that data so a buyer could find what they were looking for within seconds.
+    The real difficulty here was technical: dozens of product families, from injection vials to dropper bottles, each with its own table of volumes, dimensions and neck finishes. That data had to be structured so a buyer finds what they need in seconds.
   period: 2023–2025
   heroImage: '/src/assets/images/projects/redex-glass/hero.webp'
   services:
@@ -29,47 +30,65 @@ detail:
     - Multilingual Structure
     - Product Catalogue Architecture
     - Social Media Design
+    - Video Editing & Post-Production
   meta:
     - label: Client
       value: Glass Packaging Manufacturer
-    - label: Location
-      value: China · Shanghai, Yancheng
-    - label: Industry
-      value: Pharmaceutical & Cosmetics Packaging
+    - label: Production
+      value: China · Yancheng Factory
+    - label: Offices
+      value: Shanghai · Tashkent
+    - label: Export
+      value: 30+ Countries
     - label: Period
       value: 2023–2025
   approach:
     heading: What We Did
     text: |-
-      Redex Glass's business is built on trust: if you sell packaging to the pharmaceutical industry, the buyer expects not just an attractive image but measurable technical proof. We built the site around that expectation.
+      Redex Glass's business runs on trust: if you sell packaging into pharmaceuticals, the buyer expects measurable technical evidence, not a handsome image. We built the site around that expectation.
 
-      We separated the products into category families, gave each family its own detail page, and placed technical tables covering capacity, dimensions and neck finish on every page, along with downloadable technical drawings.
+      We separated the products into category families, gave each family its own detail page, and put spec tables — volume, dimensions, neck finish — plus downloadable technical drawings on every page.
 
-      We made corporate credibility tangible through footage from the production line, quality certifications and an office-and-factory network spanning three countries. Social media was built in the same technical language — a feed addressing international buyers directly in English.
+      Corporate trust was made tangible through footage from the production line, the quality certifications and a network of offices and factory spanning three countries. Social media follows the same technical language, addressing the international buyer directly in English.
   sections:
     - heading: Website
       text: |-
-        We designed a multilingual corporate site that separates the brand's product families — injection vials, boston round bottles, glass cream jars, dropper bottles, syrup and tablet bottles — through a clear category architecture.
+        We designed a multilingual corporate site separating the brand's product families — injection vials, Boston round bottles, glass cream jars, dropper bottles, syrup and tablet bottles — through a clear category architecture.
 
-        Each product family is presented on its own detail page with technical tables covering capacity, dimensions and neck finish; the buyer can also reach the technical drawing directly at row level. Variants such as amber and clear are positioned comparatively on the same page.
+        Each family is presented on its own page with spec tables covering volume, dimensions and neck finish; the buyer can also reach the technical drawing for any individual row. Variants such as amber and clear sit on the same page for direct comparison.
 
-        We added the layers that support corporate trust: a Redex Cam video section showing the production line, a quality strip listing the ISO 9001, 22000, 15378, 45001 and 14001 certifications, a "Why Us?" block, and a contact page listing the Shanghai office, Yancheng factory and Uzbekistan office with their maps. We closed every section with a bulk-order call to action.
+        We added the layers that carry corporate trust: a Redex Cam video section showing the production line, a quality strip listing the ISO 9001, 22000, 15378, 45001 and 14001 certifications, a "Why Us?" block, and a contact page mapping the Shanghai office, the Yancheng factory and the Tashkent office. Every section closes with a bulk order call.
       images:
         - '/src/assets/images/projects/redex-glass/web-1.webp'
         - '/src/assets/images/projects/redex-glass/web-2.webp'
+        - '/src/assets/images/projects/redex-glass/web-3.webp'
     - heading: Social Media
       text: |-
-        For a brand supplying packaging to the pharmaceutical and cosmetics industries since 2001, we prepared a content system in post and story formats.
+        For a brand supplying packaging to pharmaceuticals and cosmetics since 2001, we prepared a content system in post and story formats.
 
-        We built the content in English to address international buyers: alongside product introductions such as injection vials made of borosilicate glass tubing, amber boston round bottles and dropper dispensing bottles, we foregrounded subjects that directly affect the purchasing decision — leak-proofing, safety and production quality.
+        We wrote the content in English to address the international buyer: alongside product introductions — injection vials made from borosilicate glass tubing, amber Boston round bottles, dropper bottles — we led with the things that actually decide a purchase, such as leak-proofing, security and production quality.
       images:
         - '/src/assets/images/projects/redex-glass/sosyal-medya.webp'
+    - heading: Video Editing
+      text: |-
+        We took the raw footage from the factory and turned it into the brand's broadcast language: edit, colour, pacing.
+
+        The film walks through the whole of production in order — from raw material to molten glass in the furnace, from bottles on the line to the optical quality-control screen. That order is not accidental: a customer buying pharmaceutical packaging is not asking whether it looks good, but whether every bottle is identical.
+
+        The spec tables on the site give the measurement; this film shows how that measurement is held. Two halves of the same claim.
+      reels:
+        - src: /media/projects/redex-glass/fabrika-filmi.mp4
+          poster: /media/projects/redex-glass/fabrika-filmi.webp
+          title: Production line at the Yancheng factory
+          width: 1280
+          height: 720
+
   result:
     heading: The Outcome
     text: |-
-      Redex Glass turned a scattered pool of products and technical data into a multilingual digital catalogue where international buyers reach category, dimension and certification information from a single address.
+      Redex Glass turned a scattered pool of products and technical data into a multilingual digital catalogue where an international buyer reaches category, dimension and certification information from a single address.
 
-      The website and social media speak the same language of technical trust, making the brand's production and supply network across three countries visible.
+      The website and the social feed speak the same language of technical trust, making the brand's production and supply network across three countries visible.
 ---
 
-A corporate site and social media system bringing the technical catalogue online for Redex Glass, a China-based glass packaging supplier to the pharmaceutical and cosmetics industries.
+A multilingual corporate site that brings a technical catalogue into digital, for a glass packaging maker exporting from China to 30+ countries.

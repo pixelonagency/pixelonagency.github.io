@@ -3,7 +3,7 @@ title: Vennyx
 client: Vennyx
 category: marka
 categoryLabel: Blockchain & AI · Corporate Identity
-excerpt: A rule-based brand guideline and a social media system that makes technology understandable, for blockchain and AI company Vennyx.
+excerpt: A rule-based brand guideline and a social media system that makes a hard technology talkable, for a blockchain and AI company.
 cover: '/src/assets/images/projects/vennyx.webp'
 featured: false
 order: 14
@@ -14,14 +14,14 @@ tags:
   - Sosyal Medya
 year: '2024–2025'
 seo:
-  title: Vennyx Case Study | Pixelon 360° Digital Agency
-  description: Explore the corporate identity guideline and social media design system Pixelon created for Vennyx, a company developing blockchain and artificial intelligence technologies.
+  title: 'Technology Brand Case Study: Vennyx | Pixelon'
+  description: "A rule-based identity guideline for a blockchain and AI company: the logo on a grid, colour codes, a font hierarchy and a content system."
 detail:
-  intro: We made a hard-to-grasp technology speakable through a rule-based brand system.
+  intro: We took a technology that is hard to grasp and made it talkable through a rule-based brand system.
   description: |-
-    Vennyx is a technology brand working in blockchain and artificial intelligence. For the brand we prepared a comprehensive corporate identity guideline and a social media design system.
+    Vennyx is a technology brand working in blockchain and artificial intelligence. We produced a full corporate identity guideline and a social media design system for the company.
 
-    This category has two separate problems: on the brand side everything looks alike, and on the communication side the subject feels too technical for most of the audience. We had to solve both within the same project — a distinctive identity and a content language that explains technology plainly.
+    This category has two separate problems: on the brand side everything looks the same, and on the communication side the subject is too technical for most of the audience. Both had to be solved in one piece of work — a distinctive identity, and a content language that explains the technology plainly.
   period: 2024–2025
   heroImage: '/src/assets/images/projects/vennyx/hero.webp'
   services:
@@ -31,7 +31,7 @@ detail:
     - Social Media Design
   meta:
     - label: Client
-      value: Blockchain & AI Brand
+      value: Blockchain & AI Company
     - label: Scope
       value: Brand Guideline + Content System
     - label: Services
@@ -41,36 +41,38 @@ detail:
   approach:
     heading: What We Did
     text: |-
-      We built the emblem from interlocking rings; this knotted form references both the chain structure of blockchain and connectivity across a network. The deep petrol-green palette is a deliberate move away from the electric-blue cliché of the category.
+      We built the emblem from interlocking rings; the knotted form points both to the chain structure of blockchain and to connectedness across a network. The deep petrol-green palette is a deliberate step away from the electric-blue cliché of the category.
 
-      We delivered the identity not as a one-off design but as a rule-based document. From the logo's construction on the grid to which version is used on which background, from colour codes to font hierarchy, we put every decision in writing.
+      We delivered the identity not as a one-off design but as a documented set of rules. Every decision was written down: how the logo sits on its grid, which version goes on which ground, the colour codes, the typographic hierarchy.
 
-      On social media we did a different job: explaining the technology. We told blockchain and artificial intelligence starting from definitions and bringing them down to concrete use cases.
+      On social media the job was different — explaining the technology. We started from definitions and worked down to concrete use cases.
   sections:
     - heading: Corporate Identity & Brand Guideline
       text: |-
-        We prepared a comprehensive identity guideline for the brand, made up of numbered sections. The guideline opens with the logo's structure on the grid, then shows its usage variations one by one — on dark, on light and over imagery.
+        We produced a comprehensive identity guideline in numbered sections. It opens with the structure of the logo on its grid, then shows the dark, light and over-image variants one by one.
 
-        We divided the colour system into primary colours and a secondary palette, documenting each colour's code and gradient style. On typography we positioned Panton as the corporate font, defined three supporting fonts alongside it, and explained where each is used.
+        The colour system is split into a primary and a secondary palette, each colour documented with its code and gradient style. On typography we positioned Panton as the corporate face, defined three supporting faces alongside it, and set out where each one is used.
 
-        We completed the guideline with print and physical applications: business cards, letterhead, envelopes, A5 notepads and paper bags. The brand can therefore apply its own rules without returning to the agency for every new design need.
+        We closed the guideline with print and physical applications: business card, letterhead, envelope, A5 notepad and carton bag. The brand can now apply its own rules without coming back to the agency for every new design.
       images:
         - '/src/assets/images/projects/vennyx/kurumsal-kimlik.webp'
     - heading: Social Media
       text: |-
-        We prepared a design system for the brand in post and story formats, explaining all its services in a plain and understandable language.
+        We prepared a design system covering post and story formats, explaining every service in plain, accessible language.
 
-        We built the content strategy on educational ground: starting from definitional pieces such as "What is blockchain?", we extended into what the combination of blockchain and artificial intelligence makes possible in concrete areas — smart contracts, data security, financial technologies and supply chain optimisation.
+        The content strategy sits on an educational base: we start from definition pieces — what is blockchain — and move to what the combination of blockchain and AI makes possible in concrete areas such as smart contracts, data security, financial technologies and supply chain optimisation.
 
-        We brought the corporate narrative into the feed as well — with content visualising mission, vision and values, announcements of presence at industry events and special-day posts, the account became one that not only explains technology but also introduces itself.
+        The corporate story is part of the feed too. The brand's four values — sustainability, trust, collaboration, innovation — were visualised as blocks chained to one another; the form came out of the technology being described.
+
+        Presence at industry events belongs there as well: announcements such as Plug and Play Türkiye Expo 2024 turn the account from one that only explains technology into one that shows up where the technology is discussed.
       images:
         - '/src/assets/images/projects/vennyx/sosyal-medya.webp'
   result:
     heading: The Outcome
     text: |-
-      Vennyx gained a brand identity bound to written rules — from its logo to its colour system, from its typography to its print applications.
+      Vennyx now has a brand identity bound to written rules — from the logo to the colour system, from the typography to the printed applications.
 
-      On social media, a technical field became an understandable narrative the audience can follow from definition through to use case.
+      On social media a technical field turned into a narrative a follower can actually follow, from definition through to use case.
 ---
 
-A rule-based brand guideline and a social media system that makes technology understandable, for blockchain and AI company Vennyx.
+A rule-based brand guideline and a social media system that makes a hard technology talkable, for a blockchain and AI company.

@@ -13,10 +13,11 @@ tags:
   - Kurumsal Kimlik
   - Logo Tasarımı
   - Reklam
+  - Video & Fotoğraf
 year: '2023–2025'
 seo:
-  title: Touch Consulting Projesi | Pixelon 360° Dijital Ajans
-  description: Teşvik ve hibe danışmanlığı yapan Touch Consulting için kurduğumuz marka ve dijital sistemi keşfedin — logo ve kurumsal kimlikten web sitesine, sosyal medya içeriklerine ve reklam yönetimine.
+  title: 'Teşvik Danışmanlığı Vakası: Touch Consulting | Pixelon'
+  description: "Teşvik ve hibe danışmanlığı veren bir marka için kurduğumuz sistem: sıfırdan logo ve kimlik, üç hizmet dalını ayrıştıran site, mevzuat takipli sosyal medya."
 detail:
   intro: Karmaşık teşvik mevzuatını anlaşılır bir marka diline çeviren uçtan uca dijital sistem.
   description: |-
@@ -29,6 +30,7 @@ detail:
     - Logo & Kurumsal Kimlik Tasarımı
     - Web Sitesi Tasarımı & Geliştirme
     - Sosyal Medya Tasarımları
+    - Video Prodüksiyonu
     - Reklam Yönetimi
   meta:
     - label: Müşteri
@@ -36,23 +38,25 @@ detail:
     - label: Kapsam
       value: Marka Kimliği + Dijital Sistem
     - label: Hizmetler
-      value: 4 Dijital & Tasarım Hizmeti
+      value: 5 Dijital & Tasarım Hizmeti
     - label: Dönem
       value: 2023–2025
   approach:
     heading: Neler Yaptık?
     text: |-
-      Touch Consulting'e markanın en başından başladık: adını taşıyacak logoyu, rengini, kurumsal kimliğini kurguladık. "T" harfinin sağ üst kısmındaki yükselen kurgu markanın gelişim vaadini simgeliyor; mavi ve lacivert paleti ise danışmanlık sektörünün beklediği güven duygusuna gönderme yapıyor.
+      Teşvik danışmanlığında satın alma kararı duyguyla verilmiyor. İşletme tek bir şey soruyor: bana uygun bir destek var mı, ne kadar, nasıl alırım? Mevzuatın kendisi zaten yeterince karmaşık; markanın işi onu daha da zorlaştırmamak.
 
-      Ardından bu kimliği taşıyacak dijital merkezi tasarladık. Üç hizmet dalını birbirine karıştırmadan ayrıştıran, her birine kendi derinlemesine sayfasını veren ve her sayfayı bir iletişim formuyla sonlandıran bir web sitesi kurduk.
+      Bu yüzden sistemin tamamını sadeleştirme üzerine kurduk. Üç hizmet dalını — yatırım teşvikleri, sağlık turizmi teşvikleri, KOSGEB destekleri — birbirine hiç karıştırmadan ayırdık; her destek kalemini tek tek açılabilir hâle getirdik.
 
-      Son olarak sosyal medya ve reklam tarafını aynı görsel dille besledik — böylece potansiyel müşteri markayla nerede karşılaşırsa karşılaşsın aynı tutarlılığı gördü.
+      İkinci karar sitenin işiyle ilgiliydi. Danışmanlık siteleri genelde vitrindir: anlatır, tanıtır, iletişim sayfasına yollar. Burada her sayfayı doğrudan form bloğuyla kapattık — site tanıtmıyor, talep topluyor.
   sections:
     - heading: Logo & Kurumsal Kimlik
       text: |-
-        Marka için logo tasarımından başlayarak eksiksiz bir kurumsal kimlik seti hazırladık: kartvizit, bloknot, lanyard ve dijital kanallarda kullanılacak ikon varyasyonları.
+        Markayı sıfırdan kurduk. Amblem "T" harfinin sağ üst köşesinden yükselen bir kurguya oturuyor — teşvik danışmanlığının vaadi zaten bu: işletmeyi bulunduğu yerden yukarı taşımak.
 
-        Logonun kurgusu markanın işini anlatıyor: "T" harfinin sağ üst kısmındaki yükseliş gelişimi simgelerken, mavi ve lacivert renk çifti "business" alanına ve güvene gönderme yapıyor. Kimliği hem koyu hem açık zeminde çalışacak varyasyonlarla teslim ettik.
+        Paletin mavi–lacivert olması bilinçli bir tercih. Danışmanlık, müşterinin parasıyla ve devlet mevzuatıyla temas eden bir iş; renk burada heyecan değil güven taşımak zorunda.
+
+        Kimliği markanın gerçekten kullandığı yüzeylere uyguladık: kartvizit, bloknot, lanyard ve dijital ikon varyasyonları. Amblemi hem koyu hem açık zeminde çalışacak şekilde ayrıştırdık; küçük ölçekte tek başına da okunuyor.
       images:
         - '/src/assets/images/projects/touch-consulting/logo-kurumsal.webp'
     - heading: Web Sitesi
@@ -65,11 +69,32 @@ detail:
       images:
         - '/src/assets/images/projects/touch-consulting/web-1.webp'
         - '/src/assets/images/projects/touch-consulting/web-2.webp'
+        - '/src/assets/images/projects/touch-consulting/web-3.webp'
     - heading: Sosyal Medya
       text: |-
         Üç ana hizmet dalında faaliyet gösteren marka için post, story ve reels formatlarında sürekli bir içerik akışı üretiyoruz.
 
         İçerikler mevzuattaki güncel gelişmeleri takip ediyor: ihracatta belgelendirme desteği, kadın girişimcilere özel destek programları, kapasite geliştirme başvuru dönemleri, yatırım teşvik belgesi avantajları. Böylece sosyal medya yalnızca marka görünürlüğü değil, hedef kitlenin gerçekten takip ettiği bir bilgi kaynağı hâline geldi.
+
+        Videoları biz çekiyoruz. Her reel tek bir destek kalemini alıp "bu senin işine yarar mı" sorusuna cevap veriyor — komplikasyon sigortası teşviği, personel istihdam desteği, influencer iş birliklerinde teşvik kullanımı. Mevzuat metni okunmuyor; anlatılınca izleniyor.
+
+        Altyazı her videoda var. Sesi kapalı izleyen de takip edebiliyor.
+      reels:
+        - src: /media/projects/touch-consulting/reel-1.mp4
+          poster: /media/projects/touch-consulting/reel-1.webp
+          title: Komplikasyon sigortası teşviği
+          width: 720
+          height: 1280
+        - src: /media/projects/touch-consulting/reel-2.mp4
+          poster: /media/projects/touch-consulting/reel-2.webp
+          title: Personel istihdam desteği
+          width: 720
+          height: 1280
+        - src: /media/projects/touch-consulting/reel-3.mp4
+          poster: /media/projects/touch-consulting/reel-3.webp
+          title: Influencer iş birliklerinde teşvik
+          width: 360
+          height: 640
       images:
         - '/src/assets/images/projects/touch-consulting/sosyal-medya.webp'
   result:

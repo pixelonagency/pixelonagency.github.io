@@ -14,8 +14,8 @@ tags:
   - Sosyal Medya
 year: '2024–2025'
 seo:
-  title: Vennyx Projesi | Pixelon 360° Dijital Ajans
-  description: Blockchain ve yapay zeka teknolojileri geliştiren Vennyx için hazırladığımız kurumsal kimlik kılavuzunu ve sosyal medya tasarım sistemini keşfedin.
+  title: 'Teknoloji Markası Vakası: Vennyx | Pixelon'
+  description: "Blockchain ve yapay zeka alanında çalışan bir marka için kurallı kimlik kılavuzu: ızgara üzerinde logo, renk kodları, font hiyerarşisi ve içerik sistemi."
 detail:
   intro: Anlaşılması zor bir teknolojiyi, kurallı bir marka sistemiyle konuşulabilir hâle getirdik.
   description: |-
@@ -62,7 +62,9 @@ detail:
 
         İçerik stratejisini eğitici bir zemine oturttuk: "Blockchain nedir?" gibi tanım içeriklerinden başlayıp, blockchain ile yapay zekanın birleşiminin akıllı sözleşmeler, veri güvenliği, finansal teknolojiler ve tedarik zinciri optimizasyonu gibi somut alanlarda ne mümkün kıldığına uzandık.
 
-        Kurumsal anlatıyı da akışa dâhil ettik — misyon, vizyon ve değerlerin görselleştirildiği içerikler, sektör etkinliklerindeki varlık duyuruları ve özel gün paylaşımlarıyla marka yalnızca teknoloji anlatan değil, kendini de tanıtan bir hesap hâline geldi.
+        Kurumsal anlatıyı da akışa dâhil ettik. Markanın dört değeri — sürdürülebilirlik, güven, iş birliği, inovasyon — birbirine zincirlenen bloklar olarak görselleştirildi; biçim, anlatılan teknolojinin kendisinden türedi.
+
+        Sektör etkinliklerindeki varlık da akışın parçası: Plug and Play Türkiye Expo 2024 gibi duyurularla marka yalnızca teknoloji anlatan değil, o teknolojinin konuşulduğu yerde bulunan bir hesap hâline geldi.
       images:
         - '/src/assets/images/projects/vennyx/sosyal-medya.webp'
   result:

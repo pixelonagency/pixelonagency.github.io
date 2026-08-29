@@ -1,10 +1,10 @@
 ---
-title: Anneliğin Hikâyesi
-client: Anneliğin Hikâyesi
+title: Annelik Hikayesi
+client: Annelik Hikayesi
 category: marka
 categoryLabel: Topluluk · Marka Kimliği
 excerpt: Anne ve kadın odaklı içerik platformu için sıcak, renkli ve sosyal medyada ayırt edilen bir marka dünyası.
-cover: '/src/assets/images/projects/anneligin-hikayesi.webp'
+cover: '/src/assets/images/projects/annelik-hikayesi.webp'
 featured: true
 order: 1
 tags:
@@ -16,16 +16,16 @@ tags:
   - İçerik Sistemi
 year: '2022–2024'
 seo:
-  title: Anneliğin Hikâyesi Projesi | Pixelon 360° Dijital Ajans
-  description: Anne ve kadın odaklı içerik platformu Anneliğin Hikâyesi için kurduğumuz marka dünyasını keşfedin — logodan web sitesine, mobil uygulamadan uzman iş birlikli video prodüksiyonuna.
+  title: 'İçerik Platformu Marka Vakası: Annelik Hikayesi | Pixelon'
+  description: "Anne ve kadın odaklı içerik platformu için kurduğumuz marka dünyası: el yazısı logo, hamilelik takip arayüzü, mobil uygulama ve uzman iş birlikli video."
 detail:
   intro: Anneliğin ilk gününden çocukluğa uzanan yolculuğu tek bir marka dünyasında toplayan içerik platformu.
   description: |-
-    Anneliğin Hikâyesi; hamilelik planlamasından haftalık gebelik takibine, ay ay bebek gelişiminden ebeveynlik rehberlerine kadar annelerin bütün yolculuğuna eşlik eden bir içerik platformu. Bu platform için logodan web sitesine, mobil uygulama tanıtımından uzman iş birlikli video prodüksiyonuna uzanan bütünsel bir marka dünyası kurduk.
+    Annelik Hikayesi; hamilelik planlamasından haftalık gebelik takibine, ay ay bebek gelişiminden ebeveynlik rehberlerine kadar annelerin bütün yolculuğuna eşlik eden bir içerik platformu. Bu platform için logodan web sitesine, mobil uygulama tanıtımından uzman iş birlikli video prodüksiyonuna uzanan bütünsel bir marka dünyası kurduk.
 
     Buradaki hassasiyet şuydu: konu hem duygusal hem bilgi yoğun. Marka hem samimi ve sıcak durmalı, hem de anne adaylarının güvenerek bilgi alabileceği bir ciddiyet taşımalıydı. Tüm tasarım kararlarını bu dengenin üzerine kurduk.
   period: 2022–2024
-  heroImage: '/src/assets/images/projects/anneligin-hikayesi/hero.webp'
+  heroImage: '/src/assets/images/projects/annelik-hikayesi/hero.webp'
   services:
     - Logo & Marka Kimliği
     - Web Sitesi Tasarımı
@@ -56,7 +56,7 @@ detail:
 
         Kimliği sticker, rozet, pattern ve uygulama ikonu gibi farklı temas noktalarına uyarlayarak dijitalden fiziksel ürünlere uzanan tutarlı bir set hâline getirdik. Uygulama ikonundaki sadeleştirilmiş kalp, logonun küçük ölçekte de tanınmasını sağlıyor.
       images:
-        - '/src/assets/images/projects/anneligin-hikayesi/logo.webp'
+        - '/src/assets/images/projects/annelik-hikayesi/logo.webp'
     - heading: Web Sitesi & Mobil Uygulama
       text: |-
         "Anneliğe dair samimi hikayeler ve rehber içerikler" vaadiyle açılan bir platform tasarladık. Ana sayfada araçlar karuseli, hamilelik planlama, hafta hafta gebelik ve ay ay bebek gelişimi bölümleri annenin bulunduğu aşamaya göre yol gösteriyor.
@@ -65,26 +65,43 @@ detail:
 
         Sitede mobil uygulamayı tanıtan özel bir bölüm kurguladık ve markanın dilini iletişim sayfasından 404 sayfasına kadar her ekrana taşıdık.
       images:
-        - '/src/assets/images/projects/anneligin-hikayesi/web-1.webp'
-        - '/src/assets/images/projects/anneligin-hikayesi/web-2.webp'
+        - '/src/assets/images/projects/annelik-hikayesi/web-1.webp'
+        - '/src/assets/images/projects/annelik-hikayesi/web-2.webp'
+        - '/src/assets/images/projects/annelik-hikayesi/web-3.webp'
     - heading: Sosyal Medya
       text: |-
         Annelere ve çocuklara yönelik, marka kimliğiyle uyumlu kreatif bir sosyal medya içerik sistemi hazırladık.
 
         Doğumdan sonraki ilk 24 saatten 36–48 ay bebek gelişimine, bebeklerin ağlama nedenlerinden gebelikte cilt değişimlerine ve çocuklar için pratik tariflere kadar geniş bir konu yelpazesini illüstratif bir dille anlattık. Her içerik hem bilgi veriyor hem de markanın sıcak tonunu koruyor.
       images:
-        - '/src/assets/images/projects/anneligin-hikayesi/sosyal-medya.webp'
+        - '/src/assets/images/projects/annelik-hikayesi/sosyal-medya.webp'
     - heading: Video & Fotoğraf
       text: |-
         Marka adına psikolog ve alanında uzman isimlerle iş birliği yaparak video ve fotoğraf çekimleri gerçekleştirdik.
 
-        "Bir Annenin Aklındaki Sorular", "Annelik Yarı Delilik Mi?" ve "Doğru ve Sağlıklı Evlilik" gibi serilerle markanın içerik havuzunu uzman görüşüyle destekledik. Özgün prodüksiyonlar sosyal medya ve dijital iletişim süreçlerini besleyen kalıcı bir arşive dönüştü.
-      images:
-        - '/src/assets/images/projects/anneligin-hikayesi/video-foto.webp'
+        İçeriği iki hatta böldük. Birincisi uzman görüşü: "Bir Annenin Aklındaki Sorular", "Annelik Yarı Delilik Mi?", "Gelin Kaynana Savaşları" ve "Doğru ve Sağlıklı Evlilik" serileriyle annenin duygusal yükünü konuşan bölümler.
+
+        İkincisi sahadan pratik rehberlik — bebek odası alışverişi gibi annenin gerçekten karşılaştığı kararlar. Bilgi veren içerik güven kuruyor, pratik içerik ise markayı günlük hayata sokuyor; ikisi aynı arşivde birikiyor.
+      reels:
+        - src: /media/projects/annelik-hikayesi/annelik-yari-delilik-mi.mp4
+          poster: /media/projects/annelik-hikayesi/annelik-yari-delilik-mi.webp
+          title: Annelik Yarı Delilik Mi?
+          width: 1080
+          height: 1920
+        - src: /media/projects/annelik-hikayesi/gelin-kaynana-savaslari.mp4
+          poster: /media/projects/annelik-hikayesi/gelin-kaynana-savaslari.webp
+          title: Gelin Kaynana Savaşları
+          width: 1080
+          height: 1920
+        - src: /media/projects/annelik-hikayesi/sequence-01.mp4
+          poster: /media/projects/annelik-hikayesi/sequence-01.webp
+          title: IKEA bebek odası alışverişi
+          width: 1080
+          height: 1920
   result:
     heading: Sonuç
     text: |-
-      Anneliğin Hikâyesi; logosundan web sitesine, mobil uygulamasından sosyal medya akışına kadar tek bir sıcak ve güvenilir dil konuşan bütünsel bir marka dünyasına kavuştu.
+      Annelik Hikayesi; logosundan web sitesine, mobil uygulamasından sosyal medya akışına kadar tek bir sıcak ve güvenilir dil konuşan bütünsel bir marka dünyasına kavuştu.
 
       Bilgi yoğun bir alan, annelerin kendi aşamalarına göre kolayca gezinebildiği ve uzman içerikleriyle desteklenen bir platforma dönüştü.
 ---
