@@ -1,0 +1,199 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Scope = Extract<PageSection, { type: 'scope' }>;
+
+interface Props {
+  section: Scope;
+}
+
+const { section } = Astro.props;
+
+/* Sıra numarası iki haneli basılır: 01, 02 … Tek haneli liste ritmi bozuyordu. */
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <ol class="scope" role="list">
+    {
+      section.items.map((item, index) => (
+        <li class="scope__row" data-reveal data-reveal-index={index}>
+          {/* Lime süpürme soldan sağa açılır; metin onun ÜSTÜNDE kalır. */}
+          <span class="scope__sweep" aria-hidden="true" />
+
+          <span class="scope__no">{pad(index + 1)}</span>
+          <h3 class="scope__title">{item.title}</h3>
+          <p class="scope__text">{item.description}</p>
+          <span class="scope__arrow" aria-hidden="true">
+            →
+          </span>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .scope {
+    margin: 44px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /*
+   * Satır ızgarası: numara · başlık · açıklama · ok. Kart yerine satır
+   * kullanılmasının sebebi sekiz kalemin ızgarada sayfayı şişirmesi ve
+   * sayfada zaten birden çok kart ızgarası bulunması.
+   */
+  .scope__row {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: 62px minmax(240px, 1.05fr) minmax(0, 1.35fr) 44px;
+    align-items: center;
+    gap: 24px;
+    padding: 26px 24px;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left var(--t-base);
+  }
+
+  .scope__row:hover {
+    padding-left: 34px;
+  }
+
+  .scope__sweep {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .scope__row:hover .scope__sweep {
+    transform: scaleX(1);
+  }
+
+  .scope__no {
+    font: 500 14px/1 var(--font-display);
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    transition: color var(--t-base);
+  }
+
+  .scope__title {
+    margin: 0;
+    font: 600 clamp(19px, 1.9vw, 27px) / 1.2 var(--font-display);
+    color: var(--text);
+    transition: color var(--t-base);
+  }
+
+  .scope__text {
+    margin: 0;
+    font: 400 15px/1.6 var(--font-body);
+    color: var(--text-muted);
+    transition: color var(--t-base);
+  }
+
+  .scope__arrow {
+    justify-self: end;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition:
+      opacity var(--t-base),
+      transform var(--t-base),
+      color var(--t-base);
+  }
+
+  /* Lime zeminde tüm metin koyulaşır — aksi halde okunmaz. */
+  .scope__row:hover .scope__no,
+  .scope__row:hover .scope__title,
+  .scope__row:hover .scope__arrow {
+    color: var(--bg);
+  }
+
+  .scope__row:hover .scope__text {
+    color: rgb(10 10 10 / 0.72);
+  }
+
+  .scope__row:hover .scope__arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Açık zeminli bölümde çizgi ve metin tonları döner; lime süpürme aynı kalır. */
+  :global(.section--light) .scope {
+    border-top-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .scope__row {
+    border-bottom-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .scope__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .scope__text,
+  :global(.section--light) .scope__arrow {
+    color: var(--text-muted-on-light);
+  }
+
+  /*
+   * Sıra numarası koyu zeminde lime durur ama beyaz zeminde okunmuyordu —
+   * lime/beyaz kontrastı çok düşük. Açık bölümde koyu tona alınır; hover'daki
+   * lime süpürmenin üstünde zaten koyu basılıyor.
+   */
+  :global(.section--light) .scope__no {
+    color: var(--text-muted-on-light);
+  }
+
+  @media (max-width: 1020px) {
+    .scope__row {
+      grid-template-columns: 48px 1fr;
+      row-gap: 10px;
+      column-gap: 18px;
+      align-items: start;
+    }
+
+    .scope__text {
+      grid-column: 2;
+    }
+
+    /* Dar ekranda ok satırı sıkıştırıyor — kaldırılır. */
+    .scope__arrow {
+      display: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .scope__row {
+      padding: 22px 18px;
+    }
+
+    .scope__row:hover {
+      padding-left: 18px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scope__row,
+    .scope__sweep,
+    .scope__arrow {
+      transition: none;
+    }
+
+    .scope__row:hover {
+      padding-left: 24px;
+    }
+  }
+</style>

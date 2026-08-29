@@ -57,6 +57,7 @@ intro:
 scope:
   eyebrow: Dijital Reklam Hizmetlerimiz
   heading: Doğru Platform, Doğru Mesaj, Doğru Hedef Kitle
+  layout: list
   items:
     - title: Google Ads Yönetimi
       description: |-

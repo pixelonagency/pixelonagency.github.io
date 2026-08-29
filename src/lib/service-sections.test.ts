@@ -428,3 +428,41 @@ describe('serviceToSections — vitrin sütun sayısı', () => {
     expect(section?.type === 'projects' && section.columns).toBeUndefined();
   });
 });
+
+/**
+ * Hizmet kapsamı — 30 Ağu 2026'da opsiyonel liste düzeni eklendi.
+ *
+ * Sayfada zaten dört kart ızgarası var (neden, platformlar, ilkeler, süreç).
+ * Sekiz kalemlik kapsamı beşinci bir ızgara yapmak sayfayı tekrara sokuyordu;
+ * bu yüzden kapsam editoryal bir satır listesine dönüştürüldü.
+ *
+ * `scope` HER hizmet sayfasında zorunlu (22 dosya) — düzen opsiyonel:
+ * `layout: 'list'` verilmezse eski kart ızgarası basılır.
+ */
+describe('serviceToSections — kapsam düzeni', () => {
+  const kalemler = [
+    { title: 'A', description: 'a' },
+    { title: 'B', description: 'b' },
+  ];
+
+  test('layout verilmezse kart ızgarası basılır — varsayılan korunur', () => {
+    expect(types()).not.toContain('scope');
+  });
+
+  test("layout: 'list' verilirse kendi bölüm tipiyle basılır", () => {
+    const scope = { eyebrow: 'e', heading: 'h', layout: 'list', items: kalemler };
+    expect(types({ scope })).toContain('scope');
+  });
+
+  test('liste düzeninde kalemler sırasıyla taşınır', () => {
+    const scope = { eyebrow: 'e', heading: 'h', layout: 'list', items: kalemler };
+    const section = build({ scope }).find((s) => s.type === 'scope');
+    expect(section?.type === 'scope' && section.items).toEqual(kalemler);
+  });
+
+  test('kapsam kanonik sırada yerini korur', () => {
+    const scope = { eyebrow: 'e', heading: 'h', layout: 'list', items: kalemler };
+    const list = types({ scope });
+    expect(list.indexOf('scope')).toBe(2);
+  });
+});

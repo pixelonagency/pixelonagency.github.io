@@ -37,7 +37,7 @@ export interface ServiceLike {
       featured?: boolean | undefined;
     })[];
   };
-  scope: Block & { items: TitledItem[] };
+  scope: Block & { items: TitledItem[]; layout?: 'cards' | 'list' | undefined };
   platforms?:
     | (Block & {
         items: (TitledItem & {
@@ -204,7 +204,24 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     );
   }
 
-  sections.push(cards(service.scope));
+  /*
+   * Kapsam, `layout: 'list'` verildiğinde editoryal satır listesi olur.
+   * Verilmezse kart ızgarası — `scope` her hizmet sayfasında zorunlu bir alan
+   * (22 dosya) ve varsayılan davranış değişmemeli.
+   */
+  if (service.scope.layout === 'list') {
+    sections.push({
+      type: 'scope',
+      eyebrow: service.scope.eyebrow,
+      heading: service.scope.heading,
+      lead: service.scope.lead,
+      background: nextBg(),
+      ctas: [],
+      items: service.scope.items,
+    });
+  } else {
+    sections.push(cards(service.scope));
+  }
 
   /*
    * Platformlar, marka işaretleri VARSA kendi bölüm tipiyle basılır: büyük

@@ -234,7 +234,18 @@ collections:
         widget: object
         collapsed: true
         i18n: true
-        fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          # `list` = numaralı editoryal satır listesi (lime süpürme hover'ı).
+          # Boş bırakılırsa klasik kart ızgarası basılır.
+          - label: Düzen
+            name: layout
+            widget: select
+            required: false
+            options: [cards, list]
+          - *f_titled_items
       - label: Platformlar
         name: platforms
         widget: object
@@ -723,6 +734,23 @@ collections:
                     widget: select
                     options: [team, conversion, report, cycle]
                   - { label: Öne Çıkar, name: featured, widget: boolean, default: false, required: false }
+
+          - label: Hizmet Kapsamı (Liste)
+            name: scope
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: Kalemler
+                name: items
+                widget: list
+                fields:
+                  - { label: Başlık, name: title, widget: string }
+                  - { label: Açıklama, name: description, widget: text }
 
           - label: Metin
             name: text

@@ -269,6 +269,20 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
       .min(1),
   });
 
+  /*
+   * Hizmet kapsamı — kart ızgarası değil editoryal satır listesi. Sayfada
+   * zaten birden çok kart ızgarası olduğunda kapsamı da ızgara yapmak tekrara
+   * sokuyordu; satır listesi hem farklı bir form hem de uzun kalem listelerini
+   * daha az yer kaplayarak taşır.
+   */
+  const scope = z.object({
+    ...sectionBase,
+    type: z.literal('scope'),
+    heading: nonEmpty,
+    lead: opt(z.string()),
+    items: z.array(z.object({ title: nonEmpty, description: nonEmpty })).min(1),
+  });
+
   const logos = z.object({
     ...sectionBase,
     type: z.literal('logos'),
@@ -451,6 +465,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     platforms,
     principles,
     why,
+    scope,
     text,
     stats,
     faq,
@@ -495,6 +510,7 @@ export const PAGE_SECTION_TYPES = [
   'platforms',
   'principles',
   'why',
+  'scope',
   'text',
   'stats',
   'faq',

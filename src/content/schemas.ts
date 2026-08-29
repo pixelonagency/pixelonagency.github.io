@@ -154,6 +154,8 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
       eyebrow: nonEmpty,
       heading: nonEmpty,
       lead: opt(z.string()),
+      /* `list` = editoryal satır listesi. Verilmezse klasik kart ızgarası. */
+      layout: opt(z.enum(['cards', 'list'])),
       items: z.array(titledItem).min(1),
     }),
     // İki kavramın karşılaştırıldığı sekmeli bölüm (ör. UX/UI sayfasındaki

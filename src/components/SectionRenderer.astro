@@ -23,6 +23,7 @@ import TeamSection from './sections/TeamSection.astro';
 import TextSection from './sections/TextSection.astro';
 import PlatformsSection from './sections/PlatformsSection.astro';
 import PrinciplesSection from './sections/PrinciplesSection.astro';
+import ScopeSection from './sections/ScopeSection.astro';
 import WhySection from './sections/WhySection.astro';
 import WorldMapSection from './sections/WorldMapSection.astro';
 
@@ -54,6 +55,8 @@ const { sections, locale = DEFAULT_LOCALE } = Astro.props;
         return <PrinciplesSection section={section} />;
       case 'why':
         return <WhySection section={section} />;
+      case 'scope':
+        return <ScopeSection section={section} />;
       case 'worldMap':
         return <WorldMapSection section={section} />;
       case 'text':
