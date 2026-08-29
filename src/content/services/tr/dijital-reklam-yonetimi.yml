@@ -88,21 +88,27 @@ principles:
   heading: Kampanyadan Önce Strateji, Yayından Sonra Sürekli Optimizasyon
   items:
     - title: Hedef Kitle Analizi
+      icon: audience
       description: |-
         Markanız için en değerli kullanıcı gruplarını, ihtiyaçlarını ve dijital davranışlarını analiz ediyoruz.
     - title: Kampanya Stratejisi
+      icon: strategy
       description: |-
         Reklam hedefini, platformu, bütçe dağılımını ve kampanya yapısını iş hedeflerinize göre belirliyoruz.
     - title: Reklam Metni ve Görseli
+      icon: creative
       description: |-
         Kullanıcının dikkatini çeken, teklifinizi doğru anlatan ve harekete geçiren reklam metinleri, tasarımlar ve videolar hazırlıyoruz.
     - title: Landing Page Kontrolü
+      icon: landing
       description: |-
         Reklamdan gelen kullanıcının karşılaştığı sayfayı hız, içerik, güven unsurları ve dönüşüm butonları açısından değerlendiriyoruz.
     - title: Dönüşüm Takibi
+      icon: tracking
       description: |-
         Form, WhatsApp, telefon, satın alma ve diğer önemli kullanıcı hareketlerinin takip edilebilmesi için gerekli ölçüm sistemlerini planlıyoruz.
     - title: Düzenli Optimizasyon
+      icon: optimize
       description: |-
         Hedefleme, reklam içeriği, bütçe ve teklif stratejilerini performans verilerine göre sürekli geliştiriyoruz.
 

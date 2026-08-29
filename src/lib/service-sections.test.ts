@@ -313,3 +313,58 @@ describe('serviceToSections — logosuz platform listesi', () => {
     expect(types({ platforms: logosuz }).length).toBe(before + 1);
   });
 });
+
+/**
+ * İlkeler bölümü — 30 Ağu 2026'da ikonlu kendi tipine ayrıldı.
+ *
+ * Platform bölümüyle AYNI tuzak: `principles` alanını 10 hizmet dosyası
+ * kullanıyor ama yalnız birinde ikon var. İkon zorunlu tutulsa diğer dokuz
+ * sayfa kırılırdı — bu yüzden ikon tamsa yeni tip, değilse eski kart ızgarası.
+ */
+describe('serviceToSections — ilkeler bölümü', () => {
+  const ikonlu = {
+    eyebrow: 'e',
+    heading: 'h',
+    items: [
+      { title: 'Hedef Kitle', description: 'd', icon: 'audience' },
+      { title: 'Strateji', description: 'd', icon: 'strategy' },
+    ],
+  };
+  const ikonsuz = {
+    eyebrow: 'e',
+    heading: 'h',
+    items: [{ title: 'Hedef Kitle', description: 'd' }],
+  };
+  const karisik = {
+    eyebrow: 'e',
+    heading: 'h',
+    items: [
+      { title: 'Hedef Kitle', description: 'd', icon: 'audience' },
+      { title: 'Strateji', description: 'd' },
+    ],
+  };
+
+  test('ikonlar tamsa kendi bölüm tipiyle basılır', () => {
+    expect(types({ principles: ikonlu })).toContain('principles');
+  });
+
+  test('ikon yoksa eski kart ızgarasına düşer', () => {
+    expect(types({ principles: ikonsuz })).not.toContain('principles');
+  });
+
+  test('tek bir ikon bile eksikse kart ızgarasına düşer', () => {
+    expect(types({ principles: karisik })).not.toContain('principles');
+  });
+
+  test('ikonsuz liste yine de bir bölüm üretir — sessizce kaybolmaz', () => {
+    expect(types({ principles: ikonsuz }).length).toBe(types().length + 1);
+  });
+
+  test('ikon ve başlıklar bölüme taşınır', () => {
+    const section = build({ principles: ikonlu }).find((s) => s.type === 'principles');
+    expect(section?.type === 'principles' && section.items).toEqual([
+      { title: 'Hedef Kitle', description: 'd', icon: 'audience' },
+      { title: 'Strateji', description: 'd', icon: 'strategy' },
+    ]);
+  });
+});

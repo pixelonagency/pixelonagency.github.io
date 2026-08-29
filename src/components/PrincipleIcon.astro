@@ -1,0 +1,98 @@
+---
+/**
+ * Reklam yönetimi ilkelerinin çizgi ikonları.
+ *
+ * Her yolda `pathLength="1"` var: gerçek uzunlukları farklı olan yolların
+ * hepsi 0–1 aralığına normalize olur, böylece tek bir `stroke-dasharray: 1`
+ * kuralıyla hepsi aynı hızda çizilebilir (bkz. PrinciplesSection.astro).
+ *
+ * Bir ikon kütüphanesi eklenmedi — CLAUDE.md: "gerekirse minimal inline SVG
+ * (stroke 1.5px)". Aynı dil SectorIcon.astro'da da kullanılıyor.
+ */
+type PrincipleIconName = 'audience' | 'strategy' | 'creative' | 'landing' | 'tracking' | 'optimize';
+
+interface Props {
+  name: PrincipleIconName;
+}
+
+const { name }: Props = Astro.props;
+---
+
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {/* Hedef kitle analizi — üç kişi, ortadaki öne çıkar. */}
+  {
+    name === 'audience' && (
+      <>
+        <circle cx="12" cy="8" r="3.2" pathLength="1" />
+        <path d="M6.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5" pathLength="1" />
+        <path d="M4.5 15.5A3.6 3.6 0 0 1 6 8.9M19.5 15.5A3.6 3.6 0 0 0 18 8.9" pathLength="1" />
+      </>
+    )
+  }
+
+  {/* Kampanya stratejisi — hedef tahtası ve isabet. */}
+  {
+    name === 'strategy' && (
+      <>
+        <circle cx="12" cy="12" r="8.2" pathLength="1" />
+        <circle cx="12" cy="12" r="4.4" pathLength="1" />
+        <path d="M12 12l7-7M17.2 3.6l.5 2.7 2.7.5" pathLength="1" />
+      </>
+    )
+  }
+
+  {/* Reklam metni ve görseli — kalem ucu ve parlama. */}
+  {
+    name === 'creative' && (
+      <>
+        <path d="M4 20l1.4-4.6L15.6 5.2a2.1 2.1 0 0 1 3 3L8.4 18.4 4 20z" pathLength="1" />
+        <path d="M14 6.8l3.2 3.2" pathLength="1" />
+        <path d="M18.6 15.4l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7z" pathLength="1" />
+      </>
+    )
+  }
+
+  {/* Landing page kontrolü — tarayıcı penceresi ve imleç. */}
+  {
+    name === 'landing' && (
+      <>
+        <rect x="3" y="4.5" width="18" height="15" rx="2.2" pathLength="1" />
+        <path d="M3 9h18" pathLength="1" />
+        <path d="M6 6.7h.01M8.6 6.7h.01" pathLength="1" />
+        <path d="M10.4 12.2l6 2.4-2.6 1-1 2.6-2.4-6z" pathLength="1" />
+      </>
+    )
+  }
+
+  {/* Dönüşüm takibi — yükselen çizgi ve onay. */}
+  {
+    name === 'tracking' && (
+      <>
+        <path d="M3.5 20V4.6" pathLength="1" />
+        <path d="M3.5 20h16" pathLength="1" />
+        <path d="M6.5 15.6l3.6-4.2 3 2.4 4.2-5.6" pathLength="1" />
+        <path d="M14.6 17.6l1.8 1.8 3.6-3.9" pathLength="1" />
+      </>
+    )
+  }
+
+  {/* Düzenli optimizasyon — ayar sürgüleri. */}
+  {
+    name === 'optimize' && (
+      <>
+        <path d="M4 7.2h5M13 7.2h7" pathLength="1" />
+        <path d="M4 16.8h7M15 16.8h5" pathLength="1" />
+        <circle cx="11" cy="7.2" r="2.2" pathLength="1" />
+        <circle cx="13" cy="16.8" r="2.2" pathLength="1" />
+      </>
+    )
+  }
+</svg>

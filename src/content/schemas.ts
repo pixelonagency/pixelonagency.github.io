@@ -164,7 +164,16 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
         eyebrow: nonEmpty,
         heading: nonEmpty,
         lead: opt(z.string()),
-        items: z.array(titledItem).min(1),
+        items: z
+          .array(
+            z.object({
+              title: nonEmpty,
+              description: nonEmpty,
+              /* İkon verilirse bölüm ikonlu ızgaraya geçer; eksikse klasik kart listesi. */
+              icon: opt(z.enum(['audience', 'strategy', 'creative', 'landing', 'tracking', 'optimize'])),
+            }),
+          )
+          .min(1),
       }),
     ),
     // Üretilen içerik türleri — düz etiket listesi (yalnızca Video ve Prodüksiyon sayfasında).

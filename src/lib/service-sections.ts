@@ -41,7 +41,13 @@ export interface ServiceLike {
         })[];
       })
     | undefined;
-  principles?: (Block & { items: TitledItem[] }) | undefined;
+  principles?:
+    | (Block & {
+        items: (TitledItem & {
+          icon?: 'audience' | 'strategy' | 'creative' | 'landing' | 'tracking' | 'optimize' | undefined;
+        })[];
+      })
+    | undefined;
   comparison?: (Block & { items: TitledItem[]; note?: string | undefined }) | undefined;
   contentTypes?: (Block & { items: string[] }) | undefined;
   process: Block & { steps: TitledItem[] };
@@ -195,19 +201,42 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     }
   }
 
+  /*
+   * İlkeler, çizgi ikonlar VARSA kendi bölüm tipiyle basılır: kart üzerine
+   * gelindiğinde zemin lime'a döner ve ikon kendini çizer.
+   *
+   * İkon eksikse eski krem kart ızgarasına düşülür — bu alanı on hizmet
+   * dosyası kullanıyor ama yalnız birinde ikon var; zorunlu tutmak diğer
+   * dokuz sayfayı kırardı.
+   */
   if (service.principles) {
-    // Referans: ilkeler/standartlar beyaz zeminde krem dolgulu kartlardır.
+    const items = service.principles.items;
+    const hepsiIkonlu = items.length > 0 && items.every((item) => Boolean(item.icon));
     const background = nextBg();
-    sections.push({
-      type: 'cards',
-      eyebrow: service.principles.eyebrow,
-      heading: service.principles.heading,
-      lead: service.principles.lead,
-      kind: background === 'light' ? 'tinted' : 'grid',
-      background,
-      ctas: [],
-      items: service.principles.items,
-    });
+
+    if (hepsiIkonlu) {
+      sections.push({
+        type: 'principles',
+        eyebrow: service.principles.eyebrow,
+        heading: service.principles.heading,
+        lead: service.principles.lead,
+        background,
+        ctas: [],
+        items: items.map((item) => ({ title: item.title, description: item.description, icon: item.icon! })),
+      });
+    } else {
+      // Referans: ilkeler/standartlar beyaz zeminde krem dolgulu kartlardır.
+      sections.push({
+        type: 'cards',
+        eyebrow: service.principles.eyebrow,
+        heading: service.principles.heading,
+        lead: service.principles.lead,
+        kind: background === 'light' ? 'tinted' : 'grid',
+        background,
+        ctas: [],
+        items: items.map((item) => ({ title: item.title, description: item.description })),
+      });
+    }
   }
 
   if (service.comparison) {

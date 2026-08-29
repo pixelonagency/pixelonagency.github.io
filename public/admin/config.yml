@@ -256,7 +256,23 @@ collections:
         required: false
         collapsed: true
         i18n: true
-        fields: [*f_eyebrow, *f_heading, *f_lead, *f_titled_items]
+        fields:
+          - *f_eyebrow
+          - *f_heading
+          - *f_lead
+          - label: Maddeler
+            name: items
+            widget: list
+            fields:
+              - { label: Başlık, name: title, widget: string }
+              - { label: Açıklama, name: description, widget: text }
+              # İkon verilirse bölüm ikonlu ızgaraya geçer; boş bırakılan tek
+              # bir madde bile varsa klasik krem kart listesi basılır.
+              - label: İkon
+                name: icon
+                widget: select
+                required: false
+                options: [audience, strategy, creative, landing, tracking, optimize]
       - label: Karşılaştırma
         name: comparison
         widget: object
@@ -652,6 +668,27 @@ collections:
                     widget: select
                     options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat]
                   - { label: Öne Çıkar, name: featured, widget: boolean, default: false, required: false }
+
+          - label: İlkeler (İkonlu)
+            name: principles
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: İlkeler
+                name: items
+                widget: list
+                fields:
+                  - { label: Başlık, name: title, widget: string }
+                  - { label: Açıklama, name: description, widget: text }
+                  - label: İkon
+                    name: icon
+                    widget: select
+                    options: [audience, strategy, creative, landing, tracking, optimize]
 
           - label: Metin
             name: text

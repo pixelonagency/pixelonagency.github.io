@@ -227,6 +227,26 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
       .min(1),
   });
 
+  /*
+   * Reklam yönetimi ilkeleri — kart listesinden ayrı tip, çünkü her girdi bir
+   * çizgi ikon taşır ve kart üzerine gelindiğinde ikon kendini çizer.
+   */
+  const principles = z.object({
+    ...sectionBase,
+    type: z.literal('principles'),
+    heading: nonEmpty,
+    lead: opt(z.string()),
+    items: z
+      .array(
+        z.object({
+          title: nonEmpty,
+          description: nonEmpty,
+          icon: z.enum(['audience', 'strategy', 'creative', 'landing', 'tracking', 'optimize']),
+        }),
+      )
+      .min(1),
+  });
+
   const logos = z.object({
     ...sectionBase,
     type: z.literal('logos'),
@@ -402,6 +422,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     marquee,
     worldMap,
     platforms,
+    principles,
     text,
     stats,
     faq,
@@ -444,6 +465,7 @@ export const PAGE_SECTION_TYPES = [
   'marquee',
   'worldMap',
   'platforms',
+  'principles',
   'text',
   'stats',
   'faq',

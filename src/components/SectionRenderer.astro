@@ -22,6 +22,7 @@ import StepsSection from './sections/StepsSection.astro';
 import TeamSection from './sections/TeamSection.astro';
 import TextSection from './sections/TextSection.astro';
 import PlatformsSection from './sections/PlatformsSection.astro';
+import PrinciplesSection from './sections/PrinciplesSection.astro';
 import WorldMapSection from './sections/WorldMapSection.astro';
 
 interface Props {
@@ -48,6 +49,8 @@ const { sections, locale = DEFAULT_LOCALE } = Astro.props;
         return <MarqueeSection section={section} />;
       case 'platforms':
         return <PlatformsSection section={section} />;
+      case 'principles':
+        return <PrinciplesSection section={section} />;
       case 'worldMap':
         return <WorldMapSection section={section} />;
       case 'text':
