@@ -220,6 +220,15 @@ collections:
             fields: &titled_item_fields
               - { label: Başlık, name: title, widget: string }
               - { label: Açıklama, name: description, widget: text }
+              # Yalnız "Neden Pixelon?" bölümünde okunur. İkon verilirse bölüm
+              # ikonlu ızgaraya geçer; boş bırakılan tek bir madde bile varsa
+              # klasik kart listesi basılır.
+              - label: İkon
+                name: icon
+                widget: select
+                required: false
+                options: [team, conversion, report, cycle]
+              - { label: Öne Çıkar, name: featured, widget: boolean, default: false, required: false }
       - label: Hizmet Kapsamı
         name: scope
         widget: object
@@ -689,6 +698,28 @@ collections:
                     name: icon
                     widget: select
                     options: [audience, strategy, creative, landing, tracking, optimize]
+
+          - label: 'Neden Biz? (İkonlu)'
+            name: why
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: Maddeler
+                name: items
+                widget: list
+                fields:
+                  - { label: Başlık, name: title, widget: string }
+                  - { label: Açıklama, name: description, widget: text }
+                  - label: İkon
+                    name: icon
+                    widget: select
+                    options: [team, conversion, report, cycle]
+                  - { label: Öne Çıkar, name: featured, widget: boolean, default: false, required: false }
 
           - label: Metin
             name: text

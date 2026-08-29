@@ -31,7 +31,12 @@ export interface ServiceLike {
   };
   heroVideo?: Extract<PageSection, { type: 'hero' }>['video'];
   intro?: (Block & { body: string; highlight?: string | undefined }) | undefined;
-  why: Block & { items: TitledItem[] };
+  why: Block & {
+    items: (TitledItem & {
+      icon?: 'team' | 'conversion' | 'report' | 'cycle' | undefined;
+      featured?: boolean | undefined;
+    })[];
+  };
   scope: Block & { items: TitledItem[] };
   platforms?:
     | (Block & {
@@ -165,7 +170,33 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     });
   }
 
-  sections.push(cards(service.why));
+  /*
+   * "Neden Pixelon?" ikonlar VARSA kendi bölüm tipiyle basılır. İkon eksikse
+   * klasik kart ızgarasına düşülür — `why` her hizmet sayfasında zorunlu bir
+   * alan (22 dosya) ama ikon yalnız reklam sayfasında var.
+   */
+  const whyItems = service.why.items;
+  if (whyItems.length > 0 && whyItems.every((item) => Boolean(item.icon))) {
+    sections.push({
+      type: 'why',
+      eyebrow: service.why.eyebrow,
+      heading: service.why.heading,
+      lead: service.why.lead,
+      background: nextBg(),
+      ctas: [],
+      items: whyItems.map((item) => ({
+        title: item.title,
+        description: item.description,
+        icon: item.icon!,
+        featured: item.featured ?? false,
+      })),
+    });
+  } else {
+    sections.push(
+      cards({ ...service.why, items: whyItems.map((i) => ({ title: i.title, description: i.description })) }),
+    );
+  }
+
   sections.push(cards(service.scope));
 
   /*

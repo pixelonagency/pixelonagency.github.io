@@ -368,3 +368,44 @@ describe('serviceToSections — ilkeler bölümü', () => {
     ]);
   });
 });
+
+/**
+ * "Neden Pixelon?" bölümü — 30 Ağu 2026'da ikonlu karta çevrildi.
+ *
+ * `why` HER hizmet sayfasında zorunlu (22 dosya) ama ikon yalnız reklam
+ * sayfasında var. Platform ve ilkeler bölümlerindeki aynı kural burada da
+ * geçerli: ikon tamsa yeni tip, değilse klasik kart ızgarası.
+ */
+describe('serviceToSections — neden bölümü', () => {
+  const ikonlu = {
+    eyebrow: 'Neden Pixelon?',
+    heading: 'h',
+    items: [
+      { title: 'A', description: 'a', icon: 'team' },
+      { title: 'B', description: 'b', icon: 'cycle' },
+    ],
+  };
+
+  test('ikonlar tamsa kendi bölüm tipiyle basılır', () => {
+    expect(types({ why: ikonlu })).toContain('why');
+  });
+
+  test('ikon yoksa klasik kart ızgarası kalır — varsayılan davranış korunur', () => {
+    expect(types()).not.toContain('why');
+  });
+
+  test('yeni tip de hero ile scope arasındaki yerini korur', () => {
+    const list = types({ why: ikonlu });
+    expect(list.indexOf('why')).toBe(1);
+  });
+
+  test('ikon ve featured alanları bölüme taşınır', () => {
+    const section = build({ why: ikonlu }).find((s) => s.type === 'why');
+    expect(section?.type === 'why' && section.items[0]).toEqual({
+      title: 'A',
+      description: 'a',
+      icon: 'team',
+      featured: false,
+    });
+  });
+});

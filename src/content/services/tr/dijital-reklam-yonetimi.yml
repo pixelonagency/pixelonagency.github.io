@@ -254,15 +254,20 @@ why:
     Reklam performansını yalnızca tıklama ve gösterim sayılarıyla değerlendirmiyoruz. Kullanıcının reklamı gördüğü andan iletişime geçtiği veya satın alma gerçekleştirdiği ana kadar tüm süreci analiz ediyoruz.
   items:
     - title: Strateji ve Kreatif Tek Ekipte
+      icon: team
+      featured: true
       description: |-
         Reklam stratejisi, metin, tasarım, video ve landing page süreçlerini birbiriyle uyumlu biçimde yönetiyoruz.
     - title: Dönüşüm Odaklı Yaklaşım
+      icon: conversion
       description: |-
         WhatsApp, arama, form, randevu ve satış gibi işletmeniz için değerli sonuçlara odaklanıyoruz.
     - title: Şeffaf Raporlama
+      icon: report
       description: |-
         Reklam bütçesini, kampanya sonuçlarını ve gelişim alanlarını anlaşılır biçimde paylaşıyoruz.
     - title: Sürekli Optimizasyon
+      icon: cycle
       description: |-
         Kampanyaları yalnızca kurup bırakmıyor, performans verilerine göre düzenli olarak geliştiriyoruz.
 

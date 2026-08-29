@@ -1,0 +1,337 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import { gridSpans } from '../../lib/grid-spans';
+import SectionHead from '../SectionHead.astro';
+import WhyIcon from '../WhyIcon.astro';
+import Section from './Section.astro';
+
+type Why = Extract<PageSection, { type: 'why' }>;
+
+interface Props {
+  section: Why;
+}
+
+const { section } = Astro.props;
+
+const spans = gridSpans(section.items);
+
+/*
+ * Kartlar aynı ikon muamelesini paylaşmaz — sırayla dolu lime daire, beyaz
+ * panel, çıplak parlayan glif ve katman rozeti. Şablon hissini kıran şey
+ * ikonun kendisi değil, her kartın farklı bir yüzeye oturmasıdır.
+ */
+const TREATMENTS = ['solid', 'panel', 'bare', 'stack'] as const;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  {
+    /*
+    Sarmalayıcı konumlandırma bağlamıdır: Section'ın slot'u `.container` içinde
+    ve o `relative` değil, imleç ona göre konumlanamıyordu.
+  */
+  }
+  <div class="why__wrap">
+    {
+      /*
+      Piksel imleç: markanın adına ("pixel") doğrudan gönderme yapan tek
+      dekoratif öğe. Kart içeriğini örtmez, ızgaranın üstünde durur.
+    */
+    }
+    <span class="why__cursor" aria-hidden="true">
+      <svg viewBox="0 0 22 32" fill="currentColor" shape-rendering="crispEdges">
+        <path
+          d="M0 0h2v2h-2zM0 2h4v2h-4zM0 4h6v2h-6zM0 6h8v2h-8zM0 8h10v2h-10zM0 10h12v2h-12zM0 12h14v2h-14zM0 14h16v2h-16zM0 16h18v2h-18zM0 18h20v2h-20zM0 20h12v2h-12zM0 22h6v2h-6zM8 22h6v2h-6zM0 24h4v2h-4zM8 24h6v2h-6zM0 26h2v2h-2zM10 26h6v2h-6zM10 28h6v2h-6zM12 30h4v2h-4z"
+        ></path>
+      </svg>
+    </span>
+
+    <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+    <ul class="why" role="list">
+      {
+        section.items.map((item, index) => (
+          <li
+            class:list={['why__card', `why__card--${TREATMENTS[index % TREATMENTS.length]}`]}
+            data-reveal
+            data-reveal-index={index}
+            style={`--span: ${spans[index]}`}
+          >
+            <span class="why__mark">
+              <WhyIcon name={item.icon} />
+            </span>
+
+            <div class="why__body">
+              <h3 class="why__title">{item.title}</h3>
+              <p class="why__text">{item.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .why__wrap {
+    position: relative;
+  }
+
+  .why {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin: 48px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .why__card {
+    position: relative;
+    grid-column: span var(--span);
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding: 32px 30px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: rgb(255 255 255 / 0.03);
+    transition:
+      transform var(--t-base),
+      border-color var(--t-base),
+      background var(--t-base);
+  }
+
+  .why__card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    background: rgb(255 255 255 / 0.05);
+  }
+
+  /* --- İkon muameleleri ------------------------------------------------- */
+
+  .why__mark {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    transition:
+      transform var(--t-base),
+      box-shadow var(--t-base);
+  }
+
+  .why__mark :global(svg) {
+    display: block;
+    width: 36px;
+    height: 36px;
+  }
+
+  .why__card:hover .why__mark {
+    transform: scale(1.06);
+  }
+
+  /* Dolu lime daire, glif koyu. */
+  .why__card--solid .why__mark {
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .why__card--solid:hover .why__mark {
+    box-shadow: 0 0 34px rgb(207 255 0 / 0.42);
+  }
+
+  /* Beyaz yuvarlatılmış panel, glif koyu. */
+  .why__card--panel .why__mark {
+    border-radius: 18px;
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .why__card--panel:hover .why__mark {
+    box-shadow: 0 0 30px rgb(255 255 255 / 0.28);
+  }
+
+  /* Çıplak lime glif — yüzey yok, parıltı var. Bu kartta ikon en büyüğüdür. */
+  .why__card--bare .why__mark {
+    color: var(--accent);
+  }
+
+  .why__card--bare .why__mark :global(svg) {
+    width: 52px;
+    height: 52px;
+    filter: drop-shadow(0 0 20px rgb(207 255 0 / 0.45));
+  }
+
+  /* Katman rozeti — arkasında kaydırılmış iki gölge yüzey. */
+  .why__card--stack .why__mark {
+    position: relative;
+    border-radius: 16px;
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .why__card--stack .why__mark::before,
+  .why__card--stack .why__mark::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 16px;
+    background: var(--text);
+    transition: transform var(--t-base);
+  }
+
+  .why__card--stack .why__mark::before {
+    transform: translate(6px, 8px);
+    opacity: 0.5;
+  }
+
+  .why__card--stack .why__mark::after {
+    transform: translate(12px, 16px);
+    opacity: 0.22;
+  }
+
+  .why__card--stack:hover .why__mark::before {
+    transform: translate(9px, 12px);
+  }
+
+  .why__card--stack:hover .why__mark::after {
+    transform: translate(18px, 24px);
+  }
+
+  /* --- Metin ------------------------------------------------------------ */
+
+  .why__title {
+    margin: 0 0 10px;
+    font: 600 clamp(18px, 1.5vw, 22px) / 1.25 var(--font-display);
+    color: var(--text);
+  }
+
+  .why__text {
+    margin: 0;
+    font: 400 15px/1.65 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  /* --- Piksel imleç ----------------------------------------------------- */
+
+  .why__cursor {
+    position: absolute;
+    top: -6px;
+    right: 0;
+    z-index: 1;
+    width: clamp(70px, 8vw, 118px);
+    color: var(--accent);
+    opacity: 0.9;
+    pointer-events: none;
+    filter: drop-shadow(0 0 26px rgb(207 255 0 / 0.3));
+    animation: why-cursor-float 5.5s ease-in-out infinite;
+  }
+
+  .why__cursor svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @keyframes why-cursor-float {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(-4deg);
+    }
+    50% {
+      transform: translate3d(-10px, 14px, 0) rotate(2deg);
+    }
+  }
+
+  /* Açık zeminli bölümde kart ve metin tonları döner. */
+  :global(.section--light) .why__card {
+    border-color: var(--border-on-light);
+    background: var(--bg-tint);
+  }
+
+  :global(.section--light) .why__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .why__text {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .why__card--panel .why__mark,
+  :global(.section--light) .why__card--stack .why__mark::before,
+  :global(.section--light) .why__card--stack .why__mark::after {
+    background: var(--text-on-light);
+  }
+
+  :global(.section--light) .why__card--panel .why__mark {
+    color: var(--bg-light);
+  }
+
+  @media (max-width: 1020px) {
+    .why {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .why__card {
+      grid-column: span 2;
+    }
+
+    .why__cursor {
+      width: 72px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .why {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .why__card {
+      grid-column: span 1;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px;
+    }
+
+    .why__mark {
+      flex: 0 0 auto;
+      width: 56px;
+      height: 56px;
+    }
+
+    .why__mark :global(svg),
+    .why__card--bare .why__mark :global(svg) {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Dar ekranda imleç metnin üstüne biner — gizlenir. */
+    .why__cursor {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .why__card,
+    .why__mark,
+    .why__card--stack .why__mark::before,
+    .why__card--stack .why__mark::after {
+      transition: none;
+    }
+
+    .why__card:hover {
+      transform: none;
+    }
+
+    .why__card:hover .why__mark {
+      transform: none;
+    }
+
+    .why__cursor {
+      animation: none;
+    }
+  }
+</style>

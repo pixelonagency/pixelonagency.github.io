@@ -1,6 +1,6 @@
 ---
 import type { PageSection } from '../../content/page-schema';
-import { platformSpans } from '../../lib/platform-grid';
+import { gridSpans } from '../../lib/grid-spans';
 import PlatformLogo, { PLATFORM_COLORS } from '../PlatformLogo.astro';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
@@ -14,7 +14,7 @@ interface Props {
 const { section } = Astro.props;
 
 /* Genişlikler burada hesaplanır ki ızgaranın sağ kenarı hiçbir satırda kırılmasın. */
-const spans = platformSpans(section.items);
+const spans = gridSpans(section.items);
 ---
 
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>

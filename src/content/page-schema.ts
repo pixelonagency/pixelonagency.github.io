@@ -247,6 +247,28 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
       .min(1),
   });
 
+  /*
+   * "Neden Pixelon?" — kart listesinden ayrı tip: her kart farklı bir ikon
+   * muamelesi alır (dolu daire, beyaz panel, çıplak glif, katman rozeti) ve
+   * bölümde markaya gönderme yapan piksel imleç bulunur.
+   */
+  const why = z.object({
+    ...sectionBase,
+    type: z.literal('why'),
+    heading: nonEmpty,
+    lead: opt(z.string()),
+    items: z
+      .array(
+        z.object({
+          title: nonEmpty,
+          description: nonEmpty,
+          icon: z.enum(['team', 'conversion', 'report', 'cycle']),
+          featured: z.boolean().default(false),
+        }),
+      )
+      .min(1),
+  });
+
   const logos = z.object({
     ...sectionBase,
     type: z.literal('logos'),
@@ -423,6 +445,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     worldMap,
     platforms,
     principles,
+    why,
     text,
     stats,
     faq,
@@ -466,6 +489,7 @@ export const PAGE_SECTION_TYPES = [
   'worldMap',
   'platforms',
   'principles',
+  'why',
   'text',
   'stats',
   'faq',

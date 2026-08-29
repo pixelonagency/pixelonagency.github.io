@@ -1,0 +1,73 @@
+---
+/**
+ * "Neden Pixelon?" kartlarının ikonları.
+ *
+ * Çizgi dili SectorIcon ve PrincipleIcon ile aynı: 24×24 kutu, stroke 1.6,
+ * yuvarlatılmış uçlar. Kütüphane eklenmedi (CLAUDE.md: "gerekirse minimal
+ * inline SVG").
+ */
+type WhyIconName = 'team' | 'conversion' | 'report' | 'cycle';
+
+interface Props {
+  name: WhyIconName;
+}
+
+const { name }: Props = Astro.props;
+---
+
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {/* Strateji ve kreatif tek ekipte — kesişen üç disiplin. */}
+  {
+    name === 'team' && (
+      <>
+        <circle cx="9" cy="9.6" r="4.4" />
+        <circle cx="15" cy="9.6" r="4.4" />
+        <circle cx="12" cy="15" r="4.4" />
+      </>
+    )
+  }
+
+  {/* Dönüşüm odaklı yaklaşım — daralan huni ve çıkan ok. */}
+  {
+    name === 'conversion' && (
+      <>
+        <path d="M3.4 4.5h17.2l-6.5 7.6v6.3l-4.2 2.4v-8.7z" />
+        <path d="M17 17.4h4.2M19.4 15.3l2.1 2.1-2.1 2.1" />
+      </>
+    )
+  }
+
+  {
+    /*
+    Şeffaf raporlama — çerçevesiz sütunlar. Dış dikdörtgen bilinçli olarak yok:
+    "çıplak glif" muamelesinde ikon bir kutunun içindeymiş gibi okunuyordu.
+  */
+  }
+  {
+    name === 'report' && (
+      <>
+        <path d="M3.6 20h16.8" />
+        <path d="M6.8 20V13M12 20V5.4M17.2 20v-9.4" />
+      </>
+    )
+  }
+
+  {/* Sürekli optimizasyon — kapanmayan döngü. */}
+  {
+    name === 'cycle' && (
+      <>
+        <path d="M20 12a8 8 0 0 1-13.4 5.9" />
+        <path d="M4 12a8 8 0 0 1 13.4-5.9" />
+        <path d="M17.6 2.6v3.6h-3.6M6.4 21.4v-3.6h3.6" />
+      </>
+    )
+  }
+</svg>
