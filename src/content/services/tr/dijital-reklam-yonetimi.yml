@@ -4,10 +4,34 @@ translationKey: advertising
 order: 3
 
 seo:
-  title: Dijital Reklam Yönetimi | Google Ads ve Meta Ads | Pixelon
+  title: 'Dijital Reklam Yönetimi | Google, Meta, TikTok | Pixelon'
   description: >-
-    Google Ads ve Meta Ads kampanyalarınızı doğru hedefleme, yaratıcı reklam
-    içerikleri, dönüşüm takibi ve düzenli optimizasyonla büyütün.
+    Google reklam verme, Instagram ve Facebook reklamları, TikTok ve Yandex
+    kampanyaları. 20+ ülkede 13 dilde yönetilen performans reklamları.
+
+stats:
+  eyebrow: Rakamlarla Reklam Yönetimimiz
+  items:
+    - value: 80
+      prefix: '₺'
+      suffix: 'M+'
+      label: yıllık yönetilen reklam bütçesi
+      description: |-
+        Tek bir sağlık turizmi markası için yılda ₺60 milyonun üzerinde bütçe yönetiyoruz.
+    - value: 1000
+      suffix: '+'
+      label: yayına alınan kampanya
+      description: |-
+        Arama, görüntülü, video, alışveriş ve talep toplama kampanyaları dâhil.
+    - value: 20
+      suffix: '+'
+      label: ülkede reklam yayını
+      description: |-
+        Yurt içi ve yurt dışı; sağlık turizmi, ihracat ve e-ticaret hedefli kampanyalar.
+    - value: 13
+      label: dilde reklam yönetimi
+      description: |-
+        Reklam metni, görsel ve landing page aynı dilde kurgulanır — çeviriyle değil.
 
 hero:
   eyebrow: Dijital Reklam Yönetimi
@@ -16,7 +40,7 @@ hero:
   lead: |-
     Google Ads ve Meta reklam kampanyalarınızı doğru hedef kitle, güçlü reklam içerikleri ve düzenli optimizasyonlarla yönetiyoruz. Daha fazla talep, satış ve randevu için markanıza özel performans stratejileri oluşturuyoruz.
   tagline: |-
-    Google, Instagram ve Facebook reklamlarınızı ölçülebilir hedeflerle tek merkezden yönetiyoruz.
+    20+ ülkede, 13 dilde, 6 platformda kampanya yönetiyoruz — Google, Instagram, Facebook, TikTok, Yandex ve LinkedIn.
   whatsappMessage: |-
     Merhaba Pixelon, Dijital Reklam Yönetimi hizmeti hakkında bilgi almak istiyorum.
 
@@ -52,6 +76,12 @@ scope:
     - title: Uluslararası Reklam Kampanyaları
       description: |-
         Sağlık turizmi ve yurt dışı hedefli markalar için ülke, şehir, dil ve kullanıcı profiline özel reklam stratejileri geliştiriyoruz.
+    - title: UGC ve Reklam İçeriği Üretimi
+      description: |-
+        Reklamın videosunu, metnini ve görselini de biz üretiyoruz. Gerçek kullanıcı diliyle çekilen UGC videoları, dikey reklam kurguları ve platforma özel kreatif varyasyonları hazırlıyoruz — kampanyayı kurup içeriği size bırakmıyoruz.
+    - title: Google Ads Danışmanlığı
+      description: |-
+        Reklam hesabını kendi ekibiyle yöneten firmalar için denetim ve danışmanlık veriyoruz: mevcut hesabın incelenmesi, kayıp bütçenin tespiti, kampanya yapısının kurulması ve ekibin yönlendirilmesi. Yönetimi devralmadan da çalışabiliriz.
 
 principles:
   eyebrow: Reklam Yönetiminde Neleri Birlikte Ele Alıyoruz?
@@ -77,24 +107,29 @@ principles:
         Hedefleme, reklam içeriği, bütçe ve teklif stratejilerini performans verilerine göre sürekli geliştiriyoruz.
 
 platforms:
-  eyebrow: Reklam Platformlarımız
-  heading: Markanızın Hedefine Uygun Kanalları Seçiyoruz
+  eyebrow: Reklam Verdiğimiz Platformlar
+  heading: Altı Platformda Kampanya Kuruyor ve Yönetiyoruz
+  lead: |-
+    Hedef kitlenizin bulunduğu yere göre platform seçiyoruz. Bütçeyi tek kanala yığmak yerine, hangi kanalın hangi işi yaptığını ölçerek dağıtıyoruz.
   items:
-    - title: Google Ads
+    - title: Google Reklam Yönetimi (Google Ads)
       description: |-
-        Aktif olarak ürün veya hizmet arayan kullanıcılara, ihtiyaç duydukları anda ulaşmanızı sağlıyoruz.
-    - title: Instagram Ads
+        Google'da reklam verme sürecinin tamamını kuruyoruz: arama ağı, görüntülü reklam, alışveriş, YouTube video ve Performance Max kampanyaları. Hizmetinizi o an arayan kullanıcıya, arama anında ulaşırsınız.
+    - title: Instagram Reklam Verme
       description: |-
-        Görsel ve video odaklı reklamlarla marka bilinirliği, etkileşim, mesaj ve müşteri talebi oluşturuyoruz.
-    - title: Facebook Ads
+        Instagram'da reklam vermek isteyen markalar için görsel ve video odaklı kampanyalar kuruyoruz. Keşfet, Reels ve hikâye yerleşimleriyle mesaj, form ve randevu talebi topluyoruz.
+    - title: Facebook Reklamları (Meta Ads)
       description: |-
-        Geniş hedefleme seçenekleriyle farklı yaş gruplarına ve kullanıcı profillerine yönelik kampanyalar yürütüyoruz.
-    - title: YouTube Ads
+        Meta reklam yöneticisi üzerinden ilgi alanı, davranış ve benzer kitle hedeflemeleriyle geniş erişim ve talep toplama kampanyaları yürütüyoruz.
+    - title: TikTok Reklam Yönetimi
       description: |-
-        Video reklamlarla markanızı, ürünlerinizi ve hizmetlerinizi daha etkili ve akılda kalıcı biçimde anlatıyoruz.
-    - title: LinkedIn Ads
+        TikTok'ta reklam vermek için platformun diline uygun dikey video kreatifleri üretiyor, genç ve yüksek etkileşimli kitleye ulaşan kampanyalar kuruyoruz.
+    - title: Yandex Reklamları (Yandex Direct)
       description: |-
-        Kurumsal ve B2B hedeflemelerde sektör, pozisyon ve şirket özelliklerine göre profesyonel kitlelere ulaşmayı hedefliyoruz.
+        Rusça konuşulan pazarlara açılan markalar için Yandex Direct üzerinde arama ve görüntülü kampanyalar yönetiyoruz. Sağlık turizmi ve ihracatta karşılığı olan bir kanal.
+    - title: LinkedIn ve Snapchat Reklamları
+      description: |-
+        B2B hedeflemede sektör, pozisyon ve şirket kırılımıyla LinkedIn; genç kitleye ulaşan kampanyalarda Snapchat reklamları kuruyoruz.
 
 process:
   eyebrow: Dijital Reklam Yönetim Sürecimiz
@@ -116,28 +151,83 @@ process:
       description: |-
         Kampanyaları düzenli olarak geliştiriyor ve elde edilen sonuçları anlaşılır raporlarla paylaşıyoruz.
 
-projects:
-  eyebrow: Başarıyla Tamamladığımız Projeler
-  heading: Markaların Reklam Bütçelerini Büyüme Fırsatına Dönüştürdük
+showcase:
+  eyebrow: Reklam Yönettiğimiz Markalar
+  heading: Bütçeyi Gösterime Değil, Sonuca Çevirdiğimiz Kampanyalar
   lead: |-
-    Stratejik hedefleme, yaratıcı reklam içerikleri ve performans odaklı optimizasyonlarla farklı sektörlerdeki markaların daha fazla kullanıcıya ulaşmasına ve nitelikli talepler oluşturmasına destek olduk. Siz de markanızı bu projeler arasına eklemek için bizimle iletişime geçin.
-  items:
-    - eyebrow: Uluslararası Sağlık Turizmi Reklamları
-      title: Dentasay
-      description: |-
-        Avrupa'nın farklı ülkelerinde implant, zirkonyum ve estetik diş tedavileriyle ilgilenen kullanıcılara yönelik çok dilli Meta ve Google reklam kampanyaları hazırladık.
-    - eyebrow: Klinik ve Estetik Uygulama Reklamları
-      title: Dr. Ayşe Cinkaya Kahveci
-      description: |-
-        Dermatoloji ve estetik hizmetleri için bölgesel hedefleme, randevu odaklı reklam içerikleri ve kullanıcıyı iletişime yönlendiren kampanyalar oluşturduk.
-    - eyebrow: Almanya Hedefli Performans Kampanyaları
-      title: Çağla Aytaç
-      description: |-
-        Farklı şehirlerde sunulan diyet ve vücut şekillendirme hizmetleri için lokasyon bazlı reklam stratejileri ve talep toplama kampanyaları geliştirdik.
-    - eyebrow: Kurumsal Marka Bilinirliği Kampanyaları
-      title: Xray Groupe
-      description: |-
-        İnşaat, mimarlık ve mühendislik hizmetlerinin hedef pazarlarda daha görünür olması için kurumsal iletişimi destekleyen dijital kampanyalar hazırladık.
+    Aşağıdaki markaların reklam kampanyalarını uçtan uca biz kurguladık ve yönettik. Çağla Aytaç kampanyalarında 533.600 bağlantı tıklaması ve 2,7 milyon kişiye erişim, Dr. Ayşe Cinkaya Kahveci'de 2.886 hasta mesajlaşması ve profil ziyaretlerinde %266 artış, Sera Natura'da reklam öncesine göre aylık satışta %87 artış elde edildi.
+  slugs:
+    - dentasay
+    - cagla-aytac
+    - dr-ayse-cinkaya-kahveci
+    - sera-natura
+    - touch-consulting
+  ctaLabel: Tüm projelerimizi inceleyin
+  ctaHref: /projelerimiz/
+
+spotlight:
+  eyebrow: Sağlık Turizmi ve Klinik Reklamları
+  heading: Kliniğinizi Hastanın Kendi Dilinde ve Kendi Ülkesinde Anlatıyoruz
+  lead: |-
+    Sağlık turizmi reklamı, Türkçe kampanyanın çevrilmiş hâli değildir. Almanya'daki bir hastanın arama alışkanlığı, güven kriteri ve karar süresi Türkiye'dekinden farklıdır. Bu yüzden her dil için reklam metnini, görselini ve indiği sayfayı ayrı kurguluyoruz.
+
+    Diş, estetik, saç ekimi, dermatoloji ve cerrahi alanlarında çalışan klinikler ve doktorlar için; ülke ve şehir bazlı hedefleme, çok dilli kampanya yapısı, WhatsApp ve form üzerinden hasta talebi toplama ve gelen talebin takibi süreçlerini birlikte yürütüyoruz.
+  image: '/src/assets/images/service-ads-health-tourism.webp'
+  alt: Kliniğinde tablet üzerinden hastasıyla tedavi planını inceleyen doktor
+
+reach:
+  eyebrow: Reklam Yayınladığımız Pazarlar
+  heading: 20'den Fazla Ülkede, 13 Dilde Kampanya Yönettik
+  lead: |-
+    Yurt dışı kampanyalarında reklam hesabını açmak yeterli değil; hedef ülkenin arama diline, para birimine, saat dilimine ve rekabet yoğunluğuna göre ayrı kurgu gerekir. Aşağıdaki pazarlarda aktif kampanya yönettik.
+  countries:
+    - label: Türkiye
+      flag: '🇹🇷'
+      highlighted: true
+    - label: Almanya
+      flag: '🇩🇪'
+    - label: Hollanda
+      flag: '🇳🇱'
+    - label: Fransa
+      flag: '🇫🇷'
+    - label: Belçika
+      flag: '🇧🇪'
+    - label: İngiltere
+      flag: '🇬🇧'
+    - label: Avusturya
+      flag: '🇦🇹'
+    - label: İsviçre
+      flag: '🇨🇭'
+    - label: İtalya
+      flag: '🇮🇹'
+    - label: İspanya
+      flag: '🇪🇸'
+    - label: Romanya
+      flag: '🇷🇴'
+    - label: Bulgaristan
+      flag: '🇧🇬'
+    - label: Rusya
+      flag: '🇷🇺'
+    - label: Azerbaycan
+      flag: '🇦🇿'
+    - label: Irak
+      flag: '🇮🇶'
+    - label: Suudi Arabistan
+      flag: '🇸🇦'
+    - label: Birleşik Arap Emirlikleri
+      flag: '🇦🇪'
+    - label: Katar
+      flag: '🇶🇦'
+    - label: Kuveyt
+      flag: '🇰🇼'
+    - label: Libya
+      flag: '🇱🇾'
+    - label: Fas
+      flag: '🇲🇦'
+    - label: ABD
+      flag: '🇺🇸'
+    - label: Kongo D.C.
+      flag: '🇨🇩'
 
 why:
   eyebrow: Neden Pixelon?
@@ -192,3 +282,21 @@ faq:
     - question: Google Ads ve Meta Ads birlikte yönetilebilir mi?
       answer: |-
         Evet. Markanın hedeflerine göre Google, Instagram ve Facebook reklamları birbirini destekleyecek şekilde birlikte planlanabilir.
+    - question: Reklam yönetim ücretini neye göre belirliyorsunuz?
+      answer: |-
+        Ücret, yönetilecek platform sayısı, kampanya kurgusunun karmaşıklığı, hedeflenen ülke ve dil sayısı ile içerik üretim ihtiyacına göre belirlenir. Tek platformda yürüyen yurt içi bir kampanya ile altı dilde yürüyen sağlık turizmi kampanyası aynı emeği gerektirmez. İlk görüşmede ihtiyacınızı netleştirir, kapsamı ve buna karşılık gelen ücreti yazılı olarak paylaşırız.
+    - question: Reklam hesabımı ben yönetiyorum, yalnızca danışmanlık alabilir miyim?
+      answer: |-
+        Evet. Google Ads danışmanlığı kapsamında mevcut hesabınızı denetliyor, kayıp bütçeyi ve yapısal hataları raporluyor, kampanya kurgusunu birlikte planlıyor ve ekibinizi yönlendiriyoruz. Yönetimi devralmamız zorunlu değil.
+    - question: Google Ads uzmanı ile ajans arasındaki fark nedir?
+      answer: |-
+        Uzman genellikle yalnızca reklam hesabını yönetir. Ajans ise reklamın indiği sayfayı, reklam içeriğini, dönüşüm takibini ve gelen talebin nasıl karşılandığını da kapsar. Reklam performansı çoğu zaman hesabın içinde değil, hesabın dışında kalan bu halkalarda kaybedilir.
+    - question: Reklam hesapları kimin adına açılır?
+      answer: |-
+        Reklam hesapları sizin adınıza açılır ve mülkiyeti size aittir. Çalışmamız sona erdiğinde hesaplar, geçmiş veriler ve dönüşüm kurulumları sizde kalır.
+    - question: Yurt dışına yönelik reklam verebiliyor musunuz?
+      answer: |-
+        Evet. 20'den fazla ülkede, 13 dilde kampanya yönettik. Yurt dışı kampanyalarında reklam metni, görseli ve indiği sayfa hedef dilde ayrı kurgulanır; Türkçe kampanyanın çevirisi kullanılmaz.
+    - question: TikTok, Yandex veya Snapchat reklamı da veriyor musunuz?
+      answer: |-
+        Evet. Google ve Meta ağırlıklı çalışıyoruz, ancak hedef kitleniz oradaysa TikTok, Yandex Direct, LinkedIn ve Snapchat kampanyalarını da kuruyor ve yönetiyoruz.
