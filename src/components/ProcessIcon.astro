@@ -1,0 +1,81 @@
+---
+/**
+ * Reklam yönetim sürecinin adım ikonları.
+ *
+ * Çizgi dili SectorIcon · PrincipleIcon · WhyIcon ile aynı: 24×24 kutu,
+ * stroke 1.6, yuvarlatılmış uçlar. Kütüphane eklenmedi (CLAUDE.md).
+ */
+type ProcessIconName = 'discover' | 'plan' | 'build' | 'launch' | 'optimize';
+
+interface Props {
+  name: ProcessIconName;
+}
+
+const { name }: Props = Astro.props;
+---
+
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {/* Analiz — içinde sütun grafiği olan büyüteç. */}
+  {
+    name === 'discover' && (
+      <>
+        <circle cx="10.4" cy="10.4" r="6.8" />
+        <path d="M15.4 15.4L20.6 20.6" />
+        <path d="M8 12.4v-1.8M10.4 12.4V8.6M12.8 12.4v-3" />
+      </>
+    )
+  }
+
+  {/* Strateji — hedef ve isabet eden ok. */}
+  {
+    name === 'plan' && (
+      <>
+        <circle cx="11" cy="13" r="7.4" />
+        <circle cx="11" cy="13" r="3" />
+        <path d="M11 13l8-8M15.8 3.4l.6 2.6 2.6.6" />
+      </>
+    )
+  }
+
+  {/* Kurulum ve içerik üretimi — yerleşim blokları. */}
+  {
+    name === 'build' && (
+      <>
+        <rect x="3.2" y="4.4" width="17.6" height="15.2" rx="2.2" />
+        <path d="M3.2 9.4h17.6M9.6 9.4v10.2" />
+      </>
+    )
+  }
+
+  {/* Yayın ve test — izleyen göz. */}
+  {
+    name === 'launch' && (
+      <>
+        <path d="M1.8 12s3.6-6.4 10.2-6.4S22.2 12 22.2 12s-3.6 6.4-10.2 6.4S1.8 12 1.8 12z" />
+        <circle cx="12" cy="12" r="2.8" />
+      </>
+    )
+  }
+
+  {/* Optimizasyon ve raporlama — ayar sürgüleri. */}
+  {
+    name === 'optimize' && (
+      <>
+        <path d="M4 6.6h4.4M13.4 6.6H20" />
+        <path d="M4 12h10.6M19 12h1" />
+        <path d="M4 17.4h3M12 17.4h8" />
+        <circle cx="10.6" cy="6.6" r="2.2" />
+        <circle cx="16.6" cy="12" r="2.2" />
+        <circle cx="9.2" cy="17.4" r="2.2" />
+      </>
+    )
+  }
+</svg>

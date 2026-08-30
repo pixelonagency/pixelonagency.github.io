@@ -488,3 +488,38 @@ describe('serviceToSections — hero logo şeridi', () => {
     expect(section?.type === 'hero' && section.logos).toEqual([]);
   });
 });
+
+/**
+ * Süreç bölümü — 30 Ağu 2026'da dağınık kart düzenine geçti.
+ *
+ * `process` HER hizmet sayfasında zorunlu (22 dosya) ama ikon yalnız reklam
+ * sayfasında var. Platform/ilkeler/neden bölümlerindeki kural burada da
+ * geçerli: ikon tamsa yeni tip, değilse eski numaralı adım ızgarası.
+ */
+describe('serviceToSections — süreç bölümü', () => {
+  const ikonlu = {
+    eyebrow: 'e',
+    heading: 'h',
+    steps: [
+      { title: 'Analiz', description: 'a', icon: 'discover' },
+      { title: 'Strateji', description: 'b', icon: 'plan' },
+    ],
+  } as const;
+
+  test('ikonlar tamsa kendi bölüm tipiyle basılır', () => {
+    expect(types({ process: ikonlu })).toContain('process');
+  });
+
+  test('ikon yoksa eski adım ızgarası kalır', () => {
+    expect(types()).toContain('steps');
+    expect(types()).not.toContain('process');
+  });
+
+  test('adımlar ikonlarıyla birlikte taşınır', () => {
+    const section = build({ process: ikonlu }).find((s) => s.type === 'process');
+    expect(section?.type === 'process' && section.items).toEqual([
+      { title: 'Analiz', description: 'a', icon: 'discover' },
+      { title: 'Strateji', description: 'b', icon: 'plan' },
+    ]);
+  });
+});

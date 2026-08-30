@@ -202,7 +202,17 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
     process: z.object({
       eyebrow: nonEmpty,
       heading: nonEmpty,
-      steps: z.array(titledItem).min(1),
+      lead: opt(z.string()),
+      steps: z
+        .array(
+          z.object({
+            title: nonEmpty,
+            description: nonEmpty,
+            /* İkon verilirse dağınık kart dizilimine geçilir; eksikse adım ızgarası. */
+            icon: opt(z.enum(['discover', 'plan', 'build', 'launch', 'optimize'])),
+          }),
+        )
+        .min(1),
     }),
     projects: opt(
       z.object({

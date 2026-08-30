@@ -56,7 +56,9 @@ export interface ServiceLike {
     | undefined;
   comparison?: (Block & { items: TitledItem[]; note?: string | undefined }) | undefined;
   contentTypes?: (Block & { items: string[] }) | undefined;
-  process: Block & { steps: TitledItem[] };
+  process: Block & {
+    steps: (TitledItem & { icon?: 'discover' | 'plan' | 'build' | 'launch' | 'optimize' | undefined })[];
+  };
   projects?:
     | (Block & { items: { eyebrow?: string | undefined; title: string; description: string; href?: string }[] })
     | undefined;
@@ -322,15 +324,32 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     });
   }
 
-  sections.push({
-    type: 'steps',
-    eyebrow: service.process.eyebrow,
-    heading: service.process.heading,
-    lead: service.process.lead,
-    background: nextBg(),
-    ctas: [],
-    items: service.process.steps,
-  });
+  /*
+   * Süreç, ikonlar VARSA dağınık kart dizilimiyle basılır. İkon eksikse eski
+   * numaralı adım ızgarası —  her hizmet sayfasında zorunlu (22 dosya).
+   */
+  const steps = service.process.steps;
+  if (steps.length > 0 && steps.every((step) => Boolean(step.icon))) {
+    sections.push({
+      type: 'process',
+      eyebrow: service.process.eyebrow,
+      heading: service.process.heading,
+      lead: service.process.lead,
+      background: nextBg(),
+      ctas: [],
+      items: steps.map((step) => ({ title: step.title, description: step.description, icon: step.icon! })),
+    });
+  } else {
+    sections.push({
+      type: 'steps',
+      eyebrow: service.process.eyebrow,
+      heading: service.process.heading,
+      lead: service.process.lead,
+      background: nextBg(),
+      ctas: [],
+      items: steps.map((step) => ({ title: step.title, description: step.description })),
+    });
+  }
 
   if (service.projects) {
     sections.push({

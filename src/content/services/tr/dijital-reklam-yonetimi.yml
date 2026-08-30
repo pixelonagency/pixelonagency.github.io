@@ -172,18 +172,23 @@ process:
   heading: Planlıyor, Uyguluyor, Ölçüyor ve Geliştiriyoruz
   steps:
     - title: Analiz
+      icon: discover
       description: |-
         Markanızı, hedef kitlenizi, rakiplerinizi ve mevcut reklam performansınızı inceliyoruz.
     - title: Strateji
+      icon: plan
       description: |-
         Kampanya hedeflerini, platformları, bütçe planını ve dönüşüm yöntemlerini belirliyoruz.
     - title: Kurulum ve İçerik Üretimi
+      icon: build
       description: |-
         Kampanya yapısını oluşturuyor, reklam metinlerini, görselleri ve videoları hazırlıyoruz.
     - title: Yayın ve Test
+      icon: launch
       description: |-
         Farklı hedef kitle, mesaj ve reklam içeriklerini test ederek en etkili kombinasyonları belirliyoruz.
     - title: Optimizasyon ve Raporlama
+      icon: optimize
       description: |-
         Kampanyaları düzenli olarak geliştiriyor ve elde edilen sonuçları anlaşılır raporlarla paylaşıyoruz.
 

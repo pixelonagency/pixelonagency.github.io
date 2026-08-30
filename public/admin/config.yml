@@ -220,16 +220,14 @@ collections:
           - &f_eyebrow { label: Eyebrow (üst etiket), name: eyebrow, widget: string }
           - &f_heading { label: Başlık, name: heading, widget: string }
           - &f_lead { label: Giriş Metni, name: lead, widget: text, required: false }
-          - &f_titled_items
-            label: Kartlar
+          - label: Kartlar
             name: items
             widget: list
-            fields: &titled_item_fields
+            fields:
               - { label: Başlık, name: title, widget: string }
               - { label: Açıklama, name: description, widget: text }
-              # Yalnız "Neden Pixelon?" bölümünde okunur. İkon verilirse bölüm
-              # ikonlu ızgaraya geçer; boş bırakılan tek bir madde bile varsa
-              # klasik kart listesi basılır.
+              # İkon verilirse bölüm ikonlu ızgaraya geçer; boş bırakılan tek
+              # bir madde bile varsa klasik kart listesi basılır.
               - label: İkon
                 name: icon
                 widget: select
@@ -252,7 +250,17 @@ collections:
             widget: select
             required: false
             options: [cards, list]
-          - *f_titled_items
+          # Ortak kart alanları burada tanımlanır; karşılaştırma ve süreç
+          # blokları bunu kullanır. Bölüme özel alanlar (ikon, öne çıkar)
+          # ASLA buraya eklenmez — o alanlar ilgili bölümün kendi bloğunda
+          # durur, aksi hâlde tüm kart listelerine sızar.
+          - &f_titled_items
+            label: Kartlar
+            name: items
+            widget: list
+            fields: &titled_item_fields
+              - { label: Başlık, name: title, widget: string }
+              - { label: Açıklama, name: description, widget: text }
       - label: Platformlar
         name: platforms
         widget: object
@@ -334,7 +342,20 @@ collections:
         fields:
           - *f_eyebrow
           - *f_heading
-          - { label: Adımlar, name: steps, widget: list, fields: *titled_item_fields }
+          - *f_lead
+          - label: Adımlar
+            name: steps
+            widget: list
+            fields:
+              - { label: Başlık, name: title, widget: string }
+              - { label: Açıklama, name: description, widget: text }
+              # İkon verilirse dağınık kart dizilimine geçilir; eksikse
+              # klasik numaralı adım ızgarası basılır.
+              - label: İkon
+                name: icon
+                widget: select
+                required: false
+                options: [discover, plan, build, launch, optimize]
       - label: Proje Vitrini
         name: projects
         widget: object
@@ -765,6 +786,24 @@ collections:
                 fields:
                   - { label: Başlık, name: title, widget: string }
                   - { label: Açıklama, name: description, widget: text }
+
+          - label: Süreç (Dağınık Kart)
+            name: process
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - *s_lead
+              - label: Adımlar
+                name: items
+                widget: list
+                fields:
+                  - { label: Başlık, name: title, widget: string }
+                  - { label: Açıklama, name: description, widget: text }
+                  - { label: İkon, name: icon, widget: select, options: [discover, plan, build, launch, optimize] }
 
           - label: Metin
             name: text

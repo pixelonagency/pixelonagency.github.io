@@ -288,6 +288,27 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     items: z.array(z.object({ title: nonEmpty, description: nonEmpty })).min(1),
   });
 
+  /*
+   * Süreç — hizalı adım ızgarası değil dağınık kart dizilimi. Her kart bir
+   * arayüz penceresi gibi okunur (pencere noktaları, /01 numarası) ve başlık
+   * fosforlu kalemle vurgulanır.
+   */
+  const process = z.object({
+    ...sectionBase,
+    type: z.literal('process'),
+    heading: nonEmpty,
+    lead: opt(z.string()),
+    items: z
+      .array(
+        z.object({
+          title: nonEmpty,
+          description: nonEmpty,
+          icon: z.enum(['discover', 'plan', 'build', 'launch', 'optimize']),
+        }),
+      )
+      .min(1),
+  });
+
   const logos = z.object({
     ...sectionBase,
     type: z.literal('logos'),
@@ -471,6 +492,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     principles,
     why,
     scope,
+    process,
     text,
     stats,
     faq,
@@ -516,6 +538,7 @@ export const PAGE_SECTION_TYPES = [
   'principles',
   'why',
   'scope',
+  'process',
   'text',
   'stats',
   'faq',
