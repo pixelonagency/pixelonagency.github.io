@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import plane from '../../assets/images/process-plane.webp';
 import type { PageSection } from '../../content/page-schema';
 import ProcessIcon from '../ProcessIcon.astro';
 import SectionHead from '../SectionHead.astro';
@@ -15,37 +17,111 @@ const { section } = Astro.props;
 const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
-<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="proc-section">
+  <div class="proc__wrap">
+    <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
-  <ol class="proc" role="list">
     {
-      section.items.map((item, index) => (
-        <li class="proc__card" data-reveal data-reveal-index={index}>
-          {/* Pencere noktaları — kartı bir arayüz penceresi gibi okutur. */}
-          <span class="proc__dots" aria-hidden="true">
-            <i /> <i /> <i />
-          </span>
-
-          <span class="proc__no" aria-hidden="true">
-            /{pad(index + 1)}
-          </span>
-
-          <span class="proc__icon">
-            <ProcessIcon name={item.icon} />
-          </span>
-
-          <h3 class="proc__title">
-            <span class="proc__mark">{item.title}</span>
-          </h3>
-          <p class="proc__text">{item.description}</p>
-        </li>
-      ))
+      /*
+      Kâğıt uçak: sürecin "yola çıkma" ucunu işaretler. Son kartın sağ alt
+      köşesinde durur, süzülerek yükselir. Dekoratiftir — okuyucuya bilgi
+      taşımaz, bu yüzden ekran okuyucudan gizli.
+    */
     }
-  </ol>
+    <Image
+      class="proc__plane"
+      src={plane}
+      alt=""
+      aria-hidden="true"
+      widths={[220, 340]}
+      loading="lazy"
+      decoding="async"
+    />
+
+    <ol class="proc" role="list">
+      {
+        section.items.map((item, index) => (
+          <li class="proc__card" data-reveal data-reveal-index={index}>
+            {/* Pencere noktaları — kartı bir arayüz penceresi gibi okutur. */}
+            <span class="proc__dots" aria-hidden="true">
+              <i /> <i /> <i />
+            </span>
+
+            <span class="proc__no" aria-hidden="true">
+              /{pad(index + 1)}
+            </span>
+
+            <span class="proc__icon">
+              <ProcessIcon name={item.icon} />
+            </span>
+
+            <h3 class="proc__title">
+              <span class="proc__mark">{item.title}</span>
+            </h3>
+            <p class="proc__text">{item.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
 </Section>
 
 <style>
+  /*
+   * Bölüm zemini: hero'daki lime parıltı + ince ızgara dokusunun aynısı.
+   * Süreç bölümü düz zeminde fazla sade kalıyordu; aynı doku sayfanın
+   * geri kalanıyla akraba olmasını sağlar.
+   */
+  :global(.proc-section) {
+    position: relative;
+    overflow: hidden;
+    background-image:
+      radial-gradient(ellipse 70% 60% at 78% 15%, rgb(207 255 0 / 9%), transparent 66%),
+      linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 4%) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      72px 72px,
+      72px 72px;
+  }
+
+  :global(.section--light.proc-section) {
+    background-image:
+      radial-gradient(ellipse 70% 60% at 78% 15%, rgb(207 255 0 / 20%), transparent 66%),
+      linear-gradient(rgb(10 10 10 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(10 10 10 / 4%) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      72px 72px,
+      72px 72px;
+  }
+
+  .proc__wrap {
+    position: relative;
+  }
+
+  /* Kâğıt uçak — son kartın sağ alt köşesinde, süzülerek yükselir. */
+  .proc__plane {
+    position: absolute;
+    right: -26px;
+    bottom: -56px;
+    z-index: 2;
+    width: clamp(92px, 10vw, 152px);
+    height: auto;
+    pointer-events: none;
+    animation: proc-plane 7s ease-in-out infinite;
+  }
+
+  @keyframes proc-plane {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(-14px, -18px, 0) rotate(-6deg);
+    }
+  }
+
   /*
    * Referanstaki dağınık kart düzeni: kartlar eşit ızgarada değil, dönüşümlü
    * yukarı/aşağı kayar ve hafifçe eğilir. Sayfadaki diğer beş bölüm hizalı
@@ -58,7 +134,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
    */
   .proc {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     align-items: start;
     gap: 18px;
     margin: 56px 0 0;
@@ -106,14 +182,36 @@ const pad = (n: number) => String(n).padStart(2, '0');
     transform: translateY(30px) rotate(0deg);
   }
 
-  /* Kesikli bağlantı: her kartın sağından bir sonrakine uzanır. */
+  /*
+   * Kesikli bağlantı — L biçimindedir, düz yatay DEĞİL.
+   *
+   * Kartlar dikeyde dönüşümlü kayıyor (tek sıra 0, çift sıra +38px). Düz bir
+   * yatay çizgi bir sonraki kartın kenarına hiç değmiyor, boşlukta asılı
+   * kalıyordu. Çizgi artık önce yatay gidiyor, sonra iki kart arasındaki
+   * dikey farkı kapatıyor.
+   */
   .proc__card::after {
     content: '';
     position: absolute;
-    top: 34px;
     left: 100%;
-    width: 18px;
-    border-top: 1.5px dashed rgb(255 255 255 / 22%);
+    width: var(--gap, 18px);
+    height: var(--drop, 38px);
+    border-right: 1.5px dashed rgb(255 255 255 / 24%);
+    pointer-events: none;
+  }
+
+  /* Tek sıradan çift sıraya: yatay git, sonra AŞAĞI in. */
+  .proc__card:nth-child(odd)::after {
+    top: 34px;
+    border-top: 1.5px dashed rgb(255 255 255 / 24%);
+    border-top-right-radius: 8px;
+  }
+
+  /* Çift sıradan tek sıraya: yatay git, sonra YUKARI çık. */
+  .proc__card:nth-child(even)::after {
+    top: calc(34px - var(--drop, 38px));
+    border-bottom: 1.5px dashed rgb(255 255 255 / 24%);
+    border-bottom-right-radius: 8px;
   }
 
   .proc__card:last-child::after {
@@ -198,7 +296,9 @@ const pad = (n: number) => String(n).padStart(2, '0');
   }
 
   :global(.section--light) .proc__card::after {
-    border-top-color: rgb(10 10 10 / 22%);
+    border-right-color: rgb(10 10 10 / 24%);
+    border-top-color: rgb(10 10 10 / 24%);
+    border-bottom-color: rgb(10 10 10 / 24%);
   }
 
   @media (max-width: 1020px) {

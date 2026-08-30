@@ -217,6 +217,9 @@ const tickerItems = section.tagline?.includes('✦')
           */
           section.logos.length > 0 && (
             <ul class="hero__logos" role="list">
+              {/* Sayı, logoların önünde ve onlarla aynı boyda durur — şeridi
+                  cümle kurmadan etiketler. */}
+              <li class="hero__logos-label">{section.logos.length}+ Platform</li>
               {section.logos.map((name) => (
                 <li class="hero__logo" style={`--brand: ${PLATFORM_COLORS[name]}`}>
                   <PlatformLogo name={name} />
@@ -538,6 +541,17 @@ const tickerItems = section.tagline?.includes('✦')
     border-top: 1px solid rgb(255 255 255 / 10%);
     list-style: none;
     animation: fadeUp 0.8s var(--ease-out) 0.45s both;
+  }
+
+  .hero__logos-label {
+    font: 600 15px/1 var(--font-display);
+    letter-spacing: 0.01em;
+    color: rgb(255 255 255 / 72%);
+    white-space: nowrap;
+  }
+
+  .hero--light .hero__logos-label {
+    color: rgb(10 10 10 / 72%);
   }
 
   .hero__logo {

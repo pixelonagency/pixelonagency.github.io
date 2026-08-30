@@ -32,10 +32,6 @@ stats:
       label: dilde reklam yönetimi
       description: |-
         Reklam metni, görsel ve landing page aynı dilde kurgulanır — çeviriyle değil.
-    - value: 7
-      label: reklam platformu
-      description: |-
-        Google, Instagram, Facebook, TikTok, Yandex, LinkedIn ve Snapchat.
 
 heroVideo:
   desktopMp4: /media/hero/dijital-reklam/hero-ads-desktop.mp4
@@ -171,14 +167,10 @@ process:
   eyebrow: Dijital Reklam Yönetim Sürecimiz
   heading: Planlıyor, Uyguluyor, Ölçüyor ve Geliştiriyoruz
   steps:
-    - title: Analiz
+    - title: Analiz ve Strateji
       icon: discover
       description: |-
-        Markanızı, hedef kitlenizi, rakiplerinizi ve mevcut reklam performansınızı inceliyoruz.
-    - title: Strateji
-      icon: plan
-      description: |-
-        Kampanya hedeflerini, platformları, bütçe planını ve dönüşüm yöntemlerini belirliyoruz.
+        Markanızı, hedef kitlenizi, rakiplerinizi ve mevcut reklam performansınızı inceliyor; kampanya hedeflerini, platformları, bütçe planını ve dönüşüm yöntemlerini belirliyoruz.
     - title: Kurulum ve İçerik Üretimi
       icon: build
       description: |-
