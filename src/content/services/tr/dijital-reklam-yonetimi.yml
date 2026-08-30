@@ -32,6 +32,10 @@ stats:
       label: dilde reklam yönetimi
       description: |-
         Reklam metni, görsel ve landing page aynı dilde kurgulanır — çeviriyle değil.
+    - value: 7
+      label: reklam platformu
+      description: |-
+        Google, Instagram, Facebook, TikTok, Yandex, LinkedIn ve Snapchat.
 
 heroVideo:
   desktopMp4: /media/hero/dijital-reklam/hero-ads-desktop.mp4
@@ -46,8 +50,14 @@ hero:
     - "Reklam Bütçenizi Görüntülenmeye Değil, *Gerçek Sonuçlara* Dönüştürüyoruz."
   lead: |-
     Google Ads ve Meta reklam kampanyalarınızı doğru hedef kitle, güçlü reklam içerikleri ve düzenli optimizasyonlarla yönetiyoruz. Daha fazla talep, satış ve randevu için markanıza özel performans stratejileri oluşturuyoruz.
-  tagline: |-
-    20+ ülkede, 13 dilde, 7 platformda kampanya yönetiyoruz — Google, Instagram, Facebook, TikTok, Yandex, LinkedIn ve Snapchat.
+  logos:
+    - google
+    - instagram
+    - facebook
+    - tiktok
+    - yandex
+    - linkedin
+    - snapchat
   whatsappMessage: |-
     Merhaba Pixelon, Dijital Reklam Yönetimi hizmeti hakkında bilgi almak istiyorum.
 

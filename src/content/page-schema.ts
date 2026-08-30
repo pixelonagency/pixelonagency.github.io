@@ -51,6 +51,11 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     video: opt(heroVideoSchema),
     /** Hero altındaki kısa güven rozetleri ("15+ Yıllık Deneyim" …). */
     chips: list(nonEmpty),
+    /**
+     * CTA'ların altında duran platform marka işareti şeridi. Metin yerine logo
+     * kullanılır: yedi platform adını okumak yerine ziyaretçi onları tanır.
+     */
+    logos: list(z.enum(['google', 'instagram', 'facebook', 'tiktok', 'yandex', 'linkedin', 'snapchat'])),
     /** Referans: kariyer gibi bazı alt sayfa hero'ları ortalanmıştır. */
     align: opt(z.enum(['start', 'center'])),
     image: opt(image()),

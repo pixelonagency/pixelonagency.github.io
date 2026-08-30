@@ -466,3 +466,25 @@ describe('serviceToSections — kapsam düzeni', () => {
     expect(list.indexOf('scope')).toBe(2);
   });
 });
+
+/**
+ * Hero logo şeridi — 30 Ağu 2026.
+ *
+ * Hero'da CTA'ların altında gri bir cümle vardı: "20+ ülkede, 13 dilde, 7
+ * platformda … Google, Instagram, Facebook, TikTok, Yandex, LinkedIn ve
+ * Snapchat." İki işi birden kötü yapıyordu — rakamlar bir ekran aşağıdaki
+ * rakamlar bandında zaten vardı (tekrar), platform adları ise okunmayı
+ * gerektiriyordu. Ayrıya bölündü: hero logo taşır, rakamlar banda gider.
+ */
+describe('serviceToSections — hero logo şeridi', () => {
+  test('hero logoları bölüme taşınır', () => {
+    const hero = { ...minimal.hero, logos: ['google', 'instagram'] };
+    const section = build({ hero })[0];
+    expect(section?.type === 'hero' && section.logos).toEqual(['google', 'instagram']);
+  });
+
+  test('logo verilmezse alan boş dizi kalır — şerit çizilmez', () => {
+    const section = build()[0];
+    expect(section?.type === 'hero' && section.logos).toEqual([]);
+  });
+});

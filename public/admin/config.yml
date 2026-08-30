@@ -178,6 +178,13 @@ collections:
             field: { label: Satır, name: line, widget: string }
           - { label: Giriş Metni, name: lead, widget: text }
           - { label: Alt Slogan, name: tagline, widget: string, required: false }
+          # CTA altındaki platform logo şeridi. Metin listesi yerine marka
+          # işaretleri basılır; rakamlar aşağıdaki rakamlar bandındadır.
+          - label: Platform Logoları
+            name: logos
+            widget: list
+            required: false
+            field: { label: Platform, name: platform, widget: select, options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat] }
           - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text }
       # Hero arka plan loop videosu (Pixelon Miniature Digital World) — yollar dile bağlı değil.
       - label: Hero Videosu
@@ -505,6 +512,13 @@ collections:
                 field: { label: Satır, name: line, widget: string }
               - &s_lead { label: Giriş Metni, name: lead, widget: text, required: false }
               - { label: Alt Slogan, name: tagline, widget: string, required: false }
+              # CTA altındaki platform logo şeridi. Metin listesi yerine marka
+              # işaretleri basılır; rakamlar aşağıdaki rakamlar bandındadır.
+              - label: Platform Logoları
+                name: logos
+                widget: list
+                required: false
+                field: { label: Platform, name: platform, widget: select, options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat] }
               # Hero arka plan loop videosu — kök-göreli public yolları, dile bağlı değil.
               - label: Hero Videosu
                 name: video

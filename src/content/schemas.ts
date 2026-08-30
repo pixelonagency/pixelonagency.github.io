@@ -99,6 +99,8 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
       headingLines: z.array(nonEmpty).min(1),
       lead: nonEmpty,
       tagline: opt(z.string()),
+      /* CTA altındaki platform logo şeridi — bkz. PlatformLogo.astro. */
+      logos: list(z.enum(['google', 'instagram', 'facebook', 'tiktok', 'yandex', 'linkedin', 'snapchat'])),
       whatsappMessage: nonEmpty,
     }),
     /** Hero arka plan loop videosu (Pixelon Miniature Digital World). */

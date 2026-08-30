@@ -28,6 +28,7 @@ export interface ServiceLike {
     headingLines: string[];
     lead: string;
     tagline?: string | undefined;
+    logos?: ('google' | 'instagram' | 'facebook' | 'tiktok' | 'yandex' | 'linkedin' | 'snapchat')[] | undefined;
   };
   heroVideo?: Extract<PageSection, { type: 'hero' }>['video'];
   intro?: (Block & { body: string; highlight?: string | undefined }) | undefined;
@@ -135,6 +136,7 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     headingLines: service.hero.headingLines,
     lead: service.hero.lead,
     tagline: service.hero.tagline,
+    logos: service.hero.logos ?? [],
     breadcrumb: [
       { label: t('nav.home', locale), href: homePath },
       { label: t('nav.services', locale), href: servicesPath },

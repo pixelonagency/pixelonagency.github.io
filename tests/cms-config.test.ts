@@ -385,7 +385,15 @@ describe('services collection mirrors the service schema', () => {
 
   test('hero exposes every hero sub-field', () => {
     const hero = collection('services').fields?.find((field) => field.name === 'hero');
-    expect(fieldNames(hero?.fields ?? [])).toEqual(['eyebrow', 'headingLines', 'lead', 'tagline', 'whatsappMessage']);
+    // `logos` 30 Ağu 2026'da eklendi: CTA altındaki platform marka şeridi.
+    expect(fieldNames(hero?.fields ?? [])).toEqual([
+      'eyebrow',
+      'headingLines',
+      'lead',
+      'logos',
+      'tagline',
+      'whatsappMessage',
+    ]);
   });
 
   test('faq items expose question and answer', () => {

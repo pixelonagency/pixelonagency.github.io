@@ -7,6 +7,7 @@ import { breadcrumbSchema, toJsonLd } from '../../lib/schema';
 import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
 import { t } from '../../lib/ui';
 import CtaButton from '../CtaButton.astro';
+import PlatformLogo, { PLATFORM_COLORS } from '../PlatformLogo.astro';
 
 type Hero = Extract<PageSection, { type: 'hero' }>;
 
@@ -206,6 +207,23 @@ const tickerItems = section.tagline?.includes('✦')
             ) : (
               <p class="hero__tagline">{section.tagline}</p>
             ))
+        }
+
+        {
+          /*
+            Platform şeridi metin listesinin yerini alır: yedi adı okumak yerine
+            ziyaretçi işaretleri tanır. Rakamlar bilinçli olarak burada DEĞİL,
+            bir bölüm aşağıdaki rakamlar bandındadır — tekrar olmasın diye.
+          */
+          section.logos.length > 0 && (
+            <ul class="hero__logos" role="list">
+              {section.logos.map((name) => (
+                <li class="hero__logo" style={`--brand: ${PLATFORM_COLORS[name]}`}>
+                  <PlatformLogo name={name} />
+                </li>
+              ))}
+            </ul>
+          )
         }
 
         {
@@ -503,6 +521,73 @@ const tickerItems = section.tagline?.includes('✦')
     font-size: 14px;
     color: rgb(255 255 255 / 50%);
     animation: fadeUp 0.8s var(--ease-out) 0.4s both;
+  }
+
+  /*
+   * Platform şeridi — CTA'ların altında ince bir kanıt bandı. İşaretler
+   * durağan hâlde tek renk ve soluktur ki başlıkla yarışmasın; imleç
+   * üzerlerine gelince marka rengine döner.
+   */
+  .hero__logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(20px, 2.6vw, 34px);
+    margin: 34px 0 0;
+    padding: 22px 0 0;
+    border-top: 1px solid rgb(255 255 255 / 10%);
+    list-style: none;
+    animation: fadeUp 0.8s var(--ease-out) 0.45s both;
+  }
+
+  .hero__logo {
+    display: block;
+    color: rgb(255 255 255 / 42%);
+    transition:
+      color var(--t-base),
+      transform var(--t-base);
+  }
+
+  .hero__logo :global(svg) {
+    display: block;
+    width: 26px;
+    height: 26px;
+  }
+
+  .hero__logo:hover {
+    color: var(--brand);
+    transform: translateY(-2px);
+  }
+
+  .hero--light .hero__logo {
+    color: rgb(10 10 10 / 45%);
+  }
+
+  @media (max-width: 720px) {
+    .hero__logos {
+      gap: 18px;
+      margin-top: 26px;
+      padding-top: 18px;
+    }
+
+    .hero__logo :global(svg) {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__logos {
+      animation: none;
+    }
+
+    .hero__logo {
+      transition: none;
+    }
+
+    .hero__logo:hover {
+      transform: none;
+    }
   }
 
   /* Referans: '✦' ayraçlı slogan kayan şerittir — 18px soluk metin + lime yıldızlar. */
