@@ -33,6 +33,13 @@ stats:
       description: |-
         Reklam metni, görsel ve landing page aynı dilde kurgulanır — çeviriyle değil.
 
+heroVideo:
+  desktopMp4: /media/hero/dijital-reklam/hero-ads-desktop.mp4
+  desktopWebm: /media/hero/dijital-reklam/hero-ads-desktop.webm
+  desktopPoster: /media/hero/dijital-reklam/hero-ads-desktop-poster.webp
+  mobileMp4: /media/hero/dijital-reklam/hero-ads-mobile.mp4
+  mobileWebm: /media/hero/dijital-reklam/hero-ads-mobile.webm
+  mobilePoster: /media/hero/dijital-reklam/hero-ads-mobile-poster.webp
 hero:
   eyebrow: Dijital Reklam Yönetimi
   headingLines:
