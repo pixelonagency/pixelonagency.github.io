@@ -78,6 +78,14 @@ const gridProjects = spotlight ? projects.filter((project) => project !== spotli
 /* Koyu bölümlerde kartlar açık (dolgusuz); açık bölümlerde koyu dolgulu (ana sayfa). */
 const openCards = section.background === 'dark';
 
+/*
+ * Hizmet sayfalarındaki vitrin ile /projelerimiz listelemesini ayırıyoruz.
+ * Listeleme referans tasarımda dolgusuzdur ve metin görselin kenarına hizalanır;
+ * vitrinde kartlar daha geniş olduğu için aynı hizalama metni kenara yapıştırıp
+ * satırları boydan boya uzatıyordu. Vitrinde metne nefes payı veriliyor.
+ */
+const isShowcase = !section.showFilters;
+
 // Aynı sayfada birden fazla proje bölümü olabilir — id'ler bölüme özel olmalı.
 const uid = slugify(section.anchor ?? section.heading) || 'projeler';
 const panelId = `${uid}-panel`;
@@ -98,7 +106,7 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
         )}
       </div>
 
-      <div class="projects" data-projects>
+      <div class:list={['projects', isShowcase && 'projects--showcase']} data-projects>
         {filters.length > 0 && (
           <div class="projects__filterbar">
             <div class="projects__filters" role="tablist" aria-label={t('projects.categories', locale)}>
@@ -627,6 +635,56 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
     .projects__head-cta {
       width: 100%;
       justify-content: center;
+    }
+  }
+
+  /*
+   * Vitrin varyantı: metin bloğu görselin kenarından içeri alınır ve ölçüsü
+   * sınırlanır. Listeleme sayfası bu kuraldan etkilenmez.
+   */
+  .projects--showcase .projects__card--open .projects__body {
+    padding: 22px 20px 6px;
+    gap: 12px;
+  }
+
+  .projects--showcase .projects__card--open .projects__excerpt {
+    max-width: 52ch;
+  }
+
+  /*
+   * Vitrinde bağlantı düz metin yerine çerçeveli buton olur. Kartlar geniş
+   * ve dolgusuz olduğu için ince bir metin satırı kartın altına yapışıyor,
+   * tıklanabilir olduğu okunmuyordu. Site buton dilini izler
+   * (pill radius, 1px çerçeve, hover'da lime) ama vitrine göre küçüktür.
+   */
+  .projects--showcase .projects__card--open .projects__link {
+    align-self: flex-start;
+    margin-top: 6px;
+    padding: 11px 22px;
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-pill);
+    color: var(--text);
+    transition:
+      gap var(--t-slow),
+      border-color var(--t-slow),
+      color var(--t-slow),
+      transform var(--t-slow);
+  }
+
+  .projects--showcase .projects__card--open .projects__link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* Butonun altında nefes payı — kart kenarına yapışmasın. */
+  .projects--showcase .projects__card--open .projects__body {
+    padding-bottom: 22px;
+  }
+
+  @media (max-width: 720px) {
+    .projects--showcase .projects__card--open .projects__body {
+      padding: 18px 14px 4px;
     }
   }
 </style>
