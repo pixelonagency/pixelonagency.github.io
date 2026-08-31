@@ -1,0 +1,170 @@
+---
+import { Image } from 'astro:assets';
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type SectorCards = Extract<PageSection, { type: 'sectorCards' }>;
+
+interface Props {
+  section: SectorCards;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="sectors-section">
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.body} align="start" />
+
+  <ul class="sectors">
+    {
+      section.cards.map((item, index) => (
+        <li class="sectors__card" data-reveal data-reveal-index={index}>
+          <Image
+            src={item.image as never}
+            alt={item.alt ?? item.label}
+            class="sectors__image"
+            widths={[420, 760]}
+            sizes="(max-width: 720px) 46vw, 364px"
+          />
+          <span class="sectors__veil" />
+          <span class="sectors__label">{item.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  /* Altı sektör 3+3 iki sıra hâlinde durur. */
+  .sectors {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sectors__card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    /*
+     * 3 sütunda kartlar genişlediği için dikey 3:4 oran iki sırayı aşırı
+     * uzatıyordu; kare oran ikisini de ekrana sığdırıyor ve dikey görselleri
+     * merkezden kırparak konuyu koruyor.
+     */
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--border);
+    isolation: isolate;
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s;
+  }
+
+  .sectors__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*
+     * Kartlar renkli duruyor ama site koyu olduğu için hafifçe bastırılıyor;
+     * hover'da tam doygunluğa açılıyor.
+     */
+    filter: saturate(0.92) brightness(0.88);
+    transition:
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.4s;
+  }
+
+  /* Alttan yukarı koyu perde — yazının okunmasını garanti eder. */
+  .sectors__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgb(5 5 5 / 90%) 0%,
+      rgb(5 5 5 / 62%) 38%,
+      rgb(5 5 5 / 10%) 68%,
+      transparent 100%
+    );
+  }
+
+  .sectors__label {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    font: 600 clamp(19px, 1.85vw, 27px) / 1.15 var(--font-display);
+    letter-spacing: -0.015em;
+    color: #fff;
+    text-wrap: balance;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Lime alt çizgi hover'da soldan açılır. */
+  .sectors__label::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    margin-top: 8px;
+    background: var(--accent);
+    transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sectors__card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+  }
+
+  .sectors__card:hover .sectors__image {
+    transform: scale(1.06);
+    filter: saturate(1.06) brightness(1);
+  }
+
+  .sectors__card:hover .sectors__label {
+    transform: translateY(-2px);
+  }
+
+  .sectors__card:hover .sectors__label::after {
+    width: 42px;
+  }
+
+  /* Dar ekranda 2 sütun; kart daraldığı için dikey oran geri gelir. */
+  @media (max-width: 720px) {
+    .sectors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .sectors__card {
+      aspect-ratio: 3 / 4;
+    }
+
+    .sectors__label {
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      font-size: clamp(16px, 4.4vw, 21px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sectors__card,
+    .sectors__image,
+    .sectors__label,
+    .sectors__label::after {
+      transition: none;
+    }
+
+    .sectors__card:hover {
+      transform: none;
+    }
+
+    .sectors__card:hover .sectors__image {
+      transform: none;
+    }
+  }
+</style>
