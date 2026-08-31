@@ -205,6 +205,9 @@ describe('i18n wiring', () => {
     'email',
     // Video varlık yolları dile bağlı değildir (public/media altındaki dosyalar).
     'heroVideo',
+    // Menüde görünürlük ve menü görseli iki dilde de aynıdır: hizmet ya menüdedir ya değil.
+    'menu',
+    'menuImage',
     'updated',
     'featured',
     'order',

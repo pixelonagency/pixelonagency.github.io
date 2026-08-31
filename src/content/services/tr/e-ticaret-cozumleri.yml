@@ -3,6 +3,8 @@ navLabel: E-Ticaret Çözümleri
 order: 8
 translationKey: ecommerce
 
+menuImage: '/src/assets/images/service-ecommerce.webp'
+
 seo:
   title: E-Ticaret Ajansı | E-Ticaret Sitesi Kurulumu | Pixelon
   description: >-

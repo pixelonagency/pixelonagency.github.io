@@ -3,6 +3,8 @@ navLabel: Social Media Management
 order: 2
 translationKey: social-media
 
+menuImage: '/src/assets/images/service-social-media.webp'
+
 seo:
   title: Social Media Management Service | Pixelon Digital Agency
   description: >-

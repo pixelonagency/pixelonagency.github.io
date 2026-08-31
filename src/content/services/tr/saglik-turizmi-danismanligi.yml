@@ -3,6 +3,9 @@ navLabel: Sağlık Turizmi Danışmanlığı
 translationKey: health-tourism
 order: 9
 
+# Menüden çıkarıldı: hizmet envanteri 6 başlığa indirildi, sayfa yayında kalıyor.
+menu: false
+
 seo:
   title: Sağlık Turizmi Dijital Pazarlama Danışmanlığı | Pixelon
   description: >-

@@ -2,6 +2,8 @@ title: "SEO ve İçerik Pazarlaması"
 navLabel: "SEO ve İçerik Pazarlaması"
 translationKey: seo
 order: 4
+menuImage: '/src/assets/images/service-seo-content.webp'
+
 seo:
   title: "SEO Ajansı | Teknik SEO ve İçerik Pazarlaması | Pixelon"
   description: "SEO ajansı arıyorsanız: teknik SEO, anahtar kelime analizi ve arama niyetine uygun içerikle Google'da kalıcı görünürlük kuruyoruz. Reklam durunca bitmeyen organik trafik."

@@ -451,6 +451,22 @@ describe('settingsSchema', () => {
   });
 });
 
+describe('serviceSchema — menü alanları', () => {
+  const base = validService;
+
+  test('menu alanı verilmezse hizmet menüde görünür sayılır', () => {
+    expect(serviceSchema.parse(base).menu).toBe(true);
+  });
+
+  test('menu: false ile hizmet menüden çıkarılabilir — sayfası yerinde kalır', () => {
+    expect(serviceSchema.parse({ ...base, menu: false }).menu).toBe(false);
+  });
+
+  test('menuImage opsiyoneldir — görseli olmayan hizmet şemayı kırmaz', () => {
+    expect(serviceSchema.parse(base).menuImage).toBeUndefined();
+  });
+});
+
 describe('referenceSchema', () => {
   test('accepts a client reference with a logo', () => {
     const parsed = referenceSchema.parse({

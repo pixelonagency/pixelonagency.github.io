@@ -3,6 +3,8 @@ navLabel: E-Commerce Solutions
 order: 8
 translationKey: ecommerce
 
+menuImage: '/src/assets/images/service-ecommerce.webp'
+
 seo:
   title: E-Commerce Website and Digital Sales Solutions | Pixelon
   description: >-

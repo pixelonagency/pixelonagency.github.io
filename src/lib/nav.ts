@@ -17,7 +17,7 @@ export const PRIMARY_NAV: readonly NavItem[] = [
   { label: 'Hizmetlerimiz', href: '/hizmetlerimiz/', hasDropdown: true },
   { label: 'Projelerimiz', href: '/projelerimiz/' },
   { label: 'Referanslarımız', href: '/projelerimiz/#referanslar' },
-  { label: 'Kariyer', href: '/kariyer/' },
+  // Kariyer bilerek YOK: üst menüyü kısa tutmak için yalnız footer ve mobil menüde durur.
   { label: 'İletişim', href: '/iletisim/' },
 ];
 
@@ -31,6 +31,22 @@ export function buildServicesNav(entries: ServiceNavEntry[]): NavItem[] {
   return [...entries]
     .sort((a, b) => a.data.order - b.data.order)
     .map((entry) => ({ label: entry.data.navLabel, href: serviceHref(entry.id) }));
+}
+
+interface ServiceMenuEntry {
+  id: string;
+  data: { order: number; menu?: boolean | undefined };
+}
+
+/**
+ * Menüde (header, footer, mobil panel) gösterilecek hizmetler.
+ *
+ * `menu: false` işaretli hizmet listeden düşer ama sayfası yerinde kalır — hizmet
+ * envanteri daraltılırken sayfayı silmeden menüden çıkarabilmek için. Alan verilmemişse
+ * hizmet görünür sayılır, yani yeni bir hizmet eklendiğinde menüye kendiliğinden girer.
+ */
+export function menuServices<T extends ServiceMenuEntry>(entries: readonly T[]): T[] {
+  return [...entries].filter((entry) => entry.data.menu !== false).sort((a, b) => a.data.order - b.data.order);
 }
 
 const stripSlash = (path: string): string => (path.length > 1 ? path.replace(/\/+$/, '') : path);

@@ -2,6 +2,9 @@ title: Kurumsal Web Tasarım
 navLabel: Kurumsal Web Tasarım
 order: 11
 
+# Menüden çıkarıldı: hizmet envanteri 6 başlığa indirildi, sayfa yayında kalıyor.
+menu: false
+
 seo:
   title: Kurumsal Web Tasarım Hizmeti | Pixelon
   description: >-

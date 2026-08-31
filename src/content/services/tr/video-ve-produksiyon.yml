@@ -3,6 +3,9 @@ navLabel: Video ve Prodüksiyon
 translationKey: video
 order: 7
 
+# Menüden çıkarıldı: hizmet envanteri 6 başlığa indirildi, sayfa yayında kalıyor.
+menu: false
+
 seo:
   title: Video ve Prodüksiyon Hizmetleri | Pixelon
   description: >-

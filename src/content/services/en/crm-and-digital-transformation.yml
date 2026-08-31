@@ -3,6 +3,9 @@ navLabel: CRM and Digital Transformation
 translationKey: crm
 order: 10
 
+# Menüden çıkarıldı: hizmet envanteri 6 başlığa indirildi, sayfa yayında kalıyor.
+menu: false
+
 seo:
   title: CRM and Digital Transformation Solutions | Pixelon
   description: >-

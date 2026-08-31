@@ -1,10 +1,11 @@
 ---
+import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import logo from '../assets/logo/pixelon-logo.webp';
 import { DEFAULT_LOCALE, languageSwitcherLocales, localizedPath, type Locale } from '../lib/i18n';
 import { buildPrimaryNav, serviceHref, t } from '../lib/ui';
-import { isActiveRoute } from '../lib/nav';
+import { isActiveRoute, menuServices } from '../lib/nav';
 
 interface Props {
   locale?: Locale;
@@ -23,9 +24,12 @@ const switcherLocales = languageSwitcherLocales(locale, alternates);
 const allServices = await getCollection('services');
 const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
 const scoped = inLocale.length > 0 ? inLocale : allServices.filter((e) => e.id.startsWith(`${DEFAULT_LOCALE}/`));
-const serviceLinks = [...scoped]
-  .sort((a, b) => a.data.order - b.data.order)
-  .map((entry) => ({ label: entry.data.navLabel, href: serviceHref(entry.id.split('/').slice(1).join('/'), locale) }));
+/* `menu: false` işaretli hizmetler menüden düşer; sayfaları yayında kalır. */
+const serviceLinks = menuServices(scoped).map((entry) => ({
+  label: entry.data.navLabel,
+  href: serviceHref(entry.id.split('/').slice(1).join('/'), locale),
+  image: entry.data.menuImage as ImageMetadata | undefined,
+}));
 
 const PRIMARY_NAV = buildPrimaryNav(locale);
 const currentPath = Astro.url.pathname;
@@ -57,12 +61,21 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
               </a>
               <div class="site-nav__menu">
                 <div class="site-nav__menu-inner">
-                  {serviceLinks.map((service) => (
-                    <a href={service.href} class="site-nav__menu-link">
-                      {service.label}
-                    </a>
-                  ))}
+                  <div class="svc-grid">
+                    {serviceLinks.map((service) => (
+                      <a href={service.href} class="svc-card">
+                        {/* Görsel dekoratif: hemen yanındaki başlık zaten bağlantıyı adlandırıyor. */}
+                        {service.image && (
+                          <span class="svc-card__thumb">
+                            <Image src={service.image} alt="" widths={[72, 144]} sizes="72px" loading="lazy" />
+                          </span>
+                        )}
+                        <span class="svc-card__label">{service.label}</span>
+                      </a>
+                    ))}
+                  </div>
                   <a href={localizedPath('services', locale)} class="site-nav__menu-all">
+                    {/* Etiketin kendisi zaten okla bitiyor — ikinci bir ok basılmaz. */}
                     {t('nav.allServices', locale)}
                   </a>
                 </div>
@@ -223,10 +236,16 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
     position: relative;
   }
 
+  /*
+   * Panel tetikleyiciye değil, KENDİ genişliğine göre ortalanır: üç sütunlu ızgara
+   * 700px sürüyor, tetikleyicinin soluna hizalansa nav'ın sağına taşıyordu.
+   */
   .site-nav__menu {
     position: absolute;
     top: 100%;
-    left: -16px;
+    left: 50%;
+    width: 760px;
+    margin-left: -380px;
     padding-top: 14px;
     opacity: 0;
     visibility: hidden;
@@ -249,43 +268,106 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
     background: var(--bg-dropdown);
     backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 16px;
-    padding: 10px;
-    min-width: 280px;
+    border-radius: 18px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 24px 48px rgb(0 0 0 / 50%);
   }
 
-  .site-nav__menu-link {
-    display: block;
-    color: var(--text-soft);
-    text-decoration: none;
-    font: 500 13.5px var(--font-display);
-    padding: 9px 14px;
-    border-radius: 10px;
-    transition:
-      background var(--t-fast),
-      color var(--t-fast);
+  /* Altı hizmet 3+2 iki sıra hâlinde durur. */
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
   }
 
-  .site-nav__menu-link:hover {
+  .svc-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition:
+      border-color var(--t-fast),
+      background var(--t-fast);
+  }
+
+  .svc-card__thumb {
+    flex: 0 0 auto;
+    width: 62px;
+    height: 48px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgb(255 255 255 / 4%);
+  }
+
+  .svc-card__thumb :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*
+     * Kaynak görseller koyu stüdyo render'ları; bu boyutta olduğu gibi basılınca
+     * siyah bir leke gibi duruyorlar. Parlaklık açılıyor, hover'da tam doygunluğa gidiyor.
+     */
+    filter: saturate(0.95) brightness(1.35) contrast(1.05);
+    transition:
+      transform var(--t-base),
+      filter var(--t-fast);
+  }
+
+  .svc-card__label {
+    font: 500 13px / 1.25 var(--font-display);
+    color: var(--text-soft);
+    text-wrap: balance;
+    transition: color var(--t-fast);
+  }
+
+  .svc-card:hover,
+  .svc-card:focus-visible {
+    border-color: var(--accent);
     background: var(--accent-soft);
-    color: var(--accent);
+  }
+
+  .svc-card:hover .svc-card__label,
+  .svc-card:focus-visible .svc-card__label {
+    color: var(--text);
+  }
+
+  .svc-card:hover .svc-card__thumb :global(img) {
+    transform: scale(1.08);
+    filter: saturate(1.1) brightness(1.55) contrast(1.05);
   }
 
   .site-nav__menu-all {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: var(--accent);
     text-decoration: none;
     font: 600 13.5px var(--font-display);
-    padding: 11px 14px;
-    margin-top: 4px;
+    padding: 12px 8px 4px;
+    margin-top: 10px;
     border-top: 1px solid var(--border);
   }
 
   .site-nav__menu-all:hover {
     color: var(--text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .svc-card,
+    .svc-card__label,
+    .svc-card__thumb :global(img) {
+      transition: none;
+    }
+
+    .svc-card:hover .svc-card__thumb :global(img) {
+      transform: none;
+    }
   }
 
   /* --- Dil seçici --- */

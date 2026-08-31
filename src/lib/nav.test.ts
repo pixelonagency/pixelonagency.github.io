@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { buildServicesNav, isActiveRoute, PRIMARY_NAV, serviceHref } from './nav';
+import { buildServicesNav, isActiveRoute, menuServices, PRIMARY_NAV, serviceHref } from './nav';
 
 describe('serviceHref', () => {
   test('nests a service slug under /hizmetlerimiz', () => {
@@ -38,9 +38,12 @@ describe('PRIMARY_NAV', () => {
       'Hizmetlerimiz',
       'Projelerimiz',
       'Referanslarımız',
-      'Kariyer',
       'İletişim',
     ]);
+  });
+
+  test('üst menüde Kariyer yok — yalnız footer ve mobil menüde durur', () => {
+    expect(PRIMARY_NAV.some((item) => item.label === 'Kariyer')).toBe(false);
   });
 
   test('flags Hizmetlerimiz as the dropdown parent', () => {
@@ -76,5 +79,27 @@ describe('isActiveRoute', () => {
   test('treats the home route as active only for itself', () => {
     expect(isActiveRoute('/blog', '/')).toBe(false);
     expect(isActiveRoute('/', '/')).toBe(true);
+  });
+});
+
+describe('menuServices', () => {
+  const entries = [
+    { id: 'ux-ui-tasarimi', data: { navLabel: 'UX/UI Tasarımı', order: 6, menu: false } },
+    { id: 'e-ticaret-cozumleri', data: { navLabel: 'E-Ticaret Çözümleri', order: 8 } },
+    { id: 'web-tasarim-ve-yazilim', data: { navLabel: 'Web Tasarım ve Yazılım', order: 1 } },
+  ];
+
+  test('menü dışı bırakılan hizmeti eler', () => {
+    expect(menuServices(entries).map((e) => e.id)).toEqual(['web-tasarim-ve-yazilim', 'e-ticaret-cozumleri']);
+  });
+
+  test('alan verilmemişse hizmet menüde kalır — varsayılan görünürdür', () => {
+    expect(menuServices([{ id: 'seo', data: { navLabel: 'SEO', order: 4 } }])).toHaveLength(1);
+  });
+
+  test('order alanına göre sıralar, kaynak diziyi bozmaz', () => {
+    const source = [...entries];
+    menuServices(source);
+    expect(source.map((e) => e.id)).toEqual(entries.map((e) => e.id));
   });
 });

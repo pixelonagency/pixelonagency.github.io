@@ -3,6 +3,8 @@ navLabel: Web Design and Development
 translationKey: web-design
 order: 1
 
+menuImage: '/src/assets/images/service-web-design.webp'
+
 seo:
   title: Web Design and Development Services | Pixelon
   description: >-

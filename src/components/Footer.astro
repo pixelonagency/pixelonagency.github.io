@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection, getEntry } from 'astro:content';
 import logo from '../assets/logo/pixelon-logo.webp';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
+import { menuServices } from '../lib/nav';
 import { serviceHref, t } from '../lib/ui';
 import { telHref } from '../lib/whatsapp';
 
@@ -20,9 +21,11 @@ const settings = settingsEntry.data;
 const allServices = await getCollection('services');
 const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
 const scoped = inLocale.length > 0 ? inLocale : allServices.filter((e) => e.id.startsWith(`${DEFAULT_LOCALE}/`));
-const serviceLinks = [...scoped]
-  .sort((a, b) => a.data.order - b.data.order)
-  .map((entry) => ({ label: entry.data.navLabel, href: serviceHref(entry.id.split('/').slice(1).join('/'), locale) }));
+/* Header ile aynı liste: `menu: false` işaretli hizmetler footer'da da görünmez. */
+const serviceLinks = menuServices(scoped).map((entry) => ({
+  label: entry.data.navLabel,
+  href: serviceHref(entry.id.split('/').slice(1).join('/'), locale),
+}));
 
 const corporateLinks = [
   { label: t('nav.about', locale), href: localizedPath('about', locale) },

@@ -251,7 +251,7 @@ export function buildPrimaryNav(locale: Locale): NavItem[] {
     item('nav.services', 'services', { hasDropdown: true }),
     item('nav.projects', 'projects'),
     { label: t('nav.references', locale), href: localizedPath('references', locale) },
-    item('nav.careers', 'careers'),
+    // Kariyer bilerek YOK: üst menüyü kısa tutmak için yalnız footer ve mobil menüde durur.
     item('nav.contact', 'contact'),
   ];
 }

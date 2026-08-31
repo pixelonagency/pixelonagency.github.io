@@ -2,6 +2,9 @@ title: "Health Tourism Consulting"
 navLabel: "Health Tourism Consulting"
 translationKey: health-tourism
 order: 9
+# Menüden çıkarıldı: hizmet envanteri 6 başlığa indirildi, sayfa yayında kalıyor.
+menu: false
+
 seo:
   title: "Health Tourism Digital Marketing Consulting | Pixelon"
   description: "Grow your health brand in global markets with multilingual websites, international ad campaigns, content production and patient communication systems."

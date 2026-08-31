@@ -92,6 +92,14 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
      */
     translationKey: opt(z.string()),
     order: z.number().default(0),
+    /**
+     * Menülerde (header, footer, mobil panel) görünsün mü? `false` yapılan hizmet
+     * listelerden düşer ama sayfası yayında kalır — envanter daraltılırken sayfayı
+     * silmeden menüden çıkarabilmek için. Verilmezse hizmet menüde görünür.
+     */
+    menu: z.boolean().default(true),
+    /** Header dropdown'ındaki küçük görsel. Yoksa madde yalnız yazıyla basılır. */
+    menuImage: opt(image()),
     seo,
     cover: opt(image()),
     hero: z.object({

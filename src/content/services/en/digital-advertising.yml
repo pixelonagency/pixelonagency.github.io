@@ -3,6 +3,8 @@ navLabel: Digital Advertising Management
 translationKey: advertising
 order: 3
 
+menuImage: '/src/assets/images/service-digital-ads.webp'
+
 seo:
   title: Digital Advertising Management | Google & Meta Ads | Pixelon
   description: >-

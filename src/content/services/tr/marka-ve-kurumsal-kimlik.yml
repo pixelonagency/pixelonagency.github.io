@@ -3,6 +3,8 @@ navLabel: Marka ve Kurumsal Kimlik
 translationKey: branding
 order: 5
 
+menuImage: '/src/assets/images/service-brand-identity.webp'
+
 seo:
   title: Kurumsal Kimlik Tasarımı | Marka Ajansı | Pixelon
   description: >-

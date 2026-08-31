@@ -3,6 +3,9 @@ navLabel: "UX/UI Tasarımı"
 translationKey: ux-ui
 order: 6
 
+# Menüden çıkarıldı: hizmet envanteri 6 başlığa indirildi, sayfa yayında kalıyor.
+menu: false
+
 seo:
   title: "UX/UI Tasarımı ve Kullanıcı Deneyimi Hizmeti | Pixelon"
   description: "Web sitesi, mobil uygulama, SaaS ve yönetim panelleri için kullanıcı odaklı, modern ve dönüşüm sağlayan UX/UI tasarımları oluşturuyoruz."

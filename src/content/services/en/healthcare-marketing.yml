@@ -2,6 +2,9 @@ title: Healthcare Marketing
 navLabel: Healthcare Marketing
 order: 11
 
+# Menüden çıkarıldı: hizmet envanteri 6 başlığa indirildi, sayfa yayında kalıyor.
+menu: false
+
 seo:
   title: Healthcare Marketing Agency | Pixelon
   description: >-

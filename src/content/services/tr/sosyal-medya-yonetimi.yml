@@ -3,6 +3,8 @@ navLabel: Sosyal Medya Yönetimi
 order: 2
 translationKey: social-media
 
+menuImage: '/src/assets/images/service-social-media.webp'
+
 seo:
   title: Sosyal Medya Ajansı | İçerik, Reels ve Yönetim | Pixelon
   description: >-

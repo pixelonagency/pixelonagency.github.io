@@ -153,6 +153,11 @@ collections:
       # `[...path].astro` yalnızca değerlerin EŞİT olmasını arar.
       - { label: Çeviri Anahtarı, name: translationKey, widget: string, required: false, i18n: duplicate }
       - { label: Sıra, name: order, widget: number, value_type: int, default: 0, i18n: duplicate }
+      # Menüde görünsün mü? Kapatılan hizmet header/footer/mobil listelerden düşer ama
+      # sayfası yayında kalır — envanter daraltılırken sayfayı silmeden menüden çıkarmak için.
+      - { label: Menülerde Göster, name: menu, widget: boolean, default: true, i18n: duplicate }
+      # Header dropdown'ındaki küçük görsel. Görsel yolu dile bağlı değil → `duplicate`.
+      - { label: Menü Görseli, name: menuImage, widget: image, required: false, i18n: duplicate }
       - &f_seo
         label: SEO
         name: seo
