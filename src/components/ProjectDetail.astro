@@ -438,7 +438,7 @@ const RAIL_SCRIPT = `(() => {
       <div class="container">
         {
           detail.sections.map((block, index) => (
-            <div class="pd-block">
+            <div class:list={['pd-block', block.reelsFirst && 'pd-block--reels-first']}>
               {/* Editoryal iki kolon: solda numara + başlık, sağda gövde.
                   Metin tek kolonda kalsaydı satır uzunluğu korunurken sağda
                   ~420px ölü alan oluşuyordu. */}
@@ -1374,6 +1374,18 @@ const RAIL_SCRIPT = `(() => {
       grid-template-columns: 1fr 1fr;
       gap: 18px 14px;
     }
+  }
+  /*
+   * Bazı bölümlerde asıl iş videodur, görsel onu destekler. İşaretlemeyi
+   * çoğaltmak yerine blok sütun akışına alınıp reel'lerin sırası öne çekiliyor.
+   */
+  .pd-block--reels-first {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pd-block--reels-first .pd-reels {
+    order: -1;
   }
 </style>
 

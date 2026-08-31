@@ -480,6 +480,11 @@ export function makeProjectSchema(image: ImageResolver = defaultImage) {
              * kılavuzu sayfaları gibi) yan yana konunca okunmaz derecede küçülüyor.
              */
             layout: opt(z.enum(['auto', 'stack'])),
+            /*
+             * Varsayılan sıra: önce görseller, sonra videolar. Bazı bölümlerde asıl
+             * iş videodur ve görsel onu destekler — o durumda video öne alınır.
+             */
+            reelsFirst: opt(z.boolean()),
             images: list(image()),
             /**
              * Sosyal medya videoları — konuşmalı, altyazılı, 30+ saniyelik reel'ler.

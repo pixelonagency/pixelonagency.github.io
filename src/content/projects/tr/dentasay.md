@@ -82,6 +82,7 @@ detail:
 
         Sağlık iletişiminde stok görsel işe yaramıyor; gerçek klinik, gerçek ekip ve
         gerçek süreç gösterildiğinde güven kuruluyor.
+      reelsFirst: true
       images:
         - '/src/assets/images/projects/dentasay/video-kareler.webp'
       reels:
