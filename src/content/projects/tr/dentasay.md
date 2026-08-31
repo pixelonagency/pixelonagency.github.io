@@ -72,7 +72,7 @@ detail:
 
         Dil sayısı arttıkça çeviri değil, yerelleştirme meselesi büyüyor: reklam metni,
         landing page ve ilk cevap aynı dilde ve aynı tonda olmak zorunda.
-      images: []   # VARLIK İHTİYACI
+      images: []
 
     - heading: Dijital Reklam
       text: |-
@@ -83,7 +83,7 @@ detail:
 
         Reklamın indiği yer de kampanyanın parçasıydı: her tedavi için ayrı landing page
         tasarımı yapıldı, genel bir ana sayfaya yönlendirme yapılmadı.
-      images: []   # VARLIK İHTİYACI
+      images: []
 
     - heading: Sosyal Medya, İçerik ve SEO
       text: |-
@@ -93,7 +93,8 @@ detail:
 
         SEO tarafında tedavi sayfaları, ülke bazlı içerikler ve çok dilli bir yapı kurarak
         markanın uluslararası aramalardaki görünürlüğünü destekledik.
-      images: []   # VARLIK İHTİYACI
+      images:
+        - '/src/assets/images/projects/dentasay/sosyal-medya.webp'
 
     - heading: Web Sitesi ve UX/UI
       text: |-
@@ -102,7 +103,10 @@ detail:
 
         Tasarımda çıkış noktası şuydu: tedavi araştıran bir kullanıcı aradığı bilgiye
         kolayca ulaşabilmeli ve hazır olduğu anda hızlıca iletişime geçebilmeli.
-      images: []   # VARLIK İHTİYACI
+      images:
+        - '/src/assets/images/projects/dentasay/web-anasayfa.webp'
+        - '/src/assets/images/projects/dentasay/web-bolumler.webp'
+        - '/src/assets/images/projects/dentasay/web-tam-sayfa.webp'
 
     - heading: Video ve Kreatif Prodüksiyon
       text: |-
@@ -111,7 +115,29 @@ detail:
 
         Sağlık iletişiminde stok görsel işe yaramıyor; gerçek klinik, gerçek ekip ve
         gerçek süreç gösterildiğinde güven kuruluyor.
-      images: []   # VARLIK İHTİYACI
+      images:
+        - '/src/assets/images/projects/dentasay/video-kareler.webp'
+      reels:
+        - src: /media/projects/dentasay/tanitim-filmi.mp4
+          poster: /media/projects/dentasay/tanitim-filmi.webp
+          title: Dentasay klinik tanıtım filmi
+          width: 1280
+          height: 720
+
+    - heading: Marka ve Kurumsal Kimlik
+      text: |-
+        Uluslararası bir hasta kitlesine hitap eden markanın her temas noktasında aynı
+        dili konuşması gerekiyordu. Logo kullanım kuralları, kurumsal renkler, tipografi
+        ve yanlış kullanımları kapsayan bir görsel rehber hazırladık.
+
+        Rehberin ardından uygulamaları ürettik: kartvizit, antetli kâğıt, klinik önlüğü,
+        broşür ve tanıtım materyalleri. Kartvizitin arka yüzüne klinik ve ülke haritası
+        yerleştirildi — Türkiye, Almanya, Bulgaristan ve Romanya'daki noktalar tek bakışta
+        görünüyor.
+      images:
+        - '/src/assets/images/projects/dentasay/marka-kilavuzu.webp'
+        - '/src/assets/images/projects/dentasay/kurumsal-kimlik.webp'
+      reels: []
 
     - heading: Hasta İletişimi ve Talep Yönetimi
       text: |-
@@ -120,7 +146,7 @@ detail:
 
         Sağlık turizminde ilk cevabın hızı ve dili, reklam bütçesinden daha belirleyici
         olabiliyor. Bu yüzden iletişim tarafını kampanyanın dışında değil içinde kurguladık.
-      images: []   # VARLIK İHTİYACI
+      images: []
 
   result:
     heading: Ortaya Çıkan Yapı

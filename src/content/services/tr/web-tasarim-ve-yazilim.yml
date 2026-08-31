@@ -33,6 +33,10 @@ showreel:
   - eyebrow: Yayındaki İşlerimiz
     heading: Tasarlayıp Kodladığımız Web Siteleri
     items:
+      - label: Dentasay
+        image: '/src/assets/images/projects/dentasay/web-anasayfa.webp'
+        alt: Dentasay diş poliklinikleri web sitesinin ana sayfası
+        href: /projelerimiz/dentasay/
       - label: Hands For All
         image: '/src/assets/images/showreel/handsforall.webp'
         alt: Hands For All bağış platformunun ana sayfası
