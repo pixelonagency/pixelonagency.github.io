@@ -153,6 +153,10 @@ principles:
       description: |-
         Günübirlik trendlere bağlı kalmayan, markanız büyüdükçe gelişebilecek zamansız bir kimlik tasarlıyoruz.
 
+    - title: Erişilebilirlik
+      icon: tracking
+      description: |-
+        Kimlik yalnız sunumda değil, gerçek hayatta da çalışmalı: renk kontrastı okunabilir, logo küçük boyutta ve tek renkte ayırt edilebilir, tipografi ekranda ve baskıda net olmalı.
 process:
   eyebrow: Marka Tasarım Sürecimiz
   heading: Markanızı Tanıyor, Hikâyesini Tasarıma Dönüştürüyoruz.
