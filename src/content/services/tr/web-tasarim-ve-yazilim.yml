@@ -4,10 +4,11 @@ translationKey: web-design
 order: 1
 
 seo:
-  title: Web Tasarım ve Yazılım Hizmetleri | Pixelon
+  title: Web Tasarım Ajansı | Kurumsal Site ve Özel Yazılım | Pixelon
   description: >-
-    Pixelon ile hızlı, mobil uyumlu, SEO altyapılı ve dönüşüm odaklı web
-    sitelerine sahip olun. Markanıza özel web tasarım çözümlerini keşfedin.
+    Web tasarım ajansı arıyorsanız: hızlı, mobil uyumlu, SEO altyapılı ve
+    dönüşüm odaklı kurumsal siteler, e-ticaret ve özel yazılım. Markanıza özel
+    tasarım, yönetilebilir panel.
 
 heroVideo:
   desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
@@ -17,9 +18,9 @@ heroVideo:
   mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
   mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
 hero:
-  eyebrow: Web Tasarım ve Yazılım
+  eyebrow: Web Tasarım Ajansı
   headingLines:
-    - "Markanızı İlk Görüşte Etkileyici Kılan Web Siteleri Tasarlıyoruz."
+    - "Markanızı İlk Görüşte Anlatan *Web Tasarım Ajansı.*"
   lead: >-
     Markanızı doğru yansıtan; hızlı, mobil uyumlu, kullanıcı dostu ve
     ziyaretçileri müşteriye dönüştürmeye odaklanan web siteleri geliştiriyoruz.
@@ -27,6 +28,39 @@ hero:
     Kurumsal web sitelerinden e-ticaret projelerine kadar markanıza özel,
     yönetilebilir ve SEO uyumlu dijital deneyimler oluşturuyoruz.
   whatsappMessage: "Merhaba Pixelon, Web Tasarım ve Yazılım hizmeti hakkında bilgi almak istiyorum."
+
+showreel:
+  eyebrow: Yayındaki İşlerimiz
+  heading: Tasarlayıp Kodladığımız Web Siteleri
+  items:
+    - label: Hands For All
+      image: '/src/assets/images/showreel/handsforall.webp'
+      alt: Hands For All bağış platformunun ana sayfası
+      href: /projelerimiz/handsforall/
+    - label: Anneliğin Hikayesi
+      image: '/src/assets/images/showreel/annelik-hikayesi.webp'
+      alt: Anneliğin Hikayesi içerik platformunun ana sayfası
+      href: /projelerimiz/annelik-hikayesi/
+    - label: Dr. Ayşe Cinkaya Kahveci
+      image: '/src/assets/images/showreel/dr-ayse-cinkaya-kahveci.webp'
+      alt: Dermatoloji kliniğinin dolgu uygulamaları sayfası
+      href: /projelerimiz/dr-ayse-cinkaya-kahveci/
+    - label: Çağla Aytaç
+      image: '/src/assets/images/showreel/cagla-aytac.webp'
+      alt: Diyetisyen Çağla Aytaç web sitesinin ana sayfası
+      href: /projelerimiz/cagla-aytac/
+    - label: Xray Groupe
+      image: '/src/assets/images/showreel/xray-groupe.webp'
+      alt: Xray Groupe inşaat firmasının altyapı projeleri sayfası
+      href: /projelerimiz/xray-groupe/
+    - label: Touch Consulting
+      image: '/src/assets/images/showreel/touch-consulting.webp'
+      alt: Touch Consulting KOSGEB danışmanlık sayfası
+      href: /projelerimiz/touch-consulting/
+    - label: Redex Glass
+      image: '/src/assets/images/showreel/redex-glass.webp'
+      alt: Redex Glass cam ambalaj markasının ana sayfası
+      href: /projelerimiz/redex-glass/
 
 intro:
   eyebrow: İlk İzlenim
@@ -41,6 +75,7 @@ intro:
 scope:
   eyebrow: Web Tasarım Hizmetlerimiz
   heading: İhtiyacınıza Uygun, Markanıza Özel Web Çözümleri
+  layout: list
   items:
     - title: Kurumsal Web Sitesi
       description: >-
@@ -71,31 +106,68 @@ scope:
         özel panel, form, rezervasyon, üyelik ve entegrasyon çözümleri
         geliştiriyoruz.
 
+principles:
+  eyebrow: Web Sitesi Kurarken Neleri Birlikte Ele Alıyoruz?
+  heading: Tasarımdan Önce Karar, Yayından Sonra Bakım
+  items:
+    - title: Hedef ve Kullanıcı Tanımı
+      icon: audience
+      description: |-
+        Siteye kim gelecek, ne arayacak ve hangi aksiyonu alması bekleniyor — tasarıma başlamadan önce bunu netleştiriyoruz.
+    - title: Bilgi Mimarisi
+      icon: strategy
+      description: |-
+        Menü yapısı, sayfa hiyerarşisi ve içerik akışı. Kullanıcının aradığını en az tıklamayla bulması bu katmanda çözülür.
+    - title: Arayüz ve Marka Dili
+      icon: creative
+      description: |-
+        Tipografi, renk, boşluk ve görsel dil markanızla tutarlı olacak biçimde kurgulanıyor. Şablon değil, size ait bir arayüz.
+    - title: Dönüşüm Noktaları
+      icon: landing
+      description: |-
+        Form, WhatsApp, telefon ve teklif butonlarının nerede duracağını rastgele değil, kullanıcının karar anına göre yerleştiriyoruz.
+    - title: Hız ve Teknik Sağlık
+      icon: tracking
+      description: |-
+        Görsel optimizasyonu, önbellekleme, Core Web Vitals ve mobil performans. Yavaş site hem kullanıcıyı hem sıralamayı kaybettirir.
+    - title: Yayın Sonrası Bakım
+      icon: optimize
+      description: |-
+        Güncelleme, yedekleme, güvenlik ve içerik ekleme. Site yayına girdiğinde iş bitmiyor, orada başlıyor.
+
 why:
   eyebrow: Standartlarımız
   heading: Güzel Görünmenin Ötesinde, Sonuç Üreten Bir Deneyim
   items:
     - title: Markaya Özel Tasarım
+      icon: team
+      featured: true
       description: >-
         Hazır şablonlar yerine markanızın kimliğine, sektörüne ve hedef
         kitlesine uygun özgün arayüzler tasarlıyoruz.
     - title: Mobil Uyumluluk
+      icon: cycle
       description: >-
         Web sitenizin telefon, tablet ve masaüstü cihazlarda kusursuz
         görünmesini sağlıyoruz.
     - title: Hız ve Performans
+      icon: conversion
       description: >-
         Sayfa yüklenme sürelerini iyileştirerek kullanıcı deneyimini ve arama
         motoru performansını destekliyoruz.
     - title: SEO Altyapısı
+      icon: report
       description: >-
         Başlık yapıları, URL düzeni, meta alanları, görsel optimizasyonu ve
         teknik altyapıyı SEO standartlarına uygun hazırlıyoruz.
     - title: Dönüşüm Odaklı Yapı
+      icon: team
       description: >-
         WhatsApp, telefon, teklif ve iletişim formu gibi aksiyonları doğru
         noktalarda konumlandırarak daha fazla talep alınmasını hedefliyoruz.
     - title: Yönetilebilir Admin Paneli
+      icon: cycle
+      featured: true
       description: >-
         İçeriklerinizi, hizmetlerinizi, projelerinizi, blog yazılarınızı ve
         iletişim taleplerinizi kolayca yönetebileceğiniz bir panel
@@ -106,61 +178,49 @@ process:
   heading: Fikirden Yayına Planlı ve Şeffaf Bir Süreç
   steps:
     - title: Keşif ve İhtiyaç Analizi
+      icon: discover
       description: >-
         Markanızı, hedef kitlenizi, rakiplerinizi ve web sitesinden
         beklentilerinizi öğreniyoruz.
     - title: İçerik ve Site Mimarisi
+      icon: plan
       description: >-
         Sayfaları, kullanıcı yolculuğunu, içerik başlıklarını ve
         yönlendirmeleri planlıyoruz.
     - title: UX/UI Tasarımı
+      icon: build
       description: >-
         Markanızın görsel kimliğine uygun masaüstü ve mobil arayüzleri
         tasarlıyoruz.
     - title: Yazılım ve Geliştirme
+      icon: optimize
       description: >-
         Onaylanan tasarımı hızlı, güvenli, yönetilebilir ve mobil uyumlu bir
         web sitesine dönüştürüyoruz.
     - title: Test ve Yayın
+      icon: launch
       description: >-
         Formları, bağlantıları, sayfa hızını, farklı cihazları ve SEO ayarlarını
         kontrol ederek siteyi yayına alıyoruz.
     - title: Destek ve Geliştirme
+      icon: measure
       description: >-
         Yayın sonrasında ihtiyaç duyulan güncelleme, bakım ve geliştirme
         süreçlerinde markanıza destek oluyoruz.
 
-projects:
-  eyebrow: Başarıyla Tamamladığımız Projeler
-  heading: Markalar İçin Tasarladığımız Dijital Deneyimler
-  lead: >-
-    Yaratıcı fikirler ve stratejik çözümlerle farklı sektörlerdeki markalara
-    dijital dünyada değer kattık. Siz de bu projeler arasındaki yerinizi almak
-    için bizimle iletişime geçin.
-  items:
-    - eyebrow: Çok Dilli Kurumsal Web Sitesi
-      title: Xray Groupe
-      description: >-
-        İnşaat ve mühendislik alanında faaliyet gösteren Xray Groupe için
-        kurumsal gücü, hizmet kapsamını ve uluslararası projeleri yansıtan
-        modern bir web sitesi tasarladık.
-    - eyebrow: Sağlık Turizmi Web Sitesi
-      title: Dentasay
-      description: >-
-        Tedavilerin anlaşılır biçimde sunulduğu, uluslararası hastalara hitap
-        eden ve iletişim taleplerini artırmaya odaklanan çok dilli bir web
-        deneyimi oluşturduk.
-    - eyebrow: Çok Dilli Doktor Web Sitesi
-      title: Dr. Ayşe Cinkaya Kahveci
-      description: >-
-        Dermatoloji ve estetik uygulamaları güven veren bir yapıyla sunan,
-        mobil uyumlu ve randevu dönüşümüne odaklanan çok dilli bir web sitesi
-        hazırladık.
-    - eyebrow: Sağlık ve Danışmanlık Web Sitesi
-      title: Çağla Aytaç
-      description: >-
-        Hizmetlerin, paketlerin ve farklı şubelerin kullanıcı dostu biçimde
-        sunulduğu, çok dilli ve modern bir web sitesi deneyimi geliştirdik.
+showcase:
+  eyebrow: Web Sitesi Kurduğumuz Markalar
+  heading: Tasarımdan Yayına Uçtan Uca Kurduğumuz Projeler
+  lead: |-
+    Aşağıdaki markaların web sitelerini tasarımdan yazılıma, içerikten yayına kadar biz kurduk. Dentasay için 13 dilde, 20 ülkeye hitap eden çok dilli bir yapı; Xray Groupe için Demokratik Kongo'da faaliyet gösteren bir inşaat firmasının kurumsal sitesi; Dr. Ayşe Cinkaya Kahveci kliniği için tek dilden 6 dile taşınan bir site altyapısı.
+  slugs:
+    - dentasay
+    - xray-groupe
+    - dr-ayse-cinkaya-kahveci
+    - cagla-aytac
+  columns: 2
+  ctaLabel: Tüm projelerimizi inceleyin
+  ctaHref: /projelerimiz/
 
 value:
   eyebrow: Neden Pixelon ile Çalışmalısınız?
@@ -181,6 +241,31 @@ value:
     - Çok dilli site desteği
     - Hız ve güvenlik optimizasyonu
     - Yayın sonrası teknik destek
+
+sectors:
+  eyebrow: Sektör Deneyimimiz
+  heading: Hangi Sektörlerle Çalışıyoruz?
+  body: |-
+    Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret işletmeleri, inşaat ve gayrimenkul şirketleri ile hizmet sektöründeki KOBİ ve kurumsal markalar için web sitesi ve yazılım projeleri geliştiriyoruz. Her sektörün kullanıcı beklentisi, içerik yapısı ve dönüşüm yolu farklıdır; site kurgusunu buna göre değiştiriyoruz.
+  cards:
+    - label: Sağlık ve Klinik
+      image: '/src/assets/images/sector-saglik-klinik.webp'
+      alt: Modern bir diş kliniğinde hastasıyla ilgilenen hekim
+    - label: Sağlık Turizmi
+      image: '/src/assets/images/sector-saglik-turizmi.webp'
+      alt: Hastane resepsiyonunda karşılanan yurt dışından gelen hasta
+    - label: Estetik ve Kozmetik
+      image: '/src/assets/images/sector-estetik-kozmetik.webp'
+      alt: Güzellik kliniğinde cilt bakımı uygulanan danışan
+    - label: E-Ticaret
+      image: '/src/assets/images/sector-e-ticaret.webp'
+      alt: Depoda kargo paketini okutan e-ticaret çalışanı
+    - label: İnşaat ve Gayrimenkul
+      image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+      alt: Gün batımında modern bir konut projesinin cephesi
+    - label: Kurumsal Hizmet
+      image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+      alt: Aydınlık bir ofiste toplantı hâlindeki kurumsal ekip
 
 cta:
   eyebrow: Web Sitesi Projenizi Birlikte Hayata Geçirelim
