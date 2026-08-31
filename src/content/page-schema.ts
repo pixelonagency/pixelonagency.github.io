@@ -68,6 +68,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
         'searchconsole',
         'analytics',
         'semrush',
+        'youtube',
       ]),
     ),
     /** Referans: kariyer gibi bazı alt sayfa hero'ları ortalanmıştır. */
@@ -300,6 +301,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
             'searchconsole',
             'analytics',
             'semrush',
+            'youtube',
           ]),
           featured: z.boolean().default(false),
         }),

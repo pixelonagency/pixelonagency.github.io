@@ -184,7 +184,7 @@ collections:
             name: logos
             widget: list
             required: false
-            field: { label: Platform, name: platform, widget: select, options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat, perplexity, searchconsole, analytics, semrush] }
+            field: { label: Platform, name: platform, widget: select, options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat, youtube, perplexity, searchconsole, analytics, semrush] }
           - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text }
       # Hero arka plan loop videosu (Pixelon Miniature Digital World) — yollar dile bağlı değil.
       - label: Hero Videosu
@@ -283,7 +283,7 @@ collections:
                 name: logo
                 widget: select
                 required: false
-                options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat, perplexity, searchconsole, analytics, semrush]
+                options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat, youtube, perplexity, searchconsole, analytics, semrush]
               - { label: Öne Çıkar, name: featured, widget: boolean, default: false, required: false }
       - label: İlkeler
         name: principles
@@ -569,7 +569,7 @@ collections:
                 name: logos
                 widget: list
                 required: false
-                field: { label: Platform, name: platform, widget: select, options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat, perplexity, searchconsole, analytics, semrush] }
+                field: { label: Platform, name: platform, widget: select, options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat, youtube, perplexity, searchconsole, analytics, semrush] }
               # Hero arka plan loop videosu — kök-göreli public yolları, dile bağlı değil.
               - label: Hero Videosu
                 name: video
@@ -792,7 +792,7 @@ collections:
                   - label: Marka İşareti
                     name: logo
                     widget: select
-                    options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat, perplexity, searchconsole, analytics, semrush]
+                    options: [google, instagram, facebook, tiktok, yandex, linkedin, snapchat, youtube, perplexity, searchconsole, analytics, semrush]
                   - { label: Öne Çıkar, name: featured, widget: boolean, default: false, required: false }
 
           - label: İlkeler (İkonlu)

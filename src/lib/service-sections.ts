@@ -41,6 +41,7 @@ export interface ServiceLike {
           | 'searchconsole'
           | 'analytics'
           | 'semrush'
+          | 'youtube'
         )[]
       | undefined;
   };
@@ -68,6 +69,7 @@ export interface ServiceLike {
             | 'searchconsole'
             | 'analytics'
             | 'semrush'
+            | 'youtube'
             | undefined;
           featured?: boolean | undefined;
         })[];
