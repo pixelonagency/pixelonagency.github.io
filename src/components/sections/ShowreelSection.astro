@@ -284,4 +284,12 @@ const REEL_VIDEO_SCRIPT = `
     aspect-ratio: 9 / 16;
     object-fit: cover;
   }
+
+  /*
+   * Ardışık iki şerit tek blok gibi okunmalı. Varsayılan dolgu üst üste
+   * gelince aralarında 112px ölü boşluk kalıyordu.
+   */
+  .reel + .reel {
+    padding-top: clamp(10px, 1.4vw, 18px);
+  }
 </style>

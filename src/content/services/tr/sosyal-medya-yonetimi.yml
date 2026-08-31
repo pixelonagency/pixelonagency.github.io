@@ -58,7 +58,7 @@ showreel:
         href: /projelerimiz/vennyx/
   - eyebrow: Kameranın Arkasında
     heading: Çektiğimiz Bazı Videolar
-    placement: mid
+    placement: top
     variant: reel
     items:
       - label: Dr. Ayşe Cinkaya Kahveci
@@ -236,28 +236,32 @@ platforms:
 
 process:
   eyebrow: Adım Adım
-  heading: Markanızı Tanıyor, Planlıyor ve Sürekli Geliştiriyoruz
+  heading: Stratejiden Paylaşıma Tüm Süreç Tek Ekipte
   steps:
     - title: Keşif ve Analiz
       icon: discover
       description: |-
-        Markanızı, hedeflerinizi, mevcut hesaplarınızı, rakiplerinizi ve hedef kitlenizi inceliyoruz.
+        Markanızı, hedef kitlenizi, rakiplerinizi ve mevcut hesap performansınızı inceliyoruz. Hangi içeriğin tuttuğunu, hangisinin boşa gittiğini verisiyle görüyoruz.
     - title: Strateji ve İçerik Planı
       icon: plan
       description: |-
-        Aylık iletişim konularını, içerik türlerini ve yayın takvimini oluşturuyoruz.
-    - title: İçerik Üretimi
+        Ay boyunca hangi konunun hangi formatta ve hangi gün yayınlanacağını belirleyip içerik takvimini çıkarıyoruz.
+    - title: Çekim ve Prodüksiyon
       icon: build
       description: |-
-        Tasarım, metin, fotoğraf, video ve Reels çalışmalarını markanızın kimliğine uygun biçimde hazırlıyoruz.
+        Reels, tanıtım ve röportaj çekimlerini kendi ekibimizle yapıyoruz. Klinik, saha veya stüdyo — çekim ortamını içeriğin gerektirdiği yere kuruyoruz.
+    - title: Tasarım ve Kurgu
+      icon: optimize
+      description: |-
+        Çekilen görüntüyü kurguluyor, altyazı ve grafikleri ekliyor; statik gönderi ve carousel tasarımlarını marka diline uygun hazırlıyoruz.
     - title: Onay ve Yayınlama
       icon: launch
       description: |-
-        İçerikleri onayınıza sunuyor, belirlenen gün ve saatlerde yayınlıyoruz.
+        İçerikleri yayından önce onayınıza sunuyor, onaylananları planlanan gün ve saatte paylaşıyoruz.
     - title: Takip ve Raporlama
       icon: measure
       description: |-
-        İçerik performansını analiz ediyor, sonuçlara göre stratejiyi sürekli geliştiriyoruz.
+        Erişim, etkileşim, kaydetme ve profil ziyaretini takip edip hangi içerik tipinin çalıştığını raporluyor, planı ona göre güncelliyoruz.
 
 showcase:
   eyebrow: Sosyal Medyasını Yönettiğimiz Markalar
