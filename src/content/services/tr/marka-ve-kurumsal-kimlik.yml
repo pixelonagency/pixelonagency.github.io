@@ -4,21 +4,74 @@ translationKey: branding
 order: 5
 
 seo:
-  title: Marka ve Kurumsal Kimlik Tasarımı | Pixelon
+  title: Kurumsal Kimlik Tasarımı | Marka Ajansı | Pixelon
   description: >-
-    Logo, renk paleti, tipografi, marka dili ve kurumsal materyallerle markanıza
-    özgün, güçlü ve tutarlı bir kurumsal kimlik kazandırın.
+    Kurumsal kimlik tasarımı: logo, renk paleti, tipografi, marka dili ve
+    basılı-dijital tüm uygulamalar. Markanıza özgün, tutarlı ve uygulanabilir
+    bir kimlik sistemi kuruyoruz.
+
+heroVideo:
+  desktopMp4: /media/hero/marka/hero-marka-desktop.mp4
+  desktopWebm: /media/hero/marka/hero-marka-desktop.webm
+  desktopPoster: /media/hero/marka/hero-marka-desktop-poster.webp
+  mobileMp4: /media/hero/marka/hero-marka-mobile.mp4
+  mobileWebm: /media/hero/marka/hero-marka-mobile.webm
+  mobilePoster: /media/hero/marka/hero-marka-mobile-poster.webp
 
 hero:
   eyebrow: Marka ve Kurumsal Kimlik
   headingLines:
-    - "Markanızı Sadece Görünür Değil, *Unutulmaz* Hale Getiriyoruz."
+    - "Logodan Çok Daha Fazlası: *Kurumsal Kimlik Tasarımı.*"
   lead: |-
     Markanızın karakterini, değerlerini ve hedeflerini yansıtan özgün bir görsel kimlik oluşturuyor; tüm iletişim kanallarında tutarlı ve güçlü görünmesini sağlıyoruz.
   tagline: |-
     Logo tasarımından kurumsal kimlik sistemine kadar markanızı rakiplerinden ayıran bütüncül çözümler geliştiriyoruz.
   whatsappMessage: |-
     Merhaba Pixelon, Marka ve Kurumsal Kimlik hizmeti hakkında bilgi almak istiyorum.
+
+showreel:
+  - eyebrow: Ürettiğimiz Kimlikler
+    heading: Markalar İçin Kurduğumuz Kimlik Sistemleri
+    variant: square
+    items:
+      - label: Hands For All
+        image: '/src/assets/images/projects/handsforall/kurumsal-kimlik.webp'
+        alt: Bağış platformu için kırtasiye, tekstil ve basılı materyal uygulamaları
+        href: /projelerimiz/handsforall/
+      - label: Mobico
+        image: '/src/assets/images/projects/mobico/kurumsal-kimlik.webp'
+        alt: Teknoloji markası için sunum şablonu ve kurumsal materyaller
+        href: /projelerimiz/mobico/
+      - label: ValueSet
+        image: '/src/assets/images/projects/valueset/kurumsal-kimlik.webp'
+        alt: Yazılım danışmanlığı için sunum ve kurumsal kimlik uygulamaları
+        href: /projelerimiz/valueset/
+      - label: Vennyx
+        image: '/src/assets/images/projects/vennyx/kurumsal-kimlik.webp'
+        alt: Vennyx markası için marka kılavuzu sayfaları
+        href: /projelerimiz/vennyx/
+      - label: Touch Consulting
+        image: '/src/assets/images/projects/touch-consulting/logo-kurumsal.webp'
+        alt: Danışmanlık markası için logo, kartvizit ve lanyard uygulamaları
+        href: /projelerimiz/touch-consulting/
+      - label: Sera Natura
+        image: '/src/assets/images/projects/sera-natura/ambalaj.webp'
+        alt: Doğal yağ markası için etiket ve ambalaj tasarımı
+        href: /projelerimiz/sera-natura/
+      - label: Xray Groupe
+        image: '/src/assets/images/projects/xray-groupe/baskili-isler.webp'
+        alt: İnşaat firması için basılı kurumsal materyaller
+        href: /projelerimiz/xray-groupe/
+
+intro:
+  eyebrow: Kimlik, Logo Demek Değildir
+  heading: Markanızın Her Yerde Aynı Şeyi Söylemesini Sağlıyoruz
+  body: |-
+    Bir logo markanın yalnız imzasıdır. Kurumsal kimlik ise o imzanın etrafındaki sistemdir: hangi renk nerede kullanılır, başlık hangi puntoyla yazılır, kartvizitte ne durur, sunumda ne durur, ambalajda ne durur.
+
+    Bu sistem kurulmadığında her tasarım sıfırdan başlar ve marka her temas noktasında biraz daha dağılır. Pixelon olarak önce markanın ne söylediğini netleştiriyor, sonra o sözü taşıyacak görsel dili ve uygulama kurallarını yazıyoruz.
+  highlight: |-
+    Amacımız güzel bir logo teslim etmek değil; sizden sonra da doğru uygulanabilecek bir sistem bırakmak.
 
 why:
   eyebrow: Neden Pixelon?
@@ -27,19 +80,26 @@ why:
     Marka tasarımını tek başına bir logo çalışması olarak değerlendirmiyoruz. Strateji, görsel dil, iletişim tonu ve farklı uygulama alanlarını birbirini tamamlayan bir sistem halinde ele alıyoruz.
   items:
     - title: Stratejiyle Başlarız
+      icon: team
+      featured: true
       description: |-
         Her tasarım kararını markanızın hedeflerine ve konumlandırmasına göre veririz.
     - title: Markaya Özel Üretiriz
+      icon: conversion
       description: |-
         Hazır simgeler ve standart çözümler yerine özgün tasarım fikirleri geliştiririz.
     - title: Tüm Temas Noktalarını Düşünürüz
+      icon: cycle
       description: |-
         Kimliğin web sitesi, sosyal medya, reklam, baskı ve ambalajlarda nasıl görüneceğini birlikte planlarız.
     - title: Uygulanabilir Bir Sistem Sunarız
+      icon: report
+      featured: true
       description: |-
         Kurumsal kimliğinizi farklı ekiplerin ve tedarikçilerin doğru kullanabilmesi için açık bir marka kılavuzu hazırlarız.
 
 scope:
+  layout: list
   eyebrow: Marka ve Kurumsal Kimlik Hizmetlerimiz
   heading: Markanızın İhtiyaç Duyduğu Tüm Görsel Sistem
   items:
@@ -73,18 +133,23 @@ principles:
   heading: Estetikten Önce Anlam, Tasarımdan Sonra Tutarlılık
   items:
     - title: Özgünlük
+      icon: creative
       description: |-
         Rakiplerinize benzeyen değil, markanıza ait olan bir görsel dünya oluşturuyoruz.
     - title: Hatırlanabilirlik
+      icon: audience
       description: |-
         Sade, güçlü ve farklı kullanım alanlarında kolayca tanınabilecek tasarım sistemleri geliştiriyoruz.
     - title: Tutarlılık
+      icon: strategy
       description: |-
         Web sitesi, sosyal medya, basılı materyaller ve reklam çalışmalarında aynı marka algısının korunmasını sağlıyoruz.
     - title: Kullanılabilirlik
+      icon: landing
       description: |-
         Logo ve kurumsal kimlik öğelerini dijitalden baskıya kadar farklı ölçü ve formatlarda sorunsuz kullanılabilecek şekilde hazırlıyoruz.
     - title: Geleceğe Uygunluk
+      icon: optimize
       description: |-
         Günübirlik trendlere bağlı kalmayan, markanız büyüdükçe gelişebilecek zamansız bir kimlik tasarlıyoruz.
 
@@ -93,46 +158,47 @@ process:
   heading: Markanızı Tanıyor, Hikâyesini Tasarıma Dönüştürüyoruz.
   steps:
     - title: Keşif ve Brief
+      icon: discover
       description: |-
         Markanızın hikâyesini, değerlerini, hedef kitlesini ve gelecek hedeflerini öğreniyoruz.
     - title: Araştırma ve Konumlandırma
+      icon: plan
       description: |-
         Sektörü, rakipleri ve görsel iletişim fırsatlarını analiz ederek yaratıcı yönü belirliyoruz.
     - title: Konsept Geliştirme
+      icon: build
       description: |-
         Markaya uygun logo fikirleri, renk yönleri, tipografi ve görsel konseptler hazırlıyoruz.
     - title: Tasarım ve Revizyon
+      icon: optimize
       description: |-
         Seçilen yönü geliştiriyor, geri bildirimlerle marka kimliğini son haline getiriyoruz.
     - title: Kurumsal Uygulamalar
+      icon: launch
       description: |-
         Onaylanan kimliği kartvizit, sosyal medya, sunum, ambalaj ve diğer materyallere uyguluyoruz.
     - title: Teslim ve Marka Kılavuzu
+      icon: measure
       description: |-
         Tüm logo formatlarını, renk kodlarını, font bilgilerini ve kullanım kurallarını düzenli biçimde teslim ediyoruz.
 
-projects:
-  eyebrow: Başarıyla Tamamladığımız Projeler
-  heading: Markalara Güçlü ve Tutarlı Bir Kimlik Kazandırdık.
-  lead: |-
-    Yaratıcı fikirleri stratejik marka yaklaşımıyla birleştirerek farklı sektörlerdeki markalar için özgün kimlikler ve kurumsal iletişim sistemleri oluşturduk. Siz de markanızı bu projeler arasına eklemek için bizimle iletişime geçin.
-  items:
-    - eyebrow: Kurumsal Kimlik ve Marka Uygulamaları
-      title: Xray Groupe
-      description: |-
-        Mimarlık, mühendislik ve inşaat alanında faaliyet gösteren Xray Groupe için profesyonel, güven veren ve uluslararası yapıya uygun bir kurumsal iletişim sistemi oluşturduk.
-    - eyebrow: Ürün Markası ve Ambalaj Tasarımı
-      title: Sera Natura
-      description: |-
-        Doğal ürünlerin kalite ve güven algısını yansıtan marka dili, etiket sistemi ve ürün ambalaj tasarımları hazırladık.
-    - eyebrow: Sosyal Marka Kimliği
-      title: HandsForAll
-      description: |-
-        Markanın toplumsal fayda yaklaşımını modern, enerjik ve kolay tanınan bir görsel kimlikle buluşturduk.
-    - eyebrow: Dijital Marka Kimliği
-      title: Annelik Hikayesi
-      description: |-
-        Anne ve kadın odaklı topluluğun samimi ve enerjik karakterini yansıtan renkli bir logo ve sosyal medya görsel sistemi geliştirdik.
+showcase:
+  eyebrow: Kimliğini Kurduğumuz Markalar
+  heading: Stratejiden Marka Kılavuzuna Tamamladığımız Projeler
+  lead: >-
+    Aşağıdaki markaların kimliğini konumlandırmadan basılı uygulamalara kadar
+    biz kurduk. Xray Groupe için Demokratik Kongo'da faaliyet gösteren bir
+    inşaat firmasının kurumsal dili ve basılı materyalleri; Sera Natura için
+    20'den fazla ürünü tek etiket sisteminde toplayan ambalaj tasarımı;
+    Hands For All için bağış platformunun kırtasiyeden tekstile uzanan kimliği.
+  slugs:
+    - xray-groupe
+    - sera-natura
+    - handsforall
+    - mobico
+  columns: 2
+  ctaLabel: Tüm projelerimizi inceleyin
+  ctaHref: /projelerimiz/
 
 value:
   eyebrow: Güçlü Markalar Tesadüfen Oluşmaz
@@ -157,6 +223,25 @@ sectors:
     E-ticaret ve ürün markaları
     İnşaat ve gayrimenkul şirketleri
     Uluslararası pazarlara açılmak isteyen markalar
+  cards:
+    - label: Sağlık ve Klinik
+      image: '/src/assets/images/sector-saglik-klinik.webp'
+      alt: Modern bir diş kliniğinde hastasıyla ilgilenen hekim
+    - label: Sağlık Turizmi
+      image: '/src/assets/images/sector-saglik-turizmi.webp'
+      alt: Hastane resepsiyonunda karşılanan yurt dışından gelen hasta
+    - label: Estetik ve Kozmetik
+      image: '/src/assets/images/sector-estetik-kozmetik.webp'
+      alt: Güzellik kliniğinde cilt bakımı uygulanan danışan
+    - label: E-Ticaret
+      image: '/src/assets/images/sector-e-ticaret.webp'
+      alt: Depoda kargo paketini okutan e-ticaret çalışanı
+    - label: İnşaat ve Gayrimenkul
+      image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+      alt: Gün batımında modern bir konut projesinin cephesi
+    - label: Kurumsal Hizmet
+      image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+      alt: Aydınlık bir ofiste toplantı hâlindeki kurumsal ekip
 
 cta:
   eyebrow: Markanızın Yeni Kimliğini Birlikte Oluşturalım
