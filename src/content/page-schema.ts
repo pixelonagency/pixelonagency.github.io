@@ -55,7 +55,21 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
      * CTA'ların altında duran platform marka işareti şeridi. Metin yerine logo
      * kullanılır: yedi platform adını okumak yerine ziyaretçi onları tanır.
      */
-    logos: list(z.enum(['google', 'instagram', 'facebook', 'tiktok', 'yandex', 'linkedin', 'snapchat'])),
+    logos: list(
+      z.enum([
+        'google',
+        'instagram',
+        'facebook',
+        'tiktok',
+        'yandex',
+        'linkedin',
+        'snapchat',
+        'perplexity',
+        'searchconsole',
+        'analytics',
+        'semrush',
+      ]),
+    ),
     /** Referans: kariyer gibi bazı alt sayfa hero'ları ortalanmıştır. */
     align: opt(z.enum(['start', 'center'])),
     image: opt(image()),
@@ -254,7 +268,19 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
         z.object({
           title: nonEmpty,
           description: nonEmpty,
-          logo: z.enum(['google', 'instagram', 'facebook', 'tiktok', 'yandex', 'linkedin', 'snapchat']),
+          logo: z.enum([
+            'google',
+            'instagram',
+            'facebook',
+            'tiktok',
+            'yandex',
+            'linkedin',
+            'snapchat',
+            'perplexity',
+            'searchconsole',
+            'analytics',
+            'semrush',
+          ]),
           featured: z.boolean().default(false),
         }),
       )
@@ -332,7 +358,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
         z.object({
           title: nonEmpty,
           description: nonEmpty,
-          icon: z.enum(['discover', 'plan', 'build', 'launch', 'optimize']),
+          icon: z.enum(['discover', 'plan', 'build', 'launch', 'optimize', 'measure']),
         }),
       )
       .min(1),

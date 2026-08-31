@@ -28,7 +28,21 @@ export interface ServiceLike {
     headingLines: string[];
     lead: string;
     tagline?: string | undefined;
-    logos?: ('google' | 'instagram' | 'facebook' | 'tiktok' | 'yandex' | 'linkedin' | 'snapchat')[] | undefined;
+    logos?:
+      | (
+          | 'google'
+          | 'instagram'
+          | 'facebook'
+          | 'tiktok'
+          | 'yandex'
+          | 'linkedin'
+          | 'snapchat'
+          | 'perplexity'
+          | 'searchconsole'
+          | 'analytics'
+          | 'semrush'
+        )[]
+      | undefined;
   };
   heroVideo?: Extract<PageSection, { type: 'hero' }>['video'];
   intro?: (Block & { body: string; highlight?: string | undefined }) | undefined;
@@ -42,7 +56,19 @@ export interface ServiceLike {
   platforms?:
     | (Block & {
         items: (TitledItem & {
-          logo?: 'google' | 'instagram' | 'facebook' | 'tiktok' | 'yandex' | 'linkedin' | 'snapchat' | undefined;
+          logo?:
+            | 'google'
+            | 'instagram'
+            | 'facebook'
+            | 'tiktok'
+            | 'yandex'
+            | 'linkedin'
+            | 'snapchat'
+            | 'perplexity'
+            | 'searchconsole'
+            | 'analytics'
+            | 'semrush'
+            | undefined;
           featured?: boolean | undefined;
         })[];
       })
@@ -57,7 +83,7 @@ export interface ServiceLike {
   comparison?: (Block & { items: TitledItem[]; note?: string | undefined }) | undefined;
   contentTypes?: (Block & { items: string[] }) | undefined;
   process: Block & {
-    steps: (TitledItem & { icon?: 'discover' | 'plan' | 'build' | 'launch' | 'optimize' | undefined })[];
+    steps: (TitledItem & { icon?: 'discover' | 'plan' | 'build' | 'launch' | 'optimize' | 'measure' | undefined })[];
   };
   projects?:
     | (Block & { items: { eyebrow?: string | undefined; title: string; description: string; href?: string }[] })

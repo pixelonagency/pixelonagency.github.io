@@ -5,7 +5,7 @@
  * Çizgi dili SectorIcon · PrincipleIcon · WhyIcon ile aynı: 24×24 kutu,
  * stroke 1.6, yuvarlatılmış uçlar. Kütüphane eklenmedi (CLAUDE.md).
  */
-type ProcessIconName = 'discover' | 'plan' | 'build' | 'launch' | 'optimize';
+type ProcessIconName = 'discover' | 'plan' | 'build' | 'launch' | 'optimize' | 'measure';
 
 interface Props {
   name: ProcessIconName;
@@ -75,6 +75,17 @@ const { name }: Props = Astro.props;
         <circle cx="10.6" cy="6.6" r="2.2" />
         <circle cx="16.6" cy="12" r="2.2" />
         <circle cx="9.2" cy="17.4" r="2.2" />
+      </>
+    )
+  }
+  {/* Ölçüm ve raporlama — eksende yükselen çizgi grafiği. */}
+  {
+    name === 'measure' && (
+      <>
+        <path d="M4 4v15.2a.8.8 0 0 0 .8.8H20" />
+        <path d="M7.4 15.6l3.4-3.9 2.9 2.4 4.6-5.5" />
+        <circle cx="10.8" cy="11.7" r="1.15" />
+        <circle cx="18.3" cy="8.6" r="1.15" />
       </>
     )
   }

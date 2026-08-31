@@ -100,7 +100,21 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
       lead: nonEmpty,
       tagline: opt(z.string()),
       /* CTA altındaki platform logo şeridi — bkz. PlatformLogo.astro. */
-      logos: list(z.enum(['google', 'instagram', 'facebook', 'tiktok', 'yandex', 'linkedin', 'snapchat'])),
+      logos: list(
+        z.enum([
+          'google',
+          'instagram',
+          'facebook',
+          'tiktok',
+          'yandex',
+          'linkedin',
+          'snapchat',
+          'perplexity',
+          'searchconsole',
+          'analytics',
+          'semrush',
+        ]),
+      ),
       whatsappMessage: nonEmpty,
     }),
     /** Hero arka plan loop videosu (Pixelon Miniature Digital World). */
@@ -145,7 +159,21 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
             z.object({
               title: nonEmpty,
               description: nonEmpty,
-              logo: opt(z.enum(['google', 'instagram', 'facebook', 'tiktok', 'yandex', 'linkedin', 'snapchat'])),
+              logo: opt(
+                z.enum([
+                  'google',
+                  'instagram',
+                  'facebook',
+                  'tiktok',
+                  'yandex',
+                  'linkedin',
+                  'snapchat',
+                  'perplexity',
+                  'searchconsole',
+                  'analytics',
+                  'semrush',
+                ]),
+              ),
               featured: z.boolean().default(false),
             }),
           )
@@ -209,7 +237,7 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
             title: nonEmpty,
             description: nonEmpty,
             /* İkon verilirse dağınık kart dizilimine geçilir; eksikse adım ızgarası. */
-            icon: opt(z.enum(['discover', 'plan', 'build', 'launch', 'optimize'])),
+            icon: opt(z.enum(['discover', 'plan', 'build', 'launch', 'optimize', 'measure'])),
           }),
         )
         .min(1),

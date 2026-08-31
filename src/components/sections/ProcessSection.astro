@@ -15,6 +15,16 @@ interface Props {
 const { section } = Astro.props;
 
 const pad = (n: number) => String(n).padStart(2, '0');
+
+/*
+ * Altı adımlı süreçler 3+3 iki sıra hâlinde daha iyi okunuyor; diğer sayılar
+ * tek sıra dört sütunda kalır.
+ *
+ * Satır atlama bağlantısı BİLEREK ÇİZİLMİYOR: 3. karttan 4. karta uzanan hat
+ * iki sıra arasında boşlukta asılı kalıyor ve sürecin akışını anlatmak yerine
+ * gürültü yapıyordu. Sıra bilgisini zaten 01-06 numaraları taşıyor.
+ */
+const threeCol = section.items.length === 6;
 ---
 
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="proc-section">
@@ -38,7 +48,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
       decoding="async"
     />
 
-    <ol class="proc" role="list">
+    <ol class:list={['proc', threeCol && 'proc--3col']} role="list">
       {
         section.items.map((item, index) => (
           <li class="proc__card" data-reveal data-reveal-index={index}>
@@ -347,4 +357,20 @@ const pad = (n: number) => String(n).padStart(2, '0');
       transition: none;
     }
   }
+
+  /* --- 3+3 iki sıra düzeni ------------------------------------------------ */
+
+  .proc--3col {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 34px;
+  }
+
+  /*
+   * Satır sonlarında (3. ve 6. kart) yatay bağlantı çizilmez — yoksa çizgi
+   * sıranın sağ kenarında boşluğa uzanıp asılı kalıyor.
+   */
+  .proc--3col .proc__card:nth-child(3n)::after {
+    content: none;
+  }
+
 </style>
