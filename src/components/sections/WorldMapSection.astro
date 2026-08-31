@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import mapImage from '../../assets/images/mappixelonworld.webp';
+import mapImage from '../../assets/images/worldmap-dotted.webp';
 import type { PageSection } from '../../content/page-schema';
 import { parseHighlights } from '../../lib/highlight';
+import { placePins } from '../../lib/map-pins';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -14,6 +15,15 @@ interface Props {
 
 const { section } = Astro.props;
 const closingSegments = section.closingLine ? parseHighlights(section.closingLine) : [];
+
+/*
+ * Koordinatı olan ülkeler pine dönüşür; olmayanlar yalnız çip listesinde kalır.
+ * Pinler dekoratiftir (aria-hidden) — ülke adlarını yukarıdaki çip listesi zaten
+ * okunabilir biçimde veriyor, pinleri de duyurmak aynı listeyi iki kez okuturdu.
+ */
+const pins = placePins(section.countries);
+/* Vurgulu pin (Türkiye) sürekli açık durur; diğerleri sırayla belirip söner. */
+const PIN_STAGGER_S = 0.3;
 ---
 
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="worldmap-section">
@@ -42,7 +52,25 @@ const closingSegments = section.closingLine ? parseHighlights(section.closingLin
   </div>
 
   <figure class="worldmap__figure" data-reveal data-reveal-index={1}>
-    <Image src={mapImage} alt={section.mapImageAlt ?? ''} class="worldmap__image" width={1200} />
+    <div class="worldmap__canvas">
+      <Image src={mapImage} alt={section.mapImageAlt ?? ''} class="worldmap__image" width={1400} />
+      {
+        pins.length > 0 && (
+          <div class="worldmap__pins" aria-hidden="true">
+            {pins.map((pin) => (
+              <span
+                class:list={['worldmap__pin', pin.highlighted && 'worldmap__pin--home']}
+                style={`left:${pin.left}%; top:${pin.top}%; --pin-delay:${(pin.order * PIN_STAGGER_S).toFixed(2)}s`}
+              >
+                <span class="worldmap__pin-ring" />
+                <span class="worldmap__pin-dot" />
+                {pin.highlighted && <span class="worldmap__pin-label">{pin.label}</span>}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </div>
   </figure>
 
   {
@@ -125,6 +153,10 @@ const closingSegments = section.closingLine ? parseHighlights(section.closingLin
     max-width: 1100px;
   }
 
+  .worldmap__canvas {
+    position: relative;
+  }
+
   .worldmap__image {
     display: block;
     width: 100%;
@@ -132,12 +164,134 @@ const closingSegments = section.closingLine ? parseHighlights(section.closingLin
   }
 
   /*
-   * Kaynak harita koyu çizgilidir; ters çevirme YALNIZCA koyu zeminde gerekir.
-   * Filtre koşulsuz uygulandığında açık zeminli bölümde harita beyaza dönüp
-   * görünmez oluyordu — yerinde kocaman boş bir alan kalıyordu.
+   * Yeni harita zaten koyu doğuyor (siyah okyanus, gri nokta ızgarası), bu yüzden
+   * koyu bölümde HİÇBİR filtre uygulanmaz. Ters çevirme yalnızca açık zeminde
+   * gerekir — önceki harita bunun tersiydi ve filtre koşulu da terstir.
    */
-  :global(.section--dark) .worldmap__image {
-    filter: invert(1) hue-rotate(180deg) saturate(1.4) brightness(1.05);
+  :global(.section--light) .worldmap__image {
+    filter: invert(1) hue-rotate(180deg) saturate(1.2) brightness(0.98);
+  }
+
+  /* --- Pinler ------------------------------------------------------------- */
+
+  .worldmap__pins {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .worldmap__pin {
+    position: absolute;
+    width: 0;
+    height: 0;
+    /* Sırayla belirir: her pin kendi gecikmesiyle aynı 8sn'lik döngüyü koşar. */
+    animation: pin-cycle 8s var(--pin-delay, 0s) ease-out infinite both;
+  }
+
+  .worldmap__pin-dot,
+  .worldmap__pin-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .worldmap__pin-dot {
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    box-shadow: 0 0 10px 2px rgb(207 255 0 / 55%);
+  }
+
+  .worldmap__pin-ring {
+    width: 9px;
+    height: 9px;
+    border: 1.5px solid var(--accent);
+    opacity: 0;
+    animation: pin-ripple 2.6s var(--pin-delay, 0s) ease-out infinite;
+  }
+
+  /* Ana pazar sabit durur — sönmez, sadece nabız atar. */
+  .worldmap__pin--home {
+    animation: none;
+    opacity: 1;
+  }
+
+  .worldmap__pin--home .worldmap__pin-dot {
+    width: 13px;
+    height: 13px;
+    box-shadow:
+      0 0 0 4px rgb(207 255 0 / 18%),
+      0 0 16px 4px rgb(207 255 0 / 55%);
+  }
+
+  .worldmap__pin--home .worldmap__pin-ring {
+    animation-delay: 0s;
+  }
+
+  .worldmap__pin-label {
+    position: absolute;
+    left: 16px;
+    top: -9px;
+    white-space: nowrap;
+    font: 600 13px var(--font-display);
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    text-shadow: 0 1px 6px rgb(0 0 0 / 85%);
+  }
+
+  :global(.section--light) .worldmap__pin-label {
+    color: var(--text-on-light);
+    text-shadow: 0 1px 6px rgb(255 255 255 / 85%);
+  }
+
+  @keyframes pin-cycle {
+    0%,
+    2% {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+    5% {
+      opacity: 1;
+      transform: scale(1.45);
+    }
+    9%,
+    74% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    86%,
+    100% {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+  }
+
+  @keyframes pin-ripple {
+    0% {
+      opacity: 0.7;
+      width: 9px;
+      height: 9px;
+    }
+    70%,
+    100% {
+      opacity: 0;
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .worldmap__pin-dot {
+      width: 7px;
+      height: 7px;
+    }
+
+    .worldmap__pin-label {
+      font-size: 11px;
+      left: 13px;
+    }
   }
 
   /* Referans: kapanış cümlesi manifesto gibi büyük ve beyazdır. */
@@ -177,6 +331,17 @@ const closingSegments = section.closingLine ? parseHighlights(section.closingLin
 
     .worldmap__pill {
       animation: none;
+    }
+
+    /* Hareket kapalıyken pinler sırayla belirmez — hepsi sabit görünür kalır. */
+    .worldmap__pin {
+      animation: none;
+      opacity: 1;
+    }
+
+    .worldmap__pin-ring {
+      animation: none;
+      opacity: 0;
     }
   }
 </style>
