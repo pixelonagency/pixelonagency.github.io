@@ -14,20 +14,13 @@ tags:
   - Dijital Reklam
   - Çok Dilli İçerik
 detail:
-  intro: Web sitesinden reklama, içerikten hasta iletişimine kadar tek strateji
-    altında çalışan çok dilli bir dijital sistem — bugün 20 ülkede, 13 dilde.
+  intro: Tek strateji altında çalışan çok dilli bir dijital sistem — bugün 20
+    ülkede, 13 dilde.
 
   description: |-
-    Dentasay, diş tedavileri için yurt dışından hasta kabul eden bir sağlık markası. Bu
-    işte zorluk tedaviyi anlatmak değil; farklı ülkelerden, farklı dillerde ve farklı
-    beklentilerle gelen insanların aynı anda güven duyacağı bir dijital yapı kurmak.
-
-    Pixelon olarak web sitesi, sosyal medya, dijital reklam, içerik üretimi, SEO,
-    influencer iş birlikleri ve uluslararası hasta iletişim süreçlerini ayrı işler olarak
-    değil, tek bir strateji altında ele aldık. Reklamın getirdiği kişi ile kliniğin ona
-    verdiği cevap arasındaki mesafeyi kapatmak, projenin ana meselesiydi.
-
-    Bugün Dentasay için 13 farklı dilde, 20 ülkede dijital reklam operasyonu yürütüyoruz.
+    Dentasay, diş tedavileri için yurt dışından hasta kabul eden bir sağlık markası.
+    Bu işte zorluk tedaviyi anlatmak değil; farklı ülkelerden, farklı dillerde gelen
+    insanların aynı anda güven duyacağı bir yapı kurmaktı.
 
   services:
     - Uluslararası Hasta Kazanımı
@@ -95,6 +88,16 @@ detail:
         markanın uluslararası aramalardaki görünürlüğünü destekledik.
       images:
         - '/src/assets/images/projects/dentasay/sosyal-medya.webp'
+      reels:
+        - src: /media/projects/dentasay/behind-the-smile.mp4
+          poster: /media/projects/dentasay/behind-the-smile.webp
+          title: Behind The Smile — hasta hikâyesi
+        - src: /media/projects/dentasay/andreea-hikayesi.mp4
+          poster: /media/projects/dentasay/andreea-hikayesi.webp
+          title: Andreea'nın tedavi süreci
+        - src: /media/projects/dentasay/eurovision.mp4
+          poster: /media/projects/dentasay/eurovision.webp
+          title: Eurovision dönemi içerik kurgusu
 
     - heading: Web Sitesi ve UX/UI
       text: |-
