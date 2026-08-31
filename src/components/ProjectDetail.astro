@@ -462,7 +462,9 @@ const RAIL_SCRIPT = `(() => {
                     'pd-block__media',
                     /* Yalnızca İKİ board yan yana durur. Üç ve fazlası alt alta
                        tam genişlik akar — sıkışıp küçülmesinler. */
-                    block.images.length + (block.video ? 1 : 0) === 2 && 'pd-block__media--pair',
+                    block.layout !== 'stack' &&
+                      block.images.length + (block.video ? 1 : 0) === 2 &&
+                      'pd-block__media--pair',
                   ]}
                   data-reveal
                 >
@@ -939,6 +941,15 @@ const RAIL_SCRIPT = `(() => {
   /* Yatay filmler 340px'lik dikey karta sıkışınca okunmuyor — onlara geniş kart. */
   .pd-reels--wide {
     grid-template-columns: repeat(auto-fit, minmax(280px, 520px));
+  }
+
+  /*
+   * Tek başına duran yatay film bölümün tam genişliğini alır. 520px tavan iki
+   * filmi yan yana sığdırmak içindi; tek film olduğunda kart bölüm görsellerinin
+   * (1040px) yanında küçük kalıp önemsiz görünüyordu.
+   */
+  .pd-reels--wide:has(.pd-reel:only-child) {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .pd-reel {

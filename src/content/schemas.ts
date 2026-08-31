@@ -474,6 +474,12 @@ export function makeProjectSchema(image: ImageResolver = defaultImage) {
           z.object({
             heading: nonEmpty,
             text: nonEmpty,
+            /*
+             * Görsel dizilimi. Varsayılan `auto`: tam iki görsel yan yana, üç ve
+             * fazlası alt alta. `stack` bunu ezer — yoğun sunum ızgaraları (marka
+             * kılavuzu sayfaları gibi) yan yana konunca okunmaz derecede küçülüyor.
+             */
+            layout: opt(z.enum(['auto', 'stack'])),
             images: list(image()),
             /**
              * Sosyal medya videoları — konuşmalı, altyazılı, 30+ saniyelik reel'ler.
