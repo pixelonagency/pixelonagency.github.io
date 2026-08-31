@@ -10,6 +10,32 @@ const base = {
 
 const parseSection = (section: unknown) => pageSchema.safeParse({ ...base, sections: [section] });
 
+describe('biz kimiz görünümleri', () => {
+  const card = { title: 'Strateji', description: 'Doğru soruları sorarız.' };
+
+  test('cards için feature ve ledger görünümleri tanımlıdır', () => {
+    expect(parseSection({ type: 'cards', kind: 'feature', items: [{ ...card, icon: 'strategy' }] }).success).toBe(true);
+    expect(parseSection({ type: 'cards', kind: 'ledger', items: [card] }).success).toBe(true);
+  });
+
+  test('kart ikonu opsiyoneldir ama tanımsız ad reddedilir', () => {
+    expect(parseSection({ type: 'cards', items: [card] }).success).toBe(true);
+    expect(parseSection({ type: 'cards', items: [{ ...card, icon: 'strateji' }] }).success).toBe(false);
+  });
+
+  test('accent zemini tanımlıdır — lime bölüm tam genişlikte basılır', () => {
+    const step = { title: 'Keşif', description: 'Markanızı dinleriz.' };
+    expect(parseSection({ type: 'steps', heading: 'Süreç', background: 'accent', items: [step] }).success).toBe(true);
+  });
+
+  test('steps akış görünümünü kabul eder', () => {
+    const step = { title: 'Keşif', description: 'Markanızı dinleriz.' };
+    expect(parseSection({ type: 'steps', heading: 'Süreç', kind: 'flow', items: [step] }).success).toBe(true);
+    expect(parseSection({ type: 'steps', heading: 'Süreç', items: [step] }).success).toBe(true);
+    expect(parseSection({ type: 'steps', heading: 'Süreç', kind: 'akis', items: [step] }).success).toBe(false);
+  });
+});
+
 describe('contactInfo bölümü', () => {
   const item = { label: 'E-posta', value: 'info@pixelon.com.tr', href: 'mailto:info@pixelon.com.tr' };
 

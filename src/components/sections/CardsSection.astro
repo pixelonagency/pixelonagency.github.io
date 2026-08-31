@@ -1,5 +1,7 @@
 ---
 import type { PageSection } from '../../content/page-schema';
+import ReasonCards from './ReasonCards.astro';
+import ValueLedger from './ValueLedger.astro';
 import SectionHead from '../SectionHead.astro';
 import SectorIcon from '../SectorIcon.astro';
 import StarRating from '../StarRating.astro';
@@ -63,10 +65,28 @@ const splitBody = (description: string): { body: string; strong?: string } => {
  * avantajları, blog sektör kartları) numarasızdır.
  */
 const numberedCards = kind === 'grid' && !hasRatings;
+
+/*
+ * Şemada sektör ikonlarıyla gerekçe ikonları tek enum'da toplandı; bu ızgara yalnız
+ * sektör ikonlarını çizer. Gerekçe adı taşıyan bir kart sessizce ikonsuz basılır,
+ * yanlış ikon çizilmez (gerekçe ikonları ReasonCards görünümüne aittir).
+ */
+const SECTOR_ICONS = ['health', 'tourism', 'ecommerce', 'construction', 'sme', 'education'] as const;
+type SectorIconName = (typeof SECTOR_ICONS)[number];
+const sectorIcon = (icon: string | undefined): SectorIconName | undefined =>
+  SECTOR_ICONS.includes(icon as SectorIconName) ? (icon as SectorIconName) : undefined;
 ---
 
 {
-  isSplit ? (
+  /*
+   * `feature` ve `ledger` görünümleri ayrı bileşenlere delege edilir: bu dosya zaten
+   * dört görünüm taşıyor, ikisini daha içine almak okunmaz hale getiriyordu.
+   */
+  kind === 'feature' ? (
+    <ReasonCards {section} />
+  ) : kind === 'ledger' ? (
+    <ValueLedger {section} />
+  ) : isSplit ? (
     <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
       <div class="split">
         <div class="split__head">
@@ -128,8 +148,8 @@ const numberedCards = kind === 'grid' && !hasRatings;
               data-reveal
               data-reveal-index={index}
             >
-              {item.icon && <SectorIcon name={item.icon} />}
-              {numberedCards && (item.icon || content?.strong) && (
+              {sectorIcon(item.icon) && <SectorIcon name={sectorIcon(item.icon) as SectorIconName} />}
+              {numberedCards && (sectorIcon(item.icon) || content?.strong) && (
                 <span class="cards__num" aria-hidden="true">
                   {String(index + 1).padStart(2, '0')}
                 </span>

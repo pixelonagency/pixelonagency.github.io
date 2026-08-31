@@ -35,7 +35,11 @@ const cta = z.object({
 const sectionBase = {
   eyebrow: opt(z.string()),
   anchor: opt(z.string()),
-  background: z.enum(['dark', 'light']).default('dark'),
+  /**
+   * `accent` = tam genişlikte lime zemin. Sayfada nefes aldıran bir duraklama içindir,
+   * seyrek kullanılır; üstündeki metin koyu renge döner (bkz. Section.astro).
+   */
+  background: z.enum(['dark', 'light', 'accent']).default('dark'),
   ctas: list(cta),
 };
 
@@ -90,7 +94,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
      * bölüm eyebrow'u gibi basılır (vizyon/misyon). Alan adı bilinçli olarak `variant`
      * DEĞİL: CMS senkron testi `variant` adını buton görünümü sanıyor.
      */
-    kind: opt(z.enum(['grid', 'tinted', 'panels'])),
+    kind: opt(z.enum(['grid', 'tinted', 'panels', 'feature', 'ledger'])),
     /** Izgaranın altında yer alan kapanış notu (ör. UX/UI karşılaştırmasındaki bağlayıcı cümle). */
     note: opt(z.string()),
     items: z
@@ -100,8 +104,25 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
           title: nonEmpty,
           description: nonEmpty,
           href: optHref,
-          /** Kart başlığının üstünde gösterilen küçük çizgi ikon (bkz. SectorIcon.astro). */
-          icon: opt(z.enum(['health', 'tourism', 'ecommerce', 'construction', 'sme', 'education'])),
+          /**
+           * Kart ikonu. İlk altısı sektör ikonlarıdır (SectorIcon.astro), son beşi
+           * `feature` görünümündeki gerekçe ikonlarıdır (ReasonIcon.astro).
+           */
+          icon: opt(
+            z.enum([
+              'health',
+              'tourism',
+              'ecommerce',
+              'construction',
+              'sme',
+              'education',
+              'strategy',
+              'bespoke',
+              'craft',
+              'orbit',
+              'partnership',
+            ]),
+          ),
           /** Sürekli (yalnızca hover'da değil) lime çerçeveyle öne çıkarılan kart. */
           featured: opt(z.boolean()),
           /** 1-5 yıldız derecelendirmesi (müşteri yorumu kartlarında). */
@@ -116,6 +137,11 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     type: z.literal('steps'),
     heading: nonEmpty,
     lead: opt(z.string()),
+    /**
+     * `list` (varsayılan) = numaralı dikey liste. `flow` = lime zeminli panel içinde
+     * hafifçe eğik, noktalı çizgilerle bağlanmış numaralı kartlar (Biz Kimiz süreci).
+     */
+    kind: opt(z.enum(['list', 'flow'])),
     items: z.array(z.object({ title: nonEmpty, description: nonEmpty })).min(1),
   });
 

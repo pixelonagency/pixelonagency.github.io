@@ -1,6 +1,7 @@
 ---
 import type { PageSection } from '../../content/page-schema';
 import SectionHead from '../SectionHead.astro';
+import StepsFlow from './StepsFlow.astro';
 import Section from './Section.astro';
 import { inlineHtml } from '../article/types';
 
@@ -19,23 +20,28 @@ const steps = section.items.map((item, index) => ({
 }));
 ---
 
-<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+{/* `flow` görünümü ayrı bir bileşendir — lime tuval ve eğik kartlar bu ızgarayla ilgisiz. */}
+{
+  section.kind === 'flow' ? (
+    <StepsFlow {section} />
+  ) : (
+    <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+      <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
-  <ol class="steps">
-    {
-      steps.map((item, index) => (
-        <li class="steps__item" data-reveal data-reveal-index={index}>
-          <span class="steps__number" aria-hidden="true">
-            {item.number}
-          </span>
-          <h3 class="h3 steps__title">{item.title}</h3>
-          <p class="body-text steps__text" set:html={inlineHtml(item.description)} />
-        </li>
-      ))
-    }
-  </ol>
-</Section>
+      <ol class="steps">
+        {steps.map((item, index) => (
+          <li class="steps__item" data-reveal data-reveal-index={index}>
+            <span class="steps__number" aria-hidden="true">
+              {item.number}
+            </span>
+            <h3 class="h3 steps__title">{item.title}</h3>
+            <p class="body-text steps__text" set:html={inlineHtml(item.description)} />
+          </li>
+        ))}
+      </ol>
+    </Section>
+  )
+}
 
 <style>
   /* Referans tasarım: adımlar çerçeveli KARTLAR halinde, sabit 3 sütunlu ızgarada durur. */

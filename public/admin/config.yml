@@ -561,7 +561,7 @@ collections:
                 name: background
                 widget: select
                 default: dark
-                options: [dark, light]
+                options: [dark, light, accent]
               - label: Başlık Satırları
                 name: headingLines
                 widget: list

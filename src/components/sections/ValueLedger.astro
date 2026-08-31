@@ -1,0 +1,138 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Cards = Extract<PageSection, { type: 'cards' }>;
+
+interface Props {
+  section: Cards;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  {
+    /*
+     * Değerler kart ızgarası DEĞİL, numaralı bir künye listesi: sayfada zaten iki kart
+     * ızgarası var (gerekçeler ve vizyon/misyon) ve üçüncüsü onlardan ayırt edilemiyordu.
+     * Burada sıra numarası gerçek bir bilgi taşımaz, okuma ritmi verir.
+     */
+  }
+  <ol class="ledger">
+    {
+      section.items.map((item, index) => (
+        <li class="ledger__row" data-reveal data-reveal-index={index}>
+          <span class="ledger__num" aria-hidden="true">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <h3 class="ledger__title">{item.title}</h3>
+          <p class="ledger__text">{item.description}</p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .ledger {
+    margin: clamp(32px, 4vw, 48px) 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .ledger__row {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1.35fr);
+    align-items: baseline;
+    gap: clamp(16px, 3vw, 48px);
+    padding: clamp(22px, 2.6vw, 34px) 0;
+    border-bottom: 1px solid var(--border);
+    transition: background var(--t-base);
+  }
+
+  .ledger__num {
+    font: 700 15px var(--font-display);
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ledger__title {
+    margin: 0;
+    font: 600 clamp(21px, 2.2vw, 30px) / 1.15 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-wrap: balance;
+    transition: transform var(--t-base);
+  }
+
+  .ledger__text {
+    margin: 0;
+    font: 400 clamp(15px, 1.15vw, 16.5px) / 1.7 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  @media (hover: hover) {
+    .ledger__row:hover {
+      background: rgb(255 255 255 / 3%);
+    }
+
+    .ledger__row:hover .ledger__title {
+      transform: translateX(6px);
+    }
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .ledger {
+    border-top-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .ledger__row {
+    border-bottom-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .ledger__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .ledger__text {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .ledger__num {
+    color: var(--text-on-light);
+  }
+
+  @media (hover: hover) {
+    :global(.section--light) .ledger__row:hover {
+      background: rgb(10 10 10 / 3%);
+    }
+  }
+
+  @media (max-width: 860px) {
+    .ledger__row {
+      grid-template-columns: 44px minmax(0, 1fr);
+      row-gap: 10px;
+    }
+
+    .ledger__text {
+      grid-column: 2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ledger__row,
+    .ledger__title {
+      transition: none;
+    }
+
+    .ledger__row:hover .ledger__title {
+      transform: none;
+    }
+  }
+</style>

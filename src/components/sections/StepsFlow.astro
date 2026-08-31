@@ -1,0 +1,269 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import Section from './Section.astro';
+
+type Steps = Extract<PageSection, { type: 'steps' }>;
+
+interface Props {
+  section: Steps;
+}
+
+const { section } = Astro.props;
+---
+
+{
+  /*
+   * Zemin bölümün KENDİSİNDEDİR (background: accent), içeride ayrı bir panel değil.
+   * Önce koyu bölümün içinde lime bir kutu olarak denendi; sayfadaki diğer bölümlerin
+   * hepsi tam genişlikte zemin kullandığı için o kutu arada kalmış gibi duruyordu.
+   */
+}
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <div class="flow" data-reveal>
+    <div class="flow__head">
+      {section.eyebrow && <p class="flow__eyebrow">{section.eyebrow}</p>}
+      <h2 class="flow__heading">{section.heading}</h2>
+      {section.lead && <p class="flow__lead">{section.lead}</p>}
+    </div>
+
+    <ol class="flow__list">
+      {
+        section.items.map((item, index) => (
+          <li class="flow__step" data-reveal data-reveal-index={index}>
+            <article class="flow__card">
+              {/* Pencere noktaları: kartların bir ekran gibi okunmasını sağlar. */}
+              <span class="flow__dots" aria-hidden="true">
+                <i /> <i /> <i />
+              </span>
+              <span class="flow__num" aria-hidden="true">
+                /{String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 class="flow__title">{item.title}</h3>
+              <p class="flow__text">{item.description}</p>
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</Section>
+
+<style>
+  .flow__head {
+    max-width: 720px;
+    margin: 0 auto clamp(34px, 4.5vw, 56px);
+    text-align: center;
+  }
+
+  .flow__eyebrow {
+    margin: 0 0 12px;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: rgb(10 10 10 / 62%);
+  }
+
+  .flow__heading {
+    margin: 0;
+    font: 700 clamp(28px, 3.6vw, 46px) / 1.1 var(--font-display);
+    letter-spacing: -0.025em;
+    color: var(--bg);
+    text-wrap: balance;
+  }
+
+  .flow__lead {
+    margin: 18px 0 0;
+    font: 400 clamp(15px, 1.2vw, 17px) / 1.6 var(--font-body);
+    color: rgb(10 10 10 / 72%);
+  }
+
+  /*
+   * Sütun sayısı BİLEREK sabit. `auto-fit` altı adımı 4+2 diziyordu: son sıra yarım
+   * kalıyor ve dördüncü karttan çıkan bağlantı çizgisi boşluğa gidiyordu.
+   */
+  .flow__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(20px, 2.4vw, 34px);
+    row-gap: clamp(52px, 5vw, 74px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /*
+   * Sütun sayısı BİLEREK sabit: `auto-fit` altı adımı 4+2 diziyordu, son sıra yarım
+   * kalıyordu. Satır aralığı da bilerek büyük — çift sıradaki kartlar aşağı kaydığı
+   * için normal aralıkta ikinci kart alt sıradaki beşinciye değiyordu.
+   */
+  .flow__step {
+    position: relative;
+    transform: rotate(-1.6deg);
+    transition: transform var(--t-slow);
+  }
+
+  /* Çift sıradaki kartlar aşağı iner ve eğim yönü döner — sıra dalgalı okunur. */
+  .flow__step:nth-child(even) {
+    transform: translateY(28px) rotate(1.6deg);
+  }
+
+  /*
+   * Kartlar arasındaki noktalı bağlantı. Satır sonundaki karttan (her üçüncü) ve
+   * son karttan çıkmaz — yoksa çizgi ızgaranın dışına, boşluğa uzanıyor.
+   */
+  .flow__step::after {
+    content: '';
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: calc(clamp(20px, 2.4vw, 34px) * -1);
+    width: clamp(20px, 2.4vw, 34px);
+    border-block-start: 1.5px dashed rgb(10 10 10 / 32%);
+  }
+
+  .flow__step:nth-child(3n)::after,
+  .flow__step:nth-child(3n)::after,
+  .flow__step:last-child::after {
+    display: none;
+  }
+
+  .flow__card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 20px 24px;
+    border-radius: 16px;
+    background: #131313;
+    box-shadow: 0 18px 34px rgb(10 10 10 / 24%);
+  }
+
+  .flow__dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .flow__dots i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 28%);
+  }
+
+  .flow__dots i:first-child {
+    background: #ff5f57;
+  }
+
+  .flow__dots i:nth-child(2) {
+    background: #febc2e;
+  }
+
+  .flow__dots i:nth-child(3) {
+    background: #28c840;
+  }
+
+  .flow__num {
+    margin-top: 6px;
+    font: 700 13px var(--font-display);
+    letter-spacing: 0.02em;
+    color: rgb(255 255 255 / 46%);
+  }
+
+  /* Başlık lime dolgulu bir şerit — referanstaki vurgulama kalemi etkisi. */
+  .flow__title {
+    align-self: flex-start;
+    margin: 4px 0 0;
+    padding: 3px 8px;
+    font: 700 clamp(16px, 1.4vw, 19px) / 1.2 var(--font-display);
+    letter-spacing: -0.015em;
+    color: var(--bg);
+    background: var(--accent);
+    border-radius: 4px;
+  }
+
+  .flow__text {
+    margin: 4px 0 0;
+    font: 400 14px / 1.6 var(--font-body);
+    color: rgb(255 255 255 / 68%);
+  }
+
+  .flow__step:hover {
+    transform: translateY(-8px) rotate(0deg);
+  }
+
+  .flow__step:nth-child(even):hover {
+    transform: translateY(20px) rotate(0deg);
+  }
+
+  @media (max-width: 1020px) {
+    .flow__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* İki sütunda satır sonu çift maddededir; üçlü kural burada geçerli değil. */
+    .flow__step:nth-child(3n)::after {
+      display: block;
+    }
+
+    .flow__step:nth-child(even)::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1020px) {
+    .flow__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* İki sütunda satır sonu çift maddededir; üçlü kural burada geçerli değil. */
+    .flow__step:nth-child(3n)::after {
+      display: block;
+    }
+
+    .flow__step:nth-child(even)::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .flow__list {
+      grid-template-columns: 1fr;
+      row-gap: clamp(30px, 6vw, 42px);
+    }
+
+    .flow__step:nth-child(even)::after {
+      display: block;
+    }
+
+    .flow__list {
+      grid-template-columns: 1fr;
+    }
+
+    .flow__step:nth-child(even)::after {
+      display: block;
+    }
+
+    /* Tek sütunda eğim ve kaydırma okunurluğu bozuyor — kartlar düz sıralanır. */
+    .flow__step,
+    .flow__step:nth-child(even),
+    .flow__step:hover,
+    .flow__step:nth-child(even):hover {
+      transform: none;
+    }
+
+    .flow__step::after {
+      inset-block-start: auto;
+      inset-block-end: calc(clamp(16px, 1.8vw, 26px) * -1);
+      inset-inline: 50% auto;
+      width: 0;
+      height: clamp(16px, 1.8vw, 26px);
+      border-block-start: 0;
+      border-inline-start: 1.5px dashed rgb(10 10 10 / 32%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flow__step {
+      transition: none;
+    }
+  }
+</style>

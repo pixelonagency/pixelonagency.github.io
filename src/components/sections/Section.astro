@@ -11,7 +11,7 @@ interface Cta {
 
 interface Props {
   anchor?: string | undefined;
-  background?: 'dark' | 'light';
+  background?: 'dark' | 'light' | 'accent';
   class?: string | undefined;
   /** Bölüm içeriğinin ALTINDA gösterilen bölüm düzeyi butonları. */
   ctas?: readonly Cta[] | undefined;
@@ -50,6 +50,31 @@ const { anchor, background = 'dark', class: className, ctas = [], ctaAlign = 'ce
 </section>
 
 <style>
+  /*
+   * Lime zemin: koyu ve açık bölümlerin arasında bilinçli bir duraklama. Metin
+   * renkleri açık zeminle aynı mantıkta koyuya döner; lime üzerine lime vurgusu
+   * çalışmadığı için eyebrow ve vurgular da koyu tonlarla basılır.
+   */
+  .section--accent {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .section--accent :global(.h1),
+  .section--accent :global(.h2),
+  .section--accent :global(.h3) {
+    color: var(--bg);
+  }
+
+  .section--accent :global(.lead),
+  .section--accent :global(.body-text) {
+    color: rgb(10 10 10 / 72%);
+  }
+
+  .section--accent :global(.section-head__eyebrow) {
+    color: rgb(10 10 10 / 62%);
+  }
+
   .section--light {
     background: var(--bg-light);
     color: var(--text-on-light);

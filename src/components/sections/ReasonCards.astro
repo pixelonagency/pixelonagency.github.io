@@ -1,0 +1,184 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import ReasonIcon from '../ReasonIcon.astro';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Cards = Extract<PageSection, { type: 'cards' }>;
+
+interface Props {
+  section: Cards;
+}
+
+const { section } = Astro.props;
+
+/*
+ * Bu görünümdeki ikonlar gerekçe ikonlarıdır (ReasonIcon), sektör ikonları değil.
+ * Şemada ikisi tek bir enum'da toplandığı için burada ayıklanır: sektör adı taşıyan
+ * bir kart sessizce ikonsuz basılır, yanlış ikon çizilmez.
+ */
+const REASON_ICONS = ['strategy', 'bespoke', 'craft', 'orbit', 'partnership'] as const;
+type ReasonIconName = (typeof REASON_ICONS)[number];
+const reasonIcon = (icon: string | undefined): ReasonIconName | undefined =>
+  REASON_ICONS.includes(icon as ReasonIconName) ? (icon as ReasonIconName) : undefined;
+
+/*
+ * Kart metni: açıklamanın SON paragrafı vurucu kapanış satırıdır. Bu görünüm kısa
+ * okunur; kartta yalnız o satır basılır, uzun gövde kartı boğuyordu.
+ */
+const punchline = (description: string): string => {
+  const parts = description
+    .trim()
+    .split(/\n\s*\n/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return parts.length > 1 ? (parts[parts.length - 1] ?? description.trim()) : description.trim();
+};
+
+const items = section.items.map((item) => ({
+  ...item,
+  icon: reasonIcon(item.icon),
+  text: punchline(item.description),
+}));
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <ul class="reasons">
+    {
+      items.map((item, index) => (
+        <li class="reasons__item" data-reveal data-reveal-index={index}>
+          {item.icon && (
+            <span class="reasons__icon" aria-hidden="true">
+              <ReasonIcon name={item.icon} />
+            </span>
+          )}
+          <h3 class="reasons__title">{item.title}</h3>
+          <p class="reasons__text">{item.text}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  /*
+   * Izgara BİLEREK asimetrik: altı sütun üzerinde ilk üç kart ikişer, son iki kart
+   * üçer sütun kaplar. Eşit altı kutu, sayfadaki diğer kart ızgaralarından ayırt
+   * edilemiyordu; bu ritim bölümü kendi başına bir kompozisyon yapıyor.
+   */
+  .reasons {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 16px;
+    margin: clamp(32px, 4vw, 48px) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .reasons__item {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: rgb(255 255 255 / 2%);
+    transition:
+      border-color var(--t-slow),
+      transform var(--t-slow),
+      background var(--t-slow);
+  }
+
+  .reasons__item:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+
+  /* Işıyan ikon karesi: lime dolgu + arkasında yumuşak hâle. */
+  .reasons__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    padding: 14px;
+    border-radius: 14px;
+    color: var(--bg);
+    background: var(--accent);
+    box-shadow: 0 0 32px rgb(207 255 0 / 34%);
+    transition: box-shadow var(--t-base);
+  }
+
+  .reasons__title {
+    margin: 0;
+    font: 600 clamp(17px, 1.5vw, 20px) / 1.25 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .reasons__text {
+    margin: 0;
+    font: 400 15px / 1.65 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  .reasons__item:hover {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+    background: rgb(255 255 255 / 4%);
+  }
+
+  .reasons__item:hover .reasons__icon {
+    box-shadow: 0 0 46px rgb(207 255 0 / 52%);
+  }
+
+  /* Açık zeminde hâle çalışmaz — ikon kutusu koyu, kart çerçevesi belirgin olur. */
+  :global(.section--light) .reasons__item {
+    background: rgb(10 10 10 / 2%);
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .reasons__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .reasons__text {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .reasons__item:hover {
+    border-color: var(--text-on-light);
+    background: rgb(10 10 10 / 4%);
+  }
+
+  @media (max-width: 1020px) {
+    .reasons {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .reasons__item,
+    .reasons__item:nth-child(n + 4) {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .reasons {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reasons__item,
+    .reasons__icon {
+      transition: none;
+    }
+
+    .reasons__item:hover {
+      transform: none;
+    }
+  }
+</style>
