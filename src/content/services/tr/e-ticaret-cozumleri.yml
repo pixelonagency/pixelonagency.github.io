@@ -4,16 +4,16 @@ order: 8
 translationKey: ecommerce
 
 seo:
-  title: E-Ticaret Sitesi ve Dijital Satış Çözümleri | Pixelon
+  title: E-Ticaret Ajansı | E-Ticaret Sitesi Kurulumu | Pixelon
   description: >-
-    Satış odaklı e-ticaret sitesi, kullanıcı deneyimi, ödeme ve kargo
-    entegrasyonlarıyla markanızı dijitalde büyütün. Pixelon e-ticaret
-    çözümlerini keşfedin.
+    E-ticaret ajansı arıyorsanız: satış odaklı e-ticaret sitesi kurulumu,
+    kullanıcı deneyimi, ödeme ve kargo entegrasyonları, ürün girişi ve büyümeye
+    uygun altyapı. Ziyaretçiyi müşteriye çeviren mağazalar kuruyoruz.
 
 hero:
-  eyebrow: E-Ticaret Çözümleri
+  eyebrow: E-Ticaret Ajansı
   headingLines:
-    - "Ürünlerinizi Dijitalde Sadece Sergilemiyor, *Satışa* Dönüştürüyoruz."
+    - "Ürünü Sergileyen Değil, *Satan* E-Ticaret Ajansı."
   lead: >-
     Markanıza özel tasarım, güçlü kullanıcı deneyimi ve kolay yönetilebilir
     altyapılarla ziyaretçileri müşteriye dönüştüren e-ticaret siteleri
@@ -32,27 +32,35 @@ why:
     pazarlama çalışmalarınızı destekleyen bir satış sistemi oluşturuyoruz.
   items:
     - title: Markaya Özel Tasarım
+      icon: team
+      featured: true
       description: >-
         Mağazanızı rakiplerinize benzeyen standart şablonlarla değil, markanızın
         kimliğine uygun biçimde tasarlıyoruz.
     - title: Kolay Yönetim
+      icon: cycle
       description: >-
         Ürün, stok, sipariş, müşteri ve kampanya süreçlerini kolayca
         yönetebileceğiniz bir panel sunuyoruz.
     - title: Satış Odaklı Kullanıcı Deneyimi
+      icon: conversion
       description: >-
         Kullanıcıların ürünü keşfetme ve satın alma yolculuğunu mümkün olduğunca
         kolaylaştırıyoruz.
     - title: SEO ve Reklam Uyumu
+      icon: report
       description: >-
         E-ticaret sitenizi Google, Meta ve diğer dijital pazarlama kanallarıyla
         uyumlu şekilde planlıyoruz.
     - title: Büyümeye Uygun Altyapı
+      icon: cycle
+      featured: true
       description: >-
         Ürün ve sipariş sayınız arttıkça geliştirilebilecek ölçeklenebilir
         sistemler oluşturuyoruz.
 
 scope:
+  layout: list
   eyebrow: E-Ticaret Hizmetlerimiz
   heading: İhtiyacınıza Uygun, Ölçeklenebilir Satış Çözümleri
   items:
@@ -94,26 +102,32 @@ principles:
   heading: Kullanıcı Deneyiminden Satış Sonrasına Kadar Her Detayı Planlıyoruz.
   items:
     - title: Mobil Öncelikli Tasarım
+      icon: audience
       description: >-
         Müşterilerinizin telefon üzerinden hızlı ve kolay alışveriş yapmasını
         sağlayan ekranlar hazırlıyoruz.
     - title: Hızlı Ürün Keşfi
+      icon: strategy
       description: >-
         Arama, filtreleme, kategori ve ürün önerileriyle kullanıcıların doğru
         ürüne kolayca ulaşmasını sağlıyoruz.
     - title: Güven Veren Yapı
+      icon: creative
       description: >-
         Ödeme, teslimat, iade, iletişim ve kullanıcı yorumları gibi güven
         unsurlarını doğru noktalarda konumlandırıyoruz.
     - title: Kolay Satın Alma Süreci
+      icon: landing
       description: >-
         Sepet ve ödeme adımlarını sadeleştirerek kullanıcıların işlemlerini
         hızlı biçimde tamamlamasını hedefliyoruz.
     - title: Kampanya Yönetimi
+      icon: tracking
       description: >-
         İndirim, kupon, ücretsiz kargo, paket ürün ve dönemsel kampanyaları
         kolayca yönetebileceğiniz bir sistem kuruyoruz.
     - title: Raporlama ve Takip
+      icon: optimize
       description: >-
         Satış, sipariş, ürün ve kullanıcı performansını takip edebileceğiniz
         ölçüm altyapıları oluşturuyoruz.
@@ -123,56 +137,52 @@ process:
   heading: Fikirden İlk Siparişe Kadar Yanınızdayız.
   steps:
     - title: Keşif ve Analiz
+      icon: discover
       description: >-
         Ürünlerinizi, hedef kitlenizi, satış modelinizi ve mevcut operasyon
         sürecinizi inceliyoruz.
     - title: Site Mimarisi ve Strateji
+      icon: plan
       description: >-
         Kategori yapısını, ürün sayfalarını, kullanıcı akışlarını ve gerekli
         entegrasyonları planlıyoruz.
     - title: UX/UI Tasarımı
+      icon: build
       description: >-
         Markanıza özel, mobil uyumlu ve satış odaklı mağaza ekranları
         tasarlıyoruz.
     - title: Yazılım ve Entegrasyon
+      icon: optimize
       description: >-
         Ödeme, kargo, stok, pazaryeri ve ihtiyaç duyulan diğer sistemleri
         projeye bağlıyoruz.
     - title: Ürün Girişi ve Test
+      icon: launch
       description: >-
         Ürünleri sisteme ekliyor; sipariş, ödeme, e-posta ve kullanıcı
         akışlarını test ediyoruz.
     - title: Yayın ve Destek
+      icon: measure
       description: >-
         Mağazayı yayına alıyor, ihtiyaç duyulan bakım ve geliştirme süreçlerini
         destekliyoruz.
 
-projects:
-  eyebrow: Başarıyla Tamamladığımız Projeler
-  heading: Markaların Dijital Satış Yolculuğuna Değer Kattık.
+showcase:
+  eyebrow: E-Ticaret Kurduğumuz Markalar
+  heading: Ürünü Rafta Değil, Sepette Bitiren Projeler
   lead: >-
-    Kullanıcı deneyimi, güçlü ürün sunumu ve satış odaklı dijital çözümlerle
-    markaların ürünlerini daha etkili biçimde müşterileriyle buluşturduk. Siz de
-    markanızı bu projeler arasına eklemek için bizimle iletişime geçin.
-  items:
-    - eyebrow: Doğal Ürünler E-Ticaret Deneyimi
-      title: Sera Natura
-      description: >-
-        Ürünlerin içerik, fayda ve kullanım bilgilerini anlaşılır biçimde sunan;
-        güven veren ve kolay alışveriş imkânı sağlayan bir dijital mağaza yapısı
-        oluşturduk.
-    - eyebrow: Moda ve Aksesuar E-Ticaret Tasarımı
-      title: Ella Scarf
-      description: >-
-        Ürün görsellerini öne çıkaran, koleksiyonların kolayca keşfedilmesini
-        sağlayan ve markanın premium algısını destekleyen bir alışveriş deneyimi
-        tasarladık.
-    - eyebrow: Hizmet ve Paket Satış Sistemi
-      title: Çağla Aytaç
-      description: >-
-        Danışmanlık ve cihazlı uygulama paketlerinin incelenebildiği, online
-        ödeme ve rezervasyon süreçlerini destekleyen bir satış yapısı
-        geliştirdik.
+    Aşağıdaki markaların satış altyapısını uçtan uca biz kurduk. Sera Natura'da
+    20'den fazla ürünlük gam tek etiket sistemine alındı ve reklam öncesi tabana
+    göre aylık satış %87 arttı. Redex Glass için çok dilli ürün kataloğu ve
+    kategori yapısı, Çağla Aytaç için randevu ve mağaza akışının aynı sitede
+    birlikte çalıştığı bir yapı kuruldu.
+  slugs:
+    - sera-natura
+    - redex-glass
+    - cagla-aytac
+  columns: 3
+  ctaLabel: Tüm projelerimizi inceleyin
+  ctaHref: /projelerimiz/
 
 value:
   eyebrow: Kimler İçin Uygun?
@@ -199,6 +209,34 @@ intro:
     Pixelon olarak e-ticaret projelerini tasarım, yazılım, kullanıcı deneyimi, SEO ve dijital pazarlama açısından bütüncül biçimde ele alıyoruz. Markanızın ürün yapısına, hedef kitlesine ve satış modeline uygun, mobil uyumlu ve geliştirilebilir bir e-ticaret sistemi kuruyoruz.
 
     Sadece online mağaza kurmuyor, markanızın dijital satış sistemini tasarlıyoruz.
+
+sectors:
+  eyebrow: Sektör Deneyimimiz
+  heading: Hangi Sektörlerle Çalışıyoruz?
+  body: >-
+    Kozmetik ve bakım, gıda ve takviye, moda ve tekstil, ambalaj ve endüstriyel
+    ürün ile hizmet sektöründeki markalar için e-ticaret altyapısı kuruyoruz.
+    Her sektörün ürün gamı, kargo yapısı ve satın alma kararı farklıdır; kategori
+    kurgusunu ve ödeme akışını buna göre değiştiriyoruz.
+  cards:
+    - label: Sağlık ve Klinik
+      image: '/src/assets/images/sector-saglik-klinik.webp'
+      alt: Modern bir diş kliniğinde hastasıyla ilgilenen hekim
+    - label: Sağlık Turizmi
+      image: '/src/assets/images/sector-saglik-turizmi.webp'
+      alt: Hastane resepsiyonunda karşılanan yurt dışından gelen hasta
+    - label: Estetik ve Kozmetik
+      image: '/src/assets/images/sector-estetik-kozmetik.webp'
+      alt: Güzellik kliniğinde cilt bakımı uygulanan danışan
+    - label: E-Ticaret
+      image: '/src/assets/images/sector-e-ticaret.webp'
+      alt: Depoda kargo paketini okutan e-ticaret çalışanı
+    - label: İnşaat ve Gayrimenkul
+      image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+      alt: Gün batımında modern bir konut projesinin cephesi
+    - label: Kurumsal Hizmet
+      image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+      alt: Aydınlık bir ofiste toplantı hâlindeki kurumsal ekip
 
 cta:
   eyebrow: Dijital Mağazanızı Birlikte Büyütelim
