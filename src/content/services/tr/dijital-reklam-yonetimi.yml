@@ -198,16 +198,6 @@ showcase:
   ctaLabel: Tüm projelerimizi inceleyin
   ctaHref: /projelerimiz/
 
-spotlight:
-  eyebrow: Sağlık Turizmi ve Klinik Reklamları
-  heading: Kliniğinizi Hastanın Kendi Dilinde ve Kendi Ülkesinde Anlatıyoruz
-  lead: |-
-    Sağlık turizmi reklamı, Türkçe kampanyanın çevrilmiş hâli değildir. Almanya'daki bir hastanın arama alışkanlığı, güven kriteri ve karar süresi Türkiye'dekinden farklıdır. Bu yüzden her dil için reklam metnini, görselini ve indiği sayfayı ayrı kurguluyoruz.
-
-    Diş, estetik, saç ekimi, dermatoloji ve cerrahi alanlarında çalışan klinikler ve doktorlar için; ülke ve şehir bazlı hedefleme, çok dilli kampanya yapısı, WhatsApp ve form üzerinden hasta talebi toplama ve gelen talebin takibi süreçlerini birlikte yürütüyoruz.
-  image: '/src/assets/images/service-ads-health-tourism.webp'
-  alt: Kliniğinde tablet üzerinden hastasıyla tedavi planını inceleyen doktor
-
 reach:
   eyebrow: Reklam Yayınladığımız Pazarlar
   heading: 20'den Fazla Ülkede, 13 Dilde Kampanya Yönettik
@@ -217,50 +207,82 @@ reach:
     - label: Türkiye
       flag: '🇹🇷'
       highlighted: true
+      lat: 39.0
+      lon: 35.0
     - label: Almanya
       flag: '🇩🇪'
+      lat: 51.2
+      lon: 10.4
     - label: Hollanda
       flag: '🇳🇱'
     - label: Fransa
       flag: '🇫🇷'
+      lat: 46.6
+      lon: 2.2
     - label: Belçika
       flag: '🇧🇪'
     - label: İngiltere
       flag: '🇬🇧'
+      lat: 52.5
+      lon: -1.5
     - label: Avusturya
       flag: '🇦🇹'
     - label: İsviçre
       flag: '🇨🇭'
     - label: İtalya
       flag: '🇮🇹'
+      lat: 42.8
+      lon: 12.8
     - label: İspanya
       flag: '🇪🇸'
+      lat: 40.2
+      lon: -3.6
     - label: Romanya
       flag: '🇷🇴'
+      lat: 45.9
+      lon: 24.9
     - label: Bulgaristan
       flag: '🇧🇬'
     - label: Rusya
       flag: '🇷🇺'
+      lat: 56.0
+      lon: 44.0
     - label: Azerbaycan
       flag: '🇦🇿'
+      lat: 40.3
+      lon: 47.7
     - label: Irak
       flag: '🇮🇶'
+      lat: 33.2
+      lon: 43.7
     - label: Suudi Arabistan
       flag: '🇸🇦'
+      lat: 24.0
+      lon: 45.0
     - label: Birleşik Arap Emirlikleri
       flag: '🇦🇪'
+      lat: 24.0
+      lon: 54.0
     - label: Katar
       flag: '🇶🇦'
     - label: Kuveyt
       flag: '🇰🇼'
     - label: Libya
       flag: '🇱🇾'
+      lat: 27.0
+      lon: 17.0
     - label: Fas
       flag: '🇲🇦'
+      lat: 31.8
+      lon: -6.5
     - label: ABD
       flag: '🇺🇸'
+      lat: 39.5
+      lon: -98.5
     - label: Kongo D.C.
       flag: '🇨🇩'
+      lat: -2.9
+      lon: 23.6
 
 why:
   eyebrow: Neden Pixelon?
@@ -292,6 +314,25 @@ sectors:
   body: |-
     Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret işletmeleri, inşaat ve gayrimenkul şirketleri ile hizmet sektöründeki KOBİ ve kurumsal markalar için dijital reklam yönetimi hizmeti sunuyoruz. Her sektör için hedef kitleyi, kullanıcı karar sürecini ve reklam mesajlarını ayrı bir stratejiyle ele alıyoruz.
 
+  cards:
+    - label: Sağlık ve Klinik
+      image: '/src/assets/images/sector-saglik-klinik.webp'
+      alt: Modern bir diş kliniğinde hastasıyla ilgilenen hekim
+    - label: Sağlık Turizmi
+      image: '/src/assets/images/sector-saglik-turizmi.webp'
+      alt: Hastane resepsiyonunda karşılanan yurt dışından gelen hasta
+    - label: Estetik ve Kozmetik
+      image: '/src/assets/images/sector-estetik-kozmetik.webp'
+      alt: Güzellik kliniğinde cilt bakımı uygulanan danışan
+    - label: E-Ticaret
+      image: '/src/assets/images/sector-e-ticaret.webp'
+      alt: Depoda kargo paketini okutan e-ticaret çalışanı
+    - label: İnşaat ve Gayrimenkul
+      image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+      alt: Gün batımında modern bir konut projesinin cephesi
+    - label: Kurumsal Hizmet
+      image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+      alt: Aydınlık bir ofiste toplantı hâlindeki kurumsal ekip
 cta:
   eyebrow: Reklam Bütçenizi Birlikte Büyümeye Dönüştürelim
   heading: Daha Fazla Talep, Satış ve Randevu Almaya Hazır mısınız?
