@@ -21,8 +21,8 @@ const references = await getCollection('references');
 const sorted = [...references].sort((a, b) => a.data.order - b.data.order);
 
 /*
- * İki görünüm, iki varlık kümesi: marquee beyaz tonlu `logo` alanını, duvar
- * renkli `card` kartlarını basar. Alanı boş olan girdi ilgili görünümde yer almaz.
+ * İki görünüm, iki varlık kümesi: marquee beyaz tonlu `logo` alanını, duvar tek
+ * renk `mark` maskesini basar. Alanı boş olan girdi ilgili görünümde yer almaz.
  */
 const isWall = section.kind === 'wall';
 
@@ -32,12 +32,12 @@ const logos = sorted
   .filter((entry) => Boolean(entry.data.logo))
   .map((entry) => ({ name: entry.data.name, logo: entry.data.logo as ImageMetadata }));
 
-const cards = sorted
-  .filter((entry) => Boolean(entry.data.card))
-  .map((entry) => ({ name: entry.data.name, card: entry.data.card as ImageMetadata }));
+const marks = sorted
+  .filter((entry) => Boolean(entry.data.mark))
+  .map((entry) => ({ name: entry.data.name, mark: entry.data.mark as ImageMetadata }));
 
 // Koleksiyon boşsa bölüm hiç basılmaz — boş bir şerit/duvar build'i kırmasın.
-const hasLogos = isWall ? cards.length > 0 : logos.length > 0;
+const hasLogos = isWall ? marks.length > 0 : logos.length > 0;
 
 /*
  * Referans tasarımda bu bölümün başlığı iki sütundur: solda eyebrow + başlık,
@@ -67,14 +67,18 @@ const stripArrow = (label: string) => label.replace(/\s*→\s*$/, '');
 
       {isWall && (
         <ul class="logo-wall" data-reveal data-reveal-index={1}>
-          {cards.map((ref) => (
+          {marks.map((ref) => (
             <li class="logo-wall__item">
-              <Image
-                src={ref.card}
-                alt={`${ref.name} ${t('logos.altSuffix', locale)}`}
-                widths={[320, 640]}
-                sizes="(max-width: 720px) 45vw, 220px"
-                loading="lazy"
+              {/*
+               * Logo bir <img> değil, maskelenmiş bir yüzeydir: renk CSS'ten gelir,
+               * böylece marka renkleri ne olursa olsun duvardaki her logo AYNI renktir.
+               * Erişilebilirlik için görsel rolü ve marka adı elle verilir.
+               */}
+              <span
+                class="logo-wall__mark"
+                style={`--mark: url(${ref.mark.src})`}
+                role="img"
+                aria-label={`${ref.name} ${t('logos.altSuffix', locale)}`}
               />
             </li>
           ))}
@@ -121,42 +125,80 @@ const stripArrow = (label: string) => label.replace(/\s*→\s*$/, '');
 }
 
 <style>
-  /* --- Duvar: renkli marka kartlarından ızgara --- */
+  /*
+   * --- Duvar: tek renk logo ızgarası ---
+   * Hücreler arasındaki saç teli çizgiler hücrelerin KENDİ kenarlıklarıdır; ızgaranın
+   * sağ/alt dışına taşan fazlalık negatif kenar boşluğuyla kırpılır, böylece dışta
+   * çerçeve kalmaz ve son sıra eksik olsa bile ızgara açık uçlu görünür.
+   */
   .logo-wall {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: clamp(14px, 1.8vw, 22px);
-    margin: clamp(32px, 4.5vw, 52px) 0 0;
+    /*
+     * Sütun sayısı BİLEREK sabit: `auto-fill` 5 sütun ürettiğinde 26 logonun son
+     * sırasında tek başına bir logo kalıyor. 4 / 3 / 2 sütunda kalan hep 2'dir.
+     */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: clamp(32px, 4.5vw, 52px) -1px 0 0;
     padding: 0;
     list-style: none;
+    border-top: 1px solid var(--border);
   }
 
   .logo-wall__item {
-    transition: transform var(--t-slow);
+    display: grid;
+    place-items: center;
+    padding: clamp(24px, 2.8vw, 38px) clamp(16px, 2vw, 26px);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background-color var(--t-slow);
   }
 
-  .logo-wall__item :global(img) {
+  /*
+   * Maske tuvali 880×340 üretilir (bkz. scripts/logos/build-marks.mjs) ve her logo o
+   * tuvalde optik olarak dengelenmiş boyuttadır. Oran burada birebir korunmalıdır,
+   * yoksa `contain` yeniden ölçekler ve dengeleme bozulur.
+   */
+  .logo-wall__mark {
     display: block;
     width: 100%;
-    height: auto;
-    border-radius: 16px;
+    max-width: 190px;
+    aspect-ratio: 44 / 17;
+    background-color: rgb(255 255 255 / 76%);
+    -webkit-mask: var(--mark) center / contain no-repeat;
+    mask: var(--mark) center / contain no-repeat;
+    transition: background-color var(--t-slow);
   }
 
   @media (hover: hover) {
     .logo-wall__item:hover {
-      transform: translateY(-6px);
+      background-color: rgb(207 255 0 / 5%);
+    }
+
+    .logo-wall__item:hover .logo-wall__mark {
+      background-color: #fff;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .logo-wall__item {
+    .logo-wall__item,
+    .logo-wall__mark {
       transition: none;
+    }
+  }
+
+  @media (max-width: 1020px) {
+    .logo-wall {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 720px) {
     .logo-wall {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .logo-wall__mark {
+      max-width: 138px;
     }
   }
 

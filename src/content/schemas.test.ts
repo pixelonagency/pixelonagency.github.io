@@ -461,11 +461,16 @@ describe('referenceSchema', () => {
     expect(parsed.name).toBe('Opet');
   });
 
-  test('accepts a wall-only reference (card without a strip logo)', () => {
-    // Şerit logosu olmayan marka marquee'de yer almaz ama duvarda basılır.
-    expect(
-      referenceSchema.safeParse({ name: 'TEB', card: 'src/assets/client-logos/cards/teb-card.webp' }).success,
-    ).toBe(true);
+  test('accepts a wall-only reference (mark without a strip logo)', () => {
+    // Şerit logosu olmayan marka marquee'de yer almaz ama tek renk maskesi varsa duvarda basılır.
+    const parsed = referenceSchema.parse({ name: 'TEB', mark: 'src/assets/client-logos/marks/teb-mark.webp' });
+    expect(parsed.mark).toBe('src/assets/client-logos/marks/teb-mark.webp');
+  });
+
+  test('keeps every asset field optional — eksik görselli marka şemayı kırmaz', () => {
+    const parsed = referenceSchema.parse({ name: 'Sekoya' });
+    expect(parsed.mark).toBeUndefined();
+    expect(parsed.logo).toBeUndefined();
   });
 
   test('rejects a reference with no name', () => {

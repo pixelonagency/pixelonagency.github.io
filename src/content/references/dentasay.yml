@@ -1,4 +1,5 @@
 name: Dentasay
 logo: '/src/assets/client-logos/dentasay-logo.webp'
+mark: '/src/assets/client-logos/marks/dentasay-mark.webp'
 order: 1
 card: '/src/assets/client-logos/cards/dentasay-card.webp'

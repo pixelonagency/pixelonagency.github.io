@@ -1,4 +1,5 @@
 name: PTT
 logo: '/src/assets/client-logos/ptt-logo.webp'
+mark: '/src/assets/client-logos/marks/ptt-mark.webp'
 order: 10
 card: '/src/assets/client-logos/cards/ptt-card.webp'

@@ -1,4 +1,5 @@
 name: Opet
 logo: '/src/assets/client-logos/opet-logo.webp'
+mark: '/src/assets/client-logos/marks/opet-mark.webp'
 order: 9
 card: '/src/assets/client-logos/cards/opet-card.webp'

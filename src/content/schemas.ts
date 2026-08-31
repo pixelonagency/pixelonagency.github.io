@@ -689,7 +689,13 @@ export function makeReferenceSchema(image: ImageResolver = defaultImage) {
     sector: opt(z.string()),
     /** Beyaz tonlu şerit logosu — anasayfa marquee'sinde kullanılır. */
     logo: opt(image()),
-    /** Renkli marka kartı (kendi zeminiyle) — referans duvarında kullanılır. */
+    /**
+     * Tek renk logo maskesi — referans duvarında kullanılır. Mürekkebi beyaz, zemini
+     * saydam bir WebP'tir ve CSS'te `mask-image` olarak basılır; böylece duvardaki
+     * bütün logolar TEK renge boyanır. `scripts/logos/build-marks.mjs` üretir.
+     */
+    mark: opt(image()),
+    /** Renkli marka kartı (kendi zeminiyle). Duvar artık `mark` bastığı için yedekte durur. */
     card: opt(image()),
     order: z.number().default(0),
   });

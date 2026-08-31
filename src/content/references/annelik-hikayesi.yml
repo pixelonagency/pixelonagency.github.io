@@ -1,4 +1,5 @@
 name: Annelik Hikayesi
 logo: '/src/assets/client-logos/annelik-hikayesi-logo.webp'
+mark: '/src/assets/client-logos/marks/annelik-hikayesi-mark.webp'
 order: 4
 card: '/src/assets/client-logos/cards/annelik-hikayesi-card.webp'

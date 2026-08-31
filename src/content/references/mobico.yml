@@ -1,4 +1,5 @@
 name: Mobico
 logo: '/src/assets/client-logos/mobico-logo.webp'
+mark: '/src/assets/client-logos/marks/mobico-mark.webp'
 order: 8
 card: '/src/assets/client-logos/cards/mobico-card.webp'

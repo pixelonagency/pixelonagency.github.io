@@ -1614,8 +1614,10 @@ collections:
       - { label: Sektör, name: sector, widget: string, required: false }
       # Beyaz tonlu şerit logosu (anasayfa marquee) — duvar-yalnız markalarda boş kalabilir.
       - { label: Logo (şerit), name: logo, widget: image, required: false }
-      # Renkli marka kartı (kendi zeminiyle) — referans duvarı bunu basar.
-      - { label: Marka Kartı (duvar), name: card, widget: image, required: false }
+      # Tek renk logo maskesi (beyaz mürekkep, saydam zemin) — referans duvarı bunu basar.
+      - { label: Logo Maskesi (duvar), name: mark, widget: image, required: false }
+      # Renkli marka kartı (kendi zeminiyle) — duvar artık maskeyi bastığı için yedekte.
+      - { label: Marka Kartı, name: card, widget: image, required: false }
       - { label: Sıra, name: order, widget: number, value_type: int, default: 0 }
 
   # --- Ekip ---------------------------------------------------------------
