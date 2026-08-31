@@ -246,6 +246,25 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
         eyebrow: nonEmpty,
         heading: nonEmpty,
         body: nonEmpty,
+        /**
+         * Görselli sektör kartları. Verilmezse bölüm eskisi gibi düz metin
+         * olarak çıkar — bu yüzden opsiyoneldir ve 22 hizmet dosyasını kırmaz.
+         *
+         * DİKKAT: `items` adı KULLANILAMAZ — 12 hizmet dosyasında zaten
+         * `sectors.items` var ve orada düz string listesidir. Aynı adı vermek
+         * o dosyaları şema hatasıyla düşürür (bir kez denendi, 22 dosya kırıldı).
+         */
+        cards: opt(
+          z
+            .array(
+              z.object({
+                label: nonEmpty,
+                image: image(),
+                alt: opt(z.string()),
+              }),
+            )
+            .min(1),
+        ),
       }),
     ),
     /*
@@ -286,6 +305,9 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
               label: nonEmpty,
               flag: nonEmpty,
               highlighted: z.boolean().default(false),
+              /** İkisi birden verilirse harita pini çizilir; yoksa yalnız çip. */
+              lat: opt(z.number().min(-90).max(90)),
+              lon: opt(z.number().min(-180).max(180)),
             }),
           )
           .min(1),

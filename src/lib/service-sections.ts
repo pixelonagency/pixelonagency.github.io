@@ -63,7 +63,15 @@ export interface ServiceLike {
     | (Block & { items: { eyebrow?: string | undefined; title: string; description: string; href?: string }[] })
     | undefined;
   value?: (Block & { bullets: string[] }) | undefined;
-  sectors?: (Block & { body: string }) | undefined;
+  sectors?:
+    | {
+        eyebrow: string;
+        heading: string;
+        body: string;
+        /** Verilirse bölüm görselli karta döner; yoksa düz metin kalır. */
+        cards?: { label: string; image: unknown; alt?: string | undefined }[] | undefined;
+      }
+    | undefined;
   /* --- Zengin kanıt bölümleri (opsiyonel) — bkz. schemas.ts gerekçesi. --- */
   stats?:
     | {
@@ -79,7 +87,18 @@ export interface ServiceLike {
         }[];
       }
     | undefined;
-  reach?: (Block & { countries: { label: string; flag: string; highlighted?: boolean }[] }) | undefined;
+  reach?:
+    | (Block & {
+        countries: {
+          label: string;
+          flag: string;
+          highlighted?: boolean;
+          /** İkisi birden varsa harita pini çizilir — bkz. src/lib/map-pins.ts. */
+          lat?: number | undefined;
+          lon?: number | undefined;
+        }[];
+      })
+    | undefined;
   showcase?:
     | (Block & {
         slugs: string[];
@@ -436,14 +455,35 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
   }
 
   if (service.sectors) {
-    sections.push({
-      type: 'text',
-      eyebrow: service.sectors.eyebrow,
-      heading: service.sectors.heading,
-      body: service.sectors.body,
-      background: nextBg(),
-      ctas: [],
-    });
+    const sectorCards = service.sectors.cards ?? [];
+    /*
+     * Görsel verilmişse kart ızgarası, verilmemişse eski düz metin bölümü.
+     * Geri düşüş bilinçli: `cards` hizmet dosyalarının çoğunda yok.
+     */
+    if (sectorCards.length > 0) {
+      sections.push({
+        type: 'sectorCards',
+        eyebrow: service.sectors.eyebrow,
+        heading: service.sectors.heading,
+        body: service.sectors.body,
+        background: nextBg(),
+        ctas: [],
+        cards: sectorCards.map((card) => ({
+          label: card.label,
+          image: card.image,
+          alt: card.alt,
+        })),
+      } as PageSection);
+    } else {
+      sections.push({
+        type: 'text',
+        eyebrow: service.sectors.eyebrow,
+        heading: service.sectors.heading,
+        body: service.sectors.body,
+        background: nextBg(),
+        ctas: [],
+      });
+    }
   }
 
   sections.push({

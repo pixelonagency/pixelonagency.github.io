@@ -145,12 +145,41 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
           flag: nonEmpty,
           /** Diğerlerinden ayrışan, sürekli vurgulu çip (ör. "Türkiye"). */
           highlighted: z.boolean().default(false),
+          /**
+           * Harita pini için enlem/boylam. İKİSİ BİRDEN verilmezse ülke yalnızca
+           * çip listesinde görünür, pin çizilmez — bkz. src/lib/map-pins.ts.
+           * Avrupa'da birbirine çok yakın ülkelerde pinler üst üste bineceği için
+           * koordinat bilerek boş bırakılabilir.
+           */
+          lat: opt(z.number().min(-90).max(90)),
+          lon: opt(z.number().min(-180).max(180)),
         }),
       )
       .min(1),
     /** `*yıldız*` işaretlemesi destekler — bkz. src/lib/highlight.ts. */
     closingLine: opt(z.string()),
     mapImageAlt: opt(z.string()),
+  });
+
+  /**
+   * Sektör kartları: görselli, üstünde sektör adı olan ızgara. `sectors.items`
+   * verilmediğinde bu bölüm hiç üretilmez ve sayfa eskisi gibi düz metin
+   * bölümü gösterir — bkz. src/lib/service-sections.ts.
+   */
+  const sectorCards = z.object({
+    ...sectionBase,
+    type: z.literal('sectorCards'),
+    heading: nonEmpty,
+    body: opt(z.string()),
+    cards: z
+      .array(
+        z.object({
+          label: nonEmpty,
+          image: z.string(),
+          alt: opt(z.string()),
+        }),
+      )
+      .min(1),
   });
 
   const text = z.object({
@@ -488,6 +517,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     bullets,
     marquee,
     worldMap,
+    sectorCards,
     platforms,
     principles,
     why,
@@ -534,6 +564,7 @@ export const PAGE_SECTION_TYPES = [
   'bullets',
   'marquee',
   'worldMap',
+  'sectorCards',
   'platforms',
   'principles',
   'why',

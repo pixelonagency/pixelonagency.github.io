@@ -399,6 +399,16 @@ collections:
           - *f_eyebrow
           - *f_heading
           - { label: Gövde, name: body, widget: text }
+          - label: Sektör Kartları (görselli)
+            name: cards
+            widget: list
+            required: false
+            collapsed: true
+            hint: Boş bırakılırsa bölüm görselsiz düz metin olarak çıkar.
+            fields:
+              - { label: Sektör Adı, name: label, widget: string }
+              - { label: Görsel, name: image, widget: image }
+              - { label: Görsel Alt Metni, name: alt, widget: string, required: false }
       - label: Rakamlar (Kanıt Bandı)
         name: stats
         widget: object
@@ -435,6 +445,8 @@ collections:
               - { label: Ülke, name: label, widget: string }
               - { label: Bayrak, name: flag, widget: string }
               - { label: Vurgulu, name: highlighted, widget: boolean, required: false, default: false }
+              - { label: Enlem (harita pini), name: lat, widget: number, required: false, value_type: float, hint: Enlem ve boylam BİRLİKTE verilirse haritada pin çıkar; biri eksikse ülke yalnız çip listesinde görünür. }
+              - { label: Boylam (harita pini), name: lon, widget: number, required: false, value_type: float }
       - label: Vaka Vitrini
         name: showcase
         widget: object
@@ -685,6 +697,24 @@ collections:
                 widget: list
                 field: { label: Öğe, name: item, widget: string }
 
+          - label: 'Sektör Kartları (görselli ızgara)'
+            name: sectorCards
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - *s_heading
+              - { label: Gövde, name: body, widget: text, required: false }
+              - label: Kartlar
+                name: cards
+                widget: list
+                fields:
+                  - { label: Sektör Adı, name: label, widget: string }
+                  - { label: Görsel, name: image, widget: image }
+                  - { label: Görsel Alt Metni, name: alt, widget: string, required: false }
+
           - label: 'Global (Ülke Şeridi + Harita)'
             name: worldMap
             widget: object
@@ -702,6 +732,8 @@ collections:
                   - { label: Ad, name: label, widget: string }
                   - { label: Bayrak (emoji), name: flag, widget: string }
                   - { label: Öne Çıkar, name: highlighted, widget: boolean, default: false, required: false }
+                  - { label: Enlem (harita pini), name: lat, widget: number, required: false, value_type: float, hint: Enlem ve boylam BİRLİKTE verilirse haritada pin çıkar. }
+                  - { label: Boylam (harita pini), name: lon, widget: number, required: false, value_type: float }
               - { label: Kapanış Cümlesi, name: closingLine, widget: text, required: false }
               - { label: Harita Görseli Alt Metni, name: mapImageAlt, widget: string, required: false }
 
