@@ -80,10 +80,6 @@ const emptyLabel =
     ? 'Bu kategoride yakında yeni projeler yayınlanacak.'
     : 'New projects in this category are coming soon.';
 
-/*
- * Rozet satırı — DUMMY istatistikler (wireframe'deki 20+/100+): production'da
- * gerçek verilerle güncellenmeli. Üçüncü rozet metni yml'deki `tagline`dan gelir.
- */
 /* Görünen breadcrumb ile birebir aynı BreadcrumbList JSON-LD'si (HeroSection deseni). */
 const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
 const breadcrumbJsonLd = toJsonLd([
@@ -95,11 +91,6 @@ const breadcrumbJsonLd = toJsonLd([
     { label: section.heading },
   ]),
 ]);
-
-const BADGES = [
-  { value: '20+', label: locale === 'tr' ? 'Marka' : 'Brands', icon: 'users' },
-  { value: '100+', label: locale === 'tr' ? 'Teslim' : 'Deliveries', icon: 'check' },
-] as const;
 ---
 
 <section class:list={['section', 'pb-section']} id={section.anchor}>
@@ -115,46 +106,6 @@ const BADGES = [
       {section.eyebrow && <p class="eyebrow">{section.eyebrow}</p>}
       <h1 class="h1 pb-hero__title">{section.heading}</h1>
       {section.lead && <p class="lead pb-hero__lead">{section.lead}</p>}
-
-      <ul class="pb-badges" aria-label={locale === 'tr' ? 'Özet' : 'Summary'}>
-        {
-          BADGES.map((badge) => (
-            <li class="pb-badge">
-              <span class="pb-badge__icon" aria-hidden="true">
-                {badge.icon === 'users' ? (
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <circle cx="9" cy="8" r="3.4" />
-                    <path d="M2.8 20c.9-3.4 3.4-5 6.2-5s5.3 1.6 6.2 5" />
-                    <circle cx="17.2" cy="9.4" r="2.6" />
-                    <path d="M15.4 14.6c2.6.1 4.9 1.6 5.8 4.6" />
-                  </svg>
-                ) : (
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="m8 12.4 2.6 2.6L16 9.6" />
-                  </svg>
-                )}
-              </span>
-              <span class="pb-badge__text">
-                <strong>{badge.value}</strong>
-                {badge.label}
-              </span>
-            </li>
-          ))
-        }
-        {
-          section.tagline && (
-            <li class="pb-badge">
-              <span class="pb-badge__icon" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" />
-                </svg>
-              </span>
-              <span class="pb-badge__text pb-badge__text--services">{section.tagline}</span>
-            </li>
-          )
-        }
-      </ul>
     </header>
 
     {/* -------------------------------------------------------- FILTER --- */}
@@ -341,52 +292,6 @@ const BADGES = [
 
   .pb-hero__lead {
     margin-top: 14px;
-  }
-
-  .pb-badges {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(16px, 3vw, 32px);
-    margin: 26px 0 0;
-    padding: 0;
-  }
-
-  .pb-badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .pb-badge__icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--text-on-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-  }
-
-  .pb-badge__text {
-    display: flex;
-    flex-direction: column;
-    font: 400 var(--fs-small) var(--font-body);
-    color: var(--text-muted);
-    line-height: 1.25;
-  }
-
-  .pb-badge__text strong {
-    font: 600 16px var(--font-display);
-    color: var(--text);
-  }
-
-  .pb-badge__text--services {
-    font-weight: 600;
-    color: var(--text);
-    max-width: 150px;
   }
 
   /* ------------------------------------------------------------ filter --- */
@@ -704,6 +609,44 @@ const BADGES = [
          ekranda korur, geniş telefonlarda büyümeyi durdurur. */
       aspect-ratio: auto;
       min-height: min(calc(75vw - 34px), 320px);
+    }
+
+    /*
+     * DAR EKRANDA KART BÖLÜNÜR — metin görselin ÜSTÜNE binmez.
+     *
+     * Ölçüm (390px): kart 259px, metin bloğu 204px. Metin kapağın %79'unu
+     * kaplıyor ve %14'ünden başlıyordu; kapak tasarımı (logo, laptop, çizgi
+     * öğeler) neredeyse tamamen görünmez oluyordu. Bindirme için yer yok.
+     *
+     * Çözüm: görsel kendi 4:3 kutusuna alınır, yazılar altında düz zeminde
+     * akar. Geniş ekranda kart büyük olduğu için bindirme korunur — orada
+     * hem çalışıyor hem daha iyi duruyor.
+     */
+    .pb-card {
+      justify-content: flex-start;
+      padding: 0;
+      min-height: 0;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .pb-card :global(.pb-card__img) {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-card) var(--radius-card) 0 0;
+    }
+
+    /* Scrim'in işi bindirmeyi okunur kılmaktı; bindirme kalkınca gereksiz. */
+    .pb-card__scrim {
+      display: none;
+    }
+
+    .pb-card__bottom {
+      padding: 16px 18px 20px;
+      transform: none;
+      gap: 8px;
     }
 
     .pb-card__excerpt {
