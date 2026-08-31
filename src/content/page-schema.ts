@@ -196,6 +196,26 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
       .min(1),
   });
 
+  /**
+   * Kayan iş şeridi — müşteri sitelerinin cihaz mockup'ları, her biri kendi
+   * vaka sayfasına bağlı. Kesintisiz döngü için liste iki kez basılır.
+   */
+  const showreel = z.object({
+    ...sectionBase,
+    type: z.literal('showreel'),
+    heading: opt(z.string()),
+    items: z
+      .array(
+        z.object({
+          label: nonEmpty,
+          image: z.string(),
+          alt: opt(z.string()),
+          href: nonEmpty,
+        }),
+      )
+      .min(2),
+  });
+
   const text = z.object({
     ...sectionBase,
     type: z.literal('text'),
@@ -544,6 +564,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     marquee,
     worldMap,
     sectorCards,
+    showreel,
     platforms,
     principles,
     why,
@@ -591,6 +612,7 @@ export const PAGE_SECTION_TYPES = [
   'marquee',
   'worldMap',
   'sectorCards',
+  'showreel',
   'platforms',
   'principles',
   'why',

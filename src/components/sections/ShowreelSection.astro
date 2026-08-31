@@ -1,0 +1,203 @@
+---
+import { Image } from 'astro:assets';
+import type { PageSection } from '../../content/page-schema';
+
+type Showreel = Extract<PageSection, { type: 'showreel' }>;
+
+interface Props {
+  section: Showreel;
+}
+
+const { section } = Astro.props;
+/*
+ * Kesintisiz döngü: liste iki kez basılır ve şerit tam yarısı kadar kaydırılır
+ * (@keyframes marquee -> translateX(-50%)). İkinci kopya ekran okuyucudan
+ * gizlidir, yoksa her marka iki kez okunur.
+ */
+const COPIES = [0, 1];
+---
+
+<section class="reel" aria-label={section.heading ?? 'Tasarladığımız web siteleri'}>
+  {
+    (section.eyebrow || section.heading) && (
+      <div class="reel__head">
+        {section.eyebrow && <p class="reel__eyebrow">{section.eyebrow}</p>}
+        {section.heading && <h2 class="reel__heading">{section.heading}</h2>}
+      </div>
+    )
+  }
+
+  <div class="reel__viewport">
+    <div class="reel__track">
+      {
+        COPIES.map((copy) => (
+          <ul class="reel__group" aria-hidden={copy === 1 ? 'true' : undefined}>
+            {section.items.map((item) => (
+              <li class="reel__item">
+                <a class="reel__link" href={item.href} tabindex={copy === 1 ? -1 : undefined}>
+                  <Image
+                    class="reel__shot"
+                    src={item.image as never}
+                    alt={item.alt ?? `${item.label} web sitesi`}
+                    widths={[520, 1040]}
+                    sizes="(max-width: 720px) 78vw, 520px"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="reel__label">
+                    {item.label}
+                    <span class="reel__arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .reel {
+    padding: clamp(38px, 5vw, 64px) 0 clamp(30px, 4vw, 48px);
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .reel__head {
+    max-width: var(--container);
+    margin: 0 auto clamp(24px, 3vw, 36px);
+    padding: 0 clamp(20px, 6vw, 80px);
+  }
+
+  .reel__eyebrow {
+    margin: 0 0 10px;
+    font: 600 12px var(--font-display);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .reel__heading {
+    margin: 0;
+    font: 600 clamp(24px, 3vw, 36px) / 1.14 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  /* Kenarlarda yumuşak kesme — şerit ekrandan çıkarken sertçe kopmasın. */
+  .reel__viewport {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, black 6%, black 94%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, black 6%, black 94%, transparent 100%);
+  }
+
+  .reel__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 58s linear infinite;
+  }
+
+  .reel:hover .reel__track,
+  .reel:focus-within .reel__track {
+    animation-play-state: paused;
+  }
+
+  .reel__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: flex-start;
+    gap: clamp(18px, 2.4vw, 34px);
+    padding: 0 clamp(9px, 1.2vw, 17px) 0 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .reel__item {
+    flex: 0 0 auto;
+    width: clamp(280px, 34vw, 520px);
+  }
+
+  .reel__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /*
+   * Mockup'lar saydam PNG/WebP — kutu, çerçeve veya zemin VERİLMEZ, yoksa
+   * dizüstü silüetinin etrafında beyaz bir dikdörtgen belirir.
+   */
+  .reel__shot {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .reel__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    padding-left: 4px;
+    font: 600 15px var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text-muted);
+    transition: color 0.3s;
+  }
+
+  .reel__arrow {
+    color: var(--accent);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
+  }
+
+  .reel__link:hover,
+  .reel__link:focus-visible {
+    transform: translateY(-8px);
+  }
+
+  .reel__link:hover .reel__label,
+  .reel__link:focus-visible .reel__label {
+    color: var(--text);
+  }
+
+  .reel__link:hover .reel__arrow,
+  .reel__link:focus-visible .reel__arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reel__link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+    border-radius: 6px;
+  }
+
+  /*
+   * Hareket kapalıyken bant kendi kendine akmaz; kullanıcı yatay olarak
+   * kaydırır. İkinci kopya gizlenir, yoksa liste iki kez görünür.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .reel__viewport {
+      overflow-x: auto;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    .reel__track {
+      animation: none;
+    }
+
+    .reel__group[aria-hidden='true'] {
+      display: none;
+    }
+  }
+</style>

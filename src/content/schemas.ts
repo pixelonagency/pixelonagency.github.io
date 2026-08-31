@@ -358,6 +358,27 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
         ctaHref: optHref,
       }),
     ),
+    /**
+     * İş şeridi: gerçek müşteri sitelerinin cihaz mockup'ları, kayan bant
+     * hâlinde. Her kart kendi vaka sayfasına bağlanır — dekor değil, hem kanıt
+     * hem iç linkleme. Verilmezse bölüm hiç üretilmez.
+     */
+    showreel: opt(
+      z.object({
+        eyebrow: opt(z.string()),
+        heading: opt(z.string()),
+        items: z
+          .array(
+            z.object({
+              label: nonEmpty,
+              image: image(),
+              alt: opt(z.string()),
+              href: nonEmpty,
+            }),
+          )
+          .min(2),
+      }),
+    ),
     /** Tek konuya odaklanan görselli blok (ör. sağlık turizmi). */
     spotlight: opt(
       z.object({

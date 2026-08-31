@@ -142,6 +142,13 @@ export interface ServiceLike {
         alt?: string | undefined;
       }
     | undefined;
+  showreel?:
+    | {
+        eyebrow?: string | undefined;
+        heading?: string | undefined;
+        items: { label: string; image: unknown; alt?: string | undefined; href: string }[];
+      }
+    | undefined;
   cta: Block;
   faq: Block & { items: { question: string; answer: string }[] };
 }
@@ -210,6 +217,32 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       ctas: [],
       items: service.stats.items,
     });
+  }
+
+  /*
+   * İş şeridi hero'nun hemen altında, intro'dan ÖNCE durur: web tasarım
+   * sayfasına giren kişi ilk olarak gerçekten yaptığımız siteleri görsün.
+   * Kendi zeminini bastığı için nextBg() sırasını tüketmez.
+   */
+  if (service.showreel) {
+    sections.push({
+      type: 'showreel',
+      eyebrow: service.showreel.eyebrow,
+      heading: service.showreel.heading,
+      /*
+       * Bileşen kendi zeminini basar (Section sarmalayıcısı kullanmaz), bu yüzden
+       * değer sabit veriliyor ve nextBg() ÇAĞRILMIYOR — şerit araya girse de
+       * sonraki bölümlerin açık/koyu ritmi kaymasın.
+       */
+      background: 'dark',
+      ctas: [],
+      items: service.showreel.items.map((item) => ({
+        label: item.label,
+        image: item.image,
+        alt: item.alt,
+        href: item.href,
+      })),
+    } as PageSection);
   }
 
   if (service.intro) {

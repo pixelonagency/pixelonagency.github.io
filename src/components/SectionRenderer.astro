@@ -26,6 +26,7 @@ import PrinciplesSection from './sections/PrinciplesSection.astro';
 import ProcessSection from './sections/ProcessSection.astro';
 import ScopeSection from './sections/ScopeSection.astro';
 import SectorsSection from './sections/SectorsSection.astro';
+import ShowreelSection from './sections/ShowreelSection.astro';
 import WhySection from './sections/WhySection.astro';
 import WorldMapSection from './sections/WorldMapSection.astro';
 
@@ -65,6 +66,8 @@ const { sections, locale = DEFAULT_LOCALE } = Astro.props;
         return <WorldMapSection section={section} />;
       case 'sectorCards':
         return <SectorsSection section={section} />;
+      case 'showreel':
+        return <ShowreelSection section={section} />;
       case 'text':
         return <TextSection section={section} />;
       case 'stats':

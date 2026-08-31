@@ -389,6 +389,24 @@ collections:
             widget: list
             required: false
             field: { label: Madde, name: item, widget: string }
+      - label: İş Şeridi (kayan mockup bandı)
+        name: showreel
+        widget: object
+        required: false
+        collapsed: true
+        i18n: true
+        hint: Hero'nun hemen altında kayan bant. Boş bırakılırsa bölüm hiç çıkmaz.
+        fields:
+          - { label: Üst Başlık, name: eyebrow, widget: string, required: false }
+          - { label: Başlık, name: heading, widget: string, required: false }
+          - label: İşler
+            name: items
+            widget: list
+            fields:
+              - { label: Marka Adı, name: label, widget: string }
+              - { label: Mockup Görseli, name: image, widget: image }
+              - { label: Görsel Alt Metni, name: alt, widget: string, required: false }
+              - { label: Bağlantı, name: href, widget: string, hint: Örn. /projelerimiz/xray-groupe/ }
       - label: Sektörler
         name: sectors
         widget: object
@@ -696,6 +714,24 @@ collections:
                 name: items
                 widget: list
                 field: { label: Öğe, name: item, widget: string }
+
+          - label: 'İş Şeridi (kayan mockup bandı)'
+            name: showreel
+            widget: object
+            fields:
+              - *s_eyebrow
+              - *s_anchor
+              - *s_background
+              - *s_ctas
+              - { label: Başlık, name: heading, widget: string, required: false }
+              - label: İşler
+                name: items
+                widget: list
+                fields:
+                  - { label: Marka Adı, name: label, widget: string }
+                  - { label: Mockup Görseli, name: image, widget: image }
+                  - { label: Görsel Alt Metni, name: alt, widget: string, required: false }
+                  - { label: Bağlantı, name: href, widget: string }
 
           - label: 'Sektör Kartları (görselli ızgara)'
             name: sectorCards
