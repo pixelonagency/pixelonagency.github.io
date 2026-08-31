@@ -4,15 +4,24 @@ order: 2
 translationKey: social-media
 
 seo:
-  title: Sosyal Medya Yönetimi Hizmeti | Pixelon Dijital Ajans
+  title: Sosyal Medya Ajansı | İçerik, Reels ve Yönetim | Pixelon
   description: >-
-    Pixelon ile markanıza özel sosyal medya stratejisi, içerik üretimi, Reels,
-    tasarım, topluluk yönetimi ve performans odaklı sosyal medya hizmeti alın.
+    Sosyal medya ajansı arıyorsanız: markanıza özel strateji, içerik üretimi,
+    Reels ve video, tasarım, topluluk yönetimi ve düzenli raporlama. Kaydırılıp
+    geçilen değil, takip edilen bir hesap kuruyoruz.
+
+heroVideo:
+  desktopMp4: /media/hero/sosyal-medya/hero-sosyal-desktop.mp4
+  desktopWebm: /media/hero/sosyal-medya/hero-sosyal-desktop.webm
+  desktopPoster: /media/hero/sosyal-medya/hero-sosyal-desktop-poster.webp
+  mobileMp4: /media/hero/sosyal-medya/hero-sosyal-mobile.mp4
+  mobileWebm: /media/hero/sosyal-medya/hero-sosyal-mobile.webm
+  mobilePoster: /media/hero/sosyal-medya/hero-sosyal-mobile-poster.webp
 
 hero:
-  eyebrow: Sosyal Medya Yönetimi
+  eyebrow: Sosyal Medya Ajansı
   headingLines:
-    - "Markanızı Kaydırılıp Geçilen Değil, *Takip Edilen* Bir Hikâyeye Dönüştürüyoruz."
+    - "Kaydırılıp Geçilmeyen İçerik Üreten *Sosyal Medya Ajansı.*"
   lead: |-
     Strateji, yaratıcı içerik, profesyonel tasarım ve video üretimini bir araya getirerek markanızın sosyal medyada güçlü, tutarlı ve dikkat çekici bir iletişim kurmasını sağlıyoruz.
   tagline: |-
@@ -37,19 +46,26 @@ why:
     Sosyal medya yönetimini yalnızca tasarım hazırlamak ve paylaşım yapmak olarak görmüyoruz. Her içeriğin markanızın iletişim hedeflerine, hedef kitlesine ve büyüme stratejisine hizmet etmesini sağlıyoruz.
   items:
     - title: Markaya Özel Strateji
+      icon: team
+      featured: true
       description: |-
         Hazır içerik kalıpları yerine sektörünüze ve markanıza özel bir iletişim planı hazırlıyoruz.
     - title: Tasarım ve Video Tek Ekipte
+      icon: conversion
       description: |-
         Grafik tasarım, metin, fotoğraf, video çekimi ve kurgu süreçlerini bütüncül biçimde yönetiyoruz.
     - title: Düzenli ve Tutarlı İletişim
+      icon: cycle
       description: |-
         Markanızın sosyal medyada kopuk değil, planlı ve güçlü bir iletişim kurmasını sağlıyoruz.
     - title: Ölçülebilir Gelişim
+      icon: report
+      featured: true
       description: |-
         İçerik performansını düzenli olarak analiz ediyor ve sonuçlara göre stratejiyi geliştiriyoruz.
 
 scope:
+  layout: list
   eyebrow: Sosyal Medya Yönetimi Kapsamımız
   heading: Stratejiden Paylaşıma Tüm Süreç Tek Ekipte
   items:
@@ -78,23 +94,59 @@ scope:
       description: |-
         Erişim, etkileşim, takipçi gelişimi ve içerik performansını analiz ederek sonraki içerik planlarını geliştiriyoruz.
 
+principles:
+  eyebrow: Sosyal Medyada Neleri Birlikte Ele Alıyoruz?
+  heading: Paylaşmadan Önce Plan, Paylaştıktan Sonra Ölçüm
+  items:
+    - title: Hedef Kitle ve Ton
+      icon: audience
+      description: |-
+        Kime, hangi dille konuşacağımızı netleştiriyoruz. Aynı içerik klinik hastasına ve e-ticaret müşterisine aynı tonda anlatılmaz.
+    - title: İçerik Takvimi
+      icon: strategy
+      description: |-
+        Ay boyunca hangi konunun hangi formatta ve hangi gün yayınlanacağını önceden planlıyoruz. Doğaçlama paylaşım tutarlılığı bozar.
+    - title: Görsel ve Video Üretimi
+      icon: creative
+      description: |-
+        Reels, carousel, hikâye ve statik tasarımları kendi ekibimizde üretiyoruz; marka dili her formatta aynı kalıyor.
+    - title: Profil ve Dönüşüm Yolu
+      icon: landing
+      description: |-
+        Biyografi, öne çıkanlar, bağlantılar ve mesaj akışı — takipçinin randevuya veya satın almaya nasıl gideceğini kuruyoruz.
+    - title: Topluluk Yönetimi
+      icon: tracking
+      description: |-
+        Yorum ve mesajlara zamanında, marka diline uygun ve kayıt altında cevap veriyoruz. Cevapsız mesaj kaybedilmiş taleptir.
+    - title: Ölçüm ve Yön Değiştirme
+      icon: optimize
+      description: |-
+        Erişim, etkileşim, kaydetme ve profil ziyaretini takip edip hangi içerik tipinin çalıştığını görüyor, planı ona göre güncelliyoruz.
+
 platforms:
   eyebrow: Platform Deneyimimiz
   heading: Her Platforma Uygun İçerik, Tek Bir Marka Dili
   items:
     - title: Instagram
+      logo: instagram
+      featured: true
       description: |-
         Reels, gönderi, carousel ve hikâye içerikleriyle markanızın görsel gücünü ve etkileşimini artırıyoruz.
     - title: Facebook
+      logo: facebook
       description: |-
         Marka iletişimi, kampanya duyuruları ve hedef kitleye uygun içeriklerle kurumsal görünürlüğünüzü destekliyoruz.
     - title: TikTok
+      logo: tiktok
+      featured: true
       description: |-
         Platformun doğal diline uygun, samimi, hızlı ve paylaşılabilir video içerikleri hazırlıyoruz.
     - title: LinkedIn
+      logo: linkedin
       description: |-
         Kurumsal kimliğinizi, uzmanlığınızı, ekip kültürünüzü ve sektörel deneyiminizi profesyonel içeriklerle anlatıyoruz.
     - title: YouTube
+      logo: youtube
       description: |-
         Kısa ve uzun formatlı video içerikleri, kurumsal filmler ve bilgilendirici seriler için içerik planları oluşturuyoruz.
 
@@ -103,43 +155,42 @@ process:
   heading: Markanızı Tanıyor, Planlıyor ve Sürekli Geliştiriyoruz
   steps:
     - title: Keşif ve Analiz
+      icon: discover
       description: |-
         Markanızı, hedeflerinizi, mevcut hesaplarınızı, rakiplerinizi ve hedef kitlenizi inceliyoruz.
     - title: Strateji ve İçerik Planı
+      icon: plan
       description: |-
         Aylık iletişim konularını, içerik türlerini ve yayın takvimini oluşturuyoruz.
     - title: İçerik Üretimi
+      icon: build
       description: |-
         Tasarım, metin, fotoğraf, video ve Reels çalışmalarını markanızın kimliğine uygun biçimde hazırlıyoruz.
     - title: Onay ve Yayınlama
+      icon: launch
       description: |-
         İçerikleri onayınıza sunuyor, belirlenen gün ve saatlerde yayınlıyoruz.
     - title: Takip ve Raporlama
+      icon: measure
       description: |-
         İçerik performansını analiz ediyor, sonuçlara göre stratejiyi sürekli geliştiriyoruz.
 
-projects:
-  eyebrow: Başarıyla Tamamladığımız Projeler
-  heading: Markalara Sosyal Medyada Güçlü Bir Kimlik Kazandırdık
-  lead: |-
-    Yaratıcı içerikler, stratejik planlama ve markaya özel görsel dille farklı sektörlerdeki işletmelerin sosyal medya iletişimine değer kattık. Siz de markanızı bu projeler arasına eklemek için bizimle iletişime geçin.
-  items:
-    - eyebrow: Sağlık Turizmi Sosyal Medya Yönetimi
-      title: Dentasay
-      description: |-
-        Tedavi bilgilendirmeleri, hasta deneyimleri, klinik tanıtımları ve uluslararası hedef kitlelere yönelik çok dilli sosyal medya içerikleri hazırladık.
-    - eyebrow: Dermatoloji İçerik Stratejisi
-      title: Dr. Ayşe Cinkaya Kahveci
-      description: |-
-        Dermatoloji ve estetik uygulamaları doğru, güvenilir ve anlaşılır bir iletişim diliyle anlatan içerik serileri oluşturduk.
-    - eyebrow: Topluluk Odaklı Sosyal Medya İletişimi
-      title: Annelik Hikayesi
-      description: |-
-        Anne ve kadın odaklı hedef kitle için samimi, dikkat çekici ve etkileşim yaratan sosyal medya içerikleri hazırladık.
-    - eyebrow: Kurumsal Sosyal Medya Yönetimi
-      title: Xray Groupe
-      description: |-
-        Mimarlık, mühendislik ve inşaat projelerini kurumsal bir görsel dille sunan, marka güvenini destekleyen içerikler geliştirdik.
+showcase:
+  eyebrow: Sosyal Medyasını Yönettiğimiz Markalar
+  heading: Hesabı Değil, Marka Algısını Büyüttüğümüz Projeler
+  lead: >-
+    Aşağıdaki markaların sosyal medya iletişimini strateji, içerik üretimi ve
+    topluluk yönetimiyle birlikte biz yürüttük. Dr. Ayşe Cinkaya Kahveci'de
+    9,2 milyon içerik görüntülenmesine ulaşıldı ve hasta potansiyeli ilk yılda
+    %25 arttı. Çağla Aytaç kampanyalarında 2,7 milyon kişiye erişildi.
+  slugs:
+    - dr-ayse-cinkaya-kahveci
+    - cagla-aytac
+    - annelik-hikayesi
+    - dentasay
+  columns: 2
+  ctaLabel: Tüm projelerimizi inceleyin
+  ctaHref: /projelerimiz/
 
 value:
   eyebrow: Format Çeşitliliği
@@ -163,6 +214,25 @@ sectors:
   heading: Hangi Sektörlerle Çalışıyoruz?
   body: |-
     Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret işletmeleri, inşaat ve gayrimenkul şirketleri ile hizmet sektöründeki KOBİ ve kurumsal markalar için sosyal medya yönetimi hizmeti sunuyoruz. Her sektörün iletişim dilini, kullanıcı davranışlarını ve içerik ihtiyaçlarını ayrı ayrı değerlendiriyoruz.
+  cards:
+    - label: Sağlık ve Klinik
+      image: '/src/assets/images/sector-saglik-klinik.webp'
+      alt: Modern bir diş kliniğinde hastasıyla ilgilenen hekim
+    - label: Sağlık Turizmi
+      image: '/src/assets/images/sector-saglik-turizmi.webp'
+      alt: Hastane resepsiyonunda karşılanan yurt dışından gelen hasta
+    - label: Estetik ve Kozmetik
+      image: '/src/assets/images/sector-estetik-kozmetik.webp'
+      alt: Güzellik kliniğinde cilt bakımı uygulanan danışan
+    - label: E-Ticaret
+      image: '/src/assets/images/sector-e-ticaret.webp'
+      alt: Depoda kargo paketini okutan e-ticaret çalışanı
+    - label: İnşaat ve Gayrimenkul
+      image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+      alt: Gün batımında modern bir konut projesinin cephesi
+    - label: Kurumsal Hizmet
+      image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+      alt: Aydınlık bir ofiste toplantı hâlindeki kurumsal ekip
 
 cta:
   eyebrow: Markanızı Sosyal Medyada Birlikte Büyütelim
