@@ -3,35 +3,61 @@ navLabel: "SEO ve İçerik Pazarlaması"
 translationKey: seo
 order: 4
 seo:
-  title: "SEO ve İçerik Pazarlaması Hizmeti | Pixelon"
-  description: "Teknik SEO, anahtar kelime analizi ve SEO uyumlu içeriklerle Google görünürlüğünüzü artırın. Pixelon ile sürdürülebilir organik büyüme sağlayın."
+  title: "SEO Ajansı | Teknik SEO ve İçerik Pazarlaması | Pixelon"
+  description: "SEO ajansı arıyorsanız: teknik SEO, anahtar kelime analizi ve arama niyetine uygun içerikle Google'da kalıcı görünürlük kuruyoruz. Reklam durunca bitmeyen organik trafik."
+heroVideo:
+  desktopMp4: /media/hero/seo/hero-seo-desktop.mp4
+  desktopWebm: /media/hero/seo/hero-seo-desktop.webm
+  desktopPoster: /media/hero/seo/hero-seo-desktop-poster.webp
+  mobileMp4: /media/hero/seo/hero-seo-mobile.mp4
+  mobileWebm: /media/hero/seo/hero-seo-mobile.webm
+  mobilePoster: /media/hero/seo/hero-seo-mobile-poster.webp
 hero:
-  eyebrow: "SEO ve İçerik Pazarlaması"
+  eyebrow: "SEO Ajansı"
   headingLines:
-    - "SEO Uyumlu İçeriklerle Google'da *Zirveye Çıkın.*"
-  lead: "Teknik SEO, anahtar kelime analizi ve kullanıcı odaklı içeriklerle markanızın Google'da daha görünür olmasını sağlıyor, organik trafiğinizi sürdürülebilir biçimde büyütüyoruz."
+    - "Google'da Kalıcı Görünürlük Kuran *SEO Ajansı.*"
+  lead: "Teknik SEO, anahtar kelime analizi ve arama niyetine cevap veren içeriklerle markanızı doğru aramalarda görünür kılıyoruz. Reklam bütçesi durduğunda kaybolmayan, zamanla büyüyen bir trafik kaynağı kuruyoruz."
   tagline: "Doğru aramalarda, doğru içeriklerle, doğru hedef kitlenizin karşısına çıkın."
   whatsappMessage: "Merhaba Pixelon, SEO ve İçerik Pazarlaması hizmeti hakkında bilgi almak istiyorum."
+intro:
+  eyebrow: "Sıralama Bir Sonuçtur, Hedef Değildir"
+  heading: "Sizi Arayan Kullanıcının Karşısına Doğru Sayfayla Çıkıyoruz"
+  body: |-
+    SEO, bir listeye anahtar kelime yazıp beklemek değildir. Kullanıcının ne aradığını, o aramanın arkasında hangi ihtiyacın olduğunu ve hangi sayfanın o ihtiyacı karşıladığını birlikte çözmek gerekir. Teknik altyapı bunun zeminidir; içerik ise cevabın kendisidir.
+
+    Pixelon olarak önce sitenizin taranabilir ve indekslenebilir olduğundan emin oluyor, sonra hedef kitlenizin gerçekten arattığı kelimeleri belirliyor ve her aramanın karşısına o niyete uygun bir sayfa koyuyoruz. Ölçümü baştan kuruyoruz ki gelişmenin nereden geldiği tartışma konusu olmasın.
+  highlight: |-
+    Amacımız tek bir kelimede birinci olmak değil; markanızın aranan her yerde bulunabilir olması.
+
 why:
   eyebrow: "Neden Pixelon?"
   heading: "Görünürlükten Daha Fazlasını Hedefliyoruz"
   lead: "SEO çalışmalarını yalnızca belirli kelimelerde üst sıralara çıkmak olarak görmüyoruz. Markanızın doğru kullanıcılarla buluşmasını, nitelikli organik trafik elde etmesini ve bu trafiğin iletişim, randevu veya satışa dönüşmesini hedefliyoruz."
   items:
     - title: "Google Odaklı SEO Stratejileri"
+      icon: team
+      featured: true
       description: "Sektörünüze, hedef kitlenize ve rekabet düzeyinize uygun sürdürülebilir bir SEO yol haritası oluşturuyoruz."
     - title: "SEO Uyumlu İçerik Üretimi"
+      icon: conversion
       description: "Kullanıcıların arama niyetine cevap veren, özgün, bilgilendirici ve marka dilinize uygun içerikler hazırlıyoruz."
     - title: "Anahtar Kelime Analizi"
+      icon: cycle
       description: "Hedef kitlenizin hangi kelimeleri, soruları ve hizmetleri aradığını analiz ederek içerik fırsatlarını belirliyoruz."
     - title: "Teknik SEO Optimizasyonu"
+      icon: team
       description: "Site hızı, mobil uyumluluk, indeksleme, URL yapısı ve teknik hataları kontrol ederek arama motoru performansını geliştiriyoruz."
     - title: "Otorite ve Backlink Stratejisi"
+      icon: conversion
       description: "Markanızın dijital otoritesini destekleyen güvenilir ve doğal bağlantı fırsatları üzerine çalışıyoruz."
     - title: "Düzenli Raporlama"
+      icon: report
+      featured: true
       description: "Organik trafik, sıralamalar, kullanıcı davranışları ve dönüşümleri düzenli olarak analiz edip raporluyoruz."
 scope:
   eyebrow: "Hizmet Kapsamı"
   heading: "Organik Büyüme İçin Bütüncül SEO Çözümleri"
+  layout: list
   items:
     - title: "SEO Analizi ve Yol Haritası"
       description: "Mevcut web sitenizi teknik yapı, içerik, sıralamalar ve rakipler açısından analiz ediyoruz."
@@ -51,34 +77,104 @@ scope:
       description: "Rakiplerinizin güçlü olduğu anahtar kelimeleri, içerik yapılarını ve büyüme fırsatlarını inceliyoruz."
     - title: "Performans Takibi"
       description: "Google Search Console, Analytics ve diğer ölçüm araçları üzerinden sonuçları takip ederek stratejiyi geliştiriyoruz."
+principles:
+  eyebrow: "SEO Çalışmasında Neleri Birlikte Ele Alıyoruz?"
+  heading: "Teknik Zemin, Doğru Kelime, Gerçek Cevap"
+  items:
+    - title: "Arama Niyeti Analizi"
+      icon: audience
+      description: |-
+        Aynı kelimeyi arayan iki kullanıcı farklı şey isteyebilir. Bilgi mi arıyor, karşılaştırma mı yapıyor, satın almaya mı hazır — sayfayı bu ayrıma göre kurguluyoruz.
+    - title: "Anahtar Kelime Stratejisi"
+      icon: strategy
+      description: |-
+        Hacim tek başına yeterli değil. Rekabet düzeyini, ticari değeri ve sizin gerçekçi şansınızı birlikte değerlendirip öncelik sırası çıkarıyoruz.
+    - title: "İçerik Üretimi"
+      icon: creative
+      description: |-
+        Arama sonucunda çıkan sorunun cevabını gerçekten veren, özgün ve marka dilinize uygun içerikler yazıyoruz. Kelime doldurmuyoruz.
+    - title: "Sayfa İçi Optimizasyon"
+      icon: landing
+      description: |-
+        Başlık, meta açıklama, başlık hiyerarşisi, iç bağlantılar, görsel alt metinleri ve yapılandırılmış veri — sayfanın anlaşılmasını sağlayan her katmanı düzenliyoruz.
+    - title: "Teknik SEO ve Ölçüm"
+      icon: tracking
+      description: |-
+        Tarama bütçesi, indeksleme, site hızı, mobil uyumluluk ve yönlendirme zincirleri. Search Console ve Analytics kurulumunu baştan doğru yapıyoruz.
+    - title: "Sürekli İyileştirme"
+      icon: optimize
+      description: |-
+        SEO bir kerelik iş değil. Sıralama hareketlerini, düşen sayfaları ve yeni fırsatları takip edip planı her ay güncelliyoruz.
+
+platforms:
+  eyebrow: "Arama Yüzeyleri ve Ölçüm Araçları"
+  heading: "Nerede Görünür Kılıyoruz, Nereden Ölçüyoruz?"
+  lead: |-
+    Arama artık tek bir kutudan ibaret değil. Google'ın yanına yapay zekâ yanıt motorları eklendi ve markanızın orada da alıntılanması gerekiyor. Ölçümü ise tahminle değil, kaynağından yapıyoruz.
+  items:
+    - title: "Google Arama"
+      logo: google
+      featured: true
+      description: |-
+        Çalışmanın merkezi. Teknik altyapı, sayfa içi optimizasyon ve içerik üretiminin tamamı Google'ın sayfanızı doğru anlaması ve doğru aramada göstermesi için kurgulanıyor.
+    - title: "Yapay Zekâ Yanıt Motorları"
+      logo: perplexity
+      featured: true
+      description: |-
+        Perplexity ve benzeri yanıt motorları cevabı kaynak göstererek veriyor. Yapılandırılmış veri, net başlık hiyerarşisi ve kaynak gösterilebilir içerikle markanızın o cevapların içinde geçmesini hedefliyoruz.
+    - title: "Yandex"
+      logo: yandex
+      description: |-
+        Rusça ve Türkçe aramalarda hâlâ ciddi pay tutuyor. Rusya ve çevre pazarlara satış yapan markalar için ayrı kurgu gerektiriyor.
+    - title: "Google Search Console"
+      logo: searchconsole
+      description: |-
+        Sıralama, gösterim ve tıklama verisinin birinci elden kaynağı. Hangi sorgunun hangi sayfaya geldiğini buradan okuyor, içerik planını buna göre güncelliyoruz.
+    - title: "Google Analytics"
+      logo: analytics
+      description: |-
+        Organik trafiğin sitede ne yaptığını gösterir. Form, WhatsApp ve arama gibi dönüşümleri kurup SEO'nun getirdiği trafiğin işe dönüşüp dönüşmediğini ölçüyoruz.
+    - title: "Semrush"
+      logo: semrush
+      description: |-
+        Anahtar kelime hacmi, zorluk derecesi ve rakip analizi için kullanıyoruz. Hangi kelimenin gerçekten aranıp aranmadığını varsaymak yerine ölçüyoruz.
+
 process:
   eyebrow: "SEO Sürecimiz Nasıl İşler?"
   heading: "Analizden Sürdürülebilir Büyümeye"
   steps:
     - title: "Analiz ve Keşif"
-      description: "Web sitenizi, sektörünüzü, hedef kitlenizi ve mevcut Google performansınızı inceliyoruz."
-    - title: "Strateji ve Anahtar Kelime Planı"
-      description: "Hedeflenecek aramaları, sayfaları, içerikleri ve teknik öncelikleri belirliyoruz."
+      icon: discover
+      description: "Web sitenizi teknik yapı, mevcut sıralamalar ve içerik derinliği açısından inceliyor; sektörünüzü ve hedef kitlenizi tanıyoruz."
+    - title: "Anahtar Kelime ve Rakip Araştırması"
+      icon: plan
+      description: "Hedef kitlenizin gerçekten arattığı kelimeleri hacim, zorluk ve ticari değerine göre ölçüyor; rakiplerin güçlü olduğu alanları çıkarıyoruz."
+    - title: "Strateji ve Yol Haritası"
+      icon: build
+      description: "Hangi sayfanın hangi aramayı karşılayacağını, hangi içeriğin ne zaman yayınlanacağını ve teknik önceliklerin sırasını belirliyoruz."
     - title: "Teknik ve Site İçi Optimizasyon"
-      description: "Web sitenizin teknik yapısını ve mevcut sayfalarını SEO standartlarına uygun hale getiriyoruz."
+      icon: launch
+      description: "Tarama, indeksleme, site hızı ve mobil uyumluluğu düzeltiyor; başlık, meta, iç bağlantı ve yapılandırılmış veriyi kuruyoruz."
     - title: "İçerik Üretimi"
-      description: "Hedef kitlenizin sorularına cevap veren, arama niyetine uygun ve özgün içerikler hazırlıyoruz."
-    - title: "Ölçüm ve Geliştirme"
-      description: "Sıralamaları, organik trafiği ve dönüşümleri takip ederek çalışmaları düzenli biçimde geliştiriyoruz."
-projects:
-  eyebrow: "Başarıyla Tamamladığımız Projeler"
-  heading: "Markaların Google Görünürlüğüne Değer Kattık"
-  lead: "Stratejik SEO çalışmaları, teknik iyileştirmeler ve kullanıcı odaklı içeriklerle farklı sektörlerdeki markaların dijital görünürlüğünü güçlendirdik. Siz de markanızı bu projeler arasına eklemek için bizimle iletişime geçin."
-  items:
-    - eyebrow: "Çok Dilli Sağlık Turizmi SEO Çalışması"
-      title: "Dentasay"
-      description: "Tedavi sayfaları, ülke bazlı içerikler ve çok dilli SEO yapısıyla Dentasay'ın uluslararası aramalardaki görünürlüğünü destekledik."
-    - eyebrow: "Dermatoloji İçerik ve SEO Stratejisi"
-      title: "Dr. Ayşe Cinkaya Kahveci"
-      description: "Cilt hastalıkları, estetik uygulamalar ve lazer tedavileri için kullanıcıların arama sorularına cevap veren detaylı hizmet içerikleri oluşturduk."
-    - eyebrow: "Çok Dilli Kurumsal SEO Altyapısı"
-      title: "Xray Groupe"
-      description: "Mimarlık, mühendislik ve inşaat hizmetlerinin farklı ülkelerde doğru anahtar kelimelerle bulunabilmesi için çok dilli site yapısı hazırladık."
+      icon: optimize
+      description: "Arama niyetine cevap veren, özgün ve marka dilinize uygun içerikleri yayın takvimine göre üretiyoruz."
+    - title: "Ölçüm ve Sürekli Geliştirme"
+      icon: measure
+      description: "Search Console ve Analytics üzerinden sıralama, trafik ve dönüşümü takip ediyor; düşen sayfaları ve yeni fırsatları her ay plana yansıtıyoruz."
+
+showcase:
+  eyebrow: "SEO Çalıştığımız Markalar"
+  heading: "Arama Görünürlüğünü Kalıcı Olarak Büyüttüğümüz Projeler"
+  lead: |-
+    Aşağıdaki markaların arama görünürlüğünü uçtan uca biz kurduk. Dr. Ayşe Cinkaya Kahveci kliniğini tek dilden 6 dilde arama trafiğine taşıdık ve ilk yılda hasta potansiyeli %25 arttı. Dentasay'ın tedavi ve ülke sayfalarını 13 dilde, 20 ülkeye kurguladık. Xray Groupe için mimarlık ve mühendislik hizmetlerinin farklı ülkelerde doğru kelimelerle bulunabildiği çok dilli bir site yapısı hazırladık.
+  slugs:
+    - dr-ayse-cinkaya-kahveci
+    - dentasay
+    - xray-groupe
+  columns: 3
+  ctaLabel: "Tüm projelerimizi inceleyin"
+  ctaHref: /projelerimiz/
+
 value:
   eyebrow: "SEO Neden Önemlidir?"
   heading: "Reklam Bütçesine Bağımlı Olmadan Sürekli Görünürlük Sağlayın"
@@ -93,13 +189,33 @@ sectors:
   eyebrow: "Sektör Deneyimimiz"
   heading: "Hangi Sektörlerle Çalışıyoruz?"
   body: "Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret işletmeleri, inşaat ve gayrimenkul şirketleri ile hizmet sektöründeki KOBİ ve kurumsal markalar için SEO ve içerik pazarlaması hizmetleri sunuyoruz. Her sektörün arama davranışlarını, rekabet düzeyini ve kullanıcı karar sürecini ayrı bir stratejiyle değerlendiriyoruz."
+  cards:
+    - label: "Sağlık ve Klinik"
+      image: '/src/assets/images/sector-saglik-klinik.webp'
+      alt: "Modern bir diş kliniğinde hastasıyla ilgilenen hekim"
+    - label: "Sağlık Turizmi"
+      image: '/src/assets/images/sector-saglik-turizmi.webp'
+      alt: "Hastane resepsiyonunda karşılanan yurt dışından gelen hasta"
+    - label: "Estetik ve Kozmetik"
+      image: '/src/assets/images/sector-estetik-kozmetik.webp'
+      alt: "Güzellik kliniğinde cilt bakımı uygulanan danışan"
+    - label: "E-Ticaret"
+      image: '/src/assets/images/sector-e-ticaret.webp'
+      alt: "Depoda kargo paketini okutan e-ticaret çalışanı"
+    - label: "İnşaat ve Gayrimenkul"
+      image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+      alt: "Gün batımında modern bir konut projesinin cephesi"
+    - label: "Kurumsal Hizmet"
+      image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+      alt: "Aydınlık bir ofiste toplantı hâlindeki kurumsal ekip"
+
 cta:
   eyebrow: "Markanızı Google'da Birlikte Öne Çıkaralım"
   heading: "Daha Fazla Organik Trafik ve Nitelikli Talep Almaya Hazır mısınız?"
   lead: "Web sitenizin Google performansını geliştirmek, hizmetlerinizi doğru aramalarda görünür hale getirmek ve sürdürülebilir organik büyüme sağlamak için Pixelon ekibiyle iletişime geçin. Mevcut durumunuzu analiz edelim ve markanıza özel SEO yol haritasını oluşturalım."
 faq:
   eyebrow: "Merak Edilenler"
-  heading: "SEO ve İçerik Pazarlaması Hakkında Sıkça Sorulan Sorular"
+  heading: "SEO Ajansı Seçerken ve SEO Çalışmasında Sıkça Sorulanlar"
   items:
     - question: "SEO çalışması ne kadar sürede sonuç verir?"
       answer: "SEO uzun vadeli bir çalışmadır. İlk gelişmeler teknik durum, sektör rekabeti ve içerik kapsamına bağlı olarak değişir. Düzenli çalışma ve optimizasyonla sonuçlar zaman içerisinde güçlenir."
@@ -111,3 +227,11 @@ faq:
       answer: "Evet. Öncelikle mevcut site teknik ve içerik açısından analiz edilir, ardından geliştirme planı hazırlanır."
     - question: "SEO raporlarında hangi veriler bulunur?"
       answer: "Organik trafik, anahtar kelime sıralamaları, gösterim, tıklama, kullanıcı davranışları, teknik sorunlar ve dönüşüm verileri raporlanabilir."
+    - question: "SEO ajansı ile çalışmanın maliyeti neye göre belirlenir?"
+      answer: "Sabit bir liste fiyatı yok; kapsam ve süre belirler. Sitenin mevcut teknik durumu, hedeflenen kelime sayısı, üretilecek içerik hacmi, dil sayısı ve rekabet düzeyi çalışmanın büyüklüğünü değiştirir. Önce ücretsiz bir analiz yapıp neyin gerektiğini çıkarıyor, kapsamı birlikte belirledikten sonra teklif hazırlıyoruz."
+    - question: "SEO mu Google Ads mi? Hangisiyle başlamalıyım?"
+      answer: "İkisi birbirinin alternatifi değil. Google Ads ilk günden talep getirir ama bütçe durunca trafik de durur. SEO geç başlar, karşılığında reklam harcamasından bağımsız kalıcı bir kanal bırakır. Hızlı talebe ihtiyacınız varsa reklamla başlayıp SEO'yu paralel kurmak çoğu markada en sağlıklı yol oluyor."
+    - question: "Yerel aramalarda (örneğin şehir adıyla) görünmek için ne yapılıyor?"
+      answer: "Google Business profili, hizmet ve konum sayfalarının yapısı, yerel yapılandırılmış veri ve tutarlı işletme bilgisi birlikte çalışır. Birden fazla şubesi olan markalarda her lokasyon için ayrı sayfa kurgusu gerekir."
+    - question: "İçerikleri yapay zekâ mı yazıyor?"
+      answer: "Hayır. Araştırma ve taslak aşamasında araçlardan yararlanıyoruz ama yayınlanan her içerik konuya hâkim bir insan tarafından yazılıyor ve kontrol ediliyor. Şablonla çoğaltılmış içerik kısa vadede sayfa sayısı artırır, uzun vadede sitenin tamamına zarar verir."
