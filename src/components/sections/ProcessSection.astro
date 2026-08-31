@@ -362,7 +362,12 @@ const threeCol = section.items.length === 6;
 
   .proc--3col {
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 34px;
+    /*
+     * Çift sıradaki kartlar 38px aşağı kayıyor (nth-child(even) translateY).
+     * 34px satır aralığında bu kayma alt sıraya taşıp kartları üst üste
+     * bindiriyordu — aralık kaymayı aşacak kadar açıldı.
+     */
+    row-gap: 76px;
   }
 
   /*
