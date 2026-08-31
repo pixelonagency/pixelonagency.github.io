@@ -10,6 +10,14 @@ seo:
     kullanıcı deneyimi, ödeme ve kargo entegrasyonları, ürün girişi ve büyümeye
     uygun altyapı. Ziyaretçiyi müşteriye çeviren mağazalar kuruyoruz.
 
+heroVideo:
+  desktopMp4: /media/hero/e-ticaret/hero-eticaret-desktop.mp4
+  desktopWebm: /media/hero/e-ticaret/hero-eticaret-desktop.webm
+  desktopPoster: /media/hero/e-ticaret/hero-eticaret-desktop-poster.webp
+  mobileMp4: /media/hero/e-ticaret/hero-eticaret-mobile.mp4
+  mobileWebm: /media/hero/e-ticaret/hero-eticaret-mobile.webm
+  mobilePoster: /media/hero/e-ticaret/hero-eticaret-mobile-poster.webp
+
 hero:
   eyebrow: E-Ticaret Ajansı
   headingLines:
