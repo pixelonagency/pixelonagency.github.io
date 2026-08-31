@@ -18,6 +18,90 @@ heroVideo:
   mobileWebm: /media/hero/sosyal-medya/hero-sosyal-mobile.webm
   mobilePoster: /media/hero/sosyal-medya/hero-sosyal-mobile-poster.webp
 
+showreel:
+  - eyebrow: Ürettiğimiz Gönderiler
+    heading: Markalar İçin Tasarladığımız Sosyal Medya İçerikleri
+    placement: top
+    variant: square
+    items:
+      - label: Dr. Ayşe Cinkaya Kahveci
+        image: '/src/assets/images/projects/dr-ayse-cinkaya-kahveci/sosyal-medya.webp'
+        alt: Dermatoloji kliniği için hazırlanan bilgilendirici gönderi tasarımları
+        href: /projelerimiz/dr-ayse-cinkaya-kahveci/
+      - label: Sera Natura
+        image: '/src/assets/images/projects/sera-natura/sosyal-medya.webp'
+        alt: Doğal yağ markası için ürün odaklı gönderi tasarımları
+        href: /projelerimiz/sera-natura/
+      - label: Xray Groupe
+        image: '/src/assets/images/projects/xray-groupe/sosyal-medya.webp'
+        alt: İnşaat firması için kurumsal gönderi tasarımları
+        href: /projelerimiz/xray-groupe/
+      - label: Op. Dr. İsmail Büyükçayır
+        image: '/src/assets/images/projects/op-dr-ismail-buyukcayir/sosyal-medya.webp'
+        alt: Estetik cerrah için hazırlanan gönderi tasarımları
+        href: /projelerimiz/op-dr-ismail-buyukcayir/
+      - label: Anneliğin Hikayesi
+        image: '/src/assets/images/projects/annelik-hikayesi/sosyal-medya.webp'
+        alt: Annelik içerik platformu için gönderi tasarımları
+        href: /projelerimiz/annelik-hikayesi/
+      - label: Touch Consulting
+        image: '/src/assets/images/projects/touch-consulting/sosyal-medya.webp'
+        alt: Danışmanlık markası için kurumsal gönderi tasarımları
+        href: /projelerimiz/touch-consulting/
+      - label: Redex Glass
+        image: '/src/assets/images/projects/redex-glass/sosyal-medya.webp'
+        alt: Cam ambalaj markası için ürün gönderileri
+        href: /projelerimiz/redex-glass/
+      - label: Vennyx
+        image: '/src/assets/images/projects/vennyx/sosyal-medya.webp'
+        alt: Vennyx markası için sosyal medya gönderi tasarımları
+        href: /projelerimiz/vennyx/
+  - eyebrow: Kameranın Arkasında
+    heading: Çektiğimiz Bazı Videolar
+    placement: mid
+    variant: reel
+    items:
+      - label: Dr. Ayşe Cinkaya Kahveci
+        image: '/src/assets/images/reels/kolajen.webp'
+        video: /media/reels/kolajen.mp4
+        alt: Kolajen konulu bilgilendirme reels çekimi
+        href: /projelerimiz/dr-ayse-cinkaya-kahveci/
+      - label: Cilt Bariyeri
+        image: '/src/assets/images/reels/cilt-bariyeri.webp'
+        video: /media/reels/cilt-bariyeri.mp4
+        alt: Cilt bariyeri konulu klinik içerik çekimi
+        href: /projelerimiz/dr-ayse-cinkaya-kahveci/
+      - label: Op. Dr. İsmail Büyükçayır
+        image: '/src/assets/images/reels/dogru-bilinen-yanlislar.webp'
+        video: /media/reels/dogru-bilinen-yanlislar.mp4
+        alt: Doğru bilinen yanlışlar serisinden hekim çekimi
+        href: /projelerimiz/op-dr-ismail-buyukcayir/
+      - label: Sera Natura · Nioli
+        image: '/src/assets/images/reels/nioli.webp'
+        video: /media/reels/nioli.mp4
+        alt: Nioli yağı için ürün tanıtım çekimi
+        href: /projelerimiz/sera-natura/
+      - label: Sera Natura · Udi Hindi
+        image: '/src/assets/images/reels/udi-hindi.webp'
+        video: /media/reels/udi-hindi.mp4
+        alt: Udi Hindi yağı için ürün tanıtım çekimi
+        href: /projelerimiz/sera-natura/
+      - label: Xray Groupe
+        image: '/src/assets/images/reels/xray-saha.webp'
+        video: /media/reels/xray-saha.mp4
+        alt: İnşaat sahasında çekilen tanıtım videosu
+        href: /projelerimiz/xray-groupe/
+      - label: Anneliğin Hikayesi
+        image: '/src/assets/images/reels/gelin-kaynana.webp'
+        video: /media/reels/gelin-kaynana.mp4
+        alt: Annelik içerik serisinden sunum çekimi
+        href: /projelerimiz/annelik-hikayesi/
+      - label: Touch Consulting
+        image: '/src/assets/images/reels/touch-reel.webp'
+        video: /media/reels/touch-reel.mp4
+        alt: Danışmanlık markası için sunum çekimi
+        href: /projelerimiz/touch-consulting/
+
 hero:
   eyebrow: Sosyal Medya Ajansı
   headingLines:
