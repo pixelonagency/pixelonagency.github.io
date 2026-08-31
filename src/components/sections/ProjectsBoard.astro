@@ -179,7 +179,16 @@ const BOARD_VIDEO_SCRIPT = `
     }
 
     {/* --------------------------------------------------------- BOARD --- */}
-    <div class="pb-board" data-reveal data-reveal-index="2">
+    {
+      /*
+       * Izgara BİLEREK scroll-reveal kullanmıyor. `data-reveal` tüm tahtaya tek parça
+       * konunca gözlemcinin %12 eşiği "tahtanın %12'si görünsün" demek oluyordu; tahta
+       * çok uzun olduğu için kartlar ancak bir ekran boyu kaydırdıktan sonra beliriyor,
+       * sayfa ilk açılışta boş görünüyordu. Bunun yerine hero ile aynı anda, yükleme
+       * animasyonuyla geliyor.
+       */
+    }
+    <div class="pb-board pb-board--enter">
       {
         projects.map((project, index) => {
           const Tag = project.hasDetail ? 'a' : 'article';
@@ -411,6 +420,11 @@ const BOARD_VIDEO_SCRIPT = `
   }
 
   /* ------------------------------------------------------------- board --- */
+  /* Hero ve filtrelerden hemen sonra, sayfa açılırken bir kez oynar. */
+  .pb-board--enter {
+    animation: fadeUp 0.8s var(--ease-out) 0.12s both;
+  }
+
   .pb-board {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
