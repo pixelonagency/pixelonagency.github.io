@@ -1101,8 +1101,14 @@ collections:
                 widget: list
                 fields:
                   - { label: Etiket, name: label, widget: string }
+                  # İlk satır kanalın kendisi (numara/adres), sonraki satırlar açıklamadır.
                   - { label: Değer, name: value, widget: string }
                   - { label: Bağlantı, name: href, widget: string, required: false }
+                  - label: Kanal İkonu
+                    name: icon
+                    widget: select
+                    required: false
+                    options: [whatsapp, phone, mail, location, social]
               - { label: Form Başlığı, name: formHeading, widget: string }
               - { label: Form Giriş Metni, name: formLead, widget: text, required: false }
               - label: Form
@@ -1149,8 +1155,14 @@ collections:
                 widget: list
                 fields:
                   - { label: Etiket, name: label, widget: string }
+                  # İlk satır kanalın kendisi (numara/adres), sonraki satırlar açıklamadır.
                   - { label: Değer, name: value, widget: string }
                   - { label: Bağlantı, name: href, widget: string, required: false }
+                  - label: Kanal İkonu
+                    name: icon
+                    widget: select
+                    required: false
+                    options: [whatsapp, phone, mail, location, social]
 
           - label: Görsel / Video
             name: media

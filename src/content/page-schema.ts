@@ -531,7 +531,22 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     type: z.literal('contactInfo'),
     heading: opt(z.string()),
     lead: opt(z.string()),
-    items: z.array(z.object({ label: nonEmpty, value: nonEmpty, href: optHref })).min(1),
+    items: z
+      .array(
+        z.object({
+          label: nonEmpty,
+          /*
+           * İlk satır kanalın kendisidir (numara, adres, şehir); varsa sonraki
+           * satırlar açıklamadır. Bölüm bunu ayrı tipografiyle basar, bu yüzden
+           * açıklama için ayrı bir alan tutulmuyor.
+           */
+          value: nonEmpty,
+          href: optHref,
+          /** Kanal ikonu — bkz. ContactIcon.astro. Verilmezse madde ikonsuz basılır. */
+          icon: opt(z.enum(['whatsapp', 'phone', 'mail', 'location', 'social'])),
+        }),
+      )
+      .min(1),
   });
 
   const media = z.object({

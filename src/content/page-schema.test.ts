@@ -10,6 +10,25 @@ const base = {
 
 const parseSection = (section: unknown) => pageSchema.safeParse({ ...base, sections: [section] });
 
+describe('contactInfo bölümü', () => {
+  const item = { label: 'E-posta', value: 'info@pixelon.com.tr', href: 'mailto:info@pixelon.com.tr' };
+
+  test('kanal ikonu opsiyoneldir — ikonsuz madde geçerli kalır', () => {
+    const parsed = parseSection({ type: 'contactInfo', items: [item] });
+    expect(parsed.success).toBe(true);
+  });
+
+  test('tanımlı kanal ikonunu kabul eder', () => {
+    const parsed = parseSection({ type: 'contactInfo', items: [{ ...item, icon: 'mail' }] });
+    expect(parsed.success).toBe(true);
+  });
+
+  test('tanımsız ikon adını reddeder — yazım hatası sessizce ikonsuz kalmasın', () => {
+    const parsed = parseSection({ type: 'contactInfo', items: [{ ...item, icon: 'eposta' }] });
+    expect(parsed.success).toBe(false);
+  });
+});
+
 describe('page frame', () => {
   test('accepts a page with SEO metadata and no sections yet', () => {
     expect(pageSchema.safeParse(base).success).toBe(true);

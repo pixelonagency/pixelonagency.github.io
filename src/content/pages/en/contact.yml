@@ -14,10 +14,20 @@ sections:
     headingLines:
       - "Let's Build Something Great Together."
     lead: >-
-      Are you planning a new website, an effective ad campaign, stronger social
-      media communication or a comprehensive digital strategy built around your
-      brand? Tell us about your project. Let's listen to your needs, understand
-      your goals and shape the right roadmap for your brand together.
+      A website, an ad campaign, social media or a full digital strategy —
+      whatever you are planning, tell us about it. We will listen, understand
+      your goals and map out the right route together.
+    video:
+      desktopMp4: /media/hero/iletisim/hero-iletisim-desktop.mp4
+      desktopWebm: /media/hero/iletisim/hero-iletisim-desktop.webm
+      desktopPoster: /media/hero/iletisim/hero-iletisim-desktop-poster.webp
+      mobileMp4: /media/hero/iletisim/hero-iletisim-mobile.mp4
+      mobileWebm: /media/hero/iletisim/hero-iletisim-mobile.webm
+      mobilePoster: /media/hero/iletisim/hero-iletisim-mobile-poster.webp
+    chips:
+      - First consultation is free
+      - "Kadıköy, Istanbul"
+      - Remote and in person
     tagline: >-
       Once we receive your message, we will review your project and get back to
       you as soon as possible.
@@ -30,27 +40,31 @@ sections:
         variant: outline
 
   - type: contactInfo
-    background: light
+    background: dark
     anchor: form
     eyebrow: Reach Us Through the Channel That Suits You Best
     heading: Get quick answers about your project
     lead: You can message us on WhatsApp, call us or fill in the contact form.
     items:
       - label: WhatsApp and Phone
+        icon: whatsapp
         value: |-
           +90 506 522 90 34
           Contact us directly about new project requests, our services and the way we work.
         href: 'tel:+905065229034'
       - label: E-mail
+        icon: mail
         value: |-
           info@pixelon.com.tr
           Send your project files, your brief or partnership requests by e-mail.
         href: 'mailto:info@pixelon.com.tr'
       - label: Location
+        icon: location
         value: |-
           Kadıköy, Istanbul
           We run projects both online and face to face with brands from Turkey and from many other parts of the world.
       - label: Social Media
+        icon: social
         value: |-
           Instagram: @pixelonagency
           Facebook: pixelonagency
@@ -90,36 +104,6 @@ sections:
       - label: Start a WhatsApp Conversation
         href: https://wa.me/905065229034
         variant: primary
-
-  - type: steps
-    background: light
-    eyebrow: How Does a Project Start?
-    heading: From the First Message to Project Kick-off
-    items:
-      - title: Share Your Request
-        description: Tell us about your project via WhatsApp, phone, e-mail or the form.
-      - title: Let's Have an Initial Call
-        description: >-
-          Let's review your brand, your goals, your needs and your expectations
-          together.
-      - title: Let's Build the Roadmap
-        description: >-
-          Let's define the project scope, the deliverables, the timeline and the
-          way we will work.
-      - title: Let's Launch the Project
-        description: >-
-          Once approved, let's start the strategy, content, design or development
-          process.
-
-  - type: media
-    background: dark
-    eyebrow: Our Head Office
-    heading: Digital Solutions From Kadıköy to the World
-    lead: >-
-      Our head office is in Kadıköy, Istanbul. We work with brands across Turkey
-      and around the world through online meetings and cloud-based project
-      management systems.
-    alt: A clean map illustration showing the Kadıköy district of Istanbul
 
   - type: faq
     background: light

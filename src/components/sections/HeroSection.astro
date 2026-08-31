@@ -315,9 +315,22 @@ const tickerItems = section.tagline?.includes('✦')
     );
   }
 
+  /*
+   * Ortalanmış hero'da yatay perde ters çalışıyor: yazı tam ortada durduğu için
+   * en koyu bant metnin altına değil, sahnenin görünmesi gereken yere düşüyordu
+   * ve video neredeyse hiç görünmüyordu. Ortalı varyantta perde merkezden dışa
+   * açılan eliptik bir örtü — metnin arkası koyu, kenarlar sahneye açık.
+   */
+  .hero--center .hero__video-scrim {
+    background:
+      radial-gradient(ellipse 58% 66% at 50% 46%, rgb(5 5 5 / 90%) 0%, rgb(5 5 5 / 74%) 52%, rgb(5 5 5 / 34%) 100%),
+      linear-gradient(180deg, rgb(5 5 5 / 52%) 0%, rgb(5 5 5 / 18%) 42%, rgb(5 5 5 / 62%) 100%);
+  }
+
   @media (max-width: 768px) {
     /* Mobil kompozisyon: üst koyu (metin), alt görünür (sahne). */
-    .hero__video-scrim {
+    .hero__video-scrim,
+    .hero--center .hero__video-scrim {
       background: linear-gradient(
         180deg,
         rgb(5 5 5 / 95%) 0%,

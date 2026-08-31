@@ -14,11 +14,20 @@ sections:
     headingLines:
       - "Birlikte Harika Bir Şey Üretelim."
     lead: >-
-      Yeni bir web sitesi, etkili bir reklam kampanyası, güçlü bir sosyal medya
-      iletişimi veya markanıza özel kapsamlı bir dijital strateji mi
-      planlıyorsunuz? Projenizi bize anlatın. İhtiyaçlarınızı dinleyelim,
-      hedeflerinizi anlayalım ve markanız için en doğru yol haritasını birlikte
-      oluşturalım.
+      Web sitesi, reklam kampanyası, sosyal medya ya da kapsamlı bir dijital
+      strateji — ne planlıyorsanız anlatın. Dinleyelim, hedefinizi anlayalım ve
+      doğru yol haritasını birlikte çıkaralım.
+    video:
+      desktopMp4: /media/hero/iletisim/hero-iletisim-desktop.mp4
+      desktopWebm: /media/hero/iletisim/hero-iletisim-desktop.webm
+      desktopPoster: /media/hero/iletisim/hero-iletisim-desktop-poster.webp
+      mobileMp4: /media/hero/iletisim/hero-iletisim-mobile.mp4
+      mobileWebm: /media/hero/iletisim/hero-iletisim-mobile.webm
+      mobilePoster: /media/hero/iletisim/hero-iletisim-mobile-poster.webp
+    chips:
+      - İlk görüşme ücretsiz
+      - Kadıköy, İstanbul
+      - Uzaktan ve yüz yüze
     tagline: >-
       Mesajınızı aldıktan sonra projenizi inceleyerek en kısa sürede sizinle
       iletişime geçeceğiz.
@@ -31,27 +40,31 @@ sections:
         variant: outline
 
   - type: contactInfo
-    background: light
+    background: dark
     anchor: form
     eyebrow: Size En Uygun Kanaldan Bize Ulaşın
     heading: Projeniz hakkında hızlıca bilgi alın
     lead: WhatsApp'tan yazabilir, bizi arayabilir veya iletişim formunu doldurabilirsiniz.
     items:
       - label: WhatsApp ve Telefon
+        icon: whatsapp
         value: |-
           +90 506 522 90 34
           Yeni proje talepleri, hizmetlerimiz ve çalışma süreçlerimiz hakkında bizimle doğrudan iletişime geçin.
         href: 'tel:+905065229034'
       - label: E-posta
+        icon: mail
         value: |-
           info@pixelon.com.tr
           Proje dosyalarınızı, briefinizi veya iş birliği taleplerinizi e-posta üzerinden iletebilirsiniz.
         href: 'mailto:info@pixelon.com.tr'
       - label: Konum
+        icon: location
         value: |-
           Kadıköy, İstanbul
           Türkiye'den ve dünyanın farklı noktalarından markalarla çevrim içi ve yüz yüze çalışma süreçleri yürütüyoruz.
       - label: Sosyal Medya
+        icon: social
         value: |-
           Instagram: @pixelonagency
           Facebook: pixelonagency
@@ -91,36 +104,6 @@ sections:
       - label: WhatsApp Görüşmesini Başlat
         href: https://wa.me/905065229034
         variant: primary
-
-  - type: steps
-    background: light
-    eyebrow: Proje Süreci Nasıl Başlıyor?
-    heading: İlk Mesajdan Proje Başlangıcına
-    items:
-      - title: Talebinizi Paylaşın
-        description: WhatsApp, telefon, e-posta veya form üzerinden projeniz hakkında bilgi verin.
-      - title: Ön Görüşme Yapalım
-        description: >-
-          Markanızı, hedeflerinizi, ihtiyaçlarınızı ve beklentilerinizi birlikte
-          değerlendirelim.
-      - title: Yol Haritasını Oluşturalım
-        description: >-
-          Proje kapsamını, teslimleri, zaman planını ve çalışma modelini
-          belirleyelim.
-      - title: Projeyi Başlatalım
-        description: >-
-          Onay sonrasında strateji, içerik, tasarım veya geliştirme süreçlerine
-          başlayalım.
-
-  - type: media
-    background: dark
-    eyebrow: Merkez Ofisimiz
-    heading: Kadıköy'den Dünyaya Dijital Çözümler
-    lead: >-
-      Merkezimiz Kadıköy, İstanbul'da bulunuyor. Türkiye'nin ve dünyanın farklı
-      noktalarındaki markalarla dijital toplantılar ve çevrim içi proje yönetim
-      sistemleri üzerinden çalışıyoruz.
-    alt: Kadıköy, İstanbul bölgesini gösteren sade bir harita görseli
 
   - type: faq
     background: light
