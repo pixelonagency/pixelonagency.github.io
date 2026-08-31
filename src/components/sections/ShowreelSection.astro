@@ -279,6 +279,16 @@ const REEL_VIDEO_SCRIPT = `
     border-radius: 14px;
   }
 
+  /*
+   * Kare varyantta kaynak görsellerin oranı değişken (0,60 ile 1,95 arası).
+   * Serbest bırakılınca kartlar farklı yüksekliklerde kalıp şerit dalgalanıyor;
+   * oran sabitlenip merkezden kırpılıyor.
+   */
+  .reel--square .reel__shot {
+    aspect-ratio: 6 / 5;
+    object-fit: cover;
+  }
+
   /* Videolar tek tip yükseklikte dursun diye oran sabitleniyor. */
   .reel--reel .reel__shot {
     aspect-ratio: 9 / 16;
