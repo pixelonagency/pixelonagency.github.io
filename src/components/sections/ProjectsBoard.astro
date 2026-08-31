@@ -348,11 +348,29 @@ const BOARD_VIDEO_SCRIPT = `
     display: flex;
     gap: 10px;
     overflow-x: auto;
-    padding: 14px 0;
+    padding: 14px clamp(12px, 1.4vw, 18px);
     margin: clamp(24px, 4vh, 40px) 0 clamp(20px, 3vh, 32px);
-    background: var(--bg);
+    /*
+     * Çubuk YAPIŞKAN: kaydırınca başlığın altına yapışır ve kartlar arkasından
+     * geçer. Düz siyah zemin okunurluğu çözüyordu ama hero'da videonun üstünü
+     * kapatıp konteyner genişliğinde sert bir bant bırakıyordu.
+     *
+     * Yerine saydam + arka plan bulanıklığı: video görünür kalıyor, kartlar
+     * arkasından geçerken pill'ler yine okunuyor.
+     */
+    background: rgb(10 10 10 / 42%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: var(--radius-pill);
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+  }
+
+  /* Bulanıklık desteklenmiyorsa okunurluk için zemin koyulaştırılır. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .pb-filters {
+      background: rgb(10 10 10 / 88%);
+    }
   }
 
   .pb-filters::-webkit-scrollbar {
