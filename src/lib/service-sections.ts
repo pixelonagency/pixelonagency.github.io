@@ -148,8 +148,16 @@ export interface ServiceLike {
     | {
         eyebrow?: string | undefined;
         heading?: string | undefined;
-        items: { label: string; image: unknown; alt?: string | undefined; href: string }[];
-      }
+        placement?: 'top' | 'mid' | undefined;
+        variant?: 'wide' | 'square' | 'reel' | undefined;
+        items: {
+          label: string;
+          image: unknown;
+          alt?: string | undefined;
+          href: string;
+          video?: string | undefined;
+        }[];
+      }[]
     | undefined;
   cta: Block;
   faq: Block & { items: { question: string; answer: string }[] };
@@ -222,30 +230,33 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
   }
 
   /*
-   * İş şeridi hero'nun hemen altında, intro'dan ÖNCE durur: web tasarım
-   * sayfasına giren kişi ilk olarak gerçekten yaptığımız siteleri görsün.
-   * Kendi zeminini bastığı için nextBg() sırasını tüketmez.
+   * İş şeritleri. `top` olanlar hero'nun hemen altında, intro'dan ÖNCE basılır:
+   * sayfaya giren kişi ilk olarak gerçek işleri görsün. `mid` olanlar vaka
+   * vitrininden sonra gelir. Şerit kendi zeminini bastığı için nextBg() sırası
+   * TÜKETİLMEZ — araya girse de sonraki bölümlerin açık/koyu ritmi kaymasın.
    */
-  if (service.showreel) {
-    sections.push({
-      type: 'showreel',
-      eyebrow: service.showreel.eyebrow,
-      heading: service.showreel.heading,
-      /*
-       * Bileşen kendi zeminini basar (Section sarmalayıcısı kullanmaz), bu yüzden
-       * değer sabit veriliyor ve nextBg() ÇAĞRILMIYOR — şerit araya girse de
-       * sonraki bölümlerin açık/koyu ritmi kaymasın.
-       */
-      background: 'dark',
-      ctas: [],
-      items: service.showreel.items.map((item) => ({
-        label: item.label,
-        image: item.image,
-        alt: item.alt,
-        href: item.href,
-      })),
-    } as PageSection);
-  }
+  const pushReels = (where: 'top' | 'mid') => {
+    for (const reel of service.showreel ?? []) {
+      if ((reel.placement ?? 'top') !== where) continue;
+      sections.push({
+        type: 'showreel',
+        eyebrow: reel.eyebrow,
+        heading: reel.heading,
+        variant: reel.variant,
+        background: 'dark',
+        ctas: [],
+        items: reel.items.map((item) => ({
+          label: item.label,
+          image: item.image,
+          alt: item.alt,
+          href: item.href,
+          video: item.video,
+        })),
+      } as PageSection);
+    }
+  };
+
+  pushReels('top');
 
   if (service.intro) {
     // Referans: giriş bölümü beyazdır — başlık solda sticky, paragraflar sağda.
@@ -464,6 +475,8 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
       ctaHref: service.showcase.ctaHref,
     });
   }
+
+  pushReels('mid');
 
   if (service.spotlight) {
     sections.push({

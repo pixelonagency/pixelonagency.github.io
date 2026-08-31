@@ -365,21 +365,35 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
      * hâlinde. Her kart kendi vaka sayfasına bağlanır — dekor değil, hem kanıt
      * hem iç linkleme. Verilmezse bölüm hiç üretilmez.
      */
+    /*
+     * İş şeritleri: gerçek müşteri işlerinin kayan bandı. Sayfada BİRDEN FAZLA
+     * şerit olabildiği için liste — sosyal medya sayfasında biri gönderi
+     * görselleri, diğeri çekilen videolar. `placement` şeridin sayfadaki yerini
+     * belirler: top = hero'nun hemen altı, mid = vaka vitrininden sonra.
+     */
     showreel: opt(
-      z.object({
-        eyebrow: opt(z.string()),
-        heading: opt(z.string()),
-        items: z
-          .array(
-            z.object({
-              label: nonEmpty,
-              image: image(),
-              alt: opt(z.string()),
-              href: nonEmpty,
-            }),
-          )
-          .min(2),
-      }),
+      z
+        .array(
+          z.object({
+            eyebrow: opt(z.string()),
+            heading: opt(z.string()),
+            placement: opt(z.enum(['top', 'mid'])),
+            variant: opt(z.enum(['wide', 'square', 'reel'])),
+            items: z
+              .array(
+                z.object({
+                  label: nonEmpty,
+                  image: image(),
+                  alt: opt(z.string()),
+                  href: nonEmpty,
+                  /* Verilirse kart görsel yerine sessiz döngü video basar; image poster olur. */
+                  video: opt(z.string()),
+                }),
+              )
+              .min(2),
+          }),
+        )
+        .min(1),
     ),
     /** Tek konuya odaklanan görselli blok (ör. sağlık turizmi). */
     spotlight: opt(

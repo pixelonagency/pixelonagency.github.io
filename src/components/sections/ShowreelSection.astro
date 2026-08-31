@@ -15,9 +15,51 @@ const { section } = Astro.props;
  * gizlidir, yoksa her marka iki kez okunur.
  */
 const COPIES = [0, 1];
+const variant = section.variant ?? 'wide';
+
+/*
+ * Poster yolu. `image` alanı Astro'nun görsel hattından geçtiği için nesne
+ * döner; ham string olarak bırakılırsa poster boş kalır.
+ */
+const posterSrc = (image: unknown): string | undefined => {
+  if (typeof image === 'string') return image;
+  if (image && typeof image === 'object' && 'src' in image) return String((image as { src: unknown }).src);
+  return undefined;
+};
+
+/*
+ * Videolar sayfa açılışında DEĞİL, şerit görünür olunca yükleniyor ve
+ * oynuyor. Bant iki kopya basıldığı için ekranda on altı video var; hepsini
+ * peşinen indirip aynı anda çözmek mobilde sayfayı kilitliyordu. Bölüm
+ * görüş alanından çıkınca hepsi duruyor. Hareket kapalıysa hiç oynatılmaz.
+ */
+const REEL_VIDEO_SCRIPT = `
+(() => {
+  const root = document.currentScript.previousElementSibling;
+  if (!root) return;
+  const videos = root.querySelectorAll('video[data-reel-video]');
+  if (!videos.length) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let loaded = false;
+  const io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        if (!loaded) {
+          loaded = true;
+          videos.forEach((v) => { v.src = v.dataset.src; v.load(); });
+        }
+        videos.forEach((v) => v.play().catch(() => {}));
+      } else {
+        videos.forEach((v) => v.pause());
+      }
+    }
+  }, { rootMargin: '200px' });
+  io.observe(root);
+})();
+`;
 ---
 
-<section class="reel" aria-label={section.heading ?? 'Tasarladığımız web siteleri'}>
+<section class:list={['reel', `reel--${variant}`]} aria-label={section.heading ?? 'Tasarladığımız web siteleri'}>
   {
     (section.eyebrow || section.heading) && (
       <div class="reel__head">
@@ -35,15 +77,36 @@ const COPIES = [0, 1];
             {section.items.map((item) => (
               <li class="reel__item">
                 <a class="reel__link" href={item.href} tabindex={copy === 1 ? -1 : undefined}>
-                  <Image
-                    class="reel__shot"
-                    src={item.image as never}
-                    alt={item.alt ?? `${item.label} web sitesi`}
-                    widths={[520, 1040]}
-                    sizes="(max-width: 720px) 78vw, 520px"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  {item.video ? (
+                    /*
+                     * Sessiz, döngülü ve satır içi oynayan kısa önizleme. Tam
+                     * video vaka sayfasında; buradaki yalnız 5 saniyelik kesit.
+                     * `preload="none"` — bant boyunca sekiz video var, hepsi
+                     * peşinen indirilirse sayfa açılışını yer.
+                     */
+                    <video
+                      class="reel__shot"
+                      data-reel-video
+                      data-src={item.video}
+                      poster={posterSrc(item.image)}
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                      tabindex="-1"
+                    />
+                  ) : (
+                    <Image
+                      class="reel__shot"
+                      src={item.image as never}
+                      alt={item.alt ?? `${item.label} web sitesi`}
+                      widths={[520, 1040]}
+                      sizes="(max-width: 720px) 78vw, 520px"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
                   <span class="reel__label">
                     {item.label}
                     <span class="reel__arrow" aria-hidden="true">
@@ -59,6 +122,7 @@ const COPIES = [0, 1];
     </div>
   </div>
 </section>
+{section.items.some((item) => item.video) && <script is:inline set:html={REEL_VIDEO_SCRIPT} data-reel-video-boot />}
 
 <style>
   .reel {
@@ -199,5 +263,25 @@ const COPIES = [0, 1];
     .reel__group[aria-hidden='true'] {
       display: none;
     }
+  }
+
+  /* Kart genişliği varyanta göre: mockup geniş, sosyal ızgara kare, reel dar. */
+  .reel--square .reel__item {
+    width: clamp(230px, 24vw, 360px);
+  }
+
+  .reel--reel .reel__item {
+    width: clamp(160px, 17vw, 250px);
+  }
+
+  .reel--reel .reel__shot,
+  .reel--square .reel__shot {
+    border-radius: 14px;
+  }
+
+  /* Videolar tek tip yükseklikte dursun diye oran sabitleniyor. */
+  .reel--reel .reel__shot {
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
   }
 </style>

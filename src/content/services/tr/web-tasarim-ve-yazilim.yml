@@ -30,37 +30,37 @@ hero:
   whatsappMessage: "Merhaba Pixelon, Web Tasarım ve Yazılım hizmeti hakkında bilgi almak istiyorum."
 
 showreel:
-  eyebrow: Yayındaki İşlerimiz
-  heading: Tasarlayıp Kodladığımız Web Siteleri
-  items:
-    - label: Hands For All
-      image: '/src/assets/images/showreel/handsforall.webp'
-      alt: Hands For All bağış platformunun ana sayfası
-      href: /projelerimiz/handsforall/
-    - label: Anneliğin Hikayesi
-      image: '/src/assets/images/showreel/annelik-hikayesi.webp'
-      alt: Anneliğin Hikayesi içerik platformunun ana sayfası
-      href: /projelerimiz/annelik-hikayesi/
-    - label: Dr. Ayşe Cinkaya Kahveci
-      image: '/src/assets/images/showreel/dr-ayse-cinkaya-kahveci.webp'
-      alt: Dermatoloji kliniğinin dolgu uygulamaları sayfası
-      href: /projelerimiz/dr-ayse-cinkaya-kahveci/
-    - label: Çağla Aytaç
-      image: '/src/assets/images/showreel/cagla-aytac.webp'
-      alt: Diyetisyen Çağla Aytaç web sitesinin ana sayfası
-      href: /projelerimiz/cagla-aytac/
-    - label: Xray Groupe
-      image: '/src/assets/images/showreel/xray-groupe.webp'
-      alt: Xray Groupe inşaat firmasının altyapı projeleri sayfası
-      href: /projelerimiz/xray-groupe/
-    - label: Touch Consulting
-      image: '/src/assets/images/showreel/touch-consulting.webp'
-      alt: Touch Consulting KOSGEB danışmanlık sayfası
-      href: /projelerimiz/touch-consulting/
-    - label: Redex Glass
-      image: '/src/assets/images/showreel/redex-glass.webp'
-      alt: Redex Glass cam ambalaj markasının ana sayfası
-      href: /projelerimiz/redex-glass/
+  - eyebrow: Yayındaki İşlerimiz
+    heading: Tasarlayıp Kodladığımız Web Siteleri
+    items:
+      - label: Hands For All
+        image: '/src/assets/images/showreel/handsforall.webp'
+        alt: Hands For All bağış platformunun ana sayfası
+        href: /projelerimiz/handsforall/
+      - label: Anneliğin Hikayesi
+        image: '/src/assets/images/showreel/annelik-hikayesi.webp'
+        alt: Anneliğin Hikayesi içerik platformunun ana sayfası
+        href: /projelerimiz/annelik-hikayesi/
+      - label: Dr. Ayşe Cinkaya Kahveci
+        image: '/src/assets/images/showreel/dr-ayse-cinkaya-kahveci.webp'
+        alt: Dermatoloji kliniğinin dolgu uygulamaları sayfası
+        href: /projelerimiz/dr-ayse-cinkaya-kahveci/
+      - label: Çağla Aytaç
+        image: '/src/assets/images/showreel/cagla-aytac.webp'
+        alt: Diyetisyen Çağla Aytaç web sitesinin ana sayfası
+        href: /projelerimiz/cagla-aytac/
+      - label: Xray Groupe
+        image: '/src/assets/images/showreel/xray-groupe.webp'
+        alt: Xray Groupe inşaat firmasının altyapı projeleri sayfası
+        href: /projelerimiz/xray-groupe/
+      - label: Touch Consulting
+        image: '/src/assets/images/showreel/touch-consulting.webp'
+        alt: Touch Consulting KOSGEB danışmanlık sayfası
+        href: /projelerimiz/touch-consulting/
+      - label: Redex Glass
+        image: '/src/assets/images/showreel/redex-glass.webp'
+        alt: Redex Glass cam ambalaj markasının ana sayfası
+        href: /projelerimiz/redex-glass/
 
 intro:
   eyebrow: İlk İzlenim

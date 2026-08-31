@@ -205,6 +205,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     ...sectionBase,
     type: z.literal('showreel'),
     heading: opt(z.string()),
+    variant: opt(z.enum(['wide', 'square', 'reel'])),
     items: z
       .array(
         z.object({
@@ -212,6 +213,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
           image: z.string(),
           alt: opt(z.string()),
           href: nonEmpty,
+          video: opt(z.string()),
         }),
       )
       .min(2),
