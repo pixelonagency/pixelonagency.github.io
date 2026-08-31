@@ -402,6 +402,8 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
   });
 
   const projects = z.object({
+    /* Board hero'sunun arkasında dönen sessiz döngü — HeroSection ile aynı şema. */
+    video: opt(heroVideoSchema),
     ...sectionBase,
     type: z.literal('projects'),
     heading: nonEmpty,

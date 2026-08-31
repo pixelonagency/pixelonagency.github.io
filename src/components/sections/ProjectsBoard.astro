@@ -91,11 +91,58 @@ const breadcrumbJsonLd = toJsonLd([
     { label: section.heading },
   ]),
 ]);
+
+/*
+ * Board hero'sunun arka plan videosu. HeroSection ile aynı desen: viewport'a
+ * göre TEK varyant indirilir (masaüstü varlığı mobile inmez), reduced-motion'da
+ * video hiç yüklenmez ve poster kalır.
+ */
+const BOARD_VIDEO_SCRIPT = `
+(() => {
+  const video = document.currentScript.previousElementSibling.querySelector('.pb-hero__video');
+  if (!video) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const d = video.dataset;
+  const mobile = matchMedia('(max-width: 768px)').matches;
+  const poster = mobile ? d.mPoster : d.dPoster;
+  const webm = mobile ? d.mWebm : d.dWebm;
+  const mp4 = mobile ? d.mMp4 : d.dMp4;
+  if (poster) video.poster = poster;
+  if (webm) { const s = document.createElement('source'); s.src = webm; s.type = 'video/webm'; video.appendChild(s); }
+  if (mp4) { const s = document.createElement('source'); s.src = mp4; s.type = 'video/mp4'; video.appendChild(s); }
+  video.load();
+  const start = () => video.play().catch(() => {});
+  video.readyState >= 3 ? start() : video.addEventListener('canplay', start, { once: true });
+})();
+`;
 ---
 
 <section class:list={['section', 'pb-section']} id={section.anchor}>
   <div class="container">
     {/* ---------------------------------------------------------- HERO ---- */}
+    {
+      section.video && (
+        <div class="pb-hero__bg" aria-hidden="true">
+          <video
+            class="pb-hero__video"
+            muted
+            loop
+            playsinline
+            preload="none"
+            disablepictureinpicture
+            data-d-mp4={section.video.desktopMp4}
+            data-d-webm={section.video.desktopWebm}
+            data-d-poster={section.video.desktopPoster}
+            data-m-mp4={section.video.mobileMp4}
+            data-m-webm={section.video.mobileWebm}
+            data-m-poster={section.video.mobilePoster}
+          />
+          <span class="pb-hero__scrim" />
+        </div>
+      )
+    }
+    <script is:inline set:html={BOARD_VIDEO_SCRIPT} data-board-video />
+
     <header class="pb-hero" data-reveal>
       <nav class="pb-crumbs" aria-label={t('nav.breadcrumb', locale)}>
         <a href={localizedPath('home', locale)}>{locale === 'tr' ? 'Ana Sayfa' : 'Home'}</a>
@@ -659,5 +706,58 @@ const breadcrumbJsonLd = toJsonLd([
     .pb-filter {
       min-height: 44px;
     }
+  }
+  /* --- Hero arka plan videosu ---------------------------------------- */
+
+  /*
+   * Video bölümün üst bandını kaplar, hero metni onun üstünde durur.
+   * Tam genişlik: container'ın dışına taşar, sayfa kenarına kadar gider.
+   */
+  /*
+   * Tam genişlik: öğe container'ın içinde duruyor ama görsel olarak sayfa
+   * kenarına kadar taşar. 100vw + translateX(-50%) klasik "full-bleed" çözümü;
+   * section'a overflow-x: clip verilmezse yatay kaydırma çubuğu doğuyor.
+   */
+  .pb-hero__bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    height: clamp(320px, 46vw, 560px);
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .pb-hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Metin solda durduğu için scrim solda koyu, sağda açık. */
+  .pb-hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        rgb(10 10 10 / 94%) 0%,
+        rgb(10 10 10 / 84%) 38%,
+        rgb(10 10 10 / 55%) 70%,
+        rgb(10 10 10 / 32%) 100%
+      ),
+      linear-gradient(0deg, var(--bg) 0%, rgb(10 10 10 / 0%) 55%);
+  }
+
+  .pb-hero {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pb-section {
+    position: relative;
+    overflow-x: clip;
   }
 </style>

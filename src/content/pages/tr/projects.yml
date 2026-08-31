@@ -11,6 +11,13 @@ sections:
     heading: Projelerimiz
     lead: Her marka için stratejiden tasarıma, üretimden yayına kadar uçtan uca çözümler üretiyor; tüm süreci tek bir sayfada anlatan case study'lerle paylaşıyoruz.
     tagline: Web · Marka · Sosyal Medya
+    video:
+      desktopMp4: /media/hero/projeler/hero-projeler-desktop.mp4
+      desktopWebm: /media/hero/projeler/hero-projeler-desktop.webm
+      desktopPoster: /media/hero/projeler/hero-projeler-desktop-poster.webp
+      mobileMp4: /media/hero/projeler/hero-projeler-mobile.mp4
+      mobileWebm: /media/hero/projeler/hero-projeler-mobile.webm
+      mobilePoster: /media/hero/projeler/hero-projeler-mobile-poster.webp
     showFilters: true
     ctaLabel: Projeyi İncele
 
