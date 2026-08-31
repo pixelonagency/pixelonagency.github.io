@@ -118,31 +118,30 @@ const BOARD_VIDEO_SCRIPT = `
 ---
 
 <section class:list={['section', 'pb-section']} id={section.anchor}>
+  {
+    section.video && (
+      <div class="pb-hero__bg" aria-hidden="true">
+        <video
+          class="pb-hero__video"
+          muted
+          loop
+          playsinline
+          preload="none"
+          disablepictureinpicture
+          data-d-mp4={section.video.desktopMp4}
+          data-d-webm={section.video.desktopWebm}
+          data-d-poster={section.video.desktopPoster}
+          data-m-mp4={section.video.mobileMp4}
+          data-m-webm={section.video.mobileWebm}
+          data-m-poster={section.video.mobilePoster}
+        />
+        <span class="pb-hero__scrim" />
+      </div>
+    )
+  }
+  <script is:inline set:html={BOARD_VIDEO_SCRIPT} data-board-video />
   <div class="container">
     {/* ---------------------------------------------------------- HERO ---- */}
-    {
-      section.video && (
-        <div class="pb-hero__bg" aria-hidden="true">
-          <video
-            class="pb-hero__video"
-            muted
-            loop
-            playsinline
-            preload="none"
-            disablepictureinpicture
-            data-d-mp4={section.video.desktopMp4}
-            data-d-webm={section.video.desktopWebm}
-            data-d-poster={section.video.desktopPoster}
-            data-m-mp4={section.video.mobileMp4}
-            data-m-webm={section.video.mobileWebm}
-            data-m-poster={section.video.mobilePoster}
-          />
-          <span class="pb-hero__scrim" />
-        </div>
-      )
-    }
-    <script is:inline set:html={BOARD_VIDEO_SCRIPT} data-board-video />
-
     <header class="pb-hero" data-reveal>
       <nav class="pb-crumbs" aria-label={t('nav.breadcrumb', locale)}>
         <a href={localizedPath('home', locale)}>{locale === 'tr' ? 'Ana Sayfa' : 'Home'}</a>
