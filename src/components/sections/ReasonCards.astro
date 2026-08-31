@@ -92,7 +92,16 @@ const items = section.items.map((item) => ({
       background var(--t-slow);
   }
 
-  .reasons__item:nth-child(n + 4) {
+  /*
+   * Son sıra madde sayısına göre genişler. Beş maddede 3+2, dört maddede 2+2 olur;
+   * altı maddede kural hiç devreye girmez ve 3+3 kalır. Sabit bir kural üçünü de
+   * doğru dizemiyordu: dört maddede tek kart yarım sırada asılı kalıyordu.
+   */
+  .reasons:has(.reasons__item:nth-child(5)):not(:has(.reasons__item:nth-child(6))) .reasons__item:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+
+  .reasons:has(.reasons__item:nth-child(4)):not(:has(.reasons__item:nth-child(5))) .reasons__item {
     grid-column: span 3;
   }
 

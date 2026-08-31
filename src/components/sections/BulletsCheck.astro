@@ -1,0 +1,155 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
+
+type Bullets = Extract<PageSection, { type: 'bullets' }>;
+
+interface Props {
+  section: Bullets;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  {
+    /*
+     * İki sütunlu düzen: solda ne alacağınızın anlatısı, sağda tikli liste. Maddeler
+     * kart değil satır — "elinize geçecek şeyler" bir rapor içindekiler tablosu gibi
+     * okunmalı, altı ayrı kutu gibi değil.
+     */
+  }
+  <div class="gains">
+    <div class="gains__head">
+      {section.eyebrow && <p class="gains__eyebrow">{section.eyebrow}</p>}
+      <h2 class="h2 gains__heading">{section.heading}</h2>
+      {section.lead && <p class="lead gains__lead" set:html={inlineHtml(section.lead)} />}
+    </div>
+
+    <ul class="gains__list">
+      {
+        section.items.map((item, index) => (
+          <li class="gains__item" data-reveal data-reveal-index={index}>
+            <span class="gains__check" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4.5 12.6l5 5 10-10.6" />
+              </svg>
+            </span>
+            <span class="gains__text">{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .gains {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+  }
+
+  .gains__eyebrow {
+    margin: 0 0 12px;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .gains__heading {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .gains__lead {
+    margin-top: 22px;
+  }
+
+  .gains__list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .gains__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 4px;
+    border-bottom: 1px solid var(--border);
+    transition: padding-inline-start var(--t-base);
+  }
+
+  .gains__check {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    padding: 5px;
+    border-radius: 50%;
+    color: var(--bg);
+    background: var(--accent);
+  }
+
+  .gains__check svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gains__text {
+    font: 500 clamp(15.5px, 1.3vw, 18px) / 1.45 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  @media (hover: hover) {
+    .gains__item:hover {
+      padding-inline-start: 12px;
+    }
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .gains__eyebrow {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .gains__list {
+    border-top-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .gains__item {
+    border-bottom-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .gains__text {
+    color: var(--text-on-light);
+  }
+
+  @media (max-width: 860px) {
+    .gains {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gains__item {
+      transition: none;
+    }
+  }
+</style>

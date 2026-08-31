@@ -10,6 +10,7 @@ sections:
   # 1) HERO — sol sütun
   - type: hero
     background: dark
+    align: center
     eyebrow: Pixelon Ücretsiz Dijital Analiz
     headingLines:
       - "Markanızın Dijital Potansiyelini Birlikte Keşfedelim."
@@ -17,6 +18,13 @@ sections:
       Web sitenizi, sosyal medya hesaplarınızı ve dijital pazarlama çalışmalarınızı ön değerlendirmeden geçirerek güçlü yönlerinizi, geliştirilmesi gereken noktaları ve büyüme fırsatlarını belirleyelim.
 
       Formu doldurun, Pixelon ekibi markanıza özel ücretsiz ön analiz hazırlamak için sizinle iletişime geçsin.
+    video:
+      desktopMp4: /media/hero/analiz/hero-analiz-desktop.mp4
+      desktopWebm: /media/hero/analiz/hero-analiz-desktop.webm
+      desktopPoster: /media/hero/analiz/hero-analiz-desktop-poster.webp
+      mobileMp4: /media/hero/analiz/hero-analiz-mobile.mp4
+      mobileWebm: /media/hero/analiz/hero-analiz-mobile.webm
+      mobilePoster: /media/hero/analiz/hero-analiz-mobile-poster.webp
     chips:
       - Ücretsizdir
       - Satın alma zorunluluğu yoktur
@@ -54,33 +62,36 @@ sections:
 
   # 3) ANALİZ KAPSAMI
   - type: cards
+    kind: audit
     background: light
     eyebrow: Neleri İnceliyoruz?
     heading: Markanızın Dijital Görünümüne Bütüncül Bakıyoruz.
     lead: >-
       Her marka aynı sorunlara ve ihtiyaçlara sahip değildir. Bu nedenle analiz kapsamını
       sektörünüze, hedeflerinize ve mevcut dijital çalışmalarınıza göre belirliyoruz.
-    columns: 4
     items:
       - title: Web Sitesi ve Kullanıcı Deneyimi
+        icon: web
         description: Mobil uyumluluk, sayfa hızı, içerik yapısı, yönlendirmeler ve dönüşüm unsurları.
       - title: SEO ve Google Görünürlüğü
+        icon: seo
         description: İndeks durumu, meta yapısı, anahtar kelime fırsatları ve teknik SEO sorunları.
       - title: Google Ads ve Meta Ads
+        icon: ads
         description: Kampanya yapısı, hedef kitle, reklam mesajları ve dönüşüm takibi.
       - title: Sosyal Medya
+        icon: social
         description: Profil bütünlüğü, görsel kimlik, içerik çeşitliliği ve etkileşim yapısı.
       - title: Marka ve Kurumsal Kimlik
+        icon: brand
         description: Logo, renk ve tipografi tutarlılığı, dijital görünüm ve marka güveni.
       - title: E-Ticaret ve Satış Deneyimi
+        icon: commerce
         description: Ürün sayfaları, sepet ve ödeme akışı, mobil deneyim ve güven unsurları.
-      - title: Sağlık Turizmi
-        description: Çok dilli yapı, klinik güveni, tedavi sayfaları ve hasta iletişim süreci.
-      - title: CRM ve Dijital Süreçler
-        description: Talep kaydı, takip aşamaları, raporlama eksikleri ve otomasyon fırsatları.
 
   # 4) NE ELDE EDECEKSİNİZ
   - type: bullets
+    kind: check
     background: dark
     eyebrow: Analiz Sonucunda Ne Elde Edeceksiniz?
     heading: Markanız İçin Net ve Uygulanabilir Öneriler
@@ -99,10 +110,10 @@ sections:
 
   # 5) ÖRNEK RAPOR KARTI
   - type: cards
+    kind: report
     background: light
     eyebrow: Örnek Analiz Kartı
     heading: Analiz Raporunuzda Neler Olabilir?
-    columns: 4
     items:
       - eyebrow: Dijital Görünürlük Puanı
         title: 72 / 100
@@ -123,36 +134,9 @@ sections:
         href: '#form'
         variant: primary
 
-  # 6) SÜREÇ
-  # Referansta "Başvurular değerlendirmeye alınır…" notu ızgaranın ALTINDA yer alıyor;
-  # steps bölümünde ızgara sonrası metin alanı olmadığı için `lead` olarak korundu.
-  - type: steps
-    background: dark
-    eyebrow: 4 Basit Adım
-    heading: Formdan Analiz Sonucuna
-    lead: >-
-      Başvurular değerlendirmeye alınır. Analiz kapsamı markanın mevcut dijital varlıklarına
-      ve paylaşılan bilgilere göre değişebilir.
-    items:
-      - title: Bilgilerinizi Paylaşın
-        description: >-
-          Form üzerinden markanızı, web sitenizi ve analiz edilmesini istediğiniz alanları
-          bize iletin.
-      - title: Ön Değerlendirme Yapalım
-        description: >-
-          Pixelon ekibi dijital varlıklarınızı ve paylaştığınız hedefleri genel hatlarıyla
-          incelesin.
-      - title: Fırsatları Belirleyelim
-        description: >-
-          Güçlü yönlerinizi, temel problemleri ve öncelikli geliştirme alanlarını
-          belirleyelim.
-      - title: Sonuçları Paylaşalım
-        description: >-
-          Uygun durumlarda kısa bir online görüşme veya yazılı değerlendirme üzerinden
-          önerilerimizi sizinle paylaşalım.
-
   # 7) KİMLER İÇİN UYGUN
   - type: bullets
+    kind: tags
     background: light
     eyebrow: Kimler İçin Uygun?
     heading: Dijitalde Büyümek İsteyen Markalar İçin
@@ -168,6 +152,7 @@ sections:
 
   # 8) NEDEN PIXELON
   - type: cards
+    kind: feature
     background: dark
     eyebrow: Neden Pixelon?
     heading: Analizden Uygulamaya Tüm Süreç Tek Ekipte
@@ -175,21 +160,24 @@ sections:
       Pixelon; markaların dijital varlığını yalnızca tek bir kanal üzerinden değerlendirmez.
       Web tasarım, sosyal medya, reklam, SEO, marka tasarımı, içerik ve teknoloji süreçlerini
       birlikte inceler.
-    columns: 1
     items:
       - title: Bütüncül Bakış Açısı
+        icon: orbit
         description: >-
           Markanızın dijital temas noktalarını birbirinden bağımsız değil, tek bir sistem
           olarak değerlendiriyoruz.
       - title: Sektörel Deneyim
+        icon: craft
         description: >-
           Sağlık, sağlık turizmi, e-ticaret, inşaat, gayrimenkul ve kurumsal hizmet
           sektörlerinde deneyime sahibiz.
       - title: Uygulanabilir Öneriler
+        icon: strategy
         description: >-
           Sadece sorunları sıralamak yerine hangi adımların öncelikli olarak
           uygulanabileceğini açıklıyoruz.
       - title: Satın Alma Zorunluluğu Yok
+        icon: partnership
         description: >-
           Ücretsiz ön analiz talebinde bulunmanız herhangi bir hizmet satın alma zorunluluğu
           oluşturmaz.

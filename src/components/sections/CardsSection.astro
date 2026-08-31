@@ -1,6 +1,8 @@
 ---
 import type { PageSection } from '../../content/page-schema';
+import AuditAreas from './AuditAreas.astro';
 import ReasonCards from './ReasonCards.astro';
+import ReportPreview from './ReportPreview.astro';
 import ValueLedger from './ValueLedger.astro';
 import SectionHead from '../SectionHead.astro';
 import SectorIcon from '../SectorIcon.astro';
@@ -84,6 +86,10 @@ const sectorIcon = (icon: string | undefined): SectorIconName | undefined =>
    */
   kind === 'feature' ? (
     <ReasonCards {section} />
+  ) : kind === 'audit' ? (
+    <AuditAreas {section} />
+  ) : kind === 'report' ? (
+    <ReportPreview {section} />
   ) : kind === 'ledger' ? (
     <ValueLedger {section} />
   ) : isSplit ? (

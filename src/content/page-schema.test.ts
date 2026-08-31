@@ -10,6 +10,28 @@ const base = {
 
 const parseSection = (section: unknown) => pageSchema.safeParse({ ...base, sections: [section] });
 
+describe('ücretsiz analiz görünümleri', () => {
+  const card = { title: 'SEO', description: 'İndeks durumu ve teknik sorunlar.' };
+
+  test('cards için audit ve report görünümleri tanımlıdır', () => {
+    expect(parseSection({ type: 'cards', kind: 'audit', items: [{ ...card, icon: 'seo' }] }).success).toBe(true);
+    expect(parseSection({ type: 'cards', kind: 'report', items: [card] }).success).toBe(true);
+  });
+
+  test('denetim ikonları kart ikon sözlüğünde tanımlıdır', () => {
+    for (const icon of ['web', 'seo', 'ads', 'social', 'brand', 'commerce']) {
+      expect(parseSection({ type: 'cards', kind: 'audit', items: [{ ...card, icon }] }).success).toBe(true);
+    }
+  });
+
+  test('bullets için check ve tags görünümleri tanımlıdır', () => {
+    const base = { type: 'bullets', heading: 'Sonuç', items: ['Güçlü yönleriniz'] };
+    expect(parseSection({ ...base, kind: 'check' }).success).toBe(true);
+    expect(parseSection({ ...base, kind: 'tags' }).success).toBe(true);
+    expect(parseSection({ ...base, kind: 'liste' }).success).toBe(false);
+  });
+});
+
 describe('biz kimiz görünümleri', () => {
   const card = { title: 'Strateji', description: 'Doğru soruları sorarız.' };
 

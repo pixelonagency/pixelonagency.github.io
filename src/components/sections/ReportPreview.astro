@@ -1,0 +1,278 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Cards = Extract<PageSection, { type: 'cards' }>;
+
+interface Props {
+  section: Cards;
+}
+
+const { section } = Astro.props;
+
+/*
+ * İlk madde puandır ("72 / 100"), kalanlar bulgudur. Puan içerikten okunur, koda
+ * gömülmez: metin değişirse halka da değişir. Sayı okunamazsa halka çizilmez ve
+ * madde diğer bulgular gibi listelenir — bölüm yine de çalışır.
+ */
+const [first, ...rest] = section.items;
+const scoreMatch = first?.title.match(/(\d+)\s*\/\s*(\d+)/);
+const score = scoreMatch ? Number(scoreMatch[1]) : undefined;
+const scoreMax = scoreMatch ? Number(scoreMatch[2]) : undefined;
+const hasScore = score !== undefined && scoreMax !== undefined && scoreMax > 0;
+const findings = hasScore ? rest : section.items;
+const percent = hasScore ? Math.round((score / scoreMax) * 100) : 0;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <div class="report">
+    {/* Sol sütun: raporun kendisi — belge penceresi, puan halkası ve özet satırları. */}
+    <div class="report__doc" data-reveal>
+      <div class="report__chrome" aria-hidden="true">
+        <span class="report__dots"><i></i><i></i><i></i></span>
+        <span class="report__file">analiz-raporu.pdf</span>
+      </div>
+
+      {
+        hasScore && (
+          <div class="report__score">
+            <div class="report__ring" style={`--p: ${percent}`} aria-hidden="true">
+              <span class="report__ring-value">{score}</span>
+            </div>
+            <div>
+              <p class="report__score-label">{first?.eyebrow}</p>
+              <p class="report__score-text">{first?.description}</p>
+            </div>
+          </div>
+        )
+      }
+
+      {/* Rapor gövdesinin soyut temsili — okunacak bir metin değil, biçimin kendisi. */}
+      <ul class="report__lines" aria-hidden="true">
+        {
+          [78, 54, 91, 42].map((width) => (
+            <li class="report__line">
+              <span class="report__bar" style={`--w: ${width}%`} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    {/* Sağ sütun: raporda yer alan başlıklar. */}
+    <ol class="report__findings">
+      {
+        findings.map((item, index) => (
+          <li class="report__finding" data-reveal data-reveal-index={index}>
+            {item.eyebrow && <p class="report__finding-label">{item.eyebrow}</p>}
+            <h3 class="report__finding-title">{item.title}</h3>
+            <p class="report__finding-text">{item.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</Section>
+
+<style>
+  .report {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(28px, 4vw, 56px);
+    align-items: start;
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+
+  .report__doc {
+    position: sticky;
+    top: 110px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #101010;
+    overflow: hidden;
+    box-shadow: 0 26px 54px rgb(0 0 0 / 34%);
+  }
+
+  .report__chrome {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgb(255 255 255 / 8%);
+    background: rgb(255 255 255 / 3%);
+  }
+
+  .report__dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .report__dots i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 22%);
+  }
+
+  .report__file {
+    font: 500 12.5px var(--font-display);
+    letter-spacing: 0.01em;
+    color: rgb(255 255 255 / 48%);
+  }
+
+  .report__score {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 2.4vw, 28px);
+    padding: clamp(24px, 3vw, 34px);
+  }
+
+  /*
+   * Puan halkası tek bir conic-gradient: `--p` yüzdesi kadar lime, kalanı sönük.
+   * Ortadaki delik radial-gradient maskesiyle açılır — ek eleman gerekmiyor.
+   */
+  .report__ring {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    background:
+      radial-gradient(closest-side, #101010 76%, transparent 77%),
+      conic-gradient(var(--accent) calc(var(--p) * 1%), rgb(255 255 255 / 12%) 0);
+  }
+
+  .report__ring-value {
+    font: 700 30px var(--font-display);
+    letter-spacing: -0.03em;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .report__score-label {
+    margin: 0 0 6px;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .report__score-text {
+    margin: 0;
+    font: 400 14.5px / 1.6 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  .report__lines {
+    margin: 0;
+    padding: 0 clamp(24px, 3vw, 34px) clamp(26px, 3vw, 34px);
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+
+  .report__line {
+    height: 8px;
+    border-radius: var(--radius-pill);
+    background: rgb(255 255 255 / 7%);
+    overflow: hidden;
+  }
+
+  .report__bar {
+    display: block;
+    width: var(--w);
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), rgb(207 255 0 / 32%));
+  }
+
+  .report__findings {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  .report__finding {
+    padding: clamp(20px, 2.4vw, 26px);
+    background: var(--bg);
+    transition: background var(--t-base);
+  }
+
+  .report__finding-label {
+    margin: 0 0 8px;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .report__finding-title {
+    margin: 0 0 8px;
+    font: 600 clamp(17px, 1.5vw, 20px) / 1.3 var(--font-display);
+    letter-spacing: -0.015em;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .report__finding-text {
+    margin: 0;
+    font: 400 14.5px / 1.65 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  .report__finding:hover {
+    background: rgb(255 255 255 / 3%);
+  }
+
+  /* Açık zeminli varyant — belge koyu kalır, çevresi açılır. */
+  :global(.section--light) .report__findings {
+    background: var(--border-on-light);
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .report__finding {
+    background: var(--bg-light);
+  }
+
+  :global(.section--light) .report__finding-title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .report__finding-text {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .report__finding-label {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .report__finding:hover {
+    background: rgb(10 10 10 / 3%);
+  }
+
+  @media (max-width: 900px) {
+    .report {
+      grid-template-columns: 1fr;
+    }
+
+    .report__doc {
+      position: static;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .report__finding {
+      transition: none;
+    }
+  }
+</style>

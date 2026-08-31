@@ -94,7 +94,7 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
      * bölüm eyebrow'u gibi basılır (vizyon/misyon). Alan adı bilinçli olarak `variant`
      * DEĞİL: CMS senkron testi `variant` adını buton görünümü sanıyor.
      */
-    kind: opt(z.enum(['grid', 'tinted', 'panels', 'feature', 'ledger'])),
+    kind: opt(z.enum(['grid', 'tinted', 'panels', 'feature', 'ledger', 'audit', 'report'])),
     /** Izgaranın altında yer alan kapanış notu (ör. UX/UI karşılaştırmasındaki bağlayıcı cümle). */
     note: opt(z.string()),
     items: z
@@ -121,6 +121,12 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
               'craft',
               'orbit',
               'partnership',
+              'web',
+              'seo',
+              'ads',
+              'social',
+              'brand',
+              'commerce',
             ]),
           ),
           /** Sürekli (yalnızca hover'da değil) lime çerçeveyle öne çıkarılan kart. */
@@ -151,10 +157,11 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     heading: nonEmpty,
     lead: opt(z.string()),
     /**
-     * `grid` (varsayılan) = numaralı ince çizgili hücre ızgarası ("Nasıl Çalışıyoruz").
-     * `split` = başlık solda, lime noktalı satır listesi sağda ("Kimlerle Çalışmak İstiyoruz").
+     * `grid` (varsayılan) = numaralı ince çizgili hücre ızgarası. `split` = başlık solda,
+     * lime noktalı satır listesi sağda. `check` = lime tikli iki sütunlu kazanım listesi.
+     * `tags` = akan büyük etiketler (kimler için uygun).
      */
-    kind: opt(z.enum(['grid', 'split'])),
+    kind: opt(z.enum(['grid', 'split', 'check', 'tags'])),
     items: z.array(nonEmpty).min(1),
   });
 

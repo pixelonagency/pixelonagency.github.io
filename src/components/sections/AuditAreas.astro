@@ -1,0 +1,192 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import AuditIcon from '../AuditIcon.astro';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Cards = Extract<PageSection, { type: 'cards' }>;
+
+interface Props {
+  section: Cards;
+}
+
+const { section } = Astro.props;
+
+/* Şemada tüm kart ikonları tek enum'da; bu görünüm yalnız denetim ikonlarını çizer. */
+const AUDIT_ICONS = ['web', 'seo', 'ads', 'social', 'brand', 'commerce'] as const;
+type AuditIconName = (typeof AUDIT_ICONS)[number];
+const auditIcon = (icon: string | undefined): AuditIconName | undefined =>
+  AUDIT_ICONS.includes(icon as AuditIconName) ? (icon as AuditIconName) : undefined;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  <ul class="audit">
+    {
+      section.items.map((item, index) => {
+        const icon = auditIcon(item.icon);
+        return (
+          <li class="audit__item" data-reveal data-reveal-index={index}>
+            {/* Sıra numarası bir denetim listesi hissi verir; ikon konuyu adlandırır. */}
+            <span class="audit__num" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            {icon && (
+              <span class="audit__icon" aria-hidden="true">
+                <AuditIcon name={icon} />
+              </span>
+            )}
+            <h3 class="audit__title">{item.title}</h3>
+            <p class="audit__text">{item.description}</p>
+            <span class="audit__rule" aria-hidden="true" />
+          </li>
+        );
+      })
+    }
+  </ul>
+</Section>
+
+<style>
+  .audit {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin: clamp(32px, 4vw, 48px) 0 0;
+    padding: 0;
+    list-style: none;
+    /*
+     * Hücreler arasındaki saç teli çizgi, ızgaranın kendi zemininden gelir: kartlar
+     * ayrı kutular değil, tek bir denetim tablosunun gözleri gibi okunmalı.
+     */
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  .audit__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 8px 16px;
+    padding: clamp(22px, 2.4vw, 30px);
+    background: var(--bg);
+    transition: background var(--t-base);
+  }
+
+  .audit__num {
+    grid-row: 1;
+    font: 700 12px var(--font-display);
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    align-self: center;
+  }
+
+  /* İkon dolu değil, çerçeveli: Biz Kimiz'deki dolu lime kutulardan ayrışsın. */
+  .audit__icon {
+    grid-row: 1;
+    justify-self: start;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 9px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--accent);
+    transition:
+      border-color var(--t-base),
+      background var(--t-base);
+  }
+
+  .audit__title {
+    grid-column: 1 / -1;
+    margin: 12px 0 0;
+    font: 600 clamp(16.5px, 1.4vw, 19px) / 1.3 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .audit__text {
+    grid-column: 1 / -1;
+    margin: 0;
+    font: 400 14.5px / 1.65 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  /* Alt çizgi hover'da soldan açılır — "bu alan tarandı" hissi. */
+  .audit__rule {
+    position: absolute;
+    inset-inline-start: clamp(22px, 2.4vw, 30px);
+    inset-block-end: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width var(--t-slow);
+  }
+
+  .audit__item:hover {
+    background: rgb(255 255 255 / 3%);
+  }
+
+  .audit__item:hover .audit__icon {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .audit__item:hover .audit__rule {
+    width: calc(100% - clamp(22px, 2.4vw, 30px) * 2);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .audit {
+    background: var(--border-on-light);
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .audit__item {
+    background: var(--bg-light);
+  }
+
+  :global(.section--light) .audit__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .audit__text,
+  :global(.section--light) .audit__num {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .audit__icon {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .audit__item:hover {
+    background: rgb(10 10 10 / 3%);
+  }
+
+  @media (max-width: 900px) {
+    .audit {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .audit {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .audit__item,
+    .audit__icon,
+    .audit__rule {
+      transition: none;
+    }
+  }
+</style>

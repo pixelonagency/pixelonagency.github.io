@@ -1,5 +1,7 @@
 ---
 import type { PageSection } from '../../content/page-schema';
+import BulletsCheck from './BulletsCheck.astro';
+import BulletsTags from './BulletsTags.astro';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 
@@ -14,7 +16,12 @@ const kind = section.kind ?? 'grid';
 ---
 
 {
-  kind === 'split' ? (
+  /* `check` ve `tags` ayrı bileşenlere delege edilir — düzenleri bu ızgarayla ilgisiz. */
+  kind === 'check' ? (
+    <BulletsCheck {section} />
+  ) : kind === 'tags' ? (
+    <BulletsTags {section} />
+  ) : kind === 'split' ? (
     /* Referans (kariyer): başlık solda, lime noktalı satır listesi sağda. */
     <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
       <div class="bsplit">

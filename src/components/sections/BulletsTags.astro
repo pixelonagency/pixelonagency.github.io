@@ -1,0 +1,108 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+
+type Bullets = Extract<PageSection, { type: 'bullets' }>;
+
+interface Props {
+  section: Bullets;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
+
+  {
+    /*
+     * Maddeler kart ya da satır değil, akan büyük etiketler. "Kimler için uygun?"
+     * sorusunun cevabı bir sıralama değil bir küme; ortalanmış serbest akış bunu
+     * ızgaradan daha doğru anlatıyor. Okuyucu kendini listede arayıp buluyor.
+     */
+  }
+  <ul class="tags">
+    {
+      section.items.map((item, index) => (
+        <li class="tags__item" data-reveal data-reveal-index={index}>
+          <span class="tags__dot" aria-hidden="true" />
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 1000px;
+    margin: clamp(32px, 4vw, 48px) auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tags__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    font: 500 clamp(14.5px, 1.15vw, 16.5px) / 1.3 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    transition:
+      border-color var(--t-base),
+      background var(--t-base),
+      transform var(--t-base);
+  }
+
+  .tags__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform var(--t-base);
+  }
+
+  @media (hover: hover) {
+    .tags__item:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-3px);
+    }
+
+    .tags__item:hover .tags__dot {
+      transform: scale(1.5);
+    }
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .tags__item {
+    border-color: var(--border-on-light);
+    color: var(--text-on-light);
+  }
+
+  @media (hover: hover) {
+    :global(.section--light) .tags__item:hover {
+      border-color: var(--text-on-light);
+      background: rgb(10 10 10 / 4%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tags__item,
+    .tags__dot {
+      transition: none;
+    }
+
+    .tags__item:hover {
+      transform: none;
+    }
+  }
+</style>
