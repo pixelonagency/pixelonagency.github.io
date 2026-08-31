@@ -35,12 +35,12 @@ const corporateLinks = [
   { label: t('nav.contact', locale), href: localizedPath('contact', locale) },
   { label: t('nav.blog', locale), href: localizedPath('blog', locale) },
   /*
-   * Web sitesi açılış sayfası hiçbir gezinme öğesinde yer almıyordu ve yalnız
-   * sitemap üzerinden erişilebiliyordu (Semrush: "orphaned sitemap page").
-   * Footer her sayfada olduğu için sayfa hem tarama derinliğinde öne çıkar hem de
-   * site içi bağlantı değeri alır.
+   * "Web Sitesi Yaptır" açılış sayfası bilerek BURADA DEĞİL: sahip footer'da
+   * istemedi. Sayfa yayında ve sitemap ile llms.txt'te duruyor, ama artık hiçbir
+   * gezinme öğesinden bağlantı almıyor (Semrush bunu "orphaned sitemap page"
+   * olarak işaretler). Reklam/kampanya iniş sayfası olarak kullanılıyorsa sorun
+   * değil; organik giriş bekleniyorsa bir yerden iç bağlantı verilmeli.
    */
-  { label: t('nav.website', locale), href: localizedPath('website', locale) },
 ];
 ---
 
