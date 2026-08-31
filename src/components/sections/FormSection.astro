@@ -16,18 +16,41 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
 ---
 
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
-  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} align="center" />
 
-  <ContactFormFields
-    formId={section.formId}
-    heading={section.heading}
-    submitLabel={section.submitLabel}
-    successHeading={section.successHeading}
-    successBody={section.successBody}
-    successNote={section.successNote}
-    successCtas={section.successCtas}
-    errorHeading={section.errorHeading}
-    errorBody={section.errorBody}
-    {locale}
-  />
+  {
+    /*
+     * Sarmalayıcı gerekli: `class` prop'u Section bileşenine geçtiği için o eleman
+     * bu dosyanın stil kapsamını TAŞIMIYOR ve `.form-section` seçicisi hiç eşleşmiyordu.
+     * Bu div ise burada basıldığından kapsamı taşır.
+     */
+  }
+  <div class="form-section__body">
+    <ContactFormFields
+      formId={section.formId}
+      heading={section.heading}
+      submitLabel={section.submitLabel}
+      successHeading={section.successHeading}
+      successBody={section.successBody}
+      successNote={section.successNote}
+      successCtas={section.successCtas}
+      errorHeading={section.errorHeading}
+      errorBody={section.errorBody}
+      {locale}
+    />
+  </div>
 </Section>
+
+<style>
+  /*
+   * Bağımsız form bölümü ortalanır. Form 880px, başlık 780px genişliğinde ve
+   * ikisi de 1280px'lik kapsayıcıda sola yaslıydı; sağda 400px boşluk kalıyor ve
+   * blok sayfanın kenarında duruyormuş gibi görünüyordu.
+   *
+   * Kural bölüme bağlıdır, forma değil: ContactSection aynı form alanlarını iki
+   * sütunlu bir blokta kullanıyor ve orada sola yaslı kalması gerekiyor.
+   */
+  .form-section__body :global(.form) {
+    margin-inline: auto;
+  }
+</style>
