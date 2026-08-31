@@ -14,6 +14,7 @@ tags:
   - Dijital Reklam
   - Çok Dilli İçerik
 detail:
+  heroImage: '/src/assets/images/projects/dentasay/hero.webp'
   intro: Tek strateji altında çalışan çok dilli bir dijital sistem — bugün 20
     ülkede, 13 dilde.
 
