@@ -182,12 +182,42 @@ const LEGAL_LABELS: Record<string, Record<Locale, string>> = {
     color: var(--text-on-light);
   }
 
-  /* Çerez tablosu — yatay taşma kendi kutusunda kayar. */
+  /*
+   * Çerez tablosu — yatay taşma kendi kutusunda kayar.
+   *
+   * Bu yorum buradaydı ama KURAL YAZILMAMIŞTI: tablo doğrudan `.legal__body` içinde
+   * duruyor, sarılamıyor ve taşması BELGEYE yayılıyordu — 360 px'te +208 px, İngilizce
+   * sayfada +233 px. Kullanıcı bunu "ekran sağa sola kayıyor" diye tarif ediyordu
+   * (1 Eyl 2026).
+   */
   .legal__body :global(table) {
-    width: 100%;
+    /*
+     * `display: block` tabloyu KENDİ kaydırma kutusuna çevirir. Sarmalayıcı bir div
+     * daha temiz olurdu ama markdown çıktısına düğüm ekleyemiyoruz: Astro'nun varsayılan
+     * markdown işlemcisi rehype eklentisi almıyor ve almak için tüm boru hattını
+     * değiştirmek gerekiyor — bir tablo için orantısız bir risk.
+     *
+     * `border-collapse` AÇIKÇA tekrar yazılmalı: kısayol sıfırlanınca `separate`e düşüyor
+     * ve hücreler arasında boşluk kalıyordu (ekran görüntüsüyle doğrulandı). Blok kutuya
+     * dönen tabloda da collapse çalışıyor — kenarlıklar tek çizgi kalıyor.
+     */
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
     border-collapse: collapse;
     margin: 0 0 20px;
     font-size: 14px;
+  }
+
+  .legal__body :global(table:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Kutunun içinde sıkışıp okunmaz hâle gelmesin; dar ekranda tablo kayar. */
+  .legal__body :global(thead),
+  .legal__body :global(tbody) {
+    min-width: 32rem;
   }
 
   .legal__body :global(th),

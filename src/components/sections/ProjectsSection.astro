@@ -175,7 +175,7 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
 
         <div
           class="projects__grid"
-          style={section.columns ? `--cols: ${section.columns}` : undefined}
+          style={section.columns ? `--cols: ${section.columns}; --col-min: 0` : undefined}
           id={panelId}
           role={filters.length > 0 ? 'tabpanel' : undefined}
           aria-labelledby={filters.length > 0 ? tabId(ALL_CATEGORY) : undefined}
@@ -432,10 +432,17 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
   /*
    * Varsayılan `auto-fit`: kart sayısı kadar sütun açılır. `--cols` verilirse
    * sütun sayısı sabitlenir — az sayıda vakayı geniş göstermek için (2×2).
+   *
+   * `--col-min` NEDEN VAR: 300 px'lik alt sınır yalnızca `auto-fit` için anlamlı,
+   * çünkü kaç sütun sığacağını o belirler. Sütun sayısı SABİTLENDİĞİNDE aynı alt sınır
+   * ızgaranın daralmasını engelliyor: `--cols: 3` olan hizmet sayfaları 768 px'te
+   * 3×300 + 2×28 = 956 px istiyor, kapsayıcı 676 px ve fark belgeye taşıyordu
+   * (1 Eyl 2026, +234 px). Taşma 1021–1090 px arasında da sürüyordu.
+   * Bu yüzden sabit sütunlu ızgaralar alt sınırı 0'a çeker (bkz. yukarıdaki `style`).
    */
   .projects__grid {
     display: grid;
-    grid-template-columns: repeat(var(--cols, auto-fit), minmax(300px, 1fr));
+    grid-template-columns: repeat(var(--cols, auto-fit), minmax(var(--col-min, 300px), 1fr));
     gap: 28px;
   }
 
@@ -627,6 +634,18 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
 
   :global(.section--light) .projects__empty {
     color: var(--text-muted-on-light);
+  }
+
+  /*
+   * Tablette sütun sayısı içerikten değil EKRANDAN belirlenir: `--cols: 3` teknik olarak
+   * artık sığıyor (alt sınır 0) ama üç kart 768 px'te ~200 px'e düşüyor ve kapak
+   * görselleri okunmaz hâle geliyor. İkiye indirmek okunabilirliği koruyor.
+   * ≤720 px kuralı bundan SONRA gelir ve tek sütuna düşürür.
+   */
+  @media (max-width: 1020px) {
+    .projects__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 720px) {

@@ -499,6 +499,45 @@ const extraSchema = [
     border-radius: var(--radius-media);
   }
 
+  /*
+   * Markdown gövdeli yazılardaki tablolar. Blok şemalı yazılar tabloyu `ArticleTable`
+   * ile çizer; düz markdown gövdesi ise doğrudan `<table>` üretiyor ve HİÇ stili yoktu.
+   * Kural `LegalPage.astro` ile aynı: `display: block` tabloyu kendi kaydırma kutusuna
+   * çevirir, böylece taşma sayfaya değil tablonun içinde kalır.
+   */
+  .post__body :global(table) {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 24px;
+    font-size: 14px;
+  }
+
+  .post__body :global(table:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .post__body :global(thead),
+  .post__body :global(tbody) {
+    min-width: 32rem;
+  }
+
+  .post__body :global(th),
+  .post__body :global(td) {
+    border: 1px solid rgba(10, 10, 10, 0.15);
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .post__body :global(th) {
+    font: 600 13px var(--font-display);
+    background: var(--bg-tint);
+    color: var(--text-on-light);
+  }
+
   .post__back {
     margin-top: 44px;
     border-color: rgba(10, 10, 10, 0.25);

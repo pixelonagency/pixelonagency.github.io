@@ -121,26 +121,36 @@ const BOARD_VIDEO_SCRIPT = `
 <section class:list={['section', 'pb-section']} id={section.anchor}>
   {
     section.video && (
-      <div class="pb-hero__bg" aria-hidden="true">
-        <video
-          class="pb-hero__video"
-          muted
-          loop
-          playsinline
-          preload="none"
-          disablepictureinpicture
-          data-d-mp4={mediaUrl(section.video.desktopMp4)}
-          data-d-webm={mediaUrl(section.video.desktopWebm)}
-          data-d-poster={mediaUrl(section.video.desktopPoster)}
-          data-m-mp4={mediaUrl(section.video.mobileMp4)}
-          data-m-webm={mediaUrl(section.video.mobileWebm)}
-          data-m-poster={mediaUrl(section.video.mobilePoster)}
-        />
-        <span class="pb-hero__scrim" />
-      </div>
+      <>
+        <div class="pb-hero__bg" aria-hidden="true">
+          <video
+            class="pb-hero__video"
+            muted
+            loop
+            playsinline
+            preload="none"
+            disablepictureinpicture
+            data-d-mp4={mediaUrl(section.video.desktopMp4)}
+            data-d-webm={mediaUrl(section.video.desktopWebm)}
+            data-d-poster={mediaUrl(section.video.desktopPoster)}
+            data-m-mp4={mediaUrl(section.video.mobileMp4)}
+            data-m-webm={mediaUrl(section.video.mobileWebm)}
+            data-m-poster={mediaUrl(section.video.mobilePoster)}
+          />
+          <span class="pb-hero__scrim" />
+        </div>
+        {/*
+        Script arka plan bloğunun HEMEN ARDINDA ve KOŞULUN İÇİNDE durmalı — HeroSection
+        ile birebir aynı desen. `document.currentScript.previousElementSibling` ile
+        videoyu buluyor, yani bir önceki kardeşinin `.pb-hero__bg` olmasına bağımlı.
+        Koşulun dışındayken videosuz sayfalarda — `/en/projects/`, içerikte video tanımlı
+        değil — kardeş bulunamıyor ve script "Cannot read properties of null (reading
+        'querySelector')" ile düşüyordu (1 Eyl 2026, dört genişlikte de).
+      */}
+        <script is:inline set:html={BOARD_VIDEO_SCRIPT} data-board-video />
+      </>
     )
   }
-  <script is:inline set:html={BOARD_VIDEO_SCRIPT} data-board-video />
   <div class="container">
     {/* ---------------------------------------------------------- HERO ---- */}
     <header class="pb-hero" data-reveal>
