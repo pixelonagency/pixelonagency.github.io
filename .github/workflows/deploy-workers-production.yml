@@ -92,8 +92,19 @@ jobs:
             echo "asset cache kuralı eksik"; exit 1
           fi
           # Staging noindex kuralı üretim host'una uygulanmamalı: kural host bazlı olmalı.
-          if grep -qE '^/\*' dist/_headers; then
-            echo "host'suz genel kural bulundu — noindex üretime sızabilir"; exit 1
+          #
+          # Kontrol edilen şey HOST'SUZ KURAL VARLIĞI DEĞİL, host'suz bir kuralın
+          # indeksleme başlığı basması. Önceki hâli her `/*` bloğunu reddediyordu ve
+          # tüm site için yazılan güvenlik başlıklarını (nosniff, Referrer-Policy…)
+          # da engelliyordu — oysa onların üretimde olması İSTENEN durum.
+          if awk '
+            /^https?:/            { host = 1; next }
+            /^\//                 { host = 0; next }
+            /^[[:space:]]+/       { if (!host && tolower($0) ~ /x-robots-tag|noindex/) { found = 1 } ; next }
+            { host = 0 }
+            END { exit(found ? 0 : 1) }
+          ' dist/_headers; then
+            echo "host'suz indeksleme başlığı bulundu — noindex üretime sızabilir"; exit 1
           fi
           # Form anahtarı gömülmemişse üretime çıkmamalı: her lead gönderimi sessizce
           # başarısız olurdu. Anahtarın DEĞERİ değil, boş olmadığı kontrol edilir.
