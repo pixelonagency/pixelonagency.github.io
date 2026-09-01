@@ -10,6 +10,26 @@ const base = {
 
 const parseSection = (section: unknown) => pageSchema.safeParse({ ...base, sections: [section] });
 
+describe('ana sayfa görünümleri', () => {
+  test('projects slider görünümünü kabul eder', () => {
+    const base = { type: 'projects', heading: 'Projeler' };
+    expect(parseSection({ ...base, kind: 'slider' }).success).toBe(true);
+    expect(parseSection({ ...base, kind: 'kaydirak' }).success).toBe(false);
+  });
+
+  test('steps timeline görünümünü kabul eder', () => {
+    const base = { type: 'steps', heading: 'Süreç', items: [{ title: 'Keşif', description: 'Dinleriz.' }] };
+    expect(parseSection({ ...base, kind: 'timeline' }).success).toBe(true);
+  });
+
+  test('sektör kartı açıklaması opsiyoneldir', () => {
+    const card = { label: 'E-Ticaret', image: 'src/assets/images/sector-e-ticaret.webp' };
+    const base = { type: 'sectorCards', heading: 'Sektörler' };
+    expect(parseSection({ ...base, cards: [card] }).success).toBe(true);
+    expect(parseSection({ ...base, cards: [{ ...card, description: 'Satışa odaklı çözümler.' }] }).success).toBe(true);
+  });
+});
+
 describe('hizmetler görünümleri', () => {
   test('bullets orbit görünümünü kabul eder', () => {
     const base = { type: 'bullets', heading: '360° Yaklaşım', items: ['Strateji', 'Tasarım'] };

@@ -28,7 +28,11 @@ const { section } = Astro.props;
             sizes="(max-width: 720px) 46vw, 364px"
           />
           <span class="sectors__veil" />
-          <span class="sectors__label">{item.label}</span>
+          <span class="sectors__text">
+            <span class="sectors__label">{item.label}</span>
+            {/* Açıklama opsiyonel: hizmet sayfalarındaki kartlar yalnız etikettir. */}
+            {item.description && <span class="sectors__desc">{item.description}</span>}
+          </span>
         </li>
       ))
     }
@@ -91,11 +95,22 @@ const { section } = Astro.props;
     );
   }
 
-  .sectors__label {
+  .sectors__text {
     position: absolute;
     left: 20px;
     right: 20px;
     bottom: 20px;
+  }
+
+  .sectors__desc {
+    display: block;
+    margin-top: 10px;
+    font: 400 13.5px / 1.55 var(--font-body);
+    color: rgb(255 255 255 / 78%);
+  }
+
+  .sectors__label {
+    display: block;
     font: 600 clamp(19px, 1.85vw, 27px) / 1.15 var(--font-display);
     letter-spacing: -0.015em;
     color: #fff;
@@ -130,6 +145,11 @@ const { section } = Astro.props;
 
   .sectors__card:hover .sectors__label::after {
     width: 42px;
+  }
+
+  /* Açıklamalı kartlarda metin daha uzun; kutu biraz uzatılır. */
+  .sectors__card:has(.sectors__desc) {
+    aspect-ratio: 4 / 5;
   }
 
   /* Dar ekranda 2 sütun; kart daraldığı için dikey oran geri gelir. */

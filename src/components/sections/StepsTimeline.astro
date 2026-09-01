@@ -1,0 +1,227 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import SectionHead from '../SectionHead.astro';
+import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
+
+type Steps = Extract<PageSection, { type: 'steps' }>;
+
+interface Props {
+  section: Steps;
+}
+
+const { section } = Astro.props;
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
+
+  {
+    /*
+     * Adımlar bir ray üzerinde durak olarak dizilir; tek sıradakiler rayın üstünde,
+     * çift sıradakiler altında. Bu, sırayı ızgaradan daha güçlü anlatıyor: göz
+     * soldan sağa rayı takip ediyor. Ray masaüstünde yatay, dar ekranda dikeydir.
+     */
+  }
+  <ol class="tl">
+    {
+      section.items.map((item, index) => (
+        <li class="tl__stop" data-reveal data-reveal-index={index}>
+          <span class="tl__marker" aria-hidden="true">
+            <span class="tl__dot" />
+          </span>
+          <div class="tl__card">
+            <span class="tl__num" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3 class="tl__title">{item.title}</h3>
+            <p class="tl__text" set:html={inlineHtml(item.description)} />
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .tl {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    align-items: center;
+    margin: clamp(40px, 5vw, 64px) 0 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+  }
+
+  /* Ray: durakların tam ortasından geçen ince lime çizgi. */
+  .tl::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent) 8%, var(--accent) 92%, transparent);
+    opacity: 0.5;
+  }
+
+  .tl__stop {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    align-items: center;
+    min-height: 300px;
+    padding: 0 clamp(8px, 1vw, 14px);
+  }
+
+  .tl__marker {
+    grid-row: 2;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--accent);
+    transition: transform var(--t-base);
+  }
+
+  .tl__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .tl__card {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    background: rgb(255 255 255 / 2%);
+    transition:
+      border-color var(--t-base),
+      transform var(--t-base);
+  }
+
+  /* Tek numaralı duraklar rayın ÜSTÜNDE, çiftler ALTINDA durur. */
+  .tl__stop:nth-child(odd) .tl__card {
+    grid-row: 1;
+    align-self: end;
+    margin-bottom: 18px;
+  }
+
+  .tl__stop:nth-child(even) .tl__card {
+    grid-row: 3;
+    align-self: start;
+    margin-top: 18px;
+  }
+
+  .tl__num {
+    display: block;
+    margin-bottom: 8px;
+    font: 700 12px var(--font-display);
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tl__title {
+    margin: 0 0 8px;
+    font: 600 clamp(15.5px, 1.3vw, 18px) / 1.25 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .tl__text {
+    margin: 0;
+    font: 400 13.5px / 1.6 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  .tl__stop:hover .tl__card {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .tl__stop:hover .tl__marker {
+    transform: scale(1.25);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .tl__card {
+    background: rgb(10 10 10 / 2%);
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .tl__marker {
+    background: var(--bg-light);
+  }
+
+  :global(.section--light) .tl__title {
+    color: var(--text-on-light);
+  }
+
+  :global(.section--light) .tl__text,
+  :global(.section--light) .tl__num {
+    color: var(--text-muted-on-light);
+  }
+
+  /*
+   * Dar ekranda yatay ray okunmaz hâle geliyor: altı durak yan yana sığmıyor.
+   * Ray dikeye döner, duraklar tek sütunda alt alta sıralanır.
+   */
+  @media (max-width: 1020px) {
+    .tl {
+      grid-auto-flow: row;
+      grid-auto-columns: auto;
+      gap: 0;
+    }
+
+    .tl::before {
+      inset-inline: auto;
+      inset-block: 0;
+      left: 11px;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, var(--accent) 6%, var(--accent) 94%, transparent);
+    }
+
+    .tl__stop {
+      grid-template-rows: auto;
+      grid-template-columns: 22px minmax(0, 1fr);
+      align-items: start;
+      gap: 18px;
+      min-height: 0;
+      padding: 0 0 22px;
+    }
+
+    .tl__marker {
+      grid-row: 1;
+      grid-column: 1;
+      margin-top: 14px;
+    }
+
+    .tl__stop:nth-child(odd) .tl__card,
+    .tl__stop:nth-child(even) .tl__card {
+      grid-row: 1;
+      grid-column: 2;
+      margin: 0;
+      align-self: start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tl__card,
+    .tl__marker {
+      transition: none;
+    }
+
+    .tl__stop:hover .tl__card,
+    .tl__stop:hover .tl__marker {
+      transform: none;
+    }
+  }
+</style>

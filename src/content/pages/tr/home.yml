@@ -64,6 +64,8 @@ sections:
     anchor: pixelon
     eyebrow: Pixelon Ne Yapar?
     heading: Fikrinizi Görünür, Markanızı Güçlü, Sonuçlarınızı Ölçülebilir Hale Getiriyoruz.
+    image: '/src/assets/images/pixelon-ne-yapar.webp'
+    imageAlt: Bir masada yan yana duran eskiz, marka kimliği baskısı ve yükselen grafik gösteren ekran
     body: |-
       Pixelon; yalnızca güzel görünen tasarımlar üretmez. Markaların doğru hedef kitleyle buluşmasını, dijital dünyada güçlü bir konum elde etmesini ve yatırımlarından ölçülebilir sonuçlar almasını sağlayan bütünleşik çözümler geliştirir.
 
@@ -99,13 +101,14 @@ sections:
 
   # 7 — PROJELER (projects koleksiyonundan; referansta 3 seçili proje)
   - type: projects
+    kind: slider
     background: light
     anchor: projeler
     eyebrow: Seçili Projeler
     heading: Sadece Tasarlamıyor, Markalara Değer Katıyoruz.
     lead: |-
       Her proje bizim için yeni bir yolculuktur. Markanın mevcut durumunu, hedeflerini ve ihtiyaçlarını analiz ederek estetik, işlevsel ve sonuç odaklı çözümler üretiyoruz.
-    limit: 3
+    limit: 8
     showFilters: false
     # ctaLabel/ctaHref, ProjectsSection'da ızgaranın altındaki bölüm butonudur —
     # kart içi "Projeyi İnceleyin →" bağlantısı bileşenin kendisinden gelir.
@@ -148,42 +151,41 @@ sections:
         variant: outline
 
   # 9 — SEKTÖRLER
-  - type: cards
+  - type: sectorCards
     background: light
     eyebrow: Sektörünüzü Anlıyoruz
     heading: Her Sektör İçin Aynı Çözümü Değil, Markanıza Özel Stratejiyi Üretiyoruz.
-    lead: |-
+    body: |-
       Her sektörün hedef kitlesi, satın alma süreci ve iletişim dili farklıdır. Pixelon olarak deneyim sahibi olduğumuz sektörlerde kullanıcı davranışlarını ve pazar dinamiklerini analiz ederek markaya özel çözümler oluşturuyoruz.
-    columns: 3
-    items:
-      - title: Sağlık ve Klinik Markaları
-        icon: health
-        description: |-
-          Hasta güvenini güçlendiren, etik iletişim kurallarına uygun ve randevu dönüşümünü destekleyen dijital sistemler oluşturuyoruz.
-      - title: Sağlık Turizmi Firmaları
-        icon: tourism
-        description: |-
-          Uluslararası hasta kazanımına yönelik çok dilli web siteleri, reklam kampanyaları ve hasta iletişim süreçleri geliştiriyoruz.
-      - title: E-Ticaret Markaları
-        icon: ecommerce
-        featured: true
-        description: |-
-          Ürünlerin daha iyi sunulmasını, doğru hedef kitleye ulaşmasını ve satış dönüşümlerinin artmasını sağlayan çözümler üretiyoruz.
-      - title: İnşaat ve Gayrimenkul Firmaları
-        icon: construction
-        description: |-
-          Projelerin güven, kalite ve yatırım değerini etkili biçimde anlatan kurumsal web siteleri ve dijital pazarlama çalışmaları hazırlıyoruz.
-      - title: KOBİ ve Kurumsal Hizmet Markaları
-        icon: sme
-        description: |-
-          İşletmelerin dijital dünyada profesyonel bir kimliğe kavuşmasını ve yeni müşterilere ulaşmasını sağlayan sürdürülebilir sistemler kuruyoruz.
-      - title: Eğitim ve Danışmanlık Markaları
-        icon: education
-        description: |-
-          Uzmanlığınızı görünür kılan, güven oluşturan ve başvuru dönüşümünü artıran dijital yapılar kuruyoruz.
+    cards:
+      - label: Sağlık ve Klinik
+        image: '/src/assets/images/sector-saglik-klinik.webp'
+        alt: Modern bir diş kliniğinde hastasıyla ilgilenen hekim
+        description: Hasta güvenini güçlendiren, etik iletişime uygun ve randevu dönüşümünü destekleyen dijital sistemler.
+      - label: Sağlık Turizmi
+        image: '/src/assets/images/sector-saglik-turizmi.webp'
+        alt: Hastane resepsiyonunda karşılanan yurt dışından gelen hasta
+        description: Uluslararası hasta kazanımı için çok dilli siteler, kampanyalar ve hasta iletişim süreçleri.
+      - label: Estetik ve Kozmetik
+        image: '/src/assets/images/sector-estetik-kozmetik.webp'
+        alt: Güzellik kliniğinde cilt bakımı uygulanan danışan
+        description: Görsel kaliteyi ve güveni aynı anda kuran, danışan başvurusuna odaklı dijital iletişim.
+      - label: E-Ticaret
+        image: '/src/assets/images/sector-e-ticaret.webp'
+        alt: Depoda kargo paketini okutan e-ticaret çalışanı
+        description: Ürünlerin doğru kitleye ulaşmasını ve satış dönüşümünün artmasını sağlayan çözümler.
+      - label: İnşaat ve Gayrimenkul
+        image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+        alt: Gün batımında modern bir konut projesinin cephesi
+        description: Projelerin güven, kalite ve yatırım değerini anlatan kurumsal siteler ve kampanyalar.
+      - label: KOBİ ve Kurumsal Hizmet
+        image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+        alt: Aydınlık bir ofiste toplantı hâlindeki kurumsal ekip
+        description: Dijitalde profesyonel bir kimlik kuran ve yeni müşteriye ulaştıran sürdürülebilir sistemler.
 
   # 10 — SÜREÇ
   - type: steps
+    kind: timeline
     background: dark
     eyebrow: Süreç Nasıl İşliyor?
     heading: Fikirden Yayına, Yayından Büyümeye Yanınızdayız.
@@ -215,24 +217,30 @@ sections:
 
   # 11 — NEDEN PIXELON (referansta sağ sütunda alt alta sıralanan liste)
   - type: cards
+    kind: feature
     background: light
     eyebrow: Bir Ajansın Ötesinde
     heading: Markanız İçin Stratejik, Yaratıcı ve Sonuç Odaklı Bir Ekip
     columns: 1
     items:
       - title: Stratejiyle Başlarız
+        icon: strategy
         description: |-
           Her projeye tasarımla değil, doğru soruları sorarak ve markanın gerçek ihtiyacını anlayarak başlarız.
       - title: Markaya Özel Üretiriz
+        icon: bespoke
         description: |-
           Hazır şablonlar ve birbirine benzeyen çözümler yerine markanızın kimliğine özel çalışmalar oluştururuz.
       - title: Tasarım ve Teknolojiyi Birleştiririz
+        icon: craft
         description: |-
           Estetik görünen çalışmaların aynı zamanda hızlı, işlevsel ve kullanıcı dostu olmasını sağlarız.
       - title: Sonuçları Ölçeriz
+        icon: orbit
         description: |-
           Yaptığımız çalışmaların yalnızca görünümünü değil, trafik, etkileşim, talep ve dönüşüm üzerindeki etkisini takip ederiz.
       - title: Tüm Süreci Tek Ekipte Yönetiriz
+        icon: partnership
         description: |-
           Strateji, tasarım, yazılım, içerik, reklam ve optimizasyon süreçlerini birbiriyle uyumlu biçimde yürütürüz.
 
@@ -244,17 +252,85 @@ sections:
     lead: |-
       Türkiye'den Avrupa'ya ve Afrika'ya uzanan projelerimizde; farklı kültürlere, dillere ve hedef pazarlara uygun iletişim stratejileri geliştiriyoruz. Yerel bir markanın global pazara açılmasından uluslararası bir firmanın dijital dönüşümüne kadar her ölçekte projeye aynı özenle yaklaşıyoruz.
     countries:
-      - { label: Türkiye, flag: 🇹🇷, highlighted: true }
-      - { label: Almanya, flag: 🇩🇪 }
-      - { label: Birleşik Krallık, flag: 🇬🇧 }
-      - { label: Fransa, flag: 🇫🇷 }
-      - { label: İtalya, flag: 🇮🇹 }
-      - { label: İspanya, flag: 🇪🇸 }
-      - { label: Romanya, flag: 🇷🇴 }
-      - { label: Bulgaristan, flag: 🇧🇬 }
-      - { label: Hollanda, flag: 🇳🇱 }
-      - { label: İrlanda, flag: 🇮🇪 }
-      - { label: Afrika, flag: 🌍 }
+    - label: Türkiye
+      flag: '🇹🇷'
+      highlighted: true
+      lat: 39.0
+      lon: 35.0
+    - label: Almanya
+      flag: '🇩🇪'
+      lat: 51.2
+      lon: 10.4
+    - label: Hollanda
+      flag: '🇳🇱'
+    - label: Fransa
+      flag: '🇫🇷'
+      lat: 46.6
+      lon: 2.2
+    - label: Belçika
+      flag: '🇧🇪'
+    - label: İngiltere
+      flag: '🇬🇧'
+      lat: 52.5
+      lon: -1.5
+    - label: Avusturya
+      flag: '🇦🇹'
+    - label: İsviçre
+      flag: '🇨🇭'
+    - label: İtalya
+      flag: '🇮🇹'
+      lat: 42.8
+      lon: 12.8
+    - label: İspanya
+      flag: '🇪🇸'
+      lat: 40.2
+      lon: -3.6
+    - label: Romanya
+      flag: '🇷🇴'
+      lat: 45.9
+      lon: 24.9
+    - label: Bulgaristan
+      flag: '🇧🇬'
+    - label: Rusya
+      flag: '🇷🇺'
+      lat: 56.0
+      lon: 44.0
+    - label: Azerbaycan
+      flag: '🇦🇿'
+      lat: 40.3
+      lon: 47.7
+    - label: Irak
+      flag: '🇮🇶'
+      lat: 33.2
+      lon: 43.7
+    - label: Suudi Arabistan
+      flag: '🇸🇦'
+      lat: 24.0
+      lon: 45.0
+    - label: Birleşik Arap Emirlikleri
+      flag: '🇦🇪'
+      lat: 24.0
+      lon: 54.0
+    - label: Katar
+      flag: '🇶🇦'
+    - label: Kuveyt
+      flag: '🇰🇼'
+    - label: Libya
+      flag: '🇱🇾'
+      lat: 27.0
+      lon: 17.0
+    - label: Fas
+      flag: '🇲🇦'
+      lat: 31.8
+      lon: -6.5
+    - label: ABD
+      flag: '🇺🇸'
+      lat: 39.5
+      lon: -98.5
+    - label: Kongo D.C.
+      flag: '🇨🇩'
+      lat: -2.9
+      lon: 23.6
     closingLine: Sınırlar değişir, *güçlü marka deneyiminin* kuralları değişmez.
     mapImageAlt: Pixelon global dijital pazarlama projeleri dünya haritası
     ctas:
@@ -273,39 +349,6 @@ sections:
     ctaLabel: Tüm Yazıları İnceleyin
     ctaHref: /blog
 
-  # 16 — PROFESYONEL PARTNERLER (kayan metin şeridi)
-  - type: marquee
-    kind: wordmarks
-    background: light
-    heading: Profesyonel Partnerlerimiz
-    lead: |-
-      Markaların dijital dünyada güçlü bir varlık oluşturması için sektörün önde gelen platformları ve teknolojileriyle çalışıyoruz.
-    items:
-      - Google
-      - Meta
-      - Instagram
-      - Facebook
-      - WhatsApp
-      - YouTube
-      - TikTok
-      - LinkedIn
-      - Yandex
-
-  # 17/18 — İLETİŞİM (metin + iletişim bilgileri + form, referanstaki gibi tek birleşik blok)
-  # Alan yer tutucuları: Adınız · Soyadınız · Telefon Numaranız · E-posta Adresiniz ·
-  # Şirketinizin Adı · İlgilendiğiniz Hizmet · Tahmini Proje Bütçesi ·
-  # "Projeniz Hakkında Bize Ne Söylemek İstersiniz?"
-  # Hizmet seçenekleri: Web Tasarım ve Yazılım · Sosyal Medya Yönetimi ·
-  # Dijital Reklam Yönetimi · SEO ve İçerik Pazarlaması · Marka ve Kurumsal Kimlik ·
-  # UX/UI Tasarımı · Video ve Prodüksiyon · E-Ticaret · Sağlık Turizmi Danışmanlığı ·
-  # CRM ve Dijital Dönüşüm · Diğer
-  # Bütçe seçenekleri: 50.000 TL altı · 50.000 – 150.000 TL · 150.000 – 500.000 TL ·
-  # 500.000 TL üzeri · Henüz belirlemedim
-  # KVKK onayı: "Kişisel verilerimin iletişim talebimin değerlendirilmesi amacıyla
-  # işlenmesini kabul ediyorum."
-  # Gönderim sonrası ekran: "Talebiniz bize ulaştı!" /
-  # "Pixelon ekibi projenizi inceleyerek en kısa sürede sizinle iletişime geçecek." /
-  # buton: "WhatsApp'tan Devam Edin"
   - type: contact
     background: dark
     anchor: iletisim

@@ -10,6 +10,15 @@ interface Props {
 }
 
 const { section } = Astro.props;
+
+/*
+ * Rakamlar yalnız sayaç olarak durunca hepsi aynı ağırlıkta okunuyordu. Her
+ * değer en büyüğe oranlanıp altına bir lime dolgu çizgisi basılıyor: 15 yıl ile
+ * 500 fikir arasındaki fark artık görülüyor, yalnız okunmuyor. Oran sıfıra
+ * bölünmesin diye en büyük değer 1'in altına düşemez.
+ */
+const maxValue = Math.max(1, ...section.items.map((item) => item.value));
+const fillOf = (value: number) => Math.round(Math.max(6, (value / maxValue) * 100));
 ---
 
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas} class="section-stats">
@@ -18,7 +27,7 @@ const { section } = Astro.props;
   <dl class="stats">
     {
       section.items.map((item, index) => (
-        <div class="stats__item" data-reveal data-reveal-index={index}>
+        <div class="stats__item" style={`--fill: ${fillOf(item.value)}%`} data-reveal data-reveal-index={index}>
           {/* Gerçek değer HTML'de basılır (SEO/GEO: tarayıcılar JS olmadan okur);
               sayaç animasyonu görünürken 0'dan yeniden sayar. */}
           <dt class="stats__value">
@@ -28,6 +37,7 @@ const { section } = Astro.props;
             </span>
             {item.suffix}
           </dt>
+          <span class="stats__bar" aria-hidden="true" />
           <dd class="stats__label">
             <span class="stats__label-text">{item.label}</span>
             {item.description && <span class="stats__description">{item.description}</span>}
@@ -43,7 +53,7 @@ const { section } = Astro.props;
      hairline oluşturuyor — referans tasarımdaki teknik. */
   .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -57,6 +67,42 @@ const { section } = Astro.props;
   :global(.section-stats .section__ctas .btn--outline) {
     border-color: rgba(207, 255, 0, 0.5);
     color: var(--accent);
+  }
+
+  /*
+   * Altı sütun üzerinde 3+2 ritmi: ilk üç hücre ikişer, son iki hücre üçer sütun.
+   * Beş eşit kutu bölümü basit bir sayaç şeridine çeviriyordu; `auto-fit` ise son
+   * sırayı yarım bırakıp sağda boşluk açıyordu.
+   */
+  .stats__item {
+    grid-column: span 2;
+  }
+
+  .stats:has(.stats__item:nth-child(5)):not(:has(.stats__item:nth-child(6))) .stats__item:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+
+  .stats__bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 14px 0 2px;
+    border-radius: var(--radius-pill);
+    background: rgb(255 255 255 / 10%);
+    overflow: hidden;
+  }
+
+  .stats__bar::after {
+    content: '';
+    display: block;
+    width: var(--fill);
+    height: 100%;
+    border-radius: inherit;
+    background: var(--accent);
+  }
+
+  :global(.section--light) .stats__bar {
+    background: rgb(10 10 10 / 10%);
   }
 
   .stats__item {

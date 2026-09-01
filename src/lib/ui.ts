@@ -73,6 +73,8 @@ const STRINGS = {
   'logos.altSuffix': { tr: 'logosu', en: 'logo' },
 
   'projects.all': { tr: 'Tümü', en: 'All' },
+  'slider.prev': { tr: 'Önceki projeler', en: 'Previous projects' },
+  'slider.next': { tr: 'Sonraki projeler', en: 'Next projects' },
   'projects.categories': { tr: 'Proje kategorileri', en: 'Project categories' },
   'projects.view': { tr: 'Projeyi İncele', en: 'View Project' },
   'projects.measured': { tr: 'Ölçülen Sonuç', en: 'Measured Results' },

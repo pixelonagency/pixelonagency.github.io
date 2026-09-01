@@ -146,8 +146,9 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     /**
      * `list` (varsayılan) = numaralı dikey liste. `flow` = lime zeminli panel içinde
      * hafifçe eğik, noktalı çizgilerle bağlanmış numaralı kartlar (Biz Kimiz süreci).
+     * `timeline` = lime bir ray üzerinde alt/üst dönüşümlü duraklar (ana sayfa süreci).
      */
-    kind: opt(z.enum(['list', 'flow'])),
+    kind: opt(z.enum(['list', 'flow', 'timeline'])),
     items: z.array(z.object({ title: nonEmpty, description: nonEmpty })).min(1),
   });
 
@@ -231,6 +232,8 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
            */
           image: image(),
           alt: opt(z.string()),
+          /** Kartın altındaki kısa açıklama. Verilmezse kart yalnız etiketle basılır. */
+          description: opt(z.string()),
         }),
       )
       .min(1),
@@ -462,8 +465,11 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
      */
     columns: opt(z.number()),
     showFilters: z.boolean().default(false),
-    /* grid: mevcut kompakt liste (ana sayfa) · board: tam sayfa editoryal vitrin. */
-    kind: z.enum(['grid', 'board']).default('grid'),
+    /*
+     * grid: kompakt ızgara · board: tam sayfa editoryal vitrin ·
+     * slider: yatay kayan geniş kart şeridi (ana sayfa "Seçili Projeler").
+     */
+    kind: z.enum(['grid', 'board', 'slider']).default('grid'),
     ctaLabel: opt(z.string()),
     ctaHref: optHref,
   });

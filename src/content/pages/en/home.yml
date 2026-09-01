@@ -64,6 +64,8 @@ sections:
     anchor: pixelon
     eyebrow: What Does Pixelon Do?
     heading: We Make Your Idea Visible, Your Brand Strong and Your Results Measurable.
+    image: '/src/assets/images/pixelon-ne-yapar.webp'
+    imageAlt: A sketch, a printed brand identity sheet and a screen showing a rising chart on one desk
     body: |-
       Pixelon does more than produce good-looking design. We develop integrated solutions that connect brands with the right audience, help them build a strong position in the digital world and generate measurable returns on their investment.
 
@@ -99,13 +101,14 @@ sections:
 
   # 7 — PROJECTS (from the projects collection; 3 selected projects in the reference)
   - type: projects
+    kind: slider
     background: light
     anchor: projeler
     eyebrow: Selected Projects
     heading: We Do Not Just Design, We Add Value to Brands.
     lead: |-
       Every project is a new journey for us. By analysing a brand's current position, goals and needs, we produce solutions that are aesthetic, functional and results-driven.
-    limit: 3
+    limit: 8
     showFilters: false
     # ctaLabel/ctaHref is the section button below the grid in ProjectsSection —
     # the in-card "View Project →" link comes from the component itself.
@@ -148,42 +151,40 @@ sections:
         variant: outline
 
   # 9 — INDUSTRIES
-  - type: cards
+  - type: sectorCards
     background: light
     eyebrow: We Understand Your Industry
     heading: Not the Same Solution for Every Industry, but a Strategy Built for Your Brand.
-    lead: |-
+    body: |-
       Every industry has its own audience, purchase journey and tone of voice. In the sectors where we have proven experience, Pixelon analyses user behaviour and market dynamics to build solutions tailored to your brand.
-    columns: 3
-    items:
-      - title: Healthcare and Clinic Brands
-        icon: health
-        description: |-
-          We build digital systems that strengthen patient trust, comply with ethical communication rules and support appointment conversion.
-      - title: Health Tourism Companies
-        icon: tourism
-        description: |-
-          We develop multilingual websites, advertising campaigns and patient communication processes designed to attract international patients.
-      - title: E-Commerce Brands
-        icon: ecommerce
-        featured: true
-        description: |-
-          We create solutions that present products better, reach the right audience and increase sales conversion.
-      - title: Construction and Real Estate Companies
-        icon: construction
-        description: |-
-          We prepare corporate websites and digital marketing programmes that convey the trust, quality and investment value of your projects.
-      - title: SME and Corporate Service Brands
-        icon: sme
-        description: |-
-          We set up sustainable systems that give businesses a professional identity in the digital world and help them reach new customers.
-      - title: Education and Consultancy Brands
-        icon: education
-        description: |-
-          We build digital structures that make your expertise visible, establish trust and increase application conversion.
+    cards:
+      - label: Healthcare and Clinics
+        image: '/src/assets/images/sector-saglik-klinik.webp'
+        alt: A dentist attending to a patient in a modern clinic
+        description: Digital systems that build patient trust, respect ethical rules and support appointment conversion.
+      - label: Health Tourism
+        image: '/src/assets/images/sector-saglik-turizmi.webp'
+        alt: An international patient welcomed at a hospital reception
+        description: Multilingual sites, campaigns and patient communication flows that win international patients.
+      - label: Aesthetics and Cosmetics
+        image: '/src/assets/images/sector-estetik-kozmetik.webp'
+        alt: A skincare treatment at a beauty clinic
+        description: Communication that carries visual quality and trust at once, focused on enquiries.
+      - label: E-Commerce
+        image: '/src/assets/images/sector-e-ticaret.webp'
+        alt: A warehouse worker scanning a shipping package
+        description: Solutions that put products in front of the right audience and lift conversion.
+      - label: Construction and Real Estate
+        image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+        alt: The facade of a modern residential project at sunset
+        description: Corporate sites and campaigns that convey trust, quality and investment value.
+      - label: SMEs and Corporate Services
+        image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+        alt: A corporate team meeting in a bright office
+        description: Sustainable systems that build a professional digital identity and reach new customers.
 
-  # 10 — PROCESS
   - type: steps
+    kind: timeline
     background: dark
     eyebrow: How Does the Process Work?
     heading: From Idea to Launch, from Launch to Growth, We Are with You.
@@ -215,24 +216,30 @@ sections:
 
   # 11 — WHY PIXELON (listed in the right-hand column in the reference)
   - type: cards
+    kind: feature
     background: light
     eyebrow: More Than an Agency
     heading: A Strategic, Creative and Results-Driven Team for Your Brand
     columns: 1
     items:
       - title: We Start with Strategy
+        icon: strategy
         description: |-
           We begin every project not with design, but by asking the right questions and understanding what the brand truly needs.
       - title: We Build for Your Brand
+        icon: bespoke
         description: |-
           Instead of ready-made templates and look-alike solutions, we create work that belongs to your brand identity alone.
       - title: We Combine Design and Technology
+        icon: craft
         description: |-
           We make sure work that looks beautiful is also fast, functional and easy to use.
       - title: We Measure the Results
+        icon: orbit
         description: |-
           We follow not only how our work looks, but its impact on traffic, engagement, enquiries and conversion.
       - title: We Manage the Whole Process in One Team
+        icon: partnership
         description: |-
           We run strategy, design, development, content, advertising and optimization in full alignment with each other.
 
@@ -244,17 +251,85 @@ sections:
     lead: |-
       In projects reaching from Turkey to Europe and Africa, we develop communication strategies suited to different cultures, languages and target markets. From taking a local brand into global markets to the digital transformation of an international company, we approach every project with the same care, whatever its scale.
     countries:
-      - { label: Turkey, flag: 🇹🇷, highlighted: true }
-      - { label: Germany, flag: 🇩🇪 }
-      - { label: United Kingdom, flag: 🇬🇧 }
-      - { label: France, flag: 🇫🇷 }
-      - { label: Italy, flag: 🇮🇹 }
-      - { label: Spain, flag: 🇪🇸 }
-      - { label: Romania, flag: 🇷🇴 }
-      - { label: Bulgaria, flag: 🇧🇬 }
-      - { label: Netherlands, flag: 🇳🇱 }
-      - { label: Ireland, flag: 🇮🇪 }
-      - { label: Africa, flag: 🌍 }
+    - label: Turkey
+      flag: '🇹🇷'
+      highlighted: true
+      lat: 39.0
+      lon: 35.0
+    - label: Germany
+      flag: '🇩🇪'
+      lat: 51.2
+      lon: 10.4
+    - label: Netherlands
+      flag: '🇳🇱'
+    - label: France
+      flag: '🇫🇷'
+      lat: 46.6
+      lon: 2.2
+    - label: Belgium
+      flag: '🇧🇪'
+    - label: United Kingdom
+      flag: '🇬🇧'
+      lat: 52.5
+      lon: -1.5
+    - label: Austria
+      flag: '🇦🇹'
+    - label: Switzerland
+      flag: '🇨🇭'
+    - label: Italy
+      flag: '🇮🇹'
+      lat: 42.8
+      lon: 12.8
+    - label: Spain
+      flag: '🇪🇸'
+      lat: 40.2
+      lon: -3.6
+    - label: Romania
+      flag: '🇷🇴'
+      lat: 45.9
+      lon: 24.9
+    - label: Bulgaria
+      flag: '🇧🇬'
+    - label: Russia
+      flag: '🇷🇺'
+      lat: 56.0
+      lon: 44.0
+    - label: Azerbaijan
+      flag: '🇦🇿'
+      lat: 40.3
+      lon: 47.7
+    - label: Iraq
+      flag: '🇮🇶'
+      lat: 33.2
+      lon: 43.7
+    - label: Saudi Arabia
+      flag: '🇸🇦'
+      lat: 24.0
+      lon: 45.0
+    - label: United Arab Emirates
+      flag: '🇦🇪'
+      lat: 24.0
+      lon: 54.0
+    - label: Qatar
+      flag: '🇶🇦'
+    - label: Kuwait
+      flag: '🇰🇼'
+    - label: Libya
+      flag: '🇱🇾'
+      lat: 27.0
+      lon: 17.0
+    - label: Morocco
+      flag: '🇲🇦'
+      lat: 31.8
+      lon: -6.5
+    - label: United States
+      flag: '🇺🇸'
+      lat: 39.5
+      lon: -98.5
+    - label: DR Congo
+      flag: '🇨🇩'
+      lat: -2.9
+      lon: 23.6
     closingLine: Borders change; *the rules of a strong brand experience* do not.
     mapImageAlt: World map of Pixelon global digital marketing projects
     ctas:
@@ -274,39 +349,6 @@ sections:
     ctaLabel: Browse All Articles
     ctaHref: /en/blog
 
-  # 16 — PROFESSIONAL PARTNERS (scrolling text strip)
-  - type: marquee
-    kind: wordmarks
-    background: light
-    heading: Our Professional Partners
-    lead: |-
-      We work with the leading platforms and technologies of the industry so that brands can build a strong presence in the digital world.
-    items:
-      - Google
-      - Meta
-      - Instagram
-      - Facebook
-      - WhatsApp
-      - YouTube
-      - TikTok
-      - LinkedIn
-      - Yandex
-
-  # 17/18 — CONTACT (intro text + contact info + form, single unified block as in the reference)
-  # Field placeholders: First Name · Last Name · Phone Number · E-mail Address ·
-  # Company Name · Service You Are Interested In · Estimated Project Budget ·
-  # "What would you like to tell us about your project?"
-  # Service options: Web Design and Development · Social Media Management ·
-  # Digital Advertising Management · SEO and Content Marketing · Brand and Corporate Identity ·
-  # UX/UI Design · Video and Production · E-Commerce · Health Tourism Consultancy ·
-  # CRM and Digital Transformation · Other
-  # Budget options: Under 50,000 TRY · 50,000 - 150,000 TRY · 150,000 - 500,000 TRY ·
-  # Over 500,000 TRY · Not decided yet
-  # KVKK consent: "I consent to the processing of my personal data for the purpose of
-  # evaluating my contact request."
-  # Post-submit screen: "We have received your request!" /
-  # "The Pixelon team will review your project and get in touch with you as soon as possible." /
-  # button: "Continue on WhatsApp"
   - type: contact
     background: dark
     anchor: iletisim

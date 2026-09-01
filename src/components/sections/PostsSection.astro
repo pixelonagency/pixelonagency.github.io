@@ -88,11 +88,15 @@ const coverOf = (value: unknown): ImageMetadata | undefined =>
                     />
                   </span>
                 )}
-                <span class="posts__category">{post.data.category}</span>
-                <h3 class="posts__title">{post.data.title}</h3>
-                <p class="posts__excerpt">{post.data.excerpt}</p>
-                <span class="posts__read">
-                  {t('blog.readPost', locale)} <span aria-hidden="true">→</span>
+                {/* Metin sarmalayıcı: ilk kart yatay düzene geçtiğinde görselin
+                    yanında tek blok olarak durabilmesi için gerekli. */}
+                <span class="posts__body">
+                  <span class="posts__category">{post.data.category}</span>
+                  <h3 class="posts__title">{post.data.title}</h3>
+                  <p class="posts__excerpt">{post.data.excerpt}</p>
+                  <span class="posts__read">
+                    {t('blog.readPost', locale)} <span aria-hidden="true">→</span>
+                  </span>
                 </span>
               </a>
             </li>
@@ -146,13 +150,68 @@ const coverOf = (value: unknown): ImageMetadata | undefined =>
     color: var(--text-on-light);
   }
 
+  /*
+   * İlk yazı öne çıkar: tam genişlikte, görseli solda duran yatay bir kart olur;
+   * kalanlar altında eşit sütunlara dizilir. Eşit üç kutu bölümü sıradan bir
+   * kart ızgarasına çeviriyordu, oysa blog vitrininde bir "manşet" olmalı.
+   */
   .posts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: var(--gap-card);
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .posts__cell {
+    grid-column: span 2;
+  }
+
+  .posts__cell:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Üç yazıda kalan ikisi yarımşar sütun kaplar, yoksa sıra yarım kalır. */
+  .posts:has(.posts__cell:nth-child(3)):not(:has(.posts__cell:nth-child(4))) .posts__cell:not(:first-child) {
+    grid-column: span 3;
+  }
+
+  .posts__body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  @media (min-width: 861px) {
+    .posts__cell:first-child .posts__item {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .posts__cell:first-child .posts__media {
+      flex: 0 0 46%;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    .posts__cell:first-child .posts__media :global(img) {
+      height: 100%;
+      aspect-ratio: auto;
+      min-height: 320px;
+    }
+
+    .posts__cell:first-child .posts__body {
+      justify-content: center;
+      padding: clamp(28px, 3vw, 42px);
+    }
+
+    .posts__cell:first-child .posts__title {
+      font-size: clamp(24px, 2.4vw, 34px);
+    }
   }
 
   .posts__cell {
@@ -261,6 +320,12 @@ const coverOf = (value: unknown): ImageMetadata | undefined =>
   @media (max-width: 720px) {
     .posts {
       grid-template-columns: 1fr;
+    }
+
+    .posts__cell,
+    .posts__cell:first-child,
+    .posts:has(.posts__cell:nth-child(3)):not(:has(.posts__cell:nth-child(4))) .posts__cell:not(:first-child) {
+      grid-column: 1 / -1;
     }
   }
 

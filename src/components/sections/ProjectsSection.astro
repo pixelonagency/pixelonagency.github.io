@@ -10,6 +10,7 @@ import { t } from '../../lib/ui';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
 import ProjectsBoard from './ProjectsBoard.astro';
+import ProjectsSlider from './ProjectsSlider.astro';
 
 type Projects = Extract<PageSection, { type: 'projects' }>;
 
@@ -93,8 +94,9 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
 ---
 
 {section.kind === 'board' && <ProjectsBoard {section} {locale} />}
+{section.kind === 'slider' && projects.length > 0 && <ProjectsSlider {section} {locale} {projects} />}
 {
-  section.kind !== 'board' && projects.length > 0 && (
+  section.kind !== 'board' && section.kind !== 'slider' && projects.length > 0 && (
     <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
       {/* Referans: başlık solda, bölüm bağlantısı sağda — taban çizgisine hizalı. */}
       <div class="projects__head">

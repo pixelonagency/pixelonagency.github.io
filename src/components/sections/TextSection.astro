@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import type { PageSection } from '../../content/page-schema';
 import { parseHighlights } from '../../lib/highlight';
 import SectionHead from '../SectionHead.astro';
@@ -19,7 +21,14 @@ const paragraphs = section.body
   .map((paragraph) => paragraph.trim())
   .filter((paragraph) => paragraph.length > 0);
 
-const hasMedia = Boolean(section.imageAlt);
+/*
+ * `image` alanı şemada vardı ama HİÇ BASILMIYORDU: bölüm yalnızca `imageAlt`
+ * metnini taşıyan boş bir yer tutucu çiziyordu. Görsel verildiğinde artık gerçek
+ * görsel basılır; verilmeyip yalnız alt metin varsa eski yer tutucu korunur, yoksa
+ * bu düzeni kullanan mevcut sayfalar boşalırdı.
+ */
+const media = section.image as ImageMetadata | undefined;
+const hasMedia = Boolean(section.imageAlt) || Boolean(media);
 const layout = section.layout ?? 'stack';
 
 // `center` düzeninde kapanış cümlesi `*yıldız*` vurgularıyla basılır.
@@ -73,9 +82,20 @@ const highlightSegments = section.highlight ? parseHighlights(section.highlight)
 
         {hasMedia && (
           <figure class="text__figure" data-reveal data-reveal-index={1}>
-            <div class="text__placeholder">
-              <span class="text__caption">{section.imageAlt}</span>
-            </div>
+            {media ? (
+              <Image
+                class="text__image"
+                src={media}
+                alt={section.imageAlt ?? ''}
+                widths={[520, 1040]}
+                sizes="(max-width: 900px) 92vw, 520px"
+                loading="lazy"
+              />
+            ) : (
+              <div class="text__placeholder">
+                <span class="text__caption">{section.imageAlt}</span>
+              </div>
+            )}
           </figure>
         )}
       </div>
@@ -204,6 +224,15 @@ const highlightSegments = section.highlight ? parseHighlights(section.highlight)
 
   .text__figure {
     margin: 0;
+  }
+
+  .text__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: var(--radius-media);
   }
 
   .text__placeholder {
