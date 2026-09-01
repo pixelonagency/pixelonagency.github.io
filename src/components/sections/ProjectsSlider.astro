@@ -29,95 +29,68 @@ const { section, locale = DEFAULT_LOCALE, projects } = Astro.props;
 const detailHref = (slug: string) => `/${locale === DEFAULT_LOCALE ? 'projelerimiz' : 'en/projects'}/${slug}/`;
 
 /*
- * Kaydırma yerel `scroll-snap` ile yapılır: kütüphane yok, JavaScript yalnızca
- * okları çalıştırır. Klavye ve dokunmatik kaydırma tarayıcının kendi davranışıdır,
- * bu yüzden script yüklenmese bile şerit gezilebilir kalır.
+ * Kesintisiz döngü: liste iki kez basılır ve şerit tam yarısı kadar kaydırılır
+ * (@keyframes pslide -> translateX(-50%)). İkinci kopya ekran okuyucudan gizlenir
+ * ve odak alamaz, yoksa her proje iki kez okunur ve sekmeyle iki kez gezilir.
+ * Hız kart sayısıyla ölçeklenir: kart başına ~7 saniye, böylece az projede şerit
+ * fırlamaz, çok projede sürünmez.
  */
-const SLIDER_SCRIPT = `
-(() => {
-  const root = document.currentScript.previousElementSibling;
-  if (!root) return;
-  const track = root.querySelector('[data-slider-track]');
-  const prev = root.querySelector('[data-slider-prev]');
-  const next = root.querySelector('[data-slider-next]');
-  if (!track || !prev || !next) return;
-
-  const step = () => {
-    const card = track.querySelector('[data-slider-card]');
-    if (!card) return track.clientWidth;
-    const gap = parseFloat(getComputedStyle(track).columnGap || '0');
-    return card.getBoundingClientRect().width + gap;
-  };
-
-  const sync = () => {
-    const max = track.scrollWidth - track.clientWidth - 2;
-    prev.disabled = track.scrollLeft <= 2;
-    next.disabled = track.scrollLeft >= max;
-  };
-
-  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
-  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
-  track.addEventListener('scroll', sync, { passive: true });
-  window.addEventListener('resize', sync);
-  sync();
-})();
-`;
+const COPIES = [0, 1];
+const duration = Math.max(28, projects.length * 7);
 ---
 
 <Section anchor={section.anchor} background={section.background} class="pslider-section">
   <div class="pslider__head">
     <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
-
-    {/* Oklar başlığın sağında durur — şeridin üstünde ayrı bir satır açmaz. */}
-    <div class="pslider__nav">
-      <button type="button" class="pslider__arrow" data-slider-prev aria-label={t('slider.prev', locale)}>
-        <span aria-hidden="true">←</span>
-      </button>
-      <button type="button" class="pslider__arrow" data-slider-next aria-label={t('slider.next', locale)}>
-        <span aria-hidden="true">→</span>
-      </button>
-    </div>
   </div>
 
-  <ul class="pslider__track" data-slider-track>
-    {
-      projects.map((project, index) => {
-        const Tag = project.hasDetail ? 'a' : 'article';
-        return (
-          <li class="pslider__card" data-slider-card>
-            <Tag class="pslider__link" href={project.hasDetail ? detailHref(project.slug) : undefined}>
-              <div class="pslider__media">
-                {project.cover && (
-                  <Image
-                    src={project.cover}
-                    alt={`${project.client} — ${project.title}`}
-                    widths={[520, 1040]}
-                    sizes="(max-width: 720px) 84vw, 520px"
-                    loading={index < 2 ? 'eager' : 'lazy'}
-                  />
-                )}
-                <span class="pslider__tag">{project.categoryLabel ?? project.category}</span>
-              </div>
+  <div class="pslider__viewport">
+    <div class="pslider__track" style={`--pslide-duration: ${duration}s`}>
+      {
+        COPIES.map((copy) => (
+          <ul class="pslider__group" aria-hidden={copy === 1 ? 'true' : undefined}>
+            {projects.map((project, index) => {
+              const Tag = project.hasDetail ? 'a' : 'article';
+              return (
+                <li class="pslider__card">
+                  <Tag
+                    class="pslider__link"
+                    href={project.hasDetail ? detailHref(project.slug) : undefined}
+                    tabindex={copy === 1 ? -1 : undefined}
+                  >
+                    <div class="pslider__media">
+                      {project.cover && (
+                        <Image
+                          src={project.cover}
+                          alt={`${project.client} — ${project.title}`}
+                          widths={[520, 1040]}
+                          sizes="(max-width: 720px) 84vw, 520px"
+                          loading={copy === 0 && index < 2 ? 'eager' : 'lazy'}
+                        />
+                      )}
+                      <span class="pslider__tag">{project.categoryLabel ?? project.category}</span>
+                    </div>
 
-              <div class="pslider__body">
-                <p class="pslider__client">{project.client}</p>
-                <h3 class="pslider__title">{project.title}</h3>
-                <p class="pslider__text">{project.excerpt}</p>
-                {project.hasDetail && (
-                  <span class="pslider__more">
-                    {t('projects.view', locale)}
-                    <span aria-hidden="true">→</span>
-                  </span>
-                )}
-              </div>
-            </Tag>
-          </li>
-        );
-      })
-    }
-  </ul>
-  <script is:inline set:html={SLIDER_SCRIPT} data-projects-slider />
-
+                    <div class="pslider__body">
+                      <p class="pslider__client">{project.client}</p>
+                      <h3 class="pslider__title">{project.title}</h3>
+                      <p class="pslider__text">{project.excerpt}</p>
+                      {project.hasDetail && (
+                        <span class="pslider__more">
+                          {t('projects.view', locale)}
+                          <span aria-hidden="true">→</span>
+                        </span>
+                      )}
+                    </div>
+                  </Tag>
+                </li>
+              );
+            })}
+          </ul>
+        ))
+      }
+    </div>
+  </div>
   {
     section.ctaLabel && section.ctaHref && (
       <div class="pslider__cta">
@@ -129,72 +102,55 @@ const SLIDER_SCRIPT = `
 
 <style>
   .pslider__head {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 32px;
+    display: block;
   }
 
   .pslider__head :global(.section-head) {
     margin-bottom: 0;
   }
 
-  .pslider__nav {
-    display: flex;
-    gap: 10px;
-    flex: 0 0 auto;
-  }
-
-  .pslider__arrow {
-    width: 46px;
-    height: 46px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--text);
-    font-size: 17px;
-    cursor: pointer;
-    transition:
-      border-color var(--t-base),
-      background var(--t-base),
-      opacity var(--t-base);
-  }
-
-  .pslider__arrow:hover:not(:disabled) {
-    border-color: var(--accent);
-    background: var(--accent-soft);
-  }
-
-  .pslider__arrow:disabled {
-    opacity: 0.32;
-    cursor: default;
-  }
-
   /*
-   * Şerit kapsayıcıyı SAĞA doğru taşar: kartlar ekran kenarına kadar uzanıp
-   * kesilir, böylece devamı olduğu görülür. Sol kenar boşluğu hizada kalır.
+   * Şerit kendi kendine akar ve başa döner. Bant, kapsayıcının iki yanına taşar:
+   * kartlar ekran kenarında kesilir, böylece devamı olduğu görülür.
    */
-  .pslider__track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: clamp(280px, 30vw, 440px);
-    column-gap: clamp(16px, 2vw, 28px);
-    margin: clamp(32px, 4vw, 48px) calc((100vw - min(100vw, var(--container))) / -2 - clamp(20px, 6vw, 80px)) 0 0;
-    padding: 4px clamp(20px, 6vw, 80px) 26px 0;
-    list-style: none;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+  .pslider__viewport {
+    margin: clamp(32px, 4vw, 48px) calc(50% - 50vw) 0;
+    padding: 4px 0 6px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, black 5%, black 95%, transparent 100%);
   }
 
-  .pslider__track::-webkit-scrollbar {
-    display: none;
+  .pslider__track {
+    display: flex;
+    width: max-content;
+    animation: pslide var(--pslide-duration, 56s) linear infinite;
+  }
+
+  .pslider-section:hover .pslider__track,
+  .pslider-section:focus-within .pslider__track {
+    animation-play-state: paused;
+  }
+
+  .pslider__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: stretch;
+    gap: clamp(16px, 2vw, 28px);
+    padding: 0 clamp(8px, 1vw, 14px) 0 0;
+    margin: 0;
+    list-style: none;
   }
 
   .pslider__card {
-    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: clamp(280px, 30vw, 440px);
+  }
+
+  @keyframes pslide {
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   .pslider__link {
@@ -285,16 +241,6 @@ const SLIDER_SCRIPT = `
   }
 
   /* Açık zeminli varyant */
-  :global(.section--light) .pslider__arrow {
-    border-color: var(--border-on-light);
-    color: var(--text-on-light);
-  }
-
-  :global(.section--light) .pslider__arrow:hover:not(:disabled) {
-    border-color: var(--text-on-light);
-    background: rgb(10 10 10 / 5%);
-  }
-
   :global(.section--light) .pslider__title {
     color: var(--text-on-light);
   }
@@ -319,14 +265,28 @@ const SLIDER_SCRIPT = `
       gap: 20px;
     }
 
-    .pslider__track {
-      grid-auto-columns: 82vw;
+    .pslider__card {
+      width: 78vw;
     }
   }
 
+  /*
+   * Hareket kapalıyken şerit kendi kendine akmaz; kullanıcı yatay olarak kaydırır.
+   * İkinci kopya gizlenir, yoksa her proje iki kez görünür.
+   */
   @media (prefers-reduced-motion: reduce) {
+    .pslider__viewport {
+      overflow-x: auto;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
     .pslider__track {
-      scroll-behavior: auto;
+      animation: none;
+    }
+
+    .pslider__group[aria-hidden='true'] {
+      display: none;
     }
 
     .pslider__media :global(img) {

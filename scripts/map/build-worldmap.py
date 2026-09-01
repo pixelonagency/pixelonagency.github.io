@@ -67,8 +67,11 @@ land_px, ours_px = land.load(), ours.load()
 
 # --- nokta ızgarası ---------------------------------------------------------
 STEP, R = 7, 2.35
-canvas = Image.new('RGB', (W, H), (5, 5, 5))
-glow = Image.new('RGB', (W, H), (0, 0, 0))
+# Zemin SAYDAM: harita bölümün kendi zemini üzerinde durmalı. Önceki sürüm
+# okyanusu (5,5,5) ile dolduruyordu ve site zemini (#0A0A0A) ile birebir
+# tutmadığı için harita sayfada koyu bir dikdörtgen kutu gibi görünüyordu.
+canvas = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+glow = Image.new('RGBA', (W, H), (0, 0, 0, 0))
 d = ImageDraw.Draw(canvas)
 dg = ImageDraw.Draw(glow)
 n_land = n_ours = 0
@@ -79,22 +82,15 @@ for gy in range(0, H, STEP):
         n_land += 1
         if ours_px[gx, gy]:
             n_ours += 1
-            col = (150, 178, 34)
-            dg.ellipse([gx-R-1, gy-R-1, gx+R+1, gy+R+1], fill=(70, 88, 8))
+            col = (150, 178, 34, 255)
+            dg.ellipse([gx-R-1, gy-R-1, gx+R+1, gy+R+1], fill=(150, 178, 34, 105))
         else:
-            col = (68, 73, 63)
+            col = (86, 92, 80, 255)
         d.ellipse([gx-R, gy-R, gx+R, gy+R], fill=col)
 
-# pazarların altına yumuşak parıltı
+# Pazarların altına yumuşak parıltı; noktalar parıltının üstüne biner.
 glow = glow.filter(ImageFilter.GaussianBlur(11))
-canvas = Image.blend(canvas, Image.blend(canvas, glow, 0.0), 0.0)
-base = Image.new('RGB', (W, H), (5, 5, 5))
-base.paste(glow.point(lambda v: int(v * 0.55)), (0, 0))
-out = Image.blend(base, canvas, 1.0)
-out = Image.fromarray(
-    __import__('numpy').clip(
-        __import__('numpy').asarray(out, float) + __import__('numpy').asarray(glow, float) * 0.30,
-        0, 255).astype('uint8'))
+out = Image.alpha_composite(glow, canvas)
 
 OUT_PATH = Path(__file__).resolve().parents[2] / 'src' / 'assets' / 'images' / 'worldmap-dotted.webp'
 out.save(OUT_PATH, 'WEBP', quality=88, method=6)
