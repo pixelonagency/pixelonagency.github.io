@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-01T04:01:13.233Z",
+  "generatedAt": "2026-09-01T07:03:24.595Z",
   "site": "https://pixelon.com.tr",
   "totals": {
-    "htmlPages": 111,
-    "indexable": 109,
+    "htmlPages": 104,
+    "indexable": 102,
     "noindex": 2,
-    "sitemapUrls": 109,
+    "sitemapUrls": 102,
     "orphans": 0,
     "brokenLinks": 0
   },
@@ -1201,8 +1201,7 @@
         "WebPage",
         "BreadcrumbList",
         "ListItem",
-        "CreativeWork",
-        "Service"
+        "CreativeWork"
       ],
       "images": 21
     },
@@ -1434,28 +1433,6 @@
       "images": 9
     },
     {
-      "url": "/en/services/crm-and-digital-transformation/",
-      "title": "CRM and Digital Transformation Solutions | Pixelon",
-      "description": "Manage your customer, sales, quote, appointment and team processes from a single place with custom CRM software and digital automation built for your brand.",
-      "canonical": "https://pixelon.com.tr/en/services/crm-and-digital-transformation/",
-      "lang": "en",
-      "noindex": false,
-      "h1": 1,
-      "hreflang": 3,
-      "schemaTypes": [
-        "Organization",
-        "ImageObject",
-        "PostalAddress",
-        "ContactPoint",
-        "WebSite",
-        "WebPage",
-        "Service",
-        "BreadcrumbList",
-        "ListItem"
-      ],
-      "images": 9
-    },
-    {
       "url": "/en/services/digital-advertising/",
       "title": "Digital Advertising Management | Google &amp; Meta Ads | Pixelon",
       "description": "Grow your Google Ads and Meta Ads campaigns with precise targeting, creative ad content, conversion tracking and continuous optimization.",
@@ -1609,50 +1586,6 @@
       "images": 9
     },
     {
-      "url": "/en/services/ux-ui-design/",
-      "title": "UX/UI Design and User Experience Services | Pixelon",
-      "description": "We create user-focused, modern and conversion-driven UX/UI designs for websites, mobile apps, SaaS products and admin panels.",
-      "canonical": "https://pixelon.com.tr/en/services/ux-ui-design/",
-      "lang": "en",
-      "noindex": false,
-      "h1": 1,
-      "hreflang": 3,
-      "schemaTypes": [
-        "Organization",
-        "ImageObject",
-        "PostalAddress",
-        "ContactPoint",
-        "WebSite",
-        "WebPage",
-        "Service",
-        "BreadcrumbList",
-        "ListItem"
-      ],
-      "images": 9
-    },
-    {
-      "url": "/en/services/video-and-production/",
-      "title": "Video and Production Services | Pixelon",
-      "description": "Tell your brand's story powerfully with ad films, social media videos, product shoots, corporate films and professional production solutions.",
-      "canonical": "https://pixelon.com.tr/en/services/video-and-production/",
-      "lang": "en",
-      "noindex": false,
-      "h1": 1,
-      "hreflang": 3,
-      "schemaTypes": [
-        "Organization",
-        "ImageObject",
-        "PostalAddress",
-        "ContactPoint",
-        "WebSite",
-        "WebPage",
-        "Service",
-        "BreadcrumbList",
-        "ListItem"
-      ],
-      "images": 9
-    },
-    {
       "url": "/en/services/web-design-and-development/",
       "title": "Web Design and Development Services | Pixelon",
       "description": "Get fast, mobile-friendly, SEO-ready and conversion-focused websites with Pixelon. Discover web design solutions built around your brand.",
@@ -1711,28 +1644,6 @@
         "ContactPoint",
         "WebSite",
         "WebPage",
-        "BreadcrumbList",
-        "ListItem"
-      ],
-      "images": 9
-    },
-    {
-      "url": "/hizmetlerimiz/crm-ve-dijital-donusum/",
-      "title": "CRM ve Dijital Dönüşüm Çözümleri | Pixelon",
-      "description": "Müşteri, satış, teklif, randevu ve ekip süreçlerinizi markanıza özel CRM yazılımları ve dijital otomasyonlarla tek merkezden yönetin.",
-      "canonical": "https://pixelon.com.tr/hizmetlerimiz/crm-ve-dijital-donusum/",
-      "lang": "tr",
-      "noindex": false,
-      "h1": 1,
-      "hreflang": 3,
-      "schemaTypes": [
-        "Organization",
-        "ImageObject",
-        "PostalAddress",
-        "ContactPoint",
-        "WebSite",
-        "WebPage",
-        "Service",
         "BreadcrumbList",
         "ListItem"
       ],
@@ -1802,28 +1713,6 @@
         "ListItem"
       ],
       "images": 21
-    },
-    {
-      "url": "/hizmetlerimiz/kurumsal-web-tasarim/",
-      "title": "Kurumsal Web Tasarım Hizmeti | Pixelon",
-      "description": "Kurumsal kimliğinizi doğru yansıtan, hızlı ve yönetilebilir web siteleri tasarlıyoruz. Bilgi mimarisi, SEO altyapısı ve içerik yönetimi bir arada.",
-      "canonical": "https://pixelon.com.tr/hizmetlerimiz/kurumsal-web-tasarim/",
-      "lang": "tr",
-      "noindex": false,
-      "h1": 1,
-      "hreflang": 2,
-      "schemaTypes": [
-        "Organization",
-        "ImageObject",
-        "PostalAddress",
-        "ContactPoint",
-        "WebSite",
-        "WebPage",
-        "Service",
-        "BreadcrumbList",
-        "ListItem"
-      ],
-      "images": 9
     },
     {
       "url": "/hizmetlerimiz/marka-ve-kurumsal-kimlik/",
@@ -1912,50 +1801,6 @@
         "ListItem"
       ],
       "images": 36
-    },
-    {
-      "url": "/hizmetlerimiz/ux-ui-tasarimi/",
-      "title": "UX/UI Tasarımı ve Kullanıcı Deneyimi Hizmeti | Pixelon",
-      "description": "Web sitesi, mobil uygulama, SaaS ve yönetim panelleri için kullanıcı odaklı, modern ve dönüşüm sağlayan UX/UI tasarımları oluşturuyoruz.",
-      "canonical": "https://pixelon.com.tr/hizmetlerimiz/ux-ui-tasarimi/",
-      "lang": "tr",
-      "noindex": false,
-      "h1": 1,
-      "hreflang": 3,
-      "schemaTypes": [
-        "Organization",
-        "ImageObject",
-        "PostalAddress",
-        "ContactPoint",
-        "WebSite",
-        "WebPage",
-        "Service",
-        "BreadcrumbList",
-        "ListItem"
-      ],
-      "images": 9
-    },
-    {
-      "url": "/hizmetlerimiz/video-ve-produksiyon/",
-      "title": "Video ve Prodüksiyon Hizmetleri | Pixelon",
-      "description": "Reklam filmi, sosyal medya videosu, ürün çekimi, kurumsal tanıtım ve profesyonel prodüksiyon çözümleriyle markanızı etkileyici biçimde anlatın.",
-      "canonical": "https://pixelon.com.tr/hizmetlerimiz/video-ve-produksiyon/",
-      "lang": "tr",
-      "noindex": false,
-      "h1": 1,
-      "hreflang": 3,
-      "schemaTypes": [
-        "Organization",
-        "ImageObject",
-        "PostalAddress",
-        "ContactPoint",
-        "WebSite",
-        "WebPage",
-        "Service",
-        "BreadcrumbList",
-        "ListItem"
-      ],
-      "images": 9
     },
     {
       "url": "/hizmetlerimiz/web-tasarim-ve-yazilim/",
@@ -2232,8 +2077,7 @@
         "WebPage",
         "BreadcrumbList",
         "ListItem",
-        "CreativeWork",
-        "Service"
+        "CreativeWork"
       ],
       "images": 21
     },

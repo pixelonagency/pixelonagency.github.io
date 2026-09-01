@@ -159,7 +159,7 @@ article:
 
         Gelen talepleri tek yerde toplayıp aşamalarını ve sorumlusunu belirlediğinizde, üretilen talebin takipsizlikten kaybolması duruyor.
 
-        En değerli çıktısı ise kaynak bilgisi: hangi kanalın çok talep değil, çok müşteri getirdiğini göstermesi. Bütçeyi doğru yere kaydıran bilgi tam olarak bu; kurulum ve süreç tasarımını [CRM ve dijital dönüşüm](/hizmetlerimiz/crm-ve-dijital-donusum/) tarafında birlikte ele alıyoruz.
+        En değerli çıktısı ise kaynak bilgisi: hangi kanalın çok talep değil, çok müşteri getirdiğini göstermesi. Bütçeyi doğru yere kaydıran bilgi tam olarak bu; kurulum ve süreç tasarımını [CRM ve dijital dönüşüm](/hizmetlerimiz/) tarafında birlikte ele alıyoruz.
 
     - type: cta
       heading: Talep akışınızı birlikte kuralım.
@@ -168,6 +168,6 @@ article:
         label: Ücretsiz Analiz Talep Et
         href: /ucretsiz-analiz
       secondary:
-        label: CRM ve Dijital Dönüşüm Hizmetini İncele
-        href: /hizmetlerimiz/crm-ve-dijital-donusum
+        label: Tüm Hizmetlerimizi İnceleyin
+        href: /hizmetlerimiz
 ---

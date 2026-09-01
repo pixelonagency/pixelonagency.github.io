@@ -43,16 +43,35 @@ export const LEGACY = [
   ['/hizmet/sosyal-medya-yonetimi', '/hizmetlerimiz/sosyal-medya-yonetimi/'],
   ['/hizmet/dijital-reklam-yonetimi', '/hizmetlerimiz/dijital-reklam-yonetimi/'],
   ['/hizmet/seo-icerik-uretimi', '/hizmetlerimiz/seo-ve-icerik-pazarlamasi/'],
-  ['/hizmet/fotograf-video-produksiyon', '/hizmetlerimiz/video-ve-produksiyon/'],
+  ['/hizmet/fotograf-video-produksiyon', '/hizmetlerimiz/sosyal-medya-yonetimi/'],
   ['/referanslar', '/referanslarimiz/'],
   ['/hizmet/saglik-turizm-danismanligi', '/hizmetlerimiz/saglik-turizmi-danismanligi/'],
   ['/hizmet/markalasma-kreatif-cozumler', '/hizmetlerimiz/marka-ve-kurumsal-kimlik/'],
-  ['/hizmet/mobil-uygulama', '/hizmetlerimiz/ux-ui-tasarimi/'],
+  ['/hizmet/mobil-uygulama', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
   /* 28 Ağu 2026 — marka adı düzeltmesi: müşterinin adı "Annelik Hikayesi", slug
      "anneligin-hikayesi" yanlış yazımdı. Sayfanın GSC gösterimi 0 olduğu için
      değişim maliyetsiz; yine de eski URL canlıda olduğundan 301 gerekiyor. */
   ['/projelerimiz/anneligin-hikayesi', '/projelerimiz/annelik-hikayesi/'],
   ['/en/projects/anneligin-hikayesi', '/en/projects/annelik-hikayesi/'],
+  /* 1 Eylül 2026 — HİZMET BİRLEŞTİRME. Envanter 11 başlıktan 7'ye indi; kapanan
+     yedi sayfa (dört TR, üç EN) yerine kalan hizmetlere yönlendiriliyor.
+     Sağlık turizmi sayfaları KAPANMADI, yalnız menüden çıkarıldı.
+
+     90 günlük GSC ölçümü: dördünün toplamı 19 gösterim, 0 tıklama — yani
+     yönlendirmenin trafik maliyeti yok. Emekli sayfalara giden iki eski kural
+     (`fotograf-video-produksiyon`, `mobil-uygulama`) da yukarıda nihai hedefe
+     çevrildi; aksi halde eski URL → emekli sayfa → yeni sayfa zinciri oluşurdu.
+
+     Kalemler yalnız EĞİK ÇİZGİSİZ yazılır: `render` her kaleme eğik çizgili
+     varyantını kendisi ekliyor. İkisini birden yazmak çift kural ve `//` ile
+     biten bozuk bir kural üretiyordu. */
+  ['/hizmetlerimiz/kurumsal-web-tasarim', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
+  ['/hizmetlerimiz/ux-ui-tasarimi', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
+  ['/hizmetlerimiz/video-ve-produksiyon', '/hizmetlerimiz/sosyal-medya-yonetimi/'],
+  ['/hizmetlerimiz/crm-ve-dijital-donusum', '/hizmetlerimiz/'],
+  ['/en/services/ux-ui-design', '/en/services/web-design-and-development/'],
+  ['/en/services/video-and-production', '/en/services/social-media-management/'],
+  ['/en/services/crm-and-digital-transformation', '/en/services/'],
 ];
 
 /** Sitemap XML → kanonik yol listesi (alfabetik, deterministik). */

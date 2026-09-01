@@ -42,13 +42,27 @@ const strippedKeys = (raw: Record<string, unknown>, parsed: Record<string, unkno
 describe('services collection', () => {
   const files = yamlFiles('services');
 
-  test('her dilde aynı sayıda hizmet sayfası bulunur', () => {
-    // Sabit sayı yerine diller arası eşitlik: yeni hizmet eklendiğinde test
-    // kırılmaz, ama bir dilde eklenip diğerinde unutulursa kırılır.
-    const tr = files.filter((f) => f.startsWith('tr/')).length;
-    const en = files.filter((f) => f.startsWith('en/')).length;
-    expect({ tr, en }).toEqual({ tr: en, en });
-    expect(tr).toBeGreaterThanOrEqual(10);
+  test('çeviri anahtarı olan her hizmet iki dilde de bulunur', async () => {
+    /*
+     * Ölçülen şey SAYI EŞİTLİĞİ değil, çeviri anahtarı eşleşmesi. Sayı eşitliği
+     * yanıltıcıydı: bir dilde ekleyip diğerinde unutmayı yakalıyordu ama iki dilde
+     * BİRBİRİYLE İLGİSİZ iki sayfa da testi geçiriyordu (kurumsal-web-tasarim ile
+     * healthcare-marketing yıllarca öyle eşleşmiş göründü).
+     *
+     * `translationKey` taşıyan hizmet iki dilde de bulunmak ZORUNDA. Anahtarsız
+     * sayfa o dile özgüdür ve bilinçlidir — dil değiştirici karşılığı olmayan
+     * sayfada zaten gizleniyor.
+     */
+    const keys = { tr: new Set<string>(), en: new Set<string>() };
+    for (const file of files) {
+      const data = makeServiceSchema().parse(await readYaml('services', file));
+      const lang = file.startsWith('tr/') ? 'tr' : 'en';
+      if (data.translationKey) keys[lang].add(data.translationKey);
+    }
+    const trEksik = [...keys.en].filter((k) => !keys.tr.has(k));
+    const enEksik = [...keys.tr].filter((k) => !keys.en.has(k));
+    expect({ trEksik, enEksik }).toEqual({ trEksik: [], enEksik: [] });
+    expect(keys.tr.size).toBeGreaterThanOrEqual(6);
   });
 
   for (const file of files) {

@@ -146,7 +146,7 @@ article:
       text: |-
         Pixelon olarak [sosyal medya yönetimini](/hizmetlerimiz/sosyal-medya-yonetimi/) yalnızca içerik paylaşımı olarak ele almıyoruz. Markanın hedeflerini, hedef kitlesini, sektörünü ve mevcut dijital performansını analiz ederek işe başlıyoruz.
 
-        Sosyal medya yönetimini; yaratıcı içerik, performans reklamları, [video üretimi](/hizmetlerimiz/video-ve-produksiyon/), [web deneyimi](/hizmetlerimiz/web-tasarim-ve-yazilim/) ve ölçümleme süreçleriyle birlikte değerlendiriyoruz. Böylece sosyal medya faaliyetleri markanın genel dijital büyüme stratejisinin bir parçası haline geliyor.
+        Sosyal medya yönetimini; yaratıcı içerik, performans reklamları, [video üretimi](/hizmetlerimiz/sosyal-medya-yonetimi/), [web deneyimi](/hizmetlerimiz/web-tasarim-ve-yazilim/) ve ölçümleme süreçleriyle birlikte değerlendiriyoruz. Böylece sosyal medya faaliyetleri markanın genel dijital büyüme stratejisinin bir parçası haline geliyor.
 
     - type: process
       steps:

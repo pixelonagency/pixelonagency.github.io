@@ -42,18 +42,20 @@ const MENU_SERVICE_SLUGS = [
   'e-ticaret-cozumleri',
 ] as const;
 
+/*
+ * Yayındaki hizmet sayfaları. 1 Eylül 2026'da envanter birleştirildi: Kurumsal
+ * Web Tasarım ve UX/UI → Web Tasarım, Video → Sosyal Medya, CRM → hizmet
+ * listesi; dördü de 301 ile yönlendiriliyor (bkz. build-redirects.mjs).
+ * Sağlık Turizmi sayfası KAPANMADI, yalnız menüde görünmüyor.
+ */
 const SERVICE_SLUGS = [
   'web-tasarim-ve-yazilim',
   'sosyal-medya-yonetimi',
   'dijital-reklam-yonetimi',
   'seo-ve-icerik-pazarlamasi',
   'marka-ve-kurumsal-kimlik',
-  'ux-ui-tasarimi',
   'e-ticaret-cozumleri',
-  'video-ve-produksiyon',
   'saglik-turizmi-danismanligi',
-  'crm-ve-dijital-donusum',
-  'kurumsal-web-tasarim',
 ] as const;
 
 const htmlPath = (route: string): string => join(DIST, route === '/' ? 'index.html' : `${route.slice(1)}/index.html`);
@@ -247,10 +249,8 @@ describe('inline links in body copy', () => {
   };
 
   const BODY_LINKS: Array<[string, string]> = [
-    ['/hizmetlerimiz/kurumsal-web-tasarim', '/blog/kurumsal-web-sitesi-nasil-olmali/'],
-    ['/hizmetlerimiz/kurumsal-web-tasarim', '/hizmetlerimiz/ux-ui-tasarimi/'],
-    ['/hizmetlerimiz/kurumsal-web-tasarim', '/web-sitesi-yaptir/'],
-    ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/kurumsal-web-tasarim/'],
+    /* Kurumsal Web Tasarım ve UX/UI sayfaları 1 Eylül 2026'da Web Tasarım
+       sayfasında birleştirildi; oradaki bağlantı beklentileri de kalktı. */
     ['/en/services/healthcare-marketing', '/en/services/health-tourism-consulting/'],
     ['/en/services/health-tourism-consulting', '/en/services/healthcare-marketing/'],
   ];
