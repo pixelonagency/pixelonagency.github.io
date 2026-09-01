@@ -735,6 +735,24 @@ export function makeReferenceSchema(image: ImageResolver = defaultImage) {
  * Yasal metin sayfaları (KVKK, gizlilik, çerez, koşullar). `updated` yalnız içerik
  * gerçekten değiştiğinde elle güncellenir — build tarihi DEĞİLDİR.
  */
+/**
+ * Blog kategori merkezinin editoryal metni.
+ *
+ * Dosya adı kategori SLUG'ıdır (`categorySlug()` çıktısı), `name` ise yazılardaki
+ * kategori adının birebir aynısı olmalıdır — eşleşme bu ikisi üzerinden kurulur.
+ *
+ * `intro` zorunlu: kategori sayfası bu metin olmadan yalnızca bir kart listesi olur ve
+ * listelediği yazıların dışında hiçbir şey söylemez. Denetimde bu sayfaların metin/HTML
+ * oranı %10'un altında kalmasının nedeni tam olarak buydu.
+ */
+export const blogCategorySchema = z.object({
+  name: nonEmpty,
+  intro: nonEmpty,
+  /** Kümenin aktığı hizmet sayfası — küme sayfasından hizmete tek bir güçlü bağlantı. */
+  serviceHref: optHref,
+  serviceLabel: opt(z.string()),
+});
+
 export const legalSchema = z.object({
   title: z.string().min(1),
   seo: z.object({ title: z.string().min(1), description: z.string().min(1) }),

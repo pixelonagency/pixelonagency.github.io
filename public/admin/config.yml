@@ -1377,6 +1377,29 @@ collections:
         i18n: duplicate
       - { label: İçerik, name: body, widget: markdown, i18n: true }
 
+  # --- Blog kategori merkezleri -------------------------------------------
+  # Sayfanın kendisi yazı sayısı eşiği geçtiğinde KENDİLİĞİNDEN üretilir
+  # (bkz. `src/lib/blog-categories.ts`); burada yönetilen şey yalnızca o sayfanın
+  # editoryal giriş metnidir. Dosya adı kategori slug'ıdır ve TR/EN'de farklıdır,
+  # bu yüzden `create`/`delete` kapalı: yeni dosya elle, doğru slug ile açılır.
+  - name: categories
+    icon: label
+    label: Blog Kategori Metinleri
+    label_singular: Kategori Metni
+    folder: src/content/categories
+    extension: yml
+    format: yaml
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    identifier_field: name
+    i18n: true
+    fields:
+      - { label: Kategori Adı, name: name, widget: string, i18n: true }
+      - { label: Giriş Metni, name: intro, widget: text, i18n: true }
+      - { label: Hizmet Bağlantısı, name: serviceHref, widget: string, required: false, i18n: true }
+      - { label: Hizmet Bağlantı Etiketi, name: serviceLabel, widget: string, required: false, i18n: true }
+
   - name: posts
     icon: article
     label: Blog Yazıları

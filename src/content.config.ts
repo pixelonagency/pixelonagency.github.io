@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { makePageSchema } from './content/page-schema';
 import {
+  blogCategorySchema,
   legalSchema,
   makePostSchema,
   makeProjectSchema,
@@ -59,10 +60,17 @@ const legal = defineCollection({
   schema: legalSchema,
 });
 
+// Blog kategori merkezlerinin editoryal metni. Dosya adı kategori slug'ıdır; içerik
+// yalnızca metin olduğu için görsel çözümleyicisi almaz.
+const categories = defineCollection({
+  loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/categories` }),
+  schema: blogCategorySchema,
+});
+
 // Sayfa gövdeleri — her biri sıralı bir `sections` listesinden oluşur (bkz. page-schema.ts).
 const pages = defineCollection({
   loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/pages` }),
   schema: ({ image }) => makePageSchema(image),
 });
 
-export const collections = { services, projects, posts, references, team, settings, pages, legal };
+export const collections = { services, projects, posts, references, team, settings, pages, legal, categories };

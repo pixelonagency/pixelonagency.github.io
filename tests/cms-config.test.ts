@@ -165,6 +165,7 @@ describe('config structure', () => {
 
   test('declares every collection the Astro content config defines', () => {
     expect(config.collections.map((entry) => entry.name).sort()).toEqual([
+      'categories',
       'legal',
       'pages',
       'posts',
@@ -186,7 +187,7 @@ describe('config structure', () => {
  */
 describe('i18n wiring', () => {
   /** İçeriği dile göre klasörlenmiş koleksiyonlar. */
-  const LOCALISED_COLLECTIONS = ['legal', 'pages', 'posts', 'projects', 'services', 'settings'] as const;
+  const LOCALISED_COLLECTIONS = ['categories', 'legal', 'pages', 'posts', 'projects', 'services', 'settings'] as const;
   /** Dile bağlı OLMAYAN koleksiyonlar — düz klasör, dil alt klasörü yok. */
   const PLAIN_COLLECTIONS = ['references', 'team'] as const;
   /** Dosya adı (= URL slug'ı) dile göre değişen koleksiyonlar. */

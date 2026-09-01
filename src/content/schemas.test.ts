@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import {
+  blogCategorySchema,
   href,
   optHref,
   makePostSchema,
@@ -535,5 +536,41 @@ describe('bağlantı alanları — kanonik biçim', () => {
     expect(optHref.parse('/kariyer')).toBe('/kariyer/');
     expect(optHref.parse(null)).toBeUndefined();
     expect(optHref.parse('')).toBeUndefined();
+  });
+});
+
+describe('blogCategorySchema', () => {
+  /**
+   * Kategori merkezleri 1 Eylül denetimine kadar yalnızca başlık + kart listesinden
+   * oluşuyordu: 26 KB HTML içinde ~320 kelime, yani metin/HTML oranı %10'un altında.
+   * Bu sayfaların indekste bir karşılığı yoktu çünkü listelenen yazıların dışında
+   * söyledikleri hiçbir şey yoktu. `intro` o boşluğu doldurur ve ZORUNLUDUR — girişsiz
+   * bir kategori dosyası, sorunu çözmeden koleksiyona girmiş demektir.
+   */
+  const valid = {
+    name: 'SEO',
+    intro: 'Arama motorlarında görünürlük kazanmak teknik, içerik ve otorite olmak üzere üç ayak üzerinde yürüyor.',
+  };
+
+  test('ad ve giriş metniyle geçerli', () => {
+    expect(blogCategorySchema.parse(valid)).toMatchObject(valid);
+  });
+
+  test('giriş metni zorunludur', () => {
+    expect(blogCategorySchema.safeParse({ name: 'SEO' }).success).toBe(false);
+    expect(blogCategorySchema.safeParse({ ...valid, intro: '' }).success).toBe(false);
+  });
+
+  test('kümeyi bağlayan hizmet bağlantısı opsiyoneldir ve kanonikleşir', () => {
+    const parsed = blogCategorySchema.parse({
+      ...valid,
+      serviceHref: '/hizmetlerimiz/seo-ve-icerik-pazarlamasi',
+      serviceLabel: 'SEO ve İçerik Pazarlaması',
+    });
+    expect(parsed.serviceHref).toBe('/hizmetlerimiz/seo-ve-icerik-pazarlamasi/');
+  });
+
+  test('Sveltia boş bıraktığında hizmet bağlantısı “verilmemiş” sayılır', () => {
+    expect(blogCategorySchema.parse({ ...valid, serviceHref: '', serviceLabel: null }).serviceHref).toBeUndefined();
   });
 });

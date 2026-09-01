@@ -35,7 +35,24 @@ sections:
     lead: >-
       From small businesses to enterprise brands, we bring the same care to every partner, at every scale.
 
-  # 3 — CLOSING CTA
+  # 3 — HOW WE WORK
+  - type: text
+    anchor: how-we-work
+    background: light
+    layout: split
+    eyebrow: How We Work
+    heading: A reference is not a delivered project; it is an ongoing relationship.
+    body: >-
+      We met most of the brands on this page through a single project — a website, a campaign, a brand identity. Over time those engagements grew to cover measurement, content and advertising as well. A brand becoming our reference means the work was not just delivered, but that its results are still being tracked together.
+
+
+      The spread of industries here is deliberate: healthcare and health tourism, e-commerce, finance, non-profits. What works in one sector is often untried in the next. The multilingual patient communication flow we built for a health tourism clinic and the post-purchase flow of an e-commerce brand are, technically, two versions of the same problem.
+
+
+      If you want to see why a piece of work was built the way it was, we wrote the starting point of each engagement on our [projects](/en/projects/) page. The services that run alongside each other are set out on the [services](/en/services/) page.
+    highlight: The same care on the smallest project as on the largest.
+
+  # 4 — CLOSING CTA
   - type: cta
     kind: spot
     anchor: contact

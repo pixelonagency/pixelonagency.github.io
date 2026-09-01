@@ -9,13 +9,14 @@
  * Liste `PostsSection` ile çizilir — kart işaretlemesi ve stili blog listesiyle
  * birebir aynı kalsın diye; bu bileşen yalnızca süzülmüş listeyi geçirir.
  */
-import type { CollectionEntry } from 'astro:content';
+import { getEntry, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import type { CategoryGroup } from '../lib/blog-categories';
 import { categoryPath } from '../lib/blog-categories';
 import { localizedPath, type Locale } from '../lib/i18n';
 import { breadcrumbSchema } from '../lib/schema';
 import { t } from '../lib/ui';
+import { inlineHtml, paragraphs } from './article/types';
 import PostsSection from './sections/PostsSection.astro';
 
 interface Props {
@@ -30,6 +31,14 @@ const { group, others, locale, alternates } = Astro.props;
 
 const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
 const blogPath = localizedPath('blog', locale);
+
+/*
+ * Editoryal giriş metni. Sayfa kendiliğinden üretiliyor ama metin elle yazılıyor;
+ * eşleşmeyi `tests/content-integrity.test.ts` zorunlu kılar, bu yüzden burada eksikliği
+ * sessizce tolere etmek güvenli — build'i düşürmek yerine sayfa eski hâline dönüyor.
+ */
+const editorial = await getEntry('categories', `${locale}/${group.slug}`);
+const intro = editorial?.data;
 
 const title = `${group.name} ${t('blog.category.titleSuffix', locale)} | Pixelon Blog`;
 const description =
@@ -69,6 +78,21 @@ const section = {
       <p class="eyebrow">{t('blog.category.eyebrow', locale)}</p>
       <h1 class="cat__title">{group.name}</h1>
       <p class="cat__count">{group.posts.length} {t('blog.category.posts', locale)}</p>
+
+      {
+        intro && (
+          <div class="cat__intro">
+            {paragraphs(intro.intro).map((part) => (
+              <p set:html={inlineHtml(part)} />
+            ))}
+            {intro.serviceHref && intro.serviceLabel && (
+              <a class="cat__service" href={intro.serviceHref}>
+                {intro.serviceLabel} <span aria-hidden="true">→</span>
+              </a>
+            )}
+          </div>
+        )
+      }
     </div>
   </header>
 
@@ -127,6 +151,46 @@ const section = {
 
   .cat__crumbs [aria-current] {
     color: var(--text-soft);
+  }
+
+  /* Kategori merkezinin editoryal girişi — listeden önce konuyu tarif eden metin. */
+  .cat__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: clamp(20px, 2.4vw, 28px);
+    max-width: 68ch;
+  }
+
+  .cat__intro :global(p) {
+    margin: 0;
+    font: 400 clamp(15px, 1.3vw, 17px) / 1.72 var(--font-body);
+    color: var(--text-muted);
+  }
+
+  .cat__intro :global(a) {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--accent);
+    transition: color var(--t-base);
+  }
+
+  .cat__intro :global(a:hover) {
+    color: var(--accent);
+  }
+
+  .cat__service {
+    align-self: flex-start;
+    font: 600 14px var(--font-display);
+    color: var(--accent);
+    text-decoration: none;
+    padding-top: 4px;
+    transition: opacity var(--t-base);
+  }
+
+  .cat__service:hover {
+    opacity: 0.75;
   }
 
   .cat__title {

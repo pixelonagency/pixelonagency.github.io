@@ -35,7 +35,24 @@ sections:
     lead: >-
       Küçük işletmelerden kurumsal markalara kadar her ölçekten iş ortağımızla aynı özenle çalışıyoruz.
 
-  # 3 — KAPANIŞ CTA
+  # 3 — NASIL ÇALIŞIYORUZ
+  - type: text
+    anchor: nasil-calisiyoruz
+    background: light
+    layout: split
+    eyebrow: Çalışma Biçimimiz
+    heading: Referans, teslim edilen iş değil; süren ilişki.
+    body: >-
+      Bu sayfadaki markaların çoğuyla tek bir projeyle tanıştık. Bir web sitesi, bir kampanya ya da bir marka kimliği çalışmasıyla başlayan işler zamanla ölçümleme, içerik ve reklam yönetimini de kapsayan uzun soluklu bir çalışmaya dönüştü. Bir markanın referansımız olması, işin teslim edildiği değil, sonuçlarının birlikte takip edildiği anlamına geliyor.
+
+
+      Sektör dağılımımız bilinçli olarak geniş: sağlık ve sağlık turizminden e-ticarete, finanstan sivil topluma kadar farklı alanlarda çalışıyoruz. Bunun nedeni bir sektörde işe yarayan çözümün çoğu zaman başka bir sektörde henüz denenmemiş olması. Sağlık turizminde kurduğumuz çok dilli hasta iletişim akışı ile bir e-ticaret markasının satış sonrası akışı, teknik olarak aynı problemin iki farklı hâli.
+
+
+      Bir işin neden o şekilde kurgulandığını görmek isterseniz [projelerimiz](/projelerimiz/) sayfasında her çalışmanın çıkış noktasını da yazdık. Hangi hizmetlerin bir arada yürüdüğünü ise [hizmetlerimiz](/hizmetlerimiz/) sayfasında topladık.
+    highlight: Aynı özen, en küçük işte de en büyük işte de.
+
+  # 4 — KAPANIŞ CTA
   - type: cta
     kind: spot
     anchor: iletisim

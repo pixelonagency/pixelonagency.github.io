@@ -3,7 +3,8 @@ import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { makePageSchema } from '../src/content/page-schema';
-import { makeServiceSchema, makeTeamSchema, settingsSchema } from '../src/content/schemas';
+import { blogCategorySchema, makeServiceSchema, makeTeamSchema, settingsSchema } from '../src/content/schemas';
+import { categoriesWithPages, type CategorizablePost } from '../src/lib/blog-categories';
 import { isLocale, localePrefix, LOCALES, ROUTE_SLUGS, type Locale } from '../src/lib/i18n';
 
 /**
@@ -257,6 +258,114 @@ describe('hizmet kartlarının tek kaynağı', () => {
       const showcase = raw.sections.find((section) => section.type === 'services' && section.kind === 'showcase');
       expect(showcase).toBeDefined();
       expect(showcase?.items).toBeUndefined();
+    });
+  }
+});
+
+/**
+ * Kategori merkezleri ile editoryal metinleri arasındaki sözleşme.
+ *
+ * Kategori sayfası, yazı sayısı eşiği geçtiği anda KENDİLİĞİNDEN üretiliyor
+ * (`categoriesWithPages`, bkz. `blog-categories.ts`). Metin ise elle yazılıyor. Yeni bir
+ * kategori eşiği geçtiğinde metin yazılmazsa sayfa yine yayına çıkar — ama yalnızca
+ * başlık ve kart listesinden ibaret olur; 1 Eylül denetiminde metin/HTML oranı %10'un
+ * altında kalan sayfalar tam olarak bu durumdaydı. Bu test o boşluğu kapıda tutar.
+ */
+describe('blog kategori merkezleri', () => {
+  const CATEGORIES = join(CONTENT, 'categories');
+
+  const categorisablePosts = async (locale: Locale): Promise<CategorizablePost[]> => {
+    const dir = join(CONTENT, 'posts', locale);
+    const out: CategorizablePost[] = [];
+    for (const file of readdirSync(dir).filter((name) => name.endsWith('.md'))) {
+      const front = parse((await Bun.file(join(dir, file)).text()).split('---')[1] ?? '') as {
+        category?: string;
+        date?: string | Date;
+      };
+      if (front?.category) {
+        out.push({ id: `${locale}/${file}`, data: { category: front.category, date: new Date(front.date ?? 0) } });
+      }
+    }
+    return out;
+  };
+
+  for (const locale of LOCALES) {
+    test(`${locale} — sayfası olan her kategorinin giriş metni var`, async () => {
+      const missing: string[] = [];
+      for (const group of categoriesWithPages(await categorisablePosts(locale), locale)) {
+        const file = join(CATEGORIES, locale, `${group.slug}.yml`);
+        if (!existsSync(file)) {
+          missing.push(`${locale}/${group.slug}.yml yok (kategori: ${group.name})`);
+          continue;
+        }
+        const data = blogCategorySchema.parse(parse(await Bun.file(file).text()));
+        // Ad birebir eşleşmeli: eşleşme slug üzerinden kurulsa da başlıkta `name` görünür.
+        if (data.name !== group.name)
+          missing.push(`${locale}/${group.slug}.yml: name "${data.name}" ≠ "${group.name}"`);
+      }
+      expect(missing).toEqual([]);
+    });
+
+    test(`${locale} — karşılığı olmayan kategori dosyası yok`, async () => {
+      /*
+       * Ters yön: bir kategori eşiğin altına düştüğünde sayfası kaybolur. Dosya ortada
+       * kalırsa hiçbir yerden okunmaz ve sessizce eskir; editör onu hâlâ CMS'te görür.
+       */
+      const dir = join(CATEGORIES, locale);
+      if (!existsSync(dir)) return;
+      const live = new Set(categoriesWithPages(await categorisablePosts(locale), locale).map((group) => group.slug));
+      const orphaned = readdirSync(dir)
+        .filter((name) => name.endsWith('.yml'))
+        .map((name) => name.replace(/\.yml$/, ''))
+        .filter((slug) => !live.has(slug));
+
+      expect(orphaned).toEqual([]);
+    });
+  }
+});
+
+/**
+ * Başlık etiketi ile H1 arasındaki ayrım.
+ *
+ * Semrush 1 Eylül denetiminde bir yazıda "h1 ve title'da yinelenen içerik" bildirdi.
+ * Sorun kozmetik değil: `seo.title` arama sonucunda görünen satır, `title` ise sayfadaki
+ * H1. İkisi birebir aynıysa arama sonucu, sayfanın kendisinden fazla hiçbir şey
+ * söylemiyor ve marka eki de kayboluyor — diğer yazıların hepsinde "| Pixelon" varken
+ * bir yazıda olmaması aynı zamanda bir tutarsızlık.
+ */
+describe('yazı başlıkları', () => {
+  for (const locale of LOCALES) {
+    const dir = join(CONTENT, 'posts', locale);
+
+    test(`${locale} — seo.title, H1 ile birebir aynı değil`, async () => {
+      const duplicates: string[] = [];
+      for (const file of readdirSync(dir).filter((name) => name.endsWith('.md'))) {
+        const front = parse((await Bun.file(join(dir, file)).text()).split('---')[1] ?? '') as {
+          title?: string;
+          seo?: { title?: string };
+        };
+        if (front?.title && front.seo?.title && front.title.trim() === front.seo.title.trim()) {
+          duplicates.push(`${locale}/${file}`);
+        }
+      }
+      expect(duplicates).toEqual([]);
+    });
+
+    test(`${locale} — seo.title 60 karakteri aşmıyor`, async () => {
+      /*
+       * Google başlığı yaklaşık 60 karakterde kesiyor. Kesilen başlık, marka ekinin
+       * ya da asıl vaadin görünmemesi demek. Eşik kesin bir sınır değil ama üzerine
+       * çıkan her başlık bilinçli bir karar olmalı, dalgınlık değil.
+       */
+      const tooLong: string[] = [];
+      for (const file of readdirSync(dir).filter((name) => name.endsWith('.md'))) {
+        const front = parse((await Bun.file(join(dir, file)).text()).split('---')[1] ?? '') as {
+          seo?: { title?: string };
+        };
+        const value = front?.seo?.title?.trim();
+        if (value && value.length > 60) tooLong.push(`${locale}/${file} (${value.length})`);
+      }
+      expect(tooLong).toEqual([]);
     });
   }
 });
