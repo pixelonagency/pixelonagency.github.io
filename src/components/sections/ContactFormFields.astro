@@ -356,6 +356,12 @@ const messagesJson = JSON.stringify(formMessages(locale));
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    /*
+     * Dokunulan alan kutunun kendisi (16×16) değil ETİKETİN tamamı; tek satırlık
+     * hizmetlerde etiket 23 px kalıyordu. `min-height` onu 24 px'e tamamlar
+     * (WCAG 2.5.8), çok satırlı etiketlerde zaten aşılıyor ve hiçbir şey değişmez.
+     */
+    min-height: 24px;
     font-size: var(--fs-body);
     line-height: 1.55;
     color: var(--text-muted);

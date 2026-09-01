@@ -591,6 +591,8 @@ const tabId = (slug: string) => `${uid}-tab-${slug}`;
   }
 
   .projects__link {
+    /* Dokunma hedefi 24 px (WCAG 2.5.8) — bağımsız bir hedef, cümle içi değil. */
+    padding-block: 4px;
     display: inline-flex;
     align-items: center;
     gap: 8px;

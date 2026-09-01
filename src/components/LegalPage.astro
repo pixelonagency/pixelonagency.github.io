@@ -102,10 +102,15 @@ const LEGAL_LABELS: Record<string, Record<Locale, string>> = {
     gap: 8px;
     font: 500 13px var(--font-display);
     color: var(--text-faint);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .legal__crumbs a {
+    /* Dokunma hedefi 24 px'e tamamlanır (WCAG 2.5.8); satır yüksekliği 17 px kalıyordu.
+       Dolgu eklenince satır 8 px büyüdüğü için alt boşluk aynı kadar kısıldı.
+       `min-width` kısa etiketler için: "SEO" kırıntısı 23,98 px kalıyordu. */
+    padding-block: 4px;
+    min-width: 24px;
     color: var(--text-faint);
     text-decoration: none;
     transition: color var(--t-base);
@@ -261,6 +266,9 @@ const LEGAL_LABELS: Record<string, Record<Locale, string>> = {
   }
 
   .legal__related-list a {
+    /* Dokunma hedefi 24 px (WCAG 2.5.8) — bağımsız bir hedef, cümle içi değil. */
+    display: inline-block;
+    padding-block: 5px;
     font-size: 14px;
     color: rgba(10, 10, 10, 0.7);
     text-underline-offset: 4px;

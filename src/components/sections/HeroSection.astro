@@ -356,11 +356,16 @@ const tickerItems = section.tagline?.includes('✦')
     gap: 8px;
     font: 500 13px var(--font-display);
     color: var(--text-faint);
-    margin-bottom: 22px;
+    margin-bottom: 14px;
     animation: fadeUp 0.8s var(--ease-out) both;
   }
 
   .hero__crumbs a {
+    /* Dokunma hedefi 24 px'e tamamlanır (WCAG 2.5.8); satır yüksekliği 17 px kalıyordu.
+       Dolgu eklenince satır 8 px büyüdüğü için alt boşluk aynı kadar kısıldı.
+       `min-width` kısa etiketler için: "SEO" kırıntısı 23,98 px kalıyordu. */
+    padding-block: 4px;
+    min-width: 24px;
     color: var(--text-faint);
     text-decoration: none;
     transition: color var(--t-base);

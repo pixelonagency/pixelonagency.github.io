@@ -339,10 +339,15 @@ const extraSchema = [
     font: 500 13px var(--font-display);
     color: var(--text-faint);
     /* Bağlantılara dikey padding eklendi; alt boşluk ondan düşüldü. */
-    margin-bottom: 19px;
+    margin-bottom: 11px;
   }
 
   .post__crumbs a {
+    /* Dokunma hedefi 24 px'e tamamlanır (WCAG 2.5.8); satır yüksekliği 17 px kalıyordu.
+       Dolgu eklenince satır 8 px büyüdüğü için alt boşluk aynı kadar kısıldı.
+       `min-width` kısa etiketler için: "SEO" kırıntısı 23,98 px kalıyordu. */
+    padding-block: 4px;
+    min-width: 24px;
     color: var(--text-faint);
     text-decoration: none;
     /* Dokunma hedefi: 13px metin tek başına ~17px yükseklik veriyordu. */

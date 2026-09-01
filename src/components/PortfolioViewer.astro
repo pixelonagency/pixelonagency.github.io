@@ -99,10 +99,15 @@ const description = t('portfolio.lead', locale);
     gap: 8px;
     font: 500 13px var(--font-display);
     color: var(--text-faint);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .pf-crumbs a {
+    /* Dokunma hedefi 24 px'e tamamlanır (WCAG 2.5.8); satır yüksekliği 17 px kalıyordu.
+       Dolgu eklenince satır 8 px büyüdüğü için alt boşluk aynı kadar kısıldı.
+       `min-width` kısa etiketler için: "SEO" kırıntısı 23,98 px kalıyordu. */
+    padding-block: 4px;
+    min-width: 24px;
     color: var(--text-faint);
     text-decoration: none;
     transition: color var(--t-base);

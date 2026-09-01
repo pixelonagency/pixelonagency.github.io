@@ -336,3 +336,21 @@ button {
   top: 16px;
   color: var(--text-on-light);
 }
+
+/*
+ * Mobil menü açıkken çerez bandını gizle.
+ *
+ * Klaro bandı kendi `z-index: 999` değerini basıyor; mobil menü paneli 90'da. Band
+ * panelin ÜSTÜNDE kalıp 390×844 px'te alttaki 206 px'i kaplıyor ve dört menü
+ * bağlantısını erişilemez kılıyordu (1 Eyl 2026'da ölçüldü).
+ *
+ * Kural burada, `ConsentManager.astro` içinde DEĞİL: band Klaro tarafından body'nin
+ * sonuna basılıyor ve bileşenin kapsamlı stiline girmiyor. `data-menu-open` özniteliğini
+ * `Header.astro` içindeki menü anahtarı koyup kaldırıyor.
+ *
+ * Onay durumuna DOKUNMAZ — band yalnızca görsel olarak erteleniyor, menü kapanınca
+ * aynen geri geliyor.
+ */
+html[data-menu-open] #klaro-cookie-notice {
+  display: none;
+}

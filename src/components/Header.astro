@@ -495,6 +495,18 @@ const currentPath = Astro.url.pathname;
       panel.hidden = !open;
       openBtn.setAttribute('aria-expanded', String(open));
       document.body.style.overflow = open ? 'hidden' : '';
+      /*
+       * Çerez bandını menü açıkken gizler.
+       *
+       * Klaro bandı kendi `z-index: 999` değerini basıyor, panel ise 90'da — yani band
+       * panelin ÜSTÜNDE duruyordu ve 390×844 px'te alttaki 206 px'i kaplayıp dört menü
+       * bağlantısını (Blog, Kariyer, İletişim, Ücretsiz Analiz) erişilemez kılıyordu.
+       *
+       * Paneli 999'un üstüne çıkarmak yerine bandı gizliyoruz: panel bir modal, o sırada
+       * bandla etkileşim zaten mümkün değil. Onay DURUMU değişmiyor — band menü
+       * kapanınca aynen geri geliyor, yani hiçbir izin verilmiş sayılmıyor.
+       */
+      document.documentElement.toggleAttribute('data-menu-open', open);
       if (open) closeBtn.focus();
       else openBtn.focus();
     };

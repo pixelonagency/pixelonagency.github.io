@@ -105,6 +105,49 @@ const PROBE = () => {
   }
   offenders.sort((a, b) => Math.abs(b.over) - Math.abs(a.over));
 
+  /*
+   * Dokunma hedefi (WCAG 2.5.8, AA): asgari 24×24 px.
+   *
+   * İki İSTİSNA bilinçli olarak elenir, aksi halde rapor yanlış alarmla dolar:
+   *   - Cümle içindeki bağlantı: standardın "inline" istisnası — boyutu satır
+   *     yüksekliğine bağlıdır, büyütmek metni bozar.
+   *   - Ekrandan gizlenmiş alanlar (`aria-hidden`, `tabindex="-1"`): iletişim
+   *     formundaki bal küpü böyle; kullanıcıya hiç görünmez.
+   *
+   * Ölçülen şey elemanın kendi kutusu DEĞİL, varsa sarmalayan `<label>`ın kutusudur:
+   * onay kutusunda parmağın dokunduğu alan etiketin tamamıdır.
+   */
+  const PROSE = '.post__body, .legal__body, .as__text, .as__lead';
+  const inProse = (el) => {
+    // Makale gövdesindeki her bağlantı istisna kapsamında: boyutu düzyazının satır
+    // yüksekliğine bağlı, büyütmek metnin ritmini bozar.
+    if (el.closest(PROSE)) return true;
+    const parent = el.parentElement;
+    if (!parent) return false;
+    if (!['P', 'LI', 'FIGCAPTION', 'BLOCKQUOTE', 'TD'].includes(parent.tagName)) return false;
+    return (parent.textContent || '').trim().length > (el.textContent || '').trim().length + 12;
+  };
+
+  const tinyTargets = [];
+  for (const el of document.querySelectorAll('a,button,[role="button"],input:not([type=hidden]),select,summary')) {
+    const rect = el.getBoundingClientRect();
+    if (!rect.width || !rect.height) continue;
+    const style = getComputedStyle(el);
+    if (style.visibility === 'hidden' || style.display === 'none') continue;
+    if (el.closest('[aria-hidden="true"]') || el.getAttribute('tabindex') === '-1') continue;
+    if (inProse(el)) continue;
+
+    let { width, height } = rect;
+    const label = el.closest('label');
+    if (label) {
+      const lr = label.getBoundingClientRect();
+      width = Math.max(width, lr.width);
+      height = Math.max(height, lr.height);
+    }
+    if (width >= 24 && height >= 24) continue;
+    tinyTargets.push({ sel: path(el), w: Math.round(width), h: Math.round(height) });
+  }
+
   return {
     vw,
     html: document.documentElement.scrollWidth,
@@ -113,6 +156,7 @@ const PROBE = () => {
     brokenImages: [...document.images]
       .filter((i) => i.complete && i.naturalWidth === 0)
       .map((i) => i.currentSrc || i.src),
+    tinyTargets,
   };
 };
 
@@ -194,6 +238,17 @@ try {
       }
       for (const img of probe.brokenImages)
         findings.push({ url: short, vp: vp.name, kind: 'kırık görsel', detail: img });
+      // Dokunma hedefi yalnızca dokunmatik genişliklerde raporlanır; masaüstünde imleç var.
+      if (vp.width < 768) {
+        for (const t of probe.tinyTargets) {
+          findings.push({
+            url: short,
+            vp: vp.name,
+            kind: 'küçük dokunma hedefi',
+            detail: `${t.w}×${t.h}px · ${t.sel}`,
+          });
+        }
+      }
       for (const error of new Set(errors))
         findings.push({ url: short, vp: vp.name, kind: 'konsol hatası', detail: error });
       process.stderr.write('.');
