@@ -23,6 +23,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
+import { mediaUrl } from '../../lib/media';
 import { breadcrumbSchema, toJsonLd } from '../../lib/schema';
 import { t } from '../../lib/ui';
 import {
@@ -128,12 +129,12 @@ const BOARD_VIDEO_SCRIPT = `
           playsinline
           preload="none"
           disablepictureinpicture
-          data-d-mp4={section.video.desktopMp4}
-          data-d-webm={section.video.desktopWebm}
-          data-d-poster={section.video.desktopPoster}
-          data-m-mp4={section.video.mobileMp4}
-          data-m-webm={section.video.mobileWebm}
-          data-m-poster={section.video.mobilePoster}
+          data-d-mp4={mediaUrl(section.video.desktopMp4)}
+          data-d-webm={mediaUrl(section.video.desktopWebm)}
+          data-d-poster={mediaUrl(section.video.desktopPoster)}
+          data-m-mp4={mediaUrl(section.video.mobileMp4)}
+          data-m-webm={mediaUrl(section.video.mobileWebm)}
+          data-m-poster={mediaUrl(section.video.mobilePoster)}
         />
         <span class="pb-hero__scrim" />
       </div>

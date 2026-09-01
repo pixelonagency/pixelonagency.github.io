@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import type { PageSection } from '../../content/page-schema';
 import { parseHighlights } from '../../lib/highlight';
+import { mediaUrl } from '../../lib/media';
 import { breadcrumbSchema, toJsonLd } from '../../lib/schema';
 import { DEFAULT_LOCALE, type Locale } from '../../lib/i18n';
 import { t } from '../../lib/ui';
@@ -47,6 +48,7 @@ const breadcrumbJsonLd =
  * Referans: "Strateji ✦ Yaratıcılık ✦ …" biçimindeki slogan statik metin değil,
  * lime ✦ ayraçlı KAYAN şerittir. '✦' içeren tagline bu şeride dönüşür.
  */
+/* Yollar `mediaUrl()` ile basılır — gerekçe ve geri düşüş: src/lib/media.ts. */
 const heroVideo = section.video;
 
 /*
@@ -115,12 +117,12 @@ const tickerItems = section.tagline?.includes('✦')
             playsinline
             preload="metadata"
             disablepictureinpicture
-            data-d-mp4={heroVideo.desktopMp4}
-            data-d-webm={heroVideo.desktopWebm}
-            data-d-poster={heroVideo.desktopPoster}
-            data-m-mp4={heroVideo.mobileMp4}
-            data-m-webm={heroVideo.mobileWebm}
-            data-m-poster={heroVideo.mobilePoster}
+            data-d-mp4={mediaUrl(heroVideo.desktopMp4)}
+            data-d-webm={mediaUrl(heroVideo.desktopWebm)}
+            data-d-poster={mediaUrl(heroVideo.desktopPoster)}
+            data-m-mp4={mediaUrl(heroVideo.mobileMp4)}
+            data-m-webm={mediaUrl(heroVideo.mobileWebm)}
+            data-m-poster={mediaUrl(heroVideo.mobilePoster)}
           />
           <span class="hero__video-scrim" />
         </div>

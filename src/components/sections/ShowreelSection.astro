@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { PageSection } from '../../content/page-schema';
+import { mediaUrl } from '../../lib/media';
 
 type Showreel = Extract<PageSection, { type: 'showreel' }>;
 
@@ -87,8 +88,8 @@ const REEL_VIDEO_SCRIPT = `
                     <video
                       class="reel__shot"
                       data-reel-video
-                      data-src={item.video}
-                      poster={posterSrc(item.image)}
+                      data-src={mediaUrl(item.video)}
+                      poster={mediaUrl(posterSrc(item.image))}
                       muted
                       loop
                       playsinline

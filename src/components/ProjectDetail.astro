@@ -19,6 +19,7 @@ import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaSection from './sections/CtaSection.astro';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
+import { mediaUrl } from '../lib/media';
 import { canonicalUrl } from '../lib/seo';
 import { breadcrumbSchema, caseStudySchema, SERVICE_BY_PROJECT_CATEGORY } from '../lib/schema';
 import { t } from '../lib/ui';
@@ -471,7 +472,7 @@ const RAIL_SCRIPT = `(() => {
                   {block.video && (
                     <video
                       class="pd-loop"
-                      poster={block.video.poster}
+                      poster={mediaUrl(block.video.poster)}
                       width={block.video.width}
                       height={block.video.height}
                       muted
@@ -481,8 +482,8 @@ const RAIL_SCRIPT = `(() => {
                       disablepictureinpicture
                       aria-label={`${client} — ${block.heading}`}
                     >
-                      {block.video.webm && <source src={block.video.webm} type="video/webm" />}
-                      <source src={block.video.mp4} type="video/mp4" />
+                      {block.video.webm && <source src={mediaUrl(block.video.webm)} type="video/webm" />}
+                      <source src={mediaUrl(block.video.mp4)} type="video/mp4" />
                     </video>
                   )}
                   {block.images.map((img) => {
@@ -534,7 +535,7 @@ const RAIL_SCRIPT = `(() => {
                       >
                         <video
                           class="pd-reel__video"
-                          poster={reel.poster}
+                          poster={mediaUrl(reel.poster)}
                           controls
                           playsinline
                           preload="none"
@@ -542,7 +543,7 @@ const RAIL_SCRIPT = `(() => {
                           height={reel.height}
                           aria-label={reel.title}
                         >
-                          <source src={reel.src} type="video/mp4" />
+                          <source src={mediaUrl(reel.src)} type="video/mp4" />
                         </video>
                         <button class="pd-reel__play" type="button" hidden aria-label={`${reel.title} — videoyu oynat`}>
                           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">

@@ -32,7 +32,8 @@
     "seo:daily": "bun scripts/seo/daily.mjs daily",
     "seo:weekly": "bun scripts/seo/daily.mjs weekly",
     "seo:monthly": "bun scripts/seo/daily.mjs monthly",
-    "seo:run": "bun scripts/seo/daily.mjs daily"
+    "seo:run": "bun scripts/seo/daily.mjs daily",
+    "media:r2": "bun scripts/media/r2-upload.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",
