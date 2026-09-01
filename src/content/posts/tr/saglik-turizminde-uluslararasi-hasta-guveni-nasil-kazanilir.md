@@ -10,7 +10,7 @@ author: Pixelon Ekibi
 status: published
 featured: false
 seo:
-  title: 'Sağlık Turizminde Uluslararası Hasta Güveni Nasıl Kazanılır?'
+  title: 'Sağlık Turizminde Hasta Güveni Nasıl Kazanılır? | Pixelon'
   description: Uluslararası hastaların kliniğinize güvenmesini sağlayan web sitesi, doktor tanıtımı, hasta iletişimi, şeffaf fiyatlandırma ve takip stratejilerini keşfedin.
 ---
 
@@ -154,7 +154,7 @@ Uluslararası hasta aynı anda birden fazla klinikle görüşebilir; bu nedenle 
 
 Hasta talepleri yalnızca WhatsApp konuşmalarında veya kişisel notlarda tutulduğunda önemli fırsatlar kaybolabilir. Bir [CRM sistemi](/hizmetlerimiz/) sayesinde her hastanın hangi aşamada olduğu görülebilir: yeni talep, ilk iletişim, fotoğraf bekleniyor, doktor değerlendirmesinde, teklif paylaşıldı, seyahat tarihi belirlendi, tedavi tamamlandı ve tedavi sonrası takip.
 
-Bu sistem yalnızca operasyonu düzenlemez, hangi reklam ve pazarların daha nitelikli hasta talepleri oluşturduğunu da gösterir.
+Bu sistem yalnızca operasyonu düzenlemez, hangi reklam ve pazarların daha nitelikli hasta talepleri oluşturduğunu da gösterir. CRM'in klinik dışındaki işlerde nasıl kurulduğunu [CRM nedir, işletmeye ne kazandırır](/blog/crm-nedir-ne-ise-yarar/) yazısında, bu yazıdaki güven adımlarının bağlandığı geniş planı ise [sağlık markaları için dijital pazarlama stratejisi](/blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/) yazısında ele aldık.
 
 ## Hasta Verilerinin Gizliliğini Koruyun
 

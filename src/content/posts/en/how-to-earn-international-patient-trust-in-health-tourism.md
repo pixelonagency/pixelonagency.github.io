@@ -51,7 +51,7 @@ If your brand cannot answer these questions clearly, consistently and profession
 
 ## Build a Professional, Multilingual Website
 
-A significant share of international patients meet your clinic for the first time through your [multilingual website](/en/services/web-design-and-development/). That makes the site far more than a corporate showcase: it is the central hub of trust that guides the patient's decision. A site that looks dated, loads slowly or does not work properly on mobile can create a poor first impression even when your clinical experience is outstanding.
+A significant share of international patients meet your clinic for the first time through your [multilingual website](/en/services/web-design-and-development/). That makes the site far more than a corporate showcase: it is the central hub of trust that guides the patient's decision. A site that looks dated, loads slowly or does not work properly on mobile can create a poor first impression even when your clinical experience is outstanding. If your current site does not meet that bar, [our website process](/en/get-a-website/) sets out what a multilingual build involves and where the effort actually goes.
 
 ### What Should a Trustworthy Site Include?
 

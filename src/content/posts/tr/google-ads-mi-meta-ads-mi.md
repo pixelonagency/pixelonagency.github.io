@@ -95,6 +95,8 @@ article:
 
         [Sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) tarafındaki organik içerik üretimiyle birlikte yürütüldüğünde Meta reklamlarının performansı genellikle daha istikrarlı oluyor.
 
+        Meta tarafını denediniz ama sonuç alamadıysanız sorun çoğu zaman platform seçiminde değil kurguda oluyor; sık karşılaşılan nedenleri [Meta reklamları neden sonuç vermiyor](/blog/meta-reklamlari-neden-sonuc-vermiyor/) yazısında sıraladık.
+
     - type: callout
       variant: note
       heading: Pixelon Notu
@@ -116,7 +118,7 @@ article:
 
     - type: process
       heading: Bütçeyi nasıl dağıtmalı?
-      intro: Sabit bir oran yok; aşağıdaki sıra çoğu markada işe yarayan bir başlangıç kurgusu sunuyor.
+      intro: 'Sabit bir oran yok; aşağıdaki sıra çoğu markada işe yarayan bir başlangıç kurgusu sunuyor. Toplam rakamı nasıl belirleyeceğinizi [Google Ads bütçesi nasıl belirlenir](/blog/google-ads-butcesi-nasil-belirlenir/) yazısında hesapladık.'
       steps:
         - title: Önce arama hacmine bakın
           text: Hizmetinizle ilgili aylık arama hacmi anlamlı bir seviyedeyse Google tarafı öncelikli. Hacim düşükse bütçenin çoğunu oraya ayırmak boşa gidiyor.

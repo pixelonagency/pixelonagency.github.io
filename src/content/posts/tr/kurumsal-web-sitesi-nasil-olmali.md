@@ -131,7 +131,11 @@ article:
 
         Net mesaj, sade menü, mobil uyum, hız ve belirgin bir eylem çağrısı; bu beşi yerindeyse geri kalan iyileştirmeler çok daha kolay ilerliyor. Ölçüm altyapısı kuruluysa da hangi iyileştirmenin işe yaradığı tahmin edilmiyor, görülüyor.
 
+        Bu beşin görsel tarafı ise sitenin kendisinden önce başlıyor: renk, tipografi ve dilin nereden geldiğini [marka kimliği nedir, neleri kapsar](/blog/marka-kimligi-nedir-neleri-kapsar/) yazısında ele aldık.
+
         Bu maddeleri kendi sitenizde tek tek uygulamak hem zaman hem teknik karar gerektiriyor. Siteyi baştan kurmayı ya da mevcut yapıyı bu standarda taşımayı düşünüyorsanız, [nasıl çalıştığımızı burada anlattık](/hizmetlerimiz/web-tasarim-ve-yazilim/).
+
+        Maliyet tarafını merak ediyorsanız fiyatı neyin belirlediğini [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında açtık; kapsamınızı çıkarıp doğrudan başlamak isterseniz [web sitesi yaptırma sayfamız](/web-sitesi-yaptir/) süreci adım adım anlatıyor.
 
     - type: cta
       heading: Mevcut sitenizi birlikte gözden geçirelim.

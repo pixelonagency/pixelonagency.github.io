@@ -78,6 +78,8 @@ article:
 
         Bu yüzden erişim büyütmek isteyen hesapların ürettiği içerik türü belli: kaydedilecek kadar faydalı ya da paylaşılacak kadar ilgi çekici.
 
+        Bu iki niteliği en hızlı taşıyan format kısa video; erişimi neden diğer formatlardan farklı büyüttüğünü [Reels ile marka büyütme](/blog/reels-ile-marka-buyutme/) yazısında ayrıca ele aldık.
+
         Pratikte bu, iki içerik türünü öne çıkarıyor. Birincisi öğretici içerik: sık sorulan bir sorunun net cevabı. İkincisi kanıt içeriği: gerçek bir işin öncesi ve sonrası.
 
         Buna karşılık en zayıf performansı genellikle doğrudan reklam niteliğindeki paylaşımlar veriyor. Bunlar gerekli ama takvimin tamamını kaplamamalı. Dengeyi [içerik takvimi](/blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir/) yazısında ele aldık.

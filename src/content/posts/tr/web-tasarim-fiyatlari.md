@@ -157,6 +157,8 @@ article:
 
         Bütçe sınırlıysa doğru hamle kapsamı küçültmek, kaliteyi düşürmek değil. Az sayıda sayfayla düzgün kurulmuş bir site, çok sayfalı ama yarım kalmış bir siteden daha iyi çalışıyor. Tek bir hedefe odaklı bir başlangıç için [landing page](/blog/landing-page-nedir/) yaklaşımı da değerlendirilebilir.
 
+        Rakam netleştikten sonraki adım doğru tarafı seçmek; nelere bakılacağını [web tasarım ajansı seçerken nelere dikkat edilmeli](/blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/) yazısında sıraladık. Kapsamınızı bizimle çıkarmak isterseniz [web sitesi yaptırma sayfası](/web-sitesi-yaptir/) süreci ve dahil olanları anlatıyor.
+
     - type: faq
       heading: Sık Sorulan Sorular
       items:

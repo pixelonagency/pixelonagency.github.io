@@ -117,7 +117,7 @@ article:
 
         Önce talep başına maliyeti hesaplayın: reklam harcaması bölü gelen nitelikli talep sayısı.
 
-        Sonra kendi kapanma oranınızı bilin: gelen 10 talepten kaçı müşteriye dönüşüyor? Bu oran ve ortalama müşteri değeri bilindiğinde, talep başına maliyet doğrudan kârlılığa çevrilebiliyor.
+        Sonra kendi kapanma oranınızı bilin: gelen 10 talepten kaçı müşteriye dönüşüyor? Bu oran ve ortalama müşteri değeri bilindiğinde, talep başına maliyet doğrudan kârlılığa çevrilebiliyor. Kapanma oranını tahminle değil kayıtla bilmek için talepleri tek bir yerde toplamak gerekiyor; bunu neden [CRM](/blog/crm-nedir-ne-ise-yarar/) üzerinden kurmak gerektiğini ayrı bir yazıda ele aldık.
 
         Örnek olarak: talep başına 400 lira ödüyorsanız, her 5 talepten 1'i müşteriye dönüşüyorsa bir müşterinin reklam maliyeti 2.000 lira oluyor. Bir müşterinin size bıraktığı değer bunun belirgin şekilde üzerindeyse iş yürüyor.
 

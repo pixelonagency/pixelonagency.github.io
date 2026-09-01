@@ -76,6 +76,8 @@ article:
 
         Bu iki örnekte de tek tek işler doğru yapılmış. Eksik olan şey aralarındaki bağ.
 
+        Bağın kurulduğu yer çoğu zaman markanın kendisi oluyor: aynı mesajın her kanalda aynı dille söylenmesi. Bu dilin nasıl tanımlandığını [marka kimliği nedir, neleri kapsar](/blog/marka-kimligi-nedir-neleri-kapsar/) yazısında ele aldık.
+
     - type: section
       id: sizde-kalan
       heading: Ajansla çalışırken işin sizde kalan kısmı
@@ -159,6 +161,8 @@ article:
         Dijital pazarlama ajansı, markanın dijitalde yaptığı işlerin toplamını tek bir plana bağlayan taraftır. İçerik üretmek bu işin görünen yüzü; strateji, web deneyimi, reklam, ölçümleme ve talep takibi ise sonucu belirleyen kısmı.
 
         Bir ajans çalışmasını değerlendirirken bakılacak yer paylaşım sayısı değil, gelen talebin sayısı, niteliği ve maliyeti. Bu üçü ölçülebiliyorsa çalışmanın nereye gittiği de görünür hâle geliyor.
+
+        İhtiyacınız yalnızca sosyal medyaysa kapsam daralıyor; o çerçeveyi [sosyal medya ajansları ne iş yapar](/blog/sosyal-medya-ajanslari-ne-is-yapar/) yazısında ayrı ele aldık. Sağlık gibi mevzuatı ve hasta iletişimi kendine özgü sektörlerde ise çalışma baştan farklı kuruluyor: [sağlık markaları için dijital pazarlama stratejisi](/blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/) yazısı bu farkı anlatıyor, yurt dışından hasta kabul eden klinikler içinse [sağlık turizmi danışmanlığı](/hizmetlerimiz/saglik-turizmi-danismanligi/) ayrı bir hizmet başlığı.
 
     - type: cta
       heading: Markanızın dijital performansını birlikte değerlendirelim.

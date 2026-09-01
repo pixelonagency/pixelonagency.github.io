@@ -90,7 +90,7 @@ article:
       text: |-
         İç bağlantı, yazının içinden sitenizdeki diğer sayfalara verilen bağlantılar. SEO'nun en az emek isteyen ama en çok atlanan tarafı.
 
-        İki işi birden yapıyor. Kullanıcıyı ilgili içeriğe taşıyor ve arama motoruna sayfalar arasındaki ilişkiyi anlatıyor.
+        İki işi birden yapıyor. Kullanıcıyı ilgili içeriğe taşıyor ve arama motoruna sayfalar arasındaki ilişkiyi anlatıyor. Bu ilişkinin arama motoru tarafında neye karşılık geldiğini [SEO nedir, nasıl çalışır](/blog/seo-nedir-nasil-calisir/) yazısındaki tarama ve dizine ekleme bölümünde anlattık.
 
         Bağlantı verirken bağlantı metni önemli. "Buraya tıklayın" hiçbir bilgi taşımıyor; hedef sayfanın konusunu içeren bir ifade taşıyor.
 

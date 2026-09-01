@@ -33,7 +33,7 @@ article:
 
         Aynı çalışma, rekabetsiz bir nişte haftalar içinde sonuç verirken, üzerinde onlarca markanın çalıştığı bir sorguda aylarca görünür değişiklik üretmeyebiliyor.
 
-        İkinci neden, başlangıç noktasının farklı olması. Yeni kurulmuş bir alan adı ile beş yıldır yayında olan bir site aynı yerden başlamıyor.
+        İkinci neden, başlangıç noktasının farklı olması. Yeni kurulmuş bir alan adı ile beş yıldır yayında olan bir site aynı yerden başlamıyor. Farkı yaratan üç katmanı — teknik, içerik ve otorite — [SEO nedir, nasıl çalışır](/blog/seo-nedir-nasil-calisir/) yazısında ayrı ayrı ele aldık; en yavaş oluşan otorite katmanı süreyi en çok uzatan taraf.
 
         Bu yüzden doğru soru "kaç ayda ilk sıraya çıkarız" değil. Doğru soru şu: bu çalışmanın ilerlediğini hangi işaretlerden anlayacağız?
 

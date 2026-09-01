@@ -31,7 +31,7 @@ article:
 
         Panelde tıklama sayısını ve gösterimi görüyorsunuz. Ama tıklayanların kaçının form doldurduğunu, kaçının aradığını bilmiyorsunuz. Dolayısıyla hangi kampanyanın işe yaradığı da bilinmiyor.
 
-        Bunun pratikteki sonucu şu: bütçe, sonuç üreten kampanyadan üretmeyene kaydırılabiliyor ve kimse bunu fark etmiyor.
+        Bunun pratikteki sonucu şu: bütçe, sonuç üreten kampanyadan üretmeyene kaydırılabiliyor ve kimse bunu fark etmiyor. Ölçüm kurulduktan sonra harcamanın karşılığını hesaplamak için [ROAS](/blog/roas-nedir-nasil-hesaplanir/), aylık bütçeyi bu veriye göre belirlemek için de [Google Ads bütçesi nasıl belirlenir](/blog/google-ads-butcesi-nasil-belirlenir/) yazısı devreye giriyor.
 
         İkinci sonuç daha az görünür ama daha maliyetli. Reklam platformları, kendilerine bildirilen dönüşümlerden öğreniyor. Ölçüm kurulu değilse sistem kimin dönüştüğünü bilmiyor ve optimizasyon yapamıyor. Yani ölçüm eksikliği yalnızca raporlamayı değil, performansın kendisini düşürüyor.
 
@@ -154,7 +154,7 @@ article:
 
         Hangi eylemlerin sayılacağını yazıya dökün, etiket yöneticisi üzerinden kurun, reklam platformlarına bağlayın ve her dönüşümü kendiniz test edin.
 
-        Kurulum tamamlandığında bütçe kararları tahmine değil veriye dayanıyor; ve genellikle ilk bulgu, sanılandan farklı bir kanalın talep ürettiği oluyor. Kurulumu ve sonrasındaki kampanya kararlarını [reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) kapsamında birlikte yürütüyoruz.
+        Kurulum tamamlandığında bütçe kararları tahmine değil veriye dayanıyor; ve genellikle ilk bulgu, sanılandan farklı bir kanalın talep ürettiği oluyor. Reklam paneli talebin sayısını gösteriyor, o talebin kaçının müşteriye döndüğünü ise [CRM](/blog/crm-nedir-ne-ise-yarar/) tarafı gösteriyor; ikisi birleştiğinde tablo tamamlanıyor. Kurulumu ve sonrasındaki kampanya kararlarını [reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) kapsamında birlikte yürütüyoruz.
 
     - type: cta
       heading: Ölçüm kurulumunuzu birlikte kontrol edelim.

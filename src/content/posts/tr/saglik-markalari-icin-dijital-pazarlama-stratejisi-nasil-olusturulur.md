@@ -101,6 +101,8 @@ Gösterim ve tıklama sayıları yeterli değildir; WhatsApp mesajı, form doldu
 
 Dentasay için farklı Avrupa ülkelerine yönelik çok dilli reklam kampanyaları, tedavi sayfaları, WhatsApp iletişim akışları ve ülke bazlı içerikler oluşturduk; çalışmanın tamamı [Dentasay vaka çalışmasında](/projelerimiz/dentasay/).
 
+Yurt dışından hasta kabul eden kliniklerde bu sistemin en kritik parçası güven kurma aşaması oluyor; adımlarını [sağlık turizminde uluslararası hasta güveni nasıl kazanılır](/blog/saglik-turizminde-uluslararasi-hasta-guveni-nasil-kazanilir/) yazısında ayrı ele aldık.
+
 **Uygulanan Çözümler**
 
 - Ülke ve dil bazlı reklam kampanyaları

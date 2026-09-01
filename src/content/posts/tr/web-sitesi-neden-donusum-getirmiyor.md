@@ -146,7 +146,7 @@ article:
 
         Buna karşılık site yalnızca eski göründüğü için yenileniyorsa, dönüşüm sorunu yeni tasarımla birlikte devam etme eğiliminde. Çünkü sorun görselde değil, kurguda ve ölçümdeydi.
 
-        Bu yüzden yenileme kararından önce ölçüm verisi toplamak, yeni sitenin neyi farklı yapması gerektiğini de belirliyor.
+        Bu yüzden yenileme kararından önce ölçüm verisi toplamak, yeni sitenin neyi farklı yapması gerektiğini de belirliyor. Karar yenileme yönünde çıktıysa, işi kime vereceğinizi seçerken bakılacakları [web tasarım ajansı seçerken nelere dikkat edilmeli](/blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/) yazısında sıraladık.
 
     - type: faq
       heading: Sık Sorulan Sorular
@@ -169,6 +169,8 @@ article:
         Önce ölçümün kurulu olduğunu doğrulayın, sonra trafiğin niteliğine bakın, ardından mesajın netliğini ve mobil deneyimi test edin. Tasarım müdahalesi bu sıranın sonunda geliyor.
 
         Bu sıra izlendiğinde yapılan her değişikliğin neyi düzelttiği de görülebiliyor. Teşhisten uygulamaya kadar süreci [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) tarafında birlikte yürütüyoruz.
+
+        Bu zincirin kendi sitenizde nerede koptuğunu tek başınıza bulmak zor olabiliyor; [ücretsiz analiz](/ucretsiz-analiz/) tam olarak bu teşhisi çıkarmak için var.
 
     - type: cta
       heading: Sitenizin nerede talep kaybettiğini bulalım.

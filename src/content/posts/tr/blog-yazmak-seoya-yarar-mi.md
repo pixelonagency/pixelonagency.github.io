@@ -29,7 +29,7 @@ article:
       text: |-
         "Blog yazıyoruz ama bir şey değişmedi" cümlesini sık duyuyoruz. Çoğu zaman da doğru bir gözlem.
 
-        Çünkü blogun kendisi bir sonuç üretmiyor. Blog bir araç ve nasıl kurulduğuna göre işe yarıyor ya da yaramıyor.
+        Çünkü blogun kendisi bir sonuç üretmiyor. Blog bir araç ve nasıl kurulduğuna göre işe yarıyor ya da yaramıyor. Arama motorunun neye baktığını anlatan [SEO nedir, nasıl çalışır](/blog/seo-nedir-nasil-calisir/) yazısı bu aracın hangi mekanizmaya bağlandığını açıklıyor.
 
         Kopuk konularda, hizmetle ilgisi olmayan, birbirine bağlanmayan yazılar üretmek gerçekten zaman kaybı. Sitede sayfa sayısı artıyor ama hiçbiri talep üretmiyor.
 
@@ -64,6 +64,8 @@ article:
         Bu yapının tek tek yazılan bağımsız yazılardan farkı şu: küme içindeki her yeni yazı, kümedeki diğer yazıları da güçlendiriyor. Tek başına duran bir yazı ise yalnızca kendi sorgusuna hizmet ediyor.
 
         Bu sitedeki blog da bu mantıkla kurgulanıyor. Web tasarımı, dijital reklam ve SEO başlıkları ayrı kümeler oluşturuyor ve küme içindeki yazılar birbirine bağlanıyor.
+
+        Kümedeki tek tek yazıların nasıl yazılacağını [SEO uyumlu blog yazısı nasıl yazılır](/blog/seo-uyumlu-blog-yazisi-nasil-yazilir/) yazısında, kümenin ne zaman meyve vermeye başladığını ise [SEO ne kadar sürede sonuç verir](/blog/seo-ne-kadar-surede-sonuc-verir/) yazısında ele aldık.
 
     - type: callout
       variant: note

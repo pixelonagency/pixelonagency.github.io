@@ -188,6 +188,15 @@ brands that do well are the ones that move the effort into the creative, the
 landing page and the response process, and that measure qualified enquiries
 rather than impressions.
 
+Advertising is only one channel, though, and it performs best when the site,
+content and follow-up around it are planned together — we set out that wider
+picture in
+[how to build a digital marketing strategy for healthcare brands](/en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands/).
+For clinics treating patients who travel in from abroad, the decisive factor is
+usually trust rather than reach:
+[how to earn international patient trust in health tourism](/en/blog/how-to-earn-international-patient-trust-in-health-tourism/)
+covers that side.
+
 If you want a look at how your current campaigns handle these constraints, our
 [healthcare marketing](/en/services/healthcare-marketing/) and
 [digital advertising](/en/services/digital-advertising/) teams work together on

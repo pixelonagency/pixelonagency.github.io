@@ -44,7 +44,7 @@ article:
       text: |-
         Bu başlıkların her biri tek başına da yürütülebilir. Ancak sonuç üreten yapı, hepsinin aynı hedefe bağlı çalıştığı yapıdır: strateji içerik planını belirler, içerik reklamın kreatifini besler, reklam verisi bir sonraki ayın içerik kararlarını değiştirir.
 
-        Aşağıda bir sosyal medya ajansının yürüttüğü altı temel süreç yer alıyor.
+        Aşağıda bir sosyal medya ajansının yürüttüğü altı temel süreç yer alıyor. Bu altı sürecin sosyal medyayla sınırlı olmayan geniş hâlini [dijital pazarlama ajansı ne iş yapar](/blog/dijital-pazarlama-ajansi-ne-is-yapar/) yazısında ele aldık.
 
     - type: cards
       items:
@@ -147,6 +147,8 @@ article:
         Pixelon olarak [sosyal medya yönetimini](/hizmetlerimiz/sosyal-medya-yonetimi/) yalnızca içerik paylaşımı olarak ele almıyoruz. Markanın hedeflerini, hedef kitlesini, sektörünü ve mevcut dijital performansını analiz ederek işe başlıyoruz.
 
         Sosyal medya yönetimini; yaratıcı içerik, performans reklamları, [video üretimi](/hizmetlerimiz/sosyal-medya-yonetimi/), [web deneyimi](/hizmetlerimiz/web-tasarim-ve-yazilim/) ve ölçümleme süreçleriyle birlikte değerlendiriyoruz. Böylece sosyal medya faaliyetleri markanın genel dijital büyüme stratejisinin bir parçası haline geliyor.
+
+        Erişim tarafında en çok yaslandığımız format kısa video; nedenini ve üretimin nasıl sürdürülebilir kılındığını [Reels ile marka büyütme](/blog/reels-ile-marka-buyutme/) yazısında ayrıntılı anlattık.
 
     - type: process
       steps:

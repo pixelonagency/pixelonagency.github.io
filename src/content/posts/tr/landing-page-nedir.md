@@ -173,6 +173,8 @@ article:
 
         Sayfanın işe yarayıp yaramadığını görmenin tek yolu ise ölçümlemenin baştan bağlanmış olması.
 
+        Sayfaya ne kadar bütçe göndereceğinizi [Google Ads bütçesi nasıl belirlenir](/blog/google-ads-butcesi-nasil-belirlenir/) yazısındaki hesapla çıkarabilirsiniz; mevcut sayfanızın nerede talep kaybettiğini görmek isterseniz [ücretsiz analiz](/ucretsiz-analiz/) bu teşhisi içeriyor.
+
     - type: cta
       heading: Kampanyanız için doğru sayfayı kuralım.
       text: Reklam bütçenizin nerede kaybolduğunu ve hangi sayfanın hangi mesajla kurulması gerektiğini birlikte çıkaralım.

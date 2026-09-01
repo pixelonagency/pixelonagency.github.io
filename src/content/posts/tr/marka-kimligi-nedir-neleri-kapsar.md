@@ -160,6 +160,8 @@ article:
 
         Çalışmanın başarısını ölçen soru da basit: farklı kişilerin ürettiği işler aynı markadan çıkmış gibi duruyor mu? Bu tutarlılığı kurmak, [marka ve kurumsal kimlik](/hizmetlerimiz/marka-ve-kurumsal-kimlik/) çalışmalarımızın çıkış noktası.
 
+        Kimliğin günlük olarak en çok sınandığı yer sosyal medya; aynı dilin orada nasıl korunduğunu [Instagram'da marka nasıl büyütülür](/blog/instagramda-marka-nasil-buyutulur/) yazısında ele aldık. Kurduğumuz kimliklerin canlı hâllerini ise [referanslarımız](/referanslarimiz/) sayfasında görebilirsiniz.
+
     - type: cta
       heading: Markanızın kimliğini birlikte kuralım.
       text: Mevcut görsel dilinizi inceleyip konumlandırmadan uygulama kurallarına kadar eksik kalan katmanları çıkaralım.

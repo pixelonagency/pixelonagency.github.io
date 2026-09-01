@@ -97,7 +97,7 @@ article:
 
         İkincisi, tekrar eden format kurmak. Aynı kalıpta üretilen bir seri hem izleyici tarafından tanınıyor hem üretimi kolaylaştırıyor; her seferinde yeni bir kurgu düşünmek gerekmiyor.
 
-        Üçüncüsü, mevcut içerikten türetmek. Bir blog yazısındaki her ana başlık bir video konusu olabiliyor. Bu yaklaşım fikir üretme yükünü ortadan kaldırıyor.
+        Üçüncüsü, mevcut içerikten türetmek. Bir blog yazısındaki her ana başlık bir video konusu olabiliyor. Bu yaklaşım fikir üretme yükünü ortadan kaldırıyor. Konuları haftalara dağıtmanın yolunu [sosyal medya içerik takvimi nasıl hazırlanır](/blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir/) yazısında anlattık; takvim kurulduğunda Reels üretimi tek tek karar vermeyi gerektirmiyor.
 
         Dördüncüsü, mükemmeliyetten vazgeçmek. Profesyonel prodüksiyon her video için gerekli değil; telefonla çekilmiş içerikler çoğu zaman daha iyi performans gösteriyor. Yüksek prodüksiyon, [video ve prodüksiyon](/hizmetlerimiz/sosyal-medya-yonetimi/) tarafında marka filmi gibi belirli işler için anlamlı.
 
@@ -157,7 +157,7 @@ article:
 
         Performansı belirleyen iki şey var: ilk saniyede durdurmak ve sonuna kadar izletmek. Uzun ve yarıda bırakılan video, kısa ve tam izlenenin gerisinde kalıyor.
 
-        Ama izlenme tek başına marka büyütmüyor. İzleyeni profile, profildeki kişiyi iletişime taşıyan yol kurulmadığında yüksek izlenme sadece bir rakam olarak kalıyor.
+        Ama izlenme tek başına marka büyütmüyor. İzleyeni profile, profildeki kişiyi iletişime taşıyan yol kurulmadığında yüksek izlenme sadece bir rakam olarak kalıyor. O yolun profil tarafını [Instagram'da marka nasıl büyütülür](/blog/instagramda-marka-nasil-buyutulur/) yazısında, üretimin tamamını dışarıya vermenin ne anlama geldiğini ise [sosyal medya ajansları ne iş yapar](/blog/sosyal-medya-ajanslari-ne-is-yapar/) yazısında ele aldık.
 
     - type: cta
       heading: Video içerik planınızı birlikte kuralım.

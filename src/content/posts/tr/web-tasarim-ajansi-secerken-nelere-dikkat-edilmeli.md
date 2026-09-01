@@ -10,7 +10,7 @@ author: Pixelon Ekibi
 status: published
 featured: false
 seo:
-  title: 'Web Tasarım Ajansı Seçerken Nelere Dikkat Edilmeli? | Pixelon'
+  title: 'Web Tasarım Ajansı Seçerken Nelere Dikkat Edilir? | Pixelon'
   description: 'Web tasarım ajansı seçiminde bakılması gereken kriterler: portfolyo okuma, kapsam netliği, teslim sonrası destek, sahiplik ve kırmızı bayraklar.'
 article:
   updated: 2026-08-21
@@ -69,7 +69,7 @@ article:
 
         İkinci adım, işin arkasındaki kararı sormak. "Bu projede neyi çözdünüz?" sorusuna verilen cevap, ajansın işi estetik bir teslim olarak mı yoksa bir problem çözümü olarak mı gördüğünü gösteriyor.
 
-        Bizim [projelerimiz](/projelerimiz/) sayfasında her işin yanında hangi ihtiyaçtan yola çıkıldığını da yazmamızın nedeni bu: ekran görüntüsü tek başına bir şey anlatmıyor.
+        Bizim [projelerimiz](/projelerimiz/) sayfasında her işin yanında hangi ihtiyaçtan yola çıkıldığını da yazmamızın nedeni bu: ekran görüntüsü tek başına bir şey anlatmıyor. Aynı soruyu birlikte çalıştığımız markalara sorabilirsiniz; kimlerle çalıştığımızı [referanslarımız](/referanslarimiz/) sayfasında topladık.
 
     - type: table
       heading: Görüşmede sorulacak sorular ve cevapların okunması
@@ -102,7 +102,7 @@ article:
 
     - type: process
       heading: Sağlıklı bir seçim süreci nasıl ilerler?
-      intro: Üç ajanstan teklif almak yeterli; asıl fark teklifleri nasıl karşılaştırdığınızda ortaya çıkıyor.
+      intro: 'Üç ajanstan teklif almak yeterli; asıl fark teklifleri nasıl karşılaştırdığınızda ortaya çıkıyor. Rakamların neye göre değiştiğini önceden bilmek bu karşılaştırmayı kolaylaştırıyor: kalemleri [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında tek tek açtık.'
       steps:
         - title: İhtiyacı yazıya dökün
           text: Sitenin kimin için olduğunu, hangi sayfaların gerektiğini ve ziyaretçiden beklenen adımı bir sayfada toplayın. Aynı metni her ajansa vermek, teklifleri kıyaslanabilir hâle getiriyor.
@@ -162,6 +162,8 @@ article:
         Portfolyoyu canlıda test edin, kapsamı yazılı isteyin, içerik ve sahiplik sorumluluğunu netleştirin, teslim sonrasını konuşun. Bu dört adımı yapan işletmelerin proje ortasında sürpriz yaşama ihtimali belirgin şekilde düşüyor.
 
         Fiyat elbette bir kriter; ama kapsam netleşmeden bakıldığında yanıltıcı bir kriter.
+
+        İhtiyacınız yalnızca siteyle sınırlı değilse, tek bir ajansın hangi işleri birlikte yürüttüğünü [dijital pazarlama ajansı ne iş yapar](/blog/dijital-pazarlama-ajansi-ne-is-yapar/) yazısında ele aldık.
 
     - type: cta
       heading: İhtiyacınızı birlikte netleştirelim.

@@ -48,6 +48,8 @@ article:
 
         Buna karşılık çalışan kreatiflerin ortak özelliği genellikle şu: ilk karede bir sorun, bir sonuç ya da tanıdık bir durum gösteriyorlar.
 
+        Aynı durdurma mantığı organik tarafta da geçerli; kısa videonun bunu nasıl değiştirdiğini [Reels ile marka büyütme](/blog/reels-ile-marka-buyutme/) yazısında ele aldık. Organikte tutan bir format, reklamda da genellikle en iyi başlangıç kreatifi oluyor.
+
     - type: checklist
       heading: Kreatif kontrol listesi
       items:
@@ -158,6 +160,8 @@ article:
         Önce ölçümün kurulu olduğunu doğrulayın, sonra trafiğin indiği sayfayı reklamla aynı vaade getirin, ardından kreatifi çoğaltın. Kitle ayarı bu üçünden sonra geliyor.
 
         Ve kampanya öğrenme aşamasındayken en verimli müdahale, müdahale etmemek. Bu sabrı süreç hâline getirmeyi [dijital reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) tarafında ayrı bir disiplin olarak ele alıyoruz.
+
+        Bu maddelerin hepsi düzeltildiği hâlde sonuç gelmiyorsa, sorun kurguda değil platform seçiminde olabilir; iki kanalın hangi işe uyduğunu [Google Ads mi Meta Ads mi](/blog/google-ads-mi-meta-ads-mi/) yazısında karşılaştırdık.
 
     - type: cta
       heading: Kampanyanızı birlikte gözden geçirelim.

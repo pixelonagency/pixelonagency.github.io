@@ -40,7 +40,7 @@ article:
       heading: Bütçeyi belirleyen üç veri
       lead: Google Ads bütçesi ortalama tıklama maliyeti, sitenin dönüşüm oranı ve bir müşterinin işletmeye değeri olmak üzere üç veriden hesaplanır.
       text: |-
-        Bu üçünden ikisi platformdan, biri sizden geliyor.
+        Bu üçünden ikisi platformdan, biri sizden geliyor. Bütçenin hangi platforma ayrılacağına henüz karar vermediyseniz [Google Ads mi Meta Ads mi](/blog/google-ads-mi-meta-ads-mi/) yazısı bu kararı önce netleştiriyor; rakamı ondan sonra hesaplamak daha isabetli oluyor.
 
     - type: cards
       items:
@@ -66,6 +66,8 @@ article:
         Son adım, sonucu kontrol etmek: 10.000 lira bölü 20 talep, talep başına 500 lira demek. Bir müşterinin size bıraktığı değer bunun belirgin şekilde üzerindeyse hesap tutuyor. Değilse ya dönüşüm oranını yükseltmek ya hedefi küçültmek gerekiyor.
 
         Buradaki rakamlar örnek. Kendi rakamlarınızı yerine koyduğunuzda çıkan sayı, tahmin değil hesap oluyor.
+
+        E-ticaret gibi satışın sitede tamamlandığı işlerde aynı hesap ciro üzerinden de yapılabiliyor; formülü ve başabaş eşiğini [ROAS nedir, nasıl hesaplanır](/blog/roas-nedir-nasil-hesaplanir/) yazısında ele aldık.
 
     - type: callout
       variant: tip

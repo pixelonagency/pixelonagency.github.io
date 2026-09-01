@@ -54,7 +54,7 @@ article:
       id: uc-ayak
       heading: SEO'nun üç ayağı
       text: |-
-        Çalışmanın tamamı üç başlıkta toplanıyor. Üçü birlikte çalışmadığında sonuç gelmiyor.
+        Çalışmanın tamamı üç başlıkta toplanıyor. Üçü birlikte çalışmadığında sonuç gelmiyor. İçerik ayağının pratikte nasıl uygulandığını [SEO uyumlu blog yazısı nasıl yazılır](/blog/seo-uyumlu-blog-yazisi-nasil-yazilir/) yazısında adım adım anlattık.
 
     - type: cards
       items:

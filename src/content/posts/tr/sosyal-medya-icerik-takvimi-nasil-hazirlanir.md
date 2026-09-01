@@ -60,6 +60,8 @@ article:
 
         Sütunlar belirlendiğinde "ne paylaşsak" sorusu ortadan kalkıyor; yerine "bu sütun için bu ay hangi konu" sorusu geçiyor. İkincisini cevaplamak çok daha kolay.
 
+        Sütunların hangi formata döküleceği de takvimde belirleniyor. Yeni kitleye ulaşmayı hedefleyen sütunlar için [Reels](/blog/reels-ile-marka-buyutme/), mevcut takipçiyi karara taşıyanlar için ise [Instagram profilinin kendisi](/blog/instagramda-marka-nasil-buyutulur/) belirleyici oluyor.
+
     - type: cards
       heading: Sık kullanılan içerik sütunları
       items:
