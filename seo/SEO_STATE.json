@@ -2,8 +2,8 @@
   "version": 1,
   "mode": "AUTONOMOUS_GROWTH",
   "site": "https://pixelon.com.tr",
-  "lastRun": "2026-08-30T03:00:08.171Z",
-  "lastSuccessfulRun": "2026-08-30T03:00:08.171Z",
+  "lastRun": "2026-09-01T00:54:21.539Z",
+  "lastSuccessfulRun": "2026-09-01T00:54:21.539Z",
   "currentPhase": "PHASE_16_AUTOMATION",
   "phasesCompleted": [
     "PHASE_0_DISCOVERY",
@@ -58,10 +58,10 @@
     "SEO-2026-0061"
   ],
   "nextTaskIdCounter": 115,
-  "lastGSCFetch": "2026-08-30T03:01:16.112Z",
-  "lastSemrushFetch": "2026-08-30T03:01:16.116Z",
+  "lastGSCFetch": "2026-09-01T00:54:24.876Z",
+  "lastSemrushFetch": "2026-09-01T00:54:24.877Z",
   "lastCompetitorAnalysis": "2026-08-21",
-  "lastTechnicalAudit": "2026-08-30",
+  "lastTechnicalAudit": "2026-09-01",
   "lastContentPublish": "2026-08-21",
   "lastContentRefresh": null,
   "technicalHealth": {
@@ -111,7 +111,7 @@
     }
   ],
   "dataSources": {
-    "checkedAt": "2026-08-30T03:01:16.116Z",
+    "checkedAt": "2026-09-01T00:54:24.877Z",
     "googleSearchConsole": true,
     "semrush": true,
     "liveSerp": true,
@@ -154,21 +154,21 @@
     "knownIssue": "Ağustos 2026 blog görsellerinde #C8F04B kullanıldı; doğrusu #cfff00"
   },
   "gscSummary": {
-    "clicks": 25,
-    "impressions": 2154,
-    "ctr": 1.16,
-    "avgPosition": 27.7,
-    "queryCount": 146,
-    "pageCount": 111,
-    "days": 28,
-    "rangeStart": "2026-07-31",
-    "rangeEnd": "2026-08-27"
+    "clicks": 15,
+    "impressions": 1701,
+    "ctr": 0.88,
+    "avgPosition": 24.9,
+    "queryCount": 127,
+    "pageCount": 90,
+    "days": 7,
+    "rangeStart": "2026-08-23",
+    "rangeEnd": "2026-08-29"
   },
   "opportunityCounts": {
-    "quickWin": 14,
-    "strikingDistance": 20,
+    "quickWin": 13,
+    "strikingDistance": 25,
     "ctrOpportunity": 0,
-    "highPriority": 34
+    "highPriority": 38
   },
   "overnight": {
     "date": "2026-08-22",
