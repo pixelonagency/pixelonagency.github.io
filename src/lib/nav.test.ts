@@ -1,5 +1,15 @@
 import { describe, expect, test } from 'bun:test';
-import { buildServicesNav, isActiveRoute, menuServices, PRIMARY_NAV, serviceHref } from './nav';
+import { buildServicesNav, isActiveRoute, menuServices, serviceHref } from './nav';
+import { buildPrimaryNav } from './ui';
+
+/*
+ * Testler ÜRETİMİN OKUDUĞU kaynağı ölçer. Daha önce `nav.ts` içinde ayrı bir
+ * `PRIMARY_NAV` sabiti vardı ve yalnızca bu dosya onu okuyordu; header ise
+ * `buildPrimaryNav()` kullanıyordu. İkisi zamanla ayrıştı ve sabit, kırık
+ * `/projelerimiz/#referanslar` bağlantısını taşımaya devam etti — testler yeşil
+ * kalırken üretimde başka bir şey yayınlanıyordu. Sabit kaldırıldı (1 Eyl 2026).
+ */
+const PRIMARY_NAV = buildPrimaryNav('tr');
 
 describe('serviceHref', () => {
   test('nests a service slug under /hizmetlerimiz', () => {
@@ -56,6 +66,30 @@ describe('PRIMARY_NAV', () => {
       // Kanonik biçim: yol kısmı eğik çizgiyle biter, aksi halde her tıklama 301 harcar.
       expect(item.href.split('#')[0]?.endsWith('/')).toBe(true);
     }
+  });
+
+  test('hiçbir menü girdisi çapaya bağlanmaz', () => {
+    /*
+     * Çapa, ana menüde SESSİZCE kırılan tek bağlantı türü: hedef bölüm yeniden
+     * adlandırılınca ya da kaldırılınca bağlantı 404 vermez, sayfayı açar ve hiçbir
+     * şey yapmaz — kimse fark etmez.
+     *
+     * "Referanslarımız" tam olarak böyle kırılmıştı: `/projelerimiz/#referanslar`
+     * adresini gösteriyordu ama `#referanslar` çapası o sayfada YOKTU (1 Eyl 2026'da
+     * ölçüldü; sayfadaki id'ler: iletisim, main, projeler ve menü düğmeleri). Üstelik
+     * ayrı bir `/referanslarimiz/` sayfası vardı ve ana menüden hiç bağlantı almıyordu —
+     * yalnızca footer'dan erişilebiliyordu.
+     *
+     * Bir bölüme değil SAYFAYA bağlanmak bu hatayı yapısal olarak imkânsız kılıyor.
+     */
+    const withAnchor = PRIMARY_NAV.filter((item) => item.href.includes('#')).map(
+      (item) => `${item.label} → ${item.href}`,
+    );
+    expect(withAnchor).toEqual([]);
+  });
+
+  test('Referanslarımız kendi sayfasına gider', () => {
+    expect(PRIMARY_NAV.find((item) => item.label === 'Referanslarımız')?.href).toBe('/referanslarimiz/');
   });
 });
 

@@ -3,9 +3,10 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import logo from '../assets/logo/pixelon-logo.webp';
-import { DEFAULT_LOCALE, languageSwitcherLocales, localizedPath, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
 import { buildPrimaryNav, serviceHref, t } from '../lib/ui';
 import { isActiveRoute, menuServices } from '../lib/nav';
+import LangSwitch from './LangSwitch.astro';
 
 interface Props {
   locale?: Locale;
@@ -19,7 +20,6 @@ interface Props {
 }
 
 const { locale = DEFAULT_LOCALE, alternates = {} } = Astro.props;
-const switcherLocales = languageSwitcherLocales(locale, alternates);
 
 const allServices = await getCollection('services');
 const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
@@ -37,9 +37,6 @@ const serviceLinks = menuServices(scoped).map((entry) => ({
 
 const PRIMARY_NAV = buildPrimaryNav(locale);
 const currentPath = Astro.url.pathname;
-
-/* Referans tasarımda dil seçici bayrak emojisiyle basılır. */
-const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
 ---
 
 <header class="site-header">
@@ -99,29 +96,8 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
     </nav>
 
     <div class="site-header__actions">
-      <div class="lang-switch" data-hide-mobile>
-        {
-          switcherLocales.map((code, index) => (
-            <>
-              {index > 0 && (
-                <span class="lang-switch__sep" aria-hidden="true">
-                  /
-                </span>
-              )}
-              {code === locale ? (
-                <span class="lang-switch__item lang-switch__item--active" aria-current="true">
-                  <span aria-hidden="true">{FLAGS[code]}</span>
-                  {code.toUpperCase()}
-                </span>
-              ) : (
-                <a class="lang-switch__item" href={alternates[code] ?? localizedPath('home', code)} hreflang={code}>
-                  <span aria-hidden="true">{FLAGS[code]}</span>
-                  {code.toUpperCase()}
-                </a>
-              )}
-            </>
-          ))
-        }
+      <div data-hide-mobile>
+        <LangSwitch {locale} {alternates} />
       </div>
 
       <a href={localizedPath('analysis', locale)} class="btn btn--primary btn--sm">{t('nav.analysis', locale)}</a>
@@ -162,9 +138,14 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
       ))
     }
     <a href={localizedPath('projects', locale)} class="mnav-panel__link">{t('nav.projects', locale)}</a>
-    <a href={`${localizedPath('projects', locale)}#referanslar`} class="mnav-panel__link"
-      >{t('nav.references', locale)}</a
-    >
+    {
+      /*
+      Kendi sayfasına — çapaya DEĞİL. Eskiden `#referanslar` çapasını gösteriyordu ama o
+      çapa projeler sayfasında yoktu; İngilizce menüde ise Türkçe çapa kullanılıyordu.
+      İkisi de sessizce hiçbir şey yapmıyordu (1 Eyl 2026).
+    */
+    }
+    <a href={localizedPath('references', locale)} class="mnav-panel__link">{t('nav.references', locale)}</a>
     <a href={localizedPath('blog', locale)} class="mnav-panel__link">{t('nav.blog', locale)}</a>
     <a href={localizedPath('careers', locale)} class="mnav-panel__link">{t('nav.careers', locale)}</a>
     <a href={localizedPath('contact', locale)} class="mnav-panel__link mnav-panel__link--last"
@@ -172,6 +153,17 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
     >
   </nav>
   <a href={localizedPath('analysis', locale)} class="btn btn--primary mnav-panel__cta">{t('nav.analysis', locale)}</a>
+
+  {
+    /*
+    Dil seçici panelde de durur: header'daki kopya `[data-hide-mobile]` ile ≤720 px'te
+    gizleniyor ve telefonda siteyi İngilizceye çevirmenin başka yolu kalmıyordu.
+  */
+  }
+  <div class="mnav-panel__lang">
+    <span class="mnav-panel__lang-label">{t('nav.language', locale)}</span>
+    <LangSwitch {locale} {alternates} variant="panel" />
+  </div>
 </div>
 
 <style>
@@ -376,46 +368,6 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
   }
 
   /* --- Dil seçici --- */
-  .lang-switch {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font: 600 13px var(--font-display);
-  }
-
-  .lang-switch__item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    /* Dokunma hedefi: bayrak+kod tek başına ~20px yükseklik veriyordu
-       (WCAG 2.2 AA asgari 24px). */
-    padding-block: 4px;
-    /* Pasif dil soluk beyaz; etkin dil lime (referans). */
-    color: rgba(255, 255, 255, 0.55);
-    transition: color var(--t-base);
-  }
-
-  a.lang-switch__item:hover {
-    color: var(--text);
-  }
-
-  .lang-switch__item span {
-    font-size: 15px;
-  }
-
-  .lang-switch__item--active {
-    color: var(--accent);
-  }
-
-  .lang-switch__item--soon {
-    color: rgba(255, 255, 255, 0.55);
-    cursor: default;
-  }
-
-  .lang-switch__sep {
-    color: rgba(255, 255, 255, 0.3);
-  }
 
   /* --- Mobil menü --- */
   .mnav-btn {
@@ -496,6 +448,22 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
 
   .mnav-panel__cta {
     margin-top: 24px;
+  }
+
+  .mnav-panel__lang {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mnav-panel__lang-label {
+    font: 600 12px var(--font-display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
   }
 
   @media (max-width: 1020px) {

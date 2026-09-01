@@ -11,16 +11,6 @@ export interface ServiceNavEntry {
   data: { navLabel: string; order: number };
 }
 
-/** Header ve mobil menüdeki ana gezinme — referans tasarımdaki sırayla. */
-export const PRIMARY_NAV: readonly NavItem[] = [
-  { label: 'Biz Kimiz?', href: '/biz-kimiz/' },
-  { label: 'Hizmetlerimiz', href: '/hizmetlerimiz/', hasDropdown: true },
-  { label: 'Projelerimiz', href: '/projelerimiz/' },
-  { label: 'Referanslarımız', href: '/projelerimiz/#referanslar' },
-  // Kariyer bilerek YOK: üst menüyü kısa tutmak için yalnız footer ve mobil menüde durur.
-  { label: 'İletişim', href: '/iletisim/' },
-];
-
 /** Bir hizmet slug'ının route'u — kanonik biçimde (sonda eğik çizgi). */
 export function serviceHref(slug: string): string {
   return internalHref(`/hizmetlerimiz/${slug}`);

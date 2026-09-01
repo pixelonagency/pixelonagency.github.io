@@ -27,6 +27,7 @@ const STRINGS = {
   'nav.skipToContent': { tr: 'İçeriğe geç', en: 'Skip to content' },
   'nav.breadcrumb': { tr: 'Site haritası', en: 'Breadcrumb' },
   'nav.logoHome': { tr: 'Pixelon ana sayfa', en: 'Pixelon home' },
+  'nav.language': { tr: 'Dil', en: 'Language' },
 
   'brand.logoAlt': {
     tr: 'Pixelon 360 dijital pazarlama ajansı logosu',

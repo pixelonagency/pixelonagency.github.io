@@ -1,0 +1,120 @@
+---
+/**
+ * Dil seçici.
+ *
+ * Header'ın eylem satırında ve mobil menü panelinde AYNI bileşen kullanılır. Daha önce
+ * yalnızca header'da vardı ve `[data-hide-mobile]` ile ≤720 px'te gizleniyordu — yani
+ * telefonda siteyi İngilizceye çevirmenin hiçbir yolu yoktu (1 Eyl 2026).
+ *
+ * Seçici, karşılığı olmayan sayfalarda HİÇ çizilmez: `languageSwitcherLocales` yalnızca
+ * gerçekten var olan çevirileri döndürür, böylece kullanıcı 404'e ya da alakasız bir
+ * sayfaya gönderilmez (gerekçe: `src/lib/i18n.ts`).
+ */
+import { languageSwitcherLocales, localizedPath, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  alternates?: Partial<Record<Locale, string>>;
+  /** `panel` = mobil menü içindeki büyük dokunma hedefli varyant. */
+  variant?: 'bar' | 'panel';
+  class?: string;
+}
+
+const { locale, alternates = {}, variant = 'bar', class: className } = Astro.props;
+const switcherLocales = languageSwitcherLocales(locale, alternates);
+
+/* Referans tasarımda dil seçici bayrak emojisiyle basılır. */
+const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
+---
+
+{
+  switcherLocales.length > 1 && (
+    <div class:list={['lang-switch', variant === 'panel' && 'lang-switch--panel', className]}>
+      {switcherLocales.map((code, index) => (
+        <>
+          {index > 0 && variant === 'bar' && (
+            <span class="lang-switch__sep" aria-hidden="true">
+              /
+            </span>
+          )}
+          {code === locale ? (
+            <span class="lang-switch__item lang-switch__item--active" aria-current="true">
+              <span aria-hidden="true">{FLAGS[code]}</span>
+              {code.toUpperCase()}
+            </span>
+          ) : (
+            <a class="lang-switch__item" href={alternates[code] ?? localizedPath('home', code)} hreflang={code}>
+              <span aria-hidden="true">{FLAGS[code]}</span>
+              {code.toUpperCase()}
+            </a>
+          )}
+        </>
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font: 600 13px var(--font-display);
+  }
+
+  .lang-switch__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    /* Dokunma hedefi: bayrak+kod tek başına ~20px yükseklik veriyordu
+       (WCAG 2.2 AA asgari 24px). */
+    padding-block: 4px;
+    /* Pasif dil soluk beyaz; etkin dil lime (referans). */
+    color: rgba(255, 255, 255, 0.55);
+    transition: color var(--t-base);
+  }
+
+  a.lang-switch__item:hover {
+    color: var(--text);
+  }
+
+  .lang-switch__item span {
+    font-size: 15px;
+  }
+
+  .lang-switch__item--active {
+    color: var(--accent);
+  }
+
+  .lang-switch__sep {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  /*
+   * Panel varyantı: menüde parmakla seçilecek, o yüzden ayırıcı yerine kutu.
+   * Yükseklik 44 px — WCAG asgarisi 24 px, ama bir menü öğesi için rahat hedef bu.
+   */
+  .lang-switch--panel {
+    gap: 10px;
+    font-size: 15px;
+  }
+
+  .lang-switch--panel .lang-switch__item {
+    flex: 1;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-pill);
+  }
+
+  .lang-switch--panel .lang-switch__item--active {
+    border-color: var(--accent);
+    background: rgb(207 255 0 / 10%);
+  }
+
+  .lang-switch--panel a.lang-switch__item:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+</style>
