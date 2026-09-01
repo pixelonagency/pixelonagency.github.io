@@ -28,6 +28,15 @@ const STRINGS = {
   'nav.breadcrumb': { tr: 'Site haritası', en: 'Breadcrumb' },
   'nav.logoHome': { tr: 'Pixelon ana sayfa', en: 'Pixelon home' },
   'nav.language': { tr: 'Dil', en: 'Language' },
+  'nav.portfolio': { tr: 'Portfolyo', en: 'Portfolio' },
+  'portfolio.eyebrow': { tr: 'Sunum', en: 'Deck' },
+  'portfolio.heading': { tr: 'Portfolyo 2023–2026', en: 'Portfolio 2023–2026' },
+  'portfolio.lead': {
+    tr: 'Üç yılda 100+ marka için ürettiğimiz işlerin tamamı. Sayfalar aşağıya doğru akar; istediğiniz yerde durabilirsiniz.',
+    en: 'Everything we produced for 100+ brands over three years. Pages flow downward — stop wherever you like.',
+  },
+  'portfolio.pageOf': { tr: 'Sayfa', en: 'Page' },
+  'portfolio.toTop': { tr: 'Başa dön', en: 'Back to top' },
 
   'brand.logoAlt': {
     tr: 'Pixelon 360 dijital pazarlama ajansı logosu',
@@ -253,6 +262,7 @@ export function buildPrimaryNav(locale: Locale): NavItem[] {
     item('nav.about', 'about'),
     item('nav.services', 'services', { hasDropdown: true }),
     item('nav.projects', 'projects'),
+    item('nav.portfolio', 'portfolio'),
     { label: t('nav.references', locale), href: localizedPath('references', locale) },
     // Kariyer bilerek YOK: üst menüyü kısa tutmak için yalnız footer ve mobil menüde durur.
     item('nav.contact', 'contact'),

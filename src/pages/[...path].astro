@@ -8,6 +8,7 @@ import PostDetail from '../components/PostDetail.astro';
 import ProjectDetail from '../components/ProjectDetail.astro';
 import ServiceDetail from '../components/ServiceDetail.astro';
 import { categoriesWithPages, categoryPath } from '../lib/blog-categories';
+import PortfolioViewer from '../components/PortfolioViewer.astro';
 import {
   alternatesFor,
   DEFAULT_LOCALE,
@@ -143,6 +144,18 @@ export const getStaticPaths = (async () => {
     }
   }
 
+  // --- Portfolyo sunumu ---
+  //
+  // İçerik koleksiyondan gelmez: 105 sayfa görseli `public/media/portfolyo/` altında
+  // duruyor ve listeyi `src/lib/portfolio.ts` üretiyor. İki dilde de aynı sayfalar
+  // gösterilir — sunum görsel bir belge, çevirisi yok.
+  for (const locale of LOCALES) {
+    paths.push({
+      params: { path: toParam(localizedPath('portfolio', locale)) },
+      props: { kind: 'portfolio', locale, alternates: alternatesFor('portfolio') },
+    });
+  }
+
   // --- Yasal metinler (`legal` koleksiyonu; dosya adı = ROUTE_SLUGS anahtarı) ---
   for (const entry of legal) {
     const { locale, key } = splitId(entry.id);
@@ -157,7 +170,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const props = Astro.props as {
-  kind: 'page' | 'service' | 'post' | 'project' | 'legal' | 'category';
+  kind: 'page' | 'service' | 'post' | 'project' | 'legal' | 'category' | 'portfolio';
   locale: Locale;
   alternates: Partial<Record<Locale, string>>;
   pageKey?: PageKey;
@@ -177,6 +190,7 @@ const { kind, locale = DEFAULT_LOCALE, alternates } = props;
 {kind === 'post' && props.post && <PostDetail post={props.post} {locale} {alternates} />}
 {kind === 'project' && props.project && <ProjectDetail project={props.project} {locale} {alternates} />}
 {kind === 'legal' && props.legal && <LegalPage entry={props.legal} {locale} {alternates} />}
+{kind === 'portfolio' && <PortfolioViewer {locale} {alternates} />}
 {
   kind === 'category' && props.category && (
     <BlogCategory group={props.category} others={props.others ?? []} {locale} {alternates} />

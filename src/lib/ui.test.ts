@@ -84,6 +84,7 @@ describe('buildPrimaryNav', () => {
       'Biz Kimiz?',
       'Hizmetlerimiz',
       'Projelerimiz',
+      'Portfolyo',
       'Referanslarımız',
       'İletişim',
     ]);
@@ -94,6 +95,7 @@ describe('buildPrimaryNav', () => {
       'About Us',
       'Services',
       'Projects',
+      'Portfolio',
       'References',
       'Contact',
     ]);

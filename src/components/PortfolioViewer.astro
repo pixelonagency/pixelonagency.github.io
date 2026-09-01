@@ -1,0 +1,196 @@
+---
+/**
+ * Portfolyo sunumu görüntüleyicisi.
+ *
+ * PDF DEĞİL, sayfa görselleri — gerekçe `src/lib/portfolio.ts` başında. Özet: PDF tek
+ * dosyadır ve tamamı inmeden ilk sayfa bile görünmez; 105 ayrı WebP'de ilk ekran ~150 KB
+ * ve gerisi kaydırdıkça gelir.
+ *
+ * Görseller `astro:assets` yerine `public/media/` altında duruyor: zaten optimize
+ * edildiler (1240 px WebP) ve 105 dosyayı build sırasında yeniden işlemek her derlemeye
+ * dakikalar eklerdi. Adres `mediaUrl()` üzerinden basılır ki R2'ye taşınırsa yollar tek
+ * yerden değişsin.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localizedPath, type Locale } from '../lib/i18n';
+import { mediaUrl } from '../lib/media';
+import { portfolioPages, PORTFOLIO_PAGE_COUNT } from '../lib/portfolio';
+import { breadcrumbSchema } from '../lib/schema';
+import { t } from '../lib/ui';
+
+interface Props {
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+}
+
+const { locale, alternates } = Astro.props;
+const pages = portfolioPages();
+
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const extraSchema = [
+  breadcrumbSchema([
+    { label: t('nav.home', locale), url: new URL(localizedPath('home', locale), site).toString() },
+    { label: t('nav.portfolio', locale) },
+  ]),
+];
+
+const title = `${t('portfolio.heading', locale)} | Pixelon`;
+const description = t('portfolio.lead', locale);
+---
+
+<BaseLayout {title} {description} {locale} {alternates} {extraSchema}>
+  <header class="pf-head">
+    <div class="container pf-head__inner">
+      <nav class="pf-crumbs" aria-label={t('nav.breadcrumb', locale)}>
+        <a href={localizedPath('home', locale)}>{t('nav.home', locale)}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{t('nav.portfolio', locale)}</span>
+      </nav>
+
+      <p class="eyebrow">{t('portfolio.eyebrow', locale)}</p>
+      <h1 class="pf-title">{t('portfolio.heading', locale)}</h1>
+      <p class="lead pf-lead">{t('portfolio.lead', locale)}</p>
+    </div>
+  </header>
+
+  <div class="pf-deck">
+    <div class="container pf-deck__inner">
+      {
+        pages.map((page) => (
+          <figure class="pf-page" id={`sayfa-${page.page}`}>
+            {/*
+              İlk sayfalar hemen, gerisi görünürleştikçe: 105 görselin hepsi birden
+              istenirse sayfa 7,1 MB indirir ve PDF'ten farkı kalmaz.
+            */}
+            <img
+              src={mediaUrl(page.src)}
+              alt={page.alt}
+              width={page.width}
+              height={page.height}
+              loading={page.eager ? 'eager' : 'lazy'}
+              decoding={page.eager ? 'sync' : 'async'}
+              fetchpriority={page.page === 1 ? 'high' : undefined}
+              sizes="(max-width: 1100px) 100vw, 1040px"
+            />
+            <figcaption class="pf-page__no" aria-hidden="true">
+              {t('portfolio.pageOf', locale)} {page.page} / {PORTFOLIO_PAGE_COUNT}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+
+  <a class="pf-top" href="#top">{t('portfolio.toTop', locale)} ↑</a>
+</BaseLayout>
+
+<style>
+  .pf-head {
+    padding: clamp(40px, 5vw, 64px) 0 clamp(28px, 3.5vw, 40px);
+  }
+
+  .pf-head__inner {
+    max-width: 820px;
+  }
+
+  .pf-crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font: 500 13px var(--font-display);
+    color: var(--text-faint);
+    margin-bottom: 24px;
+  }
+
+  .pf-crumbs a {
+    color: var(--text-faint);
+    text-decoration: none;
+    transition: color var(--t-base);
+  }
+
+  .pf-crumbs a:hover {
+    color: var(--accent);
+  }
+
+  .pf-crumbs [aria-current] {
+    color: var(--text-soft);
+  }
+
+  .pf-title {
+    margin: 18px 0 0;
+    font: 600 clamp(28px, 4vw, 44px) / 1.15 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .pf-lead {
+    margin-top: 18px;
+    max-width: 640px;
+  }
+
+  /* Sayfalar beyaz bant üstünde akar — sunumun kendi zemini koyu, ayrım net olsun. */
+  .pf-deck {
+    background: var(--bg-light);
+    padding: clamp(32px, 4vw, 56px) 0 clamp(64px, 8vw, 96px);
+  }
+
+  .pf-deck__inner {
+    max-width: 1040px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vw, 28px);
+  }
+
+  .pf-page {
+    margin: 0;
+    position: relative;
+  }
+
+  .pf-page img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: clamp(6px, 1vw, 12px);
+    /* Sayfalar beyaz zeminli; hafif çerçeve olmadan banda karışıyorlar. */
+    box-shadow:
+      0 1px 2px rgb(10 10 10 / 8%),
+      0 12px 32px -18px rgb(10 10 10 / 30%);
+  }
+
+  .pf-page__no {
+    margin-top: 8px;
+    font: 500 12px var(--font-display);
+    letter-spacing: 0.06em;
+    color: rgba(10, 10, 10, 0.45);
+    text-align: right;
+  }
+
+  /*
+   * Başa dön: 105 sayfa kaydırdıktan sonra yukarı çıkmak uzun sürüyor.
+   * `position: fixed` — panelin üstünde kalmasın diye header'ın altında bir z-index.
+   */
+  .pf-top {
+    position: fixed;
+    right: clamp(16px, 3vw, 28px);
+    bottom: clamp(16px, 3vw, 28px);
+    z-index: 40;
+    padding: 10px 16px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-pill);
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font: 600 13px var(--font-display);
+    text-decoration: none;
+    transition:
+      border-color var(--t-base),
+      color var(--t-base);
+  }
+
+  .pf-top:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

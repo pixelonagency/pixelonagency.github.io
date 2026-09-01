@@ -47,6 +47,7 @@ describe('PRIMARY_NAV', () => {
       'Biz Kimiz?',
       'Hizmetlerimiz',
       'Projelerimiz',
+      'Portfolyo',
       'Referanslarımız',
       'İletişim',
     ]);
