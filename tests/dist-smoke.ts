@@ -27,6 +27,21 @@ const ROUTES = [
   '/ucretsiz-analiz',
 ] as const;
 
+/*
+ * Menüde görünen hizmetler. Envanter 11 başlıktan 6'ya indirildi (2026-09-01):
+ * kalan beş sayfa YAYINDA ama header/footer/mobil menüde LİSTELENMİYOR — 301
+ * yönlendirmeleri ayrı ve kontrollü bir adımda kurulacak. Menü testi bu yüzden
+ * tüm hizmetleri değil, menüde görünmesi BEKLENENLERİ arar.
+ */
+const MENU_SERVICE_SLUGS = [
+  'web-tasarim-ve-yazilim',
+  'sosyal-medya-yonetimi',
+  'dijital-reklam-yonetimi',
+  'seo-ve-icerik-pazarlamasi',
+  'marka-ve-kurumsal-kimlik',
+  'e-ticaret-cozumleri',
+] as const;
+
 const SERVICE_SLUGS = [
   'web-tasarim-ve-yazilim',
   'sosyal-medya-yonetimi',
@@ -489,10 +504,10 @@ describe('interactive behaviour is shipped', () => {
     }
   });
 
-  test('the mobile menu lists every service', () => {
+  test('the mobile menu lists every menu service', () => {
     const source = html.get('/') ?? '';
     const panel = source.slice(source.indexOf('id="mnav-panel"'));
-    for (const slug of SERVICE_SLUGS) {
+    for (const slug of MENU_SERVICE_SLUGS) {
       expect({ slug, inPanel: panel.includes(`/hizmetlerimiz/${slug}`) }).toEqual({ slug, inPanel: true });
     }
   });

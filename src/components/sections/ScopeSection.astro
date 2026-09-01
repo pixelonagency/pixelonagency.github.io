@@ -2,6 +2,7 @@
 import type { PageSection } from '../../content/page-schema';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
 
 type Scope = Extract<PageSection, { type: 'scope' }>;
 
@@ -27,7 +28,12 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
           <span class="scope__no">{pad(index + 1)}</span>
           <h3 class="scope__title">{item.title}</h3>
-          <p class="scope__text">{item.description}</p>
+          {/*
+           * Açıklama satır içi bağlantı taşıyabiliyor. Düz metin olarak basıldığında
+           * `[metin](/yol)` sayfaya OLDUĞU GİBİ çıkıyordu — Web Tasarım sayfasında
+           * bir kez yaşandı. `inlineHtml` metni kaçırır ve yalnız bağlantıyı açar.
+           */}
+          <p class="scope__text" set:html={inlineHtml(item.description)} />
           <span class="scope__arrow" aria-hidden="true">
             →
           </span>
