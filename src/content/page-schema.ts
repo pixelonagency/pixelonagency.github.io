@@ -159,9 +159,10 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     /**
      * `grid` (varsayılan) = numaralı ince çizgili hücre ızgarası. `split` = başlık solda,
      * lime noktalı satır listesi sağda. `check` = lime tikli iki sütunlu kazanım listesi.
-     * `tags` = akan büyük etiketler (kimler için uygun).
+     * `tags` = akan büyük etiketler (kimler için uygun). `orbit` = lime çekirdeğin
+     * çevresinde dönen etiketli düğümler (360° yaklaşım).
      */
-    kind: opt(z.enum(['grid', 'split', 'check', 'tags'])),
+    kind: opt(z.enum(['grid', 'split', 'check', 'tags', 'orbit'])),
     items: z.array(nonEmpty).min(1),
   });
 
@@ -223,7 +224,12 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
       .array(
         z.object({
           label: nonEmpty,
-          image: z.string(),
+          /*
+           * `image()` ile çözümlenir, düz string DEĞİL: bileşen görseli
+           * `<Image />` ile basıyor ve ham yol verilince kart sessizce boş
+           * çıkıyordu (hizmet şemasındaki karşılığı da `image()`).
+           */
+          image: image(),
           alt: opt(z.string()),
         }),
       )

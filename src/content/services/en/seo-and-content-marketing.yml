@@ -2,7 +2,10 @@ title: "SEO and Content Marketing"
 navLabel: "SEO and Content Marketing"
 translationKey: seo
 order: 4
-menuImage: '/src/assets/images/service-seo-content.webp'
+
+cover: '/src/assets/images/services/seo-icerik.webp'
+summary: >-
+  We grow your organic visibility sustainably with technical SEO and content strategy.
 
 seo:
   title: "SEO and Content Marketing Services | Pixelon"

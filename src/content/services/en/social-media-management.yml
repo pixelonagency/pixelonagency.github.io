@@ -3,7 +3,10 @@ navLabel: Social Media Management
 order: 2
 translationKey: social-media
 
-menuImage: '/src/assets/images/service-social-media.webp'
+
+cover: '/src/assets/images/services/sosyal-medya.webp'
+summary: >-
+  We combine strategy, design and video production into a consistent social media world for your brand.
 
 seo:
   title: Social Media Management Service | Pixelon Digital Agency

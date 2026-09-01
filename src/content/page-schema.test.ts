@@ -10,6 +10,13 @@ const base = {
 
 const parseSection = (section: unknown) => pageSchema.safeParse({ ...base, sections: [section] });
 
+describe('hizmetler görünümleri', () => {
+  test('bullets orbit görünümünü kabul eder', () => {
+    const base = { type: 'bullets', heading: '360° Yaklaşım', items: ['Strateji', 'Tasarım'] };
+    expect(parseSection({ ...base, kind: 'orbit' }).success).toBe(true);
+  });
+});
+
 describe('ücretsiz analiz görünümleri', () => {
   const card = { title: 'SEO', description: 'İndeks durumu ve teknik sorunlar.' };
 

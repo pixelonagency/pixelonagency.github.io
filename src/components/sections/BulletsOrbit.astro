@@ -1,0 +1,185 @@
+---
+import type { PageSection } from '../../content/page-schema';
+import Section from './Section.astro';
+import { inlineHtml } from '../article/types';
+
+type Bullets = Extract<PageSection, { type: 'bullets' }>;
+
+interface Props {
+  section: Bullets;
+}
+
+const { section } = Astro.props;
+
+/*
+ * Düğümler daire üzerine EŞİT açılarla dağıtılır; konumlar burada hesaplanıp CSS
+ * değişkeni olarak veriliyor. Böylece madde sayısı değişince (5 yerine 6 disiplin)
+ * hiçbir şey elle ayarlanmıyor. Tepe noktası -90°, saat yönünde ilerler.
+ */
+const nodes = section.items.map((label, index) => {
+  const angle = (index / section.items.length) * 2 * Math.PI - Math.PI / 2;
+  return {
+    label,
+    left: Math.round((50 + Math.cos(angle) * 42) * 100) / 100,
+    top: Math.round((50 + Math.sin(angle) * 42) * 100) / 100,
+  };
+});
+---
+
+<Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
+  <div class="orbit">
+    <div class="orbit__text">
+      {section.eyebrow && <p class="orbit__eyebrow">{section.eyebrow}</p>}
+      <h2 class="h2 orbit__heading">{section.heading}</h2>
+      {section.lead && <p class="lead orbit__lead" set:html={inlineHtml(section.lead)} />}
+    </div>
+
+    {
+      /*
+       * Diyagram dekoratiftir ama içeriği gerçek: düğüm adları maddelerin ta kendisi.
+       * Ekran okuyucu için aynı liste görünmez biçimde de basılır, yoksa disiplinlerin
+       * adları yalnız konumlandırılmış kutularda kalır.
+       */
+    }
+    <div class="orbit__stage" aria-hidden="true">
+      <span class="orbit__ring"></span>
+      <span class="orbit__ring orbit__ring--inner"></span>
+      <span class="orbit__core">360°</span>
+      {
+        nodes.map((node) => (
+          <span class="orbit__node" style={`left: ${node.left}%; top: ${node.top}%`}>
+            {node.label}
+          </span>
+        ))
+      }
+    </div>
+
+    <ul class="visually-hidden">
+      {section.items.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .orbit {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+
+  .orbit__eyebrow {
+    margin: 0 0 12px;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .orbit__heading {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .orbit__lead {
+    margin-top: 22px;
+  }
+
+  .orbit__stage {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 460px;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .orbit__ring {
+    position: absolute;
+    inset: 8%;
+    border: 1px dashed var(--border);
+    border-radius: 50%;
+    animation: orbit-spin 44s linear infinite;
+  }
+
+  .orbit__ring--inner {
+    inset: 26%;
+    border-style: solid;
+    animation-duration: 30s;
+    animation-direction: reverse;
+  }
+
+  .orbit__core {
+    position: absolute;
+    inset: 34%;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    font: 700 clamp(20px, 2.4vw, 28px) var(--font-display);
+    letter-spacing: -0.02em;
+    box-shadow: 0 0 60px rgb(207 255 0 / 26%);
+  }
+
+  .orbit__node {
+    position: absolute;
+    translate: -50% -50%;
+    white-space: nowrap;
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--bg);
+    font: 600 13.5px var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    transition:
+      border-color var(--t-base),
+      color var(--t-base);
+  }
+
+  .orbit__stage:hover .orbit__node {
+    border-color: var(--accent);
+  }
+
+  /* Açık zeminli varyant */
+  :global(.section--light) .orbit__eyebrow {
+    color: var(--text-muted-on-light);
+  }
+
+  :global(.section--light) .orbit__ring {
+    border-color: var(--border-on-light);
+  }
+
+  :global(.section--light) .orbit__node {
+    border-color: var(--border-on-light);
+    background: var(--bg-light);
+    color: var(--text-on-light);
+  }
+
+  @keyframes orbit-spin {
+    to {
+      rotate: 360deg;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .orbit {
+      grid-template-columns: 1fr;
+    }
+
+    .orbit__stage {
+      max-width: 360px;
+    }
+
+    .orbit__node {
+      padding: 7px 12px;
+      font-size: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbit__ring {
+      animation: none;
+    }
+  }
+</style>

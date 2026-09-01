@@ -22,6 +22,13 @@ sections:
       tek çatı altında sunuyoruz. Pixelon olarak her markaya aynı hizmet paketini
       sunmak yerine; hedeflerinize, sektörünüze ve hedef kitlenize özel bir
       dijital yol haritası oluşturuyoruz.
+    video:
+      desktopMp4: /media/hero/hizmetler/hero-hizmetler-desktop.mp4
+      desktopWebm: /media/hero/hizmetler/hero-hizmetler-desktop.webm
+      desktopPoster: /media/hero/hizmetler/hero-hizmetler-desktop-poster.webp
+      mobileMp4: /media/hero/hizmetler/hero-hizmetler-mobile.mp4
+      mobileWebm: /media/hero/hizmetler/hero-hizmetler-mobile.webm
+      mobilePoster: /media/hero/hizmetler/hero-hizmetler-mobile-poster.webp
     ctas:
       - label: WhatsApp'tan Bize Ulaşın
         href: https://wa.me/905065229034
@@ -30,45 +37,60 @@ sections:
         href: /projelerimiz
         variant: outline
 
-  - type: text
+  - type: bullets
+    kind: orbit
     background: light
     eyebrow: 360° Yaklaşım
     heading: Markanız İçin 360° Dijital Çözümler
-    body: >-
-      Strateji, tasarım, içerik, teknoloji ve performansı aynı hedef
-      doğrultusunda bir araya getiriyoruz. Böylece markanızın tüm dijital
-      kanallarda tutarlı, güçlü ve sonuç odaklı bir iletişim kurmasını
-      sağlıyoruz.
+    lead: >-
+      Strateji, tasarım, içerik, teknoloji ve performansı aynı hedef doğrultusunda bir
+      araya getiriyoruz. Böylece markanızın tüm dijital kanallarda tutarlı, güçlü ve
+      sonuç odaklı bir iletişim kurmasını sağlıyoruz. Bir hizmetle başlayabilir,
+      ihtiyaç büyüdükçe diğer disiplinleri aynı ekiple devreye alabilirsiniz.
+    items:
+      - Strateji
+      - Tasarım
+      - İçerik
+      - Teknoloji
+      - Performans
 
   - type: services
+    kind: showcase
     background: dark
     anchor: hizmetler
     eyebrow: Ne Sunuyoruz?
-    heading: Hizmetlerimiz
-
+    heading: Markanızı Dijitalde Büyüten Altı Disiplin
+    lead: >-
+      İhtiyacınıza göre tek bir hizmetle çalışabilir ya da altısını aynı strateji
+      altında birleştirebilirsiniz.
   - type: cards
+    kind: feature
     background: light
     eyebrow: Bir Ajansın Ötesinde
     heading: Neden Pixelon?
     items:
       - title: Markanıza Özel Strateji
+        icon: bespoke
         description: >-
           Hazır paketler yerine markanızın ihtiyaçlarına ve hedeflerine uygun
           çözümler oluşturuyoruz.
       - title: Tüm Süreç Tek Ekipte
+        icon: orbit
         description: >-
           Strateji, tasarım, içerik, yazılım ve reklam süreçlerini birbiriyle
           uyumlu biçimde yönetiyoruz.
       - title: Ölçülebilir Sonuçlar
+        icon: strategy
         description: >-
           Trafik, etkileşim, talep, satış ve dönüşüm verilerini takip ederek
           çalışmalarımızı sürekli geliştiriyoruz.
       - title: Uzun Vadeli İş Birliği
+        icon: partnership
         description: >-
           Yalnızca proje teslim etmiyor, markanızın değişen ihtiyaçlarına göre
           büyüme sürecinize eşlik ediyoruz.
 
-  - type: text
+  - type: sectorCards
     background: dark
     eyebrow: Sektör Deneyimimiz
     heading: Hangi Sektörlerle Çalışıyoruz?
@@ -76,22 +98,25 @@ sections:
       Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret markaları,
       inşaat ve gayrimenkul şirketleri ile hizmet sektöründeki KOBİ ve kurumsal
       işletmelere özel dijital çözümler sunuyoruz.
-
-  - type: steps
-    background: light
-    eyebrow: Adım Adım
-    heading: Çalışma Sürecimiz
-    items:
-      - title: Keşif
-        description: Markanızı, ihtiyaçlarınızı ve hedeflerinizi dinliyoruz.
-      - title: Strateji
-        description: Sektör ve hedef kitle analizleriyle yol haritanızı oluşturuyoruz.
-      - title: Üretim
-        description: İçerik, tasarım, yazılım ve kampanya çalışmalarını hazırlıyoruz.
-      - title: Yayın ve Optimizasyon
-        description: >-
-          Projeyi yayına alıyor, sonuçları takip ediyor ve sürekli
-          geliştiriyoruz.
+    cards:
+      - label: Sağlık ve Klinik
+        image: '/src/assets/images/sector-saglik-klinik.webp'
+        alt: Modern bir diş kliniğinde hastasıyla ilgilenen hekim
+      - label: Sağlık Turizmi
+        image: '/src/assets/images/sector-saglik-turizmi.webp'
+        alt: Hastane resepsiyonunda karşılanan yurt dışından gelen hasta
+      - label: Estetik ve Kozmetik
+        image: '/src/assets/images/sector-estetik-kozmetik.webp'
+        alt: Güzellik kliniğinde cilt bakımı uygulanan danışan
+      - label: E-Ticaret
+        image: '/src/assets/images/sector-e-ticaret.webp'
+        alt: Depoda kargo paketini okutan e-ticaret çalışanı
+      - label: İnşaat ve Gayrimenkul
+        image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+        alt: Gün batımında modern bir konut projesinin cephesi
+      - label: Kurumsal Hizmet
+        image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+        alt: Aydınlık bir ofiste toplantı hâlindeki kurumsal ekip
 
   - type: cta
     background: dark

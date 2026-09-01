@@ -3,7 +3,10 @@ navLabel: Web Design and Development
 translationKey: web-design
 order: 1
 
-menuImage: '/src/assets/images/service-web-design.webp'
+
+cover: '/src/assets/images/services/web-tasarim.webp'
+summary: >-
+  We design and build fast, mobile-friendly and conversion-focused sites that tell your brand right.
 
 seo:
   title: Web Design and Development Services | Pixelon

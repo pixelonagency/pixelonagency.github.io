@@ -24,11 +24,15 @@ const switcherLocales = languageSwitcherLocales(locale, alternates);
 const allServices = await getCollection('services');
 const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
 const scoped = inLocale.length > 0 ? inLocale : allServices.filter((e) => e.id.startsWith(`${DEFAULT_LOCALE}/`));
-/* `menu: false` işaretli hizmetler menüden düşer; sayfaları yayında kalır. */
+/*
+ * `menu: false` işaretli hizmetler menüden düşer; sayfaları yayında kalır.
+ * Etiket, görsel ve adres HİZMET KOLEKSİYONUNDAN gelir — header, footer,
+ * anasayfa vitrini ve hizmetler sayfası vitrini aynı kaynağı okur.
+ */
 const serviceLinks = menuServices(scoped).map((entry) => ({
   label: entry.data.navLabel,
   href: serviceHref(entry.id.split('/').slice(1).join('/'), locale),
-  image: entry.data.menuImage as ImageMetadata | undefined,
+  image: entry.data.cover as ImageMetadata | undefined,
 }));
 
 const PRIMARY_NAV = buildPrimaryNav(locale);
@@ -310,10 +314,11 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
     height: 100%;
     object-fit: cover;
     /*
-     * Kaynak görseller koyu stüdyo render'ları; bu boyutta olduğu gibi basılınca
-     * siyah bir leke gibi duruyorlar. Parlaklık açılıyor, hover'da tam doygunluğa gidiyor.
+     * Görseller artık aydınlık fotoğraflar (hizmet koleksiyonundaki `cover`).
+     * Eski koyu render'lar için konan parlaklık takviyesi bunları yakıyordu;
+     * kapalı menüde hafifçe bastırılıp hover'da tam doygunluğa açılıyorlar.
      */
-    filter: saturate(0.95) brightness(1.35) contrast(1.05);
+    filter: saturate(0.96) brightness(0.92);
     transition:
       transform var(--t-base),
       filter var(--t-fast);
@@ -339,7 +344,7 @@ const FLAGS: Record<Locale, string> = { tr: '🇹🇷', en: '🇬🇧' };
 
   .svc-card:hover .svc-card__thumb :global(img) {
     transform: scale(1.08);
-    filter: saturate(1.1) brightness(1.55) contrast(1.05);
+    filter: saturate(1.04) brightness(1.02);
   }
 
   .site-nav__menu-all {

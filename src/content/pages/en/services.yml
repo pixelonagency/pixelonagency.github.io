@@ -22,6 +22,13 @@ sections:
       world under one roof. Rather than offering every brand the same service
       package, Pixelon builds a digital roadmap shaped by your goals, your
       industry and your audience.
+    video:
+      desktopMp4: /media/hero/hizmetler/hero-hizmetler-desktop.mp4
+      desktopWebm: /media/hero/hizmetler/hero-hizmetler-desktop.webm
+      desktopPoster: /media/hero/hizmetler/hero-hizmetler-desktop-poster.webp
+      mobileMp4: /media/hero/hizmetler/hero-hizmetler-mobile.mp4
+      mobileWebm: /media/hero/hizmetler/hero-hizmetler-mobile.webm
+      mobilePoster: /media/hero/hizmetler/hero-hizmetler-mobile-poster.webp
     ctas:
       - label: Reach Us on WhatsApp
         href: https://wa.me/905065229034
@@ -30,66 +37,86 @@ sections:
         href: /en/projects
         variant: outline
 
-  - type: text
+  - type: bullets
+    kind: orbit
     background: light
     eyebrow: A 360° Approach
     heading: 360° Digital Solutions for Your Brand
-    body: >-
-      We bring strategy, design, content, technology and performance together
-      around the same goal. That way your brand communicates consistently,
-      powerfully and with a clear focus on results across every digital channel.
+    lead: >-
+      We bring strategy, design, content, technology and performance together around
+      one goal, so your brand communicates consistently and effectively across every
+      digital channel. Start with a single service and bring the other disciplines in
+      with the same team as your needs grow.
+    items:
+      - Strategy
+      - Design
+      - Content
+      - Technology
+      - Performance
 
   - type: services
     background: dark
     anchor: hizmetler
+    kind: showcase
     eyebrow: What Do We Offer?
-    heading: Our Services
+    heading: Six Disciplines That Grow Your Brand Online
+    lead: >-
+      Work with a single service, or bring all six together under one strategy.
 
   - type: cards
+    kind: feature
     background: light
     eyebrow: More Than an Agency
     heading: Why Pixelon?
     items:
       - title: Strategy Built for Your Brand
+        icon: bespoke
         description: >-
           Instead of off-the-shelf packages, we create solutions that match your
           brand's needs and goals.
       - title: One Team for the Whole Process
+        icon: orbit
         description: >-
           We manage strategy, design, content, development and advertising in
           step with one another.
       - title: Measurable Results
+        icon: strategy
         description: >-
           We track traffic, engagement, enquiries, sales and conversion data to
           keep improving our work.
       - title: Long-Term Partnership
+        icon: partnership
         description: >-
           We do not just deliver projects; we support your growth as your brand's
           needs evolve.
 
-  - type: text
+  - type: sectorCards
     background: dark
     eyebrow: Our Industry Experience
-    heading: Which Industries Do We Work With?
+    heading: Which Sectors Do We Work With?
     body: >-
-      We deliver tailored digital solutions for healthcare and clinic brands,
-      health tourism companies, e-commerce brands, construction and real estate
-      firms, and SMEs and corporate businesses in the service sector.
-
-  - type: steps
-    background: light
-    eyebrow: Step by Step
-    heading: How We Work
-    items:
-      - title: Discovery
-        description: We listen to your brand, your needs and your goals.
-      - title: Strategy
-        description: We build your roadmap through industry and audience analysis.
-      - title: Production
-        description: We prepare the content, design, development and campaign work.
-      - title: Launch and Optimization
-        description: >-
-          We take the project live, track the results and keep improving them.
+      We build tailored digital solutions for healthcare and clinic brands, health
+      tourism companies, e-commerce brands, construction and real estate firms, and
+      SMEs and corporates in the service sector.
+    cards:
+      - label: Healthcare and Clinics
+        image: '/src/assets/images/sector-saglik-klinik.webp'
+        alt: A dentist attending to a patient in a modern clinic
+      - label: Health Tourism
+        image: '/src/assets/images/sector-saglik-turizmi.webp'
+        alt: An international patient welcomed at a hospital reception
+      - label: Aesthetics and Cosmetics
+        image: '/src/assets/images/sector-estetik-kozmetik.webp'
+        alt: A skincare treatment at a beauty clinic
+      - label: E-Commerce
+        image: '/src/assets/images/sector-e-ticaret.webp'
+        alt: A warehouse worker scanning a shipping package
+      - label: Construction and Real Estate
+        image: '/src/assets/images/sector-insaat-gayrimenkul.webp'
+        alt: The facade of a modern residential project at sunset
+      - label: Corporate Services
+        image: '/src/assets/images/sector-kurumsal-hizmet.webp'
+        alt: A corporate team meeting in a bright office
 
   - type: cta
     background: dark

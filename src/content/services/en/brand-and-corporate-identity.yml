@@ -3,7 +3,10 @@ navLabel: Brand and Corporate Identity
 translationKey: branding
 order: 5
 
-menuImage: '/src/assets/images/service-brand-identity.webp'
+
+cover: '/src/assets/images/services/marka-kimlik.webp'
+summary: >-
+  We create a distinctive, consistent brand language through logo, colour, type and applications.
 
 seo:
   title: Brand and Corporate Identity Design | Pixelon

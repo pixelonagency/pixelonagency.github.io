@@ -156,8 +156,8 @@ collections:
       # Menüde görünsün mü? Kapatılan hizmet header/footer/mobil listelerden düşer ama
       # sayfası yayında kalır — envanter daraltılırken sayfayı silmeden menüden çıkarmak için.
       - { label: Menülerde Göster, name: menu, widget: boolean, default: true, i18n: duplicate }
-      # Header dropdown'ındaki küçük görsel. Görsel yolu dile bağlı değil → `duplicate`.
-      - { label: Menü Görseli, name: menuImage, widget: image, required: false, i18n: duplicate }
+      # Kart özeti: header dropdown'ı ve vitrinler aynı metni basar.
+      - { label: Kart Özeti, name: summary, widget: text, required: false, i18n: true }
       - &f_seo
         label: SEO
         name: seo
@@ -168,7 +168,9 @@ collections:
           - { label: Sayfa Başlığı (title), name: title, widget: string }
           - { label: Meta Açıklama, name: description, widget: text }
       # Görsel yolu dile bağlı değil → `duplicate`.
-      - { label: Kapak Görseli, name: cover, widget: image, required: false, i18n: duplicate }
+      # TEK hizmet görseli: header dropdown'ı, anasayfa vitrini ve hizmetler sayfası
+      # aynı dosyayı kullanır — buradan değişince sitenin her yerinde değişir.
+      - { label: Hizmet Görseli, name: cover, widget: image, required: false, i18n: duplicate }
       # Aşağıdaki bölümlerin tamamı metin. Nesne/liste alanında `i18n: true` ALT ALANLARA
       # miras kalır, bu yüzden her alt alanı tek tek işaretlemeye gerek yoktur.
       - label: Hero
@@ -1218,7 +1220,9 @@ collections:
       - { label: Kategori (slug), name: category, widget: string, i18n: duplicate }
       - { label: Kategori Etiketi, name: categoryLabel, widget: string, required: false, i18n: true }
       - { label: Özet, name: excerpt, widget: text, i18n: true }
-      - { label: Kapak Görseli, name: cover, widget: image, required: false, i18n: duplicate }
+      # TEK hizmet görseli: header dropdown'ı, anasayfa vitrini ve hizmetler sayfası
+      # aynı dosyayı kullanır — buradan değişince sitenin her yerinde değişir.
+      - { label: Hizmet Görseli, name: cover, widget: image, required: false, i18n: duplicate }
       - { label: Öne Çıkan, name: featured, widget: boolean, default: false, i18n: duplicate }
       - { label: Sıra, name: order, widget: number, value_type: int, default: 0, i18n: duplicate }
       - label: Etiketler
@@ -1402,7 +1406,9 @@ collections:
         time_format: false
         picker_utc: true
         i18n: duplicate
-      - { label: Kapak Görseli, name: cover, widget: image, required: false, i18n: duplicate }
+      # TEK hizmet görseli: header dropdown'ı, anasayfa vitrini ve hizmetler sayfası
+      # aynı dosyayı kullanır — buradan değişince sitenin her yerinde değişir.
+      - { label: Hizmet Görseli, name: cover, widget: image, required: false, i18n: duplicate }
       - { label: Kapak Alt Metni, name: coverAlt, widget: string, required: false, i18n: true }
       - { label: Yazar, name: author, widget: string, default: Pixelon, i18n: duplicate }
       - label: Durum

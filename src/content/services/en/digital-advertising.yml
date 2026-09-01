@@ -3,7 +3,10 @@ navLabel: Digital Advertising Management
 translationKey: advertising
 order: 3
 
-menuImage: '/src/assets/images/service-digital-ads.webp'
+
+cover: '/src/assets/images/services/dijital-reklam.webp'
+summary: >-
+  We build Google and Meta campaigns that produce measurable demand, sales and growth.
 
 seo:
   title: Digital Advertising Management | Google & Meta Ads | Pixelon

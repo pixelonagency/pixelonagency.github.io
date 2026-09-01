@@ -3,7 +3,10 @@ navLabel: Marka ve Kurumsal Kimlik
 translationKey: branding
 order: 5
 
-menuImage: '/src/assets/images/service-brand-identity.webp'
+
+cover: '/src/assets/images/services/marka-kimlik.webp'
+summary: >-
+  Logo, renk, tipografi ve uygulamalarla özgün ve tutarlı bir marka dili oluşturuyoruz.
 
 seo:
   title: Kurumsal Kimlik Tasarımı | Marka Ajansı | Pixelon

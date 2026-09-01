@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
+import { menuServices } from '../../lib/nav';
 import { t } from '../../lib/ui';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
@@ -22,12 +23,10 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
  * `items`ten gelir; her kart kendi hizmet detay sayfasına bağlanır. Şema
  * çözümleyicisi görseli geniş tiplediği için <Image /> öncesi daraltılır.
  */
-// İçerik katmanı önbelleği eski ayrıştırmaları taşıyabilir — `items` yoksa boş dizi.
-const showcaseItems = (section.items ?? []).map((item) => ({
+const explicitItems = (section.items ?? []).map((item) => ({
   ...item,
   image: item.image as ImageMetadata | undefined,
 }));
-const isShowcase = section.kind === 'showcase' && showcaseItems.length > 0;
 
 // Hizmetler koleksiyondan gelir; sıra editörün belirlediği `order` alanına göredir.
 const all = await getCollection('services');
@@ -39,8 +38,25 @@ const all = await getCollection('services');
 const inLocale = all.filter((entry) => entry.id.startsWith(`${locale}/`));
 const entries = inLocale.length > 0 ? inLocale : all.filter((entry) => entry.id.startsWith(`${DEFAULT_LOCALE}/`));
 const slugOf = (id: string) => id.split('/').slice(1).join('/');
-const sorted = [...entries].sort((a, b) => a.data.order - b.data.order);
+const sorted = menuServices(entries);
 const services = section.limit ? sorted.slice(0, section.limit) : sorted;
+
+/*
+ * Vitrin kartları KOLEKSİYONDAN üretilir: başlık `navLabel`, metin `summary`,
+ * görsel `cover`. Böylece bir hizmetin adı ya da görseli tek bir yerden
+ * değiştirildiğinde header dropdown'ı, anasayfa vitrini ve hizmetler sayfası
+ * birlikte değişir. `items` yalnız istisnai bir sayfa için elle kart yazmak
+ * gerekirse kullanılır ve verildiğinde koleksiyonun önüne geçer.
+ */
+const collectionItems = services.map((entry) => ({
+  service: slugOf(entry.id),
+  title: entry.data.navLabel,
+  description: entry.data.summary ?? '',
+  image: entry.data.cover as ImageMetadata | undefined,
+  imageAlt: undefined as string | undefined,
+}));
+const showcaseItems = explicitItems.length > 0 ? explicitItems : collectionItems;
+const isShowcase = section.kind === 'showcase' && showcaseItems.length > 0;
 ---
 
 {

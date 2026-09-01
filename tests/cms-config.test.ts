@@ -207,7 +207,6 @@ describe('i18n wiring', () => {
     'heroVideo',
     // Menüde görünürlük ve menü görseli iki dilde de aynıdır: hizmet ya menüdedir ya değil.
     'menu',
-    'menuImage',
     'updated',
     'featured',
     'order',

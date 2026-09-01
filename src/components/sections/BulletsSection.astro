@@ -1,6 +1,7 @@
 ---
 import type { PageSection } from '../../content/page-schema';
 import BulletsCheck from './BulletsCheck.astro';
+import BulletsOrbit from './BulletsOrbit.astro';
 import BulletsTags from './BulletsTags.astro';
 import SectionHead from '../SectionHead.astro';
 import Section from './Section.astro';
@@ -19,6 +20,8 @@ const kind = section.kind ?? 'grid';
   /* `check` ve `tags` ayrı bileşenlere delege edilir — düzenleri bu ızgarayla ilgisiz. */
   kind === 'check' ? (
     <BulletsCheck {section} />
+  ) : kind === 'orbit' ? (
+    <BulletsOrbit {section} />
   ) : kind === 'tags' ? (
     <BulletsTags {section} />
   ) : kind === 'split' ? (

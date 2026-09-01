@@ -210,24 +210,39 @@ describe('locale-scoped content links stay inside their own locale', () => {
   }
 });
 
-describe('services showcase cards', () => {
-  // Vitrin kartındaki `service` slug'ı o dilin hizmet koleksiyonunda yoksa kart
-  // 404'e bağlanır; `image` yolu yanlışsa build kırılır. İkisini de burada yakala.
+describe('hizmet kartlarının tek kaynağı', () => {
+  /*
+   * Vitrin kartları artık sayfa içeriğinde ELLE yazılmıyor: başlık `navLabel`,
+   * metin `summary`, görsel `cover` alanlarından, yani hizmet koleksiyonundan
+   * geliyor (bkz. ServicesSection.astro). Bu yüzden test sayfayı değil KAYNAĞI
+   * doğruluyor — menüde görünen her hizmetin kart alanları eksiksiz olmalı,
+   * yoksa header dropdown'ı ve iki vitrin birden boş kart basar.
+   */
   for (const locale of LOCALES) {
-    test(`${locale}/home.yml showcase cards point at real services and images`, async () => {
+    test(`${locale} — menüdeki her hizmetin görseli ve özeti var`, async () => {
+      const dir = join(CONTENT, 'services', locale);
+      const eksik: string[] = [];
+      for (const file of readdirSync(dir).filter((name) => name.endsWith('.yml'))) {
+        const data = parse(await Bun.file(join(dir, file)).text()) as {
+          menu?: boolean;
+          cover?: string;
+          summary?: string;
+        };
+        if (data.menu === false) continue;
+        if (!data.cover) eksik.push(`${file}: cover`);
+        else if (!existsSync(join(CONTENT, '..', '..', data.cover))) eksik.push(`${file}: cover dosyası yok`);
+        if (!data.summary) eksik.push(`${file}: summary`);
+      }
+      expect(eksik).toEqual([]);
+    });
+
+    test(`${locale} — anasayfa vitrini kartları içeriğe gömmüyor`, async () => {
       const raw = parse(await Bun.file(join(CONTENT, 'pages', locale, 'home.yml')).text()) as {
-        sections: { type: string; kind?: string; items?: { service: string; image?: string }[] }[];
+        sections: { type: string; kind?: string; items?: unknown[] }[];
       };
       const showcase = raw.sections.find((section) => section.type === 'services' && section.kind === 'showcase');
       expect(showcase).toBeDefined();
-      expect(showcase?.items?.length).toBe(6);
-
-      for (const item of showcase?.items ?? []) {
-        expect(existsSync(join(CONTENT, 'services', locale, `${item.service}.yml`))).toBe(true);
-        if (item.image) {
-          expect(existsSync(join(CONTENT, '..', '..', item.image))).toBe(true);
-        }
-      }
+      expect(showcase?.items).toBeUndefined();
     });
   }
 });

@@ -2,7 +2,10 @@ title: "SEO ve İçerik Pazarlaması"
 navLabel: "SEO ve İçerik Pazarlaması"
 translationKey: seo
 order: 4
-menuImage: '/src/assets/images/service-seo-content.webp'
+
+cover: '/src/assets/images/services/seo-icerik.webp'
+summary: >-
+  Teknik SEO ve içerik stratejisiyle organik görünürlüğünüzü sürdürülebilir biçimde büyütüyoruz.
 
 seo:
   title: "SEO Ajansı | Teknik SEO ve İçerik Pazarlaması | Pixelon"

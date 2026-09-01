@@ -3,7 +3,10 @@ navLabel: E-Commerce Solutions
 order: 8
 translationKey: ecommerce
 
-menuImage: '/src/assets/images/service-ecommerce.webp'
+
+cover: '/src/assets/images/services/e-ticaret.webp'
+summary: >-
+  We build manageable, sales-focused e-commerce experiences from product page to checkout.
 
 seo:
   title: E-Commerce Website and Digital Sales Solutions | Pixelon

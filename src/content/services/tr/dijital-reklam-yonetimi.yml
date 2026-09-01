@@ -3,7 +3,10 @@ navLabel: Dijital Reklam Yönetimi
 translationKey: advertising
 order: 3
 
-menuImage: '/src/assets/images/service-digital-ads.webp'
+
+cover: '/src/assets/images/services/dijital-reklam.webp'
+summary: >-
+  Google ve Meta reklamlarıyla ölçülebilir talep, satış ve büyüme üreten kampanyalar kuruyoruz.
 
 seo:
   title: 'Dijital Reklam Yönetimi | Google, Meta, TikTok | Pixelon'

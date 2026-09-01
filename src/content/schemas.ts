@@ -98,9 +98,17 @@ export function makeServiceSchema(image: ImageResolver = defaultImage) {
      * silmeden menüden çıkarabilmek için. Verilmezse hizmet menüde görünür.
      */
     menu: z.boolean().default(true),
-    /** Header dropdown'ındaki küçük görsel. Yoksa madde yalnız yazıyla basılır. */
-    menuImage: opt(image()),
+    /**
+     * Hizmetin TEK kart özeti. Header dropdown'ı, anasayfa vitrini ve hizmetler
+     * sayfası vitrini aynı metni basar — sayfa içeriklerinde tekrarlanmaz.
+     */
+    summary: opt(z.string()),
     seo,
+    /**
+     * Hizmetin TEK görseli. Header dropdown'ı, anasayfa vitrini ve hizmetler
+     * sayfası vitrini hep bunu kullanır: görsel bir yerden değiştirildiğinde
+     * sitenin her yerinde değişir.
+     */
     cover: opt(image()),
     hero: z.object({
       eyebrow: nonEmpty,
@@ -435,6 +443,11 @@ export function makeProjectSchema(image: ImageResolver = defaultImage) {
     category: nonEmpty,
     categoryLabel: opt(z.string()),
     excerpt: nonEmpty,
+    /**
+     * Hizmetin TEK görseli. Header dropdown'ı, anasayfa vitrini ve hizmetler
+     * sayfası vitrini hep bunu kullanır: görsel bir yerden değiştirildiğinde
+     * sitenin her yerinde değişir.
+     */
     cover: opt(image()),
     featured: z.boolean().default(false),
     order: z.number().default(0),
@@ -662,6 +675,11 @@ export function makePostSchema(image: ImageResolver = defaultImage) {
      * değiştirici bu alanla bağ kurar. Verilmezse dosya adı anahtar sayılır.
      */
     translationKey: opt(z.string()),
+    /**
+     * Hizmetin TEK görseli. Header dropdown'ı, anasayfa vitrini ve hizmetler
+     * sayfası vitrini hep bunu kullanır: görsel bir yerden değiştirildiğinde
+     * sitenin her yerinde değişir.
+     */
     cover: opt(image()),
     /** Kapak görselinin alt metni; verilmezse başlığa düşer. */
     coverAlt: opt(z.string()),

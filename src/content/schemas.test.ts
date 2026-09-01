@@ -462,8 +462,13 @@ describe('serviceSchema — menü alanları', () => {
     expect(serviceSchema.parse({ ...base, menu: false }).menu).toBe(false);
   });
 
-  test('menuImage opsiyoneldir — görseli olmayan hizmet şemayı kırmaz', () => {
-    expect(serviceSchema.parse(base).menuImage).toBeUndefined();
+  test('kart özeti opsiyoneldir — özeti olmayan hizmet şemayı kırmaz', () => {
+    expect(serviceSchema.parse(base).summary).toBeUndefined();
+  });
+
+  test('kart özeti verilince korunur', () => {
+    const parsed = serviceSchema.parse({ ...base, summary: 'Hızlı ve dönüşüm odaklı siteler.' });
+    expect(parsed.summary).toBe('Hızlı ve dönüşüm odaklı siteler.');
   });
 });
 

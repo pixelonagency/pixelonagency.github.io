@@ -3,7 +3,10 @@ navLabel: Web Tasarım ve Yazılım
 translationKey: web-design
 order: 1
 
-menuImage: '/src/assets/images/service-web-design.webp'
+
+cover: '/src/assets/images/services/web-tasarim.webp'
+summary: >-
+  Markanızı doğru anlatan; hızlı, mobil uyumlu ve dönüşüm odaklı siteler tasarlıyor ve geliştiriyoruz.
 
 seo:
   title: Web Tasarım Ajansı | Kurumsal Site ve Özel Yazılım | Pixelon

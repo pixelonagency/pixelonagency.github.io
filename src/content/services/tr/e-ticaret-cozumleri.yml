@@ -3,7 +3,10 @@ navLabel: E-Ticaret Çözümleri
 order: 8
 translationKey: ecommerce
 
-menuImage: '/src/assets/images/service-ecommerce.webp'
+
+cover: '/src/assets/images/services/e-ticaret.webp'
+summary: >-
+  Ürün sayfasından ödeme akışına kadar satışa odaklı, yönetilebilir e-ticaret deneyimleri kuruyoruz.
 
 seo:
   title: E-Ticaret Ajansı | E-Ticaret Sitesi Kurulumu | Pixelon
