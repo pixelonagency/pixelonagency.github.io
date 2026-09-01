@@ -140,8 +140,11 @@ jobs:
           # Yayın yayılımı için kısa bekleme
           sleep 10
 
+          # Örneklem: iki dilin kökü ve iki dilde birer hizmet sayfası. Liste, hizmet
+          # envanteri 1 Eylül 2026'da birleştirilince güncellendi — burada emekli bir
+          # sayfa duruyordu ve 200 beklendiği için doğru çalışan 301 testi kırıyordu.
           echo "— sayfalar 200 mü?"
-          for u in / /en/ /hizmetlerimiz/kurumsal-web-tasarim/ /en/services/healthcare-marketing/; do
+          for u in / /en/ /hizmetlerimiz/web-tasarim-ve-yazilim/ /en/services/healthcare-marketing/; do
             c=$(curl -sS -o /dev/null -w '%{http_code}' "$P$u" --max-time 30)
             [ "$c" = "200" ] || fail "$u → $c"
             echo "  $u → $c"
@@ -152,6 +155,15 @@ jobs:
             c=$(curl -sS -o /dev/null -w '%{http_code}' "$P$u" --max-time 30)
             [ "$c" = "200" ] || fail "$u → $c"
             echo "  $u → $c"
+          done
+
+          echo "— birleştirilen hizmet 301 veriyor mu?"
+          for u in /hizmetlerimiz/ux-ui-tasarimi/ /hizmetlerimiz/video-ve-produksiyon/; do
+            c=$(curl -sS -o /dev/null -w '%{http_code}' -I "$P$u" --max-time 30)
+            [ "$c" = "301" ] || fail "$u → $c (301 bekleniyordu)"
+            h=$(curl -sS -o /dev/null -w '%{num_redirects}' -L "$P$u" --max-time 30)
+            [ "$h" = "1" ] || fail "$u → $h hop (zincir)"
+            echo "  $u → 301, tek hop"
           done
 
           echo "— eski URL yönlendirmesi: 301 → tek hop → 200"
