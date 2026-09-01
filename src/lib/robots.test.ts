@@ -14,6 +14,16 @@ describe('buildRobotsTxt', () => {
     expect(buildRobotsTxt(SITE)).toContain('Disallow: /admin/');
   });
 
+  test('keeps the 404 template out of crawlers', () => {
+    /*
+     * Şablon `dist/404.html` olarak da yazılıyor ve tarayıcılar onu 200 dönen sıradan
+     * bir sayfa gibi çekebiliyor. İçinde gezinme dışında metin olmadığı için denetimlerde
+     * "düşük metin/HTML oranı" uyarısı üretiyordu (Semrush, 1 Eyl 2026) — sayfanın kendisi
+     * doğruydu, taranması yanlıştı.
+     */
+    expect(buildRobotsTxt(SITE)).toContain('Disallow: /404.html');
+  });
+
   test('points at the sitemap index on the canonical domain', () => {
     expect(buildRobotsTxt(SITE)).toContain('Sitemap: https://pixelon.com.tr/sitemap-index.xml');
   });

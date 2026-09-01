@@ -12,6 +12,10 @@ export function buildRobotsTxt(site: string): string {
     'Allow: /',
     // CMS arayüzü indekslenmemeli; sayfanın kendisinde ayrıca noindex meta'sı var.
     'Disallow: /admin/',
+    // 404 şablonu `dist/404.html` olarak da yazılıyor ve tarayıcı onu 200 dönen sıradan
+    // bir sayfa gibi çekebiliyor. İçinde gezinme dışında metin yok; taranması denetimde
+    // gürültü üretmekten başka bir işe yaramıyor.
+    'Disallow: /404.html',
     '',
     `Sitemap: ${base}/sitemap-index.xml`,
     '',

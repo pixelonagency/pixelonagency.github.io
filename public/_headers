@@ -54,9 +54,22 @@ https://:version.:subdomain.workers.dev/*
 # repo'nun ürettiği dosyayı eziyordu ve kimse fark etmemişti (26 Ağu 2026).
 # Yapılandırma versiyon kontrolünde kalsın.
 #
+# HSTS — DENEME AŞAMASI (1 Eyl 2026, sahip onayıyla açıldı)
+#
+# `max-age=300` bilinçli olarak beş dakika. Bu başlık tek yönlüdür: tarayıcı alan
+# adını `max-age` boyunca "yalnızca HTTPS" diye hatırlar ve başlığı kaldırmak o
+# hafızayı SİLMEZ — yalnızca süresinin dolmasını beklersiniz. Beş dakika, hata
+# durumunda bekleme süresini pratikte sıfıra indiriyor.
+#
+# `includeSubDomains` ve `preload` BİLİNÇLİ OLARAK YOK:
+#   includeSubDomains — bugün HTTPS sunmayan bir alt alan adı anında erişilemez olur.
+#   preload — tarayıcıya gömülü listeden çıkmak aylar sürer; deneme aşamasında yeri yok.
+#
+# Kademeli plan: 300 → 86400 (1 gün) → 2592000 (1 ay) → 31536000 (1 yıl). Her adım
+# ayrı bir karar; `tests/security-headers.test.ts` üst sınırı kapıda tutar, yükseltmek
+# o testi de güncellemeyi gerektirir.
+#
 # Bilinçli olarak EKLENMEYENLER:
-#   Strict-Transport-Security — geri alması zordur (tarayıcı max-age boyunca
-#     hatırlar). Sahip onayı bekliyor; önce kısa max-age ile denenmeli.
 #   Content-Security-Policy — sitede Clarity, Meta Pixel ve dış font var;
 #     körlemesine CSP siteyi bozar. Ayrı ve ölçülü bir iş.
 # ---------------------------------------------------------------------------
@@ -65,3 +78,4 @@ https://:version.:subdomain.workers.dev/*
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=300
