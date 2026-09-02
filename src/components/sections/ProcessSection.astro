@@ -152,6 +152,32 @@ const threeCol = section.items.length === 6;
     list-style: none;
   }
 
+  /* --- 3+3 iki sıra düzeni ------------------------------------------------ */
+
+  /*
+   * BU BLOK MEDYA SORGULARININ ÜSTÜNDE KALMALI. .proc--3col ile .proc aynı
+   * özgüllükte; blok aşağı taşınırsa kaynak sırası gereği mobil tek sütun
+   * kuralını ezer ve altı kart telefonda üç sütun sıkışık kalır.
+   */
+
+  .proc--3col {
+    grid-template-columns: repeat(3, 1fr);
+    /*
+     * Çift sıradaki kartlar 38px aşağı kayıyor (nth-child(even) translateY).
+     * 34px satır aralığında bu kayma alt sıraya taşıp kartları üst üste
+     * bindiriyordu — aralık kaymayı aşacak kadar açıldı.
+     */
+    row-gap: 76px;
+  }
+
+  /*
+   * Satır sonlarında (3. ve 6. kart) yatay bağlantı çizilmez — yoksa çizgi
+   * sıranın sağ kenarında boşluğa uzanıp asılı kalıyor.
+   */
+  .proc--3col .proc__card:nth-child(3n)::after {
+    content: none;
+  }
+
   .proc__card {
     position: relative;
     display: flex;
@@ -356,25 +382,5 @@ const threeCol = section.items.length === 6;
     .proc__no {
       transition: none;
     }
-  }
-
-  /* --- 3+3 iki sıra düzeni ------------------------------------------------ */
-
-  .proc--3col {
-    grid-template-columns: repeat(3, 1fr);
-    /*
-     * Çift sıradaki kartlar 38px aşağı kayıyor (nth-child(even) translateY).
-     * 34px satır aralığında bu kayma alt sıraya taşıp kartları üst üste
-     * bindiriyordu — aralık kaymayı aşacak kadar açıldı.
-     */
-    row-gap: 76px;
-  }
-
-  /*
-   * Satır sonlarında (3. ve 6. kart) yatay bağlantı çizilmez — yoksa çizgi
-   * sıranın sağ kenarında boşluğa uzanıp asılı kalıyor.
-   */
-  .proc--3col .proc__card:nth-child(3n)::after {
-    content: none;
   }
 </style>
