@@ -68,6 +68,16 @@ article:
 
         Bu zincirin dördüncü halkası kopuk olduğu sürece, ilk üç halkanın ne kadar iyi çalıştığının bir önemi kalmıyor. [Meta reklamlarının neden sonuç vermediğini](/blog/meta-reklamlari-neden-sonuc-vermiyor/) ayrı bir yazıda ele aldık.
 
+    - type: section
+      id: sosyal-medya-ajanslari-ne-is-yapar
+      heading: Sosyal medya ajansları ne iş yapar?
+      text: |-
+        İş tanımı altı başlıkta toplanıyor: strateji, içerik, video, reklam, mesaj takibi ve ölçüm.
+
+        Bu altısının hepsini yapan ajans da var, sadece ilk üçünü yapan da. Teklif okurken bakılacak yer burası — eksik olan başlık, sonradan sizin üstünüze kalan iş demek.
+
+        Bu başlıkların Pixelon'daki karşılığını [sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) sayfasında ayrıntılı anlattık.
+
     - type: cards
       heading: Bir ajansın altında duran altı iş
       intro: Bu başlıklar her ajansta var. Ayrım, hepsinin aynı ekipte olup olmadığında ortaya çıkıyor.
@@ -84,6 +94,18 @@ article:
           text: Gelen yorum ve mesajlar. Talebin kaybolduğu yer genellikle burası; gece gelen mesaja sabah dönmek dönüşümü yarıya indiriyor.
         - title: Ölçüm
           text: Hangi içeriğin talep getirdiğini görmek. Bu veri olmadan bir sonraki ayın planı tahmine kalıyor.
+
+    - type: infographic
+      heading: Altısı nasıl tek merkeze bağlanıyor?
+      intro: 'Başlıklar ayrı ayrı da yürütülebiliyor. Ama sonuç üreten kurgu, hepsinin aynı hedefe bağlandığı kurgu: strateji içeriği belirliyor, içerik reklamın kreatifini besliyor, reklam verisi bir sonraki ayın planını değiştiriyor.'
+      center: Ajans Yönetimi
+      nodes:
+        - Strateji
+        - İçerik
+        - Video
+        - Reklam
+        - Mesaj Takibi
+        - Ölçüm
 
     - type: image
       src: '/src/assets/images/projects/sera-natura/sosyal-medya.webp'
@@ -122,6 +144,23 @@ article:
         Sadece bir kişinin kısa videolar çektiği, kendi yüzüyle anlattığı işlerde de ajans genellikle gereksiz. Orada işi yapan şey samimiyet ve o dışarıdan üretilemiyor.
 
         Ajans şu üç durumda anlamlı oluyor: üretim yükü kendi ekibinizi aşıyorsa, reklam bütçesi harcanıyor ama karşılığı ölçülemiyorsa, ya da birden fazla kanalı aynı anda yürütmek gerekiyorsa.
+
+    - type: process
+      heading: Bir çalışma nasıl başlıyor?
+      intro: İlk ay içerik ayı değil, kurulum ayı. Bu adımlar atlanınca üretim başlıyor ama neye göre üretildiği belirsiz kalıyor.
+      steps:
+        - title: Hesabı ve gelen kutusunu açıyoruz
+          text: Son üç ayın içerikleri, hangi gönderinin ne getirdiği ve cevaplanmamış mesajlar. Çoğu markada ilk bulgu burada çıkıyor.
+        - title: Kimin için üreteceğimizi yazıyoruz
+          text: Hedef kitle tanımı "25-45 yaş kadın" düzeyinde kalırsa içerik de o kadar genel oluyor. Somut bir kişi tarif edilmeden plan yapılmıyor.
+        - title: İlk ayın planını çıkarıyoruz
+          text: Kaç gönderi, kaç video, hangi çekim. Plan onaylanmadan üretime geçmiyoruz; sonradan değişen brief en pahalı gecikme.
+        - title: Ölçümü bağlıyoruz
+          text: Mesaj, form ve WhatsApp yönlendirmesi olay olarak tanımlanıyor. Bu kurulmadan yayına çıkan hesabın ne getirdiği ay sonunda tahmine kalıyor.
+        - title: Üretip yayınlıyoruz
+          text: Çekim, tasarım, kurgu ve yayın. İlk ay genellikle iki farklı içerik tonu deneniyor.
+        - title: Ay sonunda tek bir soruya bakıyoruz
+          text: Kaç gerçek talep geldi? Erişim ve beğeni bu sorunun cevabı değil; sadece yolun ne kadarının yürüdüğünü gösteriyor.
 
     - type: image
       src: '/src/assets/images/projects/xray-groupe/sosyal-medya.webp'
@@ -167,6 +206,18 @@ article:
           text: Sektör deneyimi şart değil ama benzer bir satış döngüsünü daha önce görmüş olmak süreci hızlandırıyor.
         - title: Anlaşma biterse dosyalar ve erişimler kimde kalıyor?
           text: Hesapların ve üretilen içeriklerin markaya ait olması gerekiyor. Bu madde sözleşmede yoksa sonradan sorun çıkıyor.
+
+    - type: chips
+      heading: Hangi platformlar yönetiliyor?
+      intro: Hepsinde birden var olmaya çalışmak içeriği inceltiyor. Çoğu marka için bir ana platform ve bir destek platformu yeterli oluyor; hangisi olduğu hedef kitlenin nerede olduğuna göre değişiyor.
+      items:
+        - Instagram
+        - TikTok
+        - LinkedIn
+        - Facebook
+        - YouTube
+        - Pinterest
+        - X
 
     - type: faq
       heading: Sık Sorulan Sorular
