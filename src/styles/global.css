@@ -103,6 +103,21 @@ button {
   padding-top: 0;
 }
 
+/*
+ * Bir metin bölümünü izleyen madde panelleri o metnin DEVAMIDIR, ayrı bir bölüm
+ * değil (ör. "Neden Önemli?" anlatısı + onu açan üç panel). Panellerin kendi
+ * başlığı olmadığı için iki bölümün tam dolgusu üst üste binince aralarında
+ * ~180px boş alan kalıyordu — mobilde metin bittikten sonra ekran boyu boşluk.
+ * Dikey ritim korunsun diye dolgu sıfırlanmaz, yarıya indirilir.
+ */
+.section--light:has(.text--split) + .section--light:has(.panels) {
+  padding-top: 0;
+}
+
+.section--light:has(.text--split):has(+ .section--light .panels) {
+  padding-bottom: calc(var(--section-y) / 2);
+}
+
 /* Kapanış CTA'sını izleyen iletişim bilgisi aynı bloğun devamıdır (bkz. ContactInfoSection). */
 .section:has(.cta-box):has(+ .section .contact-info) {
   padding-bottom: 0;

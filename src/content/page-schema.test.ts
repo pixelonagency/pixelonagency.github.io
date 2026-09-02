@@ -1,5 +1,7 @@
 import { describe, expect, test } from 'bun:test';
+import { z } from 'astro/zod';
 import { makePageSchema } from './page-schema';
+import type { ImageResolver } from './schemas';
 
 const pageSchema = makePageSchema();
 
@@ -622,5 +624,55 @@ describe('section discrimination', () => {
 
   test('rejects an unknown background variant', () => {
     expect(parseSection({ type: 'text', heading: 'X', body: 'y', background: 'purple' }).success).toBe(false);
+  });
+});
+
+/*
+ * Showreel şeridi görselleri `<Image />` ile basılıyor. Ham string bırakılırsa
+ * kart sessizce boş çıkar — sectorCards'ta bire bir aynı hata yaşandı ve
+ * `image()` ile çözüldü. Bu test aynı hatanın showreel'de tekrarlanmasını
+ * engeller: görselin ENJEKTE EDİLEN çözümleyiciden geçtiğini doğrular.
+ */
+describe('showreel görselleri Astro görsel hattından geçer', () => {
+  const markingResolver: ImageResolver = () => z.string().transform((src) => ({ src, resolved: true }));
+  const schema = makePageSchema(markingResolver);
+
+  const item = {
+    label: 'Dentasay',
+    image: '/src/assets/images/projects/dentasay/web-anasayfa.webp',
+    href: '/projelerimiz/dentasay/',
+  };
+
+  test('showreel item görseli image() çözümleyicisinden geçer', () => {
+    const result = schema.safeParse({
+      ...base,
+      sections: [{ type: 'showreel', items: [item, { ...item, label: 'Xray Groupe' }] }],
+    });
+
+    expect(result.success).toBe(true);
+    const section = result.data!.sections[0] as { items: { image: unknown }[] };
+    expect(section.items[0].image).toEqual({ src: item.image, resolved: true });
+  });
+});
+
+/*
+ * Reklam açılış sayfasında hero lead'i mobilde ekranın yarısını yiyor ve CTA'yı
+ * katlamanın altına itiyordu. Gizleme SİTE GENELİNDE yapılamaz — aynı bileşeni
+ * kullanan ana sayfa, iletişim ve analiz hero'ları lead'lerini kaybederdi. Bu
+ * yüzden karar içerikte, bölüm bazında veriliyor.
+ */
+describe('hero lead mobilde bölüm bazında gizlenebilir', () => {
+  const hero = { type: 'hero', headingLines: ['Başlık'], lead: 'Uzun bir giriş cümlesi.' };
+
+  test('bayrak verilmezse lead mobilde de görünür', () => {
+    const result = parseSection(hero);
+    expect(result.success).toBe(true);
+    expect((result.data!.sections[0] as { hideLeadOnMobile: boolean }).hideLeadOnMobile).toBe(false);
+  });
+
+  test('hideLeadOnMobile true kabul edilir', () => {
+    const result = parseSection({ ...hero, hideLeadOnMobile: true });
+    expect(result.success).toBe(true);
+    expect((result.data!.sections[0] as { hideLeadOnMobile: boolean }).hideLeadOnMobile).toBe(true);
   });
 });

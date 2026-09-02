@@ -169,7 +169,11 @@ const tickerItems = section.tagline?.includes('✦')
           }
         </h1>
 
-        {section.lead && <p class="hero__lead">{section.lead}</p>}
+        {
+          section.lead && (
+            <p class:list={['hero__lead', section.hideLeadOnMobile && 'hero__lead--desktop-only']}>{section.lead}</p>
+          )
+        }
 
         {
           section.ctas.length > 0 && (
@@ -530,6 +534,17 @@ const tickerItems = section.tagline?.includes('✦')
     color: var(--text-muted-on-light);
   }
 
+  /*
+   * `hideLeadOnMobile` işaretli hero'larda lead yalnızca mobilde kalkar. Metin
+   * DOM'da kalır — arama motoru ve kopyala-yapıştır için erişilebilir; yalnız
+   * dar ekranda çizilmez ki rozetler ve CTA katlamanın üstünde kalsın.
+   */
+  @media (max-width: 720px) {
+    .hero__lead--desktop-only {
+      display: none;
+    }
+  }
+
   .hero__ctas {
     display: flex;
     flex-wrap: wrap;
@@ -682,12 +697,31 @@ const tickerItems = section.tagline?.includes('✦')
     animation: fadeUp 0.8s var(--ease-out) 0.5s both;
   }
 
+  /*
+   * Rozetler eskiden %14 kenarlık ve soluk metinle neredeyse görünmezdi;
+   * hero videosunun üstünde tamamen kayboluyorlardı. Hafif dolgu, daha güçlü
+   * kenarlık ve solda lime nokta ile okunur hâle getirildi — dolgunun kendisi
+   * arkadaki videodan da ayırıyor.
+   */
   .hero__chip {
-    border: 1px solid rgb(255 255 255 / 14%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgb(255 255 255 / 28%);
+    background: rgb(255 255 255 / 7%);
     border-radius: var(--radius-pill);
     padding: 10px 20px;
     font: 500 13px var(--font-display);
-    color: var(--text-soft);
+    color: var(--text);
+  }
+
+  .hero__chip::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   .hero__chip-strong {
@@ -697,7 +731,8 @@ const tickerItems = section.tagline?.includes('✦')
 
   .hero--light .hero__chip {
     border-color: var(--border-on-light);
-    color: var(--text-muted-on-light);
+    background: rgb(10 10 10 / 4%);
+    color: var(--text-on-light);
   }
 
   @media (max-width: 860px) {

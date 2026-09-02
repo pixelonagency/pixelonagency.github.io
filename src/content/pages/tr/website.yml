@@ -17,6 +17,18 @@ sections:
     lead: |-
       Hazır şablonlardan uzak, markanıza özel; hızlı, mobil uyumlu ve ziyaretçileri iletişime yönlendiren profesyonel web siteleri oluşturuyoruz. Amacımız yalnızca güzel görünen değil, sizin için çalışan bir web sitesi kurmak.
     tagline: Projenizi anlatın, size özel teklifinizi hazırlayalım.
+    # Mobilde lead + 5 rozet + 3 buton üst üste binince CTA katlamanın altına
+    # düşüyordu; rozetler aynı vaadi zaten kısa taşıyor.
+    hideLeadOnMobile: true
+    # Hizmet sayfasındaki web tasarım hero videosunun aynısı — tek kaynak,
+    # ayrı dosya üretilmedi.
+    video:
+      desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
+      desktopWebm: /media/hero/web-tasarim/hero-web-design-desktop.webm
+      desktopPoster: /media/hero/web-tasarim/hero-web-design-desktop-poster.webp
+      mobileMp4: /media/hero/web-tasarim/hero-web-design-mobile.mp4
+      mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
+      mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
     chips:
       - Markaya özel tasarım
       - Mobil uyumlu yapı
@@ -50,31 +62,105 @@ sections:
       - SEO Dostu
       - Hızlı Altyapı
 
-  # 3 — KISA TANITIM
+  # 3 — NEDEN ÖNEMLİ (başlık üstte, gövde solda, görsel sağda)
+  # DİKKAT: `layout: split` KULLANMA — o düzen görseli hiç basmıyor (bkz.
+  # TextSection.astro). Görsel yalnızca varsayılan düzende, `text--split`
+  # iki sütun yerleşimiyle çıkıyor.
   - type: text
     background: light
     eyebrow: Neden Önemli?
     heading: Web Siteniz Sadece Güzel Görünmesin, Sizin İçin Çalışsın.
+    image: '/src/assets/images/services/web-tasarim.webp'
+    imageAlt: Masaüstü ve mobilde çalışan bir Pixelon web sitesi tasarımı
     body: |-
-      Potansiyel müşterileriniz markanızla çoğu zaman ilk kez web sitenizde karşılaşır. Bu ilk izlenim, sizinle çalışıp çalışmayacaklarına dair kararlarının büyük bölümünü belirler.
+      Potansiyel müşterileriniz markanızla çoğu zaman ilk kez web sitenizde karşılaşır. Sizi aramadan, teklif istemeden, hatta hizmetinizi okumadan önce bir karar verirler: bu firma ciddi mi, değil mi.
 
-      Pixelon olarak yalnızca güzel görünen değil; hizmetlerinizi doğru anlatan, güven oluşturan ve ziyaretçileri arama, WhatsApp veya form doldurma aksiyonuna yönlendiren web siteleri tasarlıyoruz.
+      O karar saniyeler içinde verilir ve geri dönüşü yoktur. Yavaş açılan, mobilde bozulan ya da ne yaptığı anlaşılmayan bir site, reklamla getirdiğiniz her ziyaretçiyi rakibinize gönderir.
 
-      İyi bir web sitesi bir masraf değil, size müşteri kazandıran bir yatırımdır.
+      Biz yalnızca güzel görünen değil; hizmetinizi doğru anlatan, güven veren ve ziyaretçiyi arama, WhatsApp veya form doldurma aksiyonuna taşıyan siteler kuruyoruz.
+    highlight: İyi bir web sitesi masraf değildir; size müşteri kazandıran bir yatırımdır.
 
-  # 4 — NELER HAZIRLIYORUZ (dört site türü)
+  # 4 — NEDEN ÖNEMLİ, MADDE MADDE (panels: üst çizgili açık bloklar)
   - type: cards
+    kind: panels
+    background: light
+    columns: 3
+    items:
+      - eyebrow: İlk İzlenim
+        title: Kararı Site Verdiriyor
+        description: |-
+          Ziyaretçi hizmetinizi okumadan önce sitenize bakıp bir yargıya varıyor. O yargı sonraki her adımı belirliyor.
+      - eyebrow: Kayıp Trafik
+        title: Yavaş Site Müşteri Kaybettirir
+        description: |-
+          Mobilde geç açılan ya da bozuk görünen bir sayfa, reklamla getirdiğiniz ziyaretçiyi rakibinize teslim eder.
+      - eyebrow: Dönüşüm
+        title: Ziyaretçi Talebe Dönüşmeli
+        description: |-
+          Arama, WhatsApp ve form butonlarının nerede duracağı rastgele değil; kullanıcının karar anına göre belirlenir.
+
+  # 5 — YAYINDAKİ İŞLER (kayan şerit; hizmet sayfasındaki showreel'in aynısı)
+  # Neden önemli anlatıldıktan hemen sonra kanıt: iddiayı yapılmış iş takip ediyor.
+  - type: showreel
+    background: dark
+    eyebrow: Yayındaki İşlerimiz
+    heading: Tasarlayıp Kodladığımız Web Siteleri
+    items:
+      - label: Dentasay
+        image: '/src/assets/images/projects/dentasay/web-anasayfa.webp'
+        alt: Dentasay diş poliklinikleri web sitesinin ana sayfası
+        href: /projelerimiz/dentasay/
+      - label: Hands For All
+        image: '/src/assets/images/showreel/handsforall.webp'
+        alt: Hands For All bağış platformunun ana sayfası
+        href: /projelerimiz/handsforall/
+      - label: Anneliğin Hikayesi
+        image: '/src/assets/images/showreel/annelik-hikayesi.webp'
+        alt: Anneliğin Hikayesi içerik platformunun ana sayfası
+        href: /projelerimiz/annelik-hikayesi/
+      - label: Dr. Ayşe Cinkaya Kahveci
+        image: '/src/assets/images/showreel/dr-ayse-cinkaya-kahveci.webp'
+        alt: Dermatoloji kliniğinin dolgu uygulamaları sayfası
+        href: /projelerimiz/dr-ayse-cinkaya-kahveci/
+      - label: Çağla Aytaç
+        image: '/src/assets/images/showreel/cagla-aytac.webp'
+        alt: Diyetisyen Çağla Aytaç web sitesinin ana sayfası
+        href: /projelerimiz/cagla-aytac/
+      - label: Xray Groupe
+        image: '/src/assets/images/showreel/xray-groupe.webp'
+        alt: Xray Groupe inşaat firmasının altyapı projeleri sayfası
+        href: /projelerimiz/xray-groupe/
+      - label: Touch Consulting
+        image: '/src/assets/images/showreel/touch-consulting.webp'
+        alt: Touch Consulting KOSGEB danışmanlık sayfası
+        href: /projelerimiz/touch-consulting/
+      - label: Redex Glass
+        image: '/src/assets/images/showreel/redex-glass.webp'
+        alt: Redex Glass cam ambalaj markasının ana sayfası
+        href: /projelerimiz/redex-glass/
+
+  # 6 — NELER HAZIRLIYORUZ (dört site türü)
+  # DİKKAT: `kind: feature` KULLANMA — o görünüm yalnız gerekçe ikonlarını
+  # (strategy/bespoke/craft/orbit/partnership) basar, sektör ikonlarını sessizce
+  # düşürür ve açıklamayı kısaltır. Varsayılan ızgara hem sektör ikonunu, hem
+  # 01–04 numarasını koruyor.
+  # columns:2 de kullanma — auto-fit 340px ile 4 kartı 3+1 kırıyor.
+  # `kind: tinted` da denendi: krem kart dolgusu geliyor ama metin rengi koyu
+  # bölümde beyaz kalıyor, yazı okunmuyor (o varyant açık bölümler için).
+  - type: cards
+    columns: 4
     background: dark
     anchor: cozumler
     eyebrow: Neler Hazırlıyoruz?
     heading: İhtiyacınıza Uygun Web Çözümleri
     lead: |-
       İşletmenizin hedefine göre doğru web sitesi türünü öneriyor, tümünü markanıza özel olarak tasarlıyoruz.
-    columns: 4
     items:
+      # `featured: true` KALDIRILDI — o bayrak kalıcı lime çerçeve + gölge
+      # basıyor ve kart hover'ıyla birebir aynı göründüğü için kart "seçili
+      # kalmış" gibi okunuyordu.
       - title: Kurumsal Web Sitesi
         icon: sme
-        featured: true
         description: |-
           Markanızı ve hizmetlerinizi profesyonel şekilde anlatan, güven veren modern web siteleri.
       - title: E-Ticaret Sitesi
@@ -90,8 +176,9 @@ sections:
         description: |-
           Yurt dışındaki müşterilere ulaşmanızı sağlayan, çok dilli ve global hedeflere uygun web altyapıları.
 
-  # 5 — NEDEN PIXELON
+  # 7 — NEDEN PIXELON
   - type: bullets
+    kind: check
     background: light
     eyebrow: Neden Pixelon?
     heading: Hazır Site Değil, Markanıza Özel Bir Dijital Deneyim
@@ -106,8 +193,8 @@ sections:
       - Form, WhatsApp ve sosyal medya bağlantıları
       - Yayın sonrası teknik destek
 
-  # 6 — SÜREÇ (dört adım; 01–04 numaraları bileşende üretilir)
-  - type: steps
+  # 8 — SÜREÇ (dağınık pencere kartları; numaralar bileşende üretilir)
+  - type: process
     background: dark
     eyebrow: Süreç Nasıl İşliyor?
     heading: Fikirden Yayına, Sade ve Net Bir Süreç
@@ -115,32 +202,36 @@ sections:
       Web sitenizi hayata geçirirken her adımda yanınızdayız; süreci sizin için basit ve anlaşılır tutuyoruz.
     items:
       - title: Projenizi Anlatın
+        icon: discover
         description: |-
           İhtiyaçlarınızı ve hayalinizdeki web sitesini dinliyoruz.
       - title: Tasarlayalım
+        icon: build
         description: |-
           Markanıza özel sayfa yapısını ve görsel tasarımı hazırlıyoruz.
       - title: Geliştirelim
+        icon: optimize
         description: |-
           Onaylanan tasarımı hızlı ve yönetilebilir bir web sitesine dönüştürüyoruz.
       - title: Yayına Alalım
+        icon: launch
         description: |-
           Tüm kontrolleri tamamlayarak web sitenizi kullanıma açıyoruz.
 
-  # 7 — PROJELER (projects koleksiyonundan; ilk 3)
+  # 9 — PROJELER (kesintisiz kayan şerit; koleksiyonun tamamı)
   - type: projects
+    kind: slider
     background: light
     anchor: projeler
     eyebrow: Tamamladığımız Bazı Projeler
     heading: Markalar İçin Tasarladığımız Dijital Deneyimler
     lead: |-
       Sağlık, e-ticaret, inşaat, danışmanlık ve farklı sektörlerdeki markalar için kullanıcı dostu ve güçlü web siteleri hazırladık.
-    limit: 3
     showFilters: false
     ctaLabel: Tüm Projelerimizi Görün
     ctaHref: /projelerimiz
 
-  # 8 — BAŞVURU FORMU (iletişim formu; hero CTA'sı buraya kayar)
+  # 10 — BAŞVURU FORMU (iletişim formu; hero CTA'sı buraya kayar)
   - type: form
     background: dark
     anchor: basvuru
@@ -160,7 +251,7 @@ sections:
         icon: whatsapp
         external: true
 
-  # 9 — SAYFA SONU CTA
+  # 11 — SAYFA SONU CTA
   - type: cta
     background: dark
     heading: Markanıza Yakışan Bir Web Sitesine Hazır mısınız?

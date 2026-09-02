@@ -56,6 +56,14 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
     /** Hero altındaki kısa güven rozetleri ("15+ Yıllık Deneyim" …). */
     chips: list(nonEmpty),
     /**
+     * Lead paragrafını yalnızca mobilde gizler. Reklam açılış sayfalarında
+     * lead + rozetler + üç buton üst üste binince CTA katlamanın altına
+     * düşüyor; rozetler zaten aynı vaadi kısa biçimde taşıdığı için mobilde
+     * lead kaldırılabiliyor. SİTE GENELİ değil, bölüm bazında karar — ana
+     * sayfa ve iletişim hero'ları lead'ini korur.
+     */
+    hideLeadOnMobile: z.boolean().default(false),
+    /**
      * CTA'ların altında duran platform marka işareti şeridi. Metin yerine logo
      * kullanılır: yedi platform adını okumak yerine ziyaretçi onları tanır.
      */
@@ -252,7 +260,13 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
       .array(
         z.object({
           label: nonEmpty,
-          image: z.string(),
+          /*
+           * `image()` ile çözümlenir, düz string DEĞİL: şerit görseli `<Image />`
+           * ile basılıyor ve ham yol verilince kart sessizce boş çıkıyor
+           * (sectorCards'ta bire bir aynı hata yaşandı). Hizmet şemasındaki
+           * karşılığı da `image()`.
+           */
+          image: image(),
           alt: opt(z.string()),
           href: nonEmpty,
           video: opt(z.string()),

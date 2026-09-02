@@ -197,6 +197,8 @@ export function serviceToSections(service: ServiceLike, whatsappUrl: string, loc
     background: 'dark',
     video: service.heroVideo,
     chips: [],
+    /* Hizmet sayfalarında rozet yok; lead tek özet cümle olduğu için mobilde de kalır. */
+    hideLeadOnMobile: false,
     headingLines: service.hero.headingLines,
     lead: service.hero.lead,
     tagline: service.hero.tagline,
