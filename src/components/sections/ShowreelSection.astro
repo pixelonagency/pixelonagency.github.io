@@ -103,7 +103,7 @@ const REEL_VIDEO_SCRIPT = `
                       src={item.image as never}
                       alt={item.alt ?? `${item.label} web sitesi`}
                       widths={[520, 1040]}
-                      sizes="(max-width: 720px) 78vw, 520px"
+                      sizes="(max-width: 720px) 88vw, 520px"
                       loading="lazy"
                       decoding="async"
                     />
@@ -184,6 +184,18 @@ const REEL_VIDEO_SCRIPT = `
   .reel__item {
     flex: 0 0 auto;
     width: clamp(280px, 34vw, 520px);
+  }
+
+  /*
+   * Mobilde `34vw` taban değerin (280px) altında kaldığı için kartlar dar
+   * ekranda küçücük kalıyordu: 390px'lik telefonda 280px, yani ekranın ancak
+   * dörtte üçü. Şerit sayfanın kanıt bölümü — telefonda da işin kendisi
+   * okunabilir olmalı. Masaüstü ve tablet clamp'in kendi değerinde kalır.
+   */
+  @media (max-width: 720px) {
+    .reel__item {
+      width: 88vw;
+    }
   }
 
   .reel__link {
