@@ -20,6 +20,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaSection from './sections/CtaSection.astro';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
 import { mediaUrl } from '../lib/media';
+import { serviceSlugForChip } from '../lib/service-chip';
 import { canonicalUrl } from '../lib/seo';
 import { breadcrumbSchema, caseStudySchema, SERVICE_BY_PROJECT_CATEGORY } from '../lib/schema';
 import { t } from '../lib/ui';
@@ -356,9 +357,16 @@ const RAIL_SCRIPT = `(() => {
               data-reveal-index="2"
               aria-label={locale === 'tr' ? 'Proje kapsamı' : 'Project scope'}
             >
-              {detail.services.map((service) => (
-                <li>{service}</li>
-              ))}
+              {detail.services.map((service) => {
+                /* Vaka müşteri bazlıdır ve birden çok hizmeti barındırır; her çip
+                   kendi hizmet sayfasına bağlanır. Karşılığı yoksa düz metin kalır. */
+                const slug = serviceSlugForChip(service);
+                return (
+                  <li class={slug ? 'is-link' : undefined}>
+                    {slug ? <a href={localizedPath('services', locale, slug)}>{service}</a> : service}
+                  </li>
+                );
+              })}
             </ul>
           )
         }
@@ -769,6 +777,26 @@ const RAIL_SCRIPT = `(() => {
     font: 500 13px var(--font-display);
     color: var(--text-soft);
     white-space: nowrap;
+  }
+
+  /* Çip artık hizmet sayfasına bağlanıyor; rozet görünümü korunsun diye
+     bağlantı global link stilini (lime + alt çizgi) DEVRALMAZ, rengi
+     çipten miras alır. Tıklanabilir olduğu yalnızca hover'da belli olur. */
+  .pd-hero__chips a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .pd-hero__chips li.is-link {
+    transition:
+      border-color 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .pd-hero__chips li.is-link:hover,
+  .pd-hero__chips li.is-link:focus-within {
+    border-color: var(--accent);
+    color: var(--text);
   }
 
   .pd-hero__media {
