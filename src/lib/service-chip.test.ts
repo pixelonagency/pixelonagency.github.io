@@ -62,4 +62,28 @@ describe('serviceSlugForChip', () => {
   test('belirsiz kalemde en spesifik eşleşme kazanır', () => {
     expect(serviceSlugForChip('Marka İletişimi')).toBe('marka-ve-kurumsal-kimlik');
   });
+
+  /*
+   * DİL BİLİNCİ — 5 Eyl 2026'da yakalanan hata: desenler ("logo", "seo")
+   * İngilizce çiplerde de eşleşiyordu ama Türkçe slug döndürüyordu; sonuçta
+   * /en/services/marka-ve-kurumsal-kimlik/ gibi 11 KIRIK LİNK üretildi.
+   * Slug artık dile göre dönüyor.
+   */
+  test('İngilizce çipler İngilizce slug döndürür', () => {
+    expect(serviceSlugForChip('Logo Design', 'en')).toBe('brand-and-corporate-identity');
+    expect(serviceSlugForChip('Logo & Corporate Identity', 'en')).toBe('brand-and-corporate-identity');
+    expect(serviceSlugForChip('SEO', 'en')).toBe('seo-and-content-marketing');
+    expect(serviceSlugForChip('Web Design', 'en')).toBe('web-design-and-development');
+    expect(serviceSlugForChip('Social Media Management', 'en')).toBe('social-media-management');
+    expect(serviceSlugForChip('Digital Advertising', 'en')).toBe('digital-advertising');
+    expect(serviceSlugForChip('International Patient Acquisition', 'en')).toBe('health-tourism-consulting');
+  });
+
+  test('locale verilmezse Türkçe varsayılır', () => {
+    expect(serviceSlugForChip('Logo Design')).toBe('marka-ve-kurumsal-kimlik');
+  });
+
+  test('İngilizce tarafta da karşılığı olmayan çip null döner', () => {
+    expect(serviceSlugForChip('Video Production', 'en')).toBeNull();
+  });
 });

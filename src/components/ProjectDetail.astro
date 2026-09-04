@@ -360,7 +360,7 @@ const RAIL_SCRIPT = `(() => {
               {detail.services.map((service) => {
                 /* Vaka müşteri bazlıdır ve birden çok hizmeti barındırır; her çip
                    kendi hizmet sayfasına bağlanır. Karşılığı yoksa düz metin kalır. */
-                const slug = serviceSlugForChip(service);
+                const slug = serviceSlugForChip(service, locale);
                 return (
                   <li class={slug ? 'is-link' : undefined}>
                     {slug ? <a href={localizedPath('services', locale, slug)}>{service}</a> : service}
