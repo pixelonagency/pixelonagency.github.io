@@ -9,11 +9,11 @@ summary: >-
   Markanızı doğru anlatan; hızlı, mobil uyumlu ve dönüşüm odaklı siteler tasarlıyor ve geliştiriyoruz.
 
 seo:
-  title: Web Tasarım Ajansı | Kurumsal Site ve Özel Yazılım | Pixelon
+  title: Kurumsal Web Tasarım Ajansı | Web Sitesi ve Özel Yazılım | Pixelon
   description: >-
-    Web tasarım ajansı arıyorsanız: hızlı, mobil uyumlu, SEO altyapılı ve
-    dönüşüm odaklı kurumsal siteler, e-ticaret ve özel yazılım. Markanıza özel
-    tasarım, yönetilebilir panel.
+    Kurumsal web tasarım hizmeti: markanıza özel tasarım, mobil uyumlu ve SEO
+    altyapılı kurumsal web sitesi, e-ticaret ve özel yazılım. Ortalama 30 günde
+    teslim, 65.000 TL'den başlayan fiyatlar.
 
 heroVideo:
   desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
@@ -23,9 +23,9 @@ heroVideo:
   mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
   mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
 hero:
-  eyebrow: Web Tasarım Ajansı
+  eyebrow: Kurumsal Web Tasarım Ajansı
   headingLines:
-    - "Markanızı İlk Görüşte Anlatan *Web Tasarım Ajansı.*"
+    - "Markanızı İlk Görüşte Anlatan *Kurumsal Web Tasarım.*"
   lead: >-
     Markanızı doğru yansıtan; hızlı, mobil uyumlu, kullanıcı dostu ve
     ziyaretçileri müşteriye dönüştürmeye odaklanan web siteleri geliştiriyoruz.
@@ -290,11 +290,13 @@ faq:
   eyebrow: Merak Edilenler
   heading: Web Tasarım Hakkında Sıkça Sorulan Sorular
   items:
-    - question: Web sitesi tasarımı ne kadar sürer?
+    - question: Kurumsal web sitesi kaç günde teslim edilir?
       answer: >-
-        Projenin sayfa sayısı, içerik kapsamı, dil seçenekleri ve özel yazılım
-        ihtiyaçlarına göre değişir. Kurumsal web sitesi projeleri çoğunlukla
-        planlama, tasarım, yazılım ve test aşamalarından oluşur.
+        Teslim ettiğimiz kurumsal web sitelerinde ortalama süre **30 gündür**.
+        Bu süre keşif, içerik mimarisi, tasarım, yazılım ve test aşamalarının
+        tamamını kapsar. Süreyi uzatan tek şey genellikle bizim tarafımız değil,
+        içerik ve onay beklemektir; bu yüzden proje başında içerik takvimi
+        çıkarıyoruz.
     - question: Web sitesini daha sonra kendimiz yönetebilir miyiz?
       answer: >-
         Evet. Web sitenize içerikleri, hizmetleri, projeleri ve blog yazılarını
@@ -305,10 +307,30 @@ faq:
         olacak şekilde tasarlanır ve test edilir.
     - question: SEO çalışması web tasarım hizmetine dâhil mi?
       answer: >-
-        Web sitesi temel teknik SEO altyapısına uygun hazırlanır. Kapsamlı
-        anahtar kelime, içerik üretimi ve sürekli SEO çalışmaları ayrı bir
-        hizmet planı olarak sunulabilir.
+        Site teknik SEO altyapısına uygun kurulur: başlık hiyerarşisi, URL
+        düzeni, meta alanları, görsel optimizasyonu ve dönüşüm ölçümlemesi
+        dâhildir. Anahtar kelime araştırması, içerik üretimi ve sürekli
+        sıralama çalışması ayrı bir hizmettir —
+        [SEO ve içerik pazarlaması](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/)
+        sayfasında anlatıyoruz.
     - question: Çok dilli web sitesi hazırlıyor musunuz?
       answer: >-
-        Evet. Hedeflediğiniz ülkelere ve dillere uygun çok dilli web sitesi
-        altyapıları oluşturuyoruz.
+        Evet, en çok çalıştığımız alanlardan biri bu.
+        [Dentasay](/projelerimiz/dentasay/) için tek dilli bir siteyi 20 ülkeye
+        hitap eden **13 dilli** bir yapıya taşıdık;
+        [Dr. Ayşe Cinkaya Kahveci](/projelerimiz/dr-ayse-cinkaya-kahveci/)
+        kliniğini tek dilden **6 dile** çıkardık. Her dil için ayrı içerik,
+        dil etiketleri ve panelde çift dilli düzen kurgulanıyor.
+    - question: Kurumsal web sitesi fiyatları ne kadar?
+      answer: >-
+        Kurumsal projeler **65.000 TL** bandından başlıyor, e-ticaret ve özel
+        yazılım **140.000 TL** bandından (KDV hariç). Bandın neresine
+        düştüğünüzü sayfa sayısı değil; içerik sorumluluğu, dil sayısı ve
+        entegrasyon ihtiyacı belirliyor. Kalem kalem nasıl değiştiğini
+        [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında yazdık.
+    - question: Hazır tema mı kullanıyorsunuz?
+      answer: >-
+        Hayır. Tasarım markanın kendi kurgusuna göre kuruluyor, hazır temanın
+        dayattığı yapıya değil. Aradaki farkın neye mal olduğunu
+        [web tasarım ajansı seçerken nelere dikkat edilmeli](/blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/)
+        yazısında kalem kalem anlattık.

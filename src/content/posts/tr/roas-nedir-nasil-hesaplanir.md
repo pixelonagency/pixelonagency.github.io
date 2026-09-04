@@ -87,7 +87,7 @@ article:
 
         ROAS yalnızca reklam harcamasına bakıyor: reklam bütçesi ne getirdi?
 
-        ROI ise işin tamamına bakıyor: ürün maliyeti, kargo, iade, personel, ajans ücreti ve platform komisyonları dahil, bu iş sonunda kâr etti mi?
+        ROI ise işin tamamına bakıyor: ürün maliyeti, kargo, iade, personel, ajans ücreti ve platform komisyonları dahil, bu iş sonunda kâr etti mi? Bu kalemlerin çoğu satış altyapısında kurgulanıyor; nasıl kurduğumuzu [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) sayfasında anlattık.
 
         Bir kampanyanın ROAS'ı yüksek olup ROI'si negatif olabiliyor. Özellikle iade oranı yüksek kategorilerde ve düşük marjlı ürünlerde bu tablo sık görülüyor.
 

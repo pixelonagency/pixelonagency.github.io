@@ -156,7 +156,7 @@ article:
 
         Bakılacak dört nokta şu: teklif kaç sayfa ve hangi şablonları içeriyor, içerik ve görsel sorumluluğu kimde, hangi entegrasyonlar dahil, ve teslim sonrası hangi süre boyunca hangi destek veriliyor.
 
-        E-ticaret söz konusuysa ayrı bir başlık daha var: ürün sayısı, varyant yapısı ve ödeme-kargo entegrasyonları fiyatı belirleyen ana kalemler hâline geliyor.
+        E-ticaret söz konusuysa ayrı bir başlık daha var: ürün sayısı, varyant yapısı ve ödeme-kargo entegrasyonları fiyatı belirleyen ana kalemler hâline geliyor. Bu kalemleri [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) sayfasında tek tek açıyoruz.
 
         Teklifte bu kalemler yazılı değilse, eksik olan bilgi sonradan ek maliyet olarak geri geliyor.
 

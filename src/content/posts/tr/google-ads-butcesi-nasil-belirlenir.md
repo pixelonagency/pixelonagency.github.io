@@ -67,7 +67,7 @@ article:
 
         Buradaki rakamlar örnek. Kendi rakamlarınızı yerine koyduğunuzda çıkan sayı, tahmin değil hesap oluyor.
 
-        E-ticaret gibi satışın sitede tamamlandığı işlerde aynı hesap ciro üzerinden de yapılabiliyor; formülü ve başabaş eşiğini [ROAS nedir, nasıl hesaplanır](/blog/roas-nedir-nasil-hesaplanir/) yazısında ele aldık.
+        E-ticaret gibi satışın sitede tamamlandığı işlerde aynı hesap ciro üzerinden de yapılabiliyor; formülü ve başabaş eşiğini [ROAS nedir, nasıl hesaplanır](/blog/roas-nedir-nasil-hesaplanir/) yazısında ele aldık. Satış altyapısının kendisi de bu hesabın parçası — [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) sayfasında ürün, ödeme ve kargo tarafını anlatıyoruz.
 
     - type: callout
       variant: tip

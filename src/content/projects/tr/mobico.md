@@ -38,6 +38,8 @@ detail:
       value: 4 Tasarım Hizmeti
     - label: Dönem
       value: 2024–2025
+    - label: Teslim
+      value: 30 gün
   approach:
     heading: Neler Yaptık?
     text: |-

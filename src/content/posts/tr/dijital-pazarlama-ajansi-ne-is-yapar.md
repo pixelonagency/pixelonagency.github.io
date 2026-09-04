@@ -76,7 +76,7 @@ article:
 
         Bu iki örnekte de tek tek işler doğru yapılmış. Eksik olan şey aralarındaki bağ.
 
-        Bağın kurulduğu yer çoğu zaman markanın kendisi oluyor: aynı mesajın her kanalda aynı dille söylenmesi. Bu dilin nasıl tanımlandığını [marka kimliği nedir, neleri kapsar](/blog/marka-kimligi-nedir-neleri-kapsar/) yazısında ele aldık.
+        Bağın kurulduğu yer çoğu zaman markanın kendisi oluyor: aynı mesajın her kanalda aynı dille söylenmesi. Bu yüzden tek çatı altında çalışıyoruz; ekibin nasıl kurulduğunu [biz kimiz](/biz-kimiz/) sayfasında anlattık. Bu dilin nasıl tanımlandığını [marka kimliği nedir, neleri kapsar](/blog/marka-kimligi-nedir-neleri-kapsar/) yazısında ele aldık.
 
     - type: section
       id: sizde-kalan

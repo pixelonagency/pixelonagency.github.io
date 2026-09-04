@@ -43,6 +43,18 @@ detail:
       value: Çok kanallı dijital büyüme sistemi
     - label: Pazar
       value: 20 ülke · 13 dil
+    - label: Web sitesi teslimi
+      value: 30 gün
+
+  stats:
+    - value: '13'
+      label: dilde yayında
+      note: tek dilli siteden çıkarak
+    - value: '20'
+      label: ülkeye hitap eden yapı
+    - value: '30'
+      label: günde teslim
+      note: web sitesi kurulumu
 
   approach:
     heading: Tek Strateji, Dokuz Kanal

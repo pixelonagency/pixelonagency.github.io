@@ -39,6 +39,8 @@ detail:
       value: 4 Dijital & Tasarım Hizmeti
     - label: Dönem
       value: 2025–2026
+    - label: Web sitesi teslimi
+      value: 30 gün
   approach:
     heading: Neler Yaptık?
     text: |-
