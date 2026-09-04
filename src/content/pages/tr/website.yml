@@ -1,8 +1,9 @@
 seo:
-  title: Profesyonel Web Sitesi Tasarımı | Pixelon
+  title: Web Sitesi Yaptırma | Kurumsal Web Sitesi Fiyatları | Pixelon
   description: >-
-    Markanıza özel, mobil uyumlu, hızlı ve müşteri kazandırmaya odaklı
-    profesyonel web sitesi yaptırın. Projenizi anlatın, teklifinizi alın.
+    Web sitesi yaptırmak mı istiyorsunuz? Markanıza özel, mobil uyumlu ve
+    müşteri kazandıran kurumsal web siteleri. Ortalama 30 günde teslim,
+    65.000 TL'den başlayan fiyatlar. Projenizi anlatın, teklifinizi alalım.
 
 whatsappMessage: Merhaba Pixelon, işletmem için profesyonel bir web sitesi yaptırmak istiyorum. Bilgi alabilir miyim?
 
@@ -10,7 +11,7 @@ sections:
   # 1 — HERO
   - type: hero
     background: dark
-    eyebrow: Profesyonel Web Sitesi Tasarımı
+    eyebrow: Web Sitesi Yaptırma
     # *yıldız* içine alınan kelimeler lime (aksan) renkle basılır — bkz. src/lib/highlight.ts
     headingLines:
       - "Markanızı *Güçlü* Gösteren, *Müşteri Kazandıran* Web Siteleri Tasarlıyoruz."
