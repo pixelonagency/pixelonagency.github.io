@@ -47,7 +47,6 @@ describe('PRIMARY_NAV', () => {
       'Biz Kimiz?',
       'Hizmetlerimiz',
       'Projelerimiz',
-      'Portfolyo',
       'Referanslarımız',
       'İletişim',
     ]);
@@ -55,6 +54,15 @@ describe('PRIMARY_NAV', () => {
 
   test('üst menüde Kariyer yok — yalnız footer ve mobil menüde durur', () => {
     expect(PRIMARY_NAV.some((item) => item.label === 'Kariyer')).toBe(false);
+  });
+
+  /*
+   * Portfolyo sunumu menüden çıkarıldı: 105 görsel sayfalık bir satış aracı,
+   * gezinme hedefi değil. Sahip linki doğrudan müşteriye gönderiyor. Sayfa
+   * yayında kalmaya devam ediyor, yalnızca menülerde ve aramada görünmüyor.
+   */
+  test('menüde Portfolyo yok — link doğrudan paylaşılıyor', () => {
+    expect(PRIMARY_NAV.some((item) => item.label === 'Portfolyo')).toBe(false);
   });
 
   test('flags Hizmetlerimiz as the dropdown parent', () => {

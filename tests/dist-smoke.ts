@@ -1195,9 +1195,17 @@ describe('yetim sayfa yoktur', () => {
       }
     }
 
+    /*
+     * Portfolyo sunumu BİLEREK yetim: 105 görsel sayfalık satış aracı menüden
+     * çıkarıldı ve noindex verildi. Sahip linki doğrudan müşteriye gönderiyor,
+     * sayfanın arama ya da gezinme üzerinden keşfedilmesi istenmiyor.
+     */
+    const DELIBERATE_ORPHANS = new Set(['/portfolyo/', '/en/portfolio/']);
+
     const orphans = files
       .map(routeOf)
       .filter((route) => route !== '/' && !route.endsWith('404.html'))
+      .filter((route) => !DELIBERATE_ORPHANS.has(route))
       .filter((route) => !linked.has(route));
 
     expect(orphans).toEqual([]);

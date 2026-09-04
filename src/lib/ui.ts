@@ -262,7 +262,8 @@ export function buildPrimaryNav(locale: Locale): NavItem[] {
     item('nav.about', 'about'),
     item('nav.services', 'services', { hasDropdown: true }),
     item('nav.projects', 'projects'),
-    item('nav.portfolio', 'portfolio'),
+    // Portfolyo bilerek YOK: 105 sayfalık sunum bir satış aracı, gezinme hedefi
+    // değil. Sayfa yayında (noindex) — linki doğrudan müşteriye gönderiliyor.
     { label: t('nav.references', locale), href: localizedPath('references', locale) },
     // Kariyer bilerek YOK: üst menüyü kısa tutmak için yalnız footer ve mobil menüde durur.
     item('nav.contact', 'contact'),
