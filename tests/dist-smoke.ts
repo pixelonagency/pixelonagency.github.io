@@ -1250,3 +1250,29 @@ describe('favicon seti', () => {
     }
   });
 });
+
+/*
+ * Portfolyo sunumu (105 görsel sayfa) satış aracıdır, arama varlığı değil:
+ * çıkarılabilir metni "Sayfa N / 105" ibarelerinden ibaret olduğu için Google
+ * hiçbir sorguda sıralayamaz. İndekste durması kazanç sağlamaz, ince sayfa
+ * olarak site kalitesine yazılır. Bu yüzden noindex; sayfa insanlara açık
+ * kalmaya devam eder (linki müşteriye gönderiliyor).
+ */
+describe('portfolyo indekslenmiyor', () => {
+  test('/portfolyo/ noindex robots meta taşır', () => {
+    const html = readFileSync(join(DIST, 'portfolyo', 'index.html'), 'utf8');
+    expect(html).toContain('name="robots"');
+    expect(html).toMatch(/name="robots"\s+content="noindex/);
+  });
+
+  test('/projelerimiz/ indekslenmeye devam eder', () => {
+    const html = readFileSync(join(DIST, 'projelerimiz', 'index.html'), 'utf8');
+    expect(html).not.toContain('name="robots"');
+  });
+
+  test('sitemap portfolyo sayfasını listelemez', () => {
+    const files = readdirSync(DIST).filter((f) => f.startsWith('sitemap'));
+    const xml = files.map((f) => readFileSync(join(DIST, f), 'utf8')).join('\n');
+    expect(xml).not.toContain('/portfolyo/');
+  });
+});

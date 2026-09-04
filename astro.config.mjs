@@ -8,7 +8,13 @@ import sitemap from '@astrojs/sitemap';
 // (tests/domain.test.ts üçünün tutarlılığını kapıda doğrular).
 export default defineConfig({
   site: 'https://pixelon.com.tr',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Portfolyo sunumu satış aracı; noindex olduğu için sitemap'te de yer almaz.
+      // Noindex bir URL'yi sitemap'te bırakmak Google'a çelişkili sinyal verir.
+      filter: (page) => !/\/(portfolyo|portfolio)\/$/.test(page),
+    }),
+  ],
   build: {
     assets: 'assets',
   },
