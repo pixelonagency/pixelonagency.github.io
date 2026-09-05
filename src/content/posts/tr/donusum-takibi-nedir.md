@@ -56,7 +56,7 @@ article:
         - title: Randevu veya rezervasyon
           text: Takvim üzerinden randevu alan işletmelerde, onay ekranının görüntülenmesi dönüşüm olarak kaydediliyor.
         - title: Satın alma
-          text: E-ticarette sipariş tamamlandığında tetikleniyor ve tutar bilgisiyle birlikte gönderiliyor. Tutar gönderilmezse ROAS hesaplanamıyor. Bu ölçümü kurduğumuz [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) projelerinde satış olayı altyapıyla birlikte geliyor.
+          text: E-ticarette sipariş tamamlandığında tetikleniyor ve tutar bilgisiyle birlikte gönderiliyor. Tutar gönderilmezse ROAS hesaplanamıyor. Bu ölçümü kurduğumuz [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) projelerinde satış olayı altyapıyla birlikte geliyor; kurulumun diğer kalemlerini [e-ticaret sitesi kurma](/blog/e-ticaret-sitesi-kurma/) yazısında sıraladık.
         - title: Katalog veya dosya indirme
           text: Uzun karar süreli işlerde ilk temas genellikle bir doküman indirmeyle başlıyor. Bu adım ayrı bir dönüşüm olarak izlenebiliyor.
 

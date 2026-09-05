@@ -63,7 +63,7 @@ article:
         - title: Ölçülebilir dönüşüm takibi
           text: Form gönderimi, telefon tıklaması ve WhatsApp yönlendirmesi gibi olayların izlenmesi gerekiyor. Ölçülmeyen sitede neyin işe yaradığı tahmine kalıyor.
         - title: Kolay yönetilebilir panel
-          text: İçerik güncellemek için her seferinde ajansa dönmek zorunda kalmamalısınız. Ekibin metin ve görsel değiştirebildiği bir panel, sitenin ömrünü uzatıyor.
+          text: İçerik güncellemek için her seferinde ajansa dönmek zorunda kalmamalısınız. Ekibin metin ve görsel değiştirebildiği bir panel, sitenin ömrünü uzatıyor. Hazır bir yönetim sistemiyle özel geliştirme arasındaki farkı [WordPress mi özel yazılım mı](/blog/wordpress-mi-ozel-yazilim-mi/) yazısında karşılaştırdık.
 
     - type: image
       src: '/src/assets/images/blog/kurumsal-web-sitesi-hiyerarsi.webp'
@@ -99,7 +99,7 @@ article:
 
         [E-ticaret sitesinde](/hizmetlerimiz/e-ticaret-cozumleri/) ise satın alma sayfanın kendisinde tamamlanıyor. Ürün listeleme, filtreleme, sepet akışı ve ödeme adımları belirleyici hâle geliyor.
 
-        Bu ayrım önemli çünkü kurumsal bir siteyi e-ticaret mantığıyla kurgulamak, ziyaretçiyi hazır olmadığı bir karara zorluyor.
+        Bu ayrım önemli çünkü kurumsal bir siteyi e-ticaret mantığıyla kurgulamak, ziyaretçiyi hazır olmadığı bir karara zorluyor. Satışı sayfada tamamlayacaksanız maliyeti neyin belirlediğini [e-ticaret sitesi kurma](/blog/e-ticaret-sitesi-kurma/) yazısında anlattık.
 
     - type: section
       id: yenileme-zamani

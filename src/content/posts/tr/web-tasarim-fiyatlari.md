@@ -156,7 +156,7 @@ article:
 
         Bakılacak dört nokta şu: teklif kaç sayfa ve hangi şablonları içeriyor, içerik ve görsel sorumluluğu kimde, hangi entegrasyonlar dahil, ve teslim sonrası hangi süre boyunca hangi destek veriliyor.
 
-        E-ticaret söz konusuysa ayrı bir başlık daha var: ürün sayısı, varyant yapısı ve ödeme-kargo entegrasyonları fiyatı belirleyen ana kalemler hâline geliyor. Bu kalemleri [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) sayfasında tek tek açıyoruz.
+        E-ticaret söz konusuysa ayrı bir başlık daha var: ürün sayısı, varyant yapısı ve ödeme-kargo entegrasyonları fiyatı belirleyen ana kalemler hâline geliyor. Bu kalemlerin maliyeti nasıl değiştirdiğini [e-ticaret sitesi kurma](/blog/e-ticaret-sitesi-kurma/) yazısında altı başlıkta topladık; nasıl çalıştığımız ise [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) sayfasında.
 
         Teklifte bu kalemler yazılı değilse, eksik olan bilgi sonradan ek maliyet olarak geri geliyor.
 
@@ -170,7 +170,7 @@ article:
 
         Bu üç maddenin sonradan çözülmesi, baştan kapsama alınmasından pahalıya geliyor. Çünkü sonradan yapılan her düzeltme mevcut yapının üzerine ekleniyor.
 
-        İkinci gizli maliyet zaman. Yayına alınamayan bir site, hazırlandığı süre boyunca hiçbir talep getirmiyor. Bu kayıp teklifte görünmüyor ama gerçek.
+        İkinci gizli maliyet zaman. Yayına alınamayan bir site, hazırlandığı süre boyunca hiçbir talep getirmiyor. Bu kayıp teklifte görünmüyor ama gerçek. Gerçekçi bir takvimin neye benzediğini [web sitesi kaç günde biter](/blog/web-sitesi-kac-gunde-biter/) yazısında haftalara böldük.
 
     - type: section
       id: butce-nasil-belirlenir
@@ -193,7 +193,7 @@ article:
           answer: "Başlangıç fiyatı bandın alt sınırını gösteriyor; kesin rakam kapsam netleştiğinde çıkıyor. Sayfa ve şablon sayısı, içerik sorumluluğu, entegrasyon ihtiyacı ve dil sayısı belirlendiğinde teklif tek bir rakama iniyor. Başlangıç bandını yayınlamamızın sebebi basit; bütçesi bu bandın altında kalan bir işletmenin bunu görüşmeden önce bilmesi iki tarafın da zamanını kazandırıyor."
 
         - question: Hazır tema kullanmak fiyatı ne kadar düşürür?
-          answer: Tasarım kalemini belirgin şekilde düşürür, ama tüm maliyeti değil. İçerik üretimi, entegrasyonlar ve ölçümleme kurulumu tema seçiminden bağımsız olarak devam ediyor. Ayrıca temanın kurgusuna uymayan bir içerik yapısı varsa uyarlama maliyeti beklenenden yüksek olabiliyor.
+          answer: Tasarım kalemini belirgin şekilde düşürür, ama tüm maliyeti değil. İçerik üretimi, entegrasyonlar ve ölçümleme kurulumu tema seçiminden bağımsız olarak devam ediyor. Ayrıca temanın kurgusuna uymayan bir içerik yapısı varsa uyarlama maliyeti beklenenden yüksek olabiliyor. Hazır sistemle özel geliştirmeyi [WordPress mi özel yazılım mı](/blog/wordpress-mi-ozel-yazilim-mi/) yazısında kalem kalem karşılaştırdık.
         - question: Yıllık ne kadar bakım maliyeti öngörmeliyim?
           answer: "Bakım paketleri aylık 2.000 TL bandından başlıyor; güvenlik ve altyapı güncellemeleri, yedekleme ve aylık tanımlı bir değişiklik kotası dahil, barındırma hariç. İçerik üretimi ve arama motoru çalışması ayrı paket. Kalemlerin hangisinin ajans tarafından, hangisinin sizin ekibiniz tarafından yürütüleceği belirlendiğinde yıllık tutar öngörülebilir hâle geliyor."
 

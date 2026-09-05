@@ -47,7 +47,7 @@ article:
         - title: Yazılı ve maddelenmiş kapsam
           text: Teklifte kaç sayfa, hangi diller, hangi entegrasyonlar ve kaç revizyon olduğu yazmıyorsa kapsam sözlü kalıyor. Sözlü kapsam, proje ortasında iki tarafın da farklı hatırladığı bir konuya dönüşüyor.
         - title: İçerik sorumluluğunun kimde olduğu
-          text: Metinleri ve görselleri kimin hazırlayacağı çoğu projede belirsiz bırakılıyor. Bu belirsizlik, teslim tarihini en çok geciktiren tek maddedir. Ajans yazacaksa kapsamda görünmeli, siz yazacaksanız takvimde yer ayrılmalı.
+          text: Metinleri ve görselleri kimin hazırlayacağı çoğu projede belirsiz bırakılıyor. Bu belirsizlik, teslim tarihini en çok geciktiren tek maddedir. Ajans yazacaksa kapsamda görünmeli, siz yazacaksanız takvimde yer ayrılmalı. Takvimin nasıl kurulduğunu [web sitesi kaç günde biter](/blog/web-sitesi-kac-gunde-biter/) yazısında açtık.
         - title: Kod ve alan adı sahipliği
           text: Alan adı sizin hesabınıza kayıtlı olmalı, site dosyalarına ve yönetim paneline erişiminiz bulunmalı. Ajansla yollar ayrıldığında sitenin sizinle kalması bu maddeye bağlı.
         - title: Mobil ve hız performansı
