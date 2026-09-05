@@ -4,8 +4,8 @@ category: Web Tasarım
 translationKey: how-to-build-an-ecommerce-site
 excerpt: E-ticaret sitesi kurmanın maliyeti tasarımdan değil, ürün yapısından çıkıyor. Varyant, ödeme, kargo ve ürün içeriği dört ayrı iş kalemi; hazır platformla özel kurulum arasındaki fark da burada başlıyor.
 date: 2026-09-05
-cover: '/src/assets/images/blog/web-tasarim-fiyatlari-cover.webp'
-coverAlt: Depoda ürünleri paketleyip kargo etiketi hazırlayan e-ticaret çalışanı
+cover: '/src/assets/images/blog/e-ticaret-sitesi-kurma-cover.webp'
+coverAlt: Koyu bir ofiste iki kişinin ekranda e-ticaret ürün kataloğunu, beden ve renk varyantlarını ve stok alanlarını incelediği fotoğraf
 author: Pixelon Ekibi
 status: published
 featured: false

@@ -4,8 +4,8 @@ category: Web Tasarım
 translationKey: how-long-does-a-website-take
 excerpt: Teslim ettiğimiz kurumsal web sitelerinde ortalama süre 30 gün. Takvimi belirleyen şey yazılım hızı değil; içeriğin ne zaman geldiği ve onayların ne kadar beklediği.
 date: 2026-09-05
-cover: '/src/assets/images/blog/kurumsal-web-sitesi-nasil-olmali-cover.webp'
-coverAlt: Masada takvim ve proje planı üzerinde çalışan iki kişi
+cover: '/src/assets/images/blog/web-sitesi-kac-gunde-biter-cover.webp'
+coverAlt: Koyu bir ofiste bir kişinin duvardaki ekranda haftalara bölünmüş proje takvimini incelediği, masada not defteri bulunan fotoğraf
 author: Pixelon Ekibi
 status: published
 featured: false

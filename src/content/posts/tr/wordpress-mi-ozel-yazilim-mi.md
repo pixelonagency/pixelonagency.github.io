@@ -4,8 +4,8 @@ category: Web Tasarım
 translationKey: wordpress-or-custom-development
 excerpt: İkisini de yapıyoruz, bu yüzden taraf tutmadan yazabiliyoruz. Seçimi belirleyen şey bütçe değil; içeriği kimin güncelleyeceği ve iş akışınızın ne kadar standart olduğu.
 date: 2026-09-05
-cover: '/src/assets/images/blog/web-tasarim-ajansi-secimi-cover.webp'
-coverAlt: Ekranda site yönetim panelini inceleyen iki kişi
+cover: '/src/assets/images/blog/wordpress-mi-ozel-yazilim-cover.webp'
+coverAlt: Koyu bir ofiste iki kişinin yan yana duran iki ekranda hazır yönetim panelini ve özel yazılım panelini karşılaştırdığı fotoğraf
 author: Pixelon Ekibi
 status: published
 featured: false

@@ -2,8 +2,8 @@
   "version": 1,
   "mode": "AUTONOMOUS_GROWTH",
   "site": "https://pixelon.com.tr",
-  "lastRun": "2026-09-04T02:53:23.584Z",
-  "lastSuccessfulRun": "2026-09-04T02:53:23.584Z",
+  "lastRun": "2026-09-05T02:00:11.861Z",
+  "lastSuccessfulRun": "2026-09-05T02:00:11.861Z",
   "currentPhase": "PHASE_16_AUTOMATION",
   "phasesCompleted": [
     "PHASE_0_DISCOVERY",
@@ -58,10 +58,10 @@
     "SEO-2026-0061"
   ],
   "nextTaskIdCounter": 115,
-  "lastGSCFetch": "2026-09-04T02:59:26.451Z",
-  "lastSemrushFetch": "2026-09-04T02:59:26.456Z",
+  "lastGSCFetch": "2026-09-05T02:01:00.442Z",
+  "lastSemrushFetch": "2026-09-05T02:01:00.479Z",
   "lastCompetitorAnalysis": "2026-08-21",
-  "lastTechnicalAudit": "2026-09-04",
+  "lastTechnicalAudit": "2026-09-05",
   "lastContentPublish": "2026-08-21",
   "lastContentRefresh": null,
   "technicalHealth": {
@@ -69,7 +69,7 @@
     "P1": 0,
     "P2": 0,
     "P3": 0,
-    "indexable": 104,
+    "indexable": 105,
     "orphans": 0,
     "brokenLinks": 0
   },
@@ -111,7 +111,7 @@
     }
   ],
   "dataSources": {
-    "checkedAt": "2026-09-04T02:59:26.456Z",
+    "checkedAt": "2026-09-05T02:01:00.479Z",
     "googleSearchConsole": true,
     "semrush": true,
     "liveSerp": true,
@@ -154,19 +154,19 @@
     "knownIssue": "Ağustos 2026 blog görsellerinde #C8F04B kullanıldı; doğrusu #cfff00"
   },
   "gscSummary": {
-    "clicks": 38,
-    "impressions": 3614,
-    "ctr": 1.05,
-    "avgPosition": 26.1,
-    "queryCount": 173,
-    "pageCount": 120,
+    "clicks": 46,
+    "impressions": 3878,
+    "ctr": 1.19,
+    "avgPosition": 26,
+    "queryCount": 177,
+    "pageCount": 122,
     "days": 28,
-    "rangeStart": "2026-08-05",
-    "rangeEnd": "2026-09-01"
+    "rangeStart": "2026-08-06",
+    "rangeEnd": "2026-09-02"
   },
   "opportunityCounts": {
-    "quickWin": 19,
-    "strikingDistance": 28,
+    "quickWin": 20,
+    "strikingDistance": 27,
     "ctrOpportunity": 0,
     "highPriority": 47
   },
