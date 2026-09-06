@@ -159,8 +159,15 @@ const { section } = Astro.props;
       gap: 10px;
     }
 
-    .sectors__card {
+    /* Açıklamalı kartlar da dahil hepsi kare-dikey oranda kalsın. */
+    .sectors__card,
+    .sectors__card:has(.sectors__desc) {
       aspect-ratio: 3 / 4;
+    }
+
+    /* Mobilde açıklama gizli — yalnız başlık gösterilir, yer kazanılır. */
+    .sectors__desc {
+      display: none;
     }
 
     .sectors__label {
