@@ -42,6 +42,8 @@
 /en/services/video-and-production/                                          /en/services/social-media-management/                                       301
 /en/services/crm-and-digital-transformation                                 /en/services/                                                               301
 /en/services/crm-and-digital-transformation/                                /en/services/                                                               301
+/saglik-turizmi                                                             /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
+/saglik-turizmi/                                                            /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
 
 # 2) KANONİK SLASH NORMALİZASYONU — Workers auto-trailing-slash 307 döndürüyor;
 #    Google kanonikleştirmesi için kalıcı 301 gerekiyor. Wildcard kullanılmaz.
@@ -52,6 +54,7 @@
 /blog/crm-nedir-ne-ise-yarar                                                /blog/crm-nedir-ne-ise-yarar/                                               301
 /blog/dijital-pazarlama-ajansi-ne-is-yapar                                  /blog/dijital-pazarlama-ajansi-ne-is-yapar/                                 301
 /blog/donusum-takibi-nedir                                                  /blog/donusum-takibi-nedir/                                                 301
+/blog/e-ticaret-sitesi-kurma                                                /blog/e-ticaret-sitesi-kurma/                                               301
 /blog/google-ads-butcesi-nasil-belirlenir                                   /blog/google-ads-butcesi-nasil-belirlenir/                                  301
 /blog/google-ads-mi-meta-ads-mi                                             /blog/google-ads-mi-meta-ads-mi/                                            301
 /blog/instagramda-marka-nasil-buyutulur                                     /blog/instagramda-marka-nasil-buyutulur/                                    301
@@ -72,9 +75,11 @@
 /blog/seo-uyumlu-blog-yazisi-nasil-yazilir                                  /blog/seo-uyumlu-blog-yazisi-nasil-yazilir/                                 301
 /blog/sosyal-medya-ajanslari-ne-is-yapar                                    /blog/sosyal-medya-ajanslari-ne-is-yapar/                                   301
 /blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir                          /blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir/                         301
+/blog/web-sitesi-kac-gunde-biter                                            /blog/web-sitesi-kac-gunde-biter/                                           301
 /blog/web-sitesi-neden-donusum-getirmiyor                                   /blog/web-sitesi-neden-donusum-getirmiyor/                                  301
 /blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli                    /blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/                   301
 /blog/web-tasarim-fiyatlari                                                 /blog/web-tasarim-fiyatlari/                                                301
+/blog/wordpress-mi-ozel-yazilim-mi                                          /blog/wordpress-mi-ozel-yazilim-mi/                                         301
 /cerez-politikasi                                                           /cerez-politikasi/                                                          301
 /en                                                                         /en/                                                                        301
 /en/about-us                                                                /en/about-us/                                                               301
@@ -144,8 +149,6 @@
 /projelerimiz/valueset                                                      /projelerimiz/valueset/                                                     301
 /projelerimiz/vennyx                                                        /projelerimiz/vennyx/                                                       301
 /projelerimiz/xray-groupe                                                   /projelerimiz/xray-groupe/                                                  301
-/saglik-turizmi                                                             /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
-/saglik-turizmi/                                                            /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
 /referanslarimiz                                                            /referanslarimiz/                                                           301
 /ucretsiz-analiz                                                            /ucretsiz-analiz/                                                           301
 /web-sitesi-yaptir                                                          /web-sitesi-yaptir/                                                         301

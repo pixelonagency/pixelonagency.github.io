@@ -72,6 +72,11 @@ export const LEGACY = [
   ['/en/services/ux-ui-design', '/en/services/web-design-and-development/'],
   ['/en/services/video-and-production', '/en/services/social-media-management/'],
   ['/en/services/crm-and-digital-transformation', '/en/services/'],
+  /* 7 Eylül 2026 — GSC "Bulunamadı (404)" raporundaki TEK gerçek içerik URL'si.
+     Eski WordPress sitesinin sağlık turizmi sayfası; 27 Ağu'da hâlâ taranıyordu.
+     Rapordaki diğer altı kayıt wp-admin/wp-content/hello-world gibi WordPress
+     artığı — onlar için 404 doğru davranış, kural yazılmaz. */
+  ['/saglik-turizmi', '/hizmetlerimiz/saglik-turizmi-danismanligi/'],
 ];
 
 /** Sitemap XML → kanonik yol listesi (alfabetik, deterministik). */
