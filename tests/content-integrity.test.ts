@@ -5,7 +5,15 @@ import { parse } from 'yaml';
 import { makePageSchema } from '../src/content/page-schema';
 import { blogCategorySchema, makeServiceSchema, makeTeamSchema, settingsSchema } from '../src/content/schemas';
 import { categoriesWithPages, type CategorizablePost } from '../src/lib/blog-categories';
-import { isLocale, localePrefix, LOCALES, ROUTE_SLUGS, type Locale } from '../src/lib/i18n';
+import {
+  DEFAULT_LOCALE,
+  isLocale,
+  localePrefix,
+  LOCALES,
+  PUBLISHED_LOCALES,
+  ROUTE_SLUGS,
+  type Locale,
+} from '../src/lib/i18n';
 
 /**
  * İçerik bütünlüğü kapısı.
@@ -43,27 +51,36 @@ const strippedKeys = (raw: Record<string, unknown>, parsed: Record<string, unkno
 describe('services collection', () => {
   const files = yamlFiles('services');
 
-  test('çeviri anahtarı olan her hizmet iki dilde de bulunur', async () => {
+  test('çeviri anahtarı olan her hizmet YAYINLANAN her dilde bulunur', async () => {
     /*
      * Ölçülen şey SAYI EŞİTLİĞİ değil, çeviri anahtarı eşleşmesi. Sayı eşitliği
      * yanıltıcıydı: bir dilde ekleyip diğerinde unutmayı yakalıyordu ama iki dilde
      * BİRBİRİYLE İLGİSİZ iki sayfa da testi geçiriyordu (kurumsal-web-tasarim ile
      * healthcare-marketing yıllarca öyle eşleşmiş göründü).
      *
-     * `translationKey` taşıyan hizmet iki dilde de bulunmak ZORUNDA. Anahtarsız
+     * `translationKey` taşıyan hizmet yayındaki her dilde bulunmak ZORUNDA. Anahtarsız
      * sayfa o dile özgüdür ve bilinçlidir — dil değiştirici karşılığı olmayan
      * sayfada zaten gizleniyor.
+     *
+     * Kıyas YAYINLANAN diller üzerinden yapılır: 16 Eyl 2026'da İngilizce yayından
+     * kalktı ve içeriği silindi; sabit `tr`/`en` kıyası o gün her Türkçe hizmeti
+     * "İngilizcesi eksik" diye işaretlerdi.
      */
-    const keys = { tr: new Set<string>(), en: new Set<string>() };
+    const keys = new Map<Locale, Set<string>>(PUBLISHED_LOCALES.map((locale) => [locale, new Set<string>()]));
     for (const file of files) {
+      const locale = file.split('/')[0] ?? '';
+      if (!isLocale(locale) || !keys.has(locale)) continue;
       const data = makeServiceSchema().parse(await readYaml('services', file));
-      const lang = file.startsWith('tr/') ? 'tr' : 'en';
-      if (data.translationKey) keys[lang].add(data.translationKey);
+      if (data.translationKey) keys.get(locale)!.add(data.translationKey);
     }
-    const trEksik = [...keys.en].filter((k) => !keys.tr.has(k));
-    const enEksik = [...keys.tr].filter((k) => !keys.en.has(k));
-    expect({ trEksik, enEksik }).toEqual({ trEksik: [], enEksik: [] });
-    expect(keys.tr.size).toBeGreaterThanOrEqual(6);
+
+    const tumAnahtarlar = new Set([...keys.values()].flatMap((set) => [...set]));
+    const eksik = Object.fromEntries(
+      [...keys].map(([locale, set]) => [locale, [...tumAnahtarlar].filter((key) => !set.has(key))]),
+    );
+
+    expect(eksik).toEqual(Object.fromEntries(PUBLISHED_LOCALES.map((locale) => [locale, []])));
+    expect(keys.get(DEFAULT_LOCALE)!.size).toBeGreaterThanOrEqual(6);
   });
 
   for (const file of files) {
@@ -123,7 +140,9 @@ describe('every page and service has a usable hero heading', () => {
     });
   }
 
-  for (const lang of ['tr', 'en']) {
+  /* Yayınlanan diller üzerinden: sabit `['tr','en']` listesi, İngilizce içerik silindikten
+     sonra boş bir küme üzerinde çalışıp SESSİZCE geçen bir test bırakıyordu. */
+  for (const lang of PUBLISHED_LOCALES) {
     test(`${lang}: hizmet sıraları 1..N kesintisizdir`, async () => {
       const orders: number[] = [];
       for (const file of yamlFiles('services').filter((f) => f.startsWith(`${lang}/`))) {
@@ -233,7 +252,7 @@ describe('hizmet kartlarının tek kaynağı', () => {
    * doğruluyor — menüde görünen her hizmetin kart alanları eksiksiz olmalı,
    * yoksa header dropdown'ı ve iki vitrin birden boş kart basar.
    */
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LOCALES) {
     test(`${locale} — menüdeki her hizmetin görseli ve özeti var`, async () => {
       const dir = join(CONTENT, 'services', locale);
       const eksik: string[] = [];
@@ -289,7 +308,7 @@ describe('blog kategori merkezleri', () => {
     return out;
   };
 
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LOCALES) {
     test(`${locale} — sayfası olan her kategorinin giriş metni var`, async () => {
       const missing: string[] = [];
       for (const group of categoriesWithPages(await categorisablePosts(locale), locale)) {
@@ -334,7 +353,7 @@ describe('blog kategori merkezleri', () => {
  * bir yazıda olmaması aynı zamanda bir tutarsızlık.
  */
 describe('yazı başlıkları', () => {
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LOCALES) {
     const dir = join(CONTENT, 'posts', locale);
 
     test(`${locale} — seo.title, H1 ile birebir aynı değil`, async () => {

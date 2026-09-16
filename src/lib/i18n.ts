@@ -13,14 +13,45 @@
 
 import { internalHref } from './url';
 
+/**
+ * BİLİNEN diller — slug tablosunun ve arayüz sözlüklerinin anahtar kümesi.
+ *
+ * Bu liste "hangi dilleri tarif edebiliyoruz" sorusunun cevabıdır, "hangi dilleri
+ * yayınlıyoruz" sorusunun değil. İkisi 16 Eyl 2026'da bilinçli olarak ayrıldı
+ * (bkz. `PUBLISHED_LOCALES`).
+ */
 export const LOCALES = ['tr', 'en'] as const;
 export type Locale = (typeof LOCALES)[number];
+
+/**
+ * YAYINLANAN diller — rota üretimi, hreflang ve dil seçici YALNIZCA buradan beslenir.
+ *
+ * Neden ayrı bir liste: 16 Eyl 2026'da İngilizce bölüm yayından kaldırıldı. Ölçüm
+ * şuydu — 41 İngilizce sayfa (sitenin %38'i) 28 günde 25 tıklama getiriyordu ve
+ * bunun 17'si zaten `/en/` ana sayfasına düşen MARKA aramasıydı; marka dışı gerçek
+ * getiri ~4 tıklamaydı. Buna karşılık Google, Türkiye'den yapılan `pixelon`
+ * aramasında 1. sırada Türkçe ana sayfayı değil `/en/`'i gösteriyordu.
+ *
+ * Alternatif "hepsini sök" yaklaşımı REDDEDİLDİ: çokdillilik altyapısına 54 dosya
+ * ve `ui.ts`'de 113 metin anahtarı bağlı. Onları sökmek teknik olarak kusursuz bir
+ * siteyi (0 P0/P1/P2/P3) riske atardı ve İngilizceyi geri açmayı pahalı hale
+ * getirirdi. Bunun yerine sözlük yerinde bırakıldı, yalnızca YAYIN kapatıldı.
+ *
+ * İngilizceyi geri açmak = bu diziye `'en'` eklemek + `src/content/<koleksiyon>/en/`
+ * altına içerik koymak. Başka hiçbir dosyaya dokunmak gerekmez.
+ */
+export const PUBLISHED_LOCALES = ['tr'] as const satisfies readonly Locale[];
 
 /** Dizinin ilk elemanı varsayılan dildir — tek kaynak. */
 export const DEFAULT_LOCALE: Locale = LOCALES[0];
 
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
+}
+
+/** Dil biliniyor VE yayınlanıyor mu? Rota/hreflang kararları bunu sorar. */
+export function isPublishedLocale(value: string): value is Locale {
+  return (PUBLISHED_LOCALES as readonly string[]).includes(value);
 }
 
 /** Sayfa anahtarı → dile göre slug. Boş string ana sayfayı temsil eder. */
@@ -87,9 +118,12 @@ export function stripLocale(path: string): string {
 }
 
 /**
- * hreflang için tüm dillerdeki karşılıklar.
+ * hreflang için YAYINLANAN dillerdeki karşılıklar.
  * `children` verilirse detay sayfası içindir; bir dilde slug yoksa o dil listeden düşer
  * (o dile çevrilmemiş bir yazıya hreflang vermek yanlış olurdu).
+ *
+ * Yayından kaldırılmış bir dil buraya GİRMEZ — yayında olmayan bir URL'e hreflang
+ * vermek Google'a var olmayan sayfayı işaret etmek olurdu.
  */
 export function alternatesFor(
   page: PageKey,
@@ -97,7 +131,7 @@ export function alternatesFor(
 ): Partial<Record<Locale, string>> {
   const result: Partial<Record<Locale, string>> = {};
 
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LOCALES) {
     if (children) {
       const child = children[locale];
       if (!child) continue;

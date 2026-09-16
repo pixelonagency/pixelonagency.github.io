@@ -12,7 +12,8 @@ import PortfolioViewer from '../components/PortfolioViewer.astro';
 import {
   alternatesFor,
   DEFAULT_LOCALE,
-  LOCALES,
+  isPublishedLocale,
+  PUBLISHED_LOCALES,
   localizedPath,
   ROUTE_SLUGS,
   type Locale,
@@ -44,13 +45,28 @@ export const getStaticPaths = (async () => {
     return { locale: head as Locale, key: rest.join('/') };
   };
 
-  const [services, posts, legal, projects] = await Promise.all([
+  /*
+   * Yayından kaldırılmış dilin içeriği rotaya DÖNÜŞMEZ.
+   *
+   * Filtre koleksiyonun kendisine uygulanır, tek tek döngülere değil: aşağıdaki altı
+   * döngü girdileri gezerken dil kontrolü yapmaz, dolayısıyla `src/content/<x>/en/`
+   * altına bırakılan bir dosya filtre burada olmasa sessizce yayına girerdi.
+   */
+  const published = <T extends { id: string }>(entries: T[]): T[] =>
+    entries.filter((entry) => isPublishedLocale(splitId(entry.id).locale));
+
+  const [allServices, allPosts, allLegal, allProjects] = await Promise.all([
     getCollection('services'),
     getCollection('posts', ({ data }) => data.status === 'published'),
     getCollection('legal'),
     // Detay sayfası yalnız case study içeriği (detail) dolu projeler için üretilir.
     getCollection('projects', ({ data }) => Boolean(data.detail)),
   ]);
+
+  const services = published(allServices);
+  const posts = published(allPosts);
+  const legal = published(allLegal);
+  const projects = published(allProjects);
 
   /* Yasal sayfalar `pages` koleksiyonundan değil `legal` koleksiyonundan gelir. */
   const LEGAL_KEYS = new Set(['kvkk', 'privacy', 'cookies', 'terms']);
@@ -61,7 +77,7 @@ export const getStaticPaths = (async () => {
   }[] = [];
 
   // --- CMS sayfaları (her dil × her sayfa anahtarı; yasal anahtarlar hariç) ---
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LOCALES) {
     for (const page of (Object.keys(ROUTE_SLUGS) as PageKey[]).filter((key) => !LEGAL_KEYS.has(key))) {
       paths.push({
         params: { path: toParam(localizedPath(page, locale)) },
@@ -129,7 +145,7 @@ export const getStaticPaths = (async () => {
   // Yalnızca eşiği geçen kategoriler sayfa alır (bkz. `blog-categories.ts`); eşiğin
   // altındakiler etiket olarak kalır. Kategoriler diller arasında EŞLEŞMEZ (Türkçe
   // "Web Tasarım"ın İngilizce karşılığı yok), bu yüzden hreflang alternatifi verilmez.
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LOCALES) {
     for (const group of categoriesWithPages(posts, locale)) {
       paths.push({
         params: { path: toParam(categoryPath(locale, group.name)) },
@@ -149,7 +165,7 @@ export const getStaticPaths = (async () => {
   // İçerik koleksiyondan gelmez: 105 sayfa görseli `public/media/portfolyo/` altında
   // duruyor ve listeyi `src/lib/portfolio.ts` üretiyor. İki dilde de aynı sayfalar
   // gösterilir — sunum görsel bir belge, çevirisi yok.
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LOCALES) {
     paths.push({
       params: { path: toParam(localizedPath('portfolio', locale)) },
       props: { kind: 'portfolio', locale, alternates: alternatesFor('portfolio') },

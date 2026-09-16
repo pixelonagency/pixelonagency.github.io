@@ -111,3 +111,55 @@ gereken bir kimlik bilgisi yok; maruziyet strateji ile sınırlı, rotasyon gere
 
 Public belgeler artık gizli belgelerin **adını da** anmıyor; dosya adı bile stratejiyi
 ele verebilir. Bu kural `privacy.test.ts` ile kapıda doğrulanıyor.
+
+## 2026-09-16 — İNGİLİZCE BÖLÜM YAYINDAN KALDIRILDI
+
+Sahip kararı. Teşhis 16 Eyl'de canlı doğrulamayla kapandı.
+
+### Ölçülen durum (karardan önce)
+
+Ham GSC rakamları **izlenmeyen** dosyaya yazıldı: `seo/private/measurement/`
+(repo public — [gizlilik kuralı](#) gereği burada yalnızca bant ifadesi kullanılır).
+
+| Kanıt                                    | Durum                                                                                                                           |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `pixelon` araması (gl=tr&hl=tr) 1. sonuç | **`/en/`** — İngilizce başlık + "Bu sayfanın çevirisini yap"                                                                    |
+| `pixelon ajans` araması                  | Google sorguyu "pixel ajans" diye düzeltiyor; site ilk sayfada **yok**                                                          |
+| İngilizce sayfa sayısı                   | 41 / 109 (**%38**) — yapısal, GSC değil                                                                                         |
+| İngilizce tarafın gösterim payı          | site toplamının üçte ikisinden fazlası                                                                                          |
+| İngilizce CTR                            | Türkçenin **üçte biri**; tek bir EN blog yazısı gösterimin çoğunu üretiyor ve 3. sayfa bandında, tıklaması yok denecek kadar az |
+| `/en/` ana sayfasının tıklamaları        | neredeyse tamamı MARKA araması — yani Türkçe ana sayfaya gidecek trafik                                                         |
+| Marka dışı gerçek getiri                 | tek haneli tıklama / 28 gün                                                                                                     |
+| İç link grafiğinin İngilizceye akan payı | 988 / 2.687 (**%37**) — yapısal, GSC değil                                                                                      |
+
+### Yapılan
+
+| Alan                              | Değişiklik                                                  | Gerekçe                                                                          |
+| --------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `src/lib/i18n.ts`                 | `PUBLISHED_LOCALES` eklendi (`LOCALES`'ten ayrı)            | "Bilinen dil" ile "yayınlanan dil" ayrımı; geri açış tek satır                   |
+| `src/pages/[...path].astro`       | Rota üretimi yayınlanan dile bağlandı + koleksiyon filtresi | `content/<x>/en/` altına bırakılan dosya sessizce yayına giremesin               |
+| `src/layouts/BaseLayout.astro`    | Tek dil yayındayken hreflang hiç yazılmıyor                 | Kendine dönen etiket sinyal üretmez, gürültü yapar                               |
+| `src/content/**/en/`              | 48 içerik dosyası silindi                                   | Git geçmişinde duruyor                                                           |
+| `scripts/seo/build-redirects.mjs` | 45 İngilizce URL → Türkçe karşılığı **301**                 | 404 değil 301: `/en/` marka sorgusunda 1. sıradaydı, o güç Türkçeye devrediliyor |
+| `public/admin/config.yml`         | CMS dil listesi `[tr]`                                      | Editör yayınlanmayan dilde içerik yazmasın                                       |
+
+**Sökülmeyen:** çokdillilik altyapısı (54 dosya) ve `ui.ts`'deki 113 İngilizce metin
+anahtarı. Sökmek teknik olarak kusursuz bir siteyi riske atar ve geri açışı pahalılaştırırdı.
+İngilizceyi geri açmak = `PUBLISHED_LOCALES`'e `'en'` eklemek + içerik koymak.
+
+### Sonuç (doğrulandı)
+
+| Ölçüm                | Önce                      | Sonra                     |
+| -------------------- | ------------------------- | ------------------------- |
+| İç link              | 2.687 (988'i İngilizceye) | **1.661 · İngilizceye 0** |
+| Sitemap URL          | 105                       | 65                        |
+| hreflang etiketi     | var                       | 0                         |
+| Teknik bulgu (P0–P3) | 0                         | **0** (korundu)           |
+| Orphan / kırık link  | 0 / 0                     | **0 / 0**                 |
+
+Hedef, bu turda tıklama artışı DEĞİL: marka sorgusunun Türkçe ana sayfaya dönmesi ve
+Türkçe sayfa üretiminin İngilizce ikiz zorunluluğundan kurtulması. Ölçüm penceresi
+yayına alındığı günden itibaren başlar.
+
+**Değişmeyen tespit:** otorite hâlâ asıl darboğaz — Authority Score **2**, referring
+domain **5** (beşi de müşteri footer'ı). Bkz. `seo/private/backlinks/`.
