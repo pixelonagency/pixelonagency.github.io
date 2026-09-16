@@ -52,7 +52,9 @@ export const LEGACY = [
      "anneligin-hikayesi" yanlış yazımdı. Sayfanın GSC gösterimi 0 olduğu için
      değişim maliyetsiz; yine de eski URL canlıda olduğundan 301 gerekiyor. */
   ['/projelerimiz/anneligin-hikayesi', '/projelerimiz/annelik-hikayesi/'],
-  ['/en/projects/anneligin-hikayesi', '/en/projects/annelik-hikayesi/'],
+  /* 16 Eyl 2026 — hedef Türkçeye çevrildi; İngilizce bölüm yayından kalktı ve eski
+     hedef (`/en/projects/annelik-hikayesi/`) artık üretilmiyor. */
+  ['/en/projects/anneligin-hikayesi', '/projelerimiz/annelik-hikayesi/'],
   /* 1 Eylül 2026 — HİZMET BİRLEŞTİRME. Envanter 11 başlıktan 7'ye indi; kapanan
      yedi sayfa (dört TR, üç EN) yerine kalan hizmetlere yönlendiriliyor.
      Sağlık turizmi sayfaları KAPANMADI, yalnız menüden çıkarıldı.
@@ -69,14 +71,86 @@ export const LEGACY = [
   ['/hizmetlerimiz/ux-ui-tasarimi', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
   ['/hizmetlerimiz/video-ve-produksiyon', '/hizmetlerimiz/sosyal-medya-yonetimi/'],
   ['/hizmetlerimiz/crm-ve-dijital-donusum', '/hizmetlerimiz/'],
-  ['/en/services/ux-ui-design', '/en/services/web-design-and-development/'],
-  ['/en/services/video-and-production', '/en/services/social-media-management/'],
-  ['/en/services/crm-and-digital-transformation', '/en/services/'],
+  /* Bu üç kalemin hedefi 16 Eyl 2026'da Türkçeye çevrildi — aynı gerekçe: nihai
+     hedefe tek adımda gidilir, emekli sayfa üzerinden zincir kurulmaz. */
+  ['/en/services/ux-ui-design', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
+  ['/en/services/video-and-production', '/hizmetlerimiz/sosyal-medya-yonetimi/'],
+  ['/en/services/crm-and-digital-transformation', '/hizmetlerimiz/'],
   /* 7 Eylül 2026 — GSC "Bulunamadı (404)" raporundaki TEK gerçek içerik URL'si.
      Eski WordPress sitesinin sağlık turizmi sayfası; 27 Ağu'da hâlâ taranıyordu.
      Rapordaki diğer altı kayıt wp-admin/wp-content/hello-world gibi WordPress
      artığı — onlar için 404 doğru davranış, kural yazılmaz. */
   ['/saglik-turizmi', '/hizmetlerimiz/saglik-turizmi-danismanligi/'],
+
+  /* 16 Eylül 2026 — İNGİLİZCE BÖLÜM YAYINDAN KALKTI (sahip kararı).
+
+     Ölçüm: 41 İngilizce sayfa sitenin %38'iydi ve 28 günde 25 tıklama getiriyordu;
+     bunun 17'si `/en/` ana sayfasına düşen MARKA aramasıydı, yani Türkçe ana sayfaya
+     gidecek trafikti. Marka dışı gerçek getiri ~4 tıklama. Buna karşılık Google,
+     Türkiye'den yapılan `pixelon` aramasında 1. sırada Türkçe ana sayfayı değil
+     `/en/`'i gösteriyordu (16 Eyl 2026'da gl=tr&hl=tr ile canlı doğrulandı).
+
+     404 DEĞİL 301: 41 URL indeksliydi ve `/en/` marka sorgusunda 1. sıradaydı.
+     301 o sırayı Türkçe ana sayfaya devreder; 404 çöpe atardı.
+
+     Hedefler UYDURULMADI: her satır, yayından kalkmadan önceki build'in kendi
+     `hreflang="tr"` etiketinden okundu — yani sayfanın ilan ettiği Türkçe karşılığı.
+     Türkçe karşılığı olmayan üç sayfa aşağıda ayrıca işaretlendi.
+
+     Geri açılırsa bu blok silinir; `PUBLISHED_LOCALES`'e `'en'` eklemek yeterlidir. */
+  ['/en', '/'],
+  ['/en/about-us', '/biz-kimiz/'],
+  ['/en/services', '/hizmetlerimiz/'],
+  ['/en/services/brand-and-corporate-identity', '/hizmetlerimiz/marka-ve-kurumsal-kimlik/'],
+  ['/en/services/digital-advertising', '/hizmetlerimiz/dijital-reklam-yonetimi/'],
+  ['/en/services/e-commerce-solutions', '/hizmetlerimiz/e-ticaret-cozumleri/'],
+  ['/en/services/health-tourism-consulting', '/hizmetlerimiz/saglik-turizmi-danismanligi/'],
+  ['/en/services/seo-and-content-marketing', '/hizmetlerimiz/seo-ve-icerik-pazarlamasi/'],
+  ['/en/services/social-media-management', '/hizmetlerimiz/sosyal-medya-yonetimi/'],
+  ['/en/services/web-design-and-development', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
+  ['/en/get-a-website', '/web-sitesi-yaptir/'],
+  ['/en/projects', '/projelerimiz/'],
+  ['/en/projects/annelik-hikayesi', '/projelerimiz/annelik-hikayesi/'],
+  ['/en/projects/cagla-aytac', '/projelerimiz/cagla-aytac/'],
+  ['/en/projects/dentasay', '/projelerimiz/dentasay/'],
+  ['/en/projects/dr-ayse-cinkaya-kahveci', '/projelerimiz/dr-ayse-cinkaya-kahveci/'],
+  ['/en/projects/handsforall', '/projelerimiz/handsforall/'],
+  ['/en/projects/mobico', '/projelerimiz/mobico/'],
+  ['/en/projects/op-dr-ismail-buyukcayir', '/projelerimiz/op-dr-ismail-buyukcayir/'],
+  ['/en/projects/redex-glass', '/projelerimiz/redex-glass/'],
+  ['/en/projects/sekoya', '/projelerimiz/sekoya/'],
+  ['/en/projects/sera-natura', '/projelerimiz/sera-natura/'],
+  ['/en/projects/touch-consulting', '/projelerimiz/touch-consulting/'],
+  ['/en/projects/valueset', '/projelerimiz/valueset/'],
+  ['/en/projects/vennyx', '/projelerimiz/vennyx/'],
+  ['/en/projects/xray-groupe', '/projelerimiz/xray-groupe/'],
+  ['/en/references', '/referanslarimiz/'],
+  ['/en/portfolio', '/portfolyo/'],
+  ['/en/blog', '/blog/'],
+  [
+    '/en/blog/how-to-build-a-digital-marketing-strategy-for-healthcare-brands',
+    '/blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/',
+  ],
+  [
+    '/en/blog/how-to-earn-international-patient-trust-in-health-tourism',
+    '/blog/saglik-turizminde-uluslararasi-hasta-guveni-nasil-kazanilir/',
+  ],
+  ['/en/careers', '/kariyer/'],
+  ['/en/contact', '/iletisim/'],
+  ['/en/free-analysis', '/ucretsiz-analiz/'],
+  ['/en/personal-data-processing-notice', '/kvkk-aydinlatma-metni/'],
+  ['/en/privacy-policy', '/gizlilik-politikasi/'],
+  ['/en/cookie-policy', '/cerez-politikasi/'],
+  ['/en/terms-of-use', '/kullanim-kosullari/'],
+
+  /* Türkçe karşılığı OLMAYAN üç İngilizce sayfa — hedef konu yakınlığıyla seçildi.
+     Üçünün de 28 günlük GSC gösterimi SIFIR, yani seçimin trafik maliyeti yok. */
+  ['/en/services/healthcare-marketing', '/hizmetlerimiz/saglik-turizmi-danismanligi/'],
+  [
+    '/en/blog/healthcare-digital-advertising',
+    '/blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/',
+  ],
+  ['/en/blog/category/healthcare-marketing', '/blog/'],
 ];
 
 /** Sitemap XML → kanonik yol listesi (alfabetik, deterministik). */

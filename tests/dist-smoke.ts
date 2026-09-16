@@ -250,9 +250,13 @@ describe('inline links in body copy', () => {
 
   const BODY_LINKS: Array<[string, string]> = [
     /* Kurumsal Web Tasarım ve UX/UI sayfaları 1 Eylül 2026'da Web Tasarım
-       sayfasında birleştirildi; oradaki bağlantı beklentileri de kalktı. */
-    ['/en/services/healthcare-marketing', '/en/services/health-tourism-consulting/'],
-    ['/en/services/health-tourism-consulting', '/en/services/healthcare-marketing/'],
+       sayfasında birleştirildi; oradaki bağlantı beklentileri de kalktı.
+
+       Kalan iki kalem (`/en/services/healthcare-marketing` ↔
+       `/en/services/health-tourism-consulting`) 16 Eyl 2026'da düştü: İngilizce
+       bölüm yayından kalktı, iki rota da artık üretilmiyor. Liste bilinçli olarak
+       BOŞ bırakıldı — Türkçe hizmet gövdelerinde şu an gövde içi çapraz bağlantı
+       beklentisi tanımlı değil; tanımlandığında buraya yazılır. */
   ];
 
   for (const [route, target] of BODY_LINKS) {
@@ -422,13 +426,11 @@ describe('interactive behaviour is shipped', () => {
     expect(body).toContain('cta-spot');
   });
 
-  test('the project case study pages ship the full detail flow in both locales', async () => {
-    // ROUTES haritası TR varsayımlıdır (lang testleri); EN sayfası burada ayrıca okunur.
-    const en = await Bun.file(join(DIST, 'en/projects/handsforall/index.html')).text();
-    const pages: Array<[string, string]> = [
-      ['/projelerimiz/handsforall', html.get('/projelerimiz/handsforall') ?? ''],
-      ['/en/projects/handsforall', en],
-    ];
+  test('the project case study pages ship the full detail flow', () => {
+    /* 16 Eyl 2026'ya kadar burada İngilizce ikiz de okunuyordu ("in both locales").
+       İngilizce yayından kalkınca o satır kaldırıldı; testin ölçtüğü şey değişmedi —
+       vaka sayfasının tam akışı (künye, 5 disiplin bloğu, sonuç, CTA, breadcrumb). */
+    const pages: Array<[string, string]> = [['/projelerimiz/handsforall', html.get('/projelerimiz/handsforall') ?? '']];
     for (const [route, body] of pages) {
       for (const marker of ['pd-hero', 'pd-meta', 'pd-approach', 'pd-block', 'pd-result', 'cta-spot']) {
         expect({ route, marker, present: body.includes(marker) }).toEqual({ route, marker, present: true });
@@ -747,7 +749,6 @@ describe('analytics (GTM + GA4)', () => {
 
 describe('consent management (Klaro + Consent Mode v2)', () => {
   const home = () => readFileSync(join(DIST, 'index.html'), 'utf-8');
-  const enHome = () => readFileSync(join(DIST, 'en', 'index.html'), 'utf-8');
   const admin = () => readFileSync(join(DIST, 'admin', 'index.html'), 'utf-8');
 
   test('consent-mode defaults (all four denied) ship inline BEFORE the GTM loader on every public page', () => {
@@ -851,7 +852,7 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
     expect(eventChunk, 'iş olayı sözlüğü chunk olarak yayınlanmıyor').toBeDefined();
     expect(eventChunk ?? '').not.toContain(GA4_MEASUREMENT_ID);
     // Her public sayfa dinleyici script'ini yükler; admin yüklemez.
-    for (const body of [home(), enHome()]) expect(body).toContain('AnalyticsEvents');
+    expect(home()).toContain('AnalyticsEvents');
     expect(admin()).not.toContain('AnalyticsEvents');
     // Site kodu GA4'ü doğrudan çağırmaz; teslimat GTM'deki Google tag'e aittir.
     for (const file of allHtmlFiles(DIST)) {
@@ -860,10 +861,10 @@ describe('consent management (Klaro + Consent Mode v2)', () => {
     }
   });
 
-  test('the footer ships a cookie-preferences trigger on TR and EN pages', () => {
-    for (const body of [home(), enHome()]) expect(body).toContain('data-cookie-prefs');
+  test('the footer ships a cookie-preferences trigger', () => {
+    /* İngilizce ayak (`Cookie Preferences`) 16 Eyl 2026'da düştü — o bölüm yayında değil. */
+    expect(home()).toContain('data-cookie-prefs');
     expect(home()).toContain('Çerez Tercihleri');
-    expect(enHome()).toContain('Cookie Preferences');
   });
 });
 
@@ -901,23 +902,21 @@ describe('legal pages', () => {
     { url: '/gizlilik-politikasi/', lang: 'tr', h1: 'Gizlilik Politikası' },
     { url: '/cerez-politikasi/', lang: 'tr', h1: 'Çerez Politikası' },
     { url: '/kullanim-kosullari/', lang: 'tr', h1: 'Kullanım Koşulları' },
-    { url: '/en/personal-data-processing-notice/', lang: 'en', h1: 'Personal Data Processing Notice' },
-    { url: '/en/privacy-policy/', lang: 'en', h1: 'Privacy Policy' },
-    { url: '/en/cookie-policy/', lang: 'en', h1: 'Cookie Policy' },
-    { url: '/en/terms-of-use/', lang: 'en', h1: 'Terms of Use' },
+    /* Dört İngilizce yasal rota 16 Eyl 2026'da düştü — İngilizce bölüm yayından kalktı.
+       Hepsi Türkçe karşılığına 301 yapıyor (bkz. scripts/seo/build-redirects.mjs). */
   ] as const;
 
   const read = (url: string): string => readFileSync(join(DIST, url.replace(/^\//, ''), 'index.html'), 'utf-8');
 
-  test('all eight legal routes are built with correct lang, H1, canonical and hreflang', () => {
+  test('all legal routes are built with correct lang, H1, canonical and no stray hreflang', () => {
     for (const { url, lang, h1 } of LEGAL_ROUTES) {
       const body = read(url);
       expect(body.includes(`<html lang="${lang}"`), `${url} lang=${lang} değil`).toBe(true);
       expect(body.includes(`>${h1}</h1>`), `${url} H1 "${h1}" içermiyor`).toBe(true);
       expect(body).toContain(`<link rel="canonical" href="https://pixelon.com.tr${url}"`);
-      expect(body).toContain('hreflang="tr"');
-      expect(body).toContain('hreflang="en"');
-      expect(body).toContain('hreflang="x-default"');
+      /* Tek dil yayındayken hreflang YAZILMAZ: kendine dönen etiket sinyal üretmez,
+         yayında olmayan bir dile verilen etiket ise Google'a hayalet sayfa gösterir. */
+      expect(body.includes('hreflang='), `${url} tek dilli sitede hreflang taşıyor`).toBe(false);
       expect(/<meta name="description" content="[^"]{40,}"/.test(body), `${url} meta description eksik/kısa`).toBe(
         true,
       );
@@ -938,30 +937,19 @@ describe('legal pages', () => {
       }
     }
     // Veri sorumlusunu adıyla anan sayfalar gerçek kimliği ve adresi taşımalı (TR/EN paritesi).
-    for (const url of [
-      '/kvkk-aydinlatma-metni/',
-      '/gizlilik-politikasi/',
-      '/kullanim-kosullari/',
-      '/en/personal-data-processing-notice/',
-      '/en/privacy-policy/',
-      '/en/terms-of-use/',
-    ]) {
+    for (const url of ['/kvkk-aydinlatma-metni/', '/gizlilik-politikasi/', '/kullanim-kosullari/']) {
       expect(read(url).includes(CONTROLLER), `${url} veri sorumlusunun gerçek adını içermiyor`).toBe(true);
     }
-    for (const url of ['/kvkk-aydinlatma-metni/', '/en/personal-data-processing-notice/']) {
+    for (const url of ['/kvkk-aydinlatma-metni/']) {
       expect(read(url).includes(ADDRESS), `${url} gerçek adresi içermiyor`).toBe(true);
     }
   });
 
-  test('footer legal links on TR and EN pages resolve to built legal pages', () => {
+  test('footer legal links resolve to built legal pages', () => {
     const cases: Array<[string, string[]]> = [
       [
         readFileSync(join(DIST, 'index.html'), 'utf-8'),
         ['/kvkk-aydinlatma-metni/', '/gizlilik-politikasi/', '/cerez-politikasi/', '/kullanim-kosullari/'],
-      ],
-      [
-        readFileSync(join(DIST, 'en', 'index.html'), 'utf-8'),
-        ['/en/personal-data-processing-notice/', '/en/privacy-policy/', '/en/cookie-policy/', '/en/terms-of-use/'],
       ],
     ];
     for (const [body, hrefs] of cases) {
@@ -973,7 +961,7 @@ describe('legal pages', () => {
     }
   });
 
-  test('the Klaro bundle links to the cookie policy pages and both targets exist', () => {
+  test('the Klaro bundle links to the cookie policy page and the target exists', () => {
     const assets = readdirSync(join(DIST, 'assets'));
     const klaroAsset = assets.find((name) => {
       if (!name.endsWith('.js')) return false;
@@ -981,7 +969,10 @@ describe('legal pages', () => {
     });
     expect(klaroAsset).toBeDefined();
     const bundle = readFileSync(join(DIST, 'assets', klaroAsset ?? ''), 'utf-8');
-    for (const target of ['/cerez-politikasi', '/en/cookie-policy']) {
+    /* Paket İngilizce çeviri bloğunu hâlâ taşır (sözlük duruyor, yayın kapalı); ama
+       Klaro'ya `lang` olarak yalnızca yayındaki dil geçiliyor, o blok hiç okunmuyor.
+       Doğrulanan şey bu yüzden YAYINDAKİ dilin hedefi. */
+    for (const target of ['/cerez-politikasi']) {
       expect(bundle.includes(target), `Klaro paketi ${target} bağlantısını içermiyor`).toBe(true);
       expect(existsSync(join(DIST, target.replace(/^\//, ''), 'index.html')), `${target} build edilmemiş`).toBe(true);
     }
@@ -990,7 +981,6 @@ describe('legal pages', () => {
   test('cookie policy pages describe GA4 as the active consent-gated analytics service', () => {
     const cases: Array<[string, string]> = [
       ['/cerez-politikasi/', 'şu anda sitede aktif bir analitik veya reklam ölçüm hizmeti çalışmamaktadır'],
-      ['/en/cookie-policy/', 'no analytics or advertising measurement service is currently active'],
     ];
     for (const [url, staleClaim] of cases) {
       const body = read(url);
@@ -1008,23 +998,21 @@ describe('legal pages', () => {
       }
     }
     // Gizlilik politikaları da GA4'ü GTM'den ayrı, izne bağlı ölçüm olarak anlatmalı.
-    for (const url of ['/gizlilik-politikasi/', '/en/privacy-policy/']) {
+    for (const url of ['/gizlilik-politikasi/']) {
       expect(read(url).includes('Google Analytics 4'), `${url} GA4'ü anlatmıyor`).toBe(true);
     }
   });
 
   test('cookie policy pages ship a working manage-preferences trigger', () => {
-    for (const url of ['/cerez-politikasi/', '/en/cookie-policy/']) {
+    for (const url of ['/cerez-politikasi/']) {
       expect(read(url).includes('data-cookie-prefs'), `${url} tercih düğmesi içermiyor`).toBe(true);
     }
   });
 
   test('form consent labels say "okudum" (not "kabul ediyorum") and link to the KVKK notice', () => {
     const contact = readFileSync(join(DIST, 'iletisim', 'index.html'), 'utf-8');
-    const enContact = readFileSync(join(DIST, 'en', 'contact', 'index.html'), 'utf-8');
     expect(contact).toContain('href="/kvkk-aydinlatma-metni/"');
     expect(contact.includes('okudum ve kabul ediyorum')).toBe(false);
-    expect(enContact).toContain('href="/en/personal-data-processing-notice/"');
   });
 
   test('legal pages contain no provisional labels, wrong legal-basis pairing or unconfirmed clauses', () => {
@@ -1093,27 +1081,23 @@ describe('legal pages', () => {
 });
 
 describe('language switcher', () => {
-  test('links to the current page counterpart in the other language, not the homepage', () => {
-    const offenders: string[] = [];
-    for (const file of allHtmlFiles(DIST)) {
-      if (file.includes(`${sep}admin${sep}`) || file.endsWith(`${sep}404.html`)) continue;
-      const body = readFileSync(file, 'utf-8');
-      const isTr = body.includes('<html lang="tr"');
-      const otherLang = isTr ? 'en' : 'tr';
-      const switcher = body.match(
-        new RegExp(`<a class="lang-switch__item"[^>]*href="([^"]+)"[^>]*hreflang="${otherLang}"`),
-      );
-      if (!switcher) continue;
-      const alternate = body.match(
-        new RegExp(`<link rel="alternate" hreflang="${otherLang}" href="https://pixelon\\.com\\.tr([^"]+)"`),
-      );
-      // hreflang karşılığı yoksa (çevirisi olmayan sayfa) ana sayfaya düşmek doğru davranış.
-      const expected = alternate ? alternate[1] : otherLang === 'en' ? '/en/' : '/';
-      const normalize = (path: string): string => (path.endsWith('/') ? path : `${path}/`);
-      if (normalize(switcher[1] ?? '') !== normalize(expected)) {
-        offenders.push(`${file}: switcher ${switcher[1]} ≠ alternate ${expected}`);
-      }
-    }
+  /*
+   * 16 Eyl 2026 — İngilizce yayından kalktı, dil seçici hiçbir sayfada ÇİZİLMİYOR.
+   *
+   * Eski test "seçici, sayfanın öbür dildeki karşılığına gitsin (ana sayfaya düşmesin)"
+   * diyordu ve seçici bulamayınca `continue` ediyordu; bugün o test boş kümede dolaşıp
+   * yeşil yanardı — kapsam varmış gibi görünen sessiz bir delik. Yerine ölçülebilir
+   * olan konuldu: tek dil yayındayken seçici HİÇ basılmamalı.
+   *
+   * İngilizce geri açıldığında bu test, `PUBLISHED_LOCALES.length > 1` dalıyla eski
+   * "karşılığına gider" iddiasına geri döner.
+   */
+  test('tek dil yayındayken dil seçici hiçbir sayfada render edilmez', () => {
+    const offenders = allHtmlFiles(DIST)
+      .filter((file) => !file.includes(`${sep}admin${sep}`))
+      .filter((file) => readFileSync(file, 'utf-8').includes('lang-switch__item'))
+      .map((file) => file.replace(DIST, ''));
+
     expect(offenders).toEqual([]);
   });
 });
@@ -1200,7 +1184,7 @@ describe('yetim sayfa yoktur', () => {
      * çıkarıldı ve noindex verildi. Sahip linki doğrudan müşteriye gönderiyor,
      * sayfanın arama ya da gezinme üzerinden keşfedilmesi istenmiyor.
      */
-    const DELIBERATE_ORPHANS = new Set(['/portfolyo/', '/en/portfolio/']);
+    const DELIBERATE_ORPHANS = new Set(['/portfolyo/']);
 
     const orphans = files
       .map(routeOf)

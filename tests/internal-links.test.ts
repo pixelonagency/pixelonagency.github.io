@@ -3,7 +3,7 @@ import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { categoriesWithPages, type CategorizablePost } from '../src/lib/blog-categories';
-import { localizedPath, LOCALES, type Locale } from '../src/lib/i18n';
+import { localizedPath, PUBLISHED_LOCALES, type Locale } from '../src/lib/i18n';
 
 /**
  * İç bağlantı kapısı.
@@ -51,7 +51,7 @@ const bodyLinks = (raw: string): string[] => {
 const buildRoutes = async (): Promise<Set<string>> => {
   const routes = new Set<string>();
 
-  for (const locale of LOCALES) {
+  for (const locale of PUBLISHED_LOCALES) {
     for (const page of [
       'home',
       'about',
@@ -140,7 +140,7 @@ describe('iç bağlantı bütünlüğü', () => {
     const routes = await buildRoutes();
     const broken: string[] = [];
 
-    for (const locale of LOCALES) {
+    for (const locale of PUBLISHED_LOCALES) {
       for (const file of postFiles(locale)) {
         for (const href of bodyLinks(await readPost(locale, file))) {
           if (!routes.has(href)) broken.push(`${locale}/${file} → ${href}`);
@@ -159,7 +159,7 @@ describe('iç bağlantı bütünlüğü', () => {
      */
     const offenders: string[] = [];
 
-    for (const locale of LOCALES) {
+    for (const locale of PUBLISHED_LOCALES) {
       for (const file of postFiles(locale)) {
         for (const href of bodyLinks(await readPost(locale, file))) {
           if (!href.endsWith('/')) offenders.push(`${locale}/${file} → ${href}`);
@@ -200,35 +200,12 @@ describe('bağlantı gücü dağılımı — Türkçe', () => {
   });
 });
 
-describe('bağlantı gücü dağılımı — İngilizce', () => {
-  /*
-   * İngilizce tarafta yalnızca üç yazı var; "en az 2 kaynak" her yazının diğer ikisine
-   * de bağlanmasını zorunlu kılardı ve bu, bağlamı olmayan yapay bağlantı üretirdi.
-   * Küme büyüyene kadar taban 1'dir.
-   */
-  const MIN_INBOUND = 1;
-  const MIN_OUTBOUND = 2;
-
-  test(`her yazı gövdesinden en az ${MIN_OUTBOUND} iç bağlantı verir`, async () => {
-    const graph = await buildGraph('en');
-    const thin = [...graph.out.entries()]
-      .filter(([, links]) => links.size < MIN_OUTBOUND)
-      .map(([slug, links]) => `${slug} (${links.size})`);
-
-    expect(thin).toEqual([]);
-  });
-
-  test(`her yazı başka yazılardan en az ${MIN_INBOUND} bağlantı alır`, async () => {
-    const graph = await buildGraph('en');
-    const starved = postFiles('en')
-      .map((file) => file.replace(/\.md$/, ''))
-      .map((slug) => ({ slug, sources: graph.in.get(postHref('en', slug))?.size ?? 0 }))
-      .filter(({ sources }) => sources < MIN_INBOUND)
-      .map(({ slug, sources }) => `${slug} (${sources})`);
-
-    expect(starved).toEqual([]);
-  });
-});
+/*
+ * "bağlantı gücü dağılımı — İngilizce" bloğu 16 Eyl 2026'da SİLİNDİ, devre dışı
+ * bırakılmadı: İngilizce yayından kalktı ve içeriği depodan çıktı. Boş bir küme
+ * üzerinde çalışan test yeşil yanar ve kapsam varmış izlenimi verir — sessiz delik.
+ * İngilizce geri açılırsa bu blok Türkçe eşdeğerinden yeniden türetilir.
+ */
 
 describe('dönüşüm sayfaları blog gövdelerinden bağlantı alır', () => {
   /*
@@ -241,7 +218,6 @@ describe('dönüşüm sayfaları blog gövdelerinden bağlantı alır', () => {
     { page: 'website', locale: 'tr', min: 2 },
     { page: 'analysis', locale: 'tr', min: 2 },
     { page: 'references', locale: 'tr', min: 1 },
-    { page: 'website', locale: 'en', min: 1 },
   ];
 
   for (const { page, locale, min } of FLOORS) {

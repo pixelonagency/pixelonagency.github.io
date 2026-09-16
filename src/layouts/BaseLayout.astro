@@ -135,13 +135,23 @@ const jsonLd = toJsonLd([
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     {
-      Object.entries(alternates).map(([code, path]) => (
-        <link rel="alternate" hreflang={code} href={canonicalUrl(path, site)} />
-      ))
-    }
-    {
-      alternates[DEFAULT_LOCALE] && (
-        <link rel="alternate" hreflang="x-default" href={canonicalUrl(alternates[DEFAULT_LOCALE], site)} />
+      /*
+       * hreflang YALNIZCA gerçekten birden fazla dil yayındayken yazılır.
+       *
+       * Tek dil kaldığında (16 Eyl 2026 — İngilizce yayından çıktı) `alternates`
+       * yalnız Türkçeyi taşır; bunu yazmak sayfanın kendisine hreflang vermek olur.
+       * Google tek dilli sitede hreflang beklemez, kendine dönen bir etiket sinyal
+       * üretmez — sadece gürültü ve yanlış bir "çok dilli site" izlenimi bırakır.
+       */
+      Object.keys(alternates).length > 1 && (
+        <>
+          {Object.entries(alternates).map(([code, path]) => (
+            <link rel="alternate" hreflang={code} href={canonicalUrl(path, site)} />
+          ))}
+          {alternates[DEFAULT_LOCALE] && (
+            <link rel="alternate" hreflang="x-default" href={canonicalUrl(alternates[DEFAULT_LOCALE], site)} />
+          )}
+        </>
       )
     }
 

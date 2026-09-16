@@ -55,11 +55,15 @@ app_title: Pixelon İçerik Yönetimi
 # `folder:` değerleri dil klasörünü İÇERMEZ — Sveltia `<folder>/<locale>/` olarak kendisi ekler.
 # Yalnızca "file" koleksiyonlarında yol elle yazıldığı için `{{locale}}` yer tutucusu gerekir.
 #
-# locales/default_locale, src/lib/i18n.ts içindeki LOCALES ve DEFAULT_LOCALE ile birebir
-# aynı olmalıdır — `tests/cms-config.test.ts` bunu doğrular.
+# locales/default_locale, src/lib/i18n.ts içindeki PUBLISHED_LOCALES ve DEFAULT_LOCALE ile
+# birebir aynı olmalıdır — `tests/cms-config.test.ts` bunu doğrular.
+#
+# Ölçüt LOCALES DEĞİL PUBLISHED_LOCALES: `LOCALES` hâlâ `en`'i tanır (slug tablosu ve
+# arayüz sözlüğü duruyor), ama İngilizce 16 Eyl 2026'da yayından kaldırıldı. Burada `en`
+# bırakılsaydı editör hiçbir yerde yayınlanmayan İngilizce içerik yazmaya devam ederdi.
 i18n:
   structure: multiple_folders
-  locales: [tr, en]
+  locales: [tr]
   default_locale: tr
 
 collections:

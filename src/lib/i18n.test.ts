@@ -3,13 +3,16 @@ import {
   alternatesFor,
   DEFAULT_LOCALE,
   isLocale,
+  isPublishedLocale,
   languageSwitcherLocales,
   localePrefix,
   LOCALES,
   localizedPath,
   parseLocalizedPath,
   pickLocalized,
+  PUBLISHED_LOCALES,
   resolveEntryId,
+  ROUTE_SLUGS,
   stripLocale,
 } from './i18n';
 
@@ -118,22 +121,50 @@ describe('stripLocale', () => {
 });
 
 describe('alternatesFor — hreflang', () => {
-  test('her dil için karşılık üretir', () => {
-    expect(alternatesFor('services')).toEqual({
-      tr: '/hizmetlerimiz/',
-      en: '/en/services/',
-    });
+  test('yalnızca YAYINLANAN diller için karşılık üretir', () => {
+    expect(alternatesFor('services')).toEqual({ tr: '/hizmetlerimiz/' });
   });
 
   test('detay sayfasında dile özgü slug kullanılabilir', () => {
-    expect(alternatesFor('blog', { tr: 'yazi', en: 'post' })).toEqual({
-      tr: '/blog/yazi/',
-      en: '/en/blog/post/',
-    });
+    expect(alternatesFor('blog', { tr: 'yazi', en: 'post' })).toEqual({ tr: '/blog/yazi/' });
   });
 
   test('bir dilde karşılık yoksa o dil listeden düşer', () => {
     expect(alternatesFor('blog', { tr: 'yazi' })).toEqual({ tr: '/blog/yazi/' });
+  });
+
+  test('yayından kalkmış dilin slug’ı bilinse bile hreflang’a girmez', () => {
+    /* `ROUTE_SLUGS` İngilizce slug’ı hâlâ taşır (301 haritası ve geri açış için),
+       ama yayında olmayan bir URL’e hreflang vermek Google’a hayalet sayfa gösterir. */
+    expect(Object.keys(alternatesFor('about'))).toEqual(['tr']);
+  });
+});
+
+describe('PUBLISHED_LOCALES — yayın kapısı', () => {
+  test('şu an yalnızca Türkçe yayında', () => {
+    expect([...PUBLISHED_LOCALES]).toEqual(['tr']);
+  });
+
+  test('yayınlanan her dil aynı zamanda bilinen bir dildir', () => {
+    for (const locale of PUBLISHED_LOCALES) expect(isLocale(locale)).toBe(true);
+  });
+
+  test('varsayılan dil her zaman yayında olmalıdır', () => {
+    expect(isPublishedLocale(DEFAULT_LOCALE)).toBe(true);
+  });
+
+  test('İngilizce biliniyor ama yayında değil', () => {
+    expect(isLocale('en')).toBe(true);
+    expect(isPublishedLocale('en')).toBe(false);
+  });
+
+  test('bilinmeyen dil yayında da sayılmaz', () => {
+    expect(isPublishedLocale('de')).toBe(false);
+  });
+
+  test('İngilizce slug tablosu korunur — geri açış ve 301 haritası buna dayanır', () => {
+    expect(ROUTE_SLUGS.about.en).toBe('about-us');
+    expect(ROUTE_SLUGS.services.en).toBe('services');
   });
 });
 

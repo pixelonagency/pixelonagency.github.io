@@ -3,7 +3,7 @@ import { existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { PAGE_SECTION_TYPES } from '../src/content/page-schema';
-import { DEFAULT_LOCALE, LOCALES } from '../src/lib/i18n';
+import { DEFAULT_LOCALE, PUBLISHED_LOCALES } from '../src/lib/i18n';
 import {
   makePostSchema,
   makeProjectSchema,
@@ -181,9 +181,12 @@ describe('config structure', () => {
 /**
  * Çok dillilik sözleşmesi.
  *
- * CMS'in dil listesi `src/lib/i18n.ts` ile elle senkron tutuluyor. Bir dil eklendiğinde
- * (LOCALES büyüdüğünde) CMS geride kalırsa editör yeni dili hiç göremez — site o dilde
- * build olur ama içerik yönetilemez hâle gelir. Aşağıdaki testler o kaymayı kapıda tutar.
+ * CMS'in dil listesi `src/lib/i18n.ts` ile elle senkron tutuluyor. Ölçüt `LOCALES` değil
+ * `PUBLISHED_LOCALES`: editörün yönetebildiği diller, sitenin gerçekten YAYINLADIĞI
+ * dillerle aynı olmalı. Bir dil eklendiğinde CMS geride kalırsa editör yeni dili hiç
+ * göremez — site o dilde build olur ama içerik yönetilemez hâle gelir. Tersi de bozuk:
+ * yayında olmayan bir dil CMS'te görünürse editör hiçbir yere çıkmayan içerik yazar
+ * (16 Eyl 2026'da İngilizce bölüm yayından kalktığında tam bu risk doğdu).
  */
 describe('i18n wiring', () => {
   /** İçeriği dile göre klasörlenmiş koleksiyonlar. */
@@ -248,12 +251,12 @@ describe('i18n wiring', () => {
         subDirectories(join(CONTENT, name)),
       ]),
     );
-    const expected = Object.fromEntries(Object.keys(layout).map((name) => [name, [...LOCALES].sort()]));
+    const expected = Object.fromEntries(Object.keys(layout).map((name) => [name, [...PUBLISHED_LOCALES].sort()]));
     expect(layout).toEqual(expected);
   });
 
-  test('locales mirror LOCALES in src/lib/i18n.ts', () => {
-    expect(config.i18n.locales).toEqual([...LOCALES]);
+  test('locales mirror PUBLISHED_LOCALES in src/lib/i18n.ts', () => {
+    expect(config.i18n.locales).toEqual([...PUBLISHED_LOCALES]);
   });
 
   test('default_locale mirrors DEFAULT_LOCALE in src/lib/i18n.ts', () => {
@@ -299,7 +302,7 @@ describe('i18n wiring', () => {
     expect(file?.file).toContain('{{locale}}');
 
     // Yer tutucu her dil için gerçekten var olan bir dosyaya çözülmeli.
-    const missing = LOCALES.filter(
+    const missing = PUBLISHED_LOCALES.filter(
       (locale) => !existsSync(join(CONTENT, '..', '..', (file?.file ?? '').replace('{{locale}}', locale))),
     );
     expect(missing).toEqual([]);
@@ -309,17 +312,22 @@ describe('i18n wiring', () => {
     // `| localize` olmadan Sveltia her dilde AYNI dosya adını bekler; farklı adlar
     // birbirine bağlanmaz ve her dil "çevirisi eksik" ayrı bir girdi gibi görünür.
     for (const name of LOCALISED_SLUG_COLLECTIONS) {
-      const perLocale = LOCALES.map((locale) => new Set(entryFiles(name, locale)));
-      const shared = [...perLocale[0]!].filter((file) => perLocale.slice(1).every((set) => set.has(file)));
+      // Tek dil yayındayken "diller arasında çakışan dosya adı" diye bir şey yoktur;
+      // `every` boş dizide true döndüğü için kontrol sessizce HER dosyayı çakışma
+      // sayardı. Slug kuralı ise dilden bağımsız, onu her hâlükârda doğruluyoruz.
+      if (PUBLISHED_LOCALES.length > 1) {
+        const perLocale = PUBLISHED_LOCALES.map((locale) => new Set(entryFiles(name, locale)));
+        const shared = [...perLocale[0]!].filter((file) => perLocale.slice(1).every((set) => set.has(file)));
+        expect({ name, sharedFilenames: shared }).toEqual({ name, sharedFilenames: [] });
+      }
 
-      expect({ name, sharedFilenames: shared }).toEqual({ name, sharedFilenames: [] });
       expect({ name, slug: collection(name).slug }).toEqual({ name, slug: '{{title | localize}}' });
     }
   });
 
   test('collections that share filenames across locales do not localize the slug', () => {
     for (const name of ['legal', 'pages', 'projects'] as const) {
-      const perLocale = LOCALES.map((locale) => entryFiles(name, locale));
+      const perLocale = PUBLISHED_LOCALES.map((locale) => entryFiles(name, locale));
       const expected = perLocale.map(() => perLocale[0]);
       expect({ name, perLocale }).toEqual({ name, perLocale: expected as string[][] });
       expect({ name, slug: collection(name).slug }).toEqual({ name, slug: '{{slug}}' });

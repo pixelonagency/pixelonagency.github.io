@@ -3,6 +3,26 @@
 Pixelon 360° dijital ajans kurumsal sitesi. **Astro (SSG) + Sveltia CMS (Git tabanlı)**.
 Tüm site içeriği Türkçedir. Sunucu çalışma zamanı yoktur.
 
+## Dil — BİLİNEN dil ≠ YAYINLANAN dil
+
+`src/lib/i18n.ts` iki ayrı liste tutar; ikisini karıştırmak sessiz hata üretir:
+
+| Liste                      | Anlamı                                               | Kim okur                                                 |
+| -------------------------- | ---------------------------------------------------- | -------------------------------------------------------- |
+| `LOCALES` (`tr`, `en`)     | Slug tablosunun ve `ui.ts` sözlüğünün anahtar kümesi | tip sistemi, `ROUTE_SLUGS`, 301 haritası                 |
+| `PUBLISHED_LOCALES` (`tr`) | **Gerçekten yayınlanan** diller                      | rota üretimi, hreflang, dil seçici, CMS, içerik testleri |
+
+İngilizce 16 Eyl 2026'da yayından kaldırıldı (gerekçe ve ölçüm: `seo/SEO_CHANGELOG.md`).
+Altyapı SÖKÜLMEDİ — sözlük ve slug tablosu duruyor, yalnızca yayın kapandı.
+
+- Yeni Türkçe rota eklemek İngilizce ikiz GEREKTİRMEZ. `ROUTE_SLUGS`'ta İngilizce slug
+  yazılır ama sayfa üretilmez; o slug 301 haritası ve olası geri açış içindir.
+- Dil kapsamı olan bir test yazarken ölçüt `PUBLISHED_LOCALES`'tir. `LOCALES` üzerinden
+  dönen bir döngü, içeriği silinmiş dilde BOŞ kümede çalışıp sessizce yeşil yanar.
+- İngilizceyi geri açmak: `PUBLISHED_LOCALES`'e `'en'` ekle, `src/content/<koleksiyon>/en/`
+  altına içerik koy, `public/admin/config.yml` dil listesini güncelle, `build-redirects.mjs`
+  içindeki 16 Eyl bloğunu sil. Başka dosyaya dokunmak gerekmez.
+
 ## Ortam — ÖNEMLİ
 
 `bun` PATH'te değil. Her kabuk komutunu şununla başlat:
