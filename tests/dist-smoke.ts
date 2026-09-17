@@ -1100,6 +1100,30 @@ describe('language switcher', () => {
 
     expect(offenders).toEqual([]);
   });
+
+  /*
+   * Seçici gizlendi ama ÇERÇEVESİ kaldı — 17 Eyl 2026'da sahip mobil menüde gördü:
+   * ayraç çizgisi + "Dil" başlığı, altı boş. Masaüstünde de boş bir flex öğesi
+   * `gap: 16px` yüzünden ölü boşluk bırakıyordu. Seçicinin yokluğunu test etmek
+   * yetmiyor; onu saran kabuğun da gitmesi gerekiyor.
+   */
+  test('seçici yokken onu saran kabuk da basılmaz — boş "Dil" başlığı kalmaz', () => {
+    const offenders: string[] = [];
+
+    for (const file of allHtmlFiles(DIST)) {
+      if (file.includes(`${sep}admin${sep}`)) continue;
+      const body = readFileSync(file, 'utf-8');
+      const route = file.replace(DIST, '');
+
+      // Mobil menüdeki dil bölümü (başlık + ayraç çizgisi) hiç çizilmemeli.
+      if (body.includes('mnav-panel__lang')) offenders.push(`${route}: mnav-panel__lang bloğu var`);
+      // Masaüstündeki sarmalayıcı boş bir flex öğesi olarak kalmamalı.
+      if (/<div data-hide-mobile[^>]*>\s*<\/div>/.test(body))
+        offenders.push(`${route}: boş data-hide-mobile sarmalayıcı`);
+    }
+
+    expect(offenders).toEqual([]);
+  });
 });
 
 describe('site içi bağlantılar kanoniktir', () => {

@@ -3,6 +3,7 @@ import {
   alternatesFor,
   DEFAULT_LOCALE,
   isLocale,
+  hasLanguageSwitcher,
   isPublishedLocale,
   languageSwitcherLocales,
   localePrefix,
@@ -14,6 +15,7 @@ import {
   resolveEntryId,
   ROUTE_SLUGS,
   stripLocale,
+  type Locale,
 } from './i18n';
 
 describe('locale set', () => {
@@ -230,5 +232,41 @@ describe('languageSwitcherLocales', () => {
 
   test('geçerli dilin kendi girdisi eksik olsa bile karşılık varsa gösterilir', () => {
     expect(languageSwitcherLocales('tr', { en: '/en/blog/x/' })).toEqual(['tr', 'en']);
+  });
+});
+
+describe('hasLanguageSwitcher — seçicinin ÇEVRESİNİ çizen tek kural', () => {
+  /*
+   * Seçicinin kendisi `languageSwitcherLocales(...).length > 1` ile gizleniyordu, ama
+   * Header'daki ETİKET ve sarmalayıcı bu kuralı bilmiyordu. 16 Eyl 2026'da İngilizce
+   * yayından kalkınca mobil menüde altı boş bir "Dil" başlığı, masaüstünde de boş bir
+   * flex öğesi (16px ölü boşluk) kaldı. Kural artık tek yerde.
+   */
+  test('karşılık varken true', () => {
+    expect(hasLanguageSwitcher('tr', { tr: '/blog/x/', en: '/en/blog/x/' })).toBe(true);
+  });
+
+  test('tek dil yayındayken false — etiket de sarmalayıcı da çizilmez', () => {
+    expect(hasLanguageSwitcher('tr', { tr: '/blog/x/' })).toBe(false);
+  });
+
+  test('alternates boşken false', () => {
+    expect(hasLanguageSwitcher('tr', {})).toBe(false);
+  });
+
+  test('seçicinin kendi kuralıyla birebir aynı cevabı verir', () => {
+    const durumlar: Partial<Record<Locale, string>>[] = [
+      {},
+      { tr: '/blog/x/' },
+      { en: '/en/blog/x/' },
+      { tr: '/blog/x/', en: '' },
+      { tr: '/blog/x/', en: '/en/blog/x/' },
+    ];
+    for (const alternates of durumlar) {
+      expect({ alternates, sonuc: hasLanguageSwitcher('tr', alternates) }).toEqual({
+        alternates,
+        sonuc: languageSwitcherLocales('tr', alternates).length > 1,
+      });
+    }
   });
 });

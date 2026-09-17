@@ -186,3 +186,18 @@ export function languageSwitcherLocales(locale: Locale, alternates: Partial<Reco
   // aksi hâlde o dil için ana sayfaya düşme davranışı geri gelir.
   return LOCALES.filter((code) => code === locale || Boolean(alternates[code]));
 }
+
+/**
+ * Dil seçici bu sayfada çizilecek mi?
+ *
+ * Seçicinin KENDİSİ zaten `languageSwitcherLocales(...).length > 1` ile gizleniyordu,
+ * ama onu saran kabuk (mobil menüdeki "Dil" başlığı, masaüstündeki flex sarmalayıcı)
+ * bu kuralı bilmiyordu. 16 Eyl 2026'da İngilizce yayından kalkınca mobil menüde altı
+ * boş bir "Dil" başlığı, masaüstünde de 16 px ölü boşluk bırakan boş bir flex öğesi
+ * kaldı — seçici gitti, çerçevesi kaldı.
+ *
+ * Kabuğu çizen her yer bu yüklemi sorar; kural tek yerde durur.
+ */
+export function hasLanguageSwitcher(locale: Locale, alternates: Partial<Record<Locale, string>>): boolean {
+  return languageSwitcherLocales(locale, alternates).length > 1;
+}

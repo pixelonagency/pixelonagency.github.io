@@ -3,7 +3,7 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import logo from '../assets/logo/pixelon-logo.webp';
-import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
+import { DEFAULT_LOCALE, hasLanguageSwitcher, localizedPath, type Locale } from '../lib/i18n';
 import { buildPrimaryNav, serviceHref, t } from '../lib/ui';
 import { isActiveRoute, menuServices } from '../lib/nav';
 import LangSwitch from './LangSwitch.astro';
@@ -20,6 +20,13 @@ interface Props {
 }
 
 const { locale = DEFAULT_LOCALE, alternates = {} } = Astro.props;
+
+/*
+ * Seçiciyi SARAN kabuk da aynı kuralı sorar (bkz. `hasLanguageSwitcher`).
+ * Aksi hâlde seçici gizlenince mobil menüde altı boş bir "Dil" başlığı ve
+ * masaüstünde 16 px ölü boşluk bırakan boş bir flex öğesi kalıyor.
+ */
+const langSwitchVisible = hasLanguageSwitcher(locale, alternates);
 
 const allServices = await getCollection('services');
 const inLocale = allServices.filter((entry) => entry.id.startsWith(`${locale}/`));
@@ -96,9 +103,13 @@ const currentPath = Astro.url.pathname;
     </nav>
 
     <div class="site-header__actions">
-      <div data-hide-mobile>
-        <LangSwitch {locale} {alternates} />
-      </div>
+      {
+        langSwitchVisible && (
+          <div data-hide-mobile>
+            <LangSwitch {locale} {alternates} />
+          </div>
+        )
+      }
 
       <a href={localizedPath('analysis', locale)} class="btn btn--primary btn--sm">{t('nav.analysis', locale)}</a>
 
@@ -158,12 +169,19 @@ const currentPath = Astro.url.pathname;
     /*
     Dil seçici panelde de durur: header'daki kopya `[data-hide-mobile]` ile ≤720 px'te
     gizleniyor ve telefonda siteyi İngilizceye çevirmenin başka yolu kalmıyordu.
+
+    Blok, seçiciyle BİRLİKTE gider: başlık ve üstündeki ayraç çizgisi seçici yokken
+    çizilirse menünün altında "Dil" yazan, altı boş bir bölüm kalır (16 Eyl 2026).
   */
   }
-  <div class="mnav-panel__lang">
-    <span class="mnav-panel__lang-label">{t('nav.language', locale)}</span>
-    <LangSwitch {locale} {alternates} variant="panel" />
-  </div>
+  {
+    langSwitchVisible && (
+      <div class="mnav-panel__lang">
+        <span class="mnav-panel__lang-label">{t('nav.language', locale)}</span>
+        <LangSwitch {locale} {alternates} variant="panel" />
+      </div>
+    )
+  }
 </div>
 
 <style>
