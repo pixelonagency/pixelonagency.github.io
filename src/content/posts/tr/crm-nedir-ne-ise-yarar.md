@@ -161,7 +161,7 @@ article:
 
         En değerli çıktısı ise kaynak bilgisi: hangi kanalın çok talep değil, çok müşteri getirdiğini göstermesi. Bütçeyi doğru yere kaydıran bilgi tam olarak bu; kurulum ve süreç tasarımını [CRM ve dijital dönüşüm](/hizmetlerimiz/) tarafında birlikte ele alıyoruz.
 
-        Takip disiplininin en çok fark yarattığı alanlardan biri sağlık turizmi: talep ile tedavi arasında haftalar geçiyor ve iletişim bu aralıkta kopuyor. Konuyu [sağlık turizminde uluslararası hasta güveni](/blog/saglik-turizminde-uluslararasi-hasta-guveni-nasil-kazanilir/) yazısında ayrıca ele aldık.
+        Takip disiplininin en çok fark yarattığı alanlardan biri sağlık turizmi: talep ile tedavi arasında haftalar geçiyor ve iletişim bu aralıkta kopuyor. Konuyu [sağlık turizminde uluslararası hasta güveni](/blog/saglik-turizminde-uluslararasi-hasta-guveni-nasil-kazanilir/) yazısında ayrıca ele aldık; CRM'in bu sürecin neresine oturduğunu [sağlık turizmi danışmanlığı](/hizmetlerimiz/saglik-turizmi-danismanligi/) sayfasında anlattık.
 
     - type: cta
       heading: Talep akışınızı birlikte kuralım.

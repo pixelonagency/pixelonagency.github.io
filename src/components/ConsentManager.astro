@@ -18,6 +18,7 @@ import AnalyticsEvents from './AnalyticsEvents.astro';
 <script>
   // UMD paketi — Vite interop'u nedeniyle default/namespace ikisi de olabilir.
   import * as KlaroModule from 'klaro/dist/klaro-no-css.js';
+  import { labelConsentDialogs } from '../lib/consent-a11y';
   import { buildKlaroConfig } from '../lib/consent-config';
   import type { Locale } from '../lib/i18n';
 
@@ -32,6 +33,13 @@ import AnalyticsEvents from './AnalyticsEvents.astro';
   const config = buildKlaroConfig(lang);
 
   klaro.setup(config);
+
+  /*
+   * Klaro bandı `aria-labelledby` ile var olmayan bir başlığı işaret ediyor; adı
+   * eksik kalan diyaloglara erişilebilir ad veriyoruz (gerekçe: consent-a11y.ts).
+   * `setup()` sonrası çağrılır — gözlemci hem bandı hem sonradan açılan modali yakalar.
+   */
+  labelConsentDialogs(document, lang);
 
   // Footer'daki "Çerez Tercihleri" bağlantısı modali yeniden açar.
   for (const trigger of document.querySelectorAll('[data-cookie-prefs]')) {

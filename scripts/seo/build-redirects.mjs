@@ -151,6 +151,12 @@ export const LEGACY = [
     '/blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/',
   ],
   ['/en/blog/category/healthcare-marketing', '/blog/'],
+
+  /* 17 Eylül 2026 — canlı site denetiminde yakalandı. Search Console bu URL'i
+     raporluyor (1 gösterim, 1. sıra) ama sayfa 404 veriyor: slug'da "is" iki kez
+     yazılmış. Siteden bu adrese HİÇ link verilmiyor — kaynak dışarıda, yani biri
+     yanlış yazmış ya da yanlış link vermiş. Doğru sayfa yayında. */
+  ['/blog/sosyal-medya-ajanslari-ne-is-is-yapar', '/blog/sosyal-medya-ajanslari-ne-is-yapar/'],
 ];
 
 /** Sitemap XML → kanonik yol listesi (alfabetik, deterministik). */
