@@ -140,14 +140,34 @@ jobs:
           # Yayın yayılımı için kısa bekleme
           sleep 10
 
-          # Örneklem: iki dilin kökü ve iki dilde birer hizmet sayfası. Liste, hizmet
-          # envanteri 1 Eylül 2026'da birleştirilince güncellendi — burada emekli bir
-          # sayfa duruyordu ve 200 beklendiği için doğru çalışan 301 testi kırıyordu.
+          # Örneklem: kök + hizmet merkezi + bir hizmet detayı + bir vaka + bir yazı.
+          # Liste 1 Eyl 2026'da hizmet birleştirmesiyle, 16 Eyl 2026'da da İngilizce
+          # bölüm yayından kalkınca güncellendi — her iki seferde de burada emekli bir
+          # sayfa 200 beklendiği için DOĞRU çalışan 301'i test kırıyordu.
           echo "— sayfalar 200 mü?"
-          for u in / /en/ /hizmetlerimiz/web-tasarim-ve-yazilim/ /en/services/healthcare-marketing/; do
+          for u in / /hizmetlerimiz/ /hizmetlerimiz/web-tasarim-ve-yazilim/ /projelerimiz/xray-groupe/ /blog/; do
             c=$(curl -sS -o /dev/null -w '%{http_code}' "$P$u" --max-time 30)
             [ "$c" = "200" ] || fail "$u → $c"
             echo "  $u → $c"
+          done
+
+          # İngilizce bölüm 16 Eyl 2026'da yayından kalktı: 404 DEĞİL, Türkçe
+          # karşılığına tek hop 301 vermeli. Örneklem üç ayrı kural sınıfını kapsar —
+          # kök, dile göre slug'ı DEĞİŞEN hizmet, slug'ı aynı kalan vaka.
+          echo "— İngilizce bölüm: 301 → tek hop → Türkçe 200"
+          for pair in "/en/:/" \
+                      "/en/services/seo-and-content-marketing/:/hizmetlerimiz/seo-ve-icerik-pazarlamasi/" \
+                      "/en/projects/xray-groupe/:/projelerimiz/xray-groupe/"; do
+            u="${pair%%:*}"; want="${pair#*:}"
+            c=$(curl -sS -o /dev/null -w '%{http_code}' -I "$P$u" --max-time 30)
+            [ "$c" = "301" ] || fail "$u → $c (301 bekleniyordu)"
+            loc=$(curl -sS -o /dev/null -w '%{redirect_url}' -I "$P$u" --max-time 30)
+            [ "$loc" = "$P$want" ] || fail "$u → $loc (beklenen $P$want)"
+            h=$(curl -sS -o /dev/null -w '%{num_redirects}' -L "$P$u" --max-time 30)
+            [ "$h" = "1" ] || fail "$u → $h hop (zincir)"
+            f=$(curl -sS -o /dev/null -w '%{http_code}' -L "$P$u" --max-time 30)
+            [ "$f" = "200" ] || fail "$u zinciri $f ile bitiyor"
+            echo "  $u → 301 → $want (tek hop, 200)"
           done
 
           echo "— altyapı dosyaları"
