@@ -126,6 +126,8 @@
 /en/blog/healthcare-digital-advertising/                                    /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/ 301
 /en/blog/category/healthcare-marketing                                      /blog/                                                                      301
 /en/blog/category/healthcare-marketing/                                     /blog/                                                                      301
+/blog/sosyal-medya-ajanslari-ne-is-is-yapar                                 /blog/sosyal-medya-ajanslari-ne-is-yapar/                                   301
+/blog/sosyal-medya-ajanslari-ne-is-is-yapar/                                /blog/sosyal-medya-ajanslari-ne-is-yapar/                                   301
 
 # 2) KANONİK SLASH NORMALİZASYONU — Workers auto-trailing-slash 307 döndürüyor;
 #    Google kanonikleştirmesi için kalıcı 301 gerekiyor. Wildcard kullanılmaz.
