@@ -16,7 +16,7 @@ article:
   updated: 2026-09-05
   quickAnswer:
     heading: Kısa Cevap
-    text: 'E-ticaret sitesi kurmanın maliyetini sayfa sayısı değil ürün yapısı belirler. Fiyatı en çok değiştiren altı kalem şunlardır: ürün ve varyant sayısı, ödeme altyapısı, kargo entegrasyonu, ürün içeriğinin kim tarafından üretileceği, dil sayısı ve satış ölçümlemesi. Pixelon tarafında e-ticaret projeleri 140.000 TL'den başlıyor ve ortalama 30 günde teslim ediliyor.'
+    text: 'E-ticaret sitesi kurmanın maliyetini sayfa sayısı değil ürün yapısı belirler. Fiyatı en çok değiştiren altı kalem şunlardır: ürün ve varyant sayısı, ödeme altyapısı, kargo entegrasyonu, ürün içeriğinin kim tarafından üretileceği, dil sayısı ve satış ölçümlemesi. Pixelon tarafında e-ticaret projeleri 140.000 TL''den başlıyor ve ortalama 30 günde teslim ediliyor.'
   tocHeading: İçindekiler
   related:
     - web-tasarim-fiyatlari
