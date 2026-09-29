@@ -1,14 +1,15 @@
 title: Web Sitesi Fiyatları
 parent: web-tasarim-ve-yazilim
-# Rakamların tamamı yayındaki "web tasarım fiyatları" yazısında sahip onayıyla yayınlanmış
-# fiyat aralıklarıdır (65.000 / 95.000 / 140.000 TL, bakım 2.000 TL/ay, KDV hariç). Yeni rakam
+# Başlangıç fiyatı 29 Eyl 2026'da sahip kararıyla 65.000 TL'den 50.000 TL'ye indi.
+# Diğer rakamların tamamı yayındaki "web tasarım fiyatları" yazısında sahip onayıyla yayınlanmış
+# fiyat aralıklarıdır (50.000 / 95.000 / 140.000 TL, bakım 2.000 TL/ay, KDV hariç). Yeni rakam
 # eklenmeden önce sahip onayı alınır.
 status: published
 
 seo:
   title: Web Sitesi Fiyatları 2026 | Kurumsal Site Paketleri | Pixelon
   description: >-
-    Web sitesi fiyatları 2026: kurumsal web sitesi 65.000 TL'den, e-ticaret ve özel
+    Web sitesi fiyatları 2026: kurumsal web sitesi 50.000 TL'den, e-ticaret ve özel
     yazılım 140.000 TL'den başlıyor (KDV hariç). Paketlere neyin dahil olduğunu ve
     fiyatı değiştiren kalemleri açıkça yazdık.
 
@@ -20,9 +21,9 @@ sections:
     background: dark
     eyebrow: Web Sitesi Fiyatları 2026
     headingLines:
-      - "Web Sitesi Fiyatları: Kurumsal Siteler *65.000 TL'den* Başlıyor."
+      - "Web Sitesi Fiyatları: Kurumsal Siteler *50.000 TL'den* Başlıyor."
     lead: >-
-      Rakamı saklamıyoruz. Kurumsal web siteleri 65.000 TL'den, e-ticaret ve özel yazılım
+      Rakamı saklamıyoruz. Kurumsal web siteleri 50.000 TL'den, e-ticaret ve özel yazılım
       projeleri 140.000 TL'den başlıyor. Tüm fiyatlar KDV hariç. Aşağıda her paketin
       içinde ne olduğunu tek tek yazdık.
     chips:
@@ -52,7 +53,7 @@ sections:
       dil konuşacağınız ve kaç sisteme bağlanacağınız belirliyor.
     items:
       - eyebrow: Kurumsal
-        title: 65.000 - 95.000 TL
+        title: 50.000 - 95.000 TL
         description: |-
           Markaya özel tasarım, sekize kadar farklı sayfa düzeni, tek dil, form ve harita, kurulu dönüşüm ölçümü ve teslim sonrası tanımlı bakım.
 
@@ -75,13 +76,13 @@ sections:
       tek bir tutara iner.
 
   # 3. RAKAMLAR: arayanın aradığı üç sayı, tek bakışta. Sayaç tam sayı saydığı için
-  # binlik kısım sonek olarak yazılır (65 + ".000 ₺" = "65.000 ₺").
+  # binlik kısım sonek olarak yazılır (50 + ".000 ₺" = "50.000 ₺").
   - type: stats
     background: dark
     eyebrow: Kısaca
     heading: Üç Rakamda Web Sitesi Fiyatları
     items:
-      - value: 65
+      - value: 50
         suffix: '.000 ₺'
         label: Kurumsal site başlangıcı
         description: KDV hariç, markaya özel tasarımla. Ortalama 30 günde teslim.
@@ -94,11 +95,11 @@ sections:
         label: Aylık bakım paketi başlangıcı
         description: Güncelleme, yedekleme ve aylık değişiklik kotası.
 
-  # 4. 65.000 TL NEDEN: rakiplerden farkı somut anlatan bölüm.
+  # 4. 50.000 TL NEDEN: rakiplerden farkı somut anlatan bölüm.
   - type: why
     background: light
     eyebrow: Farkı Ne?
-    heading: 25.000 TL'lik Teklif de Var, Neden 65.000 TL?
+    heading: 25.000 TL'lik Teklif de Var, Neden 50.000 TL?
     lead: >-
       Piyasada çok daha düşük rakamlar görebilirsiniz ve bazıları kendi kapsamında doğru
       teklifler. Aradaki fark genelde ekipten değil, teklifin neyi kapsadığından doğuyor.
@@ -184,7 +185,7 @@ sections:
     background: dark
     layout: center
     eyebrow: Bir Not
-    heading: 65.000 TL'nin Altında Neden Çalışmıyoruz
+    heading: 50.000 TL'nin Altında Neden Çalışmıyoruz
     body: |-
       Hazır temayla kurulan iki üç sayfalık tanıtım siteleri de piyasada var. Bizim gördüğümüz, o kapsamda kurulan sitelerin büyük kısmının ilk yıl içinde yeniden yapıldığı ve işletmeye iki kez ödettiği.
 
@@ -216,7 +217,7 @@ sections:
     items:
       - question: Web sitesi yaptırmak ne kadar tutar?
         answer: >-
-          Pixelon'da kurumsal web siteleri 65.000 TL, e-ticaret ve özel yazılım projeleri
+          Pixelon'da kurumsal web siteleri 50.000 TL, e-ticaret ve özel yazılım projeleri
           140.000 TL'den başlıyor, KDV hariç. Kesin rakamı sayfa düzeni sayısı,
           içerik sorumluluğu, dil sayısı ve entegrasyonlar belirliyor.
       - question: Neden tek bir fiyat değil de fiyat aralığı veriyorsunuz?

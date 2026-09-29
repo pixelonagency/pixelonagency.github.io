@@ -11,12 +11,12 @@ status: published
 featured: false
 seo:
   title: 'Web Tasarım Fiyatları Neye Göre Değişiyor? | Pixelon'
-  description: "Web tasarım fiyatları neye göre değişir? Pixelon kurumsal web sitesi projeleri 65.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor. Fiyatı belirleyen kalemleri ve üç kapsam seviyesini anlatıyoruz."
+  description: "Web tasarım fiyatları neye göre değişir? Pixelon kurumsal web sitesi projeleri 50.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor. Fiyatı belirleyen kalemleri ve üç kapsam seviyesini anlatıyoruz."
 article:
-  updated: 2026-09-04
+  updated: 2026-09-29
   quickAnswer:
     heading: Kısa Cevap
-    text: "Web tasarım fiyatı sayfa sayısıyla değil, işin kapsamıyla belirlenir. Pixelon tarafında kurumsal web sitesi projeleri 65.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor; tüm rakamlar KDV hariç. Hangi fiyata denk geleceğinizi belirleyen beş kalem şunlardır: tasarımın hazır tema mı özel kurgu mu olduğu, metin ve görsellerin kim tarafından üretileceği, entegrasyon ve özel geliştirme ihtiyacı, dil sayısı ve teslim sonrası desteğin kapsamı."
+    text: "Web tasarım fiyatı sayfa sayısıyla değil, işin kapsamıyla belirlenir. Pixelon tarafında kurumsal web sitesi projeleri 50.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor; tüm rakamlar KDV hariç. Hangi fiyata denk geleceğinizi belirleyen beş kalem şunlardır: tasarımın hazır tema mı özel kurgu mu olduğu, metin ve görsellerin kim tarafından üretileceği, entegrasyon ve özel geliştirme ihtiyacı, dil sayısı ve teslim sonrası desteğin kapsamı."
   tocHeading: İçindekiler
   related:
     - web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli
@@ -112,20 +112,20 @@ article:
           - Sürekli geliştirme anlaşması
         - - Fiyat aralığı (KDV hariç)
           - Pixelon bu seviyede çalışmıyor
-          - 65.000 - 140.000 TL
+          - 50.000 - 140.000 TL
           - 140.000 TL ve üzeri
 
     - type: section
       id: pixelon-fiyat-bandi
       heading: Pixelon tarafında fiyatlar nereden başlıyor?
-      lead: "Kurumsal web sitesi projeleri 65.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor. Tüm rakamlar KDV hariç."
+      lead: "Kurumsal web sitesi projeleri 50.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor. Tüm rakamlar KDV hariç."
       text: |-
         Üç fiyat aralığında çalışıyoruz. Hangisine denk geldiğinizi belirleyen şey sayfa sayısı değil; içerik sorumluluğunun kimde olduğu, kaç dil konuşacağınız ve kaç dış sisteme bağlanacağınız.
         Her paketin içinde ne olduğunu tek bakışta görmek isterseniz [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında paket paket topladık.
 
     - type: cards
       items:
-        - title: Kurumsal, 65.000 - 95.000 TL
+        - title: Kurumsal, 50.000 - 95.000 TL
           text: Markaya özel tasarım, sekize kadar şablon, tek dil, form ve harita entegrasyonu, dönüşüm ölçümlemesi kurulu, teslim sonrası tanımlı bakım.
         - title: Kurumsal geniş, 95.000 - 140.000 TL
           text: Blog ve vaka çalışması sistemi, ikinci dil, CRM veya rezervasyon bağlantısı, genişletilmiş içerik desteği.
@@ -205,7 +205,7 @@ article:
       id: sonuc
       heading: Kısaca
       text: |-
-        Web tasarım fiyatı bir rakam değil, bir kapsam sorusunun cevabı. Yine de bir yerden başlamak gerekiyor: kurumsal projeler 65.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor.
+        Web tasarım fiyatı bir rakam değil, bir kapsam sorusunun cevabı. Yine de bir yerden başlamak gerekiyor: kurumsal projeler 50.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor.
 
         Tasarım yaklaşımı, içerik sorumluluğu, entegrasyonlar, dil sayısı ve teslim sonrası destek; bu beş kalem netleştiğinde teklifler karşılaştırılabilir hâle geliyor ve aradaki fark anlam kazanıyor.
 
