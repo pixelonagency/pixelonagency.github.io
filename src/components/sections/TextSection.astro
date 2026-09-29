@@ -57,7 +57,7 @@ const highlightSegments = section.highlight ? parseHighlights(section.highlight)
       <div class="tcenter" data-reveal data-reveal-index={0}>
         <SectionHead eyebrow={section.eyebrow} heading={section.heading} align="center" />
         {paragraphs.map((paragraph) => (
-          <p class="tcenter__paragraph">{paragraph}</p>
+          <p class="tcenter__paragraph" set:html={inlineHtml(paragraph)} />
         ))}
         {section.highlight && (
           <p class="tcenter__closing">
@@ -75,9 +75,9 @@ const highlightSegments = section.highlight ? parseHighlights(section.highlight)
       <div class:list={['text', hasMedia && 'text--split']}>
         <div class="text__body" data-reveal data-reveal-index={0}>
           {paragraphs.map((paragraph) => (
-            <p class="body-text text__paragraph">{paragraph}</p>
+            <p class="body-text text__paragraph" set:html={inlineHtml(paragraph)} />
           ))}
-          {section.highlight && <p class="text__closing">{section.highlight}</p>}
+          {section.highlight && <p class="text__closing" set:html={inlineHtml(section.highlight)} />}
         </div>
 
         {hasMedia && (
@@ -104,6 +104,28 @@ const highlightSegments = section.highlight ? parseHighlights(section.highlight)
 }
 
 <style>
+  /* Gövde metnindeki satır içi bağlantılar. Açık zeminde global lime bağlantı rengi
+     okunmuyor (beyaz üstünde lime AA'nın çok altında); blog gövdesindeki açık zemin
+     bağlantı stili (ArticleSection) aynen kullanılır. Koyu zeminde global stil kalır. */
+  :global(.section--light) .tsplit__paragraph :global(a),
+  :global(.section--light) .tcenter__paragraph :global(a),
+  :global(.section--light) .text__paragraph :global(a),
+  :global(.section--light) .text__closing :global(a) {
+    color: var(--text-on-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    padding-block: 4px;
+    transition: color var(--t-base);
+  }
+
+  :global(.section--light) .text__paragraph :global(a:hover),
+  :global(.section--light) .tsplit__paragraph :global(a:hover),
+  :global(.section--light) .tcenter__paragraph :global(a:hover) {
+    color: var(--text-muted-on-light);
+  }
+
   /* --- Split düzen (başlık solda sticky) --- */
   .tsplit {
     display: grid;

@@ -65,6 +65,19 @@ Bu dosyalar bir prototip aracının çıktısıdır. **Şu etiketleri üretim ko
 - Görseller `astro:assets` (`<Image />`) ile optimize edilir; `src/assets/**` altından import.
 - İçerik `getCollection()` / `getEntry()` ile okunur — sayfa dosyalarına metin gömme.
 
+## Breadcrumb rule
+
+Every indexable page except the home page carries a breadcrumb.
+The rule is enforced by the `breadcrumb kuralı` block in `tests/dist-smoke.ts` (`bun run verify`).
+
+- The breadcrumb is visible and has exactly one matching `BreadcrumbList` JSON-LD node.
+- The first item is the home page, the last item is the current page and carries `aria-current="page"`.
+- Every item between them links to a real page. A crumb without a page (a blog category below the page threshold) may stay visible but is left out of the schema by `breadcrumbSchema()`.
+- Schema names follow the visible crumbs in the same order and with the same text.
+- The accessible name of the breadcrumb `nav` is `t('nav.breadcrumb')` ("Sayfa yolu").
+- A new page type, template or CMS page is not done until it passes this test.
+- For CMS pages, add the `breadcrumb` list to the page's `hero` section. The hero size is decided by the number of CTAs, never by the breadcrumb.
+
 ## Design token'lar (`src/styles/tokens.css`)
 
 | Token            | Değer                         |

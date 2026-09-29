@@ -121,7 +121,7 @@ article:
       text: |-
         Proje başında iki soruyu birlikte cevaplıyoruz: içeriği kim güncelleyecek ve hangi süreçler standart dışı.
 
-        Cevap "içeriği biz güncelleyeceğiz, süreçler standart" ise hazır sistemde kuruyoruz ve bütçenin kalanını tasarıma, içeriğe ve ölçümlemeye ayırıyoruz. Cevap "kendimize özgü bir akışımız var" ise o akışı çıkarıp özel geliştiriyoruz.
+        Cevap "içeriği biz güncelleyeceğiz, süreçler standart" ise hazır sistemde kuruyoruz ve bütçenin kalanını tasarıma, içeriğe ve ölçümlemeye ayırıyoruz. Cevap "kendimize özgü bir akışımız var" ise o akışı çıkarıp özel geliştiriyoruz. İki yolla kurduğumuz projeleri [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) sayfamızda bir arada görebilirsiniz.
 
         Bazen ikisi birden oluyor. [Dentasay](/projelerimiz/dentasay/) için kurduğumuz 13 dilli yapıda içerik yönetimi ekibin kendi kullanabileceği biçimde kurgulandı; dil katmanı ve hasta iletişim akışı ise ayrı ele alındı.
 

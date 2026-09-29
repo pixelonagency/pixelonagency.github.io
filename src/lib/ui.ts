@@ -25,7 +25,7 @@ const STRINGS = {
   'nav.mobileMenu': { tr: 'Mobil menü', en: 'Mobile menu' },
   'nav.home': { tr: 'Ana Sayfa', en: 'Home' },
   'nav.skipToContent': { tr: 'İçeriğe geç', en: 'Skip to content' },
-  'nav.breadcrumb': { tr: 'Site haritası', en: 'Breadcrumb' },
+  'nav.breadcrumb': { tr: 'Sayfa yolu', en: 'Breadcrumb' },
   'nav.logoHome': { tr: 'Pixelon ana sayfa', en: 'Pixelon home' },
   'nav.language': { tr: 'Dil', en: 'Language' },
   'nav.portfolio': { tr: 'Portfolyo', en: 'Portfolio' },
