@@ -282,4 +282,10 @@ describe('web tasarım kümesi', () => {
     const subpage = localizedPath('services', 'tr', 'web-tasarim-ve-yazilim/kurumsal-web-tasarim');
     expect(graph.out.get('kurumsal-web-sitesi-nasil-olmali')?.has(subpage)).toBe(true);
   });
+
+  test('fiyat yazısı fiyat sayfasına bağlanır: bilgi yazısı ticari sayfayla yarışmaz, onu besler', async () => {
+    const graph = await buildGraph('tr');
+    const pricing = localizedPath('services', 'tr', 'web-tasarim-ve-yazilim/web-sitesi-fiyatlari');
+    expect(graph.out.get('web-tasarim-fiyatlari')?.has(pricing)).toBe(true);
+  });
 });

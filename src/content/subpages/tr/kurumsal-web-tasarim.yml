@@ -204,10 +204,11 @@ sections:
           yazısında anlattık.
       - question: Kurumsal web sitesi fiyatı ne kadar?
         answer: >-
-          Kurumsal projeler 65.000 TL bandından başlıyor (KDV hariç). Fiyatı sayfa
+          Kurumsal projeler 50.000 TL'den başlıyor (KDV hariç). Fiyatı sayfa
           sayısından çok içerik sorumluluğu, dil sayısı ve entegrasyon ihtiyacı
           belirliyor. Kalem kalem nasıl değiştiğini
-          [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında yazdık.
+          [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında yazdık; paketlerin
+          içeriğini [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında görebilirsiniz.
       - question: Siteyi sonra kendimiz güncelleyebilir miyiz?
         answer: >-
           Evet. Sitede hizmetleri, projeleri ve yazıları düzenleyebileceğiniz bir
@@ -231,8 +232,8 @@ sections:
     kind: spot
     heading: Sitenizde Hangi Kanıt Eksik, Birlikte Bakalım
     lead: >-
-      Mevcut sitenizi ya da planınızı anlatın. Hangi sayfaların gerektiğini ve bandın
-      neresinde olacağınızı ilk görüşmede söyleyelim.
+      Mevcut sitenizi ya da planınızı anlatın. Hangi sayfaların gerektiğini ve bütçenin
+      ne olacağını ilk görüşmede söyleyelim.
     ctas:
       - label: Ücretsiz Teklif Alın
         href: /iletisim/
