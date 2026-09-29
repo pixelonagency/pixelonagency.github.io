@@ -257,11 +257,17 @@ describe('inline links in body copy', () => {
        bölüm yayından kalktı, iki rota da artık üretilmiyor. Liste bilinçli olarak
        BOŞ bırakıldı — Türkçe hizmet gövdelerinde şu an gövde içi çapraz bağlantı
        beklentisi tanımlı değil; tanımlandığında buraya yazılır. */
+
+    /* Web tasarım yol haritası (29 Eyl 2026): dönüşüm sayfası kümenin merkezine bağlanır.
+       Denetimde `/web-sitesi-yaptir/` gövdesinden hizmet sayfasına hiç bağlantı yoktu. */
+    ['/web-sitesi-yaptir', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
   ];
 
   for (const [route, target] of BODY_LINKS) {
     test(`${route} → ${target} gerçek bağlantı olarak render edilir`, () => {
-      const source = read(route);
+      // Yalnızca <main>: menü ve altbilgi her sayfada aynı bağlantıları taşır, gövde
+      // bağlantısının yerini tutmaz.
+      const source = read(route).match(/<main[\s\S]*?<\/main>/)?.[0] ?? '';
       expect({ route, target, linked: source.includes(`href="${target}"`) }).toEqual({ route, target, linked: true });
     });
   }
@@ -1291,4 +1297,29 @@ describe('portfolyo indekslenmiyor', () => {
     const xml = files.map((f) => readFileSync(join(DIST, f), 'utf8')).join('\n');
     expect(xml).not.toContain('/portfolyo/');
   });
+});
+
+describe('başlık tekilliği', () => {
+  /*
+   * Web tasarım denetimi (29 Eyl 2026): `/web-sitesi-yaptir/` kaydırıcısı kesintisiz döngü
+   * için listeyi iki kez basıyor ve ikinci kopyadaki başlıklar da <h3> olarak kalıyordu:
+   * 16 proje, 32 başlık. `/projelerimiz/` ise aynı müşterinin iki projesini aynı <h2>
+   * metniyle ("Dentasay") basıyordu. Görsel kopya ekran okuyucudan gizli olsa da HTML'de
+   * başlık olarak durur; arama motoru sayfanın ana hatlarını bu başlıklardan okur.
+   */
+  const headingTexts = (source: string): string[] =>
+    [...source.matchAll(/<h([23])\b[^>]*>([\s\S]*?)<\/h\1>/g)].map((m) =>
+      (m[2] ?? '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    );
+
+  for (const route of ['/web-sitesi-yaptir', '/projelerimiz']) {
+    test(`${route} hiçbir h2/h3 başlığını iki kez basmaz`, () => {
+      const texts = headingTexts(readFileSync(htmlPath(route), 'utf8'));
+      const repeated = [...new Set(texts.filter((text, i) => texts.indexOf(text) !== i))];
+      expect(repeated).toEqual([]);
+    });
+  }
 });

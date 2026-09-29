@@ -80,7 +80,7 @@ article:
 
         Reklam yayınlıyorsanız gerekiyor. [Google Ads veya Meta reklamlarıyla](/hizmetlerimiz/dijital-reklam-yonetimi/) gelen ziyaretçi belirli bir vaatle tıklıyor; ana sayfada o vaadin karşılığını bulamazsa geri dönüyor.
 
-        Tek bir hizmeti öne çıkaracaksanız gerekiyor. Kurumsal sitede on hizmet arasında kaybolan bir hizmet, kendi sayfasında anlatıldığında hak ettiği ilgiyi görüyor.
+        Tek bir hizmeti öne çıkaracaksanız gerekiyor. Kurumsal sitede on hizmet arasında kaybolan bir hizmet, kendi sayfasında anlatıldığında hak ettiği ilgiyi görüyor. Landing page'i sitenin geri kalanıyla aynı tasarım dilinde tutmak için onu [web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/) sürecinin başında planlamak işi kolaylaştırıyor.
 
         Kampanya, etkinlik veya sezonluk bir teklif varsa gerekiyor. Bu tür içerikler kurumsal sitenin yapısını bozmadan bağımsız bir sayfada yaşayabiliyor.
 

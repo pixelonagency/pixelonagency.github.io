@@ -241,3 +241,30 @@ describe('sağlık turizmi kümesi', () => {
     expect(graph.in.get(href)?.size ?? 0).toBeGreaterThanOrEqual(3);
   });
 });
+
+describe('web tasarım kümesi', () => {
+  /*
+   * Web tasarım yol haritası (29 Eyl 2026): hizmet sayfası kümenin merkezidir ve web
+   * kategorisindeki her yazı onu besler. Denetimde 8 yazının 4'ü hizmet sayfasına hiç
+   * bağlanmıyordu; okuru satış sayfasına taşımayan bir blog trafiği boşa harcar.
+   *
+   * İstisna, kendi kümesi olan yazılardır: e-ticaret yazısı e-ticaret hizmetini besler.
+   */
+  const OWN_CLUSTER = new Set(['e-ticaret-sitesi-kurma']);
+
+  test('web kategorisindeki her yazı web tasarım hizmet sayfasına bağlanır', async () => {
+    const graph = await buildGraph('tr');
+    const pillar = localizedPath('services', 'tr', 'web-tasarim-ve-yazilim');
+    const missing: string[] = [];
+
+    for (const file of postFiles('tr')) {
+      const slug = file.replace(/\.md$/, '');
+      if (OWN_CLUSTER.has(slug)) continue;
+      const front = parse((await readPost('tr', file)).split('---')[1] ?? '') as { category?: string };
+      if (front?.category !== 'Web Tasarım') continue;
+      if (!graph.out.get(slug)?.has(pillar)) missing.push(slug);
+    }
+
+    expect(missing).toEqual([]);
+  });
+});

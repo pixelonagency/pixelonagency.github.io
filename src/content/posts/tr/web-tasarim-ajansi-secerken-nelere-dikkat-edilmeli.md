@@ -69,7 +69,7 @@ article:
 
         İkinci adım, işin arkasındaki kararı sormak. "Bu projede neyi çözdünüz?" sorusuna verilen cevap, ajansın işi estetik bir teslim olarak mı yoksa bir problem çözümü olarak mı gördüğünü gösteriyor.
 
-        Bizim [projelerimiz](/projelerimiz/) sayfasında her işin yanında hangi ihtiyaçtan yola çıkıldığını da yazmamızın nedeni bu: ekran görüntüsü tek başına bir şey anlatmıyor. Aynı soruyu birlikte çalıştığımız markalara sorabilirsiniz; kimlerle çalıştığımızı [referanslarımız](/referanslarimiz/) sayfasında topladık. Süreçte muhatabınızın kim olacağını merak ediyorsanız ekibi [biz kimiz](/biz-kimiz/) sayfasında tanıtıyoruz.
+        Bizim [projelerimiz](/projelerimiz/) sayfasında her işin yanında hangi ihtiyaçtan yola çıkıldığını da yazmamızın nedeni bu: ekran görüntüsü tek başına bir şey anlatmıyor. Aynı soruyu birlikte çalıştığımız markalara sorabilirsiniz; kimlerle çalıştığımızı [referanslarımız](/referanslarimiz/) sayfasında topladık. Süreçte muhatabınızın kim olacağını merak ediyorsanız ekibi [biz kimiz](/biz-kimiz/) sayfasında tanıtıyoruz. Bir kurumsal sitenin keşiften yayına hangi adımlardan geçtiğini ise [web tasarım hizmetimizi](/hizmetlerimiz/web-tasarim-ve-yazilim/) anlattığımız sayfada adım adım gösterdik.
 
     - type: table
       heading: Görüşmede sorulacak sorular ve cevapların okunması

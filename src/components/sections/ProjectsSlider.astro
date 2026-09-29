@@ -34,6 +34,9 @@ const detailHref = (slug: string) => `/${locale === DEFAULT_LOCALE ? 'projelerim
  * ve odak alamaz, yoksa her proje iki kez okunur ve sekmeyle iki kez gezilir.
  * Hız kart sayısıyla ölçeklenir: kart başına ~7 saniye, böylece az projede şerit
  * fırlamaz, çok projede sürünmez.
+ *
+ * İkinci kopyada başlık <h3> değil <p>: gizli kopya da HTML'de durur ve başlık olarak
+ * kalırsa sayfanın ana hattında her proje iki kez görünür.
  */
 const COPIES = [0, 1];
 const duration = Math.max(28, projects.length * 7);
@@ -73,7 +76,11 @@ const duration = Math.max(28, projects.length * 7);
 
                     <div class="pslider__body">
                       <p class="pslider__client">{project.client}</p>
-                      <h3 class="pslider__title">{project.title}</h3>
+                      {copy === 0 ? (
+                        <h3 class="pslider__title">{project.title}</h3>
+                      ) : (
+                        <p class="pslider__title">{project.title}</p>
+                      )}
                       <p class="pslider__text">{project.excerpt}</p>
                       {project.hasDetail && (
                         <span class="pslider__more">

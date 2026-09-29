@@ -226,7 +226,12 @@ const BOARD_VIDEO_SCRIPT = `
               {/* Marka adı alt blokta: kapak görselleri sol üst köşede markanın
                   kendi logosunu taşıyor, başlık orada üstüne biniyordu. */}
               <span class="pb-card__bottom">
-                <h2 class="pb-card__brand">{project.client}</h2>
+                {/* Aynı müşterinin birden çok projesi olabilir (Dentasay). Görünen metin marka
+                    adı olarak kalır, başlık ise proje adını da taşır ki her kart tekil olsun. */}
+                <h2 class="pb-card__brand">
+                  {project.client}
+                  {project.title !== project.client && <span class="visually-hidden">: {project.title}</span>}
+                </h2>
                 {project.year && <span class="pb-card__year">{project.year}</span>}
                 <span class="pb-card__chips" role="list">
                   {chipsFor(project.services).map((chip) => (
