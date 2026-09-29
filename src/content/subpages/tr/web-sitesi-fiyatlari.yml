@@ -1,7 +1,7 @@
 title: Web Sitesi Fiyatları
 parent: web-tasarim-ve-yazilim
 # Rakamların tamamı yayındaki "web tasarım fiyatları" yazısında sahip onayıyla yayınlanmış
-# bantlardır (65.000 / 95.000 / 140.000 TL, bakım 2.000 TL/ay, KDV hariç). Yeni rakam
+# fiyat aralıklarıdır (65.000 / 95.000 / 140.000 TL, bakım 2.000 TL/ay, KDV hariç). Yeni rakam
 # eklenmeden önce sahip onayı alınır.
 status: published
 
@@ -22,11 +22,11 @@ sections:
     headingLines:
       - "Web Sitesi Fiyatları: Kurumsal Siteler *65.000 TL'den* Başlıyor."
     lead: >-
-      Rakamı saklamıyoruz. Kurumsal web siteleri 65.000 TL, e-ticaret ve özel yazılım
-      projeleri 140.000 TL bandından başlıyor. Tüm fiyatlar KDV hariç. Aşağıda her bandın
+      Rakamı saklamıyoruz. Kurumsal web siteleri 65.000 TL'den, e-ticaret ve özel yazılım
+      projeleri 140.000 TL'den başlıyor. Tüm fiyatlar KDV hariç. Aşağıda her paketin
       içinde ne olduğunu tek tek yazdık.
     chips:
-      - KDV hariç net bantlar
+      - KDV hariç net fiyatlar
       - Hazır tema yok
       - Ortalama 30 günde teslim
       - Bakım aylık 2.000 TL'den
@@ -41,14 +41,14 @@ sections:
         icon: whatsapp
         external: true
 
-  # 2. PAKETLER: fiyat bandı, içerik, kimin için.
+  # 2. PAKETLER: fiyat aralığı, içerik, kimin için.
   - type: cards
     background: light
     columns: 3
     eyebrow: Paketler
-    heading: Üç Bant, Neyin Dahil Olduğu Açık
+    heading: Üç Paket, Neyin Dahil Olduğu Açık
     lead: >-
-      Bandın neresine düşeceğinizi sayfa sayısı değil; içeriği kimin hazırlayacağı, kaç
+      Hangi pakete denk geleceğinizi sayfa sayısı değil; içeriği kimin hazırlayacağı, kaç
       dil konuşacağınız ve kaç sisteme bağlanacağınız belirliyor.
     items:
       - eyebrow: Kurumsal
@@ -129,7 +129,7 @@ sections:
   - type: scope
     background: dark
     eyebrow: Fiyatı Ne Değiştirir?
-    heading: Bandın Neresine Düşeceğinizi Belirleyen Yedi Kalem
+    heading: Fiyatınızı Belirleyen Yedi Kalem
     lead: >-
       Teklif alırken bu listeyi yanınızda tutun. İki teklif arasındaki farkın büyük kısmı
       genelde bu satırlardan birinin boş kalmasıdır.
@@ -168,7 +168,7 @@ sections:
     background: light
     kind: check
     eyebrow: Her Pakette
-    heading: Hangi Bandı Seçerseniz Seçin
+    heading: Hangi Paketi Seçerseniz Seçin
     items:
       - Markanıza özel tasarım, hazır tema yok
       - Telefonda sorunsuz çalışan sayfalar
@@ -217,16 +217,16 @@ sections:
       - question: Web sitesi yaptırmak ne kadar tutar?
         answer: >-
           Pixelon'da kurumsal web siteleri 65.000 TL, e-ticaret ve özel yazılım projeleri
-          140.000 TL bandından başlıyor, KDV hariç. Kesin rakamı sayfa düzeni sayısı,
+          140.000 TL'den başlıyor, KDV hariç. Kesin rakamı sayfa düzeni sayısı,
           içerik sorumluluğu, dil sayısı ve entegrasyonlar belirliyor.
-      - question: Neden tek bir fiyat değil de bant veriyorsunuz?
+      - question: Neden tek bir fiyat değil de fiyat aralığı veriyorsunuz?
         answer: >-
-          Çünkü aynı adı taşıyan iki site bambaşka işler olabiliyor. Başlangıç bandını
-          yayınlıyoruz ki bütçesi bu bandın altında kalan işletme vakit kaybetmesin. Kapsam
+          Çünkü aynı adı taşıyan iki site bambaşka işler olabiliyor. Başlangıç fiyatını
+          yayınlıyoruz ki bütçesi bunun altında kalan işletme vakit kaybetmesin. Kapsam
           netleştiğinde teklif tek bir rakama iniyor.
       - question: Bakım ücreti ne kadar?
         answer: >-
-          Aylık bakım paketleri 2.000 TL bandından başlıyor. Güvenlik ve altyapı
+          Aylık bakım paketleri 2.000 TL'den başlıyor. Güvenlik ve altyapı
           güncellemeleri, yedekleme ve aylık tanımlı bir değişiklik kotası dahil, barındırma
           hariç.
       - question: Sonradan sayfa eklemek pahalı mı?
@@ -244,9 +244,9 @@ sections:
   - type: cta
     background: dark
     kind: spot
-    heading: Bandınızı Tahmin Etmeyin, Birlikte Netleştirelim
+    heading: Fiyatı Tahmin Etmeyin, Birlikte Netleştirelim
     lead: >-
-      Ne yaptığınızı ve sitenizden ne beklediğinizi anlatın. Hangi banda düştüğünüzü ve
+      Ne yaptığınızı ve sitenizden ne beklediğinizi anlatın. Hangi pakete denk geldiğinizi ve
       kapsamın ne olması gerektiğini ilk görüşmede açıkça söyleyelim.
     ctas:
       - label: Size Özel Teklif Alın

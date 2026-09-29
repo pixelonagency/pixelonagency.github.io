@@ -11,12 +11,12 @@ status: published
 featured: false
 seo:
   title: 'Web Tasarım Fiyatları Neye Göre Değişiyor? | Pixelon'
-  description: "Web tasarım fiyatları neye göre değişir? Pixelon kurumsal web sitesi projeleri 65.000 TL, e-ticaret ve özel projeler 140.000 TL bandından başlıyor. Fiyatı belirleyen kalemleri ve üç kapsam seviyesini anlatıyoruz."
+  description: "Web tasarım fiyatları neye göre değişir? Pixelon kurumsal web sitesi projeleri 65.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor. Fiyatı belirleyen kalemleri ve üç kapsam seviyesini anlatıyoruz."
 article:
   updated: 2026-09-04
   quickAnswer:
     heading: Kısa Cevap
-    text: "Web tasarım fiyatı sayfa sayısıyla değil, işin kapsamıyla belirlenir. Pixelon tarafında kurumsal web sitesi projeleri 65.000 TL, e-ticaret ve özel yazılım projeleri 140.000 TL bandından başlıyor; tüm rakamlar KDV hariç. Bandın neresine düşeceğinizi belirleyen beş kalem şunlardır: tasarımın hazır tema mı özel kurgu mu olduğu, metin ve görsellerin kim tarafından üretileceği, entegrasyon ve özel geliştirme ihtiyacı, dil sayısı ve teslim sonrası desteğin kapsamı."
+    text: "Web tasarım fiyatı sayfa sayısıyla değil, işin kapsamıyla belirlenir. Pixelon tarafında kurumsal web sitesi projeleri 65.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor; tüm rakamlar KDV hariç. Hangi fiyata denk geleceğinizi belirleyen beş kalem şunlardır: tasarımın hazır tema mı özel kurgu mu olduğu, metin ve görsellerin kim tarafından üretileceği, entegrasyon ve özel geliştirme ihtiyacı, dil sayısı ve teslim sonrası desteğin kapsamı."
   tocHeading: İçindekiler
   related:
     - web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli
@@ -68,11 +68,11 @@ article:
       id: seviyeler
       heading: Kapsam seviyeleri neye benziyor?
       text: |-
-        Kapsamı seviyelere ayırmak, hangi bandın sizin işinize denk düştüğünü görmeyi kolaylaştırıyor.
+        Kapsamı seviyelere ayırmak, hangi fiyat aralığının sizin işinize denk düştüğünü görmeyi kolaylaştırıyor.
 
         Aşağıdaki üç seviye piyasada en sık karşılaşılan kurguları tarif ediyor. Sizin ihtiyacınız iki seviyenin arasına düşüyor olabilir; bu normal.
 
-        Tablonun son satırına fiyat bandını da ekledik. Bu rakamlar Pixelon için geçerli başlangıç aralıkları.
+        Tablonun son satırına fiyat aralığını da ekledik. Bu rakamlar Pixelon için geçerli başlangıç aralıkları.
 
     - type: table
       heading: Üç tipik kapsam seviyesi
@@ -110,7 +110,7 @@ article:
           - Kısa süreli hata düzeltme
           - Süresi tanımlı bakım
           - Sürekli geliştirme anlaşması
-        - - Fiyat bandı (KDV hariç)
+        - - Fiyat aralığı (KDV hariç)
           - Pixelon bu seviyede çalışmıyor
           - 65.000 - 140.000 TL
           - 140.000 TL ve üzeri
@@ -118,9 +118,9 @@ article:
     - type: section
       id: pixelon-fiyat-bandi
       heading: Pixelon tarafında fiyatlar nereden başlıyor?
-      lead: "Kurumsal web sitesi projeleri 65.000 TL, e-ticaret ve özel yazılım projeleri 140.000 TL bandından başlıyor. Tüm rakamlar KDV hariç."
+      lead: "Kurumsal web sitesi projeleri 65.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor. Tüm rakamlar KDV hariç."
       text: |-
-        Üç bant hâlinde çalışıyoruz. Bandın neresine düştüğünüzü belirleyen şey sayfa sayısı değil; içerik sorumluluğunun kimde olduğu, kaç dil konuşacağınız ve kaç dış sisteme bağlanacağınız.
+        Üç fiyat aralığında çalışıyoruz. Hangisine denk geldiğinizi belirleyen şey sayfa sayısı değil; içerik sorumluluğunun kimde olduğu, kaç dil konuşacağınız ve kaç dış sisteme bağlanacağınız.
         Her paketin içinde ne olduğunu tek bakışta görmek isterseniz [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında paket paket topladık.
 
     - type: cards
@@ -191,12 +191,12 @@ article:
       heading: Sık Sorulan Sorular
       items:
         - question: Neden kesin fiyat değil de başlangıç fiyatı veriyorsunuz?
-          answer: "Başlangıç fiyatı bandın alt sınırını gösteriyor; kesin rakam kapsam netleştiğinde çıkıyor. Sayfa ve şablon sayısı, içerik sorumluluğu, entegrasyon ihtiyacı ve dil sayısı belirlendiğinde teklif tek bir rakama iniyor. Başlangıç bandını yayınlamamızın sebebi basit; bütçesi bu bandın altında kalan bir işletmenin bunu görüşmeden önce bilmesi iki tarafın da zamanını kazandırıyor."
+          answer: "Başlangıç fiyatı aralığın alt sınırını gösteriyor; kesin rakam kapsam netleştiğinde çıkıyor. Sayfa ve şablon sayısı, içerik sorumluluğu, entegrasyon ihtiyacı ve dil sayısı belirlendiğinde teklif tek bir rakama iniyor. Başlangıç fiyatını yayınlamamızın sebebi basit; bütçesi bunun altında kalan bir işletmenin bunu görüşmeden önce bilmesi iki tarafın da zamanını kazandırıyor."
 
         - question: Hazır tema kullanmak fiyatı ne kadar düşürür?
           answer: Tasarım kalemini belirgin şekilde düşürür, ama tüm maliyeti değil. İçerik üretimi, entegrasyonlar ve ölçümleme kurulumu tema seçiminden bağımsız olarak devam ediyor. Ayrıca temanın kurgusuna uymayan bir içerik yapısı varsa uyarlama maliyeti beklenenden yüksek olabiliyor. Hazır sistemle özel geliştirmeyi [WordPress mi özel yazılım mı](/blog/wordpress-mi-ozel-yazilim-mi/) yazısında kalem kalem karşılaştırdık.
         - question: Yıllık ne kadar bakım maliyeti öngörmeliyim?
-          answer: "Bakım paketleri aylık 2.000 TL bandından başlıyor; güvenlik ve altyapı güncellemeleri, yedekleme ve aylık tanımlı bir değişiklik kotası dahil, barındırma hariç. İçerik üretimi ve arama motoru çalışması ayrı paket. Kalemlerin hangisinin ajans tarafından, hangisinin sizin ekibiniz tarafından yürütüleceği belirlendiğinde yıllık tutar öngörülebilir hâle geliyor."
+          answer: "Bakım paketleri aylık 2.000 TL'den başlıyor; güvenlik ve altyapı güncellemeleri, yedekleme ve aylık tanımlı bir değişiklik kotası dahil, barındırma hariç. İçerik üretimi ve arama motoru çalışması ayrı paket. Kalemlerin hangisinin ajans tarafından, hangisinin sizin ekibiniz tarafından yürütüleceği belirlendiğinde yıllık tutar öngörülebilir hâle geliyor."
 
         - question: Sonradan sayfa eklemek pahalı mı?
           answer: Mevcut şablonlardan biri kullanılabiliyorsa genellikle düşük maliyetli. Yeni bir düzen gerekiyorsa tasarım ve geliştirme yeniden devreye giriyor. Bu yüzden proje başında hangi şablonların kurulacağını konuşmak, ileride eklenecek sayfaların maliyetini de belirliyor.
@@ -205,7 +205,7 @@ article:
       id: sonuc
       heading: Kısaca
       text: |-
-        Web tasarım fiyatı bir rakam değil, bir kapsam sorusunun cevabı. Yine de bir yerden başlamak gerekiyor: kurumsal projeler 65.000 TL, e-ticaret ve özel projeler 140.000 TL bandından başlıyor.
+        Web tasarım fiyatı bir rakam değil, bir kapsam sorusunun cevabı. Yine de bir yerden başlamak gerekiyor: kurumsal projeler 65.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor.
 
         Tasarım yaklaşımı, içerik sorumluluğu, entegrasyonlar, dil sayısı ve teslim sonrası destek; bu beş kalem netleştiğinde teklifler karşılaştırılabilir hâle geliyor ve aradaki fark anlam kazanıyor.
 
