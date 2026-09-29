@@ -551,7 +551,8 @@ collections:
       # Bölüm listesi tamamen çevrilir. `i18n: true` bir listede TÜM alt alanları dile
       # bağlar; böylece TR ve EN sayfaları farklı bölüm kurgusuna sahip olabilir
       # (mevcut içerikte de öyleler).
-      - label: Bölümler
+      - &f_sections
+        label: Bölümler
         name: sections
         widget: list
         i18n: true
@@ -1203,6 +1204,44 @@ collections:
                   - { label: Çalışma Şekli, name: employmentType, widget: string, required: false }
                   - { label: Açıklama, name: description, widget: text }
                   - { label: Başvuru Bağlantısı, name: href, widget: string, required: false }
+
+  # --- Hizmet alt sayfaları --------------------------------------------
+  # Hizmet alt sayfaları — `/hizmetlerimiz/<hizmet>/<alt-sayfa>/`. Gövde, Sayfalar
+  # koleksiyonunun bölüm kütüphanesinin aynısıdır (`*f_sections`). Breadcrumb elle
+  # yazılmaz: build, üst hizmetten kendisi üretir. Yeni sayfa TASLAK başlar ve
+  # yalnızca durum "Yayında" yapıldığında siteye çıkar.
+  - name: subpages
+    icon: account_tree
+    label: Hizmet Alt Sayfaları
+    label_singular: Hizmet Alt Sayfası
+    folder: src/content/subpages
+    extension: yml
+    format: yaml
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    i18n: true
+    fields:
+      - { label: Sayfa Adı (breadcrumb), name: title, widget: string, i18n: true }
+      - label: Üst Hizmet
+        name: parent
+        widget: relation
+        collection: services
+        value_field: '{{slug}}'
+        search_fields: [title]
+        display_fields: [title]
+        i18n: duplicate
+      - label: Durum
+        name: status
+        widget: select
+        default: draft
+        options:
+          - { label: Taslak, value: draft }
+          - { label: Yayında, value: published }
+        i18n: duplicate
+      - *f_seo
+      - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text, required: false, i18n: true }
+      - *f_sections
 
   # --- Projeler -----------------------------------------------------------
   - name: projects

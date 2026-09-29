@@ -7,6 +7,8 @@ import LegalPage from '../components/LegalPage.astro';
 import PostDetail from '../components/PostDetail.astro';
 import ProjectDetail from '../components/ProjectDetail.astro';
 import ServiceDetail from '../components/ServiceDetail.astro';
+import SubpageDetail from '../components/SubpageDetail.astro';
+import { isSubpageBuilt, subpagePath } from '../lib/subpages';
 import { categoriesWithPages, categoryPath } from '../lib/blog-categories';
 import PortfolioViewer from '../components/PortfolioViewer.astro';
 import {
@@ -55,18 +57,21 @@ export const getStaticPaths = (async () => {
   const published = <T extends { id: string }>(entries: T[]): T[] =>
     entries.filter((entry) => isPublishedLocale(splitId(entry.id).locale));
 
-  const [allServices, allPosts, allLegal, allProjects] = await Promise.all([
+  const [allServices, allPosts, allLegal, allProjects, allSubpages] = await Promise.all([
     getCollection('services'),
     getCollection('posts', ({ data }) => data.status === 'published'),
     getCollection('legal'),
     // Detay sayfası yalnız case study içeriği (detail) dolu projeler için üretilir.
     getCollection('projects', ({ data }) => Boolean(data.detail)),
+    // Taslak alt sayfa yalnızca geliştirme sunucusunda üretilir: onaylanmamış metin yayına çıkmaz.
+    getCollection('subpages', ({ data }) => isSubpageBuilt(data.status, import.meta.env.DEV)),
   ]);
 
   const services = published(allServices);
   const posts = published(allPosts);
   const legal = published(allLegal);
   const projects = published(allProjects);
+  const subpages = published(allSubpages);
 
   /* Yasal sayfalar `pages` koleksiyonundan değil `legal` koleksiyonundan gelir. */
   const LEGAL_KEYS = new Set(['kvkk', 'privacy', 'cookies', 'terms']);
@@ -101,6 +106,24 @@ export const getStaticPaths = (async () => {
     paths.push({
       params: { path: toParam(localizedPath('services', locale, key)) },
       props: { kind: 'service', service: entry, locale, alternates: alternatesFor('services', siblings) },
+    });
+  }
+
+  // --- Hizmet alt sayfaları: `/hizmetlerimiz/<hizmet>/<alt-sayfa>/` ---
+  //
+  // Üst hizmeti olmayan alt sayfa build'i durdurur: yetim bir alt sayfa hem breadcrumb
+  // hem iç bağlantı kuralını bozar ve sessizce yayına girmemeli.
+  for (const entry of subpages) {
+    const { locale, key } = splitId(entry.id);
+    const parent = services.find((service) => service.id === `${locale}/${entry.data.parent}`);
+    if (!parent) {
+      throw new Error(
+        `Alt sayfa "${entry.id}" için üst hizmet bulunamadı: services/${locale}/${entry.data.parent}.yml`,
+      );
+    }
+    paths.push({
+      params: { path: toParam(subpagePath(locale, entry.data.parent, key)) },
+      props: { kind: 'subpage', subpage: entry, parentTitle: parent.data.title, locale, alternates: {} },
     });
   }
 
@@ -186,11 +209,13 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const props = Astro.props as {
-  kind: 'page' | 'service' | 'post' | 'project' | 'legal' | 'category' | 'portfolio';
+  kind: 'page' | 'service' | 'subpage' | 'post' | 'project' | 'legal' | 'category' | 'portfolio';
   locale: Locale;
   alternates: Partial<Record<Locale, string>>;
   pageKey?: PageKey;
   service?: Parameters<typeof ServiceDetail>[0]['service'];
+  subpage?: Parameters<typeof SubpageDetail>[0]['subpage'];
+  parentTitle?: string;
   post?: Parameters<typeof PostDetail>[0]['post'];
   project?: Parameters<typeof ProjectDetail>[0]['project'];
   legal?: Parameters<typeof LegalPage>[0]['entry'];
@@ -203,6 +228,11 @@ const { kind, locale = DEFAULT_LOCALE, alternates } = props;
 
 {kind === 'page' && props.pageKey && <CmsPage pageKey={props.pageKey} {locale} {alternates} />}
 {kind === 'service' && props.service && <ServiceDetail service={props.service} {locale} {alternates} />}
+{
+  kind === 'subpage' && props.subpage && props.parentTitle && (
+    <SubpageDetail subpage={props.subpage} parentTitle={props.parentTitle} {locale} {alternates} />
+  )
+}
 {kind === 'post' && props.post && <PostDetail post={props.post} {locale} {alternates} />}
 {kind === 'project' && props.project && <ProjectDetail project={props.project} {locale} {alternates} />}
 {kind === 'legal' && props.legal && <LegalPage entry={props.legal} {locale} {alternates} />}

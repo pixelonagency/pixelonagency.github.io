@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { makePageSchema } from './content/page-schema';
+import { makePageSchema, makeSubpageSchema } from './content/page-schema';
 import {
   blogCategorySchema,
   legalSchema,
@@ -73,4 +73,22 @@ const pages = defineCollection({
   schema: ({ image }) => makePageSchema(image),
 });
 
-export const collections = { services, projects, posts, references, team, settings, pages, legal, categories };
+// Hizmet alt sayfaları — `/hizmetlerimiz/<hizmet>/<alt-sayfa>/`. Dosya adı alt sayfanın
+// slug'ıdır, üst hizmet dosyadaki `parent` alanıyla belirlenir (bkz. src/lib/subpages.ts).
+const subpages = defineCollection({
+  loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/subpages` }),
+  schema: ({ image }) => makeSubpageSchema(image),
+});
+
+export const collections = {
+  services,
+  projects,
+  posts,
+  references,
+  team,
+  settings,
+  pages,
+  legal,
+  categories,
+  subpages,
+};
