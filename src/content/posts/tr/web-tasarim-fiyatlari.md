@@ -121,6 +121,7 @@ article:
       lead: "Kurumsal web sitesi projeleri 65.000 TL, e-ticaret ve özel yazılım projeleri 140.000 TL bandından başlıyor. Tüm rakamlar KDV hariç."
       text: |-
         Üç bant hâlinde çalışıyoruz. Bandın neresine düştüğünüzü belirleyen şey sayfa sayısı değil; içerik sorumluluğunun kimde olduğu, kaç dil konuşacağınız ve kaç dış sisteme bağlanacağınız.
+        Her paketin içinde ne olduğunu tek bakışta görmek isterseniz [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında paket paket topladık.
 
     - type: cards
       items:

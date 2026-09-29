@@ -1,0 +1,258 @@
+title: Web Sitesi Fiyatları
+parent: web-tasarim-ve-yazilim
+# Rakamların tamamı yayındaki "web tasarım fiyatları" yazısında sahip onayıyla yayınlanmış
+# bantlardır (65.000 / 95.000 / 140.000 TL, bakım 2.000 TL/ay, KDV hariç). Yeni rakam
+# eklenmeden önce sahip onayı alınır.
+status: published
+
+seo:
+  title: Web Sitesi Fiyatları 2026 | Kurumsal Site Paketleri | Pixelon
+  description: >-
+    Web sitesi fiyatları 2026: kurumsal web sitesi 65.000 TL'den, e-ticaret ve özel
+    yazılım 140.000 TL'den başlıyor (KDV hariç). Paketlere neyin dahil olduğunu ve
+    fiyatı değiştiren kalemleri açıkça yazdık.
+
+whatsappMessage: Merhaba Pixelon, web sitesi fiyatları hakkında bilgi almak ve teklif istemek istiyorum.
+
+sections:
+  # 1. HERO: arayan kişi rakamı ilk ekranda görür.
+  - type: hero
+    background: dark
+    eyebrow: Web Sitesi Fiyatları 2026
+    headingLines:
+      - "Web Sitesi Fiyatları: Kurumsal Siteler *65.000 TL'den* Başlıyor."
+    lead: >-
+      Rakamı saklamıyoruz. Kurumsal web siteleri 65.000 TL, e-ticaret ve özel yazılım
+      projeleri 140.000 TL bandından başlıyor. Tüm fiyatlar KDV hariç. Aşağıda her bandın
+      içinde ne olduğunu tek tek yazdık.
+    chips:
+      - KDV hariç net bantlar
+      - Hazır tema yok
+      - Ortalama 30 günde teslim
+      - Bakım aylık 2.000 TL'den
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Sorun
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  # 2. PAKETLER: fiyat bandı, içerik, kimin için.
+  - type: cards
+    background: light
+    columns: 3
+    eyebrow: Paketler
+    heading: Üç Bant, Neyin Dahil Olduğu Açık
+    lead: >-
+      Bandın neresine düşeceğinizi sayfa sayısı değil; içeriği kimin hazırlayacağı, kaç
+      dil konuşacağınız ve kaç sisteme bağlanacağınız belirliyor.
+    items:
+      - eyebrow: Kurumsal
+        title: 65.000 - 95.000 TL
+        description: |-
+          Markaya özel tasarım, sekize kadar farklı sayfa düzeni, tek dil, form ve harita, kurulu dönüşüm ölçümü ve teslim sonrası tanımlı bakım.
+
+          Kimin için: kendini net anlatmak ve teklif toplamak isteyen şirketler.
+      - eyebrow: Kurumsal geniş
+        title: 95.000 - 140.000 TL
+        description: |-
+          Kurumsal paketin tamamına ek olarak blog ve vaka çalışması sistemi, ikinci dil, CRM ya da rezervasyon bağlantısı ve genişletilmiş içerik desteği.
+
+          Kimin için: yurt dışına da seslenen, içerikle büyümek isteyen markalar.
+        featured: true
+      - eyebrow: E-ticaret ve özel proje
+        title: 140.000 TL ve üzeri
+        description: |-
+          Ürün kataloğu, ödeme ve kargo entegrasyonları, size özel yönetim paneli ya da sistem geliştirmesi.
+
+          Kimin için: online satış yapan ya da hazır sistemlerin yetmediği işler.
+    note: >-
+      Tüm fiyatlar KDV hariçtir. Kesin rakam, kapsamı ilk görüşmede birlikte çıkardığımızda
+      tek bir tutara iner.
+
+  # 3. RAKAMLAR: arayanın aradığı üç sayı, tek bakışta. Sayaç tam sayı saydığı için
+  # binlik kısım sonek olarak yazılır (65 + ".000 ₺" = "65.000 ₺").
+  - type: stats
+    background: dark
+    eyebrow: Kısaca
+    heading: Üç Rakamda Web Sitesi Fiyatları
+    items:
+      - value: 65
+        suffix: '.000 ₺'
+        label: Kurumsal site başlangıcı
+        description: KDV hariç, markaya özel tasarımla. Ortalama 30 günde teslim.
+      - value: 140
+        suffix: '.000 ₺'
+        label: E-ticaret ve özel yazılım başlangıcı
+        description: Ödeme, kargo ve özel panel içeren kapsamlar.
+      - value: 2
+        suffix: '.000 ₺'
+        label: Aylık bakım paketi başlangıcı
+        description: Güncelleme, yedekleme ve aylık değişiklik kotası.
+
+  # 4. 65.000 TL NEDEN: rakiplerden farkı somut anlatan bölüm.
+  - type: why
+    background: light
+    eyebrow: Farkı Ne?
+    heading: 25.000 TL'lik Teklif de Var, Neden 65.000 TL?
+    lead: >-
+      Piyasada çok daha düşük rakamlar görebilirsiniz ve bazıları kendi kapsamında doğru
+      teklifler. Aradaki fark genelde ekipten değil, teklifin neyi kapsadığından doğuyor.
+    items:
+      - title: Hazır tema değil, size özel tasarım
+        description: >-
+          Düşük tekliflerin çoğu hazır bir temanın renklerini değiştiriyor. Biz sayfa
+          yapısını markanızın anlatısına göre sıfırdan kuruyoruz.
+        icon: team
+        featured: true
+      - title: Formdan gelen talep ölçülüyor
+        description: >-
+          Form, telefon ve WhatsApp tıklamaları ilk günden ölçülüyor. Sitenin kaç teklif
+          getirdiğini tahmin etmiyor, görüyorsunuz.
+        icon: conversion
+      - title: Tasarım, yazılım ve pazarlama tek ekipte
+        description: >-
+          Siteyi tasarlayan, kodlayan ve sonra reklamını yöneten aynı ekip. İş firmadan
+          firmaya el değiştirmediği için süre kısalıyor, sonuç tutarlı çıkıyor.
+        icon: report
+      - title: Teslimle bitmiyor
+        description: >-
+          Her pakette teslim sonrası tanımlı bakım var. Aylık bakım paketleri 2.000 TL'den
+          başlıyor; barındırma ayrı.
+        icon: cycle
+
+  # 5. FİYATI DEĞİŞTİREN KALEMLER: editoryal satır listesi.
+  - type: scope
+    background: dark
+    eyebrow: Fiyatı Ne Değiştirir?
+    heading: Bandın Neresine Düşeceğinizi Belirleyen Yedi Kalem
+    lead: >-
+      Teklif alırken bu listeyi yanınızda tutun. İki teklif arasındaki farkın büyük kısmı
+      genelde bu satırlardan birinin boş kalmasıdır.
+    items:
+      - title: Tasarım yaklaşımı
+        description: >-
+          Hazır tema uyarlaması mı, sıfırdan tasarım mı? Tüm kalemler içinde fiyatı en çok
+          değiştiren bu.
+      - title: Sayfa değil, düzen sayısı
+        description: >-
+          Üç düzenden oluşan yirmi sayfalık bir site, beş farklı düzeni olan sekiz sayfalık
+          siteden ucuza gelebilir.
+      - title: İçeriği kim hazırlıyor
+        description: >-
+          Metin, fotoğraf ve video sizden mi geliyor, bizden mi? Karşılaştırmalarda en sık
+          atlanan kalem.
+      - title: Entegrasyonlar
+        description: >-
+          Randevu, CRM, ödeme ya da özel form akışı standart kurulumun dışında kalıyor ve
+          her biri ayrı geliştirme istiyor.
+      - title: Dil sayısı
+        description: >-
+          İkinci dil, sayfaları çevirmekten fazlası: dil etiketleri, dile göre içerik ve
+          panelde çift dilli düzen ayrı ayrı kuruluyor.
+      - title: Ölçümleme
+        description: >-
+          Form, telefon ve WhatsApp dönüşümlerinin izlenmesi. Tekliften çıkarıldığında fiyat
+          düşüyor ama sitenin işe yarayıp yaramadığı görünmüyor.
+      - title: Teslim sonrası destek
+        description: >-
+          Bakım ve güncellemenin ne kadar süre kapsandığı. Desteksiz teklif ilk faturada
+          ucuz, ilk yılın sonunda değil.
+
+  # 6. HER PAKETTE STANDART
+  - type: bullets
+    background: light
+    kind: check
+    eyebrow: Her Pakette
+    heading: Hangi Bandı Seçerseniz Seçin
+    items:
+      - Markanıza özel tasarım, hazır tema yok
+      - Telefonda sorunsuz çalışan sayfalar
+      - Hızlı açılış ve optimize edilmiş görseller
+      - Arama motorlarına uygun teknik altyapı
+      - İçeriği güncelleyebileceğiniz yönetim paneli
+      - Form, WhatsApp ve telefon ölçümü
+      - Alan adı ve kod sahipliği sizde
+      - Teslim sonrası tanımlı bakım
+
+  # 7. ALT SINIR: neden daha ucuz iş yapmadığımız, açıkça.
+  - type: text
+    background: dark
+    layout: center
+    eyebrow: Bir Not
+    heading: 65.000 TL'nin Altında Neden Çalışmıyoruz
+    body: |-
+      Hazır temayla kurulan iki üç sayfalık tanıtım siteleri de piyasada var. Bizim gördüğümüz, o kapsamda kurulan sitelerin büyük kısmının ilk yıl içinde yeniden yapıldığı ve işletmeye iki kez ödettiği.
+
+      Bütçeniz oradaysa doğru hamle ucuz bir site değil, kapsamı tek bir hedefe daraltmak. Bunun için bir [landing page](/blog/landing-page-nedir/) çoğu zaman daha iyi bir başlangıç.
+    highlight: Ucuz teklif genelde daha ucuz çalışan bir ekip değil, *daha az iş kapsayan* bir tekliftir.
+
+  # 8. ÖRNEK İŞLER
+  - type: projects
+    background: light
+    eyebrow: Kurduğumuz Siteler
+    heading: Bu Fiyatlara Ne Aldığınızı Görün
+    lead: >-
+      Rakamın karşılığını en iyi yapılmış iş anlatıyor. Her projenin yanında hangi
+      sorundan yola çıktığımızı da yazdık.
+    slugs:
+      - xray-groupe
+      - redex-glass
+      - touch-consulting
+    columns: 3
+    kind: grid
+    ctaLabel: Kurumsal web tasarım örneklerini inceleyin
+    ctaHref: /hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/
+
+  # 9. SSS: fiyat aramalarındaki soru kalıpları.
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Web Sitesi Fiyatları Hakkında Sorular
+    items:
+      - question: Web sitesi yaptırmak ne kadar tutar?
+        answer: >-
+          Pixelon'da kurumsal web siteleri 65.000 TL, e-ticaret ve özel yazılım projeleri
+          140.000 TL bandından başlıyor, KDV hariç. Kesin rakamı sayfa düzeni sayısı,
+          içerik sorumluluğu, dil sayısı ve entegrasyonlar belirliyor.
+      - question: Neden tek bir fiyat değil de bant veriyorsunuz?
+        answer: >-
+          Çünkü aynı adı taşıyan iki site bambaşka işler olabiliyor. Başlangıç bandını
+          yayınlıyoruz ki bütçesi bu bandın altında kalan işletme vakit kaybetmesin. Kapsam
+          netleştiğinde teklif tek bir rakama iniyor.
+      - question: Bakım ücreti ne kadar?
+        answer: >-
+          Aylık bakım paketleri 2.000 TL bandından başlıyor. Güvenlik ve altyapı
+          güncellemeleri, yedekleme ve aylık tanımlı bir değişiklik kotası dahil, barındırma
+          hariç.
+      - question: Sonradan sayfa eklemek pahalı mı?
+        answer: >-
+          Mevcut düzenlerden biri kullanılabiliyorsa genellikle düşük maliyetli. Yeni bir
+          düzen gerekiyorsa tasarım ve geliştirme yeniden devreye giriyor. Bu yüzden hangi
+          düzenlerin kurulacağını en başta konuşuyoruz.
+      - question: Fiyatı neyin değiştirdiğini daha ayrıntılı okuyabilir miyim?
+        answer: >-
+          Evet. Her kalemin maliyeti nasıl etkilediğini ve teklifleri nasıl
+          karşılaştıracağınızı [web tasarım fiyatları neye göre değişiyor](/blog/web-tasarim-fiyatlari/)
+          yazısında örneklerle anlattık.
+
+  # 10. KAPANIŞ
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Bandınızı Tahmin Etmeyin, Birlikte Netleştirelim
+    lead: >-
+      Ne yaptığınızı ve sitenizden ne beklediğinizi anlatın. Hangi banda düştüğünüzü ve
+      kapsamın ne olması gerektiğini ilk görüşmede açıkça söyleyelim.
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Web Sitesi Yaptırma Süreci
+        href: /web-sitesi-yaptir/
+        variant: outline

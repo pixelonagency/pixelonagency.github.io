@@ -264,6 +264,11 @@ describe('inline links in body copy', () => {
     /* Pillar, alt sayfalarına gövdeden bağlanır: menüde görünmeyen bir alt sayfanın tek
        güçlü iç bağlantısı kendi hizmet sayfasıdır. */
     ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/'],
+    ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/'],
+    [
+      '/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim',
+      '/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/',
+    ],
   ];
 
   for (const [route, target] of BODY_LINKS) {
