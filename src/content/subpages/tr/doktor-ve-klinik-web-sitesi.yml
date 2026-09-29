@@ -1,0 +1,176 @@
+title: Doktor ve Klinik Web Sitesi
+parent: web-tasarim-ve-yazilim
+status: published
+
+seo:
+  title: Doktor ve Klinik Web Sitesi Tasarımı | Pixelon
+  description: >-
+    Doktor ve klinik web sitesi tasarımı: hastanın şikâyetini saniyeler içinde bulduğu,
+    kendi dilinde okuduğu ve randevuya geçtiği siteler. Dentasay ve Dr. Ayşe Cinkaya
+    Kahveci projelerinden gerçek sonuçlarla.
+
+whatsappMessage: Merhaba Pixelon, kliniğimiz için web sitesi yaptırmak istiyoruz. Bilgi alabilir miyiz?
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Doktor ve Klinik Web Sitesi
+    headingLines:
+      - 'Hasta Sizi *Aramadan Önce* Sitenize Güvensin.'
+    lead: >-
+      Hasta bir kliniği seçmeden önce şikâyetini arar, hekimi araştırır, başkalarının ne
+      dediğine bakar. Klinik siteleri kurarken bu üç adımın her birine bir sayfa, her
+      sayfanın sonuna da bir randevu yolu koyuyoruz.
+    video:
+      desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
+      desktopWebm: /media/hero/web-tasarim/hero-web-design-desktop.webm
+      desktopPoster: /media/hero/web-tasarim/hero-web-design-desktop-poster.webp
+      mobileMp4: /media/hero/web-tasarim/hero-web-design-mobile.mp4
+      mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
+      mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
+    chips:
+      - Tedavi başına ayrı sayfa
+      - Çok dilli hasta sayfaları
+      - Randevu ve WhatsApp akışı
+      - Bilgilendirici, abartısız dil
+    ctas:
+      - label: Kliniğiniz İçin Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  # Sonuç önce: sağlık okuru kanıt arıyor.
+  - type: stats
+    background: light
+    eyebrow: Klinik Projelerimizden
+    heading: Sitenin Arkasındaki Sonuçlar
+    items:
+      - value: 13
+        suffix: ' dil'
+        label: Dentasay
+        description: Tek dilli siteden 20 ülkeye hitap eden yapıya.
+      - value: 25
+        prefix: '%'
+        label: Dr. Ayşe Cinkaya Kahveci
+        description: İlk yılda hasta potansiyelindeki artış, altı dilli siteyle.
+      - value: 30
+        prefix: '%'
+        label: Çağla Aytaç
+        description: Almanya'da yeni ön görüşmelerdeki artış, üç şehirde.
+
+  - type: text
+    background: dark
+    layout: split
+    eyebrow: Hasta Ne Arıyor
+    heading: Hasta Sizi Değil, Kendi Şikâyetini Arıyor
+    body: |-
+      Kimse "dermatoloji kliniği" yazıp gelmiyor. "Göz altı morluğu neden geçmez", "dudak dolgusu ne kadar kalıcı" yazıp geliyor. Sitenin ilk işi, o soruyu soran kişiyi kendi durumunun anlatıldığı sayfaya indirmek.
+
+      Dr. Ayşe Cinkaya Kahveci'nin sitesinde her uygulama kendi sayfasını aldı; dolgu sayfasında burun, dudak, göz altı ve çene bölgeleri tek tek seçilebiliyor. Genel dermatoloji ise ayrı bir ızgarada: egzama, sedef, vitiligo. Şikâyetiyle gelen hasta kendi durumunu saniyeler içinde buluyor.
+
+      Sonra güven geliyor: hekimin özgeçmişi, danışan yorumları, cihaz sertifikaları. Ve her sayfa bir randevu çağrısıyla bitiyor.
+    highlight: Hasta aradığını bulduğu sayfada karar veriyor. O sayfanın sonunda randevu yolu yoksa karar başka bir kliniğe gidiyor.
+
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Kurduğumuz Yapılar
+    heading: Bir Klinik Sitesinde Dört Karar
+    items:
+      - title: Tedaviye göre değil, şikâyete göre mimari
+        description: >-
+          Uygulamalar kendi kategorisinde, hastalıklar kendi ızgarasında. Hasta tıp dilini
+          bilmek zorunda kalmadan kendi durumuna ulaşıyor.
+        icon: strategy
+      - title: Her dilde ayrı bir hasta kapısı
+        description: >-
+          Dentasay'da 13, Dr. Ayşe Cinkaya Kahveci'de 6 dil. Çeviri değil, her pazarın kendi
+          sorularına göre kurgulanmış sayfalar ve dil etiketleri.
+        icon: orbit
+      - title: Yerel kanıt, gerçek mekân
+        description: >-
+          Çağla Aytaç'ta üç şubenin gerçek fotoğrafları, Google ve Trustpilot değerlendirmeleri
+          ve ekibin tek tek tanıtıldığı bir bölüm. Stok görsel yok.
+        icon: craft
+      - title: Randevu her sayfanın sonunda
+        description: >-
+          Form, WhatsApp ve telefon her tedavi sayfasında aynı yerde. Hangi sayfanın kaç
+          randevu getirdiği ölçülüyor.
+        icon: partnership
+
+  - type: bullets
+    background: dark
+    kind: check
+    eyebrow: Kontrol Listesi
+    heading: Bir Klinik Sitesinde Olması Gerekenler
+    items:
+      - Her tedavi ve uygulama için ayrı, açıklayıcı bir sayfa
+      - Hekimin özgeçmişi, uzmanlığı ve fotoğrafı
+      - Kliniğin gerçek fotoğrafları, adresi ve haritası
+      - Randevu formu, WhatsApp ve telefon her sayfada
+      - Yurt dışından hasta alıyorsanız her dilde ayrı sayfalar
+      - Bilgilendirici, abartısız ve tanıtım kurallarına uygun dil
+      - Telefonda hızlı açılan, rahat okunan sayfalar
+      - Randevu taleplerinin ölçüldüğü analiz kurulumu
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Kurduğumuz Sağlık Siteleri
+    slugs:
+      - dentasay
+      - dr-ayse-cinkaya-kahveci
+      - cagla-aytac
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Doktor ve Klinik Web Sitesi Hakkında Sorular
+    items:
+      - question: Doktor web sitesinde nelere dikkat etmek gerekiyor?
+        answer: >-
+          Sağlık hizmetlerinin tanıtımı kurallara bağlı. Sitede abartılı vaat, kesin sonuç
+          ya da karşılaştırmalı üstünlük iddiası yerine bilgilendirici bir dil kullanıyoruz
+          ve uygulama sayfalarına bilgilendirme notu ekliyoruz. Metinlerin son onayı her
+          zaman hekimde.
+      - question: Siteyi birden fazla dilde yapabiliyor musunuz?
+        answer: >-
+          Evet, en çok yaptığımız işlerden biri bu. Dentasay'ı 13 dile, Dr. Ayşe Cinkaya
+          Kahveci'yi 6 dile taşıdık. Her dil için ayrı içerik, dil etiketleri ve panelde çift
+          dilli düzen kuruluyor.
+      - question: Klinik web sitesi ne kadar sürede hazır olur?
+        answer: >-
+          Ortalama 30 gün. Süreyi en çok hekim onayı ve fotoğraf çekimi belirliyor; bu yüzden
+          ilk hafta içerik ve çekim takvimini birlikte çıkarıyoruz.
+      - question: Klinik web sitesi fiyatı ne kadar?
+        answer: >-
+          Kurumsal siteler 50.000 TL'den başlıyor, KDV hariç. Dil sayısı ve randevu ya da CRM
+          bağlantısı fiyatı değiştiriyor. Paketlerin tamamı
+          [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/)
+          sayfasında.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Hastalarınız Sizi Nasıl Buluyor, Birlikte Bakalım
+    lead: >-
+      Mevcut sitenizi ve hasta kaynaklarınızı anlatın. Hangi sayfaların eksik olduğunu ve
+      ilk nereden başlanması gerektiğini ilk görüşmede söyleyelim.
+    ctas:
+      - label: Kliniğiniz İçin Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Sağlık Turizmi Danışmanlığı
+        href: /hizmetlerimiz/saglik-turizmi-danismanligi/
+        variant: outline

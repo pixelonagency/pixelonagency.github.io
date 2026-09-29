@@ -1,0 +1,188 @@
+title: Özel Web Yazılımı
+parent: web-tasarim-ve-yazilim
+status: published
+
+seo:
+  title: Özel Web Yazılımı | Hazır Sistem Yetmediğinde | Pixelon
+  description: >-
+    Özel web yazılımı: bağış akışı, ürün satış katmanı, teknik katalog, çok dilli yapı ve
+    CRM bağlantısı gibi işinize özel sistemler. Hazır sistemin ne zaman yetmediğini
+    gerçek projelerle anlattık.
+
+whatsappMessage: Merhaba Pixelon, işimize özel bir web yazılımı için bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Özel Web Yazılımı
+    headingLines:
+      - 'Siteniz İşinizin *Nasıl Yürüdüğünü* Bilsin.'
+    lead: >-
+      Hazır sistemler çoğu işe yeter. Yetmediği yer, sizin işinizin kendine özgü bir akışı
+      olduğu yerdir: bağışçı hangi işe katkı verdiğini seçmek ister, alıcı ölçü tablosunu
+      arar, hasta kendi dilinde yazar. O akışı çıkarıp sitenin içine yazıyoruz.
+    video:
+      desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
+      desktopWebm: /media/hero/web-tasarim/hero-web-design-desktop.webm
+      desktopPoster: /media/hero/web-tasarim/hero-web-design-desktop-poster.webp
+      mobileMp4: /media/hero/web-tasarim/hero-web-design-mobile.mp4
+      mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
+      mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
+    chips:
+      - Kod ve alan adı sizde
+      - Yönetim paneli dahil
+      - CRM, ödeme, form entegrasyonları
+      - Çok dilli yapı
+    ctas:
+      - label: Projenizi Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  # Karar: iki yol yan yana, dürüstçe.
+  - type: cards
+    background: light
+    kind: panels
+    eyebrow: Önce Doğru Soru
+    heading: Hazır Sistem mi, Özel Yazılım mı?
+    lead: >-
+      Her projeye özel yazılım önermiyoruz. İlk görüşmede sorduğumuz tek soru bu kararı
+      büyük ölçüde veriyor: işinizin kendine özgü bir akışı var mı?
+    items:
+      - eyebrow: Hazır sistem yeter
+        title: Süreçler standart, içeriği siz güncelliyorsunuz
+        description: >-
+          Hizmetlerinizi anlatan, proje gösteren ve form toplayan bir site hazır bir altyapıda
+          hızlı ve daha uygun maliyetle kurulur. Bütçenin kalanı tasarıma, içeriğe ve ölçüme
+          gider.
+      - eyebrow: Özel yazılım gerekir
+        title: Kendinize özgü bir akışınız var
+        description: >-
+          Ziyaretçinin sitede bir iş yapması gerekiyorsa, bağış, sipariş, ölçüye göre ürün
+          seçimi ya da çok dilli başvuru gibi, hazır sistemin kalıbı o akışı bozar. Bu
+          durumda akışı çıkarıp ona göre geliştiriyoruz.
+    note: >-
+      İki yolun maliyet ve bakım farkını
+      [WordPress mi, özel yazılım mı](/blog/wordpress-mi-ozel-yazilim-mi/) yazısında
+      karşılaştırdık.
+
+  # Dört gerçek akış, dört proje.
+  - type: cards
+    background: dark
+    kind: feature
+    columns: 2
+    eyebrow: Kurduğumuz Akışlar
+    heading: Hazır Kalıba Sığmayan Dört İş
+    items:
+      - title: Bağışçı sayfadan çıkmadan bağış yapıyor
+        description: >-
+          Hands For All'da bağış formunu dönemin kampanyasının hemen yanına koyduk.
+          Bağışçı genel bir kutuya değil, desteklemek istediği işe tıklıyor: iftar, su
+          kuyusu, zekât ya da yetim desteği.
+        icon: partnership
+      - title: Danışmanlığın devamı sitede satılıyor
+        description: >-
+          Çağla Aytaç'ın sitesine bir ürün satış katmanı ekledik. Planını uygulayan danışan
+          detoks paketinden ölçüm hizmetine kadar ihtiyacını aynı yerden karşılıyor. Üç
+          şubenin her biri kendi iletişim ve çalışma saatiyle ayrı duruyor.
+        icon: strategy
+      - title: Alıcı ölçüyü saniyeler içinde buluyor
+        description: >-
+          Redex Glass'ta onlarca ürün ailesini hacim, ölçü ve ağız çapı tablolarına oturttuk.
+          Alıcı satırdan teknik çizime iniyor, amber ve şeffaf varyantları aynı sayfada
+          karşılaştırıyor.
+        icon: bespoke
+      - title: Hasta kendi dilinde başvuruyor
+        description: >-
+          Dentasay'da 20 ülkeye hitap eden 13 dilli bir yapı ve tedaviye özel açılış
+          sayfaları kurduk. Reklam hangi pazarda açılırsa hasta o pazarın dilinde bir sayfaya
+          ve iletişim akışına iniyor.
+        icon: orbit
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Bu Akışları Kurduğumuz Siteler
+    slugs:
+      - handsforall
+      - cagla-aytac
+      - redex-glass
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  # Sinyaller: okur kendi durumunu tanısın.
+  - type: bullets
+    background: dark
+    kind: split
+    eyebrow: Kendinizi Tanıyor musunuz?
+    heading: Özel Yazılıma İhtiyacınız Olduğunun İşaretleri
+    lead: Bunlardan ikisi sizde varsa ilk görüşmede özel yazılımı konuşalım.
+    items:
+      - Formdan gelen talebi elle başka bir sisteme taşıyorsunuz
+      - Ürün ya da hizmetleriniz tabloyla, ölçüyle, seçenekle anlatılıyor
+      - Ziyaretçinin sitede bir işlem yapması gerekiyor, sadece okuması değil
+      - Birden fazla şubeniz, diliniz ya da pazarınız var
+      - Hazır temanın eklentileri birbiriyle çakışmaya başladı
+      - Sitenizin CRM, ödeme ya da rezervasyon sistemiyle konuşması gerekiyor
+
+  - type: steps
+    background: light
+    kind: timeline
+    eyebrow: Süreç
+    heading: Akışı Çıkarmaktan Yayına
+    items:
+      - title: Akışı çıkarıyoruz
+        description: Ziyaretçinizin sitede yapması gereken işi adım adım yazıyoruz.
+      - title: Ekranları tasarlıyoruz
+        description: Önce telefonda, her adımı tek bir karara indirerek.
+      - title: Geliştiriyoruz
+        description: Yönetim paneli ve entegrasyonlarla birlikte, test ede ede.
+      - title: Yayına alıp ölçüyoruz
+        description: Akışın nerede takıldığını görüp düzeltiyoruz.
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Özel Web Yazılımı Hakkında Sorular
+    items:
+      - question: Özel web yazılımı ne kadar tutar?
+        answer: >-
+          E-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor, KDV hariç. Kesin
+          rakamı akışın büyüklüğü ve bağlanacak sistem sayısı belirliyor. Paketlerin tamamı
+          [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/)
+          sayfasında.
+      - question: Kod ve alan adı kime ait oluyor?
+        answer: >-
+          Size. Alan adı ve kod sahipliği sizde kalıyor, panelin kullanımını teslimde
+          gösteriyoruz ve yayından sonra ne yapılacağını yazılı olarak bırakıyoruz.
+      - question: Mevcut sistemlerimize bağlanabilir mi?
+        answer: >-
+          CRM, ödeme, kargo, rezervasyon ve form akışları en sık kurduğumuz bağlantılar.
+          Hangi sistemin nasıl bağlanacağını keşif aşamasında netleştiriyoruz.
+      - question: Sonradan yeni özellik eklenebilir mi?
+        answer: >-
+          Evet. Özel yazılımın avantajı da bu: yeni bir ihtiyaç doğduğunda eklentilerin
+          birbirine uyup uymadığıyla değil, doğrudan işin kendisiyle uğraşıyoruz.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: İşinizin Akışını Anlatın, Hangi Yolun Doğru Olduğunu Söyleyelim
+    lead: >-
+      Hazır sistem yetiyorsa bunu açıkça söyleriz. Yetmiyorsa akışı birlikte çıkarır, neyin
+      özel yazılması gerektiğini ilk görüşmede konuşuruz.
+    ctas:
+      - label: Projenizi Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Web Tasarım Hizmetimiz
+        href: /hizmetlerimiz/web-tasarim-ve-yazilim/
+        variant: outline

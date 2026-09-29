@@ -288,4 +288,18 @@ describe('web tasarım kümesi', () => {
     const pricing = localizedPath('services', 'tr', 'web-tasarim-ve-yazilim/web-sitesi-fiyatlari');
     expect(graph.out.get('web-tasarim-fiyatlari')?.has(pricing)).toBe(true);
   });
+
+  test('WordPress yazısı özel web yazılımı sayfasına bağlanır', async () => {
+    const graph = await buildGraph('tr');
+    const target = localizedPath('services', 'tr', 'web-tasarim-ve-yazilim/ozel-web-yazilimi');
+    expect(graph.out.get('wordpress-mi-ozel-yazilim-mi')?.has(target)).toBe(true);
+  });
+
+  test('sağlık pazarlaması yazısı doktor ve klinik web sitesi sayfasına bağlanır', async () => {
+    const graph = await buildGraph('tr');
+    const target = localizedPath('services', 'tr', 'web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi');
+    expect(graph.out.get('saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur')?.has(target)).toBe(
+      true,
+    );
+  });
 });
