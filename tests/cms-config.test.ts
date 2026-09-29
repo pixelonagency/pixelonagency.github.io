@@ -173,6 +173,7 @@ describe('config structure', () => {
       'references',
       'services',
       'settings',
+      'subpages',
       'team',
     ]);
   });

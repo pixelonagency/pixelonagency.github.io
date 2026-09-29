@@ -133,6 +133,8 @@ article:
 
         Bu beşin görsel tarafı ise sitenin kendisinden önce başlıyor: renk, tipografi ve dilin nereden geldiğini [marka kimliği nedir, neleri kapsar](/blog/marka-kimligi-nedir-neleri-kapsar/) yazısında ele aldık.
 
+        Bu maddeleri kendi projelerimizde nasıl uyguladığımızı [kurumsal web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/) sayfasında Xray Groupe, Redex Glass ve Touch Consulting örnekleriyle gösterdik.
+
         Bu maddeleri kendi sitenizde tek tek uygulamak hem zaman hem teknik karar gerektiriyor. Siteyi baştan kurmayı ya da mevcut yapıyı bu standarda taşımayı düşünüyorsanız, [nasıl çalıştığımızı burada anlattık](/hizmetlerimiz/web-tasarim-ve-yazilim/).
 
         Maliyet tarafını merak ediyorsanız fiyatı neyin belirlediğini [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında açtık; kapsamınızı çıkarıp doğrudan başlamak isterseniz [web sitesi yaptırma sayfamız](/web-sitesi-yaptir/) süreci adım adım anlatıyor.

@@ -1,0 +1,243 @@
+title: Kurumsal Web Tasarım
+parent: web-tasarim-ve-yazilim
+# Sahip onayı: 29 Eyl 2026.
+status: published
+
+seo:
+  title: Kurumsal Web Tasarım | Markaya Özel Kurumsal Site | Pixelon
+  description: >-
+    Kurumsal web tasarım: işinizin kanıtını gösteren, markanıza özel ve yönetilebilir
+    kurumsal web sitesi. Xray Groupe, Redex Glass ve Touch Consulting'den örneklerle
+    süreç, olması gerekenler ve fiyat.
+
+whatsappMessage: Merhaba Pixelon, kurumsal web sitesi yaptırmak istiyorum. Bilgi alabilir miyim?
+
+sections:
+  # 1. HERO: tek cümlelik cevap, iki eylem. Breadcrumb build'de üst hizmetten eklenir.
+  - type: hero
+    background: dark
+    eyebrow: Kurumsal Web Tasarım
+    headingLines:
+      - 'Kurumsal Siteniz *Ne Yaptığınızı* Değil, *Neyi Başardığınızı* Göstersin.'
+    lead: >-
+      Kurumsal web sitesi, sizi hiç tanımayan birinin "bu firmayla çalışılır mı" sorusuna
+      verdiği ilk cevaptır. Biz o cevabı hizmet listesiyle değil, tamamlanmış işle
+      veriyoruz.
+    video:
+      desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
+      desktopWebm: /media/hero/web-tasarim/hero-web-design-desktop.webm
+      desktopPoster: /media/hero/web-tasarim/hero-web-design-desktop-poster.webp
+      mobileMp4: /media/hero/web-tasarim/hero-web-design-mobile.mp4
+      mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
+      mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
+    chips:
+      - Markaya özel tasarım
+      - Ortalama 30 günde teslim
+      - Yönetim paneli
+      - Çok dilli yapı
+    ctas:
+      - label: Ücretsiz Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  # 2. SORUNUN KENDİSİ: kısa, somut, bir görselle.
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Neden Önemli
+    heading: Ziyaretçi Sizi Aramadan Önce Karar Veriyor
+    body: |-
+      Bir yatırımcı, bir satın almacı ya da bir işletme sahibi sizi ilk kez duyduğunda ne yapıyor? Adınızı arıyor, sitenize giriyor ve birkaç saniye içinde bir izlenim ediniyor.
+
+      O saniyelerde okunan şey hizmet listeniz değil. "Bu firma gerçekten iş yapıyor mu, yaptığı iş benimkine benziyor mu, kime ulaşacağım?" sorularının cevabı aranıyor.
+
+      Kurumsal bir sitenin işi bu üç soruyu hızlı ve inandırıcı biçimde cevaplamak. Bunu nasıl yaptığımızı aşağıda kendi projelerimizle gösteriyoruz; genel teoriyi [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali/) yazısında ayrıca topladık.
+    highlight: Güzel bir site dikkat çeker. İnandırıcı bir site teklif getirir.
+
+  # 3. ÜÇ PROJE, ÜÇ FARKLI SORUN: gerçek vaka kartları, görselleriyle.
+  - type: projects
+    background: dark
+    eyebrow: Kurduğumuz Kurumsal Siteler
+    heading: Üç Sektör, Üç Farklı Sorun, Tek Soru
+    lead: >-
+      İnşaat firması, cam ambalaj üreticisi ve teşvik danışmanı. Üçünde de sorduğumuz soru
+      aynıydı: bu markanın yaptığı işin kanıtı nerede duruyor?
+    slugs:
+      - xray-groupe
+      - redex-glass
+      - touch-consulting
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  # 4. SEKTÖRE GÖRE DEĞİŞEN ŞEY: her kart bir gerçek karar.
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Sektör Farkı
+    heading: Her Sektörün Kanıtı Başka Yerde Duruyor
+    lead: >-
+      Aynı şablonu dört farklı firmaya giydirmek kolay. Zor olan, her birinde ziyaretçinin
+      aradığı kanıtı bulup sitenin merkezine koymak.
+    items:
+      - title: İnşaatta site bir kanıt arşivi
+        description: >-
+          Xray Groupe'da her projeye kendi sayfasını verdik: konum, proje tipi,
+          başlangıç ve bitiş tarihi, durum. Yatırımcı "yapabilir misiniz" sorusunun
+          cevabını okumuyor, tamamlanmış işe bakıyor.
+        icon: craft
+      - title: Üretimde site teknik bir katalog
+        description: >-
+          Redex Glass'ta onlarca ürün ailesini hacim, ölçü ve ağız çapı tablolarıyla
+          ayırdık, teknik çizimleri indirilebilir yaptık. İlaç sektörüne ambalaj alan
+          bir alıcı güzel görsel değil, ölçülebilir veri istiyor.
+        icon: bespoke
+      - title: Danışmanlıkta site talep toplayan bir form
+        description: >-
+          Touch Consulting'de üç hizmet dalını birbirinden ayırdık ve her sayfayı
+          doğrudan bir form bloğuyla kapattık. Site tanıtmakla kalmıyor, görüşme
+          talebi topluyor.
+        icon: strategy
+      - title: Sağlıkta site çok dilli bir hasta kapısı
+        description: >-
+          Dentasay'ın tek dilli sitesini 20 ülkeye hitap eden 13 dilli bir yapıya
+          taşıdık. Hasta kendi dilinde okuyor, kendi dilinde soruyor.
+        icon: orbit
+
+  # 5. KONTROL LİSTESİ: taranabilir, tiklenebilir.
+  - type: bullets
+    background: dark
+    kind: check
+    eyebrow: Kontrol Listesi
+    heading: Kurumsal Bir Sitede Olmazsa Olmazlar
+    lead: >-
+      Teslim ettiğimiz her kurumsal sitede bunlar var. Teklif alırken karşılaştırma
+      listesi olarak da kullanabilirsiniz.
+    items:
+      - Tamamlanmış işleri gösteren proje ya da referans sayfaları
+      - Hizmetlerin her birine ayrı, açıklayıcı bir sayfa
+      - Her sayfada görünen iletişim yolu, WhatsApp ve form
+      - Telefonda ilk bakışta okunan, parmakla rahat kullanılan tasarım
+      - Hızlı açılan sayfalar ve optimize edilmiş görseller
+      - İçeriği sizin güncelleyebileceğiniz yönetim paneli
+      - Arama motorlarının okuyabileceği başlık, adres ve meta düzeni
+      - Formların ve tıklamaların ölçüldüğü analiz kurulumu
+
+  # 6. SÜREÇ: hizmet sayfasıyla aynı adımlar, kurumsal site özelinde.
+  - type: process
+    background: light
+    eyebrow: Süreç
+    heading: Keşiften Yayına Altı Adım
+    lead: >-
+      Süreyi uzatan şey genelde tasarım değil, içerik ve onay beklemek. Bu yüzden ilk
+      hafta içerik takvimini birlikte çıkarıyoruz.
+    items:
+      - title: Keşif
+        icon: discover
+        description: >-
+          Ziyaretçinizin kim olduğunu ve sitenizden ne karar vermesini beklediğinizi
+          konuşuyoruz. Rakiplerinizin sitelerine birlikte bakıyoruz.
+      - title: Site mimarisi
+        icon: plan
+        description: >-
+          Hangi sayfaların olacağını, hangi kanıtın nerede duracağını ve ziyaretçinin
+          hangi yoldan forma ulaşacağını planlıyoruz.
+      - title: Tasarım
+        icon: build
+        description: >-
+          Önce telefon, sonra masaüstü. Kurumsal kimliğinizle uyumlu arayüzü
+          onayınıza sunuyoruz.
+      - title: Geliştirme
+        icon: optimize
+        description: >-
+          Onaylanan tasarımı hızlı, güvenli ve yönetim paneliyle birlikte koda
+          döküyoruz. Hazır tema kullanmıyoruz.
+      - title: Test ve yayın
+        icon: launch
+        description: >-
+          Formları, bağlantıları, hızı ve farklı cihazları tek tek kontrol edip
+          siteyi yayına alıyoruz.
+      - title: Yayından sonra
+        icon: measure
+        description: >-
+          Paneli nasıl kullanacağınızı gösteriyoruz. Bakım ve geliştirme ihtiyacında
+          yanınızdayız.
+
+  # 7. RAKAMLAR: yalnızca projelerde belgelenmiş sayılar.
+  - type: stats
+    background: dark
+    eyebrow: Projelerden
+    heading: Söz Değil, Teslim Edilmiş İş
+    items:
+      - value: 30
+        suffix: ' gün'
+        label: Ortalama teslim süresi
+        description: Xray Groupe'un kurumsal sitesi dahil, keşiften yayına.
+      - value: 13
+        suffix: ' dil'
+        label: Dentasay'ın web sitesi
+        description: Tek dilli bir siteden 20 ülkeye hitap eden yapıya.
+      - value: 6
+        suffix: ' dil'
+        label: Dr. Ayşe Cinkaya Kahveci
+        description: Tek dilden altı dile taşınan klinik sitesi.
+
+  # 8. SSS: hizmet sayfasıyla tutarlı cevaplar.
+  - type: faq
+    background: light
+    eyebrow: Merak Edilenler
+    heading: Kurumsal Web Tasarım Hakkında Sorular
+    items:
+      - question: Kurumsal web sitesi kaç günde hazır olur?
+        answer: >-
+          Teslim ettiğimiz kurumsal sitelerde ortalama süre 30 gün. Bu süre keşif,
+          mimari, tasarım, geliştirme ve testi kapsıyor. Süreyi en çok içerik ve onay
+          bekleme uzatıyor; ayrıntısını [web sitesi kaç günde biter](/blog/web-sitesi-kac-gunde-biter/)
+          yazısında anlattık.
+      - question: Kurumsal web sitesi fiyatı ne kadar?
+        answer: >-
+          Kurumsal projeler 65.000 TL bandından başlıyor (KDV hariç). Fiyatı sayfa
+          sayısından çok içerik sorumluluğu, dil sayısı ve entegrasyon ihtiyacı
+          belirliyor. Kalem kalem nasıl değiştiğini
+          [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında yazdık.
+      - question: Siteyi sonra kendimiz güncelleyebilir miyiz?
+        answer: >-
+          Evet. Sitede hizmetleri, projeleri ve yazıları düzenleyebileceğiniz bir
+          yönetim paneli oluyor. Teslimde paneli nasıl kullanacağınızı gösteriyoruz.
+      - question: Metinleri ve görselleri kim hazırlıyor?
+        answer: >-
+          Bunu en başta birlikte kararlaştırıyoruz ve teklifte açıkça yazıyoruz.
+          Metinleri biz yazabiliriz ya da sizin metinlerinizi düzenleriz. Proje
+          görsellerini sahadan ya da fabrikadan getirmeniz, Xray Groupe ve Redex Glass
+          örneklerinde olduğu gibi, sitenin inandırıcılığını en çok artıran şey.
+      - question: Hazır tema mı kullanıyorsunuz?
+        answer: >-
+          Hayır. Tasarım markanızın kendi kurgusuna göre kuruluyor. WordPress ile
+          özel yazılım arasındaki farkı
+          [WordPress mi, özel yazılım mı](/blog/wordpress-mi-ozel-yazilim-mi/)
+          yazısında karşılaştırdık.
+
+  # 9. KAPANIŞ
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Sitenizde Hangi Kanıt Eksik, Birlikte Bakalım
+    lead: >-
+      Mevcut sitenizi ya da planınızı anlatın. Hangi sayfaların gerektiğini ve bandın
+      neresinde olacağınızı ilk görüşmede söyleyelim.
+    ctas:
+      - label: Ücretsiz Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Web Tasarım Hizmetimiz
+        href: /hizmetlerimiz/web-tasarim-ve-yazilim/
+        variant: outline

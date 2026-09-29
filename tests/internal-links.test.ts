@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { categoriesWithPages, type CategorizablePost } from '../src/lib/blog-categories';
@@ -79,6 +79,15 @@ const buildRoutes = async (): Promise<Set<string>> => {
       for (const file of readdirSync(join(CONTENT, dir.name, locale))) {
         const slug = file.replace(/\.(md|yml)$/, '');
         routes.add(localizedPath(dir.page, locale, slug));
+      }
+    }
+
+    // Hizmet alt sayfaları: yalnızca yayındakiler rota üretir (taslak build'e girmez).
+    const subpageDir = join(CONTENT, 'subpages', locale);
+    for (const file of existsSync(subpageDir) ? readdirSync(subpageDir) : []) {
+      const front = parse(await Bun.file(join(subpageDir, file)).text()) as { parent?: string; status?: string };
+      if (front?.status === 'published' && front.parent) {
+        routes.add(localizedPath('services', locale, `${front.parent}/${file.replace(/\.yml$/, '')}`));
       }
     }
 
@@ -266,5 +275,11 @@ describe('web tasarım kümesi', () => {
     }
 
     expect(missing).toEqual([]);
+  });
+
+  test('kurumsal web sitesi yazısı kurumsal web tasarım alt sayfasına bağlanır', async () => {
+    const graph = await buildGraph('tr');
+    const subpage = localizedPath('services', 'tr', 'web-tasarim-ve-yazilim/kurumsal-web-tasarim');
+    expect(graph.out.get('kurumsal-web-sitesi-nasil-olmali')?.has(subpage)).toBe(true);
   });
 });

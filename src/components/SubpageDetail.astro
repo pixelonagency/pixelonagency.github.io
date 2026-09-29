@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionRenderer from './SectionRenderer.astro';
+import type { Locale } from '../lib/i18n';
+import { canonicalUrl } from '../lib/seo';
+import { serviceSchema } from '../lib/schema';
+import { subpageCrumbs } from '../lib/subpages';
+
+interface Props {
+  subpage: CollectionEntry<'subpages'>;
+  parentTitle: string;
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+}
+
+const { subpage, parentTitle, locale, alternates } = Astro.props;
+const { seo, sections, whatsappMessage, title, parent } = subpage.data;
+
+/*
+ * Breadcrumb içerikten değil hiyerarşiden gelir ve ilk hero'ya yazılır; hero bileşeni
+ * görünür breadcrumb'ı ve BreadcrumbList'i aynı listeden basar. Hero'suz alt sayfa
+ * breadcrumb kuralını karşılayamaz, bu yüzden build durur.
+ */
+const heroIndex = sections.findIndex((section) => section.type === 'hero');
+if (heroIndex === -1) throw new Error(`Alt sayfa "${subpage.id}" bir hero bölümüyle başlamalı.`);
+
+const crumbs = subpageCrumbs({ locale, parentKey: parent, parentTitle, title });
+const withCrumbs = sections.map((section, index) =>
+  index === heroIndex && section.type === 'hero' ? { ...section, breadcrumb: crumbs } : section,
+);
+
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const extraSchema = [
+  serviceSchema({ name: title, description: seo.description, url: canonicalUrl(Astro.url.pathname, site), locale }),
+];
+---
+
+<BaseLayout title={seo.title} description={seo.description} {whatsappMessage} {locale} {alternates} {extraSchema}>
+  <SectionRenderer sections={withCrumbs} {locale} />
+</BaseLayout>

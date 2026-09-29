@@ -261,6 +261,9 @@ describe('inline links in body copy', () => {
     /* Web tasarım yol haritası (29 Eyl 2026): dönüşüm sayfası kümenin merkezine bağlanır.
        Denetimde `/web-sitesi-yaptir/` gövdesinden hizmet sayfasına hiç bağlantı yoktu. */
     ['/web-sitesi-yaptir', '/hizmetlerimiz/web-tasarim-ve-yazilim/'],
+    /* Pillar, alt sayfalarına gövdeden bağlanır: menüde görünmeyen bir alt sayfanın tek
+       güçlü iç bağlantısı kendi hizmet sayfasıdır. */
+    ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/'],
   ];
 
   for (const [route, target] of BODY_LINKS) {
@@ -1417,4 +1420,32 @@ describe('breadcrumb kuralı', () => {
     }
     expect(wrong).toEqual([]);
   });
+});
+
+describe('hizmet alt sayfaları', () => {
+  /*
+   * Alt sayfa metni sahip onayından geçmeden yayına çıkmaz: `status: draft` olan
+   * sayfa üretim build'inde OLMAMALI, `published` olan ise mutlaka olmalı. Breadcrumb
+   * ve şema kontrolleri "breadcrumb kuralı" bloğunda tüm sayfalarla birlikte yapılır.
+   */
+  const SUBPAGES = join(import.meta.dir, '..', 'src', 'content', 'subpages', 'tr');
+  const entries = existsSync(SUBPAGES)
+    ? readdirSync(SUBPAGES)
+        .filter((file) => file.endsWith('.yml'))
+        .map((file) => {
+          const source = readFileSync(join(SUBPAGES, file), 'utf8');
+          return {
+            slug: file.replace(/\.yml$/, ''),
+            parent: source.match(/^parent:\s*(\S+)/m)?.[1] ?? '',
+            published: /^status:\s*published\b/m.test(source),
+          };
+        })
+    : [];
+
+  for (const { slug, parent, published } of entries) {
+    const file = join(DIST, 'hizmetlerimiz', parent, slug, 'index.html');
+    test(`${parent}/${slug} ${published ? 'yayında olduğu için üretilir' : 'taslak olduğu için üretilmez'}`, () => {
+      expect(existsSync(file)).toBe(published);
+    });
+  }
 });

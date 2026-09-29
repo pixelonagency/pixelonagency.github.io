@@ -674,6 +674,24 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
   });
 }
 
+/**
+ * Hizmet alt sayfası: bir hizmet sayfasının (pillar) altında duran, tek bir aramaya
+ * cevap veren satış sayfası (`/hizmetlerimiz/<hizmet>/<alt-sayfa>/`). Gövdesi sayfa
+ * bölüm kütüphanesinin aynısıdır; üstüne yalnızca kimlik ve yayın durumu eklenir.
+ *
+ * Varsayılan durum TASLAK: alt sayfa metni sahip onayından geçmeden yayına çıkmaz.
+ * Taslak yalnızca geliştirme sunucusunda üretilir (bkz. src/lib/subpages.ts).
+ */
+export function makeSubpageSchema(image: ImageResolver = defaultImage) {
+  return makePageSchema(image).extend({
+    /** Breadcrumb'daki ve şemadaki ad. */
+    title: nonEmpty,
+    /** Üst hizmetin dosya adı (`src/content/services/<locale>/<parent>.yml`). */
+    parent: nonEmpty,
+    status: z.enum(['draft', 'published']).default('draft'),
+  });
+}
+
 export type PageSection = z.infer<ReturnType<typeof makePageSchema>>['sections'][number];
 export type PageSectionType = PageSection['type'];
 
