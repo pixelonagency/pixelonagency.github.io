@@ -9,6 +9,10 @@ sections:
   # HERO (kompakt) — arama kutusu yer tutucusu: "Bir konu veya içerik ara..."
   - type: hero
     background: dark
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Blog
     eyebrow: Pixelon Blog
     headingLines:
       - "Dijital Dünyayı Birlikte Okuyalım."

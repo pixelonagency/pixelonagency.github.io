@@ -10,6 +10,10 @@ sections:
   - type: hero
     background: dark
     align: center
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: İletişim
     eyebrow: Pixelon ile İletişime Geçin
     headingLines:
       - "Birlikte Harika Bir Şey Üretelim."

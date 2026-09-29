@@ -1323,3 +1323,98 @@ describe('başlık tekilliği', () => {
     });
   }
 });
+
+describe('breadcrumb kuralı', () => {
+  /*
+   * Kural (29 Eyl 2026, sahip kararı): ana sayfa dışındaki HER indekslenebilir sayfa
+   * görünür bir breadcrumb ve onunla birebir aynı sırada tek bir BreadcrumbList taşır.
+   *
+   * Denetimde 67 sayfanın 60'ında vardı; blog dizini, iletişim, kariyer, ücretsiz analiz
+   * ve web sitesi yaptır sayfalarında yoktu. Bu test yeni bir sayfa türü eklendiğinde
+   * breadcrumb'ı unutmayı imkânsız kılar.
+   *
+   * Google kuralları: ilk öğe ana sayfa, son öğe bulunulan sayfa (aria-current), aradaki
+   * her öğe bir adres taşır. Hedefi olmayan ara kırıntı (sayfası olmayan blog kategorisi)
+   * görünür kalabilir ama şemaya girmez; bu yüzden şema adları görünür adların SIRALI bir
+   * alt kümesi olmalıdır.
+   */
+  const SITE = 'https://pixelon.com.tr';
+
+  const pages = allHtmlFiles(DIST)
+    .map((file) => ({
+      file,
+      route: `/${file
+        .slice(DIST.length + 1)
+        .replace(/index\.html$/, '')
+        .split(sep)
+        .join('/')}`,
+    }))
+    .filter(({ route }) => route !== '/' && !route.startsWith('/admin') && !route.endsWith('404.html'))
+    .map(({ file, route }) => ({ route, source: readFileSync(file, 'utf8') }))
+    .filter(({ source }) => !source.includes('http-equiv="refresh"') && !/name="robots"[^>]*noindex/.test(source));
+
+  const breadcrumbNodes = (source: string): Array<{ itemListElement: Array<{ name: string; item?: string }> }> =>
+    [...source.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].flatMap((m) => {
+      const json = JSON.parse(m[1] ?? '{}');
+      const nodes = Array.isArray(json) ? json : (json['@graph'] ?? [json]);
+      return nodes.filter((node: { '@type'?: string }) => node['@type'] === 'BreadcrumbList');
+    });
+
+  const visibleCrumbs = (source: string): { label: string | undefined; names: string[]; current: boolean }[] =>
+    [...source.matchAll(/<nav class="[^"]*crumbs?[^"]*"[^>]*aria-label="([^"]*)"[^>]*>([\s\S]*?)<\/nav>/g)].map(
+      (m) => ({
+        label: m[1],
+        names: [...(m[2] ?? '').matchAll(/<(a|span)\b(?![^>]*aria-hidden)[^>]*>([^<]+)<\/\1>/g)]
+          .map((n) =>
+            (n[2] ?? '')
+              .replace(/&#39;|&#x27;/g, "'")
+              .replace(/&quot;/g, '"')
+              .replace(/&amp;/g, '&')
+              .trim(),
+          )
+          .filter(Boolean),
+        current: (m[2] ?? '').includes('aria-current="page"'),
+      }),
+    );
+
+  test('kapsam: denetlenecek sayfa var', () => {
+    expect(pages.length).toBeGreaterThan(50);
+  });
+
+  test('ana sayfa dışındaki her sayfada tek görünür breadcrumb ve tek BreadcrumbList var', () => {
+    const missing = pages
+      .filter(({ source }) => visibleCrumbs(source).length !== 1 || breadcrumbNodes(source).length !== 1)
+      .map(({ route }) => route);
+    expect(missing).toEqual([]);
+  });
+
+  test('breadcrumb erişilebilir adı "Sayfa yolu" ve son öğe bulunulan sayfa', () => {
+    const wrong = pages
+      .map(({ route, source }) => ({ route, crumb: visibleCrumbs(source)[0] }))
+      .filter(({ crumb }) => crumb && (crumb.label !== 'Sayfa yolu' || !crumb.current))
+      .map(({ route }) => route);
+    expect(wrong).toEqual([]);
+  });
+
+  test('şema ana sayfayla başlar, ara öğeler adres taşır ve görünür sırayı izler', () => {
+    const wrong: string[] = [];
+    for (const { route, source } of pages) {
+      const node = breadcrumbNodes(source)[0];
+      const crumb = visibleCrumbs(source)[0];
+      if (!node || !crumb) continue;
+      const items = node.itemListElement;
+      if (items[0]?.item !== `${SITE}/`) wrong.push(`${route}: ilk öğe ana sayfa değil`);
+      if (items.slice(0, -1).some((item) => !item.item)) wrong.push(`${route}: adressiz ara öğe`);
+      let cursor = 0;
+      for (const item of items) {
+        cursor = crumb.names.indexOf(item.name, cursor);
+        if (cursor === -1) {
+          wrong.push(`${route}: "${item.name}" görünür breadcrumb'da yok`);
+          break;
+        }
+        cursor += 1;
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+});

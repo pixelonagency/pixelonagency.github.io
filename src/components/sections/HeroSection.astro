@@ -24,10 +24,13 @@ const heroImage = section.image as ImageMetadata | undefined;
 
 /*
  * Referans: hero ölçüsü sayfa tipine göre kademelidir —
- * tam (ana/landing, 3 CTA) → alt sayfa (1-2 CTA veya breadcrumb) → kompakt (CTA'sız; blog/analiz).
+ * tam (ana/landing, 3 CTA) → alt sayfa (1-2 CTA) → kompakt (CTA'sız; blog/analiz).
+ *
+ * Ölçüyü breadcrumb değil CTA sayısı belirler. Ana sayfa dışındaki her sayfa breadcrumb
+ * taşır (29 Eyl 2026 kuralı); breadcrumb ölçüyü belirleseydi landing sayfası
+ * (`/web-sitesi-yaptir/`) tam boy hero'sunu kaybederdi.
  */
-const heroScale =
-  section.ctas.length === 0 ? 'compact' : section.breadcrumb.length > 0 || section.ctas.length < 3 ? 'sub' : 'full';
+const heroScale = section.ctas.length === 0 ? 'compact' : section.ctas.length < 3 ? 'sub' : 'full';
 const isSubpage = heroScale !== 'full';
 
 /* Görünen breadcrumb ile birebir aynı BreadcrumbList JSON-LD'si. */

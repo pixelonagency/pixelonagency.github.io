@@ -8,6 +8,10 @@ sections:
   - type: hero
     background: dark
     align: center
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Kariyer
     eyebrow: Pixelon Kariyer
     headingLines:
       - "Fikirlerinizi Özgürce Paylaşabileceğiniz Bir Ekibe Katılın."

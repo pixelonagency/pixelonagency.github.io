@@ -11,6 +11,10 @@ sections:
   # 1 — HERO
   - type: hero
     background: dark
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Web Sitesi Yaptır
     eyebrow: Web Sitesi Yaptırma
     # *yıldız* içine alınan kelimeler lime (aksan) renkle basılır — bkz. src/lib/highlight.ts
     headingLines:

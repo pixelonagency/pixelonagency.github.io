@@ -11,6 +11,10 @@ sections:
   - type: hero
     background: dark
     align: center
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Ücretsiz Analiz
     eyebrow: Pixelon Ücretsiz Dijital Analiz
     headingLines:
       - "Markanızın Dijital Potansiyelini Birlikte Keşfedelim."
