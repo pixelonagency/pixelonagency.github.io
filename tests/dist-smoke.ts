@@ -267,6 +267,7 @@ describe('inline links in body copy', () => {
     ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/'],
     ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/web-tasarim-ve-yazilim/ozel-web-yazilimi/'],
     ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/'],
+    ['/hizmetlerimiz/web-tasarim-ve-yazilim', '/hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim/'],
     [
       '/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim',
       '/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/',

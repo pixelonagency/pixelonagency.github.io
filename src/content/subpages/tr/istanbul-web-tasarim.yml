@@ -1,0 +1,166 @@
+title: İstanbul Web Tasarım
+parent: web-tasarim-ve-yazilim
+# Yerel sayfa kuralı: yalnızca gerçek adresimizin olduğu şehir için tek sayfa. İlçe
+# başına ayrı sayfa açılmaz (Google spam politikası: doorway sayfaları); ilçeler burada geçer.
+status: published
+
+seo:
+  title: İstanbul Web Tasarım Ajansı | Kadıköy | Pixelon
+  description: >-
+    İstanbul web tasarım ajansı Pixelon: Kadıköy merkezli ekiple markanıza özel kurumsal
+    web sitesi. Ataşehir, Ümraniye, Üsküdar, Maltepe, Kartal, Pendik ve İstanbul'un her
+    yerine yüz yüze ya da uzaktan hizmet.
+
+whatsappMessage: Merhaba Pixelon, İstanbul'dayız, web sitesi için yüz yüze görüşmek istiyoruz.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: İstanbul Web Tasarım
+    headingLines:
+      - "İstanbul'da Web Tasarım: *Kadıköy'den* Tüm Şehre."
+    lead: >-
+      Web sitenizi kuracak ekiple aynı masaya oturmak işi hızlandırır. Kadıköy merkezli
+      ekibimizle İstanbul'un her yerindeki markalarla yüz yüze ya da uzaktan çalışıyoruz.
+    video:
+      desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
+      desktopWebm: /media/hero/web-tasarim/hero-web-design-desktop.webm
+      desktopPoster: /media/hero/web-tasarim/hero-web-design-desktop-poster.webp
+      mobileMp4: /media/hero/web-tasarim/hero-web-design-mobile.mp4
+      mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
+      mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
+    chips:
+      - Kadıköy, İstanbul
+      - Yüz yüze ya da uzaktan
+      - İlk görüşme ücretsiz
+      - Ortalama 30 günde teslim
+    ctas:
+      - label: Görüşme Planlayalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Aynı Şehirde Olmanın Farkı
+    heading: Toplantı Masası, Mesaj Zincirinden Hızlıdır
+    body: |-
+      Bir web sitesinin en yavaş kısmı tasarım değil, karar vermek. Hangi sayfa olacak, hangi proje öne çıkacak, metni kim yazacak? Bu soruların cevabı bir mesaj zincirinde günler sürebiliyor, aynı masada bir saatte netleşiyor.
+
+      Keşif toplantısını yüz yüze yapıyoruz. Sitede kullanılacak fotoğraf ve video gerektiğinde çekimi ekibimiz üstleniyor; Touch Consulting'in videolarını da biz çektik. Tasarım onayını ister ofiste ister ekran başında birlikte veriyoruz.
+
+      Şehir dışındaysanız da sorun değil: Almanya'daki Çağla Aytaç'tan Kongo'daki Xray Groupe'a kadar İstanbul dışındaki pek çok markayla uzaktan çalışıyoruz.
+    highlight: İstanbul'daysanız ilk görüşmeyi yüz yüze yapalım. Değilseniz ekran başında aynı hızla çalışırız.
+
+  - type: bullets
+    background: dark
+    kind: tags
+    eyebrow: Hizmet Bölgesi
+    heading: İstanbul'un Her Yerindeyiz
+    lead: >-
+      Anadolu Yakası'ndaki ilçelere Kadıköy'den kısa bir yolla ulaşıyoruz, Avrupa
+      Yakası'ndaki markalarla da aynı şekilde çalışıyoruz.
+    items:
+      - Kadıköy
+      - Ataşehir
+      - Üsküdar
+      - Ümraniye
+      - Maltepe
+      - Kartal
+      - Pendik
+      - Tuzla
+      - Sancaktepe
+      - Çekmeköy
+      - Beykoz
+      - Beşiktaş
+      - Şişli
+      - Sarıyer
+
+  - type: steps
+    background: light
+    kind: timeline
+    eyebrow: Nasıl Çalışıyoruz
+    heading: İlk Görüşmeden Yayına
+    items:
+      - title: Yüz yüze keşif
+        description: >-
+          Kadıköy'de ya da ekran başında buluşuyor, işinizi ve sitenizden ne beklediğinizi
+          konuşuyoruz. İlk görüşme ücretsiz.
+      - title: Kapsam ve teklif
+        description: >-
+          Hangi sayfaların gerektiğini ve fiyatı yazılı olarak netleştiriyoruz.
+      - title: İçerik ve çekim
+        description: >-
+          Metinleri birlikte planlıyor, gerekiyorsa fotoğraf ve videoyu yerinde çekiyoruz.
+      - title: Tasarım, geliştirme ve yayın
+        description: >-
+          Onayınızla kodluyor, test ediyor ve siteyi ortalama 30 günde yayına alıyoruz.
+
+  - type: logos
+    background: dark
+    kind: marquee
+    eyebrow: Referanslar
+    heading: Birlikte Çalıştığımız Markalar
+    lead: >-
+      Aralarında NB Kadıköy Hastanesi, Medistate Kavacık Hastanesi ve İstanbul Hairline gibi
+      İstanbul'dan kurumlar da var.
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Kurduğumuz Web Sitelerinden Seçmeler
+    slugs:
+      - dentasay
+      - xray-groupe
+      - touch-consulting
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: İstanbul Web Tasarım Hakkında Sorular
+    items:
+      - question: Ofisiniz nerede, yüz yüze görüşebilir miyiz?
+        answer: >-
+          Ekibimiz Kadıköy'de. İlk görüşmeyi yüz yüze ya da online yapabiliyoruz; hangisi
+          size kolaysa. İlk görüşme ücretsiz.
+      - question: İstanbul'un hangi ilçelerinde hizmet veriyorsunuz?
+        answer: >-
+          İstanbul'un tamamında. Anadolu Yakası'ndaki ilçelere Kadıköy'den kısa sürede
+          ulaşıyoruz; Avrupa Yakası'ndaki markalarla da aynı şekilde çalışıyoruz.
+      - question: İstanbul'da web sitesi yaptırmak ne kadar tutar?
+        answer: >-
+          Kurumsal web siteleri 50.000 TL'den başlıyor, KDV hariç. Paketlerin tamamını
+          [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/)
+          sayfasında, kurumsal site örneklerini
+          [kurumsal web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/)
+          sayfasında bulabilirsiniz.
+      - question: Web sitesi ne kadar sürede hazır olur?
+        answer: >-
+          Kurumsal sitelerde ortalama 30 gün. Süreyi en çok içerik ve onay beklemek
+          belirliyor; aynı şehirde olmak bu kısmı belirgin şekilde kısaltıyor.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: İstanbul'daysanız Sitenizi Yüz Yüze Konuşalım
+    lead: >-
+      İşinizi anlatın, hangi sayfaların gerektiğini ve bütçeyi ilk görüşmede birlikte
+      çıkaralım. İstanbul dışındaysanız görüşmeyi online yapalım.
+    ctas:
+      - label: Görüşme Planlayalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Web Tasarım Hizmetimiz
+        href: /hizmetlerimiz/web-tasarim-ve-yazilim/
+        variant: outline
