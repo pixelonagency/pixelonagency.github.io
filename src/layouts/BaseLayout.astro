@@ -213,7 +213,9 @@ const jsonLd = toJsonLd([
               observer.unobserve(element);
             }
           },
-          { threshold: 0.12 },
+          // Oran eşiği değil kenar payı: %12 oran, ekranın ~8 katından uzun bir bölümde
+          // (ör. 50+ yazılık blog listesi) hiç sağlanmıyor ve bölüm sonsuza dek gizli kalıyordu.
+          { threshold: 0, rootMargin: '0px 0px -12% 0px' },
         );
 
         for (const element of revealables) observer.observe(element);

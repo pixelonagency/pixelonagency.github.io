@@ -1556,3 +1556,16 @@ describe('sosyal medya örnekleri', () => {
     expect(pillar.includes(`href="${ROUTE}/"`)).toBe(true);
   });
 });
+
+/*
+ * Scroll-reveal bir oran eşiğiyle (ör. %12) tetiklenirse, ekranın birkaç katı uzunluğundaki
+ * bir bölüm o orana hiç ulaşamaz ve sonsuza dek görünmez kalır. 1 Eki 2026'da blog listesi
+ * 57 yazıyla ~9.800 px'e uzadı ve canlıda boş göründü. Eşik 0 olmalı, gecikme kenar payıyla verilir.
+ */
+describe('scroll-reveal uzun bölümleri gizlemez', () => {
+  test('blog sayfasındaki gözlemci oran eşiği kullanmaz', () => {
+    const page = readFileSync(join(DIST, 'blog', 'index.html'), 'utf8');
+    const options = page.match(/is-revealed[\s\S]{0,120}?\{(threshold:[^}]*)\}/)?.[1] ?? '';
+    expect(options).toMatch(/threshold:0[,}]|threshold:0$/);
+  });
+});
