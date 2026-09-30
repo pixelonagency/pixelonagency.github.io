@@ -45,54 +45,58 @@ sections:
     ctaHref: /blog
 
   # EDİTÖRÜN SEÇTİKLERİ
-  - type: bullets
+  # Her kart yayındaki bir yazıya bağlanır; blog merkezinden en çok okunmasını
+  # istediğimiz rehberlere iç bağlantı taşır.
+  - type: cards
     background: dark
     eyebrow: Pixelon Öneriyor
     heading: Editörün Seçtikleri
-    # İlk kartın referanstaki üst etiketi: "Kapsamlı Rehber" (bullets şemasında karşılığı yok).
+    columns: 4
     items:
-      - Dijital Pazarlama Stratejisi Hazırlama Rehberi
-      - Kurumsal Web Sitesi İçerik Mimarisi
-      - Sağlık Turizmi Reklam Stratejisi
-      - Marka Kimliği Oluşturma Rehberi
+      - eyebrow: Sağlık Pazarlaması
+        title: Sağlık Markaları İçin Dijital Pazarlama Stratejisi
+        description: |-
+          Web sitesi, içerik, reklam ve hasta iletişimini tek bir planda birleştirmenin yolu.
+        href: /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/
+      - eyebrow: Web Tasarım
+        title: Kurumsal Web Sitesi Nasıl Olmalı?
+        description: |-
+          Ziyaretçinin ne yapması gerektiğini anladığı bir kurumsal sitenin on temel özelliği.
+        href: /blog/kurumsal-web-sitesi-nasil-olmali/
+      - eyebrow: Sağlık Pazarlaması
+        title: Sağlık Turizminde Uluslararası Hasta Güveni
+        description: |-
+          Başka bir ülkede tedavi olmaya karar veren hastanın güvenini neyin kazandığı.
+        href: /blog/saglik-turizminde-uluslararasi-hasta-guveni-nasil-kazanilir/
+      - eyebrow: Marka
+        title: Marka Kimliği Nedir, Neleri Kapsar?
+        description: |-
+          Logonun altında duran yapı: markanın kime ne vaat ettiği ve nasıl konuştuğu.
+        href: /blog/marka-kimligi-nedir-neleri-kapsar/
 
-  # SEKTÖRLERE GÖRE
+  # SEKTÖRLERE GÖRE: her kart o sektöre yaptığımız işi anlatan sayfaya gider.
   - type: cards
     background: light
     eyebrow: Sektörünüze Özel
-    heading: İşletmenize Uygun İçerikleri Keşfedin
+    heading: İşletmenize Uygun Çözümleri Keşfedin
+    columns: 4
     items:
       - title: Sağlık ve Klinikler
         description: |-
-          Hasta iletişimi, klinik web sitesi, sosyal medya ve dijital reklam rehberleri.
-        href: /hizmetlerimiz/saglik-turizmi-danismanligi
+          Tedavi başına sayfa, çok dilli hasta sayfaları ve randevu akışıyla kurduğumuz klinik siteleri.
+        href: /hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/
       - title: Sağlık Turizmi
         description: |-
-          Uluslararası hasta kazanımı, çok dilli iletişim ve global reklam stratejileri.
-        href: /hizmetlerimiz/saglik-turizmi-danismanligi
+          Uluslararası hasta kazanımı, çok dilli iletişim ve yurt dışı reklam yönetimi.
+        href: /hizmetlerimiz/saglik-turizmi-danismanligi/
       - title: E-Ticaret
         description: |-
-          Satış dönüşümü, ürün sunumu, reklam ve kullanıcı deneyimi içerikleri.
-        href: /hizmetlerimiz#hizmetler
+          Ürün sunumu, ödeme akışı ve satış dönüşümüne odaklanan e-ticaret siteleri.
+        href: /hizmetlerimiz/e-ticaret-cozumleri/
       - title: İnşaat ve Kurumsal Markalar
         description: |-
-          Kurumsal iletişim, web tasarım, proje pazarlaması ve marka güveni içerikleri.
-        href: /hizmetlerimiz/marka-ve-kurumsal-kimlik
-
-  # E-POSTA ABONELİK
-  # Referansta e-posta input'u ("E-posta adresiniz") + onay kutusu metni:
-  # "Gizlilik Politikası'nı okudum ve bilgilendirme e-postaları almayı kabul ediyorum."
-  - type: cta
-    background: dark
-    anchor: abonelik
-    eyebrow: Güncel Kalın
-    heading: Yeni İçerikler Gelen Kutunuza Gelsin.
-    lead: |-
-      Dijital pazarlama, tasarım ve teknoloji dünyasındaki güncel içeriklerimizi belirli aralıklarla e-postanıza gönderelim.
-    ctas:
-      - label: Abone Ol
-        href: '#abonelik'
-        variant: primary
+          Projeleri kanıt olarak öne çıkaran kurumsal web siteleri ve marka iletişimi.
+        href: /hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/
 
   # SON CTA
   - type: cta
