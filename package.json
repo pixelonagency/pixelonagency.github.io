@@ -37,8 +37,8 @@
     "media:r2": "bun scripts/media/r2-upload.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.7.3",
-    "astro": "7.1.6",
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "7.3.5",
     "klaro": "0.7.21"
   },
   "devDependencies": {
@@ -53,5 +53,12 @@
     "secretlint": "13.0.4",
     "typescript": "5.9.3",
     "yaml": "2.9.0"
+  },
+  "overrides": {
+    "brace-expansion": "^1.1.19",
+    "devalue": "^5.9.1",
+    "fast-uri": "^3.1.6",
+    "js-yaml": "^4.3.2",
+    "nanoid": "^3.3.18"
   }
 }
