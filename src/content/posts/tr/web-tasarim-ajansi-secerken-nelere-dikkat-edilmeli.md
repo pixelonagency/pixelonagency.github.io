@@ -1,5 +1,5 @@
 ---
-title: 'Web Tasarım Ajansı Seçerken Nelere Dikkat Edilmeli?'
+title: 'Web Tasarım Ajansı veya Firması Seçerken Nelere Dikkat Edilmeli?'
 category: Web Tasarım
 translationKey: how-to-choose-a-web-design-agency
 excerpt: Web tasarım ajansı seçimi çoğu zaman en düşük teklifle sonuçlanıyor, sonra da proje ortasında tıkanıyor. Doğru ajansı ayırt eden şey portfolyonun güzelliği değil, sorulara verdiği cevabın netliği.
@@ -10,8 +10,8 @@ author: Pixelon Ekibi
 status: published
 featured: false
 seo:
-  title: 'Web Tasarım Ajansı Seçerken Nelere Dikkat Edilir? | Pixelon'
-  description: 'Web tasarım ajansı seçiminde bakılması gereken kriterler: portfolyo okuma, kapsam netliği, teslim sonrası destek, sahiplik ve kırmızı bayraklar.'
+  title: 'Web Tasarım Firması Nasıl Seçilir? 8 Kriter | Pixelon'
+  description: 'Web tasarım firması ve ajansı seçiminde bakılması gereken kriterler: portfolyo okuma, kapsam netliği, teslim sonrası destek, sahiplik ve kırmızı bayraklar.'
 article:
   updated: 2026-09-30
   quickAnswer:
@@ -139,7 +139,7 @@ article:
 
         Buna karşılık tasarım, yazılım, içerik ve ölçümleme aynı anda ilerliyorsa tek kişilik yapı darboğaz oluşturuyor. Bu tür projelerde ajans modeli, işlerin paralel yürümesini sağlıyor.
 
-        Kritik fark süreklilikte ortaya çıkıyor: siteyi bir yıl sonra kimin güncelleyeceği sorusu, ajans tarafında kurumsal bir yapıya bağlanıyor.
+        Kritik fark süreklilikte ortaya çıkıyor: siteyi bir yıl sonra kimin güncelleyeceği sorusu, ajans tarafında kurumsal bir yapıya bağlanıyor. İki yolu kalem kalem [freelancer mı, ajans mı](/blog/freelance-mi-ajans-mi/) yazısında karşılaştırdık.
 
         Bir de mesafe konusu var. Keşif toplantısını, fotoğraf çekimini ve tasarım onayını yüz yüze yapabilmek süreci belirgin şekilde hızlandırıyor. İstanbul'daysanız bunun nasıl işlediğini [İstanbul web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim/) sayfasında anlattık.
 

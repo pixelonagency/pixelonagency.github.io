@@ -118,7 +118,7 @@ article:
       text: |-
         Bir sayfada "Teklif Alın", "Bültene Abone Olun", "Kataloğu İndirin" ve "Bizi Takip Edin" aynı ağırlıkta duruyorsa ziyaretçi hiçbirini seçmiyor.
 
-        Her sayfanın tek bir ana eylemi olmalı ve o eylem en belirgin buton olmalı. Diğer seçenekler daha sade bir görünümle ikinci planda durabilir.
+        Her sayfanın tek bir ana eylemi olmalı ve o eylem en belirgin buton olmalı. Diğer seçenekler daha sade bir görünümle ikinci planda durabilir. İyi bir eylem çağrısının metnini ve yerini [CTA nedir](/blog/cta-nedir/) yazısında ele aldık.
 
         Touch Consulting'de bu kararı açıkça verdik: her hizmet sayfası tek bir form bloğuyla kapanıyor. Site tanıtmak yerine talep topluyor.
 
