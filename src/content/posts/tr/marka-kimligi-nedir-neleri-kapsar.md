@@ -10,10 +10,10 @@ author: Pixelon Ekibi
 status: published
 featured: false
 seo:
-  title: 'Marka Kimliği Nedir, Neleri Kapsar? | Pixelon'
+  title: 'Marka Kimliği ve Kurumsal Kimlik Nedir? | Pixelon'
   description: 'Marka kimliği nedir, neleri kapsar? Logo, renk ve tipografinin ötesinde konumlandırma, ses tonu, uygulama kuralları ve marka kılavuzunun içeriği.'
 article:
-  updated: 2026-08-21
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: Marka kimliği, bir markanın kendini nasıl gösterdiğinin ve nasıl konuştuğunun tanımlı bütünüdür. Görsel tarafı logo, renk paleti, tipografi, ikon ve fotoğraf dili ile uygulama kurallarından oluşur. Sözel tarafı ise konumlandırma, marka vaadi, ses tonu ve mesaj çerçevesini kapsar. İkisi bir marka kılavuzunda toplanır; kılavuzun amacı, markanın her temas noktasında aynı görünmesini ve aynı dili konuşmasını sağlamaktır.
@@ -141,6 +141,8 @@ article:
     - type: faq
       heading: Sık Sorulan Sorular
       items:
+        - question: Kurumsal kimlik nedir, marka kimliğinden farkı ne?
+          answer: Kurumsal kimlik, marka kimliğinin kartvizit, antetli kâğıt, zarf, sunum şablonu, tabela ve dijital ikonlar gibi kurumsal yüzeylere uygulanmış hâlidir. Marka kimliği görsel ve sözel dilin bütününü tanımlar; kurumsal kimlik bu tanımın işletmenin gündelik kullandığı materyallerde nasıl uygulanacağını belirler. Touch Consulting projesinde kimliği kartvizitten bloknota, yakalıktan dijital ikonlara kadar markanın gerçekten kullandığı yüzeylere birlikte uyguladık.
         - question: Küçük bir işletmenin marka kimliğine ihtiyacı var mı?
           answer: Kapsamı değişiyor ama ihtiyaç değişmiyor. Küçük işletmede kapsamlı bir kılavuz gerekmeyebilir; ancak renk, yazı tipi ve logo kullanımına dair birkaç sayfalık temel bir tanım bile tutarlılığı belirgin şekilde artırıyor.
         - question: Marka kimliği ne zaman yenilenmeli?

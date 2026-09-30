@@ -155,7 +155,7 @@ article:
       id: ucuzun-maliyeti
       heading: Ucuz teklifin gizli maliyeti nerede ortaya çıkıyor?
       text: |-
-        Düşük teklif her zaman kötü teklif değil. Kapsam gerçekten küçükse doğru karar olabiliyor.
+        Düşük teklif her zaman kötü teklif değil. Kapsam gerçekten küçükse doğru karar olabiliyor; hangi durumda mantıklı olduğunu [ucuz web sitesi yaptırmak](/blog/ucuz-web-sitesi/) yazısında anlattık.
 
         Sorun, kapsamın küçük olduğunun sonradan anlaşıldığı durumlarda çıkıyor. Site teslim ediliyor, sonra içerik girilmesi gerektiği anlaşılıyor. Sonra mobilde düzenin bozulduğu fark ediliyor. Sonra formdan gelen taleplerin nereye düştüğü bilinmiyor.
 

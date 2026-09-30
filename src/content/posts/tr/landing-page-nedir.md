@@ -137,7 +137,7 @@ article:
       intro: Sayfayı tasarlamadan önce yapılması gereken iki adım var; çoğu proje doğrudan üçüncü adımdan başlıyor.
       steps:
         - title: Tek bir hedef belirleyin
-          text: Bu sayfa ne istiyor? Form mu, arama mı, randevu mu? Birden fazla hedef tanımlandığında sayfa hiçbirini iyi yapamıyor.
+          text: Bu sayfa ne istiyor? Form mu, arama mı, randevu mu? Birden fazla hedef tanımlandığında sayfa hiçbirini iyi yapamıyor. Butonun metnini nasıl yazacağınızı [CTA nedir](/blog/cta-nedir/) yazısında örneklerle anlattık.
         - title: Ziyaretçinin nereden geldiğini yazın
           text: Hangi reklamdan, hangi mesajla geliyor? Sayfanın başlığı bu mesajın devamı olmalı. Bu eşleşme kurulmadığında dönüşüm oranı düşük kalıyor.
         - title: İtirazları listeleyin

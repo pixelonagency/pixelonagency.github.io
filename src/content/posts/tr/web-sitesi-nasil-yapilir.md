@@ -40,7 +40,7 @@ article:
         - title: Sitenin işini belirleyin
           text: Tanıtım mı, teklif talebi mi, randevu mu, satış mı? Tek bir ana iş seçin. Her şeyi yapmaya çalışan site hiçbirini iyi yapmıyor.
         - title: Alan adını kendi adınıza alın
-          text: Alan adı sitenizin adresi ve markanızın parçası. Kaydın ajansın ya da bir çalışanın değil, işletmenin adına olduğundan emin olun.
+          text: Alan adı sitenizin adresi ve markanızın parçası. Kaydın ajansın ya da bir çalışanın değil, işletmenin adına olduğundan emin olun. Nasıl seçileceğini [alan adı nedir](/blog/alan-adi-nedir/) yazısında anlattık.
         - title: Sayfa listesini çıkarın
           text: Ana sayfa, hakkımızda, hizmetler, projeler, iletişim. Her hizmet için ayrı sayfa açmak, arama sonuçlarında her birinin ayrı ayrı bulunmasını sağlar.
         - title: Metin ve görselleri hazırlayın

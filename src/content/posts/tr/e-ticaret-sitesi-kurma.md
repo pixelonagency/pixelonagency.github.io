@@ -10,7 +10,7 @@ author: Pixelon Ekibi
 status: published
 featured: false
 seo:
-  title: 'E-Ticaret Sitesi Kurma Maliyeti ve Süreci | Pixelon'
+  title: 'E-Ticaret Sitesi Nasıl Kurulur? Maliyet ve Süreç | Pixelon'
   description: 'E-ticaret sitesi kurma maliyetini belirleyen altı kalem: ürün ve varyant yapısı, ödeme ve kargo entegrasyonları, ürün içeriği, çok dillilik ve ölçümleme. Fiyat aralığı ve teslim süresiyle.'
 article:
   updated: 2026-09-30
@@ -159,6 +159,8 @@ article:
     - type: faq
       heading: Sık Sorulan Sorular
       items:
+        - question: E-ticaret sitesi nasıl kurulur?
+          answer: 'Önce kurulum yolu seçilir: hazır platform, açık kaynak ya da özel geliştirme. Sonra ürün ve varyant yapısı çıkarılır, ödeme ve kargo altyapısı bağlanır, ürün içerikleri girilir, satış ölçümü kurulur ve site test edilip yayına alınır. Bu adımlardan en çok zaman alanı genellikle ürün içeriği oluyor.'
         - question: E-ticaret sitesi kaç günde kurulur?
           answer: 'Ortalama 30 gün. Süreyi uzatan neredeyse her zaman ürün içeriğinin hazır olmaması oluyor; fotoğraf ve açıklamalar baştan planlanırsa takvim kaymıyor.'
         - question: Hazır platform mu, özel kurulum mu daha mantıklı?

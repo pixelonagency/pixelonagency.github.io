@@ -59,7 +59,7 @@ article:
     - type: cards
       items:
         - title: Teknik SEO
-          text: Sitenin taranabilir ve hızlı olması. Temiz URL yapısı, doğru başlık hiyerarşisi, mobil uyum, hızlı açılan sayfalar, çalışan yönlendirmeler ve site haritası. Bu katman bozuksa içerik ne kadar iyi olursa olsun görünmüyor.
+          text: Sitenin taranabilir ve hızlı olması. Temiz URL yapısı, doğru başlık hiyerarşisi, mobil uyum, hızlı açılan sayfalar, çalışan yönlendirmeler ve site haritası. Bu katman bozuksa içerik ne kadar iyi olursa olsun görünmüyor. Bu kararların site kurulurken nasıl verildiğini [SEO uyumlu web sitesi](/blog/seo-uyumlu-web-sitesi/) yazısında anlattık.
         - title: İçerik
           text: Arayan kişinin sorusunu gerçekten cevaplayan sayfalar. Anahtar kelimeyi metne serpiştirmek değil; o kelimeyi arayan kişinin ne öğrenmek istediğini anlayıp karşılamak. İçerik katmanı, sıralamayı en çok belirleyen taraf.
         - title: Otorite
@@ -132,7 +132,7 @@ article:
         - question: İlk sırada çıkmak garanti edilebilir mi?
           answer: Edilemez. Sıralama arama motorunun algoritmasına bağlı ve hiçbir ajans bunu taahhüt edemez. Garanti veren yaklaşımlara temkinli bakmak gerekiyor. Taahhüt edilebilecek şey, yapılacak çalışmanın kapsamı ve ölçülebilir ara hedefler.
         - question: Küçük işletmeler büyük markalarla yarışabilir mi?
-          answer: Genel ve rekabetli kelimelerde zor, ama niş ve yerel aramalarda fazlasıyla mümkün. Şehir veya ilçe bazlı aramalar ile dar tanımlı hizmet sorguları, küçük işletmelerin en güçlü olduğu alanlar.
+          answer: Genel ve rekabetli kelimelerde zor, ama niş ve yerel aramalarda fazlasıyla mümkün. Şehir veya ilçe bazlı aramalar ile dar tanımlı hizmet sorguları, küçük işletmelerin en güçlü olduğu alanlar. Yerel aramada ilk adım olan işletme profilini [Google İşletme Profili nasıl oluşturulur](/blog/google-isletme-profili-nasil-olusturulur/) yazısında anlattık.
         - question: SEO ile reklamı aynı anda yürütmek mantıklı mı?
           answer: Genellikle evet. Reklam kısa vadede talep getirirken SEO uzun vadede maliyeti düşürüyor. Ayrıca reklam verisi, hangi sorguların gerçekten talep ürettiğini göstererek SEO'nun içerik planını da besliyor.
 

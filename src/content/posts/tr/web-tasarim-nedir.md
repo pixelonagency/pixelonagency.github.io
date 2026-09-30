@@ -57,6 +57,8 @@ article:
 
         Kodlama aşamasında bu çizimler HTML, CSS ve JavaScript ile tarayıcının anlayacağı hâle getiriliyor. Formun nereye gideceği, sayfanın ne kadar hızlı açılacağı ve yönetim panelinin nasıl çalışacağı burada çözülüyor.
 
+        Tasarımın içinde de iki ayrı katman var: kullanıcının işi nasıl yapacağı ve bunun ekranda nasıl görüneceği. Bu ayrımı [UI ve UX nedir](/blog/ui-ux-nedir/) yazısında anlattık.
+
         İyi bir sitede ikisi birbirinden kopuk ilerlemiyor. Tasarımcı kodun neye izin verdiğini, geliştirici de tasarımın neden öyle kurulduğunu biliyor.
 
     - type: table
@@ -107,7 +109,7 @@ article:
         - title: Site haritası
           text: Hangi sayfaların olacağı ve birbirine nasıl bağlanacağı belirleniyor. Her hizmet için ayrı sayfa mı, tek sayfa mı, kararı burada veriliyor.
         - title: Taslak ekranlar
-          text: Renksiz, fotoğrafsız taslaklarla her sayfadaki bilgi sırası ve butonların yeri netleşiyor. Önce telefon ekranı çiziliyor.
+          text: Renksiz, fotoğrafsız taslaklarla her sayfadaki bilgi sırası ve butonların yeri netleşiyor. Önce telefon ekranı çiziliyor. Bu aşamayı [wireframe nedir](/blog/wireframe-nedir/) yazısında ayrıntılı anlattık.
         - title: Görsel tasarım
           text: Marka kimliği taslaklara giydiriliyor. Renk, tipografi ve görsel dil bu aşamada devreye giriyor.
         - title: Kodlama ve panel

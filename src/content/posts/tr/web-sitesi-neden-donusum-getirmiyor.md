@@ -53,7 +53,7 @@ article:
       intro: Aşağıdaki sıra, en ucuz ve en kesin kontrolden başlayıp en maliyetli müdahaleye doğru ilerliyor.
       steps:
         - title: Formu kendiniz doldurun
-          text: Masaüstünden ve telefondan birer kez form gönderin. Mesajın ulaştığı kutuyu kontrol edin. Bu beş dakikalık test, vakaların azımsanmayacak bir kısmında sorunu doğrudan bulur.
+          text: Masaüstünden ve telefondan birer kez form gönderin. Mesajın ulaştığı kutuyu kontrol edin. Bu beş dakikalık test, vakaların azımsanmayacak bir kısmında sorunu doğrudan bulur. Sitenin tamamını yedi adımda incelemek için [web sitesi analizi nasıl yapılır](/blog/web-sitesi-analizi-nasil-yapilir/) yazısına bakabilirsiniz.
         - title: Dönüşüm olaylarının tanımlı olduğunu doğrulayın
           text: Form gönderimi, telefon ve WhatsApp tıklaması ayrı olaylar olarak izlenmeli. Tanımlı değilse, hangi sayfanın işe yaradığı bilinemez.
         - title: Trafiğin nereden geldiğine bakın
