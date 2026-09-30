@@ -147,7 +147,7 @@ article:
         - question: Web tasarımı ve kodlama bölümü nedir?
           answer: Türkiye'de meslek yüksekokullarında okutulan iki yıllık bir önlisans programıdır. Program hem tasarım hem kodlama derslerini kapsar. Bu yazı ise bir işletme için web sitesi tasarımının nasıl işlediğini anlatıyor.
         - question: Hazır şablon kullanmak web tasarım sayılır mı?
-          answer: Şablon hazır bir tasarımdır; kendi içeriğinize uyarlamak da bir tasarım işidir. Hizmetleriniz standart ve bütçeniz sınırlıysa şablon hızlı bir başlangıç sağlar. Ürün tabloları, çok dilli yapı ya da özel bir başvuru akışı gerekiyorsa şablonun kalıbı dar gelir. İki yolu [WordPress mi, özel yazılım mı](/blog/wordpress-mi-ozel-yazilim-mi/) yazısında karşılaştırdık.
+          answer: Şablon hazır bir tasarımdır; kendi içeriğinize uyarlamak da bir tasarım işidir. Hizmetleriniz standart ve bütçeniz sınırlıysa şablon hızlı bir başlangıç sağlar. Ürün tabloları, çok dilli yapı ya da özel bir başvuru akışı gerekiyorsa şablonun kalıbı dar gelir. Şablonun ne zaman yettiğini [hazır şablon mu, özel web tasarım mı](/blog/hazir-site-mi-ozel-tasarim-mi/) yazısında, altyapı tarafını [WordPress mi, özel yazılım mı](/blog/wordpress-mi-ozel-yazilim-mi/) yazısında anlattık.
         - question: Web tasarım ne kadar sürer?
           answer: Kurumsal sitelerde bizde ortalama 30 gün. Sayfa sayısı, dil sayısı ve içeriklerin hazır olup olmaması süreyi değiştiriyor.
         - question: Web tasarım fiyatları ne kadar?

@@ -50,6 +50,8 @@ article:
 
         Standart olmayan bir süreci hazır sistemde yürütmek mümkün ama eklenti üstüne eklenti kurmayı gerektiriyor. O yığın ilk yıl ucuz, üçüncü yıl bakımı zor bir yapıya dönüşüyor.
 
+        Altyapı kararı, sayfaların hazır bir şablonla mı yoksa size özel mi çizileceğinden ayrı bir soru. O tarafı [hazır şablon mu, özel web tasarım mı](/blog/hazir-site-mi-ozel-tasarim-mi/) yazısında ele aldık.
+
     - type: table
       heading: Dürüst karşılaştırma
       columns:
