@@ -1,7 +1,7 @@
 ---
 title: Mobico
 client: Mobico
-category: uxui
+category: marka
 categoryLabel: CRM & Yazılım · Marka Kimliği
 excerpt: CRM altyapısı geliştiren Mobico için logodan sunum şablonuna, kurumsal kimlikten sosyal medyaya uzanan marka sistemi.
 cover: '/src/assets/images/projects/mobico.webp'
