@@ -42,7 +42,7 @@ Hastaların büyük bölümü tedavi araştırmasını mobil cihazlar üzerinden
 
 ### Doktor ve Klinik Bilgileri
 
-Doktor deneyimi, klinik sertifikaları ve tedavi süreçlerinin şeffaf biçimde anlatılması, hastanın karar verme sürecini kısaltır. Bir klinik sitesinin bu bilgileri nasıl sıraladığını [doktor ve klinik web sitesi](/hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/) sayfasında kendi projelerimizle gösterdik.
+Doktor deneyimi, klinik sertifikaları ve tedavi süreçlerinin şeffaf biçimde anlatılması, hastanın karar verme sürecini kısaltır. Bir klinik sitesinin bu bilgileri nasıl sıraladığını [doktor ve klinik web sitesi](/hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/) sayfasında kendi projelerimizle gösterdik. Hastanın siteye gelişinden randevuya kadar her adımda sitenin ne yapması gerektiğini [doktor web sitesi nasıl olmalı](/blog/doktor-web-sitesi-nasil-olmali/) yazısında anlattık.
 
 ### Hasta Yorumları
 

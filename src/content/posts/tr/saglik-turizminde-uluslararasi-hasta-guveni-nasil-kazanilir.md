@@ -71,7 +71,7 @@ Uluslararası hastaların önemli bir bölümü reklamlardan veya sosyal medya i
 
 ## Doktorların Uzmanlığını Açık ve Doğrulanabilir Biçimde Anlatın
 
-Sağlık turizminde hastanın en çok merak ettiği konulardan biri tedaviyi kimin gerçekleştireceğidir. Buna rağmen birçok klinik web sitesinde doktor bilgileri yalnızca isim ve fotoğraftan ibaret kalmaktadır. Doktor profilleri, güven oluşturacak kadar açıklayıcı ancak abartılı iddialardan uzak olmalıdır.
+Sağlık turizminde hastanın en çok merak ettiği konulardan biri tedaviyi kimin gerçekleştireceğidir. Buna rağmen birçok klinik web sitesinde doktor bilgileri yalnızca isim ve fotoğraftan ibaret kalmaktadır. Doktor profilleri, güven oluşturacak kadar açıklayıcı ancak abartılı iddialardan uzak olmalıdır. Bilgilendirici dil ile vaat eden dil arasındaki farkı [doktor web sitesi nasıl olmalı](/blog/doktor-web-sitesi-nasil-olmali/) yazısında örneklerle gösterdik.
 
 - Adı, unvanı ve uzmanlık alanı
 - Eğitim ve mesleki deneyim bilgileri
