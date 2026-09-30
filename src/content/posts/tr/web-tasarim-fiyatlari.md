@@ -42,6 +42,8 @@ article:
       text: |-
         Aşağıdaki kalemlerin her biri tek başına küçük görünüyor; birlikte toplam maliyetin çoğunu oluşturuyor.
 
+        Kalemlerin çoğu tasarım aşamasında verilen kararlardan doğuyor; bu kararların neler olduğunu [web tasarım nedir](/blog/web-tasarim-nedir/) yazısında anlattık.
+
     - type: cards
       items:
         - title: Tasarım yaklaşımı

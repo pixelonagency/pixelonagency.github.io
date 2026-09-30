@@ -33,7 +33,7 @@ article:
 
         Daha işe yarar soru şu: Bu siteye gelen kişi kim, ne arıyor ve ne yapmasını istiyoruz?
 
-        Bu üç sorunun cevabı netleştiğinde tasarım kararlarının çoğu kendiliğinden yerine oturuyor. Netleşmediğinde ise ortaya estetik açıdan başarılı ama ne işe yaradığı belirsiz bir site çıkıyor.
+        Bu üç sorunun cevabı netleştiğinde tasarım kararlarının çoğu kendiliğinden yerine oturuyor. Bir sitenin tasarımında hangi kararların verildiğini [web tasarım nedir](/blog/web-tasarim-nedir/) yazısında adım adım açtık. Netleşmediğinde ise ortaya estetik açıdan başarılı ama ne işe yaradığı belirsiz bir site çıkıyor.
 
     - type: section
       id: on-ozellik
