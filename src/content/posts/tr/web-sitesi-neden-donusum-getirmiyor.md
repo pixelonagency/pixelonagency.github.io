@@ -13,7 +13,7 @@ seo:
   title: 'Web Sitesi Neden Dönüşüm Getirmiyor? | Pixelon'
   description: 'Ziyaretçi var ama talep yok. Web sitesinde dönüşümü engelleyen nedenler, belirtilere göre teşhis yöntemi ve önce yapılması gereken düzeltmeler.'
 article:
-  updated: 2026-08-21
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: 'Bir web sitesi genellikle şu dört nedenden dönüşüm getirmez: gelen trafik yanlış kitleden oluşuyordur, sayfa ziyaretçiye ne yapması gerektiğini net söylemiyordur, güven kurulmadan bilgi isteniyordur ya da dönüşüm teknik olarak takip edilmediği için aslında gelen talepler görülmüyordur. Doğru sıra önce ölçümü kurmak, sonra trafiğin niteliğine bakmak, en son tasarıma dokunmaktır.'
@@ -86,9 +86,9 @@ article:
         - title: Yavaş açılan sayfa
           text: Ziyaretçi içeriği görmeden ayrılıyorsa tasarımın kalitesi ölçülemiyor bile. Optimize edilmemiş görseller ve gereksiz script'ler en sık iki neden.
         - title: Fiyat ve süre sorusunun cevapsız kalması
-          text: Ziyaretçinin aklındaki ilk iki soru genellikle bunlar. Sayfa hiç değinmiyorsa, cevabı başka bir yerde aramaya gidiyor.
+          text: Ziyaretçinin aklındaki ilk iki soru genellikle bunlar. Sayfa hiç değinmiyorsa, cevabı başka bir yerde aramaya gidiyor. Bu yüzden kendi fiyatlarımızı [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında açıkça yayınlıyoruz.
         - title: Mobilde bozulan düzen
-          text: Butonun ekran dışında kalması, formun klavyeyle örtülmesi veya metnin okunamayacak kadar küçülmesi. Trafiğin çoğu mobildeyse bu tek başına belirleyici oluyor.
+          text: Butonun ekran dışında kalması, formun klavyeyle örtülmesi veya metnin okunamayacak kadar küçülmesi. Trafiğin çoğu mobildeyse bu tek başına belirleyici oluyor. Telefonda denenecek sekiz maddeyi [mobil uyumlu web sitesi](/blog/mobil-uyumlu-web-sitesi/) yazısında topladık.
 
     - type: image
       src: '/src/assets/images/blog/donusum-tikanma-noktasi.webp'
@@ -146,7 +146,7 @@ article:
 
         Buna karşılık site yalnızca eski göründüğü için yenileniyorsa, dönüşüm sorunu yeni tasarımla birlikte devam etme eğiliminde. Çünkü sorun görselde değil, kurguda ve ölçümdeydi.
 
-        Bu yüzden yenileme kararından önce ölçüm verisi toplamak, yeni sitenin neyi farklı yapması gerektiğini de belirliyor. Karar yenileme yönünde çıktıysa, işi kime vereceğinizi seçerken bakılacakları [web tasarım ajansı seçerken nelere dikkat edilmeli](/blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/) yazısında sıraladık.
+        Bu yüzden yenileme kararından önce ölçüm verisi toplamak, yeni sitenin neyi farklı yapması gerektiğini de belirliyor. Karar yenileme yönünde çıktıysa, işi kime vereceğinizi seçerken bakılacakları [web tasarım ajansı seçerken nelere dikkat edilmeli](/blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/) yazısında sıraladık. Kurumsal sitelerde talebi nasıl kurguladığımızı [kurumsal web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/) sayfasında gösterdik.
 
     - type: faq
       heading: Sık Sorulan Sorular

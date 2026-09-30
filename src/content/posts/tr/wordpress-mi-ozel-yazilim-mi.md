@@ -13,7 +13,7 @@ seo:
   title: 'WordPress mi Özel Yazılım mı? Dürüst Karşılaştırma | Pixelon'
   description: 'WordPress mi özel yazılım mı? İkisini de yapan bir ajanstan taraf tutmayan karşılaştırma: maliyet, güncelleme kolaylığı, hız, güvenlik ve hangi durumda hangisinin doğru olduğu.'
 article:
-  updated: 2026-09-05
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: 'Seçimi bütçe değil iki soru belirler. Birincisi içeriği kim güncelleyecek: siteye sık sık yazı, ürün veya sayfa ekleyecekseniz WordPress gibi hazır bir yönetim sistemi işinizi kolaylaştırır. İkincisi iş akışınız ne kadar standart: ölçü alma, özel fiyatlandırma, rezervasyon gibi kendine has bir süreciniz varsa özel yazılım uzun vadede daha ucuza gelir. Standart bir kurumsal site için WordPress fazlasıyla yeterlidir.'
@@ -149,7 +149,7 @@ article:
 
         İçeriği ekibiniz güncelleyecekse ve süreçleriniz standartsa hazır sistem doğru seçim; bütçenin kalanını tasarıma ve içeriğe ayırın. Kendine özgü bir akışınız varsa özel yazılım ilk yıl pahalı, üçüncü yıl ucuz oluyor.
 
-        Karar verirken ilk teklife değil ilk üç yılın toplamına bakın. Kapsamın fiyatı nasıl değiştirdiğini [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında, teslim takvimini [web sitesi kaç günde biter](/blog/web-sitesi-kac-gunde-biter/) yazısında anlattık.
+        Karar verirken ilk teklife değil ilk üç yılın toplamına bakın. Kapsamın fiyatı nasıl değiştirdiğini [web sitesi fiyatı neye göre belirlenir](/blog/web-tasarim-fiyatlari/) yazısında, teslim takvimini [web sitesi kaç günde biter](/blog/web-sitesi-kac-gunde-biter/) yazısında anlattık.
 
     - type: cta
       heading: Hangisinin size uyduğunu birlikte bakalım.
