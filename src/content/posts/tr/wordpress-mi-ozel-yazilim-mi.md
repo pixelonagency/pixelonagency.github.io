@@ -123,7 +123,7 @@ article:
 
         Cevap "içeriği biz güncelleyeceğiz, süreçler standart" ise hazır sistemde kuruyoruz ve bütçenin kalanını tasarıma, içeriğe ve ölçümlemeye ayırıyoruz. Cevap "kendimize özgü bir akışımız var" ise o akışı çıkarıp özel geliştiriyoruz. İki yolla kurduğumuz projeleri [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) sayfamızda bir arada görebilirsiniz.
 
-        Bazen ikisi birden oluyor. [Dentasay](/projelerimiz/dentasay/) için kurduğumuz 13 dilli yapıda içerik yönetimi ekibin kendi kullanabileceği biçimde kurgulandı; dil katmanı ve hasta iletişim akışı ise ayrı ele alındı.
+        Bazen ikisi birden oluyor. [Dentasay](/projelerimiz/dentasay/) için kurduğumuz 13 dilli yapıda içerik yönetimi ekibin kendi kullanabileceği biçimde kurgulandı; dil katmanı ve hasta iletişim akışı ise ayrı ele alındı. Hazır sistemin hangi noktada yetmediğini [özel web yazılımı](/hizmetlerimiz/web-tasarim-ve-yazilim/ozel-web-yazilimi/) sayfasında dört gerçek akışla anlattık.
 
         Hangi yolu seçersek seçelim değişmeyen üç şey var: alan adı ve kod sahipliği size ait oluyor, panelde eğitim veriyoruz, ve yayın sonrası ne yapılacağı yazılı oluyor.
 
