@@ -240,8 +240,8 @@ showcase:
     - dr-ayse-cinkaya-kahveci
     - cagla-aytac
   columns: 2
-  ctaLabel: Tüm projelerimizi inceleyin
-  ctaHref: /projelerimiz/
+  ctaLabel: Tüm web tasarım örneklerimiz
+  ctaHref: /projelerimiz/web-tasarim/
 
 value:
   eyebrow: Neden Pixelon ile Çalışmalısınız?
