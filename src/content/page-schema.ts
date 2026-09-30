@@ -474,6 +474,12 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
      */
     slugs: opt(list(z.string())),
     /**
+     * Yalnızca bu etiketi taşıyan projeler (ör. "Web Tasarım"). `slugs` verilmişse
+     * o kazanır. Portfolyo alt görünümleri bunu kullanır: liste elle tutulmaz, yeni
+     * bir iş etiketiyle eklendiğinde sayfaya kendiliğinden girer.
+     */
+    tag: opt(z.string()),
+    /**
      * Sabit sütun sayısı. Verilmezse ızgara `auto-fit` ile kendi doldurur.
      * Az sayıda vakayı geniş göstermek isteyen bölümler bunu 2 verir.
      */

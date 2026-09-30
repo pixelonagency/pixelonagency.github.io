@@ -982,6 +982,8 @@ collections:
               - { label: Meta Satırı (board), name: tagline, widget: string, required: false }
               - &s_limit { label: Adet Sınırı, name: limit, widget: number, value_type: int, required: false }
               - { label: Kategori Filtresi Göster, name: showFilters, widget: boolean, default: false }
+              # Yalnızca bu etiketi taşıyan projeler (ör. "Web Tasarım"); liste elle tutulmaz.
+              - { label: Etiket Filtresi, name: tag, widget: string, required: false }
               - label: Görünüm
                 name: kind
                 widget: select
