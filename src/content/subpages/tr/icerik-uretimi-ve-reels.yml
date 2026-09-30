@@ -1,0 +1,218 @@
+title: İçerik Üretimi ve Reels Çekimi
+parent: sosyal-medya-yonetimi
+status: published
+
+seo:
+  title: Sosyal Medya İçerik Üretimi ve Reels Çekimi | Pixelon
+  description: >-
+    Sosyal medya içerik üretimi: Reels ve video çekimi, ürün çekimi, UGC, gönderi ve
+    hikâye tasarımı. Senaryodan kurguya tek ekip; Dr. Ayşe Cinkaya Kahveci'de bir
+    yılda 9,2 milyon görüntülenme.
+
+whatsappMessage: Merhaba Pixelon, sosyal medya için içerik ve Reels çekimi hakkında bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: İçerik Üretimi ve Reels Çekimi
+    headingLines:
+      - 'İzlenen İçerik *Planla* Başlar, Çekimle Değil.'
+    lead: >-
+      Sosyal medyada bir videonun izlenip izlenmeyeceği çoğu zaman ilk iki saniyede
+      belli oluyor. O iki saniyeyi çekim gününden önce, senaryo masasında kuruyoruz;
+      çekimi, kurguyu ve tasarımı da aynı ekip yapıyor.
+    video:
+      desktopMp4: /media/hero/sosyal-medya/hero-sosyal-desktop.mp4
+      desktopWebm: /media/hero/sosyal-medya/hero-sosyal-desktop.webm
+      desktopPoster: /media/hero/sosyal-medya/hero-sosyal-desktop-poster.webp
+      mobileMp4: /media/hero/sosyal-medya/hero-sosyal-mobile.mp4
+      mobileWebm: /media/hero/sosyal-medya/hero-sosyal-mobile.webm
+      mobilePoster: /media/hero/sosyal-medya/hero-sosyal-mobile-poster.webp
+    chips:
+      - Reels ve kısa video
+      - Ürün ve UGC çekimi
+      - Gönderi ve hikâye tasarımı
+      - Altyazılı kurgu
+    ctas:
+      - label: Çekim Planlayalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: stats
+    background: light
+    eyebrow: Ürettiğimiz İçeriklerden
+    heading: Çekimin Arkasındaki Sonuçlar
+    items:
+      - value: 9
+        suffix: ',2 milyon'
+        label: Dr. Ayşe Cinkaya Kahveci
+        description: Bir yılda içerik görüntülenmesi, 100'den fazla videoyla.
+      - value: 18
+        suffix: ' milyon'
+        label: Çağla Aytaç
+        description: İki yılda içerik görüntülenmesi, Almanya pazarında.
+      - value: 1
+        suffix: ' milyon+'
+        label: Sera Natura
+        description: Reklam izlenmesi, UGC ve ürün videolarıyla.
+
+  - type: showreel
+    background: dark
+    variant: reel
+    eyebrow: Kameranın Arkasında
+    heading: Çektiğimiz Bazı Videolar
+    items:
+      - label: Dr. Ayşe Cinkaya Kahveci
+        image: '/src/assets/images/reels/kolajen.webp'
+        video: /media/reels/kolajen.mp4
+        alt: Kolajen konulu bilgilendirme Reels çekimi
+        href: /projelerimiz/dr-ayse-cinkaya-kahveci/
+      - label: Op. Dr. İsmail Büyükçayır
+        image: '/src/assets/images/reels/dogru-bilinen-yanlislar.webp'
+        video: /media/reels/dogru-bilinen-yanlislar.mp4
+        alt: Doğru bilinen yanlışlar serisinden hekim çekimi
+        href: /projelerimiz/op-dr-ismail-buyukcayir/
+      - label: Sera Natura · Nioli
+        image: '/src/assets/images/reels/nioli.webp'
+        video: /media/reels/nioli.mp4
+        alt: Nioli yağı için ürün tanıtım çekimi
+        href: /projelerimiz/sera-natura/
+      - label: Xray Groupe
+        image: '/src/assets/images/reels/xray-saha.webp'
+        video: /media/reels/xray-saha.mp4
+        alt: İnşaat sahasında çekilen tanıtım videosu
+        href: /projelerimiz/xray-groupe/
+      - label: Anneliğin Hikayesi
+        image: '/src/assets/images/reels/gelin-kaynana.webp'
+        video: /media/reels/gelin-kaynana.mp4
+        alt: Annelik içerik serisinden sunum çekimi
+        href: /projelerimiz/annelik-hikayesi/
+      - label: Touch Consulting
+        image: '/src/assets/images/reels/touch-reel.webp'
+        video: /media/reels/touch-reel.mp4
+        alt: Danışmanlık markası için sunum çekimi
+        href: /projelerimiz/touch-consulting/
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Bir Videonun Ömrü
+    heading: Her Video Tek Bir Soruya Cevap Veriyor
+    body: |-
+      Sosyal medyada izlenen videoların çoğu, izleyicinin zaten merak ettiği bir soruyu başlıkta açıkça soruyor. "Karın germe sonrası doğum yapılabilir mi?", "Cilt bariyeri bozulursa ne olur?" Op. Dr. İsmail Büyükçayır ve Dr. Ayşe Cinkaya Kahveci için çektiğimiz videolar bu sorular üzerine kurulu.
+
+      Bu yüzden çekim günü değil, senaryo masası önemli. Hangi sorunun cevaplanacağı, ilk iki saniyede ne söyleneceği ve videonun nasıl biteceği çekimden önce yazılıyor. Kamera karşısına geçen kişi ne anlatacağını biliyor ve tek bir çekim gününden birden fazla videonun malzemesi çıkıyor.
+
+      Kurguda altyazı standart. Sosyal medyada izlemelerin çoğu sesi kapalı başlıyor; altyazısız bir video, izleyicinin büyük kısmına hiçbir şey anlatmıyor.
+    highlight: İyi bir video çekim gününde değil, senaryo masasında başlıyor.
+
+  - type: cards
+    background: dark
+    kind: feature
+    columns: 2
+    eyebrow: Ürettiğimiz İçerikler
+    heading: Tek Bir Formata Sıkışmayan Üretim
+    items:
+      - title: Reels ve kısa video
+        description: >-
+          Hekim, uzman ya da marka sahibinin kendi anlatımıyla bilgilendirici videolar.
+          Senaryo, çekim, kurgu ve altyazı bizde.
+        icon: craft
+      - title: Ürün ve UGC çekimi
+        description: >-
+          Sera Natura'da ürünleri stüdyo kurgusuyla değil, gerçek kullanıcının kendi
+          evinde, kendi diliyle anlattığı UGC videolarıyla tanıttık.
+        icon: bespoke
+      - title: Saha ve tanıtım çekimi
+        description: >-
+          Xray Groupe'ta şantiyeden gelen ham görüntüyü markanın diline soktuk; web
+          sitesi, sosyal medya ve katalog aynı malzemenin üzerine kuruldu.
+        icon: orbit
+      - title: Gönderi ve hikâye tasarımı
+        description: >-
+          Carousel, bilgi kartı, kampanya ve hikâye tasarımları markanın kimliğiyle
+          aynı dilde; her format aynı marka gibi görünüyor.
+        icon: strategy
+
+  - type: steps
+    background: light
+    kind: timeline
+    eyebrow: Süreç
+    heading: Fikirden Yayına
+    items:
+      - title: Konu ve senaryo
+        description: Her videonun cevaplayacağı soru ve ilk iki saniyesi yazılıyor.
+      - title: Çekim planı
+        description: Mekân, ekipman ve çekilecek içerik listesi önceden netleşiyor.
+      - title: Çekim
+        description: Klinik, saha, ofis ya da stüdyo; çekim içeriğin gerektirdiği yerde.
+      - title: Kurgu ve tasarım
+        description: Altyazı, grafik ve kapak tasarımıyla her platforma uygun sürüm.
+      - title: Yayın ve ölçüm
+        description: Hangi videonun izlendiği ve kaydedildiği takip edilip plan güncelleniyor.
+
+  - type: projects
+    background: dark
+    eyebrow: Projeler
+    heading: İçeriğini Ürettiğimiz Markalar
+    slugs:
+      - dr-ayse-cinkaya-kahveci
+      - sera-natura
+      - op-dr-ismail-buyukcayir
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: light
+    eyebrow: Merak Edilenler
+    heading: İçerik Üretimi ve Reels Çekimi Hakkında Sorular
+    items:
+      - question: Çekimleri kendi ekibiniz mi yapıyor?
+        answer: >-
+          Evet. Senaryo, çekim, kurgu ve tasarım aynı ekipte. Klinik, saha ya da ofis;
+          çekimi içeriğin gerektirdiği yerde yapıyoruz.
+      - question: İstanbul dışında çekim yapıyor musunuz?
+        answer: >-
+          Evet. Ekibimiz Kadıköy'de, ama uygun şartlar sağlandığında Türkiye'nin ve
+          dünyanın her yerinde çekim yapıyoruz; Antalya'da ve Kenya'da yaptığımız
+          çekimler bunlardan ikisi. Lokasyon ve yol planı, çekim gününün içerik
+          listesiyle birlikte önceden hazırlanıyor.
+      - question: Ayda kaç video çekiliyor?
+        answer: >-
+          Markanın hedefine ve seçilen kapsama göre değişiyor. Tek bir çekim gününde
+          birden fazla videonun malzemesi çıkarılıyor; bu yüzden çekimler önceden
+          planlanan içerik listesine göre yapılıyor.
+      - question: Kamera karşısına geçmek zorunda mıyım?
+        answer: >-
+          Zorunlu değil, ama güveni en çok kuran içerik genellikle işi yapan kişinin
+          kendi anlatımı. Kamera karşısında rahat değilseniz ürün, saha ve UGC
+          formatlarıyla da çalışılabiliyor.
+      - question: Sadece içerik üretimi alabilir miyim, hesap yönetimi olmadan?
+        answer: >-
+          Evet. Çekim ve tasarım tek başına da planlanabiliyor. Hesap yönetimiyle birlikte
+          yürüdüğünde hangi içeriğin işe yaradığını ölçüp bir sonraki çekimi ona göre
+          planlayabiliyoruz.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Markanız İçin Çekim Planını Birlikte Çıkaralım
+    lead: >-
+      Hangi soruların cevaplanacağını ve ilk çekim gününde neyin çekileceğini birlikte
+      belirleyelim.
+    ctas:
+      - label: Çekim Planlayalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Sosyal Medya Yönetimi
+        href: /hizmetlerimiz/sosyal-medya-yonetimi/
+        variant: outline

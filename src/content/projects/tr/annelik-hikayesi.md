@@ -11,6 +11,7 @@ tags:
   - Marka Kimliği
   - Logo Tasarımı
   - Web Tasarım
+  - Sosyal Medya
   - Sosyal Medya Tasarımı
   - Video & Fotoğraf
   - İçerik Sistemi

@@ -289,6 +289,12 @@ describe('web tasarım kümesi', () => {
     expect(graph.out.get('web-tasarim-fiyatlari')?.has(pricing)).toBe(true);
   });
 
+  test('sosyal medya ajansı yazısı sosyal medya fiyat sayfasına bağlanır', async () => {
+    const graph = await buildGraph('tr');
+    const pricing = localizedPath('services', 'tr', 'sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari');
+    expect(graph.out.get('sosyal-medya-ajanslari-ne-is-yapar')?.has(pricing)).toBe(true);
+  });
+
   test('WordPress yazısı özel web yazılımı sayfasına bağlanır', async () => {
     const graph = await buildGraph('tr');
     const target = localizedPath('services', 'tr', 'web-tasarim-ve-yazilim/ozel-web-yazilimi');

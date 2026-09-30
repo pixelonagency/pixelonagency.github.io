@@ -9,11 +9,11 @@ summary: >-
   Strateji, tasarım ve video üretimini birleştirerek markanız için tutarlı bir sosyal medya dünyası kuruyoruz.
 
 seo:
-  title: Sosyal Medya Ajansı | İçerik, Reels ve Yönetim | Pixelon
+  title: Sosyal Medya Yönetimi ve Ajansı | Reels ve İçerik | Pixelon
   description: >-
-    Sosyal medya ajansı arıyorsanız: markanıza özel strateji, içerik üretimi,
-    Reels ve video, tasarım, topluluk yönetimi ve düzenli raporlama. Kaydırılıp
-    geçilen değil, takip edilen bir hesap kuruyoruz.
+    Sosyal medya yönetimi ve ajans hizmeti: markanıza özel strateji, içerik üretimi,
+    Reels ve video çekimi, tasarım, topluluk yönetimi ve raporlama. Kaydırılıp geçilen
+    değil, takip edilen bir hesap kuruyoruz.
 
 heroVideo:
   desktopMp4: /media/hero/sosyal-medya/hero-sosyal-desktop.mp4
@@ -122,9 +122,9 @@ intro:
   eyebrow: Sadece Görünür Olmak Yetmez
   heading: Markanızın Hatırlanmasını ve Tercih Edilmesini Sağlıyoruz
   body: |-
-    Sosyal medya, markanızın hedef kitlesiyle doğrudan iletişim kurduğu en güçlü alanlardan biridir. Ancak yalnızca düzenli paylaşım yapmak, güçlü bir marka algısı oluşturmak için yeterli değildir.
+    Sosyal medya, markanızın hedef kitlesiyle doğrudan iletişim kurduğu en güçlü alanlardan biridir. Ancak yalnızca düzenli paylaşım yapmak, güçlü bir marka algısı oluşturmak için yeterli değildir. Sosyal medya yönetiminin neleri kapsadığını, bir ajansın gerçekte ne iş yaptığını [sosyal medya ajansı nedir](/blog/sosyal-medya-ajanslari-ne-is-yapar/) yazısında anlattık.
 
-    Pixelon olarak markanızın hedeflerini, sektörünü ve hedef kitlesini analiz ediyor; içeriklerinizi tek tek paylaşımlar olarak değil, bütüncül bir iletişim stratejisinin parçaları olarak planlıyoruz. Markanızın görsel dilinden içerik tonuna, video kurgularından paylaşım takvimine kadar tüm süreci profesyonel biçimde yönetiyoruz.
+    Pixelon olarak markanızın hedeflerini, sektörünü ve hedef kitlesini analiz ediyor; içeriklerinizi tek tek paylaşımlar olarak değil, bütüncül bir iletişim stratejisinin parçaları olarak planlıyoruz. Markanızın görsel dilinden içerik tonuna, video kurgularından paylaşım takvimine kadar tüm süreci profesyonel biçimde yönetiyoruz. Ekibimiz Kadıköy'de, ama çekim markanın bulunduğu yerde yapılıyor: uygun şartlar sağlandığında Türkiye'nin ve dünyanın her yerinde çekim yapıyoruz. Antalya'da ve Kenya'da yaptığımız çekimler bunlardan ikisi.
   highlight: |-
     Amacımız yalnızca takipçi kazanmak değil, markanızla gerçek bağ kuran bir topluluk oluşturmaktır.
 
@@ -169,7 +169,7 @@ scope:
         Markanızın kurumsal kimliğine uygun, özgün ve dikkat çekici gönderi, carousel, hikâye ve kampanya tasarımları hazırlıyoruz.
     - title: Reels ve Video İçerikleri
       description: |-
-        Sosyal medya trendlerine ve kullanıcı davranışlarına uygun kısa video fikirleri geliştiriyor, çekim ve kurgu süreçlerini yönetiyoruz.
+        Sosyal medya trendlerine ve kullanıcı davranışlarına uygun kısa video fikirleri geliştiriyor, çekim ve kurgu süreçlerini yönetiyoruz. Senaryodan kurguya nasıl ilerlediğimizi [içerik üretimi ve Reels çekimi](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/) sayfasında gösterdik.
     - title: Metin Yazarlığı
       description: |-
         Markanızın iletişim tonuna uygun, bilgilendirici, ilgi çekici ve harekete geçirici paylaşım metinleri yazıyoruz.
@@ -282,8 +282,8 @@ showcase:
     - annelik-hikayesi
     - dentasay
   columns: 2
-  ctaLabel: Tüm projelerimizi inceleyin
-  ctaHref: /projelerimiz/
+  ctaLabel: Tüm sosyal medya örneklerimiz
+  ctaHref: /projelerimiz/sosyal-medya/
 
 value:
   eyebrow: Format Çeşitliliği
@@ -306,7 +306,7 @@ sectors:
   eyebrow: Sektör Deneyimimiz
   heading: Hangi Sektörlerle Çalışıyoruz?
   body: |-
-    Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret işletmeleri, inşaat ve gayrimenkul şirketleri ile hizmet sektöründeki KOBİ ve kurumsal markalar için sosyal medya yönetimi hizmeti sunuyoruz. Her sektörün iletişim dilini, kullanıcı davranışlarını ve içerik ihtiyaçlarını ayrı ayrı değerlendiriyoruz.
+    Sağlık ve klinik markaları, sağlık turizmi firmaları, e-ticaret işletmeleri, inşaat ve gayrimenkul şirketleri ile hizmet sektöründeki KOBİ ve kurumsal markalar için sosyal medya yönetimi hizmeti sunuyoruz. Her sektörün iletişim dilini, kullanıcı davranışlarını ve içerik ihtiyaçlarını ayrı ayrı değerlendiriyoruz. Hekim ve klinik hesaplarında nasıl çalıştığımızı [doktor ve klinik sosyal medya](/hizmetlerimiz/sosyal-medya-yonetimi/doktor-ve-klinik-sosyal-medya/) sayfasında anlattık.
   cards:
     - label: Sağlık ve Klinik
       image: '/src/assets/images/sector-saglik-klinik.webp'
@@ -342,7 +342,7 @@ faq:
         Hizmet kapsamına strateji, içerik takvimi, grafik tasarım, metin yazarlığı, Reels ve video üretimi, yayınlama, topluluk yönetimi ve raporlama dâhil edilebilir.
     - question: Ayda kaç paylaşım hazırlanıyor?
       answer: |-
-        Paylaşım sayısı markanın ihtiyaçlarına ve seçilen hizmet paketine göre belirlenir. İçerik planı gönderi, Reels ve hikâye formatlarını kapsayabilir.
+        Paylaşım sayısı markanın ihtiyaçlarına ve seçilen hizmet paketine göre belirlenir. İçerik planı gönderi, Reels ve hikâye formatlarını kapsayabilir. Paketleri ve başlangıç fiyatlarını [sosyal medya yönetimi fiyatları](/hizmetlerimiz/sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari/) sayfasında açıkça yazdık.
     - question: Fotoğraf ve video çekimi yapıyor musunuz?
       answer: |-
         Evet. İhtiyaca göre ürün, ekip, klinik, ofis ve hizmet çekimleri ile Reels prodüksiyonları planlayabiliyoruz.

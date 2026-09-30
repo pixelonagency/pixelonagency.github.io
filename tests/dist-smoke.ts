@@ -272,6 +272,7 @@ describe('inline links in body copy', () => {
       '/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim',
       '/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/',
     ],
+    ['/hizmetlerimiz/sosyal-medya-yonetimi', '/hizmetlerimiz/sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari/'],
   ];
 
   for (const [route, target] of BODY_LINKS) {
@@ -1293,14 +1294,14 @@ describe('favicon seti', () => {
  */
 describe('portfolyo indekslenmiyor', () => {
   test('/portfolyo/ noindex robots meta taşır', () => {
-    const html = readFileSync(join(DIST, 'portfolyo', 'index.html'), 'utf8');
-    expect(html).toContain('name="robots"');
-    expect(html).toMatch(/name="robots"\s+content="noindex/);
+    const robotsPage = readFileSync(join(DIST, 'portfolyo', 'index.html'), 'utf8');
+    expect(robotsPage).toContain('name="robots"');
+    expect(robotsPage).toMatch(/name="robots"\s+content="noindex/);
   });
 
   test('/projelerimiz/ indekslenmeye devam eder', () => {
-    const html = readFileSync(join(DIST, 'projelerimiz', 'index.html'), 'utf8');
-    expect(html).not.toContain('name="robots"');
+    const indexPage = readFileSync(join(DIST, 'projelerimiz', 'index.html'), 'utf8');
+    expect(indexPage).not.toContain('name="robots"');
   });
 
   test('sitemap portfolyo sayfasını listelemez', () => {
@@ -1509,6 +1510,49 @@ describe('web tasarım örnekleri', () => {
 
   test('web tasarım hizmet sayfası örnekler sayfasına bağlanır', () => {
     const pillar = readFileSync(htmlPath('/hizmetlerimiz/web-tasarim-ve-yazilim'), 'utf8');
+    expect(pillar.includes(`href="${ROUTE}/"`)).toBe(true);
+  });
+});
+
+describe('sosyal medya örnekleri', () => {
+  /*
+   * Sosyal medya kümesi (30 Eyl 2026): web tasarım örnekleriyle aynı kural. Liste
+   * "Sosyal Medya" etiketinden gelir; etiketi olmayan proje sayfaya girmez.
+   */
+  const ROUTE = '/projelerimiz/sosyal-medya';
+  const PROJECTS = join(import.meta.dir, '..', 'src', 'content', 'projects', 'tr');
+  const projects = readdirSync(PROJECTS)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => {
+      const source = readFileSync(join(PROJECTS, file), 'utf8');
+      const tags = source.match(/^tags:\n((?:\s+-\s.*\n)+)/m)?.[1] ?? '';
+      return {
+        slug: file.replace(/\.md$/, ''),
+        tagged: /^\s+-\s+Sosyal Medya\s*$/m.test(tags),
+        detail: /^detail:/m.test(source),
+      };
+    });
+  const main = (): string => {
+    const file = htmlPath(ROUTE);
+    if (!existsSync(file)) return '';
+    return readFileSync(file, 'utf8').match(/<main[\s\S]*<\/main>/)?.[0] ?? '';
+  };
+
+  test('sayfa üretilir', () => {
+    expect(existsSync(htmlPath(ROUTE))).toBe(true);
+  });
+
+  test('"Sosyal Medya" etiketli her vaka listelenir', () => {
+    const body = main();
+    const missing = projects
+      .filter(({ tagged, detail }) => tagged && detail)
+      .filter(({ slug }) => !body.includes(`href="/projelerimiz/${slug}/"`))
+      .map(({ slug }) => slug);
+    expect(missing).toEqual([]);
+  });
+
+  test('sosyal medya hizmet sayfası örnekler sayfasına bağlanır', () => {
+    const pillar = readFileSync(htmlPath('/hizmetlerimiz/sosyal-medya-yonetimi'), 'utf8');
     expect(pillar.includes(`href="${ROUTE}/"`)).toBe(true);
   });
 });

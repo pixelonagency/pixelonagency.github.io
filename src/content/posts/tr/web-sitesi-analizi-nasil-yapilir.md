@@ -86,7 +86,7 @@ article:
       text: |-
         Kendi yaptığımız ücretsiz analizde siteyi tek başına değil, markanın dijital görünümünün bir parçası olarak inceliyoruz: web sitesi ve kullanıcı deneyimi, arama görünürlüğü, reklam hesapları, sosyal medya, marka tutarlılığı ve varsa e-ticaret tarafı.
 
-        Rapor, güçlü yönleri, geliştirilmesi gereken alanları, öncelikli sorunları ve hızlı uygulanabilecek iyileştirmeleri sıralıyor. Satın alma zorunluluğu yok; raporu kendi ekibinizle de uygulayabilirsiniz.
+        Rapor, güçlü yönleri, geliştirilmesi gereken alanları, öncelikli sorunları ve hızlı uygulanabilecek iyileştirmeleri sıralıyor. Sosyal medya hesaplarınızı kendiniz incelemek isterseniz [sosyal medya analizi nasıl yapılır](/blog/sosyal-medya-analizi-nasil-yapilir/) yazısındaki adımları izleyebilirsiniz. Satın alma zorunluluğu yok; raporu kendi ekibinizle de uygulayabilirsiniz.
 
     - type: faq
       heading: Sık Sorulan Sorular

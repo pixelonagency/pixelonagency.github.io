@@ -1,0 +1,115 @@
+seo:
+  title: Sosyal Medya Örnekleri | Yönettiğimiz Hesaplar | Pixelon
+  description: >-
+    Pixelon sosyal medya örnekleri: dermatoloji ve estetik cerrahi, diş kliniği,
+    beslenme danışmanlığı, doğal ürün, inşaat ve danışmanlık markaları için ürettiğimiz
+    içerikler ve yönettiğimiz hesaplar.
+
+whatsappMessage: Merhaba Pixelon, sosyal medya örneklerinizi inceledim, markamız için bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Projelerimiz
+        href: /projelerimiz/
+      - label: Sosyal Medya
+    eyebrow: Sosyal Medya Örnekleri
+    headingLines:
+      - 'Yönettiğimiz Hesaplardan *Örnekler*.'
+    lead: >-
+      Her hesapta başka bir soruyla başladık: hasta hekime nasıl güvenir, alıcı doğal
+      bir ürüne nasıl ikna olur, yatırımcı sahadaki işi nasıl görür? İçerik, çekim ve
+      topluluk yönetimi o sorunun cevabına göre kuruldu.
+    video:
+      desktopMp4: /media/hero/sosyal-medya/hero-sosyal-desktop.mp4
+      desktopWebm: /media/hero/sosyal-medya/hero-sosyal-desktop.webm
+      desktopPoster: /media/hero/sosyal-medya/hero-sosyal-desktop-poster.webp
+      mobileMp4: /media/hero/sosyal-medya/hero-sosyal-mobile.mp4
+      mobileWebm: /media/hero/sosyal-medya/hero-sosyal-mobile.webm
+      mobilePoster: /media/hero/sosyal-medya/hero-sosyal-mobile-poster.webp
+    chips:
+      - Sağlık ve klinik hesapları
+      - Ürün ve e-ticaret markaları
+      - Kurumsal hesaplar
+      - Reels ve video üretimi
+    ctas:
+      - label: Markanızı Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Sosyal Medya Hizmetimiz
+        href: /hizmetlerimiz/sosyal-medya-yonetimi/
+        variant: outline
+
+  # Liste elle tutulmaz: "Sosyal Medya" etiketli her vaka buraya kendiliğinden girer.
+  - type: projects
+    background: light
+    eyebrow: Portfolyo
+    heading: Sosyal Medya Projelerimiz
+    lead: >-
+      Kartların çoğu, hesabın nasıl kurulduğunu ve sonuçlarını anlatan bir vaka
+      çalışmasına açılıyor.
+    tag: Sosyal Medya
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: stats
+    background: dark
+    eyebrow: Sonuçlardan
+    heading: Hesapların Arkasındaki Rakamlar
+    items:
+      - value: 9
+        suffix: ',2 milyon'
+        label: Dr. Ayşe Cinkaya Kahveci
+        description: Bir yılda içerik görüntülenmesi.
+      - value: 18
+        suffix: ' milyon'
+        label: Çağla Aytaç
+        description: İki yılda içerik görüntülenmesi.
+      - value: 87
+        prefix: '%'
+        label: Sera Natura
+        description: Aylık satış artışı, içerik ve reklamla birlikte.
+
+  - type: faq
+    background: light
+    eyebrow: Merak Edilenler
+    heading: Sosyal Medya Örnekleri Hakkında Sorular
+    items:
+      - question: İçerikleri kendiniz mi üretiyorsunuz?
+        answer: >-
+          Evet. Strateji, çekim, kurgu, tasarım ve metin aynı ekipte. Nasıl ürettiğimizi
+          [içerik üretimi ve Reels çekimi](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/)
+          sayfasında anlattık.
+      - question: Benim sektörümden bir örnek yok, yine de çalışabilir miyiz?
+        answer: >-
+          Evet. Önemli olan sektörden çok hedef kitlenin sorusu. İlk görüşmede
+          müşterinizin en sık sorduğu soruları konuşup içerik planını onlardan
+          çıkarıyoruz.
+      - question: Sağlık hesaplarında nelere dikkat ediyorsunuz?
+        answer: >-
+          Kesin sonuç vaadi ve abartılı öncesi-sonrası kurgusu yerine hekimin kendi
+          anlatımı ve bilgilendirici bir dil. Ayrıntılarını
+          [doktor ve klinik sosyal medya](/hizmetlerimiz/sosyal-medya-yonetimi/doktor-ve-klinik-sosyal-medya/)
+          sayfasında bulabilirsiniz.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Sıradaki Hesap Sizinki Olsun
+    lead: >-
+      Markanızı ve müşterinizin en sık sorduğu soruları anlatın; ilk ayın içerik
+      planını birlikte çıkaralım.
+    ctas:
+      - label: Markanızı Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Sosyal Medya Hizmetimiz
+        href: /hizmetlerimiz/sosyal-medya-yonetimi/
+        variant: outline
