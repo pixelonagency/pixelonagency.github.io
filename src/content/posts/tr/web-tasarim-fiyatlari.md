@@ -1,5 +1,5 @@
 ---
-title: 'Web Tasarım Fiyatları Neye Göre Değişiyor?'
+title: 'Web Sitesi Fiyatı Neye Göre Belirlenir? Maliyeti Oluşturan Kalemler'
 category: Web Tasarım
 translationKey: what-drives-web-design-pricing
 excerpt: Aynı işe gelen teklifler neden birbirinden kat kat farklı? Web sitesi fiyatlarını belirleyen şey sayfa sayısı değil; kapsam, içerik sorumluluğu, entegrasyon derinliği ve teslim sonrası sürekliliktir.
@@ -10,10 +10,10 @@ author: Pixelon Ekibi
 status: published
 featured: false
 seo:
-  title: 'Web Tasarım Fiyatları Neye Göre Değişiyor? | Pixelon'
-  description: "Web tasarım fiyatları neye göre değişir? Pixelon kurumsal web sitesi projeleri 50.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor. Fiyatı belirleyen kalemleri ve üç kapsam seviyesini anlatıyoruz."
+  title: 'Web Sitesi Maliyeti Neye Göre Belirlenir? | Pixelon'
+  description: "Web sitesi maliyeti neye göre belirlenir? Tasarım yaklaşımı, şablon sayısı, içerik, entegrasyon, dil, ölçüm ve destek. Teklifleri karşılaştırırken bakılacak kalemler."
 article:
-  updated: 2026-09-29
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: "Web tasarım fiyatı sayfa sayısıyla değil, işin kapsamıyla belirlenir. Pixelon tarafında kurumsal web sitesi projeleri 50.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor; tüm rakamlar KDV hariç. Hangi fiyata denk geleceğinizi belirleyen beş kalem şunlardır: tasarımın hazır tema mı özel kurgu mu olduğu, metin ve görsellerin kim tarafından üretileceği, entegrasyon ve özel geliştirme ihtiyacı, dil sayısı ve teslim sonrası desteğin kapsamı."
@@ -74,7 +74,7 @@ article:
 
         Aşağıdaki üç seviye piyasada en sık karşılaşılan kurguları tarif ediyor. Sizin ihtiyacınız iki seviyenin arasına düşüyor olabilir; bu normal.
 
-        Tablonun son satırına fiyat aralığını da ekledik. Bu rakamlar Pixelon için geçerli başlangıç aralıkları.
+        Her seviyenin Pixelon'daki fiyat aralığı [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında.
 
     - type: table
       heading: Üç tipik kapsam seviyesi
@@ -112,32 +112,20 @@ article:
           - Kısa süreli hata düzeltme
           - Süresi tanımlı bakım
           - Sürekli geliştirme anlaşması
-        - - Fiyat aralığı (KDV hariç)
-          - Pixelon bu seviyede çalışmıyor
-          - 50.000 - 140.000 TL
-          - 140.000 TL ve üzeri
 
     - type: section
-      id: pixelon-fiyat-bandi
+      id: pixelon-fiyatlari
       heading: Pixelon tarafında fiyatlar nereden başlıyor?
       lead: "Kurumsal web sitesi projeleri 50.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor. Tüm rakamlar KDV hariç."
       text: |-
-        Üç fiyat aralığında çalışıyoruz. Hangisine denk geldiğinizi belirleyen şey sayfa sayısı değil; içerik sorumluluğunun kimde olduğu, kaç dil konuşacağınız ve kaç dış sisteme bağlanacağınız.
-        Her paketin içinde ne olduğunu tek bakışta görmek isterseniz [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında paket paket topladık.
+        Hangi pakete denk geldiğinizi belirleyen şey sayfa sayısı değil; içerik sorumluluğunun kimde olduğu, kaç dil konuşacağınız ve kaç dış sisteme bağlanacağınız.
 
-    - type: cards
-      items:
-        - title: Kurumsal, 50.000 - 95.000 TL
-          text: Markaya özel tasarım, sekize kadar şablon, tek dil, form ve harita entegrasyonu, dönüşüm ölçümlemesi kurulu, teslim sonrası tanımlı bakım.
-        - title: Kurumsal geniş, 95.000 - 140.000 TL
-          text: Blog ve vaka çalışması sistemi, ikinci dil, CRM veya rezervasyon bağlantısı, genişletilmiş içerik desteği.
-        - title: E-ticaret ve özel proje, 140.000 TL ve üzeri
-          text: Ürün kataloğu, ödeme ve kargo entegrasyonları, özel panel veya sistem geliştirmesi.
+        Paketlerin her birinde neyin dahil olduğunu ve fiyat aralıklarını [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında topladık. Bu yazı ise o rakamların neden öyle olduğunu, yani maliyeti oluşturan kalemleri anlatıyor.
 
     - type: callout
       variant: note
       heading: Bu seviyelerin altı
-      text: "Hazır tema uyarlaması ve iki üç sayfalık tanıtım siteleri de piyasada var; biz orada çalışmıyoruz. Sebebi şu; o kapsamda kurulan sitelerin büyük kısmı ilk yıl içinde yeniden yapılıyor ve işletmeye iki kez ödetiyor. Bütçeniz oradaysa doğru hamle ucuz bir site yaptırmak değil, kapsamı tek hedefe daraltmak."
+      text: "Hazır tema uyarlaması ve iki üç sayfalık tanıtım siteleri de piyasada var; biz o kapsamda çalışmıyoruz. İşiniz bir şablona sığıyorsa bu yol mantıklı olabilir; ne zaman yettiğini [hazır şablon mu, özel web tasarım mı](/blog/hazir-site-mi-ozel-tasarim-mi/) yazısında anlattık. Bütçe sınırlıysa doğru hamle çoğu zaman kapsamı tek hedefe daraltmak."
 
     - type: section
       id: web-sitesi-fiyatlari-aralik
@@ -207,7 +195,7 @@ article:
       id: sonuc
       heading: Kısaca
       text: |-
-        Web tasarım fiyatı bir rakam değil, bir kapsam sorusunun cevabı. Yine de bir yerden başlamak gerekiyor: kurumsal projeler 50.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor.
+        Web sitesi fiyatı bir rakam değil, bir kapsam sorusunun cevabı. Yine de bir yerden başlamak gerekiyor: kurumsal projeler 50.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor.
 
         Tasarım yaklaşımı, içerik sorumluluğu, entegrasyonlar, dil sayısı ve teslim sonrası destek; bu beş kalem netleştiğinde teklifler karşılaştırılabilir hâle geliyor ve aradaki fark anlam kazanıyor.
 

@@ -13,7 +13,7 @@ seo:
   title: 'Kurumsal Web Sitesi Nasıl Olmalı? 10 Temel Özellik | Pixelon'
   description: 'Kurumsal web sitesinde olması gereken 10 temel özellik: kullanıcı deneyimi, hız, mobil uyum, güven, dönüşüm takibi ve yönetilebilir altyapı.'
 article:
-  updated: 2026-08-21
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: İyi bir kurumsal web sitesi; ziyaretçiye ilk ekranda ne iş yaptığınızı anlatır, mobilde sorunsuz çalışır, hızlı açılır, güven veren kanıtlar sunar ve iletişime geçmeyi kolaylaştırır. Arkasında ise ölçülebilir bir dönüşüm altyapısı ve içeriğin kolayca güncellenebildiği bir yönetim paneli bulunur.
@@ -137,7 +137,7 @@ article:
 
         Bu maddeleri kendi sitenizde tek tek uygulamak hem zaman hem teknik karar gerektiriyor. Siteyi baştan kurmayı ya da mevcut yapıyı bu standarda taşımayı düşünüyorsanız, [nasıl çalıştığımızı burada anlattık](/hizmetlerimiz/web-tasarim-ve-yazilim/).
 
-        Maliyet tarafını merak ediyorsanız fiyatı neyin belirlediğini [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında açtık; kapsamınızı çıkarıp doğrudan başlamak isterseniz [web sitesi yaptırma sayfamız](/web-sitesi-yaptir/) süreci adım adım anlatıyor.
+        Maliyet tarafını merak ediyorsanız fiyatı neyin belirlediğini [web sitesi fiyatı neye göre belirlenir](/blog/web-tasarim-fiyatlari/) yazısında açtık; kapsamınızı çıkarıp doğrudan başlamak isterseniz [web sitesi yaptırma sayfamız](/web-sitesi-yaptir/) süreci adım adım anlatıyor.
 
     - type: cta
       heading: Mevcut sitenizi birlikte gözden geçirelim.

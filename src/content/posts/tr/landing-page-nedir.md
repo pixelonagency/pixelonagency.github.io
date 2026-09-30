@@ -13,7 +13,7 @@ seo:
   title: 'Landing Page Nedir, Ne Zaman Gerekir? | Pixelon'
   description: 'Landing page nedir, ana sayfadan farkı ne? Reklam kampanyalarında dönüşüm getiren açılış sayfasının bileşenleri, kurulum adımları ve sık yapılan hatalar.'
 article:
-  updated: 2026-08-21
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: Landing page, ziyaretçiyi tek bir eyleme yönlendirmek için kurulmuş bağımsız bir sayfadır. Menü ve dikkat dağıtan bağlantılar yerine tek bir teklif, tek bir form ve tek bir buton bulunur. Reklam, e-posta veya sosyal medya kampanyalarıyla gelen trafiği ana sayfaya değil bu sayfaya yönlendirmek, aynı bütçeyle daha fazla talep alınmasını sağlar.
@@ -122,6 +122,16 @@ article:
       heading: Pixelon Notu
       text: Reklam kampanyalarında en sık gördüğümüz kayıp noktası, bütçenin doğru kurgulanıp trafiğin ana sayfaya yönlendirilmesi. Reklam metni belirli bir hizmeti anlatıyor, ziyaretçi ise on hizmetin sıralandığı bir sayfaya düşüyor. Kampanya performansı düşük göründüğü için genellikle reklam ayarları değiştiriliyor; oysa sorun sayfanın kendisinde oluyor.
 
+    - type: section
+      id: dentasay-ornegi
+      heading: 'Gerçek bir örnek: Dentasay'
+      text: |-
+        Dentasay, 20 ülkede ve 13 dilde reklam veren bir diş kliniği. Kampanyaları kurarken reklamın indiği sayfayı da kampanyanın parçası saydık: her tedavi için ayrı landing page tasarladık, genel bir ana sayfaya yönlendirme yapmadık.
+
+        İmplant reklamını gören Romanyalı bir hasta genel bir ana sayfaya değil, Rumence yazılmış implant sayfasına iniyor. Reklamdaki mesaj, sayfanın başlığı ve ilk cevap aynı dilde ve aynı tonda.
+
+        Bu ölçek "aynı kampanyayı çevir" yaklaşımıyla kurulmuyor. Her pazarın ilk sorusu farklı; kimi maliyeti, kimi kalış süresini, kimi tercüman olup olmadığını soruyor. Sayfalar bu sorulara göre ayrışıyor. Projenin tamamını [Dentasay vaka çalışmasında](/projelerimiz/dentasay/) anlattık.
+
     - type: process
       heading: Landing page nasıl kurulur?
       intro: Sayfayı tasarlamadan önce yapılması gereken iki adım var; çoğu proje doğrudan üçüncü adımdan başlıyor.
@@ -172,6 +182,8 @@ article:
         Reklam yayınlıyorsanız, tek bir hizmeti öne çıkarıyorsanız veya yeni bir fikri test ediyorsanız ayrı bir sayfa kurmak, aynı bütçeden daha fazla talep almanın en doğrudan yolu.
 
         Sayfanın işe yarayıp yaramadığını görmenin tek yolu ise ölçümlemenin baştan bağlanmış olması.
+
+        Kampanya sayfanızı bizimle kurmak isterseniz süreci [web sitesi yaptırma](/web-sitesi-yaptir/) sayfasında, paketlerin fiyatlarını [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında bulabilirsiniz.
 
         Sayfaya ne kadar bütçe göndereceğinizi [Google Ads bütçesi nasıl belirlenir](/blog/google-ads-butcesi-nasil-belirlenir/) yazısındaki hesapla çıkarabilirsiniz; mevcut sayfanızın nerede talep kaybettiğini görmek isterseniz [ücretsiz analiz](/ucretsiz-analiz/) bu teşhisi içeriyor.
 

@@ -13,7 +13,7 @@ seo:
   title: 'Web Sitesi Kaç Günde Biter? Gerçek Takvim | Pixelon'
   description: 'Web sitesi kaç günde teslim edilir? Teslim ettiğimiz kurumsal projelerde ortalama 30 gün. Haftalık kırılım, süreyi uzatan üç sebep ve takvimi kısaltmanın yolları.'
 article:
-  updated: 2026-09-05
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: 'Teslim ettiğimiz kurumsal web sitelerinde ortalama süre 30 gündür. Bu süre keşif, içerik mimarisi, tasarım, yazılım, test ve yayın aşamalarının tamamını kapsar. Takvimi uzatan şey neredeyse hiçbir zaman yazılım tarafı olmuyor; metin ve görsellerin beklenmesi ile onayların gecikmesi oluyor. Çok dilli yapı ve e-ticaret bu süreyi uzatan iki ana kalem.'
@@ -70,7 +70,7 @@ article:
     - type: section
       id: uzatan-sebepler
       heading: Süreyi uzatan üç şey
-      lead: On projeden dokuzunda gecikme aynı üç başlıktan birinden çıkıyor ve üçü de yazılımla ilgili değil.
+      lead: Gecikmeler çoğunlukla aynı üç başlıktan çıkıyor ve üçü de yazılımla ilgili değil.
       text: |-
         Sebepleri sırayla yazıyoruz çünkü etkileri de bu sırayla büyük.
 
@@ -79,7 +79,7 @@ article:
         - title: İçeriğin geç gelmesi
           text: En sık sebep bu. Tasarım hazır, yazılım hazır, sayfa boş bekliyor. Metin ve görsel işletme tarafında kalacaksa proje başında kim yazacak ve hangi tarihte teslim edecek yazılmalı. İçeriği biz üretiyorsak takvim bize bağlı kalıyor ve kaymıyor.
         - title: Onayların birikmesi
-          text: Tasarım tek kişiye değil, üç kişilik bir komiteye gidiyorsa onay bir haftaya çıkıyor. Kimin onaylayacağı baştan tek isimle belirlenirse bu süre üç iş gününe iniyor.
+          text: Tasarım tek kişiye değil, bir komiteye gidiyorsa onay günlerce sürebiliyor. Kimin onaylayacağı baştan tek isimle belirlenirse bu süre belirgin şekilde kısalıyor. Aynı şehirdeyseniz onayı yüz yüze bir toplantıda vermek de süreyi kısaltıyor; bunu [İstanbul web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim/) sayfasında anlattık.
         - title: Kapsamın büyümesi
           text: Proje ortasında eklenen sayfa, dil ya da entegrasyon takvimi kendi payından fazla uzatıyor; çünkü tasarım ve yazılım kararları geriye dönüp değişiyor. Yeni istekleri ikinci faza almak çoğu zaman daha hızlı bitiriyor.
 
@@ -154,7 +154,7 @@ article:
 
         Takvimi belirleyen şey ajansın yazılım hızı değil, içeriğin ne zaman geldiği ve onayların ne kadar beklediği. Bu ikisi sözleşmede tarihlendiğinde otuz gün gerçekçi bir söz haline geliyor; tarihlenmediğinde aynı proje kolayca iki aya çıkıyor.
 
-        Kapsamın fiyata nasıl yansıdığını [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında, ajans seçerken nelere bakılacağını ise [web tasarım ajansı seçerken](/blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/) yazısında anlattık. Süreci nasıl yürüttüğümüz [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) sayfasında.
+        Kapsamın fiyata nasıl yansıdığını [web sitesi fiyatı neye göre belirlenir](/blog/web-tasarim-fiyatlari/) yazısında, ajans seçerken nelere bakılacağını ise [web tasarım ajansı seçerken](/blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/) yazısında anlattık. Süreci nasıl yürüttüğümüz [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) sayfasında; doğrudan başlamak isterseniz takvimi ve dahil olanları [web sitesi yaptırma](/web-sitesi-yaptir/) sayfasında bulabilirsiniz.
 
     - type: cta
       heading: Projenizin takvimini birlikte çıkaralım.

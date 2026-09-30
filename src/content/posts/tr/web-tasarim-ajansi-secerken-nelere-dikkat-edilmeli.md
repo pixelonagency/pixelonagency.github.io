@@ -13,7 +13,7 @@ seo:
   title: 'Web Tasarım Ajansı Seçerken Nelere Dikkat Edilir? | Pixelon'
   description: 'Web tasarım ajansı seçiminde bakılması gereken kriterler: portfolyo okuma, kapsam netliği, teslim sonrası destek, sahiplik ve kırmızı bayraklar.'
 article:
-  updated: 2026-08-21
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: Web tasarım ajansı seçerken portfolyonun görsel kalitesine değil, o işlerin hangi problemi çözdüğüne bakın. Teklifte kapsamın madde madde yazılı olması, tasarım ve içerik sorumluluğunun kimde olduğunun netleşmesi, alan adı ve kod sahipliğinin size ait olması, teslim sonrası destek koşullarının tanımlanması ve ajansın süreç boyunca kiminle çalışacağınızı söylemesi belirleyici beş kriterdir. Fiyat bu beş maddeden sonra anlam kazanır.
@@ -43,7 +43,7 @@ article:
     - type: checklist
       items:
         - title: Benzer karmaşıklıkta iş deneyimi
-          text: Aynı sektörden iş şart değil; ancak benzer karmaşıklıkta bir proje yürütmüş olmak önemli. Çok dilli yapı, rezervasyon akışı veya entegrasyon gerekiyorsa bunu daha önce yapmış bir ekip, süreci tahmin ederek ilerliyor.
+          text: Aynı sektörden iş şart değil; ancak benzer karmaşıklıkta bir proje yürütmüş olmak önemli. Çok dilli yapı, rezervasyon akışı veya entegrasyon gerekiyorsa bunu daha önce yapmış bir ekip, süreci tahmin ederek ilerliyor. Kurumsal sitelerde hangi işleri yaptığımızı [kurumsal web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/) sayfasında örnekleriyle gösterdik.
         - title: Yazılı ve maddelenmiş kapsam
           text: Teklifte kaç sayfa, hangi diller, hangi entegrasyonlar ve kaç revizyon olduğu yazmıyorsa kapsam sözlü kalıyor. Sözlü kapsam, proje ortasında iki tarafın da farklı hatırladığı bir konuya dönüşüyor.
         - title: İçerik sorumluluğunun kimde olduğu
@@ -102,7 +102,7 @@ article:
 
     - type: process
       heading: Sağlıklı bir seçim süreci nasıl ilerler?
-      intro: 'Üç ajanstan teklif almak yeterli; asıl fark teklifleri nasıl karşılaştırdığınızda ortaya çıkıyor. Rakamların neye göre değiştiğini önceden bilmek bu karşılaştırmayı kolaylaştırıyor: kalemleri [web tasarım fiyatları](/blog/web-tasarim-fiyatlari/) yazısında tek tek açtık.'
+      intro: 'Üç ajanstan teklif almak yeterli; asıl fark teklifleri nasıl karşılaştırdığınızda ortaya çıkıyor. Rakamların neye göre değiştiğini önceden bilmek bu karşılaştırmayı kolaylaştırıyor: kalemleri [web sitesi fiyatı neye göre belirlenir](/blog/web-tasarim-fiyatlari/) yazısında tek tek açtık.'
       steps:
         - title: İhtiyacı yazıya dökün
           text: Sitenin kimin için olduğunu, hangi sayfaların gerektiğini ve ziyaretçiden beklenen adımı bir sayfada toplayın. Aynı metni her ajansa vermek, teklifleri kıyaslanabilir hâle getiriyor.
@@ -140,6 +140,8 @@ article:
         Buna karşılık tasarım, yazılım, içerik ve ölçümleme aynı anda ilerliyorsa tek kişilik yapı darboğaz oluşturuyor. Bu tür projelerde ajans modeli, işlerin paralel yürümesini sağlıyor.
 
         Kritik fark süreklilikte ortaya çıkıyor: siteyi bir yıl sonra kimin güncelleyeceği sorusu, ajans tarafında kurumsal bir yapıya bağlanıyor.
+
+        Bir de mesafe konusu var. Keşif toplantısını, fotoğraf çekimini ve tasarım onayını yüz yüze yapabilmek süreci belirgin şekilde hızlandırıyor. İstanbul'daysanız bunun nasıl işlediğini [İstanbul web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim/) sayfasında anlattık.
 
     - type: faq
       heading: Sık Sorulan Sorular
