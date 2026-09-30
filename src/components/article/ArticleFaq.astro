@@ -4,7 +4,7 @@
  * her soru bir `<button aria-expanded>`, panel `hidden` + `role="region"`.
  * Klavye ile açılıp kapanır; JS yüklenmezse ilk panel açık kalır.
  */
-import { paragraphs, type BlockOf } from './types';
+import { inlineHtml, paragraphs, type BlockOf } from './types';
 
 interface Props {
   block: BlockOf<'faq'>;
@@ -42,7 +42,7 @@ const { block, uid } = Astro.props;
             hidden={index !== 0}
           >
             {paragraphs(item.answer).map((part) => (
-              <p class="af__a">{part}</p>
+              <p class="af__a" set:html={inlineHtml(part)} />
             ))}
           </div>
         </div>

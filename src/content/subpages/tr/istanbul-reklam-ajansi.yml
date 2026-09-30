@@ -92,16 +92,12 @@ sections:
     items:
       - title: Google Ads
         description: >-
-          Hizmetinizi yakınında arayan kişiye arama anında ulaşan reklamlar. Ayrıntısı
-          [Google Ads yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/google-ads-yonetimi/)
-          sayfasında.
+          Hizmetinizi yakınında arayan kişiye arama anında ulaşan reklamlar.
         icon: ads
       - title: Instagram ve Facebook
         description: >-
           Yakın çevredeki kitleye video ve görselle ulaşan, mesaja ya da forma açılan
-          kampanyalar. Ayrıntısı
-          [Meta reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/meta-reklam-yonetimi/)
-          sayfasında.
+          kampanyalar.
         icon: social
       - title: TikTok ve YouTube
         description: >-

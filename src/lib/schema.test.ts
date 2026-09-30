@@ -1,5 +1,12 @@
 import { describe, expect, test } from 'bun:test';
-import { breadcrumbSchema, caseStudySchema, serviceSchema, SERVICE_BY_PROJECT_CATEGORY, type Crumb } from './schema';
+import {
+  breadcrumbSchema,
+  caseStudySchema,
+  faqPageSchema,
+  serviceSchema,
+  SERVICE_BY_PROJECT_CATEGORY,
+  type Crumb,
+} from './schema';
 
 /**
  * Google `BreadcrumbList` içinde SON eleman dışındaki her `ListItem` için `item`
@@ -157,5 +164,13 @@ describe('serviceSchema', () => {
 
     expect(node['@id']).toBe('https://pixelon.com.tr/hizmetlerimiz/marka-ve-kurumsal-kimlik/#service');
     expect(node.provider).toEqual({ '@id': 'https://pixelon.com.tr/#organization' });
+  });
+});
+
+describe('faqPageSchema', () => {
+  test('satır içi bağlantı sözdizimi yapılandırılmış veriye girmez, yalnız etiketi kalır', () => {
+    const schema = faqPageSchema([{ question: 'S?', answer: 'Ayrıntısı [fiyat sayfası](/fiyat/) içinde.' }]);
+    const [entity] = schema.mainEntity as { acceptedAnswer: { text: string } }[];
+    expect(entity?.acceptedAnswer.text).toBe('Ayrıntısı fiyat sayfası içinde.');
   });
 });

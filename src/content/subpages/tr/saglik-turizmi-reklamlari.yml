@@ -89,9 +89,8 @@ sections:
         icon: tourism
       - title: Tedaviye özel sayfa
         description: >-
-          Reklam ana sayfaya değil, o tedavinin sayfasına iniyor. Klinik sitelerini nasıl
-          kurduğumuzu [doktor ve klinik web sitesi](/hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/)
-          sayfasında anlattık.
+          Reklam ana sayfaya değil, o tedavinin sayfasına iniyor; sayfa da kampanyanın
+          bir parçası olarak kuruluyor.
         icon: web
       - title: Mesaja açılan yol
         description: >-
