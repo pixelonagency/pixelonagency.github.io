@@ -53,7 +53,7 @@ article:
       text: |-
         İkisi çoğu zaman aynı cümlede geçiyor ve karıştırılıyor. Aslında sıralı iki iş.
 
-        Tasarım aşamasında sayfaların listesi, her sayfadaki bilgi sırası, butonların yeri ve telefondaki düzen belirleniyor. Çıktısı çizimler ve tasarım dosyaları.
+        Tasarım aşamasında sayfaların listesi, her sayfadaki bilgi sırası, butonların yeri ve telefondaki düzen belirleniyor. Çıktısı çizimler ve tasarım dosyaları. Bu kararların hangi ilkelere göre verildiğini [web tasarım ilkeleri](/blog/web-tasarim-ilkeleri/) yazısında anlattık.
 
         Kodlama aşamasında bu çizimler HTML, CSS ve JavaScript ile tarayıcının anlayacağı hâle getiriliyor. Formun nereye gideceği, sayfanın ne kadar hızlı açılacağı ve yönetim panelinin nasıl çalışacağı burada çözülüyor.
 
@@ -131,7 +131,7 @@ article:
         - title: İlk ekranda ne iş yaptığınız anlaşılıyor
           text: Ziyaretçi birkaç saniye içinde ne sattığınızı ve kime sattığınızı görebilmeli. Slogan tek başına bu işi görmüyor.
         - title: Telefonda rahat kullanılıyor
-          text: Butonlar parmakla kolayca basılıyor, metin yakınlaştırmadan okunuyor, menü açılıp kapanırken sayfa kaymıyor.
+          text: Butonlar parmakla kolayca basılıyor, metin yakınlaştırmadan okunuyor, menü açılıp kapanırken sayfa kaymıyor. Telefonda denenecek maddelerin tamamı [mobil uyumlu web sitesi](/blog/mobil-uyumlu-web-sitesi/) yazısında.
         - title: Sayfa hızlı açılıyor
           text: Büyük fotoğraflar küçültülmüş, gereksiz eklentiler çıkarılmış. Yavaş açılan sayfada ziyaretçi içeriği görmeden çıkıyor.
         - title: Her sayfanın bir sonraki adımı var

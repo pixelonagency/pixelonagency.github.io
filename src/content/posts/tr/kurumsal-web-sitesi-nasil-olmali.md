@@ -47,9 +47,9 @@ article:
         - title: İlk ekranda net bir mesaj
           text: Ziyaretçi ilk birkaç saniyede ne iş yaptığınızı, kimin için yaptığınızı ve neden sizi seçmesi gerektiğini anlamalı. "Çözüm ortağınız" gibi her sektöre uyan cümleler bu işi görmüyor.
         - title: Anlaşılır menü yapısı
-          text: Menüde ne kadar çok başlık varsa karar o kadar zorlaşır. Ana menüyü ziyaretçinin gerçekten aradığı sayfalarla sınırlamak, aramayı kısaltıyor.
+          text: Menüde ne kadar çok başlık varsa karar o kadar zorlaşır. Ana menüyü ziyaretçinin gerçekten aradığı sayfalarla sınırlamak, aramayı kısaltıyor. Menüyü alışılmış yerinde bırakmanın neden önemli olduğunu [web tasarım ilkeleri](/blog/web-tasarim-ilkeleri/) yazısında ele aldık.
         - title: Mobil öncelikli davranış
-          text: Kurumsal sitelerde trafiğin büyük bölümü mobilden geliyor. Tasarımın mobilde küçültülmüş masaüstü değil, mobil için düşünülmüş bir düzen olması gerekiyor.
+          text: Kurumsal sitelerde trafiğin büyük bölümü mobilden geliyor. Tasarımın mobilde küçültülmüş masaüstü değil, mobil için düşünülmüş bir düzen olması gerekiyor. Kendi sitenizi telefonda nasıl kontrol edeceğinizi [mobil uyumlu web sitesi](/blog/mobil-uyumlu-web-sitesi/) yazısında sekiz maddede topladık.
         - title: Açılış hızı
           text: Yavaş açılan sayfa, ziyaretçiyi içeriği görmeden kaybettirir. Optimize edilmemiş görseller ve gereksiz script'ler en sık karşılaşılan iki nedendir.
         - title: Güven kanıtları
