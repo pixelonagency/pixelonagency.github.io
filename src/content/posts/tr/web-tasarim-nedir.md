@@ -98,7 +98,7 @@ article:
       id: surec
       heading: Web tasarım süreci nasıl işler?
       text: |-
-        Projeden projeye ayrıntılar değişse de sıra genellikle aynı. Kurumsal sitelerde bu süreç bizde ortalama 30 gün sürüyor; süreyi en çok içeriklerin hazırlanması ve onay beklemek belirliyor.
+        Projeden projeye ayrıntılar değişse de sıra genellikle aynı. Kurumsal sitelerde bu süreç bizde ortalama 30 gün sürüyor; süreyi en çok içeriklerin hazırlanması ve onay beklemek belirliyor. Aynı sürecin işletme tarafında nasıl göründüğünü [web sitesi nasıl yapılır](/blog/web-sitesi-nasil-yapilir/) yazısında anlattık.
 
     - type: process
       steps:
