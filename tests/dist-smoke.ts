@@ -1614,3 +1614,18 @@ describe('scroll-reveal uzun bölümleri gizlemez', () => {
     expect(options).toMatch(/threshold:0[,}]|threshold:0$/);
   });
 });
+
+/*
+ * İçerikte satır içi bağlantı `[etiket](/yol/)` biçiminde yazılır. 1 Eki 2026'da makale SSS
+ * bileşeni bunu düz metin bastığı için canlıda ham sözdizimi görünüyordu; FAQPage verisi de
+ * aynı ham metni taşıyordu. Hiçbir sayfada bu sözdizimi kalmamalı.
+ */
+describe('ham bağlantı sözdizimi sızmaz', () => {
+  test('blog ve hizmet sayfalarında "](/" geçmez', () => {
+    const leaks = allHtmlFiles(DIST)
+      .filter((file) => file.includes('/blog/') || file.includes('/hizmetlerimiz/'))
+      .filter((file) => readFileSync(file, 'utf8').includes('](/'))
+      .map((file) => file.replace(DIST, ''));
+    expect(leaks).toEqual([]);
+  });
+});

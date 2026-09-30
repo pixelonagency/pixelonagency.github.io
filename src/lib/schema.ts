@@ -266,7 +266,8 @@ export function faqPageSchema(items: { question: string; answer: string }[]): Re
     mainEntity: items.map(({ question, answer }) => ({
       '@type': 'Question',
       name: question,
-      acceptedAnswer: { '@type': 'Answer', text: answer },
+      // İçerikteki satır içi bağlantı sözdizimi yapılandırılmış veriye girmez; yalnız etiketi kalır.
+      acceptedAnswer: { '@type': 'Answer', text: answer.replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1') },
     })),
   };
 }
