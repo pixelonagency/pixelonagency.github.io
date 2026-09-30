@@ -16,7 +16,7 @@ article:
   updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
-    text: "Web tasarım fiyatı sayfa sayısıyla değil, işin kapsamıyla belirlenir. Pixelon tarafında kurumsal web sitesi projeleri 50.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor; tüm rakamlar KDV hariç. Hangi fiyata denk geleceğinizi belirleyen beş kalem şunlardır: tasarımın hazır tema mı özel kurgu mu olduğu, metin ve görsellerin kim tarafından üretileceği, entegrasyon ve özel geliştirme ihtiyacı, dil sayısı ve teslim sonrası desteğin kapsamı."
+    text: "Web tasarım fiyatı sayfa sayısıyla değil, işin kapsamıyla belirlenir. Pixelon tarafında kurumsal web sitesi projeleri 50.000 TL'den, özel yazılım projeleri 140.000 TL'den, hazır altyapıyla e-ticaret siteleri 50.000 TL'den başlıyor; tüm rakamlar KDV hariç. Hangi fiyata denk geleceğinizi belirleyen beş kalem şunlardır: tasarımın hazır tema mı özel kurgu mu olduğu, metin ve görsellerin kim tarafından üretileceği, entegrasyon ve özel geliştirme ihtiyacı, dil sayısı ve teslim sonrası desteğin kapsamı."
   tocHeading: İçindekiler
   related:
     - web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli
@@ -116,7 +116,7 @@ article:
     - type: section
       id: pixelon-fiyatlari
       heading: Pixelon tarafında fiyatlar nereden başlıyor?
-      lead: "Kurumsal web sitesi projeleri 50.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor. Tüm rakamlar KDV hariç."
+      lead: "Kurumsal web sitesi projeleri 50.000 TL'den, özel yazılım projeleri 140.000 TL'den, hazır altyapıyla e-ticaret siteleri 50.000 TL'den başlıyor. Tüm rakamlar KDV hariç."
       text: |-
         Hangi pakete denk geldiğinizi belirleyen şey sayfa sayısı değil; içerik sorumluluğunun kimde olduğu, kaç dil konuşacağınız ve kaç dış sisteme bağlanacağınız.
 
@@ -195,7 +195,7 @@ article:
       id: sonuc
       heading: Kısaca
       text: |-
-        Web sitesi fiyatı bir rakam değil, bir kapsam sorusunun cevabı. Yine de bir yerden başlamak gerekiyor: kurumsal projeler 50.000 TL'den, e-ticaret ve özel projeler 140.000 TL'den başlıyor.
+        Web sitesi fiyatı bir rakam değil, bir kapsam sorusunun cevabı. Yine de bir yerden başlamak gerekiyor: kurumsal projeler 50.000 TL'den, özel yazılım projeleri 140.000 TL'den, hazır altyapıyla e-ticaret 50.000 TL'den başlıyor.
 
         Tasarım yaklaşımı, içerik sorumluluğu, entegrasyonlar, dil sayısı ve teslim sonrası destek; bu beş kalem netleştiğinde teklifler karşılaştırılabilir hâle geliyor ve aradaki fark anlam kazanıyor.
 

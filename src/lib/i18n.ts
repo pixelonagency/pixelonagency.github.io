@@ -64,6 +64,7 @@ export const ROUTE_SLUGS = {
   webprojects: { tr: 'projelerimiz/web-tasarim', en: 'projects/web-design' },
   socialprojects: { tr: 'projelerimiz/sosyal-medya', en: 'projects/social-media' },
   adprojects: { tr: 'projelerimiz/dijital-reklam', en: 'projects/digital-advertising' },
+  brandprojects: { tr: 'projelerimiz/kurumsal-kimlik', en: 'projects/brand-identity' },
   references: { tr: 'referanslarimiz', en: 'references' },
   portfolio: { tr: 'portfolyo', en: 'portfolio' },
   blog: { tr: 'blog', en: 'blog' },

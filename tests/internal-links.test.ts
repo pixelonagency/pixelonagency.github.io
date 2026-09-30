@@ -61,6 +61,7 @@ const buildRoutes = async (): Promise<Set<string>> => {
       'webprojects',
       'socialprojects',
       'adprojects',
+      'brandprojects',
       'references',
       'blog',
       'careers',

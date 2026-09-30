@@ -1,0 +1,139 @@
+title: E-Ticaret Danışmanlığı
+parent: e-ticaret-cozumleri
+status: published
+
+seo:
+  title: E-Ticaret Danışmanlığı | Altyapı ve Büyüme Planı | Pixelon
+  description: >-
+    E-ticaret danışmanlığı: altyapı seçimi, kanal kararı (kendi site ya da pazaryeri),
+    ödeme ve kargo kurgusu, ürün sayfası, ölçüm ve pazarlama planı. E-ticarete başlayan
+    ve büyümek isteyen markalar için.
+
+whatsappMessage: Merhaba Pixelon, e-ticaret danışmanlığı hakkında bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: E-Ticaret Danışmanlığı
+    headingLines:
+      - 'Siteyi Kurmadan Önce *Doğru Kararları* Verin.'
+    lead: >-
+      E-ticarette en pahalı hatalar site yayına girmeden önce yapılıyor: yanlış altyapı,
+      yanlış kanal, eksik ölçüm. Kararları birlikte veriyor, satışa giden yolu bir plan
+      olarak çıkarıyoruz.
+    video:
+      desktopMp4: /media/hero/e-ticaret/hero-eticaret-desktop.mp4
+      desktopWebm: /media/hero/e-ticaret/hero-eticaret-desktop.webm
+      desktopPoster: /media/hero/e-ticaret/hero-eticaret-desktop-poster.webp
+      mobileMp4: /media/hero/e-ticaret/hero-eticaret-mobile.mp4
+      mobileWebm: /media/hero/e-ticaret/hero-eticaret-mobile.webm
+      mobilePoster: /media/hero/e-ticaret/hero-eticaret-mobile-poster.webp
+    chips:
+      - Altyapı seçimi
+      - Kanal kararı
+      - Ürün sayfası ve güven
+      - Ölçüm ve pazarlama planı
+    ctas:
+      - label: Planınızı Konuşalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Sera Natura
+    heading: Satış Siteden Değil, Sistemden Geliyor
+    body: |-
+      Sera Natura'da satışı artıran tek bir hamle olmadı. Ambalaj rafta ve ekranda güven verdi, UGC videoları ürünün ne işe yaradığını gerçek kullanıcının sesiyle anlattı, reklam doğru kişiye ulaştırdı, e-posta ise bir kez alan müşteriyi yeniden getirdi. "1 Alana 1 Bedava" gibi dönemsel kampanyalar da bu mantıkla kurgulandı.
+
+      Bu sistemde reklam öncesi aylık satış tabanına göre en yüksek ayda yüzde 87 artış ölçüldü. Danışmanlıkta baktığımız şey de bu zincirin hangi halkasının eksik olduğu.
+    highlight: E-ticarette en ucuz satış, zaten sizden almış müşteriden gelir.
+
+  - type: cards
+    background: dark
+    kind: feature
+    columns: 2
+    eyebrow: Danışmanlık Kapsamı
+    heading: Hangi Kararları Birlikte Veriyoruz?
+    items:
+      - title: Altyapı
+        description: >-
+          Shopify, ikas, T-Soft, IdeaSoft, Ticimax, WooCommerce ya da özel yazılım; ürüne,
+          pazara ve ekibe göre.
+        icon: ecommerce
+      - title: Kanal
+        description: >-
+          Kendi site, pazaryeri ya da ikisi birlikte; komisyon, müşteri sahipliği ve marka
+          açısından.
+        icon: strategy
+      - title: Ürün sayfası ve güven
+        description: >-
+          Ürün fotoğrafı, açıklama, iade ve kargo bilgisi, yorumlar; alıcının karar verdiği
+          sayfanın düzeni.
+        icon: commerce
+      - title: Ölçüm ve pazarlama
+        description: >-
+          Dönüşüm takibi, reklam, e-posta ve SEO planı; hangi kanalın satış getirdiğinin
+          görülmesi.
+        icon: ads
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Satış Sistemini Kurduğumuz Markalar
+    slugs:
+      - sera-natura
+      - cagla-aytac
+    columns: 2
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: E-Ticaret Danışmanlığı Hakkında Sorular
+    items:
+      - question: Pazaryerinde mi satmalıyım, kendi sitemde mi?
+        answer: >-
+          Çoğu markada ikisi birlikte çalışıyor: pazaryeri hacim, kendi site müşteri ve
+          marka sahipliği getiriyor. Karşılaştırmayı
+          [pazaryeri mi kendi site mi](/blog/pazaryeri-mi-kendi-site-mi/) yazısında
+          yaptık.
+      - question: Siteyi siz de kuruyor musunuz?
+        answer: >-
+          Evet. Planı kendi ekibinizle uygulayabilir ya da siteyi bize kurdurabilirsiniz;
+          kurulum fiyatları
+          [e-ticaret sitesi fiyatları](/hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-sitesi-fiyatlari/)
+          sayfasında.
+      - question: E-ticarete başlamak için hangi kayıtlar gerekiyor?
+        answer: >-
+          Şirket ve vergi kaydının yanında ETBİS kaydı gibi yükümlülükler var. Genel
+          çerçeveyi [ETBİS nedir](/blog/etbis-nedir/) yazısında anlattık; güncel kurallar
+          için resmi kaynakları ve mali müşavirinizi esas alın.
+      - question: Yurt dışına satış için de danışmanlık veriyor musunuz?
+        answer: >-
+          Evet. Dil, para birimi, ödeme ve reklam tarafını birlikte planlıyoruz; çerçeveyi
+          [e-ihracat nedir](/blog/e-ihracat-nedir/) yazısında anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Satışa Giden Yolu Birlikte Çizelim
+    lead: >-
+      Ne sattığınızı, bugün nerede sattığınızı ve nereye ulaşmak istediğinizi anlatın; ilk
+      görüşmede eksik halkayı birlikte bulalım.
+    ctas:
+      - label: Planınızı Konuşalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Hazır Altyapı ile E-Ticaret
+        href: /hizmetlerimiz/e-ticaret-cozumleri/hazir-altyapi-ile-e-ticaret/
+        variant: outline

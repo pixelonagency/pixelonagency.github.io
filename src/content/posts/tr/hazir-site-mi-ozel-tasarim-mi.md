@@ -135,7 +135,7 @@ article:
         - question: Şablon kullanan bir site arama sonuçlarında geride kalır mı?
           answer: Şablon kullanmak tek başına sıralamayı düşürmez. Sorun genellikle eklentilerle ağırlaşan sayfaların yavaş açılması ve içeriğin şablonun sunduğu birkaç bölüme sıkıştırılmasıdır. Her hizmet için ayrı sayfa açılamıyorsa arama görünürlüğü de sınırlı kalır.
         - question: Özel web tasarım fiyatları ne kadar?
-          answer: Kurumsal web siteleri bizde 50.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor; rakamlar KDV hariç. Paketlerin tamamını [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında bulabilirsiniz.
+          answer: Kurumsal web siteleri bizde 50.000 TL'den, özel yazılım projeleri 140.000 TL'den, hazır altyapıyla e-ticaret siteleri 50.000 TL'den başlıyor; rakamlar KDV hariç. Paketlerin tamamını [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında bulabilirsiniz.
 
     - type: section
       id: kisaca

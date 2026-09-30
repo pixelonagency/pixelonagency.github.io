@@ -129,7 +129,7 @@ article:
         - question: Web sitesi kaç günde yapılır?
           answer: Kurumsal sitelerde bizde ortalama 30 gün. Süreyi en çok içeriklerin hazır olması ve onayların hızı belirliyor. Takvimin haftalara nasıl bölündüğünü [web sitesi kaç günde biter](/blog/web-sitesi-kac-gunde-biter/) yazısında gösterdik.
         - question: Web sitesi yapmak ne kadar tutar?
-          answer: Kurumsal web siteleri bizde 50.000 TL'den, e-ticaret ve özel yazılım projeleri 140.000 TL'den başlıyor; rakamlar KDV hariç. Paketlerin tamamı [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında.
+          answer: Kurumsal web siteleri bizde 50.000 TL'den, özel yazılım projeleri 140.000 TL'den, hazır altyapıyla e-ticaret siteleri 50.000 TL'den başlıyor; rakamlar KDV hariç. Paketlerin tamamı [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında.
         - question: Kodlama bilmeden web sitesi yapılır mı?
           answer: Evet. Site kurucu araçlar ve hazır yönetim sistemleriyle kodlama bilmeden bir site açılabilir. Sınır, aracın sunduğu şablonlar ve özellikler oluyor. Talep toplayan, çok sayfalı ya da çok dilli bir sitede bu sınır genellikle erken hissediliyor.
         - question: Web sitesi yaptırırken nelere dikkat etmeliyim?

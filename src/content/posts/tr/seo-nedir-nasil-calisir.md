@@ -3,7 +3,7 @@ title: 'SEO Nedir, Nasıl Çalışır?'
 category: SEO
 translationKey: what-is-seo
 excerpt: 'SEO, arama motorlarında para ödemeden görünür olma çalışmasıdır. Üç ayak üzerinde durur: sitenin teknik olarak taranabilmesi, içeriğin aranan soruyu gerçekten cevaplaması ve sitenin güvenilir bulunması.'
-date: 2026-08-21
+date: 2026-10-01
 cover: '/src/assets/images/blog/seo-nedir-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin büyük ekrandaki arama sonuçları ve sıralama grafiğini incelediği fotoğraf
 author: Pixelon Ekibi
@@ -13,7 +13,7 @@ seo:
   title: 'SEO Nedir, Nasıl Çalışır? | Pixelon'
   description: 'SEO nedir, arama motorları nasıl çalışır? Teknik SEO, içerik ve otorite ayakları, reklamla farkı ve işletmeler için ne anlama geldiği.'
 article:
-  updated: 2026-08-21
+  updated: 2026-10-01
   quickAnswer:
     heading: Kısa Cevap
     text: 'SEO, bir sitenin arama motorlarında reklam vermeden üst sıralarda çıkmasını sağlayan çalışmaların tamamıdır. Üç ayaktan oluşur: arama motorunun sayfaları sorunsuz tarayabilmesi (teknik SEO), içeriğin arayan kişinin sorusunu gerçekten cevaplaması (içerik) ve sitenin alanında güvenilir bulunması (otorite). Reklamdan farkı, tıklama başına ödeme yapılmaması ve etkisinin zamanla birikmesidir.'
@@ -144,7 +144,7 @@ article:
 
         Sıralamada belirleyici olan şey anahtar kelimeyi metne yerleştirmek değil, arayan kişinin sorusunu gerçekten cevaplamak.
 
-        Getirisi yavaş ama birikimli. Bu yüzden SEO'ya bakarken doğru soru "ne zaman ilk sıraya çıkarız" değil, "önümüzdeki bir yıl içinde reklam bağımlılığımızı ne kadar azaltabiliriz". Bu soruya yol haritasıyla cevap vermek [SEO hizmetimizin](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) temel işi.
+        Getirisi yavaş ama birikimli. Bu yüzden SEO'ya bakarken doğru soru "ne zaman ilk sıraya çıkarız" değil, "önümüzdeki bir yıl içinde reklam bağımlılığımızı ne kadar azaltabiliriz". Bu soruya yol haritasıyla cevap vermek [SEO hizmetimizin](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) temel işi. Sitenizin bugünkü halini görmek için [SEO analizi nasıl yapılır](/blog/seo-analizi-nasil-yapilir/) yazısındaki adımlara, ne kadar bütçe gerektiğine [SEO fiyatları](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/seo-fiyatlari/) sayfasına bakabilirsiniz.
 
     - type: cta
       heading: Sitenizin arama görünürlüğünü birlikte inceleyelim.

@@ -1,0 +1,140 @@
+title: Hazır Altyapı ile E-Ticaret
+parent: e-ticaret-cozumleri
+status: published
+
+seo:
+  title: Shopify, ikas, T-Soft ve IdeaSoft ile E-Ticaret | Pixelon
+  description: >-
+    Hazır altyapı ile e-ticaret sitesi: Shopify, ikas, T-Soft, IdeaSoft, Ticimax ve
+    WooCommerce üzerinde markaya özel tasarım, entegrasyon ve kurulum. Firmanıza uygun
+    altyapıyı birlikte seçiyoruz.
+
+whatsappMessage: Merhaba Pixelon, hazır altyapı ile e-ticaret sitesi kurmak istiyoruz.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Hazır Altyapı ile E-Ticaret
+    headingLines:
+      - 'Doğru Altyapı, *İşinize Göre* Seçilir.'
+    lead: >-
+      Shopify, ikas, T-Soft, IdeaSoft, Ticimax ve WooCommerce üzerinde site kuruyoruz. Hangi
+      altyapının seçileceğine ürününüze, pazarınıza ve ekibinize göre birlikte karar
+      veriyor, üzerine markaya özel bir mağaza tasarlıyoruz.
+    video:
+      desktopMp4: /media/hero/e-ticaret/hero-eticaret-desktop.mp4
+      desktopWebm: /media/hero/e-ticaret/hero-eticaret-desktop.webm
+      desktopPoster: /media/hero/e-ticaret/hero-eticaret-desktop-poster.webp
+      mobileMp4: /media/hero/e-ticaret/hero-eticaret-mobile.mp4
+      mobileWebm: /media/hero/e-ticaret/hero-eticaret-mobile.webm
+      mobilePoster: /media/hero/e-ticaret/hero-eticaret-mobile-poster.webp
+    chips:
+      - Shopify
+      - ikas
+      - T-Soft ve IdeaSoft
+      - Ticimax ve WooCommerce
+    ctas:
+      - label: Altyapınızı Birlikte Seçelim
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Altyapı Seçimi
+    heading: En İyi Altyapı Yok, Size Uygun Olan Var
+    body: |-
+      Yurt dışına satacak bir marka ile Türkiye'de pazaryerleriyle birlikte satan bir marka aynı altyapıdan aynı verimi almıyor. Yerli altyapılar Türkiye'deki ödeme, kargo ve pazaryeri entegrasyonlarında genellikle daha hazır geliyor; Shopify uluslararası satışta ve uygulama çeşitliliğinde güçlü; WooCommerce ise esneklik isteyen ve teknik tarafı yönetebilen ekiplere uygun.
+
+      Bu yüzden işe altyapı adıyla değil sorularla başlıyoruz: kaç ürün var, nereye satılacak, hangi pazaryerleri ve hangi ödeme kuruluşu kullanılacak, siteyi kim yönetecek? Cevaplar netleşince altyapı da kendiliğinden öne çıkıyor.
+
+      Hazır altyapı hazır görünüm demek değil. Tasarımı markanın kimliğine göre kuruyor, ürün sayfasını güven veren bir yapıya oturtuyoruz.
+    highlight: Altyapıyı işin ihtiyacı seçer; işi altyapıya uydurmak pahalıya gelir.
+
+  - type: cards
+    background: dark
+    kind: feature
+    columns: 2
+    eyebrow: Kurulum Kapsamı
+    heading: Hazır Altyapıda Neleri Kuruyoruz?
+    items:
+      - title: Markaya özel tasarım
+        description: >-
+          Ana sayfa, kategori ve ürün sayfaları markanın görsel kimliğine göre
+          tasarlanıyor.
+        icon: brand
+      - title: Ürün ve kategori yapısı
+        description: >-
+          Kategori, filtre ve varyant yapısı ile ürün sayfalarının içerik düzeni.
+        icon: commerce
+      - title: Ödeme, kargo ve pazaryeri
+        description: >-
+          Sanal pos ya da ödeme kuruluşu, kargo firmaları ve gerekirse pazaryeri
+          entegrasyonları.
+        icon: ecommerce
+      - title: SEO ve ölçüm
+        description: >-
+          Kategori ve ürün sayfalarının SEO altyapısı, dönüşüm takibi ve reklam
+          pikselleri.
+        icon: seo
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Satış ve Katalog Sitelerini Kurduğumuz Markalar
+    slugs:
+      - sera-natura
+      - cagla-aytac
+      - redex-glass
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Hazır Altyapı ile E-Ticaret Hakkında Sorular
+    items:
+      - question: Shopify mı ikas mı?
+        answer: >-
+          Yurt dışına satış ağırlıktaysa Shopify, Türkiye'de pazaryerleri ve yerel ödeme
+          sistemleriyle birlikte satış ağırlıktaysa yerli altyapılar genellikle öne çıkıyor.
+          Karşılaştırmayı [e-ticaret altyapısı nasıl seçilir](/blog/e-ticaret-altyapisi-nasil-secilir/)
+          yazısında yaptık.
+      - question: Kurulum ne kadar tutuyor?
+        answer: >-
+          Hazır altyapıyla kurulum işin kapsamına göre 50.000 TL ile 150.000 TL arasında,
+          KDV hariç. Ayrıntılar
+          [e-ticaret sitesi fiyatları](/hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-sitesi-fiyatlari/)
+          sayfasında.
+      - question: Mevcut sitemi başka altyapıya taşıyabilir misiniz?
+        answer: >-
+          Evet. Taşımada ürünlerin, müşteri verisinin ve eski adreslerin yönlendirmesinin
+          doğru yapılması gerekiyor; aksi halde arama sıralamaları kaybedilebiliyor.
+      - question: Siteyi kendimiz yönetebilir miyiz?
+        answer: >-
+          Evet. Ürün, fiyat, stok, sipariş ve kampanyaları yönetim panelinden kendiniz
+          yönetebiliyorsunuz.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Mağazanızın Altyapısını Birlikte Seçelim
+    lead: >-
+      Ne sattığınızı, nereye satmak istediğinizi ve siteyi kimin yöneteceğini anlatın;
+      hangi altyapının size uygun olduğunu ilk görüşmede söyleyelim.
+    ctas:
+      - label: Altyapınızı Birlikte Seçelim
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: E-Ticaret Danışmanlığı
+        href: /hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-danismanligi/
+        variant: outline

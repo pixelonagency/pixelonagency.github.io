@@ -1,0 +1,98 @@
+seo:
+  title: Kurumsal Kimlik ve Logo Örnekleri | Pixelon
+  description: >-
+    Pixelon kurumsal kimlik ve logo tasarım örnekleri: sağlık, teknoloji, danışmanlık,
+    doğal ürün ve sivil toplum markaları için tasarladığımız logolar, kimlik sistemleri,
+    kılavuzlar ve ambalajlar.
+
+whatsappMessage: Merhaba Pixelon, kurumsal kimlik örneklerinizi inceledim, markamız için bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Projelerimiz
+        href: /projelerimiz/
+      - label: Kurumsal Kimlik
+    eyebrow: Kurumsal Kimlik Örnekleri
+    headingLines:
+      - 'Tasarladığımız Kimliklerden *Örnekler*.'
+    lead: >-
+      Her kimlikte önce markanın ne söylediğine karar verdik, sonra o sözü taşıyacak
+      logoyu, rengi, yazıyı ve uygulamaları tasarladık. Kartlar, her markanın hangi
+      sorudan yola çıktığını anlatan vaka çalışmalarına açılıyor.
+    video:
+      desktopMp4: /media/hero/marka/hero-marka-desktop.mp4
+      desktopWebm: /media/hero/marka/hero-marka-desktop.webm
+      desktopPoster: /media/hero/marka/hero-marka-desktop-poster.webp
+      mobileMp4: /media/hero/marka/hero-marka-mobile.mp4
+      mobileWebm: /media/hero/marka/hero-marka-mobile.webm
+      mobilePoster: /media/hero/marka/hero-marka-mobile-poster.webp
+    chips:
+      - Logo tasarımı
+      - Kurumsal kimlik sistemi
+      - Marka kılavuzu
+      - Ambalaj ve basılı tasarım
+    ctas:
+      - label: Markanızı Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Kurumsal Kimlik Hizmetimiz
+        href: /hizmetlerimiz/marka-ve-kurumsal-kimlik/
+        variant: outline
+
+  # Liste elle tutulmaz: "Kurumsal Kimlik" etiketli her vaka buraya kendiliğinden girer.
+  - type: projects
+    background: light
+    eyebrow: Portfolyo
+    heading: Kurumsal Kimlik Projelerimiz
+    lead: >-
+      Sağlıktan teknolojiye, danışmanlıktan doğal ürüne farklı sektörlerde tasarladığımız
+      kimlik sistemleri.
+    tag: Kurumsal Kimlik
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Kurumsal Kimlik Örnekleri Hakkında Sorular
+    items:
+      - question: Sadece logo tasarımı da yapıyor musunuz?
+        answer: >-
+          Evet. Logo tek başına da tasarlanabiliyor; ama logonun her yerde tutarlı
+          kullanılması için renk, yazı ve kullanım kurallarının da belirlenmesini
+          öneriyoruz. Ayrıntısı [logo tasarımı](/hizmetlerimiz/marka-ve-kurumsal-kimlik/logo-tasarimi/)
+          sayfasında.
+      - question: Kurumsal kimlik ne kadar tutuyor?
+        answer: >-
+          Kurumsal kimlik çalışması 15.000 TL'den başlıyor, KDV hariç; logo tasarımının
+          fiyatı isteğe göre değişiyor. Ayrıntılar
+          [kurumsal kimlik fiyatları](/hizmetlerimiz/marka-ve-kurumsal-kimlik/kurumsal-kimlik-fiyatlari/)
+          sayfasında.
+      - question: Ambalaj tasarımı da yapıyor musunuz?
+        answer: >-
+          Evet. Sera Natura için tüm ürün gamında çalışan bir etiket sistemi tasarladık.
+          Ayrıntısı [ambalaj ve etiket tasarımı](/hizmetlerimiz/marka-ve-kurumsal-kimlik/ambalaj-ve-etiket-tasarimi/)
+          sayfasında.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Sıradaki Kimlik Sizinki Olsun
+    lead: >-
+      Markanızı, kime konuştuğunu ve rakiplerinizden neyle ayrıldığını anlatın; kimliğin
+      nereden başlaması gerektiğini birlikte çıkaralım.
+    ctas:
+      - label: Markanızı Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Kurumsal Kimlik Hizmetimiz
+        href: /hizmetlerimiz/marka-ve-kurumsal-kimlik/
+        variant: outline

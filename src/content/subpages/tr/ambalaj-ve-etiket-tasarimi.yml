@@ -1,0 +1,142 @@
+title: Ambalaj ve Etiket Tasarımı
+parent: marka-ve-kurumsal-kimlik
+status: published
+
+seo:
+  title: Ambalaj Tasarımı ve Etiket Tasarımı | Pixelon
+  description: >-
+    Ambalaj ve etiket tasarımı: rafta ve ekranda aynı güveni veren, tüm ürün gamında
+    çalışan etiket sistemleri. Sera Natura'nın uçucu yağ serisi için kurduğumuz sistemden
+    örneklerle.
+
+whatsappMessage: Merhaba Pixelon, ambalaj ve etiket tasarımı hakkında bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Ambalaj ve Etiket Tasarımı
+    headingLines:
+      - 'İlk Güven Kararı *Rafta* Veriliyor.'
+    lead: >-
+      Ürün hakkında tek kelime okunmadan önce ambalaj konuşuyor. Tek bir ürünü değil, gamın
+      tamamını taşıyan; rafta, ürün fotoğrafında ve sosyal medyada aynı şekilde tanınan
+      etiket sistemleri tasarlıyoruz.
+    video:
+      desktopMp4: /media/hero/marka/hero-marka-desktop.mp4
+      desktopWebm: /media/hero/marka/hero-marka-desktop.webm
+      desktopPoster: /media/hero/marka/hero-marka-desktop-poster.webp
+      mobileMp4: /media/hero/marka/hero-marka-mobile.mp4
+      mobileWebm: /media/hero/marka/hero-marka-mobile.webm
+      mobilePoster: /media/hero/marka/hero-marka-mobile-poster.webp
+    chips:
+      - Tüm gamda çalışan sistem
+      - Okunabilir bilgi hiyerarşisi
+      - Baskıya hazır dosya
+      - Ürün fotoğrafına uygun
+    ctas:
+      - label: Ürününüzü Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Sera Natura
+    heading: Yeni Ürün Eklendiğinde Tasarım Yeniden Kurgulanmıyor
+    body: |-
+      Doğal ürün kategorisinde iki uç var: fazla sade kalıp ucuz görünmek ya da fazla süsleyip inandırıcılığı kaybetmek. Sera Natura'yı bu ikisinin arasında konumlandırdık. Amber cam şişe ve altın kapak seçiminin üzerine, her ürünün kendi botanik illüstrasyonunu taşıyan bir etiket sistemi kurduk.
+
+      Nioli, Servi ve Portakal Kabuğu gibi her üründe merkezde marka arması, yanında ürünün botanik illüstrasyonu ve köşede "%100 Pure" rozeti var. Yerleşim, tipografi ve rozet düzeni aynı; değişen yalnızca bitki illüstrasyonu ve renk aksanı. Latince ad, hacim ve buhar distilasyonu yöntemi gibi bilgiler okunabilir bir hiyerarşiyle yerleşiyor.
+
+      Sistemi amber cam üzerinde, açık ve koyu sunum zeminlerinde test ederek her yerde aynı okunaklılığı koruduğunu doğruladık. Aynı dil sosyal medyaya, reklama ve e-postaya taşındı.
+    highlight: İyi bir etiket sistemi, yirminci ürünü ilk ürün kadar kolay tasarlatır.
+
+  - type: cards
+    background: dark
+    kind: feature
+    columns: 2
+    eyebrow: Nasıl Çalışıyoruz
+    heading: Bir Ambalaj Sisteminin Dört Kararı
+    items:
+      - title: Konumlandırma
+        description: >-
+          Ürün rafta kimin yanında duruyor, alıcı neye bakarak güveniyor? Tasarımın yönü bu
+          cevaptan çıkıyor.
+        icon: strategy
+      - title: Gam sistemi
+        description: >-
+          Sabit kalan ve ürüne göre değişen öğeler baştan belirleniyor; yeni ürün aynı
+          sisteme kolayca ekleniyor.
+        icon: orbit
+      - title: Bilgi hiyerarşisi
+        description: >-
+          Ürün adı, içerik ve zorunlu bilgiler, görsel yük yaratmadan okunabilir bir sırayla
+          yerleşiyor.
+        icon: craft
+      - title: Baskı ve test
+        description: >-
+          Farklı zeminlerde ve malzemelerde okunaklılık test ediliyor, dosyalar baskıya
+          hazır teslim ediliyor.
+        icon: commerce
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Ürün ve Marka Kimliği Projelerimiz
+    slugs:
+      - sera-natura
+      - annelik-hikayesi
+      - dentasay-kurumsal-kimlik
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm kurumsal kimlik örneklerimiz
+    ctaHref: /projelerimiz/kurumsal-kimlik/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Ambalaj ve Etiket Tasarımı Hakkında Sorular
+    items:
+      - question: Tek bir ürün için de etiket tasarlıyor musunuz?
+        answer: >-
+          Evet. Ama ileride yeni ürün eklenecekse etiketi baştan bir sistem olarak kurmayı
+          öneriyoruz; böylece her yeni ürün için tasarım sıfırdan başlamıyor.
+      - question: Etikette hangi bilgiler yer almalı?
+        answer: >-
+          Ürün grubuna göre zorunlu bilgiler değişiyor; bunları üretici ya da ilgili mevzuat
+          belirliyor. Biz bu bilgilerin okunabilir bir hiyerarşiyle yerleşmesini sağlıyoruz.
+          Ayrıntısı [ambalaj ve etiket tasarımı](/blog/ambalaj-ve-etiket-tasarimi/)
+          yazısında.
+      - question: Ambalaj tasarımı ne kadar tutuyor?
+        answer: >-
+          Ürün sayısına ve kapsama göre değişiyor; kurumsal kimlik çalışması 15.000 TL'den
+          başlıyor, KDV hariç. Ayrıntılar
+          [kurumsal kimlik fiyatları](/hizmetlerimiz/marka-ve-kurumsal-kimlik/kurumsal-kimlik-fiyatlari/)
+          sayfasında.
+      - question: Ürün fotoğrafı ve e-ticaret de yapıyor musunuz?
+        answer: >-
+          Evet. Ambalajın ürün sayfasında ve sosyal medyada nasıl göründüğü de işin parçası;
+          e-ticaret tarafını [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/)
+          sayfasında anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Ürününüzün Rafta Ne Söylediğine Birlikte Karar Verelim
+    lead: >-
+      Ürün gamınızı ve alıcınızın neye bakarak karar verdiğini anlatın; ambalaj sisteminin
+      nereden başlaması gerektiğini birlikte çıkaralım.
+    ctas:
+      - label: Ürününüzü Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Sera Natura Projesi
+        href: /projelerimiz/sera-natura/
+        variant: outline

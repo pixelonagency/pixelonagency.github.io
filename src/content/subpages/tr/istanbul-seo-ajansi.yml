@@ -1,0 +1,162 @@
+title: İstanbul SEO Ajansı
+parent: seo-ve-icerik-pazarlamasi
+# Yerel sayfa kuralı: yalnızca gerçek adresimizin olduğu şehir için tek sayfa. İlçe
+# başına ayrı sayfa açılmaz (Google spam politikası: doorway sayfaları); ilçeler burada geçer.
+status: published
+
+seo:
+  title: İstanbul SEO Ajansı | Kadıköy | Pixelon
+  description: >-
+    İstanbul SEO ajansı Pixelon: Kadıköy merkezli ekiple teknik SEO, yerel SEO, içerik ve
+    Google İşletme Profili. İstanbul'daki işletmelerle yüz yüze ya da uzaktan, ölçülebilir
+    SEO çalışması.
+
+whatsappMessage: Merhaba Pixelon, İstanbul'dayız, SEO çalışması için görüşmek istiyoruz.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: İstanbul SEO Ajansı
+    headingLines:
+      - "İstanbul'da SEO: *Kadıköy'den* Tüm Şehre."
+    lead: >-
+      İstanbul'da bir hizmeti arayan kişi çoğu zaman ilçe adıyla arıyor ve rakibiniz birkaç
+      sokak ötede. Kadıköy merkezli ekibimizle İstanbul'daki işletmelerin teknik SEO'sunu,
+      içeriğini ve yerel görünürlüğünü kuruyoruz.
+    video:
+      desktopMp4: /media/hero/seo/hero-seo-desktop.mp4
+      desktopWebm: /media/hero/seo/hero-seo-desktop.webm
+      desktopPoster: /media/hero/seo/hero-seo-desktop-poster.webp
+      mobileMp4: /media/hero/seo/hero-seo-mobile.mp4
+      mobileWebm: /media/hero/seo/hero-seo-mobile.webm
+      mobilePoster: /media/hero/seo/hero-seo-mobile-poster.webp
+    chips:
+      - Kadıköy, İstanbul
+      - Yüz yüze ya da uzaktan
+      - İlçe bazlı yerel SEO
+      - İlk analiz ücretsiz
+    ctas:
+      - label: Görüşme Planlayalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: İstanbul'da Arama
+    heading: Aynı Şehirde, Farklı Aramalar
+    body: |-
+      İstanbul'da "diş kliniği" arayan biri Kadıköy'deyse Kadıköy'deki sonuçları, Beşiktaş'taysa Beşiktaş'takileri görüyor. Şehir geneli bir sayfa bu aramaların çoğunda geri planda kalıyor. Yerel SEO'da asıl iş, hizmetin gerçekten ulaşabildiği ilçeler için doğru sayfayı ve doğru işletme profilini kurmak.
+
+      Ama ilçe başına ayrı bir sayfa açıp aynı metni kopyalamak işe yaramıyor; Google bu tür sayfaları spam olarak değerlendiriyor. Bunun yerine her şube için gerçek bir konum sayfası, her hizmet için içeriği dolu bir sayfa ve tutarlı bir Google İşletme Profili kuruyoruz.
+
+      Aynı şehirde olmanın bir faydası da içerik. Sitede kullanılacak fotoğraf ve videoyu işletmenizde, yerinde çekebiliyoruz; gerçek mekân görüntüsü hem ziyaretçide hem de aramada güven sinyali.
+    highlight: İstanbul'daysanız ilk analizi yüz yüze konuşalım. Değilseniz ekran başında aynı şekilde çalışırız.
+
+  - type: bullets
+    background: dark
+    kind: tags
+    eyebrow: Hizmet Bölgesi
+    heading: İstanbul'un Her Yerindeyiz
+    lead: >-
+      Anadolu Yakası'ndaki ilçelere Kadıköy'den kısa bir yolla ulaşıyoruz, Avrupa
+      Yakası'ndaki işletmelerle de aynı şekilde çalışıyoruz.
+    items:
+      - Kadıköy
+      - Ataşehir
+      - Üsküdar
+      - Ümraniye
+      - Maltepe
+      - Kartal
+      - Pendik
+      - Tuzla
+      - Sancaktepe
+      - Çekmeköy
+      - Beykoz
+      - Beşiktaş
+      - Şişli
+      - Sarıyer
+
+  - type: steps
+    background: light
+    kind: timeline
+    eyebrow: Nasıl Çalışıyoruz
+    heading: İlk Analizden Aylık Rapora
+    items:
+      - title: Ücretsiz analiz
+        description: >-
+          Sitenizin teknik durumunu, sıralamalarını ve rakiplerinizi inceliyor, sonucu
+          yüz yüze ya da ekran başında anlatıyoruz.
+      - title: Kapsam ve teklif
+        description: >-
+          Hangi sayfaların, hangi aramaların ve hangi bölgelerin hedefleneceğini yazılı
+          olarak netleştiriyoruz.
+      - title: Teknik ve yerel kurulum
+        description: >-
+          Teknik düzeltmeler, konum ve hizmet sayfaları, Google İşletme Profili ve yerel
+          yapılandırılmış veri.
+      - title: İçerik ve rapor
+        description: >-
+          Arama niyetine uygun içerik üretiyor, sıralama, trafik ve dönüşümü aylık
+          raporluyoruz.
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Arama Görünürlüğünü Kurduğumuz Markalar
+    slugs:
+      - dr-ayse-cinkaya-kahveci
+      - dentasay
+      - xray-groupe
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: İstanbul SEO Ajansı Hakkında Sorular
+    items:
+      - question: Ofisinize gelip yüz yüze görüşebilir miyiz?
+        answer: >-
+          Evet. Ekibimiz Kadıköy'de. İstanbul'daysanız ilk görüşmeyi yüz yüze yapabiliriz,
+          değilseniz ekran başında aynı şekilde çalışıyoruz.
+      - question: Sadece İstanbul'daki işletmelerle mi çalışıyorsunuz?
+        answer: >-
+          Hayır. Manavgat'taki bir dermatoloji kliniğinden 13 dilde aranan bir sağlık
+          turizmi markasına kadar farklı şehir ve ülkelerde SEO yapıyoruz. Yerel aramanın
+          ayrıntısını [yerel SEO](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/yerel-seo/)
+          sayfasında anlattık.
+      - question: SEO çalışması ne kadar tutuyor?
+        answer: >-
+          Aylık SEO çalışması projenin büyüklüğüne göre 20.000 TL ile 100.000 TL arasında,
+          KDV hariç. Ayrıntılar
+          [SEO fiyatları](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/seo-fiyatlari/) sayfasında.
+      - question: Her ilçe için ayrı sayfa açmalı mıyım?
+        answer: >-
+          Yalnızca orada gerçekten bir şubeniz ya da o ilçeye özel bir hizmetiniz varsa.
+          Aynı metnin ilçe adı değiştirilerek çoğaltılması Google'ın spam politikasına
+          takılıyor ve sitenin tamamına zarar verebiliyor.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: İstanbul'daysanız Sitenize Yüz Yüze Bakalım
+    lead: >-
+      Ne sattığınızı ve müşterinizin sizi nasıl aradığını anlatın; hangi aramalarda, hangi
+      sayfalarla ilerlemek gerektiğini ücretsiz analizle çıkaralım.
+    ctas:
+      - label: Görüşme Planlayalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: SEO Hizmetimiz
+        href: /hizmetlerimiz/seo-ve-icerik-pazarlamasi/
+        variant: outline

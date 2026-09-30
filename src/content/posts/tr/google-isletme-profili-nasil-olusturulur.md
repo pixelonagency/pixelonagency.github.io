@@ -3,7 +3,7 @@ title: 'Google İşletme Profili Nasıl Oluşturulur ve Güçlendirilir?'
 category: SEO
 translationKey: google-business-profile-guide
 excerpt: 'Haritada ve yerel aramada çıkan işletme kartı, çoğu müşterinin sizinle ilk karşılaştığı yer. Profili açmaktan kategori seçimine, hizmetlerden yorumlara kadar neyin sıralamayı etkilediğini, kendi profilimizde yaptığımız düzenlemelerle anlattık.'
-date: 2026-09-30
+date: 2026-10-01
 cover: '/src/assets/images/blog/google-isletme-profili-nasil-olusturulur-cover.webp'
 coverAlt: Akşam saatinde bir dükkân vitrininin önünde bir işletme sahibinin telefonunda harita ve işletme kartını incelediği, tezgâhtaki dizüstü bilgisayarda aynı profil panelinin açık olduğu fotoğraf
 author: Pixelon Ekibi
@@ -13,7 +13,7 @@ seo:
   title: 'Google İşletme Profili: Kurulum ve Sıralama | Pixelon'
   description: 'Google İşletme Profili nasıl oluşturulur, nasıl doğrulanır ve yerel aramada nasıl üste çıkar? Kategori, hizmetler, yorumlar ve güncellemeler için adım adım rehber.'
 article:
-  updated: 2026-09-30
+  updated: 2026-10-01
   quickAnswer:
     heading: Kısa Cevap
     text: Google İşletme Profili, business.google.com üzerinden ücretsiz açılır ve işletmenin gerçekten var olduğu doğrulandıktan sonra yayına girer. Yerel aramada öne çıkmak için en etkili ayar birincil kategoridir; ardından hizmetlerin eksiksiz girilmesi, web sitesiyle tutarlı bilgiler, düzenli gelen gerçek yorumlar ve güncel fotoğraflar gelir.
@@ -117,7 +117,7 @@ article:
       text: |-
         Google İşletme Profili yerel bir işletmenin en ucuz ve en hızlı görünürlük kanalı. En etkili ayar birincil kategori; ardından eksiksiz hizmetler, tutarlı bilgiler, gerçek yorumlar ve güncel fotoğraflar geliyor.
 
-        Profil tek başına çalışmıyor; karar çoğunlukla web sitesinde veriliyor. Yerel aramada görünürlüğü site ve içerikle birlikte nasıl kurduğumuzu [SEO ve içerik pazarlaması](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) sayfasında, sitenin tarafını [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) sayfasında anlattık.
+        Profil tek başına çalışmıyor; karar çoğunlukla web sitesinde veriliyor. Yerel aramada görünürlüğü site ve içerikle birlikte nasıl kurduğumuzu [SEO ve içerik pazarlaması](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) sayfasında, sitenin tarafını [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) sayfasında anlattık. Harita sonuçlarında öne çıkmanın diğer parçalarını [yerel SEO](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/yerel-seo/) sayfasında, yorum toplamayı [Google yorumları nasıl artırılır](/blog/google-yorumlari-nasil-artirilir/) yazısında anlattık.
 
     - type: cta
       heading: Profilinizi ve sitenizi birlikte inceleyelim.

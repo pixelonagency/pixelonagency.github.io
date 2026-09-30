@@ -1,0 +1,156 @@
+title: Logo Tasarımı
+parent: marka-ve-kurumsal-kimlik
+status: published
+
+seo:
+  title: Logo Tasarımı | Profesyonel Logo ve Amblem | Pixelon
+  description: >-
+    Logo tasarımı: markanın ne söylediğinden başlayan, küçük boyutta ve tek renkte de
+    çalışan, vektörel teslim edilen profesyonel logo ve amblem tasarımı. Sekoya, Valueset,
+    Mobico ve Vennyx projelerinden örnekler.
+
+whatsappMessage: Merhaba Pixelon, logo tasarımı hakkında bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Logo Tasarımı
+    headingLines:
+      - 'Logo Bir Çizim Değil, *Bir Karar*.'
+    lead: >-
+      İyi bir logo markanın ne söylediğini birkaç çizgiye sığdırır. Önce o sözü
+      netleştiriyor, sonra onu taşıyacak işareti tasarlıyor ve küçük boyuttan tabelaya
+      kadar her yerde çalıştığını test ediyoruz.
+    video:
+      desktopMp4: /media/hero/marka/hero-marka-desktop.mp4
+      desktopWebm: /media/hero/marka/hero-marka-desktop.webm
+      desktopPoster: /media/hero/marka/hero-marka-desktop-poster.webp
+      mobileMp4: /media/hero/marka/hero-marka-mobile.mp4
+      mobileWebm: /media/hero/marka/hero-marka-mobile.webm
+      mobilePoster: /media/hero/marka/hero-marka-mobile-poster.webp
+    chips:
+      - Markaya özel tasarım
+      - Amblem ve logotype
+      - Vektörel teslim
+      - Kullanım kuralları
+    ctas:
+      - label: Markanızı Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Anlamdan Biçime
+    heading: Her Logo Bir Soruya Cevap Veriyor
+    body: |-
+      Sekoya bir yazılım markası; amblemini kodlama işaretini marka isminin ilk harfine dönüştürerek kurduk. Valueset'in imzası da kod diline gönderme yapıyor. İkisinde de işaret, markanın ne iş yaptığını tek bakışta söylüyor.
+
+      Mobico'da soru başkaydı: soyut bir CRM yazılımını ilk bakışta ne yaptığı anlaşılan bir kimliğe dönüştürmek. Vennyx'te ise anlaşılması zor bir teknoloji alanı için kurallı bir marka kılavuzu gerekiyordu.
+
+      Her projede logo tasarımından önce aynı soruyu soruyoruz: bu marka kime, ne söylüyor ve rakiplerinden neyle ayrılıyor? Cevap netleşmeden çizilen bir logo, güzel olsa bile bir şey anlatmıyor.
+    highlight: Bir logonun başarısı ne kadar güzel olduğuyla değil, ne kadar çabuk tanındığıyla ölçülür.
+
+  - type: steps
+    background: dark
+    kind: timeline
+    eyebrow: Süreç
+    heading: Brieften Teslim Dosyalarına
+    items:
+      - title: Keşif ve brief
+        description: Marka, hedef kitle, rakipler ve logonun kullanılacağı yerler konuşuluyor.
+      - title: Araştırma ve konsept
+        description: Konumlandırmaya göre farklı yönler çalışılıyor, konseptler gerekçesiyle sunuluyor.
+      - title: Geliştirme ve test
+        description: Seçilen yön küçük boyutta, tek renkte, açık ve koyu zeminde test ediliyor.
+      - title: Kurallar ve teslim
+        description: Renk kodları, boşluk ve minimum boyut kurallarıyla birlikte vektörel ve görsel formatlarda teslim.
+
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Logo Türleri
+    heading: Hangi Logo, Hangi Marka İçin?
+    items:
+      - title: Amblem
+        description: >-
+          Yazıdan bağımsız okunabilen bir işaret. Uygulama ikonu, profil fotoğrafı ve küçük
+          kullanımlarda güçlü.
+        icon: craft
+      - title: Logotype
+        description: >-
+          Markanın adının özel olarak işlenmiş hali. Adın akılda kalması gereken yeni
+          markalarda sık tercih ediliyor.
+        icon: brand
+      - title: Birleşik logo
+        description: >-
+          Amblem ve yazının birlikte kullanıldığı sistem; yere göre ikisi ayrı ayrı da
+          kullanılabiliyor.
+        icon: orbit
+      - title: Monogram
+        description: >-
+          Baş harflerden oluşan işaret. Uzun isimli ya da kişisel markalarda kısa bir imza
+          sağlıyor.
+        icon: strategy
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Tasarladığımız Logolardan Seçmeler
+    slugs:
+      - sekoya
+      - valueset
+      - mobico
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm kurumsal kimlik örneklerimiz
+    ctaHref: /projelerimiz/kurumsal-kimlik/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Logo Tasarımı Hakkında Sorular
+    items:
+      - question: Logo tasarımı ne kadar tutuyor?
+        answer: >-
+          Logo tasarımının fiyatı isteğe ve kapsama göre değişiyor; kurumsal kimlik
+          çalışması 15.000 TL'den başlıyor, KDV hariç. Ayrıntılar
+          [kurumsal kimlik fiyatları](/hizmetlerimiz/marka-ve-kurumsal-kimlik/kurumsal-kimlik-fiyatlari/)
+          sayfasında.
+      - question: Logo dosyaları hangi formatlarda teslim ediliyor?
+        answer: >-
+          Baskı ve dijital kullanım için vektörel ve görsel formatlarda; renkli, siyah,
+          beyaz ve gereken diğer kullanım versiyonlarıyla.
+      - question: Amblem ile logo arasındaki fark ne?
+        answer: >-
+          Amblem yazıdan bağımsız işaret, logo ise markanın görsel imzasının tamamı.
+          Ayrıntısını [amblem nedir](/blog/amblem-nedir/) yazısında anlattık.
+      - question: Sadece logo yeterli mi?
+        answer: >-
+          Logonun her yerde tutarlı kullanılması için renk, yazı ve kullanım kurallarının
+          da belirlenmesini öneriyoruz. Süreci
+          [logo tasarımı nasıl yapılır](/blog/logo-tasarimi-nasil-yapilir/) yazısında
+          anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Markanızın İşaretini Birlikte Bulalım
+    lead: >-
+      Ne yaptığınızı, kime konuştuğunuzu ve rakiplerinizden neyle ayrıldığınızı anlatın;
+      logonun nereden başlaması gerektiğini birlikte çıkaralım.
+    ctas:
+      - label: Markanızı Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Kurumsal Kimlik Hizmetimiz
+        href: /hizmetlerimiz/marka-ve-kurumsal-kimlik/
+        variant: outline

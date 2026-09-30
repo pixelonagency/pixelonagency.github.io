@@ -1,0 +1,156 @@
+title: SEO Danışmanlığı
+parent: seo-ve-icerik-pazarlamasi
+status: published
+
+seo:
+  title: SEO Danışmanlığı ve SEO Uzmanı Desteği | Pixelon
+  description: >-
+    SEO danışmanlığı: sitenizin teknik ve içerik denetimi, anahtar kelime ve rakip
+    araştırması, önceliklendirilmiş yol haritası ve ekibinize yönlendirme. SEO uzmanı
+    arayan işletmeler için.
+
+whatsappMessage: Merhaba Pixelon, SEO danışmanlığı hakkında bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: SEO Danışmanlığı
+    headingLines:
+      - 'Ne Yapılacağını Değil, *Önce Neyin* Yapılacağını Bilin.'
+    lead: >-
+      Çoğu sitede SEO'nun sorunu bilgi eksikliği değil, öncelik eksikliği. Sitenizi
+      inceliyor, bulguları etkisine göre sıralıyor ve ekibinizin ya da bizim uygulayacağı
+      net bir yol haritası çıkarıyoruz.
+    video:
+      desktopMp4: /media/hero/seo/hero-seo-desktop.mp4
+      desktopWebm: /media/hero/seo/hero-seo-desktop.webm
+      desktopPoster: /media/hero/seo/hero-seo-desktop-poster.webp
+      mobileMp4: /media/hero/seo/hero-seo-mobile.mp4
+      mobileWebm: /media/hero/seo/hero-seo-mobile.webm
+      mobilePoster: /media/hero/seo/hero-seo-mobile-poster.webp
+    chips:
+      - Teknik ve içerik denetimi
+      - Önceliklendirilmiş yol haritası
+      - Ekibinize yönlendirme
+      - Search Console ve Semrush verisi
+    ctas:
+      - label: Sitenizi İnceleyelim
+        href: /ucretsiz-analiz/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Danışmanlık mı, Yönetim mi?
+    heading: Uygulamayı Kimin Yapacağına Göre Seçin
+    body: |-
+      Sitenizde içerik yazan, geliştirme yapan bir ekibiniz varsa eksik olan çoğu zaman yön. Hangi sayfa önce düzeltilmeli, hangi aramaya hangi sayfa cevap vermeli, hangi teknik hata gerçekten önemli? Danışmanlık bu soruların cevabını verir, uygulamayı ekibiniz yapar.
+
+      Ekibiniz yoksa ya da zamanı yetmiyorsa, aynı yol haritasını biz uygularız. İki durumda da başlangıç aynı: sitenin bugünkü halini veriyle görmek.
+
+      Ölçümü tahminle değil kaynağından yapıyoruz: Search Console'da hangi sorgunun hangi sayfaya geldiğini, Semrush'ta rakiplerin hangi aramalarda güçlü olduğunu, Analytics'te organik trafiğin işe dönüşüp dönüşmediğini okuyoruz.
+    highlight: İyi bir SEO planı kısa bir listedir; uzun olan, önceliği belirlenmemiş olandır.
+
+  - type: cards
+    background: dark
+    kind: feature
+    columns: 2
+    eyebrow: Danışmanlık Kapsamı
+    heading: Neye Bakıyor, Ne Teslim Ediyoruz?
+    items:
+      - title: Teknik denetim
+        description: >-
+          Tarama, indeksleme, hız, mobil uyumluluk, yönlendirmeler, canonical ve
+          yapılandırılmış veri.
+        icon: seo
+      - title: Anahtar kelime ve rakip araştırması
+        description: >-
+          Hangi aramaların gerçekten aranıp aranmadığı, rakiplerin güçlü olduğu alanlar ve
+          sizin gerçekçi şansınız.
+        icon: strategy
+      - title: İçerik ve sayfa planı
+        description: >-
+          Hangi sayfanın hangi aramaya cevap vereceği, hangi içeriklerin eksik olduğu ve
+          birbiriyle yarışan sayfalar.
+        icon: craft
+      - title: Önceliklendirilmiş yol haritası
+        description: >-
+          Bulguların etkisine ve emeğine göre sıralandığı, ekibinizin takip edebileceği bir
+          uygulama listesi.
+        icon: orbit
+
+  - type: steps
+    background: light
+    kind: timeline
+    eyebrow: Süreç
+    heading: Denetimden Yol Haritasına
+    items:
+      - title: Erişim ve veri
+        description: Search Console ve Analytics erişimiyle sitenin bugünkü hali ölçülüyor.
+      - title: Denetim
+        description: Teknik, içerik ve rakip tarafı ayrı ayrı inceleniyor.
+      - title: Yol haritası
+        description: Bulgular etkisine göre sıralanıp yazılı bir plana dönüşüyor.
+      - title: Sunum ve yönlendirme
+        description: Plan ekibinizle birlikte konuşuluyor, uygulama sırasında sorular cevaplanıyor.
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Arama Görünürlüğünü Kurduğumuz Markalar
+    slugs:
+      - dr-ayse-cinkaya-kahveci
+      - dentasay
+      - xray-groupe
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: SEO Danışmanlığı Hakkında Sorular
+    items:
+      - question: SEO uzmanı ile SEO ajansı arasındaki fark ne?
+        answer: >-
+          Uzman genellikle tek kişi ve tek bir alanda derin. Ajansta teknik, içerik,
+          tasarım ve yazılım aynı ekipte olduğu için bulgular uygulamaya daha hızlı dönüyor.
+          Ayrıntısını [SEO uzmanı ne iş yapar](/blog/seo-uzmani-ne-is-yapar/) yazısında
+          anlattık.
+      - question: Sıralama garantisi veriyor musunuz?
+        answer: >-
+          Hayır. Sıralamayı Google belirliyor. Garanti yerine ölçülebilir hedefler ve
+          gelişmeyi gösteren düzenli bir rapor veriyoruz.
+      - question: Danışmanlık ne kadar tutuyor?
+        answer: >-
+          Kapsama göre değişiyor. Aylık SEO çalışmasının fiyat aralığını
+          [SEO fiyatları](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/seo-fiyatlari/)
+          sayfasında yazdık.
+      - question: Denetime nereden başlanır?
+        answer: >-
+          Kendi sitenize bakmak isterseniz adımları
+          [SEO analizi nasıl yapılır](/blog/seo-analizi-nasil-yapilir/) yazısında
+          anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Sitenizin Önceliklerini Birlikte Çıkaralım
+    lead: >-
+      Sitenizi ve ekibinizin neleri yapabildiğini anlatın; ücretsiz ilk analizde en çok
+      etki edecek işleri söyleyelim.
+    ctas:
+      - label: Ücretsiz Analiz Talep Et
+        href: /ucretsiz-analiz/
+        variant: primary
+        icon: arrow
+      - label: SEO Hizmetimiz
+        href: /hizmetlerimiz/seo-ve-icerik-pazarlamasi/
+        variant: outline

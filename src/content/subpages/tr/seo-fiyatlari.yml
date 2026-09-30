@@ -1,0 +1,191 @@
+title: SEO Fiyatları
+parent: seo-ve-icerik-pazarlamasi
+# Rakamlar 1 Eki 2026'da sahip kararıyla belirlendi: aylık SEO 20.000 - 100.000 TL, KDV hariç,
+# projenin büyüklüğüne ve durumuna göre. Yeni rakam eklenmeden önce sahip onayı alınır.
+status: published
+
+seo:
+  title: SEO Fiyatları 2026 | Aylık SEO Hizmeti Ücreti | Pixelon
+  description: >-
+    SEO fiyatları 2026: aylık SEO hizmeti projenin büyüklüğüne göre 20.000 TL ile
+    100.000 TL arasında (KDV hariç). Fiyatı neyin belirlediğini ve neyin dahil olduğunu
+    açıkça yazdık.
+
+whatsappMessage: Merhaba Pixelon, SEO fiyatları hakkında bilgi almak ve teklif istemek istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: SEO Fiyatları 2026
+    headingLines:
+      - "SEO Hizmeti *Aylık 20.000 TL'den* Başlıyor."
+    lead: >-
+      Rakamı saklamıyoruz. Aylık SEO çalışması projenin büyüklüğüne ve sitenin durumuna
+      göre 20.000 TL ile 100.000 TL arasında, KDV hariç. Aşağıda fiyatı neyin
+      belirlediğini tek tek yazdık.
+    video:
+      desktopMp4: /media/hero/seo/hero-seo-desktop.mp4
+      desktopWebm: /media/hero/seo/hero-seo-desktop.webm
+      desktopPoster: /media/hero/seo/hero-seo-desktop-poster.webp
+      mobileMp4: /media/hero/seo/hero-seo-mobile.mp4
+      mobileWebm: /media/hero/seo/hero-seo-mobile.webm
+      mobilePoster: /media/hero/seo/hero-seo-mobile-poster.webp
+    chips:
+      - KDV hariç net fiyatlar
+      - Sıralama garantisi yok
+      - Aylık rapor
+      - İlk analiz ücretsiz
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Sorun
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: cards
+    background: light
+    columns: 3
+    eyebrow: Kapsamlar
+    heading: Aynı Adı Taşıyan Üç Farklı İş
+    lead: >-
+      "SEO" diye satılan iş bir sitede birkaç teknik düzeltme, başka bir sitede on dilde
+      yüzlerce sayfa demek. Fiyat aralığının geniş olmasının sebebi bu.
+    items:
+      - eyebrow: Yerel ve küçük siteler
+        title: Aralığın alt kısmı
+        description: |-
+          Tek dil, sınırlı sayıda hizmet sayfası, yerel aramalar ve Google İşletme Profili. Teknik düzeltme, sayfa içi optimizasyon ve düzenli içerik.
+
+          Kimin için: bir şehirde ya da bölgede hizmet veren işletmeler.
+      - eyebrow: Kurumsal ve rekabetçi alanlar
+        title: Aralığın orta kısmı
+        description: |-
+          Çok sayıda hizmet ya da kategori sayfası, rekabetçi aramalar, düzenli içerik üretimi ve bağlantı çalışması.
+
+          Kimin için: ulusal ölçekte rakiplerle aynı aramalarda yarışan markalar.
+        featured: true
+      - eyebrow: Çok dilli ve büyük projeler
+        title: Aralığın üst kısmı
+        description: |-
+          Birden fazla dil ve ülke, yüzlerce sayfa, e-ticaret kategorileri ya da sağlık turizmi gibi uluslararası aramalar.
+
+          Kimin için: birden fazla pazarda aranmak isteyen markalar.
+    note: >-
+      Tüm fiyatlar KDV hariçtir. Kesin rakam, sitenizi ilk analizde inceledikten sonra
+      kapsamla birlikte tek bir tutara iner.
+
+  - type: stats
+    background: dark
+    eyebrow: Kısaca
+    heading: İki Rakamda SEO Fiyatları
+    items:
+      - value: 20
+        suffix: '.000 ₺'
+        label: Aylık SEO başlangıcı
+        description: KDV hariç, projenin büyüklüğüne göre.
+      - value: 100
+        suffix: '.000 ₺'
+        label: Büyük projelerde aylık
+        description: Çok dilli, çok sayfalı ve rekabetçi yapılar.
+
+  - type: scope
+    background: light
+    eyebrow: Fiyatı Ne Değiştirir?
+    heading: Fiyatınızı Belirleyen Beş Kalem
+    lead: >-
+      Teklif alırken bu listeyi yanınızda tutun. İki teklif arasındaki farkın büyük kısmı
+      genelde bu satırlardan birinin boş kalmasıdır.
+    items:
+      - title: Sitenin teknik durumu
+        description: >-
+          Taranma ve indeksleme sorunları, yavaşlık ya da yanlış yönlendirmeler varsa ilk
+          aylar bunların düzeltilmesine gidiyor.
+      - title: Sayfa ve içerik hacmi
+        description: >-
+          Kaç hizmet ya da kategori sayfası optimize edilecek, ayda kaç yeni içerik
+          üretilecek?
+      - title: Rekabet düzeyi
+        description: >-
+          Mahalle ölçeğinde bir arama ile ulusal bir arama aynı emeği istemiyor.
+      - title: Dil ve ülke sayısı
+        description: >-
+          Her dil ayrı anahtar kelime araştırması, ayrı içerik ve doğru hreflang yapısı
+          demek.
+      - title: Bağlantı ve dijital PR
+        description: >-
+          Güvenilir sitelerden doğal bağlantı kazanmak için yapılan çalışma kapsamın
+          büyük bir parçası olabiliyor.
+
+  - type: bullets
+    background: dark
+    kind: check
+    eyebrow: Her Kapsamda
+    heading: Hangi Kapsamı Seçerseniz Seçin
+    items:
+      - Search Console ve Analytics kurulumu ya da kontrolü
+      - Teknik SEO denetimi ve düzeltme listesi
+      - Anahtar kelime ve rakip araştırması
+      - Sayfa içi optimizasyon
+      - Arama niyetine uygun içerik planı
+      - Sıralama, trafik ve dönüşümü gösteren aylık rapor
+
+  - type: projects
+    background: light
+    eyebrow: SEO Çalıştığımız Markalar
+    heading: Bu Fiyatlara Ne Aldığınızı Görün
+    lead: >-
+      Dr. Ayşe Cinkaya Kahveci'nin kliniği "Manavgat dermatolog" aramasında ilk sayfada;
+      site bir yılda Google'da 487 bin kez göründü.
+    slugs:
+      - dr-ayse-cinkaya-kahveci
+      - dentasay
+      - xray-groupe
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: SEO Fiyatları Hakkında Sorular
+    items:
+      - question: SEO hizmeti aylık ne kadar?
+        answer: >-
+          Pixelon'da aylık SEO çalışması projenin büyüklüğüne ve sitenin durumuna göre
+          20.000 TL ile 100.000 TL arasında, KDV hariç. Kesin rakamı ilk analizden sonra
+          veriyoruz.
+      - question: Neden tek bir fiyat değil de aralık veriyorsunuz?
+        answer: >-
+          Çünkü aynı adı taşıyan iki SEO işi bambaşka emek istiyor. Başlangıç rakamını
+          yayınlıyoruz ki bütçesi bunun altında kalan işletme vakit kaybetmesin.
+      - question: Sıralama garantisi veriyor musunuz?
+        answer: >-
+          Hayır. Sıralamayı Google belirliyor; garanti veren bir teklif ya kontrol
+          edemeyeceği bir şeyi vaat ediyor ya da kimsenin aramadığı bir kelimeyi hedefliyor.
+          Biz ölçülebilir hedefler koyuyor, gelişmeyi aylık raporluyoruz.
+      - question: SEO ne kadar sürede sonuç verir?
+        answer: >-
+          Sitenin durumuna ve rekabete göre değişiyor. Ayrıntısını
+          [SEO ne kadar sürede sonuç verir](/blog/seo-ne-kadar-surede-sonuc-verir/)
+          yazısında anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Fiyatı Tahmin Etmeyin, Sitenize Birlikte Bakalım
+    lead: >-
+      Sitenizi ve hedeflediğiniz aramaları anlatın; ücretsiz ilk analizde hangi kapsamın
+      gerektiğini açıkça söyleyelim.
+    ctas:
+      - label: Ücretsiz Analiz Talep Et
+        href: /ucretsiz-analiz/
+        variant: primary
+        icon: arrow
+      - label: SEO Hizmetimiz
+        href: /hizmetlerimiz/seo-ve-icerik-pazarlamasi/
+        variant: outline

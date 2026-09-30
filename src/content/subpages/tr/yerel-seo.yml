@@ -1,0 +1,170 @@
+title: Yerel SEO
+parent: seo-ve-icerik-pazarlamasi
+status: published
+
+seo:
+  title: Yerel SEO ve Google Haritalar Optimizasyonu | Pixelon
+  description: >-
+    Yerel SEO: Google İşletme Profili, harita sonuçları, yorumlar, konum sayfaları ve
+    yerel yapılandırılmış veri. "Manavgat dermatolog" aramasında ilk sayfaya çıkan klinik
+    projesinden gerçek sonuçlar.
+
+whatsappMessage: Merhaba Pixelon, yerel aramalarda görünmek için bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Yerel SEO
+    headingLines:
+      - '"Yakınımdaki" Aramada *İlk Siz* Görünün.'
+    lead: >-
+      Müşterinizin çoğu sizi şehir ya da ilçe adıyla arıyor. Google İşletme Profilini,
+      yorumları, konum sayfalarını ve sitenin yerel sinyallerini birlikte kurarak hem
+      harita sonuçlarında hem de arama sonuçlarında görünmenizi sağlıyoruz.
+    video:
+      desktopMp4: /media/hero/seo/hero-seo-desktop.mp4
+      desktopWebm: /media/hero/seo/hero-seo-desktop.webm
+      desktopPoster: /media/hero/seo/hero-seo-desktop-poster.webp
+      mobileMp4: /media/hero/seo/hero-seo-mobile.mp4
+      mobileWebm: /media/hero/seo/hero-seo-mobile.webm
+      mobilePoster: /media/hero/seo/hero-seo-mobile-poster.webp
+    chips:
+      - Google İşletme Profili
+      - Harita sonuçları
+      - Yorum yönetimi
+      - Konum sayfaları
+    ctas:
+      - label: Yerel Görünürlüğünüze Bakalım
+        href: /ucretsiz-analiz/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: stats
+    background: light
+    eyebrow: Dr. Ayşe Cinkaya Kahveci
+    heading: Bir Kliniğin Yerel Aramadaki Yeri
+    items:
+      - value: 1
+        suffix: '. sayfa'
+        label: '"Manavgat dermatolog" araması'
+        description: Klinik ilk sayfada çıkıyor.
+      - value: 487
+        suffix: ' bin'
+        label: Google'da gösterim
+        description: Site bir yılda Google'da bu kadar göründü.
+      - value: 6
+        suffix: ' dil'
+        label: Arama trafiği
+        description: Tek dilden altı dile çıkarak.
+
+  - type: text
+    background: dark
+    layout: split
+    eyebrow: Yerel Arama
+    heading: Harita, Arama Sonucu ve Yapay Zekâ Aynı Sinyallere Bakıyor
+    body: |-
+      Yerel aramada üç yerde görünmek gerekiyor: Google Haritalar'daki işletme listesi, altındaki arama sonuçları ve giderek daha sık kullanılan yapay zekâ cevapları. Üçü de aynı sinyallere bakıyor: işletmenin bilgileri her yerde tutarlı mı, yorumları gerçek ve güncel mi, sitesi o hizmeti o bölge için anlatıyor mu?
+
+      Dr. Ayşe Cinkaya Kahveci'nin sitesinde estetik uygulama arayan ziyaretçi ile dermatolojik şikâyetle gelen hastayı ayrı kategori yapılarına oturttuk; her uygulama kendi sayfasını aldı ve Sağlık Rehberi bölümü sık sorulan soruları cevapladı. Bugün "Manavgat dermatolog" araması kliniği ilk sayfada buluyor, ChatGPT'ye "Manavgat en iyi dermatolog" sorulduğunda da klinik ilk sırada çıkıyor.
+    highlight: Yerel aramada kazanan, en büyük işletme değil, en net anlatılan işletme.
+
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Nasıl Çalışıyoruz
+    heading: Yerel SEO'nun Dört Parçası
+    items:
+      - title: Google İşletme Profili
+        description: >-
+          Kategori, hizmetler, çalışma saatleri, fotoğraflar ve düzenli paylaşımlar.
+          Profilin eksiksiz ve güncel olması harita sonuçlarının temeli.
+        icon: strategy
+      - title: Yorumlar
+        description: >-
+          Memnun müşteriden yorum istemenin düzenli bir yolu ve her yoruma, olumsuzlara da,
+          zamanında cevap. Sahte ya da teşvikli yorum yok.
+        icon: partnership
+      - title: Konum ve hizmet sayfaları
+        description: >-
+          Her hizmetin ve varsa her şubenin kendi sayfası; adres, harita ve bölgeye özel
+          bilgiyle.
+        icon: web
+      - title: Tutarlı işletme bilgisi
+        description: >-
+          Ad, adres ve telefonun site, profil ve rehber sitelerinde aynı yazılması, yerel
+          yapılandırılmış veriyle desteklenmesi.
+        icon: seo
+
+  - type: bullets
+    background: dark
+    kind: check
+    eyebrow: Kontrol Listesi
+    heading: Yerel Aramada Görünmek İçin
+    items:
+      - Google İşletme Profili doğrulanmış ve eksiksiz
+      - Doğru ana kategori ve ek kategoriler seçilmiş
+      - İşletme bilgisi her yerde aynı yazılmış
+      - Her hizmetin kendi sayfası var
+      - Yorumlar düzenli geliyor ve cevaplanıyor
+      - Sitede yerel yapılandırılmış veri kurulu
+      - Harita ve arama görünürlüğü aylık ölçülüyor
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Yerel ve Uluslararası Aramada Kurduğumuz Siteler
+    slugs:
+      - dr-ayse-cinkaya-kahveci
+      - cagla-aytac
+      - dentasay
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Yerel SEO Hakkında Sorular
+    items:
+      - question: Google Haritalar'a işletme nasıl eklenir?
+        answer: >-
+          Google İşletme Profili açılıp doğrulandığında işletme haritada görünür. Adım adım
+          anlatımı [Google İşletme Profili nasıl oluşturulur](/blog/google-isletme-profili-nasil-olusturulur/)
+          yazısında.
+      - question: Yorum sayısı sıralamayı etkiler mi?
+        answer: >-
+          Yorumlar yerel sıralamada ve güvende önemli bir sinyal. Nasıl yorum istenip
+          cevaplanacağını [Google yorumları nasıl artırılır](/blog/google-yorumlari-nasil-artirilir/)
+          yazısında anlattık.
+      - question: Birden fazla şubem var, ne yapmalıyım?
+        answer: >-
+          Her şube için ayrı bir işletme profili ve sitede ayrı bir konum sayfası gerekir.
+          Çağla Aytaç'ın sitesinde üç hizmet noktasının her birinin iletişim bilgisi ve
+          çalışma saatleri ayrı sekmede duruyor.
+      - question: Yerel SEO ne kadar tutuyor?
+        answer: >-
+          Aylık SEO çalışması 20.000 TL'den başlıyor, KDV hariç. Ayrıntılar
+          [SEO fiyatları](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/seo-fiyatlari/) sayfasında.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Yakınınızda Arayan Müşteri Sizi Bulsun
+    lead: >-
+      İşletmenizi ve hizmet verdiğiniz bölgeyi anlatın; harita ve arama sonuçlarında nerede
+      durduğunuzu ücretsiz analizle çıkaralım.
+    ctas:
+      - label: Ücretsiz Analiz Talep Et
+        href: /ucretsiz-analiz/
+        variant: primary
+        icon: arrow
+      - label: İstanbul SEO Ajansı
+        href: /hizmetlerimiz/seo-ve-icerik-pazarlamasi/istanbul-seo-ajansi/
+        variant: outline

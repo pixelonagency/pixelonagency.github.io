@@ -115,6 +115,7 @@ export const LEGACY = [
   ['/en/projects/web-design', '/projelerimiz/web-tasarim/'],
   ['/en/projects/social-media', '/projelerimiz/sosyal-medya/'],
   ['/en/projects/digital-advertising', '/projelerimiz/dijital-reklam/'],
+  ['/en/projects/brand-identity', '/projelerimiz/kurumsal-kimlik/'],
   ['/en/projects/annelik-hikayesi', '/projelerimiz/annelik-hikayesi/'],
   ['/en/projects/cagla-aytac', '/projelerimiz/cagla-aytac/'],
   ['/en/projects/dentasay', '/projelerimiz/dentasay/'],
