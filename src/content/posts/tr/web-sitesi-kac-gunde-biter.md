@@ -121,7 +121,7 @@ article:
 
     - type: checklist
       heading: Takvimi kısaltmanın yolları
-      intro: Aşağıdakiler projeyi hızlandırmak için işe yarayan, sözleşmeye yazılabilir maddeler.
+      intro: Aşağıdakiler projeyi hızlandırmak için işe yarayan, sözleşmeye yazılabilir maddeler. İşletme tarafında verilmesi gereken kararların tamamını [web sitesi nasıl yapılır](/blog/web-sitesi-nasil-yapilir/) yazısında sekiz adımda topladık.
       items:
         - title: Tek onay mercii belirleyin
           text: Tasarımı kimin onaylayacağı tek isimle yazılsın; komite onayı takvimi ikiye katlıyor.
