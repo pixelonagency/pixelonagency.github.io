@@ -68,6 +68,8 @@
 /en/get-a-website/                                                          /web-sitesi-yaptir/                                                         301
 /en/projects                                                                /projelerimiz/                                                              301
 /en/projects/                                                               /projelerimiz/                                                              301
+/en/projects/web-design                                                     /projelerimiz/web-tasarim/                                                  301
+/en/projects/web-design/                                                    /projelerimiz/web-tasarim/                                                  301
 /en/projects/annelik-hikayesi                                               /projelerimiz/annelik-hikayesi/                                             301
 /en/projects/annelik-hikayesi/                                              /projelerimiz/annelik-hikayesi/                                             301
 /en/projects/cagla-aytac                                                    /projelerimiz/cagla-aytac/                                                  301
@@ -137,10 +139,12 @@
 /blog/blog-yazmak-seoya-yarar-mi                                            /blog/blog-yazmak-seoya-yarar-mi/                                           301
 /blog/crm-nedir-ne-ise-yarar                                                /blog/crm-nedir-ne-ise-yarar/                                               301
 /blog/dijital-pazarlama-ajansi-ne-is-yapar                                  /blog/dijital-pazarlama-ajansi-ne-is-yapar/                                 301
+/blog/doktor-web-sitesi-nasil-olmali                                        /blog/doktor-web-sitesi-nasil-olmali/                                       301
 /blog/donusum-takibi-nedir                                                  /blog/donusum-takibi-nedir/                                                 301
 /blog/e-ticaret-sitesi-kurma                                                /blog/e-ticaret-sitesi-kurma/                                               301
 /blog/google-ads-butcesi-nasil-belirlenir                                   /blog/google-ads-butcesi-nasil-belirlenir/                                  301
 /blog/google-ads-mi-meta-ads-mi                                             /blog/google-ads-mi-meta-ads-mi/                                            301
+/blog/hazir-site-mi-ozel-tasarim-mi                                         /blog/hazir-site-mi-ozel-tasarim-mi/                                        301
 /blog/instagramda-marka-nasil-buyutulur                                     /blog/instagramda-marka-nasil-buyutulur/                                    301
 /blog/kategori/dijital-reklam                                               /blog/kategori/dijital-reklam/                                              301
 /blog/kategori/seo                                                          /blog/kategori/seo/                                                         301
@@ -150,6 +154,7 @@
 /blog/landing-page-nedir                                                    /blog/landing-page-nedir/                                                   301
 /blog/marka-kimligi-nedir-neleri-kapsar                                     /blog/marka-kimligi-nedir-neleri-kapsar/                                    301
 /blog/meta-reklamlari-neden-sonuc-vermiyor                                  /blog/meta-reklamlari-neden-sonuc-vermiyor/                                 301
+/blog/mobil-uyumlu-web-sitesi                                               /blog/mobil-uyumlu-web-sitesi/                                              301
 /blog/reels-ile-marka-buyutme                                               /blog/reels-ile-marka-buyutme/                                              301
 /blog/roas-nedir-nasil-hesaplanir                                           /blog/roas-nedir-nasil-hesaplanir/                                          301
 /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur  /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/ 301
@@ -160,9 +165,12 @@
 /blog/sosyal-medya-ajanslari-ne-is-yapar                                    /blog/sosyal-medya-ajanslari-ne-is-yapar/                                   301
 /blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir                          /blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir/                         301
 /blog/web-sitesi-kac-gunde-biter                                            /blog/web-sitesi-kac-gunde-biter/                                           301
+/blog/web-sitesi-nasil-yapilir                                              /blog/web-sitesi-nasil-yapilir/                                             301
 /blog/web-sitesi-neden-donusum-getirmiyor                                   /blog/web-sitesi-neden-donusum-getirmiyor/                                  301
 /blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli                    /blog/web-tasarim-ajansi-secerken-nelere-dikkat-edilmeli/                   301
 /blog/web-tasarim-fiyatlari                                                 /blog/web-tasarim-fiyatlari/                                                301
+/blog/web-tasarim-ilkeleri                                                  /blog/web-tasarim-ilkeleri/                                                 301
+/blog/web-tasarim-nedir                                                     /blog/web-tasarim-nedir/                                                    301
 /blog/wordpress-mi-ozel-yazilim-mi                                          /blog/wordpress-mi-ozel-yazilim-mi/                                         301
 /cerez-politikasi                                                           /cerez-politikasi/                                                          301
 /gizlilik-politikasi                                                        /gizlilik-politikasi/                                                       301
@@ -174,6 +182,11 @@
 /hizmetlerimiz/seo-ve-icerik-pazarlamasi                                    /hizmetlerimiz/seo-ve-icerik-pazarlamasi/                                   301
 /hizmetlerimiz/sosyal-medya-yonetimi                                        /hizmetlerimiz/sosyal-medya-yonetimi/                                       301
 /hizmetlerimiz/web-tasarim-ve-yazilim                                       /hizmetlerimiz/web-tasarim-ve-yazilim/                                      301
+/hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi           /hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/          301
+/hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim                  /hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim/                 301
+/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim                  /hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/                 301
+/hizmetlerimiz/web-tasarim-ve-yazilim/ozel-web-yazilimi                     /hizmetlerimiz/web-tasarim-ve-yazilim/ozel-web-yazilimi/                    301
+/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari                  /hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/                 301
 /iletisim                                                                   /iletisim/                                                                  301
 /kariyer                                                                    /kariyer/                                                                   301
 /kullanim-kosullari                                                         /kullanim-kosullari/                                                        301
@@ -192,6 +205,7 @@
 /projelerimiz/touch-consulting                                              /projelerimiz/touch-consulting/                                             301
 /projelerimiz/valueset                                                      /projelerimiz/valueset/                                                     301
 /projelerimiz/vennyx                                                        /projelerimiz/vennyx/                                                       301
+/projelerimiz/web-tasarim                                                   /projelerimiz/web-tasarim/                                                  301
 /projelerimiz/xray-groupe                                                   /projelerimiz/xray-groupe/                                                  301
 /referanslarimiz                                                            /referanslarimiz/                                                           301
 /ucretsiz-analiz                                                            /ucretsiz-analiz/                                                           301

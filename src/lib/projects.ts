@@ -28,6 +28,17 @@ export function filterProjects<T extends ProjectLike>(projects: T[], category: s
   return projects.filter((project) => project.category === category);
 }
 
+/**
+ * Projenin beyan ettiği etiketlerden birini BİREBİR taşıyanları döner. Hizmet üyeliğinin
+ * aksine kalıp eşleşmesi yapmaz: "E-Ticaret" etiketi bir projeyi web örneği yapmaz.
+ */
+export function filterByTag<T extends { tags?: readonly string[] }>(projects: readonly T[], tag: string): T[] {
+  const wanted = tag.trim().toLocaleLowerCase('tr');
+  return projects.filter((project) =>
+    (project.tags ?? []).some((own) => own.trim().toLocaleLowerCase('tr') === wanted),
+  );
+}
+
 /** Öne çıkanlar önce, ardından `order` alanına göre sıralar. */
 export function sortProjects<T extends ProjectLike>(projects: T[]): T[] {
   return [...projects].sort((a, b) => {
@@ -68,7 +79,8 @@ export const SERVICE_KEYS = ['web', 'marka', 'sosyal', 'performance', 'video', '
 export type ServiceKey = (typeof SERVICE_KEYS)[number];
 
 const SERVICE_MATCHERS: Record<ServiceKey, RegExp> = {
-  web: /web|site|ux|ui|e-?ticaret|e-?commerce/i,
+  // E-ticaret tek başına web işi değildir; mağazayı biz kurduysak proje "Web Tasarım" etiketini de taşır.
+  web: /web|site|ux|ui/i,
   marka: /marka|kimlik|logo|brand|identity/i,
   sosyal: /sosyal|social/i,
   performance: /reklam|ads|advertis|performans|performance/i,

@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { PageSection } from '../../content/page-schema';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../../lib/i18n';
-import { ALL_CATEGORY, buildCategoryFilters, sortProjects } from '../../lib/projects';
+import { ALL_CATEGORY, buildCategoryFilters, filterByTag, sortProjects } from '../../lib/projects';
 import { slugify } from '../../lib/slug';
 import { t } from '../../lib/ui';
 import SectionHead from '../SectionHead.astro';
@@ -49,7 +49,9 @@ const sorted = sortProjects(withMeta);
 const bySlug = new Map(withMeta.map((project) => [project.slug, project]));
 const picked = section.slugs?.length
   ? section.slugs.map((slug) => bySlug.get(slug)).filter((p): p is NonNullable<typeof p> => Boolean(p))
-  : sorted;
+  : section.tag
+    ? filterByTag(sorted, section.tag)
+    : sorted;
 const limited = section.limit ? picked.slice(0, section.limit) : picked;
 
 // `cover` şemada çözümleyici fonksiyonla tanımlandığı için tipi genişler —

@@ -1457,3 +1457,58 @@ describe('hizmet alt sayfaları', () => {
     });
   }
 });
+
+describe('web tasarım örnekleri', () => {
+  /*
+   * Yol haritası katman 4 (30 Eyl 2026): "web tasarım örnekleri" aramasına cevap veren
+   * ayrı bir portfolyo görünümü. Liste elle tutulmaz, proje dosyalarındaki "Web Tasarım"
+   * etiketinden gelir: yeni bir web işi eklendiğinde sayfaya kendiliğinden girer, web
+   * işi yapılmamış bir proje ise hiçbir zaman girmez.
+   */
+  const ROUTE = '/projelerimiz/web-tasarim';
+  const PROJECTS = join(import.meta.dir, '..', 'src', 'content', 'projects', 'tr');
+  const projects = readdirSync(PROJECTS)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => {
+      const source = readFileSync(join(PROJECTS, file), 'utf8');
+      const tags = source.match(/^tags:\n((?:\s+-\s.*\n)+)/m)?.[1] ?? '';
+      return {
+        slug: file.replace(/\.md$/, ''),
+        web: /^\s+-\s+Web Tasarım\s*$/m.test(tags),
+        detail: /^detail:/m.test(source),
+      };
+    });
+  const main = (): string => {
+    const file = htmlPath(ROUTE);
+    if (!existsSync(file)) return '';
+    const source = readFileSync(file, 'utf8');
+    return source.match(/<main[\s\S]*<\/main>/)?.[0] ?? '';
+  };
+
+  test('sayfa üretilir', () => {
+    expect(existsSync(htmlPath(ROUTE))).toBe(true);
+  });
+
+  test('"Web Tasarım" etiketli her vaka listelenir', () => {
+    const body = main();
+    const missing = projects
+      .filter(({ web, detail }) => web && detail)
+      .filter(({ slug }) => !body.includes(`href="/projelerimiz/${slug}/"`))
+      .map(({ slug }) => slug);
+    expect(missing).toEqual([]);
+  });
+
+  test('web işi yapılmamış proje listelenmez', () => {
+    const body = main();
+    const intruders = projects
+      .filter(({ web }) => !web)
+      .filter(({ slug }) => body.includes(`href="/projelerimiz/${slug}/"`))
+      .map(({ slug }) => slug);
+    expect(intruders).toEqual([]);
+  });
+
+  test('web tasarım hizmet sayfası örnekler sayfasına bağlanır', () => {
+    const pillar = readFileSync(htmlPath('/hizmetlerimiz/web-tasarim-ve-yazilim'), 'utf8');
+    expect(pillar.includes(`href="${ROUTE}/"`)).toBe(true);
+  });
+});

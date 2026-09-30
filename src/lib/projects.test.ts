@@ -5,6 +5,7 @@ import {
   sortProjects,
   deriveServices,
   filterByService,
+  filterByTag,
   SERVICE_KEYS,
   SERVICE_LABELS,
   type ServiceKey,
@@ -86,6 +87,12 @@ describe('board hizmet taksonomisi', () => {
     expect(deriveServices([], 'uxui')).toEqual(['web']);
   });
 
+  test('e-ticaret etiketi tek başına web üyeliği vermez: mağaza kurmadan e-ticaret işi yapılabilir', () => {
+    // Sera Natura (30 Eyl 2026): ambalaj, içerik ve reklam; site kurulmadı ama "Web Tasarım" filtresine düşüyordu.
+    expect(deriveServices(['Marka Kimliği', 'E-Ticaret', 'Dijital Reklam'], 'marka')).not.toContain('web');
+    expect(deriveServices(['Web Tasarım', 'E-Ticaret'], 'saglik')).toContain('web');
+  });
+
   test('video/prodüksiyon/fotoğraf ve SEO kalıpları yakalanır', () => {
     expect(deriveServices(['Video Prodüksiyon', 'Fotoğraf Çekimi'], 'web')).toContain('video');
     expect(deriveServices(['SEO Danışmanlığı'], 'web')).toContain('seo');
@@ -106,5 +113,28 @@ describe('board hizmet taksonomisi', () => {
       expect(SERVICE_LABELS[key]?.tr.length).toBeGreaterThan(0);
       expect(SERVICE_LABELS[key]?.en.length).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('filterByTag', () => {
+  /*
+   * "Web tasarım örnekleri" sayfası (30 Eyl 2026): hizmet üyeliği etiket kalıplarından
+   * türediği için e-ticaret etiketli bir marka projesi de "web" sayılıyordu. Örnek
+   * sayfası yalnızca o işi GERÇEKTEN yaptığımızı beyan eden etiketi kabul eder.
+   */
+  const tagged: { title: string; tags?: string[] }[] = [
+    { title: 'Xray', tags: ['Web Tasarım', 'Sosyal Medya'] },
+    { title: 'Sera', tags: ['Marka Kimliği', 'E-Ticaret'] },
+    { title: 'Mobico', tags: ['Logo Tasarımı'] },
+    { title: 'Touch', tags: ['web tasarım '] },
+  ];
+
+  test('yalnızca etiketi birebir taşıyan projeleri döner, büyük/küçük harf ve boşluğu yok sayar', () => {
+    expect(filterByTag(tagged, 'Web Tasarım').map((project) => project.title)).toEqual(['Xray', 'Touch']);
+  });
+
+  test('etiketi olmayan projeyi düşürür', () => {
+    const untagged: { title: string; tags?: string[] }[] = [{ title: 'Boş' }];
+    expect(filterByTag(untagged, 'Web Tasarım')).toEqual([]);
   });
 });

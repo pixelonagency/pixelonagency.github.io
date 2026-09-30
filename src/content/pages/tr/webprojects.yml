@@ -1,0 +1,146 @@
+seo:
+  title: Web Tasarım Örnekleri | Kurduğumuz Siteler | Pixelon
+  description: >-
+    Pixelon web tasarım örnekleri: inşaat, cam ambalaj, teşvik danışmanlığı, dermatoloji,
+    diş kliniği ve yardım kuruluşları için kurduğumuz kurumsal ve çok dilli web siteleri.
+
+whatsappMessage: Merhaba Pixelon, web tasarım örneklerinizi inceledim, benzer bir site için bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Projelerimiz
+        href: /projelerimiz/
+      - label: Web Tasarım
+    eyebrow: Web Tasarım Örnekleri
+    headingLines:
+      - 'Kurduğumuz Web Sitelerinden *Örnekler*.'
+    lead: >-
+      Her sitenin arkasında tek bir soru var: ziyaretçi bu sayfada ne arıyor? Aşağıdaki
+      projelerde cevap her seferinde farklı çıktı; kimi yerde ölçü tablosu, kimi yerde
+      proje arşivi, kimi yerde 13 dilde hasta sayfası.
+    video:
+      desktopMp4: /media/hero/web-tasarim/hero-web-design-desktop.mp4
+      desktopWebm: /media/hero/web-tasarim/hero-web-design-desktop.webm
+      desktopPoster: /media/hero/web-tasarim/hero-web-design-desktop-poster.webp
+      mobileMp4: /media/hero/web-tasarim/hero-web-design-mobile.mp4
+      mobileWebm: /media/hero/web-tasarim/hero-web-design-mobile.webm
+      mobilePoster: /media/hero/web-tasarim/hero-web-design-mobile-poster.webp
+    chips:
+      - Kurumsal siteler
+      - Çok dilli yapılar
+      - Klinik ve sağlık siteleri
+      - Ürün katalogları
+    ctas:
+      - label: Projenizi Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Web Tasarım Hizmetimiz
+        href: /hizmetlerimiz/web-tasarim-ve-yazilim/
+        variant: outline
+
+  # Liste elle tutulmaz: "Web Tasarım" etiketli her vaka buraya kendiliğinden girer.
+  - type: projects
+    background: light
+    eyebrow: Portfolyo
+    heading: Web Tasarım Projelerimiz
+    lead: >-
+      Her kart, sitenin nasıl kurulduğunu keşiften yayına anlatan bir vaka çalışmasına
+      açılıyor.
+    tag: Web Tasarım
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: cards
+    background: dark
+    eyebrow: Tasarımın Arkasındaki Karar
+    heading: Her Sitede Tek Bir Soruyla Başladık
+    lead: >-
+      Renk ve tipografi sona kaldı. Önce ziyaretçinin sitede neyi aradığına karar verdik;
+      sayfa yapısı o cevaptan çıktı.
+    items:
+      - eyebrow: Redex Glass
+        title: Alıcı ölçüyü arıyor
+        description: >-
+          Onlarca ürün ailesini hacim, ölçü ve ağız çapı tablolarına oturttuk. Alıcı
+          satırdan teknik çizime iniyor.
+        href: /projelerimiz/redex-glass/
+      - eyebrow: Xray Groupe
+        title: Yatırımcı kanıt arıyor
+        description: >-
+          Her proje kendi sayfasını aldı: konum, proje tipi, başlangıç ve bitiş tarihi,
+          durum tek ekranda.
+        href: /projelerimiz/xray-groupe/
+      - eyebrow: Touch Consulting
+        title: İşletme uygun desteği arıyor
+        description: >-
+          Üç hizmet dalını birbirine karıştırmadan ayırdık ve her sayfayı bir form
+          bloğuyla kapattık.
+        href: /projelerimiz/touch-consulting/
+      - eyebrow: Dentasay
+        title: Hasta kendi dilini arıyor
+        description: >-
+          20 ülkeye hitap eden 13 dilli bir yapı. Reklam hangi pazarda açılırsa hasta o
+          dilin sayfasına iniyor.
+        href: /projelerimiz/dentasay/
+      - eyebrow: Dr. Ayşe Cinkaya Kahveci
+        title: Hasta şikâyetini arıyor
+        description: >-
+          Estetik uygulamalar ve dermatolojik şikâyetler ayrı yapılarda; her uygulama
+          kendi sayfasında.
+        href: /projelerimiz/dr-ayse-cinkaya-kahveci/
+      - eyebrow: Hands For All
+        title: Bağışçı destekleyeceği işi arıyor
+        description: >-
+          Bağış formunu dönemin kampanyasının hemen yanına koyduk; bağışçı genel bir
+          kutuya değil, işe tıklıyor.
+        href: /projelerimiz/handsforall/
+
+  - type: faq
+    background: light
+    eyebrow: Merak Edilenler
+    heading: Web Tasarım Örnekleri Hakkında Sorular
+    items:
+      - question: Bu sitelerin hepsi size özel mi tasarlandı?
+        answer: >-
+          Evet. Hazır tema kullanmıyoruz; her sitenin sayfa yapısı o işin ziyaretçisine
+          göre sıfırdan kuruldu. Hazır şablonun ne zaman yeterli olduğunu
+          [hazır şablon mu, özel web tasarım mı](/blog/hazir-site-mi-ozel-tasarim-mi/)
+          yazısında anlattık.
+      - question: Benim sektörümden bir örnek yok, yine de çalışabilir miyiz?
+        answer: >-
+          Evet. Aynı sektörden iş şart değil; önemli olan benzer karmaşıklıkta bir işi
+          daha önce yapmış olmak. Çok dilli yapı, ürün kataloğu ya da başvuru akışı
+          gerekiyorsa bunları yukarıdaki projelerde kurduk.
+      - question: Bir web sitesi ne kadar sürede hazır oluyor?
+        answer: >-
+          Kurumsal sitelerde ortalama 30 gün. Süreyi en çok içeriklerin hazırlanması ve
+          onaylar belirliyor.
+      - question: Benzer bir site ne kadar tutar?
+        answer: >-
+          Kurumsal web siteleri 50.000 TL'den, e-ticaret ve özel yazılım projeleri
+          140.000 TL'den başlıyor; rakamlar KDV hariç. Paketlerin tamamı
+          [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/)
+          sayfasında.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Sıradaki Örnek Sizin Siteniz Olsun
+    lead: >-
+      İşinizi ve ziyaretçinizin ne aradığını anlatın; sayfa yapısını ilk görüşmede
+      birlikte çıkaralım.
+    ctas:
+      - label: Projenizi Anlatın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Kurumsal Web Tasarım
+        href: /hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/
+        variant: outline
