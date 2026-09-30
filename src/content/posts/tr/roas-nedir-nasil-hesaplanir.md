@@ -3,7 +3,7 @@ title: 'ROAS Nedir, Nasıl Hesaplanır?'
 category: Dijital Reklam
 translationKey: what-is-roas
 excerpt: ROAS, reklama harcanan her liranın kaç lira ciro getirdiğini gösterir. Ama tek başına kârlılığı anlatmaz. İyi bir ROAS değeri sektöre değil, sizin kâr marjınıza bağlıdır.
-date: 2026-08-21
+date: 2026-10-01
 cover: '/src/assets/images/blog/roas-nedir-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin büyük ekranda harcama ve gelir çubuklarını karşılaştıran grafiği anlattığı, masada oturan meslektaşının dizüstü bilgisayardan takip ettiği fotoğraf
 author: Pixelon Ekibi
@@ -13,7 +13,7 @@ seo:
   title: 'ROAS Nedir, Nasıl Hesaplanır? | Pixelon'
   description: 'ROAS nedir, nasıl hesaplanır ve kaç olmalı? Başabaş ROAS hesabı, ROAS ile ROI farkı ve ROAS yüksekken bile zarar edilen durumlar.'
 article:
-  updated: 2026-08-21
+  updated: 2026-10-01
   quickAnswer:
     heading: Kısa Cevap
     text: 'ROAS, reklamdan elde edilen cironun reklam harcamasına bölünmesiyle bulunur. 10.000 lira harcayıp 40.000 lira ciro elde ettiyseniz ROAS 4''tür; harcanan her lira 4 lira ciro getirmiştir. Ancak ciro kâr değildir. Kaç ROAS''ın yeterli olduğu tamamen kâr marjınıza bağlıdır: marj yüzde 25 ise başabaş noktanız 4, marj yüzde 50 ise 2''dir.'
@@ -156,7 +156,7 @@ article:
 
         Ama tek başına kârlılığı anlatmıyor. Sizin için iyi bir ROAS değeri, kâr marjınızın tersinden çıkıyor ve başka markanın rakamıyla karşılaştırılamıyor.
 
-        Düşük ROAS'ta ilk hamle bütçeyi kısmak değil; ölçümü doğrulamak ve dönüşüm oranını yükseltmek. İkisi de aynı bütçeden daha fazla sonuç çıkarıyor. Ölçüm ve optimizasyon tarafını [performans odaklı reklam çalışmalarımızda](/hizmetlerimiz/dijital-reklam-yonetimi/) birlikte kurguluyoruz.
+        Düşük ROAS'ta ilk hamle bütçeyi kısmak değil; ölçümü doğrulamak ve dönüşüm oranını yükseltmek. İkisi de aynı bütçeden daha fazla sonuç çıkarıyor. Diğer reklam göstergelerini [CPC, CPM, CTR nedir](/blog/cpc-cpm-ctr-nedir/) yazısında anlattık. Ölçüm ve optimizasyon tarafını [performans odaklı reklam çalışmalarımızda](/hizmetlerimiz/dijital-reklam-yonetimi/) birlikte kurguluyoruz.
 
     - type: cta
       heading: Kendi başabaş ROAS'ınızı birlikte çıkaralım.

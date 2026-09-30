@@ -1,0 +1,192 @@
+title: İstanbul Reklam Ajansı
+parent: dijital-reklam-yonetimi
+# Yerel sayfa kuralı: yalnızca gerçek adresimizin olduğu şehir için tek sayfa. İlçe
+# başına ayrı sayfa açılmaz (Google spam politikası: doorway sayfaları); ilçeler burada geçer.
+status: published
+
+seo:
+  title: İstanbul Reklam Ajansı | Dijital Reklam | Pixelon
+  description: >-
+    İstanbul dijital reklam ajansı Pixelon: Kadıköy merkezli ekiple Google, Instagram,
+    Facebook, TikTok ve YouTube reklamları. İlçe bazlı hedefleme, yerinde çekim ve
+    ölçülebilir kampanyalar.
+
+whatsappMessage: Merhaba Pixelon, İstanbul'dayız, reklam kampanyası için görüşmek istiyoruz.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: İstanbul Reklam Ajansı
+    headingLines:
+      - "İstanbul'da Dijital Reklam: *Kadıköy'den* Tüm Şehre."
+    lead: >-
+      Reklamınızı yönetecek ekiple aynı masaya oturmak işi hızlandırır. Kadıköy merkezli
+      ekibimizle İstanbul'daki işletmelerin Google, Instagram, TikTok ve YouTube
+      reklamlarını kuruyor, videosunu yerinde çekiyor ve sonucunu ölçüyoruz.
+    video:
+      desktopMp4: /media/hero/dijital-reklam/hero-ads-desktop.mp4
+      desktopWebm: /media/hero/dijital-reklam/hero-ads-desktop.webm
+      desktopPoster: /media/hero/dijital-reklam/hero-ads-desktop-poster.webp
+      mobileMp4: /media/hero/dijital-reklam/hero-ads-mobile.mp4
+      mobileWebm: /media/hero/dijital-reklam/hero-ads-mobile.webm
+      mobilePoster: /media/hero/dijital-reklam/hero-ads-mobile-poster.webp
+    chips:
+      - Kadıköy, İstanbul
+      - Yüz yüze ya da uzaktan
+      - İlçe bazlı hedefleme
+      - Yerinde reklam çekimi
+    ctas:
+      - label: Görüşme Planlayalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: text
+    background: light
+    layout: split
+    eyebrow: Şehir İçinde Reklam
+    heading: İstanbul Tek Bir Pazar Değil
+    body: |-
+      İstanbul'da reklam verirken en sık yapılan hata, şehri tek bir hedef bölge olarak seçmek. Kadıköy'deki bir kliniğin hastası çoğu zaman Anadolu Yakası'ndan geliyor; Beylikdüzü'ndeki biri için köprüyü geçmek ayrı bir karar. Bütçe şehrin tamamına yayıldığında gelmesi zor kişilere de harcanıyor.
+
+      Bu yüzden kampanyaları hizmetin gerçekten ulaşabildiği ilçelere göre kuruyoruz. Google'da yakın çevrede arayan kişiye, Instagram'da işletmenin çevresindeki kitleye ulaşan ayrı kampanyalar açıyor, hangi bölgenin talep getirdiğini ölçüyoruz. Aynı yaklaşımı Almanya'da Çağla Aytaç için de uyguladık: Castrop, Köln ve Frankfurt'taki her hizmet noktası kendi çevresine kendi reklamıyla ulaşıyor.
+
+      Aynı şehirde olmanın bir faydası da çekim. Reklamın videosunu işletmenizde, yerinde çekiyoruz; Touch Consulting'in videolarını da biz çektik.
+    highlight: Reklam bütçesi şehrin tamamına değil, müşterinin gerçekten geldiği yere harcanmalı.
+
+  - type: bullets
+    background: dark
+    kind: tags
+    eyebrow: Hizmet Bölgesi
+    heading: İstanbul'un Her Yerindeyiz
+    lead: >-
+      Anadolu Yakası'ndaki ilçelere Kadıköy'den kısa bir yolla ulaşıyoruz, Avrupa
+      Yakası'ndaki işletmelerle de aynı şekilde çalışıyoruz.
+    items:
+      - Kadıköy
+      - Ataşehir
+      - Üsküdar
+      - Ümraniye
+      - Maltepe
+      - Kartal
+      - Pendik
+      - Tuzla
+      - Sancaktepe
+      - Çekmeköy
+      - Beykoz
+      - Beşiktaş
+      - Şişli
+      - Sarıyer
+
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Platformlar
+    heading: Hangi Reklam, Hangi İş İçin
+    items:
+      - title: Google Ads
+        description: >-
+          Hizmetinizi yakınında arayan kişiye arama anında ulaşan reklamlar. Ayrıntısı
+          [Google Ads yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/google-ads-yonetimi/)
+          sayfasında.
+        icon: ads
+      - title: Instagram ve Facebook
+        description: >-
+          Yakın çevredeki kitleye video ve görselle ulaşan, mesaja ya da forma açılan
+          kampanyalar. Ayrıntısı
+          [Meta reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/meta-reklam-yonetimi/)
+          sayfasında.
+        icon: social
+      - title: TikTok ve YouTube
+        description: >-
+          Genç kitleye ya da ürünü göstermek gereken işlere dikey ve yatay video
+          reklamlar.
+        icon: craft
+      - title: LinkedIn
+        description: >-
+          Kurumsal hizmet verenler için sektör ve pozisyona göre karar vericilere ulaşan
+          kampanyalar.
+        icon: partnership
+
+  - type: steps
+    background: dark
+    kind: timeline
+    eyebrow: Nasıl Çalışıyoruz
+    heading: İlk Görüşmeden Yayına
+    items:
+      - title: Yüz yüze keşif
+        description: >-
+          Kadıköy'de ya da ekran başında buluşuyor, işinizi ve reklamdan ne beklediğinizi
+          konuşuyoruz.
+      - title: Kapsam ve teklif
+        description: >-
+          Platformu, bölgeyi ve bütçeyi netleştiriyor, ücreti yazılı olarak paylaşıyoruz.
+      - title: Kreatif ve çekim
+        description: >-
+          Reklam metnini ve görselini hazırlıyor, gerekiyorsa videoyu yerinde çekiyoruz.
+      - title: Yayın ve ölçüm
+        description: >-
+          Kampanyayı yayına alıyor, hangi bölgenin ve hangi reklamın talep getirdiğini
+          raporluyoruz.
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Reklamlarını Yönettiğimiz Markalardan Seçmeler
+    slugs:
+      - touch-consulting
+      - cagla-aytac
+      - dentasay
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm dijital reklam örneklerimiz
+    ctaHref: /projelerimiz/dijital-reklam/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: İstanbul Reklam Ajansı Hakkında Sorular
+    items:
+      - question: Ofisinize gelip yüz yüze görüşebilir miyiz?
+        answer: >-
+          Evet. Ekibimiz Kadıköy'de. İstanbul'daysanız ilk görüşmeyi yüz yüze yapabiliriz,
+          değilseniz ekran başında aynı şekilde çalışıyoruz.
+      - question: Sadece İstanbul'daki işletmelerle mi çalışıyorsunuz?
+        answer: >-
+          Hayır. Türkiye'nin farklı şehirlerinde ve yurt dışında da kampanya yönetiyoruz;
+          20'den fazla ülkede, 13 dilde reklam yönettik. Sağlık turizmi tarafını
+          [sağlık turizmi reklamları](/hizmetlerimiz/dijital-reklam-yonetimi/saglik-turizmi-reklamlari/)
+          sayfasında anlattık.
+      - question: Reklam yönetimi ne kadar?
+        answer: >-
+          Reklam yönetimi aylık 15.000 TL ile 25.000 TL arasında, KDV hariç; reklam bütçesi
+          ayrı. Ayrıntılar
+          [reklam yönetimi fiyatları](/hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/)
+          sayfasında.
+      - question: Reklamın videosunu da çekiyor musunuz?
+        answer: >-
+          Evet. Çekimi işletmenizde, yerinde yapıyoruz. Çekim ve kurgu tarafını
+          [içerik üretimi ve Reels](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/)
+          sayfasında anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: İstanbul'daysanız Kampanyanızı Yüz Yüze Konuşalım
+    lead: >-
+      Ne sattığınızı ve müşterinizin nereden geldiğini anlatın; hangi platformda, hangi
+      bölgede ve ne kadar bütçeyle başlamak gerektiğini birlikte çıkaralım.
+    ctas:
+      - label: Görüşme Planlayalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Dijital Reklam Yönetimi
+        href: /hizmetlerimiz/dijital-reklam-yonetimi/
+        variant: outline

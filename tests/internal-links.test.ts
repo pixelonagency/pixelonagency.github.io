@@ -58,6 +58,9 @@ const buildRoutes = async (): Promise<Set<string>> => {
       'services',
       'website',
       'projects',
+      'webprojects',
+      'socialprojects',
+      'adprojects',
       'references',
       'blog',
       'careers',
@@ -293,6 +296,12 @@ describe('web tasarım kümesi', () => {
     const graph = await buildGraph('tr');
     const pricing = localizedPath('services', 'tr', 'sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari');
     expect(graph.out.get('sosyal-medya-ajanslari-ne-is-yapar')?.has(pricing)).toBe(true);
+  });
+
+  test('Google Ads bütçesi yazısı reklam fiyat sayfasına bağlanır', async () => {
+    const graph = await buildGraph('tr');
+    const pricing = localizedPath('services', 'tr', 'dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari');
+    expect(graph.out.get('google-ads-butcesi-nasil-belirlenir')?.has(pricing)).toBe(true);
   });
 
   test('WordPress yazısı özel web yazılımı sayfasına bağlanır', async () => {

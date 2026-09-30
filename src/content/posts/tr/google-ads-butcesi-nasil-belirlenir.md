@@ -3,17 +3,17 @@ title: 'Google Ads Bütçesi Nasıl Belirlenir?'
 category: Dijital Reklam
 translationKey: how-to-set-a-google-ads-budget
 excerpt: Google Ads bütçesi tahminle değil hesapla belirlenir. Tıklama maliyeti, dönüşüm oranı ve bir müşterinin değeri bilindiğinde, hedeflenen talep sayısı için gereken bütçe kendiliğinden ortaya çıkar.
-date: 2026-08-21
+date: 2026-10-01
 cover: '/src/assets/images/blog/google-ads-butcesi-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin dizüstü bilgisayarda reklam bütçesi hesap tablosunu incelediği, masada not defteri ve hesap makinesi bulunan fotoğraf
 author: Pixelon Ekibi
 status: published
 featured: false
 seo:
-  title: 'Google Ads Bütçesi Nasıl Belirlenir? | Pixelon'
-  description: 'Google Ads bütçesi nasıl hesaplanır? Tıklama maliyeti, dönüşüm oranı ve müşteri değeri üzerinden gerçekçi bütçe belirleme yöntemi ve sık yapılan hatalar.'
+  title: 'Google Reklam Ücretleri ve Bütçe Hesabı | Pixelon'
+  description: 'Google reklam ücretleri nasıl belirlenir, Google Ads bütçesi nasıl hesaplanır? Tıklama maliyeti, dönüşüm oranı ve müşteri değeri üzerinden gerçekçi bütçe ve ajans ücreti.'
 article:
-  updated: 2026-08-21
+  updated: 2026-10-01
   quickAnswer:
     heading: Kısa Cevap
     text: 'Google Ads bütçesi üç veriden hesaplanır: ortalama tıklama maliyeti, sitenizin dönüşüm oranı ve bir müşterinin işletmeye değeri. Hedeflediğiniz aylık talep sayısını dönüşüm oranına bölerek gereken tıklama sayısını, bunu tıklama maliyetiyle çarparak gereken bütçeyi bulursunuz. Bu üç veri elinizde yoksa, önce sınırlı bir test bütçesiyle bunları ölçmek gerekir.'
@@ -133,8 +133,10 @@ article:
           answer: Kampanya kârlı çalışıyorsa kademeli artış uygun. Ani ve büyük artışlar kampanyayı yeniden öğrenme aşamasına sokabiliyor. Artıştan sonra talep maliyetinin aynı seviyede kalıp kalmadığını izlemek gerekiyor.
         - question: Rakiplerim ne kadar harcıyor, öğrenebilir miyim?
           answer: Kesin rakama ulaşmak mümkün değil. Platform içindeki açık artırma bilgileri, rakiplerin aynı sorgularda ne sıklıkta göründüğüne dair fikir veriyor ama harcama tutarını göstermiyor. Kendi hesabınızı kendi rakamlarınız üzerinden kurmak daha sağlıklı.
+        - question: Google reklam ücretleri ne kadar?
+          answer: Google'da sabit bir reklam fiyatı yok. Tıklama başına ödenen tutar açık artırmada, rakiplerin teklifine ve reklamın kalitesine göre belirleniyor; toplamda ne kadar harcanacağını ise sizin belirlediğiniz bütçe sınırlıyor. Bu yüzden asıl soru tek bir tıklamanın fiyatı değil, bir talebin size kaça geldiği.
         - question: Ajans yönetim ücreti bütçeye dahil mi?
-          answer: Genellikle ayrı kalemler. Reklam bütçesi doğrudan platforma ödeniyor, yönetim ücreti ise kampanyayı kuran ve optimize eden ekibe. Planlama yaparken ikisini birlikte hesaba katmak, aylık toplam maliyeti gerçekçi kılıyor.
+          answer: Genellikle ayrı kalemler. Reklam bütçesi doğrudan platforma ödeniyor, yönetim ücreti ise kampanyayı kuran ve optimize eden ekibe. Planlama yaparken ikisini birlikte hesaba katmak, aylık toplam maliyeti gerçekçi kılıyor. Pixelon'da reklam yönetimi aylık 15.000 TL ile 25.000 TL arasında, KDV hariç; ayrıntılar [reklam yönetimi fiyatları](/hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/) sayfasında.
 
     - type: section
       id: sonuc
@@ -144,7 +146,7 @@ article:
 
         Bu veriler yoksa önce dar kapsamlı bir testle ölçülmeli. Varsa, hedeflenen talep sayısı doğrudan bütçeye çevrilebiliyor.
 
-        Ve her durumda bütçeyi büyütmeden önce bakılacak yer dönüşüm oranı; çünkü orada yapılan iyileştirme, bütçe artışından daha ucuza aynı sonucu veriyor. Hesabın kurulumunu ve sürekli optimizasyonunu devretmek isteyenler için [kampanya yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) ayrı bir hizmet başlığı.
+        Ve her durumda bütçeyi büyütmeden önce bakılacak yer dönüşüm oranı; çünkü orada yapılan iyileştirme, bütçe artışından daha ucuza aynı sonucu veriyor. Kampanyanın adım adım nasıl kurulduğunu [Google reklam nasıl verilir](/blog/google-reklam-nasil-verilir/) yazısında anlattık. Hesabın kurulumunu ve sürekli optimizasyonunu devretmek isteyenler için [Google Ads yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/google-ads-yonetimi/) ayrı bir hizmet başlığı.
 
     - type: cta
       heading: Bütçenizi rakamlar üzerinden çıkaralım.

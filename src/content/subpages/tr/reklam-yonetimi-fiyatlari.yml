@@ -1,0 +1,205 @@
+title: Reklam Yönetimi Fiyatları
+parent: dijital-reklam-yonetimi
+# Rakamlar 1 Eki 2026'da sahip kararıyla belirlendi: reklam yönetimi aylık 15.000 - 25.000 TL,
+# KDV hariç, Google ve Meta aynı; reklam bütçesi ayrı; daha büyük projeler teklifle. Sosyal
+# medya ile birlikte paket 45.000 TL'den (sosyal medya fiyat sayfasıyla aynı). Yeni rakam
+# eklenmeden önce sahip onayı alınır.
+status: published
+
+seo:
+  title: Reklam Yönetimi Fiyatları 2026 | Google ve Meta | Pixelon
+  description: >-
+    Reklam yönetimi fiyatları 2026: Google Ads ve Meta reklam yönetimi aylık 15.000 TL ile
+    25.000 TL arasında (KDV hariç). Reklam bütçesi ayrı. Neyin dahil olduğunu ve fiyatı
+    neyin değiştirdiğini açıkça yazdık.
+
+whatsappMessage: Merhaba Pixelon, reklam yönetimi fiyatları hakkında bilgi almak ve teklif istemek istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Reklam Yönetimi Fiyatları 2026
+    headingLines:
+      - "Reklam Yönetimi *Aylık 15.000 TL'den* Başlıyor."
+    lead: >-
+      Rakamı saklamıyoruz. Google Ads ve Meta reklam yönetimi aylık 15.000 TL ile 25.000 TL
+      arasında, KDV hariç. Reklam bütçesi bunun dışında ve doğrudan platforma ödeniyor.
+      Aşağıda neyin dahil olduğunu tek tek yazdık.
+    chips:
+      - KDV hariç net fiyatlar
+      - Google ve Meta aynı fiyat
+      - Reklam bütçesi ayrı
+      - Hesap sizin adınıza
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Sorun
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: cards
+    background: light
+    columns: 3
+    eyebrow: Paketler
+    heading: Üç Seçenek, Neyin Dahil Olduğu Açık
+    lead: >-
+      Hangi seçeneğe denk geleceğinizi platform sayısından çok, kaç pazarda, kaç dilde ve
+      kaç kampanyayla çalışacağınız belirliyor.
+    items:
+      - eyebrow: Reklam yönetimi
+        title: Aylık 15.000 - 25.000 TL
+        description: |-
+          Google Ads, Meta ya da ikisi birden: kampanya kurulumu, hedef kitle, reklam metinleri, dönüşüm takibi, düzenli optimizasyon ve aylık rapor.
+
+          Kimin için: talep, randevu ya da satış için reklam veren işletmeler.
+        featured: true
+      - eyebrow: Sosyal medya ve reklam
+        title: Aylık 45.000 TL'den
+        description: |-
+          Sosyal medya yönetimi, aylık video çekimi ve reklam yönetimi birlikte. Ayrıntılar [sosyal medya yönetimi fiyatları](/hizmetlerimiz/sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari/) sayfasında.
+
+          Kimin için: içeriği ve reklamı tek ekipten yürütmek isteyen markalar.
+      - eyebrow: Büyük projeler
+        title: Teklifle
+        description: |-
+          Çok ülkeli, çok dilli ya da çok sayıda kampanyayla yürüyen yapılar, örneğin sağlık turizmi kampanyaları.
+
+          Kimin için: birden fazla pazarda aynı anda reklam veren markalar.
+    note: >-
+      Tüm fiyatlar KDV hariçtir. Reklam bütçesi paket fiyatına dahil değildir; doğrudan
+      Google'a ya da Meta'ya ödenir. Kesin rakam, kapsamı ilk görüşmede birlikte
+      çıkardığımızda tek bir tutara iner.
+
+  - type: stats
+    background: dark
+    eyebrow: Kısaca
+    heading: Üç Rakamda Reklam Yönetimi Fiyatları
+    items:
+      - value: 15
+        suffix: '.000 ₺'
+        label: Aylık reklam yönetimi başlangıcı
+        description: KDV hariç, Google ya da Meta.
+      - value: 25
+        suffix: '.000 ₺'
+        label: Standart kapsamın üst sınırı
+        description: Daha büyük projeler teklifle.
+      - value: 45
+        suffix: '.000 ₺'
+        label: Sosyal medya ve reklam paketi
+        description: Yönetim, aylık çekim ve reklam birlikte.
+
+  - type: why
+    background: light
+    eyebrow: Farkı Ne?
+    heading: Daha Düşük Teklif de Var, Aradaki Fark Ne?
+    lead: >-
+      Piyasada çok daha düşük reklam yönetimi teklifleri de görebilirsiniz. Aradaki fark
+      genelde ekipten değil, teklifin neyi kapsadığından doğuyor.
+    items:
+      - title: Reklamın içeriği de bizde
+        description: >-
+          Reklam metni, görseli ve videosu aynı ekipte hazırlanıyor. Kampanyayı kurup
+          içeriği size bırakmıyoruz.
+        icon: team
+        featured: true
+      - title: Tıklama değil talep ölçülüyor
+        description: >-
+          Form, arama ve WhatsApp dönüşümleri kuruluyor. Raporda tıklama sayısı değil,
+          talep başına maliyet var.
+        icon: conversion
+      - title: Reklamın indiği sayfa da işin parçası
+        description: >-
+          Reklamdan gelen kişinin karşılaştığı sayfa hız, içerik ve güven açısından
+          değerlendiriliyor.
+        icon: report
+      - title: Hesap sizin adınıza
+        description: >-
+          Reklam hesapları sizin adınıza açılıyor; çalışma bittiğinde hesap, geçmiş veri ve
+          dönüşüm kurulumları sizde kalıyor.
+        icon: cycle
+
+  - type: scope
+    background: dark
+    eyebrow: Fiyatı Ne Değiştirir?
+    heading: Fiyatınızı Belirleyen Beş Kalem
+    lead: >-
+      Teklif alırken bu listeyi yanınızda tutun. İki teklif arasındaki farkın büyük kısmı
+      genelde bu satırlardan birinin boş kalmasıdır.
+    items:
+      - title: Platform sayısı
+        description: >-
+          Yalnızca Google ya da Meta mı, ikisi birden mi? Yanında TikTok, YouTube ya da
+          LinkedIn de var mı?
+      - title: Ülke ve dil sayısı
+        description: >-
+          Her yeni pazar ayrı kampanya, ayrı reklam metni ve çoğu zaman ayrı bir sayfa
+          demek.
+      - title: Kampanya sayısı ve yapısı
+        description: >-
+          Tek hizmet için bir arama kampanyası ile on tedavi için ayrı ayrı kurulan
+          kampanyalar aynı emeği istemiyor.
+      - title: Kreatif ihtiyacı
+        description: >-
+          Reklam görseli ve metni hazır mı, her ay yenilenmesi mi gerekiyor? Video çekimi
+          gerekiyorsa ayrıca planlanıyor.
+      - title: Ölçüm altyapısı
+        description: >-
+          Dönüşüm takibi kurulu değilse ilk ay kurulumuna zaman ayrılıyor. Kurulmadan
+          yürüyen kampanyanın neyi getirdiği görünmüyor.
+
+  - type: projects
+    background: light
+    eyebrow: Yönettiğimiz Kampanyalar
+    heading: Bu Fiyatlara Ne Aldığınızı Görün
+    lead: >-
+      Rakamın karşılığını en iyi yapılmış iş anlatıyor. Her projenin yanında hangi
+      sorundan yola çıktığımızı da yazdık.
+    slugs:
+      - dentasay
+      - cagla-aytac
+      - dr-ayse-cinkaya-kahveci
+    columns: 3
+    kind: grid
+    ctaLabel: Dijital reklam örneklerini inceleyin
+    ctaHref: /projelerimiz/dijital-reklam/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Reklam Yönetimi Fiyatları Hakkında Sorular
+    items:
+      - question: Reklam yönetimi aylık ne kadar?
+        answer: >-
+          Pixelon'da Google Ads ve Meta reklam yönetimi aylık 15.000 TL ile 25.000 TL
+          arasında, KDV hariç. Çok ülkeli ve çok dilli büyük projeler için ayrıca teklif
+          veriyoruz.
+      - question: Reklam bütçesi fiyata dahil mi?
+        answer: >-
+          Hayır. Yönetim ücreti ile reklam bütçesi ayrı kalemler. Bütçe doğrudan Google'a
+          ya da Meta'ya ödenir; ne kadar harcandığını reklam hesabında siz de görürsünüz.
+      - question: Ne kadar reklam bütçesi ayırmalıyım?
+        answer: >-
+          Sektöre, hedef bölgeye ve rekabete göre değişiyor. Bütçenin nasıl hesaplandığını
+          [Google Ads bütçesi nasıl belirlenir](/blog/google-ads-butcesi-nasil-belirlenir/),
+          Instagram tarafını [Instagram reklam ücretleri](/blog/instagram-reklam-ucretleri/)
+          yazısında anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Fiyatı Tahmin Etmeyin, Birlikte Netleştirelim
+    lead: >-
+      Reklamdan ne beklediğinizi ve nerede reklam vermek istediğinizi anlatın; kapsamın ne
+      olması gerektiğini ilk görüşmede açıkça söyleyelim.
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Dijital Reklam Yönetimi
+        href: /hizmetlerimiz/dijital-reklam-yonetimi/
+        variant: outline

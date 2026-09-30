@@ -1,0 +1,181 @@
+title: Meta Reklam Yönetimi
+parent: dijital-reklam-yonetimi
+status: published
+
+seo:
+  title: Instagram ve Meta Reklam Ajansı | Pixelon
+  description: >-
+    Instagram ve Facebook reklam yönetimi: mesaj, form ve satış kampanyaları, reklam
+    videosu ve UGC üretimi, piksel ve dönüşüm takibi. Dr. Ayşe Cinkaya Kahveci, Çağla
+    Aytaç ve Sera Natura kampanyalarından gerçek sonuçlar.
+
+whatsappMessage: Merhaba Pixelon, Instagram ve Facebook reklamları hakkında bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Meta Reklam Yönetimi
+    headingLines:
+      - "Instagram'da Reklamı *Kreatif* Kazanır."
+    lead: >-
+      Meta reklamlarında hedeflemenin büyük kısmını artık platform yapıyor. Farkı reklamın
+      kendisi yaratıyor: ilk saniyede durduran video, doğru soru ve mesaja açılan kısa bir
+      yol. Reklamı da kampanyayı da aynı ekipte kuruyoruz.
+    video:
+      desktopMp4: /media/hero/dijital-reklam/hero-ads-desktop.mp4
+      desktopWebm: /media/hero/dijital-reklam/hero-ads-desktop.webm
+      desktopPoster: /media/hero/dijital-reklam/hero-ads-desktop-poster.webp
+      mobileMp4: /media/hero/dijital-reklam/hero-ads-mobile.mp4
+      mobileWebm: /media/hero/dijital-reklam/hero-ads-mobile.webm
+      mobilePoster: /media/hero/dijital-reklam/hero-ads-mobile-poster.webp
+    chips:
+      - Instagram ve Facebook
+      - Mesaj ve form kampanyaları
+      - Reklam videosu ve UGC
+      - Piksel ve dönüşüm takibi
+    ctas:
+      - label: Kampanyanızı Konuşalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: stats
+    background: light
+    eyebrow: Kampanyalardan
+    heading: Meta Reklamlarının Getirdikleri
+    items:
+      - value: 2
+        suffix: '.886'
+        label: Dr. Ayşe Cinkaya Kahveci
+        description: Reklamdan gelen hasta mesajı.
+      - value: 6
+        suffix: ',7 milyon'
+        label: Çağla Aytaç
+        description: İki yılda reklamdan gelen görüntülenme.
+      - value: 87
+        prefix: '%'
+        label: Sera Natura
+        description: En yüksek ayda satış artışı, reklam öncesi tabana göre.
+
+  - type: text
+    background: dark
+    layout: split
+    eyebrow: Hedefleme ve Kreatif
+    heading: Kitleyi Platform Buluyor, Durduran Şey Reklam
+    body: |-
+      Birkaç yıl önce Meta reklamında iş, ilgi alanlarını tek tek seçmekti. Bugün geniş hedeflemeyle açılan kampanyalarda kimin göreceğine büyük ölçüde platform karar veriyor. Bizim karar verdiğimiz şey, o kişinin akışta karşısına ne çıkacağı.
+
+      Sera Natura'da ürünün ne işe yaradığını gerçek kullanıcının anlattığı UGC videoları reklamda bir milyonun üzerinde izlendi. Çağla Aytaç'ta reklamların tamamı Almanca ve videoya dayalı; her şehir için ayrı kampanya kuruldu. Dr. Ayşe Cinkaya Kahveci'de reklamlar Türkçenin yanında Rusça, Almanca, İngilizce ve Arapça yayınlandı.
+
+      Reklamın sonu da en az başı kadar önemli. Mesaja açılan bir kampanyada ilk cevabın hızı, formla toplanan talepte ise formun kaç soru sorduğu sonucu belirliyor.
+    highlight: Aynı bütçe, farklı bir videoyla bambaşka sonuç veriyor.
+
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Kampanya Türleri
+    heading: Neyi Hedefliyorsanız, Ona Göre Kampanya
+    items:
+      - title: Mesaj kampanyaları
+        description: >-
+          WhatsApp, Instagram ya da Messenger'a açılan reklamlar. Klinik ve hizmet
+          işletmelerinde en hızlı talep yolu.
+        icon: partnership
+      - title: Form kampanyaları
+        description: >-
+          Uygulamadan çıkmadan doldurulan kısa formlar. Az soru daha çok talep, doğru soru
+          daha nitelikli talep getiriyor.
+        icon: strategy
+      - title: Satış ve katalog
+        description: >-
+          E-ticaret için ürün kataloğu ve satın alma hedefli kampanyalar; piksel ve
+          dönüşüm verisiyle besleniyor.
+        icon: commerce
+      - title: Video ve UGC reklam
+        description: >-
+          Reklamın videosunu, metnini ve görselini de biz üretiyoruz. Çekim tarafını
+          [içerik üretimi ve Reels](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/)
+          sayfasında anlattık.
+        icon: craft
+
+  - type: steps
+    background: dark
+    kind: timeline
+    eyebrow: Süreç
+    heading: Kurulumdan Rapora
+    items:
+      - title: Hesap ve piksel
+        description: İşletme hesabı, reklam hesabı, piksel ve dönüşüm olayları kontrol ediliyor.
+      - title: Hedef ve kitle
+        description: Mesaj, form ya da satış; hedef ve kitle kurgusu buna göre seçiliyor.
+      - title: Kreatif üretimi
+        description: Aynı mesaj için birden fazla video ve görsel hazırlanıyor.
+      - title: Test
+        description: Kreatifler ve kitleler karşılaştırılıyor, kazanan ölçeklendiriliyor.
+      - title: Optimizasyon ve rapor
+        description: Talep başına maliyet ve gelen talebin kalitesi aylık raporlanıyor.
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Meta Reklamlarını Yönettiğimiz Markalar
+    slugs:
+      - dr-ayse-cinkaya-kahveci
+      - cagla-aytac
+      - sera-natura
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm dijital reklam örneklerimiz
+    ctaHref: /projelerimiz/dijital-reklam/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Meta Reklam Yönetimi Hakkında Sorular
+    items:
+      - question: Gönderiyi öne çıkarmak ile Reklam Yöneticisi arasındaki fark ne?
+        answer: >-
+          Öne çıkarma hızlı ama sınırlı: hedef, yerleşim ve ölçüm seçenekleri az. Reklam
+          Yöneticisi'nde kampanya hedefi, kitle, yerleşim ve dönüşüm takibi ayrı ayrı
+          kuruluyor. Adım adım anlatımı
+          [Instagram reklam nasıl verilir](/blog/instagram-reklam-nasil-verilir/) yazısında.
+      - question: Meta reklam yönetimi ne kadar?
+        answer: >-
+          Reklam yönetimi aylık 15.000 TL ile 25.000 TL arasında, KDV hariç; reklam bütçesi
+          ayrı ve doğrudan Meta'ya ödenir. Ayrıntılar
+          [reklam yönetimi fiyatları](/hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/)
+          sayfasında.
+      - question: Reklamlarım neden sonuç vermiyor?
+        answer: >-
+          En sık sebepler yanlış kampanya hedefi, zayıf kreatif ve reklamdan sonraki
+          adımın kopuk olması. Ayrıntısını
+          [Meta reklamları neden sonuç vermiyor](/blog/meta-reklamlari-neden-sonuc-vermiyor/)
+          yazısında anlattık.
+      - question: Sosyal medya yönetimiyle birlikte alınabilir mi?
+        answer: >-
+          Evet. Hesap yönetimi, aylık çekim ve reklam birlikte 45.000 TL'den başlıyor, KDV
+          hariç. Paketleri
+          [sosyal medya yönetimi fiyatları](/hizmetlerimiz/sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari/)
+          sayfasında yazdık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Reklamınızın İlk Saniyesini Birlikte Kuralım
+    lead: >-
+      Ne sattığınızı ve reklamdan ne beklediğinizi anlatın; hangi kampanya türüyle ve
+      hangi kreatifle başlamak gerektiğini birlikte çıkaralım.
+    ctas:
+      - label: Kampanyanızı Konuşalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Google Ads Yönetimi
+        href: /hizmetlerimiz/dijital-reklam-yonetimi/google-ads-yonetimi/
+        variant: outline

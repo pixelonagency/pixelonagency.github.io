@@ -273,6 +273,11 @@ describe('inline links in body copy', () => {
       '/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/',
     ],
     ['/hizmetlerimiz/sosyal-medya-yonetimi', '/hizmetlerimiz/sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari/'],
+    ['/hizmetlerimiz/dijital-reklam-yonetimi', '/hizmetlerimiz/dijital-reklam-yonetimi/google-ads-yonetimi/'],
+    ['/hizmetlerimiz/dijital-reklam-yonetimi', '/hizmetlerimiz/dijital-reklam-yonetimi/meta-reklam-yonetimi/'],
+    ['/hizmetlerimiz/dijital-reklam-yonetimi', '/hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/'],
+    ['/hizmetlerimiz/dijital-reklam-yonetimi', '/hizmetlerimiz/dijital-reklam-yonetimi/saglik-turizmi-reklamlari/'],
+    ['/hizmetlerimiz/dijital-reklam-yonetimi', '/hizmetlerimiz/dijital-reklam-yonetimi/istanbul-reklam-ajansi/'],
   ];
 
   for (const [route, target] of BODY_LINKS) {
@@ -1553,6 +1558,46 @@ describe('sosyal medya örnekleri', () => {
 
   test('sosyal medya hizmet sayfası örnekler sayfasına bağlanır', () => {
     const pillar = readFileSync(htmlPath('/hizmetlerimiz/sosyal-medya-yonetimi'), 'utf8');
+    expect(pillar.includes(`href="${ROUTE}/"`)).toBe(true);
+  });
+});
+
+describe('dijital reklam örnekleri', () => {
+  /* Reklam kümesi (1 Eki 2026): liste "Dijital Reklam" etiketinden gelir. */
+  const ROUTE = '/projelerimiz/dijital-reklam';
+  const PROJECTS = join(import.meta.dir, '..', 'src', 'content', 'projects', 'tr');
+  const projects = readdirSync(PROJECTS)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => {
+      const source = readFileSync(join(PROJECTS, file), 'utf8');
+      const tags = source.match(/^tags:\n((?:\s+-\s.*\n)+)/m)?.[1] ?? '';
+      return {
+        slug: file.replace(/\.md$/, ''),
+        tagged: /^\s+-\s+Dijital Reklam\s*$/m.test(tags),
+        detail: /^detail:/m.test(source),
+      };
+    });
+  const main = (): string => {
+    const file = htmlPath(ROUTE);
+    if (!existsSync(file)) return '';
+    return readFileSync(file, 'utf8').match(/<main[\s\S]*<\/main>/)?.[0] ?? '';
+  };
+
+  test('sayfa üretilir', () => {
+    expect(existsSync(htmlPath(ROUTE))).toBe(true);
+  });
+
+  test('"Dijital Reklam" etiketli her vaka listelenir', () => {
+    const body = main();
+    const missing = projects
+      .filter(({ tagged, detail }) => tagged && detail)
+      .filter(({ slug }) => !body.includes(`href="/projelerimiz/${slug}/"`))
+      .map(({ slug }) => slug);
+    expect(missing).toEqual([]);
+  });
+
+  test('reklam hizmet sayfası örnekler sayfasına bağlanır', () => {
+    const pillar = readFileSync(htmlPath('/hizmetlerimiz/dijital-reklam-yonetimi'), 'utf8');
     expect(pillar.includes(`href="${ROUTE}/"`)).toBe(true);
   });
 });
