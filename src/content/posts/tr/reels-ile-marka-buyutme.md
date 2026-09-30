@@ -13,7 +13,7 @@ seo:
   title: 'Reels ile Marka Büyütme | Pixelon'
   description: 'Reels marka büyütmede ne işe yarıyor? İlk saniye kurgusu, izlenme süresinin önemi, üretim ritmi ve izlenmeyi talebe çeviren yapı.'
 article:
-  updated: 2026-08-21
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: 'Reels, sizi takip etmeyen kişilere ulaşabildiği için yeni kitle kazanmanın en hızlı yoludur. Performansını belirleyen iki şey vardır: ilk saniyede izleyiciyi durdurmak ve videoyu sonuna kadar izletmek. Ancak izlenme tek başına marka büyütmez; izleyeni profile, profildeki kişiyi de iletişime taşıyan bir yol kurulmadığında yüksek izlenme sonuçsuz kalır.'
@@ -99,7 +99,22 @@ article:
 
         Üçüncüsü, mevcut içerikten türetmek. Bir blog yazısındaki her ana başlık bir video konusu olabiliyor. Bu yaklaşım fikir üretme yükünü ortadan kaldırıyor. Konuları haftalara dağıtmanın yolunu [sosyal medya içerik takvimi nasıl hazırlanır](/blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir/) yazısında anlattık; takvim kurulduğunda Reels üretimi tek tek karar vermeyi gerektirmiyor.
 
-        Dördüncüsü, mükemmeliyetten vazgeçmek. Profesyonel prodüksiyon her video için gerekli değil; telefonla çekilmiş içerikler çoğu zaman daha iyi performans gösteriyor. Yüksek prodüksiyon, [video ve prodüksiyon](/hizmetlerimiz/sosyal-medya-yonetimi/) tarafında marka filmi gibi belirli işler için anlamlı.
+        Dördüncüsü, mükemmeliyetten vazgeçmek. Profesyonel prodüksiyon her video için gerekli değil; telefonla çekilmiş içerikler çoğu zaman daha iyi performans gösteriyor. Yüksek prodüksiyon, [içerik üretimi ve Reels çekimi](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/) tarafında marka filmi gibi belirli işler için anlamlı.
+
+    - type: process
+      heading: Reels nasıl çekilir?
+      intro: Telefonla da, ekiple de olsa sıra aynı. Farkı çoğu zaman çekim değil, çekimden önce verilen kararlar yaratıyor.
+      steps:
+        - title: Tek bir soru seçin
+          text: Video neyi cevaplayacak? İzleyicinin zaten merak ettiği bir soru, başlıkta açıkça sorulduğunda izlenme şansı artıyor.
+        - title: İlk iki saniyeyi yazın
+          text: Soru, çarpıcı bir görüntü ya da beklenmedik bir cümle. Logo ve jenerikle başlamayın.
+        - title: Dikey ve temiz çekin
+          text: 9:16 dikey kadraj, pencereden gelen gün ışığı ve sessiz bir ortam. Telefonun ana kamerası çoğu zaman ön kameradan daha iyi sonuç veriyor.
+        - title: Kısa kurgu, altyazı
+          text: Duraksamaları kesin, altyazı ekleyin; izlemelerin önemli kısmı sesi kapalı başlıyor.
+        - title: Kapak ve açıklama
+          text: Kapakta başlığı ortaya koyun, açıklamada videonun cevapladığı soruyu tekrar edin.
 
     - type: table
       heading: Reels ile diğer formatların işi
@@ -157,7 +172,7 @@ article:
 
         Performansı belirleyen iki şey var: ilk saniyede durdurmak ve sonuna kadar izletmek. Uzun ve yarıda bırakılan video, kısa ve tam izlenenin gerisinde kalıyor.
 
-        Ama izlenme tek başına marka büyütmüyor. İzleyeni profile, profildeki kişiyi iletişime taşıyan yol kurulmadığında yüksek izlenme sadece bir rakam olarak kalıyor. O yolun profil tarafını [Instagram'da marka nasıl büyütülür](/blog/instagramda-marka-nasil-buyutulur/) yazısında, üretimin tamamını dışarıya vermenin ne anlama geldiğini ise [sosyal medya ajansları ne iş yapar](/blog/sosyal-medya-ajanslari-ne-is-yapar/) yazısında ele aldık.
+        Ama izlenme tek başına marka büyütmüyor. İzleyeni profile, profildeki kişiyi iletişime taşıyan yol kurulmadığında yüksek izlenme sadece bir rakam olarak kalıyor. Kullanıcının kendi sesiyle çekilen videoların nasıl kullanıldığını [UGC nedir](/blog/ugc-nedir/) yazısında anlattık. O yolun profil tarafını [Instagram'da marka nasıl büyütülür](/blog/instagramda-marka-nasil-buyutulur/) yazısında, üretimin tamamını dışarıya vermenin ne anlama geldiğini ise [sosyal medya ajansları ne iş yapar](/blog/sosyal-medya-ajanslari-ne-is-yapar/) yazısında ele aldık.
 
     - type: cta
       heading: Video içerik planınızı birlikte kuralım.

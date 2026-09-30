@@ -13,7 +13,7 @@ seo:
   title: 'Sosyal Medya Ajansı Nedir, Ne İş Yapar? | Pixelon'
   description: 'Sosyal medya ajansı nedir, ne iş yapar, fiyatını ne belirler? Ajansla çalışmanın ne zaman gerektiğini ve ne zaman gerekmediğini gerçek örneklerle anlatıyoruz.'
 article:
-  updated: 2026-09-02
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: Sosyal medya ajansı, bir markanın sosyal medya hesaplarını baştan sona yürüten dış ekiptir. Strateji kurar, içerik ve video üretir, reklam bütçesini yönetir, gelen mesajları takip eder ve sonucu ölçer. Ajansı iç ekipten ayıran şey paylaşım sayısı değil; içerik, reklam ve gelen talebin aynı ekipte birleşmesidir.
@@ -124,7 +124,7 @@ article:
 
         Süre ise o kapsamın aylık kaç saate denk geldiği. Ayda dört gönderi ile ayda on iki gönderi artı iki çekim günü arasındaki fark, fiyat farkının tamamını açıklıyor.
 
-        Teklif alırken bakılacak şey rakamın kendisi değil, o rakamın karşılığında kaç içerik, kaç çekim ve hangi işlerin olduğu. İki teklif ancak aynı kapsamda karşılaştırılabiliyor.
+        Teklif alırken bakılacak şey rakamın kendisi değil, o rakamın karşılığında kaç içerik, kaç çekim ve hangi işlerin olduğu. İki teklif ancak aynı kapsamda karşılaştırılabiliyor. Hizmetin hangi parçalardan oluştuğunu [sosyal medya yönetimi nedir](/blog/sosyal-medya-yonetimi-nedir/) yazısında ayrıntılı anlattık. Kendi paketlerimizi ve başlangıç fiyatlarımızı [sosyal medya yönetimi fiyatları](/hizmetlerimiz/sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari/) sayfasında yayınlıyoruz.
 
     - type: callout
       variant: note
@@ -242,6 +242,8 @@ article:
         Sadece paylaşım yapan bir kurgu hesabı düzenli tutuyor. Talep üretmesi isteniyorsa içerik, reklam ve gelen mesaj takibinin aynı ekipte birleşmesi gerekiyor.
 
         Teklif alırken kapsamı sorun, ay sonu raporunda erişim dışında hangi rakamın olacağını baştan netleştirin. Bu iki soru, çalışmanın nasıl gideceğini büyük ölçüde belirliyor.
+
+        İşi şirket içinde bir uzmanla yürütmek ile ajansla çalışmak arasındaki farkı [sosyal medya uzmanı ne iş yapar](/blog/sosyal-medya-uzmani-ne-is-yapar/) yazısında karşılaştırdık. Çekim ve kurgu tarafını [içerik üretimi ve Reels çekimi](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/), klinik hesaplarını [doktor ve klinik sosyal medya](/hizmetlerimiz/sosyal-medya-yonetimi/doktor-ve-klinik-sosyal-medya/) sayfasında anlattık.
 
         Sosyal medyanın yanına web sitesi, SEO ve Google reklamlarının da eklendiği geniş yapıyı [dijital pazarlama ajansı ne iş yapar](/blog/dijital-pazarlama-ajansi-ne-is-yapar/) yazısında ele aldık.
 

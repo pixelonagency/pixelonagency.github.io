@@ -113,6 +113,7 @@ export const LEGACY = [
   /* 30 Eyl 2026: İngilizce bölüm kapandıktan sonra eklenen sayfa; `/en/` altında hiç
      yayınlanmadı. Kural, ROUTE_SLUGS'taki her İngilizce yolun kapalı kalmasını güvenceye alır. */
   ['/en/projects/web-design', '/projelerimiz/web-tasarim/'],
+  ['/en/projects/social-media', '/projelerimiz/sosyal-medya/'],
   ['/en/projects/annelik-hikayesi', '/projelerimiz/annelik-hikayesi/'],
   ['/en/projects/cagla-aytac', '/projelerimiz/cagla-aytac/'],
   ['/en/projects/dentasay', '/projelerimiz/dentasay/'],

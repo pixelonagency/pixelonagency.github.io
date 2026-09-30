@@ -143,6 +143,8 @@ article:
       items:
         - question: Kurumsal kimlik nedir, marka kimliğinden farkı ne?
           answer: Kurumsal kimlik, marka kimliğinin kartvizit, antetli kâğıt, zarf, sunum şablonu, tabela ve dijital ikonlar gibi kurumsal yüzeylere uygulanmış hâlidir. Marka kimliği görsel ve sözel dilin bütününü tanımlar; kurumsal kimlik bu tanımın işletmenin gündelik kullandığı materyallerde nasıl uygulanacağını belirler. Touch Consulting projesinde kimliği kartvizitten bloknota, yakalıktan dijital ikonlara kadar markanın gerçekten kullandığı yüzeylere birlikte uyguladık.
+        - question: Marka kimliği bilinirliği artırır mı?
+          answer: Tek başına değil, ama bilinirliğin temeli. Aynı dil her kanalda tekrar ettikçe marka tanınır hâle geliyor; nasıl artırıldığını ve ölçüldüğünü [marka bilinirliği nasıl artırılır](/blog/marka-bilinirligi-nasil-artirilir/) yazısında anlattık.
         - question: Küçük bir işletmenin marka kimliğine ihtiyacı var mı?
           answer: Kapsamı değişiyor ama ihtiyaç değişmiyor. Küçük işletmede kapsamlı bir kılavuz gerekmeyebilir; ancak renk, yazı tipi ve logo kullanımına dair birkaç sayfalık temel bir tanım bile tutarlılığı belirgin şekilde artırıyor.
         - question: Marka kimliği ne zaman yenilenmeli?

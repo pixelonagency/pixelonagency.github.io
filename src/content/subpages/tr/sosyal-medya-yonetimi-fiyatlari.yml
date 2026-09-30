@@ -1,0 +1,241 @@
+title: Sosyal Medya Yönetimi Fiyatları
+parent: sosyal-medya-yonetimi
+# Rakamlar 1 Eki 2026'da sahip kararıyla belirlendi: yönetim 20.000 TL/ay, aylık video
+# çekimi +10.000 TL, Meta reklam yönetimi +15.000 - 25.000 TL, hepsi KDV hariç; reklam
+# bütçesi ayrı. Yeni rakam eklenmeden önce sahip onayı alınır.
+status: published
+
+seo:
+  title: Sosyal Medya Yönetimi Fiyatları 2026 | Pixelon
+  description: >-
+    Sosyal medya yönetimi fiyatları 2026: yönetim aylık 20.000 TL'den, video çekimli
+    paket 30.000 TL'den, reklam yönetimli paket 45.000 TL'den başlıyor (KDV hariç).
+    Paketlere neyin dahil olduğunu açıkça yazdık.
+
+whatsappMessage: Merhaba Pixelon, sosyal medya yönetimi fiyatları hakkında bilgi almak ve teklif istemek istiyorum.
+
+sections:
+  # 1. HERO: arayan kişi rakamı ilk ekranda görür.
+  - type: hero
+    background: dark
+    eyebrow: Sosyal Medya Yönetimi Fiyatları 2026
+    headingLines:
+      - "Sosyal Medya Yönetimi *Aylık 20.000 TL'den* Başlıyor."
+    lead: >-
+      Rakamı saklamıyoruz. Sosyal medya yönetimi aylık 20.000 TL'den, video çekimli paket
+      30.000 TL'den, reklam yönetimli paket 45.000 TL'den başlıyor. Tüm fiyatlar KDV hariç.
+      Aşağıda her paketin içinde ne olduğunu tek tek yazdık.
+    chips:
+      - KDV hariç net fiyatlar
+      - Aylık video çekimi
+      - Reklam bütçesi ayrı
+      - Türkiye ve yurt dışında çekim
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Sorun
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  # 2. PAKETLER: başlangıç fiyatı, içerik, kimin için.
+  - type: cards
+    background: light
+    columns: 3
+    eyebrow: Paketler
+    heading: Üç Paket, Neyin Dahil Olduğu Açık
+    lead: >-
+      Hangi pakete denk geleceğinizi gönderi sayısından çok, içeriğin nereden geleceği ve
+      reklamın işin içinde olup olmadığı belirliyor.
+    items:
+      - eyebrow: Yönetim
+        title: Aylık 20.000 TL'den
+        description: |-
+          Strateji, içerik takvimi, gönderi ve hikâye tasarımı, metinler, yayın, profil düzeni ve aylık rapor.
+
+          Kimin için: fotoğraf ve videosu elinde olan, düzenli ve markaya uygun bir akış isteyen işletmeler.
+      - eyebrow: Yönetim ve çekim
+        title: Aylık 30.000 TL'den
+        description: |-
+          Yönetim paketinin tamamına ek olarak aylık video çekimi, Reels kurgusu, altyazı ve kapak tasarımı.
+
+          Kimin için: hekim, uzman ya da ürünüyle kamera karşısında anlatılması gereken markalar.
+        featured: true
+      - eyebrow: Yönetim, çekim ve reklam
+        title: Aylık 45.000 TL'den
+        description: |-
+          Üsttekilerin tamamına ek olarak Meta reklam yönetimi: kampanya kurulumu, hedef kitle, reklam kreatifleri, takip ve optimizasyon.
+
+          Kimin için: sosyal medyadan doğrudan talep, randevu ya da satış bekleyen markalar.
+    note: >-
+      Tüm fiyatlar KDV hariçtir. Reklam bütçesi paket fiyatına dahil değildir; doğrudan
+      Meta'ya ödenir. Kesin rakam, kapsamı ilk görüşmede birlikte çıkardığımızda tek bir
+      tutara iner.
+
+  # 3. RAKAMLAR: sayaç tam sayı saydığı için binlik kısım sonek olarak yazılır.
+  - type: stats
+    background: dark
+    eyebrow: Kısaca
+    heading: Üç Rakamda Sosyal Medya Yönetimi Fiyatları
+    items:
+      - value: 20
+        suffix: '.000 ₺'
+        label: Aylık yönetim başlangıcı
+        description: KDV hariç, strateji, tasarım, yayın ve rapor.
+      - value: 30
+        suffix: '.000 ₺'
+        label: Video çekimli paket başlangıcı
+        description: Aylık çekim ve Reels kurgusu dahil.
+      - value: 45
+        suffix: '.000 ₺'
+        label: Reklam yönetimli paket başlangıcı
+        description: Reklam bütçesi hariç, doğrudan Meta'ya ödenir.
+
+  # 4. NEDEN BU FİYAT: rakiplerden farkı somut anlatan bölüm.
+  - type: why
+    background: light
+    eyebrow: Farkı Ne?
+    heading: Daha Düşük Teklif de Var, Aradaki Fark Ne?
+    lead: >-
+      Piyasada aylık birkaç bin liralık teklifler de görebilirsiniz ve bazıları kendi
+      kapsamında doğru teklifler. Aradaki fark genelde ekipten değil, teklifin neyi
+      kapsadığından doğuyor.
+    items:
+      - title: Hazır görsel değil, kendi çekimimiz
+        description: >-
+          Videoları kendi ekibimizle, markanın bulunduğu yerde çekiyoruz. Hazır görsellerle
+          yönetilen bir hesap ile gerçek çekimle yönetilen bir hesap aynı sonucu vermiyor.
+        icon: team
+        featured: true
+      - title: Beğeni değil, talep ölçülüyor
+        description: >-
+          Raporda beğeni sayısı yerine profil ziyareti, mesaj ve bağlantı tıklaması var. Hangi
+          içeriğin talep getirdiğini tahmin etmiyor, görüyorsunuz.
+        icon: conversion
+      - title: Strateji, üretim ve reklam tek ekipte
+        description: >-
+          İçeriği planlayan, çeken ve reklamını yöneten aynı ekip. İş firmadan firmaya el
+          değiştirmediği için mesaj dağılmıyor.
+        icon: report
+      - title: Her ay bir öncekinden öğreniyor
+        description: >-
+          Ay sonu raporu bir sonraki ayın planını değiştiriyor. İşe yarayan içerik türü
+          çoğalıyor, yaramayan bırakılıyor.
+        icon: cycle
+
+  # 5. FİYATI DEĞİŞTİREN KALEMLER
+  - type: scope
+    background: dark
+    eyebrow: Fiyatı Ne Değiştirir?
+    heading: Fiyatınızı Belirleyen Altı Kalem
+    lead: >-
+      Teklif alırken bu listeyi yanınızda tutun. İki teklif arasındaki farkın büyük kısmı
+      genelde bu satırlardan birinin boş kalmasıdır.
+    items:
+      - title: İçeriğin nereden geldiği
+        description: >-
+          Fotoğraf ve video sizden mi geliyor, çekimi biz mi yapıyoruz? Fiyatı en çok
+          değiştiren kalem bu.
+      - title: İçerik sayısı ve formatı
+        description: >-
+          Tek görsel, carousel, hikâye ve Reels farklı emek istiyor. Ayda kaç içerik ve
+          hangi formatta üretileceği teklifte yazılı olmalı.
+      - title: Platform sayısı
+        description: >-
+          Instagram tek başına mı, yanında TikTok, LinkedIn ya da YouTube da var mı? Her
+          platform kendi formatını ve dilini istiyor.
+      - title: Reklam yönetimi
+        description: >-
+          Reklam yönetimi, kampanya sayısına ve bütçenin büyüklüğüne göre aylık 15.000 ile
+          25.000 TL arasında ekleniyor. Reklam bütçesi bunun dışında.
+      - title: Dil sayısı
+        description: >-
+          Yurt dışına seslenen hesaplarda her dil ayrı metin, ayrı altyazı ve çoğu zaman ayrı
+          reklam seti demek.
+      - title: Sektörün kuralları
+        description: >-
+          Sağlık gibi tanıtımı kurallara bağlı alanlarda içerikler hekim onayından geçiyor ve
+          dil daha dikkatli kuruluyor.
+
+  # 6. HER PAKETTE STANDART
+  - type: bullets
+    background: light
+    kind: check
+    eyebrow: Her Pakette
+    heading: Hangi Paketi Seçerseniz Seçin
+    items:
+      - Markanıza özel strateji ve içerik takvimi
+      - Markanın kimliğine uygun tasarım
+      - Yayından önce onayınıza sunulan içerikler
+      - Profil, biyografi ve öne çıkanların düzeni
+      - Beğeni değil talep odaklı aylık rapor
+      - Hesap ve içeriklerin sahipliği sizde
+
+  # 7. ÖRNEK İŞLER
+  - type: projects
+    background: light
+    eyebrow: Yönettiğimiz Hesaplar
+    heading: Bu Fiyatlara Ne Aldığınızı Görün
+    lead: >-
+      Rakamın karşılığını en iyi yapılmış iş anlatıyor. Her projenin yanında hangi
+      sorundan yola çıktığımızı da yazdık.
+    slugs:
+      - dr-ayse-cinkaya-kahveci
+      - sera-natura
+      - cagla-aytac
+    columns: 3
+    kind: grid
+    ctaLabel: Sosyal medya örneklerini inceleyin
+    ctaHref: /projelerimiz/sosyal-medya/
+
+  # 8. SSS: fiyat aramalarındaki soru kalıpları.
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Sosyal Medya Yönetimi Fiyatları Hakkında Sorular
+    items:
+      - question: Sosyal medya yönetimi aylık ne kadar?
+        answer: >-
+          Pixelon'da sosyal medya yönetimi aylık 20.000 TL'den, video çekimli paket
+          30.000 TL'den, reklam yönetimli paket 45.000 TL'den başlıyor, KDV hariç. Kesin
+          rakamı içeriğin nereden geldiği, platform ve dil sayısı belirliyor.
+      - question: Reklam bütçesi fiyata dahil mi?
+        answer: >-
+          Hayır. Paket fiyatı yönetim ücretidir. Reklam bütçesi ayrı bir kalem olarak
+          doğrudan Meta'ya ödenir; ne kadar harcandığını reklam hesabında siz de
+          görürsünüz.
+      - question: Video çekimi ayrıca alınabilir mi?
+        answer: >-
+          Evet. Çekim ve kurgu, hesap yönetimi olmadan da planlanabiliyor. Nasıl
+          çalıştığımızı [içerik üretimi ve Reels çekimi](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/)
+          sayfasında anlattık.
+      - question: Şehir dışında ya da yurt dışında çekim yapıyor musunuz?
+        answer: >-
+          Evet. Uygun şartlar sağlandığında Türkiye'nin ve dünyanın her yerinde çekim
+          yapıyoruz; Antalya'da ve Kenya'da yaptığımız çekimler bunlardan ikisi.
+      - question: Teklifleri nasıl karşılaştırmalıyım?
+        answer: >-
+          Rakama değil kapsama bakın: ayda kaç içerik, hangi formatta, çekim var mı, reklam
+          yönetimi dahil mi, rapor neyi ölçüyor? Ajansla çalışırken nelere dikkat
+          edileceğini [sosyal medya ajansı ne iş yapar](/blog/sosyal-medya-ajanslari-ne-is-yapar/)
+          yazısında anlattık.
+
+  # 9. KAPANIŞ
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Fiyatı Tahmin Etmeyin, Birlikte Netleştirelim
+    lead: >-
+      Markanızı ve sosyal medyadan ne beklediğinizi anlatın. Hangi pakete denk geldiğinizi
+      ve kapsamın ne olması gerektiğini ilk görüşmede açıkça söyleyelim.
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Sosyal Medya Yönetimi
+        href: /hizmetlerimiz/sosyal-medya-yonetimi/
+        variant: outline

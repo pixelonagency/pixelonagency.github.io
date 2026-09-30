@@ -13,7 +13,7 @@ seo:
   title: 'Sosyal Medya İçerik Takvimi Nasıl Hazırlanır? | Pixelon'
   description: 'Sosyal medya içerik takvimi nasıl hazırlanır? İçerik sütunları, aylık planlama adımları, üretim ritmi ve takvimin sürdürülebilir kalmasını sağlayan yöntemler.'
 article:
-  updated: 2026-08-21
+  updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
     text: İçerik takvimi hazırlamak için önce hesabın amacı belirlenir, sonra bu amaca hizmet eden üç ila beş içerik sütunu tanımlanır. Her sütuna haftalık bir yer ayrılır, konular aylık olarak toplu biçimde çıkarılır ve üretim tek seferde yapılır. Takvimin sürdürülebilir olması için gerçekçi bir sıklıkla başlamak, sonradan artırmaktan daha iyi çalışır.
@@ -158,7 +158,7 @@ article:
 
         Amacı belirleyin, üç ila beş sütun tanımlayın, her sütuna haftalık yer ayırın ve üretimi topluca yapın.
 
-        Takvimi ayakta tutan şey iddialı bir plan değil; sürdürülebilir bir ritim ve gündeme yer bırakan esneklik. Takvimin kurulmasını ve işletilmesini [hesap yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) kapsamında üstleniyoruz.
+        Takvimi ayakta tutan şey iddialı bir plan değil; sürdürülebilir bir ritim ve gündeme yer bırakan esneklik. Takvime hangi saatlerin yazılacağını [Instagram paylaşım saatleri](/blog/instagram-paylasim-saatleri/) yazısında, her format için doğru ölçüleri [Instagram gönderi boyutları](/blog/instagram-gonderi-boyutlari/) yazısında topladık. Takvimin kurulmasını ve işletilmesini [hesap yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) kapsamında üstleniyoruz.
 
     - type: cta
       heading: Takviminizi birlikte kuralım.

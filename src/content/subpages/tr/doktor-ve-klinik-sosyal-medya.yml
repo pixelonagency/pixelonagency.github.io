@@ -1,0 +1,177 @@
+title: Doktor ve Klinik Sosyal Medya Yönetimi
+parent: sosyal-medya-yonetimi
+status: published
+
+seo:
+  title: Doktor ve Klinik Sosyal Medya Yönetimi | Pixelon
+  description: >-
+    Doktor ve klinik sosyal medya yönetimi: hekimin kendi anlatımıyla video, tanıtım
+    kurallarına uygun dil ve hasta mesajlarının takibi. Dr. Ayşe Cinkaya Kahveci ve
+    Op. Dr. İsmail Büyükçayır projelerinden gerçek sonuçlar.
+
+whatsappMessage: Merhaba Pixelon, kliniğimizin sosyal medya yönetimi için bilgi almak istiyoruz.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Doktor ve Klinik Sosyal Medya
+    headingLines:
+      - 'Hasta Önce *Hekimi* Tanır, Sonra Randevu Alır.'
+    lead: >-
+      Sağlıkta sosyal medyanın işi takipçi toplamak değil, hastanın aklındaki soruyu
+      hekimin kendi sesiyle cevaplamak. Videoyu, tasarımı ve hasta mesajlarının
+      takibini bu soruya göre kuruyoruz.
+    video:
+      desktopMp4: /media/hero/sosyal-medya/hero-sosyal-desktop.mp4
+      desktopWebm: /media/hero/sosyal-medya/hero-sosyal-desktop.webm
+      desktopPoster: /media/hero/sosyal-medya/hero-sosyal-desktop-poster.webp
+      mobileMp4: /media/hero/sosyal-medya/hero-sosyal-mobile.mp4
+      mobileWebm: /media/hero/sosyal-medya/hero-sosyal-mobile.webm
+      mobilePoster: /media/hero/sosyal-medya/hero-sosyal-mobile-poster.webp
+    chips:
+      - Hekim anlatımlı video
+      - Tanıtım kurallarına uygun dil
+      - Hasta mesajı takibi
+      - Çok dilli içerik
+    ctas:
+      - label: Kliniğiniz İçin Görüşelim
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: stats
+    background: light
+    eyebrow: Dr. Ayşe Cinkaya Kahveci
+    heading: Bir Dermatoloji Kliniğinde Bir Yıl
+    lead: >-
+      Sosyal medya, web sitesi ve reklamla birlikte kurduğumuz sistemin sonuçları.
+    items:
+      - value: 9
+        suffix: ',2 milyon'
+        label: İçerik görüntülenmesi
+        description: Bir yılda, 100'den fazla videoyla.
+      - value: 2
+        suffix: '.886'
+        label: Hasta mesajı
+        description: Reklamdan gelen mesajlaşma.
+      - value: 266
+        prefix: '%'
+        label: Profil ziyareti artışı
+        description: Hekimin hesabına gelen ziyaretlerde.
+
+  - type: text
+    background: dark
+    layout: split
+    eyebrow: Tonu Doğru Kurmak
+    heading: Ne Fazla İddialı, Ne Fazla Mesafeli
+    body: |-
+      Sağlık iletişiminin bilinen bir riski var. Sonuç vaat eden bir dil hekimi tüccarlaştırıyor, fazla mesafeli bir klinik dil ise hastanın "bana ne olacak?" sorusunu cevapsız bırakıyor.
+
+      Op. Dr. İsmail Büyükçayır'ın hesabını bu iki ucun ortasına kurduk. İçerikler hastanın gerçekten merak ettiği sorulardan çıkıyor: estetik ameliyatlarda iz kalır mı, botoks ifadeyi dondurur mu, meme küçültme ameliyatı kimler için uygundur. Abartılı öncesi ve sonrası kurgusundan bilinçli olarak kaçındık.
+
+      Dr. Ayşe Cinkaya Kahveci'de de videolar hekimin kendi anlatımına dayanıyor: 30'lu yaşlarda ciltte ilk ne değişir, cilt bariyeri bozulursa ne olur, kolajen nasıl artırılır. Her video tek bir soruyu cevaplıyor.
+    highlight: Sağlıkta güveni kuran şey görsel değil, hekimin kendisi.
+
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Nasıl Çalışıyoruz
+    heading: Bir Klinik Hesabında Dört Karar
+    items:
+      - title: İçerik hastanın sorusundan çıkıyor
+        description: >-
+          Muayenede en sık sorulan sorular listeleniyor; her biri bir video ya da
+          bilgi kartının konusu oluyor.
+        icon: strategy
+      - title: Hekimin kendi sesi
+        description: >-
+          Stok görüntü ya da animasyon yerine hekimin kendi anlatımı. Çekim, kurgu ve
+          altyazı bizde; hekimin zamanı en verimli şekilde kullanılıyor.
+        icon: craft
+      - title: Kurallara uygun, abartısız dil
+        description: >-
+          Kesin sonuç, üstünlük iddiası ve abartılı öncesi-sonrası kurgusu yerine
+          bilgilendirici bir dil. Her içeriğin son onayı hekimde.
+        icon: partnership
+      - title: Her dilde ayrı hasta kapısı
+        description: >-
+          Dr. Ayşe Cinkaya Kahveci'de Türkçenin yanında Rusça, Almanca, İngilizce ve
+          Arapça kampanyalarla bölgedeki yabancı misafirlere kendi dillerinde ulaştık.
+        icon: orbit
+
+  - type: bullets
+    background: dark
+    kind: check
+    eyebrow: Kontrol Listesi
+    heading: Bir Klinik Hesabında Olması Gerekenler
+    items:
+      - Hekimin yüzü ve kendi anlatımıyla düzenli videolar
+      - Hastanın en sık sorduğu soruların cevapları
+      - Biyografide randevu ve WhatsApp bağlantısı
+      - Öne çıkanlarda tedavi başlıkları, adres ve ulaşım
+      - Yorum ve mesajlara zamanında, kayıt altında cevap
+      - Kesin sonuç vaat etmeyen, bilgilendirici bir dil
+      - Hangi içeriğin randevu getirdiğinin ölçülmesi
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Sosyal Medyasını Yönettiğimiz Sağlık Markaları
+    slugs:
+      - dr-ayse-cinkaya-kahveci
+      - op-dr-ismail-buyukcayir
+      - cagla-aytac
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Doktor ve Klinik Sosyal Medyası Hakkında Sorular
+    items:
+      - question: Doktorlar sosyal medyada neleri paylaşabilir?
+        answer: >-
+          Sağlık hizmetlerinin tanıtımı kurallara bağlı. Bilgilendirici içerikler,
+          hekimin uzmanlık alanını anlatan videolar ve hastanın sık sorduğu soruların
+          cevapları güvenli bir zemin. Kesin sonuç vaadi, başka hekimlere karşı üstünlük
+          iddiası ve yanıltıcı öncesi-sonrası kullanımı ise uzak durulması gereken
+          alanlar. Metinlerin son onayı her zaman hekimde.
+      - question: Hekimin çekim için ne kadar zaman ayırması gerekiyor?
+        answer: >-
+          Senaryolar önceden hazırlandığı için tek bir çekim gününde birden fazla videonun
+          malzemesi çıkarılıyor. Hekim ne anlatacağını çekimden önce biliyor.
+      - question: Hasta mesajlarına kim cevap veriyor?
+        answer: >-
+          Bu klinikle birlikte kararlaştırılıyor. Genel sorulara hazırlanan cevaplarla biz
+          dönebiliyoruz; tıbbi değerlendirme gerektiren sorular kliniğe yönlendiriliyor.
+          Cevapsız kalan mesaj, kaybedilmiş bir randevu talebi.
+      - question: Kliniğin web sitesini de yapıyor musunuz?
+        answer: >-
+          Evet. Sosyal medyadan gelen hastanın indiği sayfa da işin parçası; klinik
+          sitelerini nasıl kurduğumuzu
+          [doktor ve klinik web sitesi](/hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/)
+          sayfasında anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Hastalarınızın Sorularını Birlikte Listeleyelim
+    lead: >-
+      Muayenede en sık duyduğunuz soruları anlatın; ilk ayın içerik planını ve çekim
+      gününü birlikte çıkaralım.
+    ctas:
+      - label: Kliniğiniz İçin Görüşelim
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: İçerik Üretimi ve Reels
+        href: /hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/
+        variant: outline
