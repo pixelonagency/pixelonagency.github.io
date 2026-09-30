@@ -1,0 +1,145 @@
+title: Kurumsal Kimlik ve Logo Tasarım Fiyatları
+parent: marka-ve-kurumsal-kimlik
+# Rakam 1 Eki 2026'da sahip kararıyla belirlendi: kurumsal kimlik 15.000 TL'den başlıyor,
+# KDV hariç; logo tasarımı isteğe göre değişiyor. Yeni rakam eklenmeden önce sahip onayı alınır.
+status: published
+
+seo:
+  title: Kurumsal Kimlik ve Logo Tasarım Fiyatları 2026 | Pixelon
+  description: >-
+    Kurumsal kimlik ve logo tasarım fiyatları 2026: kurumsal kimlik çalışması 15.000 TL'den
+    başlıyor (KDV hariç), logo tasarımı isteğe göre değişiyor. Fiyatı neyin belirlediğini
+    açıkça yazdık.
+
+whatsappMessage: Merhaba Pixelon, kurumsal kimlik ve logo tasarım fiyatları hakkında bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Kurumsal Kimlik Fiyatları 2026
+    headingLines:
+      - "Kurumsal Kimlik *15.000 TL'den* Başlıyor."
+    lead: >-
+      Rakamı saklamıyoruz. Kurumsal kimlik çalışması 15.000 TL'den başlıyor, KDV hariç.
+      Logo tasarımının fiyatı ise isteğe ve kapsama göre değişiyor. Aşağıda fiyatı neyin
+      belirlediğini tek tek yazdık.
+    video:
+      desktopMp4: /media/hero/marka/hero-marka-desktop.mp4
+      desktopWebm: /media/hero/marka/hero-marka-desktop.webm
+      desktopPoster: /media/hero/marka/hero-marka-desktop-poster.webp
+      mobileMp4: /media/hero/marka/hero-marka-mobile.mp4
+      mobileWebm: /media/hero/marka/hero-marka-mobile.webm
+      mobilePoster: /media/hero/marka/hero-marka-mobile-poster.webp
+    chips:
+      - KDV hariç net fiyatlar
+      - Markaya özel tasarım
+      - Vektörel teslim
+      - Kapsam yazılı
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Sorun
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: scope
+    background: light
+    eyebrow: Fiyatı Ne Değiştirir?
+    heading: Fiyatınızı Belirleyen Beş Kalem
+    lead: >-
+      Teklif alırken bu listeyi yanınızda tutun. İki teklif arasındaki farkın büyük kısmı
+      genelde bu satırlardan birinin boş kalmasıdır.
+    items:
+      - title: Yeni marka mı, yenileme mi?
+        description: >-
+          Sıfırdan bir marka ile bilinirliği olan bir markanın yenilenmesi farklı araştırma
+          ve dikkat istiyor.
+      - title: Logo türü ve konsept sayısı
+        description: >-
+          Yalnızca yazıdan oluşan bir logo ile özel bir amblem ve birden fazla konsept aynı
+          emeği istemiyor.
+      - title: Uygulama sayısı
+        description: >-
+          Kartvizit ve antetli kağıtla sınırlı bir set ile sunum, sosyal medya şablonları,
+          tabela ve araç giydirmesini içeren bir set farklı kapsam.
+      - title: Kurumsal kimlik kılavuzu
+        description: >-
+          Logonun, rengin ve yazının nasıl kullanılacağını anlatan kılavuzun kapsamı ve
+          derinliği.
+      - title: Ambalaj ve ürün gamı
+        description: >-
+          Ürün etiketi ya da ambalaj varsa ürün sayısı ve malzeme çeşitliliği fiyatı
+          belirliyor.
+
+  - type: bullets
+    background: dark
+    kind: check
+    eyebrow: Her Çalışmada
+    heading: Hangi Kapsamı Seçerseniz Seçin
+    items:
+      - Markanın konumlandırmasından başlayan tasarım
+      - Markaya özel logo, hazır şablon yok
+      - Renk kodları ve yazı karakteri kararları
+      - Küçük boyutta ve tek renkte test
+      - Baskı ve dijital kullanım için vektörel dosyalar
+      - Kapsamın ve teslim edilecek dosyaların yazılı listesi
+
+  - type: projects
+    background: light
+    eyebrow: Tasarladığımız Kimlikler
+    heading: Bu Fiyatlara Ne Aldığınızı Görün
+    slugs:
+      - vennyx
+      - mobico
+      - sera-natura
+    columns: 3
+    kind: grid
+    ctaLabel: Kurumsal kimlik örneklerini inceleyin
+    ctaHref: /projelerimiz/kurumsal-kimlik/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Kurumsal Kimlik Fiyatları Hakkında Sorular
+    items:
+      - question: Kurumsal kimlik çalışması ne kadar?
+        answer: >-
+          Pixelon'da kurumsal kimlik çalışması 15.000 TL'den başlıyor, KDV hariç. Kesin
+          rakamı uygulama sayısı, kılavuzun kapsamı ve varsa ambalaj ihtiyacı belirliyor.
+      - question: Logo tasarımı ne kadar?
+        answer: >-
+          Logo tasarımının fiyatı isteğe göre değişiyor: yalnızca yazıdan oluşan bir logo
+          ile özel bir amblem ve birden fazla konsept farklı emek istiyor. Süreci
+          [logo tasarımı](/hizmetlerimiz/marka-ve-kurumsal-kimlik/logo-tasarimi/)
+          sayfasında anlattık.
+      - question: Neden tek bir fiyat vermiyorsunuz?
+        answer: >-
+          Çünkü aynı adı taşıyan iki kimlik çalışması bambaşka kapsamlar olabiliyor.
+          Başlangıç rakamını yayınlıyoruz ki bütçesi bunun altında kalan işletme vakit
+          kaybetmesin.
+      - question: Kurumsal kimliğe neler dahil?
+        answer: >-
+          Kapsama göre logo, renk paleti, yazı karakteri, kartvizit, antetli kağıt, sunum ve
+          sosyal medya şablonları ile kullanım kılavuzu. Kılavuzun içeriğini
+          [kurumsal kimlik kılavuzu nedir](/blog/kurumsal-kimlik-kilavuzu-nedir/) yazısında
+          anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Fiyatı Tahmin Etmeyin, Birlikte Netleştirelim
+    lead: >-
+      Markanızı ve kimliğin nerelerde kullanılacağını anlatın; kapsamın ne olması
+      gerektiğini ilk görüşmede açıkça söyleyelim.
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Kurumsal Kimlik Hizmetimiz
+        href: /hizmetlerimiz/marka-ve-kurumsal-kimlik/
+        variant: outline

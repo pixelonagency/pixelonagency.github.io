@@ -65,7 +65,7 @@ scope:
   layout: list
   items:
     - title: "SEO Analizi ve Yol Haritası"
-      description: "Mevcut web sitenizi teknik yapı, içerik, sıralamalar ve rakipler açısından analiz ediyoruz."
+      description: "Mevcut web sitenizi teknik yapı, içerik, sıralamalar ve rakipler açısından analiz ediyoruz. Uygulamayı kendi ekibinizle yapmak isterseniz yol haritasını [SEO danışmanlığı](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/seo-danismanligi/) kapsamında birlikte çıkarıyoruz."
     - title: "Teknik SEO"
       description: "Tarama ve indeksleme problemleri, site hızı, mobil uyumluluk, yönlendirmeler ve yapılandırılmış veri çalışmalarını gerçekleştiriyoruz."
     - title: "Anahtar Kelime Araştırması"
@@ -77,7 +77,7 @@ scope:
     - title: "İçerik Stratejisi"
       description: "Hangi konuların, hangi içerik formatıyla ve hangi yayın planıyla hazırlanacağını belirleyen içerik takvimi oluşturuyoruz."
     - title: "Yerel SEO"
-      description: "İstanbul, Kadıköy veya hizmet verdiğiniz farklı bölgelerde yerel aramalarda daha görünür olmanızı destekliyoruz."
+      description: "İstanbul, Kadıköy veya hizmet verdiğiniz farklı bölgelerde yerel aramalarda daha görünür olmanızı destekliyoruz. Ayrıntısı [yerel SEO](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/yerel-seo/) sayfasında; İstanbul'daki işletmeler için [İstanbul SEO ajansı](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/istanbul-seo-ajansi/) sayfasına bakabilirsiniz."
     - title: "Rakip Analizi"
       description: "Rakiplerinizin güçlü olduğu anahtar kelimeleri, içerik yapılarını ve büyüme fırsatlarını inceliyoruz."
     - title: "Performans Takibi"
@@ -233,7 +233,7 @@ faq:
     - question: "SEO raporlarında hangi veriler bulunur?"
       answer: "Organik trafik, anahtar kelime sıralamaları, gösterim, tıklama, kullanıcı davranışları, teknik sorunlar ve dönüşüm verileri raporlanabilir."
     - question: "SEO ajansı ile çalışmanın maliyeti neye göre belirlenir?"
-      answer: "Sabit bir liste fiyatı yok; kapsam ve süre belirler. Sitenin mevcut teknik durumu, hedeflenen kelime sayısı, üretilecek içerik hacmi, dil sayısı ve rekabet düzeyi çalışmanın büyüklüğünü değiştirir. Önce ücretsiz bir analiz yapıp neyin gerektiğini çıkarıyor, kapsamı birlikte belirledikten sonra teklif hazırlıyoruz."
+      answer: "Sabit bir liste fiyatı yok; kapsam ve süre belirler. Sitenin mevcut teknik durumu, hedeflenen kelime sayısı, üretilecek içerik hacmi, dil sayısı ve rekabet düzeyi çalışmanın büyüklüğünü değiştirir. Aylık SEO çalışması projenin büyüklüğüne göre 20.000 TL ile 100.000 TL arasında değişiyor, KDV hariç. Ayrıntılar [SEO fiyatları](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/seo-fiyatlari/) sayfasında."
     - question: "SEO mu Google Ads mi? Hangisiyle başlamalıyım?"
       answer: "İkisi birbirinin alternatifi değil. Google Ads ilk günden talep getirir ama bütçe durunca trafik de durur. SEO geç başlar, karşılığında reklam harcamasından bağımsız kalıcı bir kanal bırakır. Hızlı talebe ihtiyacınız varsa reklamla başlayıp SEO'yu paralel kurmak çoğu markada en sağlıklı yol oluyor."
     - question: "Yerel aramalarda (örneğin şehir adıyla) görünmek için ne yapılıyor?"

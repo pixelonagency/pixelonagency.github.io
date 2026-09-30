@@ -16,7 +16,7 @@ article:
   updated: 2026-09-30
   quickAnswer:
     heading: Kısa Cevap
-    text: 'E-ticaret sitesi kurmanın maliyetini sayfa sayısı değil ürün yapısı belirler. Fiyatı en çok değiştiren altı kalem şunlardır: ürün ve varyant sayısı, ödeme altyapısı, kargo entegrasyonu, ürün içeriğinin kim tarafından üretileceği, dil sayısı ve satış ölçümlemesi. Pixelon tarafında e-ticaret projeleri 140.000 TL''den başlıyor ve ortalama 30 günde teslim ediliyor.'
+    text: 'E-ticaret sitesi kurmanın maliyetini sayfa sayısı değil ürün yapısı belirler. Fiyatı en çok değiştiren altı kalem şunlardır: ürün ve varyant sayısı, ödeme altyapısı, kargo entegrasyonu, ürün içeriğinin kim tarafından üretileceği, dil sayısı ve satış ölçümlemesi. Pixelon tarafında hazır altyapıyla e-ticaret sitesi kurulumu 50.000 TL ile 150.000 TL arasında, özel yazılım projeleri 140.000 TL''den başlıyor; siteler ortalama 30 günde teslim ediliyor.'
   tocHeading: İçindekiler
   related:
     - web-tasarim-fiyatlari
@@ -152,7 +152,7 @@ article:
       text: |-
         Teslim ettiğimiz projelerde ortalama süre **30 gün**. Bu süre keşif, ürün mimarisi, tasarım, yazılım, entegrasyon ve test aşamalarının tamamını kapsıyor. Uzatan tek şey genellikle yazılım değil, ürün içeriğinin beklenmesi.
 
-        Fiyat tarafında e-ticaret ve özel yazılım projeleri **140.000 TL**'den başlıyor, KDV hariç. Sizin fiyatınızı yukarıdaki altı kalem belirliyor. Tüm paketlerin fiyat aralıklarını [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında, fiyatı hangi kalemlerin belirlediğini [web sitesi fiyatı neye göre belirlenir](/blog/web-tasarim-fiyatlari/) yazısında açtık.
+        Fiyat tarafında hazır altyapıyla e-ticaret sitesi kurulumu işe göre **50.000 TL** ile **150.000 TL** arasında, özel yazılım projeleri **140.000 TL**'den başlıyor, KDV hariç; ayrıntılar [e-ticaret sitesi fiyatları](/hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-sitesi-fiyatlari/) sayfasında. Sizin fiyatınızı yukarıdaki altı kalem belirliyor. Tüm paketlerin fiyat aralıklarını [web sitesi fiyatları](/hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/) sayfasında, fiyatı hangi kalemlerin belirlediğini [web sitesi fiyatı neye göre belirlenir](/blog/web-tasarim-fiyatlari/) yazısında açtık.
 
         Bütçe sınırlıysa doğru hamle kaliteyi düşürmek değil, kapsamı küçültmek: az ürünle düzgün kurulmuş bir mağaza, üç yüz ürünlü ama yarım kalmış bir katalogdan daha çok satıyor.
 

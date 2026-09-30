@@ -3,7 +3,7 @@ title: 'SEO Uyumlu Blog Yazısı Nasıl Yazılır?'
 category: SEO
 translationKey: how-to-write-an-seo-friendly-blog-post
 excerpt: SEO uyumlu yazı, anahtar kelimeyle doldurulmuş yazı değil; arayan kişinin sorusunu en hızlı ve en net cevaplayan yazıdır. Yapı, başlık kurgusu ve iç bağlantı bu işin teknik tarafını oluşturur.
-date: 2026-08-21
+date: 2026-10-01
 cover: '/src/assets/images/blog/seo-blog-yazisi-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin çift ekranda blog yazısı taslağı ve anahtar kelime listesi üzerinde çalıştığı fotoğraf
 author: Pixelon Ekibi
@@ -13,7 +13,7 @@ seo:
   title: 'SEO Uyumlu Blog Yazısı Nasıl Yazılır? | Pixelon'
   description: 'SEO uyumlu blog yazısı nasıl yazılır? Arama niyeti, başlık yapısı, doğrudan cevap, iç bağlantı, görsel optimizasyonu ve yazı uzunluğu üzerine uygulanabilir rehber.'
 article:
-  updated: 2026-08-21
+  updated: 2026-10-01
   quickAnswer:
     heading: Kısa Cevap
     text: SEO uyumlu bir blog yazısı, hedeflenen sorguyu arayan kişinin ne öğrenmek istediğini anlayıp bunu ilk paragrafta doğrudan cevaplar. Ardından başlık hiyerarşisiyle bölümlere ayrılır, her bölüm tek bir alt soruyu karşılar, konuyla ilgili diğer sayfalara iç bağlantı verir ve görselleri açıklayıcı alt metinlerle sunar. Anahtar kelime doğal biçimde geçer; tekrar sayısı değil, sorunun cevaplanması belirleyicidir.
@@ -145,7 +145,7 @@ article:
 
         Önce niyeti anlayın, cevabı başta verin, yapıyı taranabilir kurun, iç bağlantıları ihmal etmeyin ve görselleri hafif tutun.
 
-        Yayınladıktan sonra arama konsoluna dönüp gerçek sorguları yazıya eklemek ise en az yazının kendisi kadar değerli bir adım. Üretim ve güncelleme döngüsünü [içerik tarafında](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) düzenli bir işleyişe bağlıyoruz.
+        Yayınladıktan sonra arama konsoluna dönüp gerçek sorguları yazıya eklemek ise en az yazının kendisi kadar değerli bir adım. Üretim ve güncelleme döngüsünü [içerik tarafında](/hizmetlerimiz/seo-ve-icerik-pazarlamasi/) düzenli bir işleyişe bağlıyoruz. Yazının hangi aramayı hedefleyeceğini seçmeyi [anahtar kelime nedir](/blog/anahtar-kelime-nedir/), başlık ve açıklamayı yazmayı [meta description nedir](/blog/meta-description-nedir/) yazısında anlattık.
 
     - type: cta
       heading: İçerik planınızı birlikte çıkaralım.

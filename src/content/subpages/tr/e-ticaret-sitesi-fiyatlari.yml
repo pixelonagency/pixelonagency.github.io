@@ -1,0 +1,168 @@
+title: E-Ticaret Sitesi Fiyatları
+parent: e-ticaret-cozumleri
+# Rakamlar 1 Eki 2026'da sahip kararıyla belirlendi: hazır altyapıyla (T-Soft, ikas, IdeaSoft
+# ve benzeri) kurulum 50.000 - 150.000 TL, KDV hariç, işe göre; özel yazılım teklifle.
+# Yeni rakam eklenmeden önce sahip onayı alınır.
+status: published
+
+seo:
+  title: E-Ticaret Sitesi Fiyatları 2026 | Kurulum Ücreti | Pixelon
+  description: >-
+    E-ticaret sitesi fiyatları 2026: hazır altyapıyla (ikas, T-Soft, IdeaSoft, Shopify ve
+    benzeri) kurulum 50.000 TL ile 150.000 TL arasında (KDV hariç), özel yazılım teklifle.
+    Neyin dahil olduğunu açıkça yazdık.
+
+whatsappMessage: Merhaba Pixelon, e-ticaret sitesi fiyatları hakkında bilgi almak ve teklif istemek istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: E-Ticaret Sitesi Fiyatları 2026
+    headingLines:
+      - "E-Ticaret Sitesi Kurulumu *50.000 TL'den* Başlıyor."
+    lead: >-
+      Rakamı saklamıyoruz. Hazır altyapıyla e-ticaret sitesi kurulumu işin kapsamına göre
+      50.000 TL ile 150.000 TL arasında, KDV hariç. Hazır sistemlerin yetmediği işler için
+      özel yazılım ayrıca fiyatlandırılıyor.
+    video:
+      desktopMp4: /media/hero/e-ticaret/hero-eticaret-desktop.mp4
+      desktopWebm: /media/hero/e-ticaret/hero-eticaret-desktop.webm
+      desktopPoster: /media/hero/e-ticaret/hero-eticaret-desktop-poster.webp
+      mobileMp4: /media/hero/e-ticaret/hero-eticaret-mobile.mp4
+      mobileWebm: /media/hero/e-ticaret/hero-eticaret-mobile.webm
+      mobilePoster: /media/hero/e-ticaret/hero-eticaret-mobile-poster.webp
+    chips:
+      - KDV hariç net fiyatlar
+      - Firmaya uygun altyapı
+      - Markaya özel tasarım
+      - Özel yazılım teklifle
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Sorun
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: cards
+    background: light
+    columns: 2
+    eyebrow: Seçenekler
+    heading: Hazır Altyapı mı, Özel Yazılım mı?
+    lead: >-
+      Hangi seçeneğe denk geleceğinizi ürün sayısı, hedef pazar, entegrasyonlar ve ekibinizin
+      siteyi nasıl yöneteceği belirliyor.
+    items:
+      - eyebrow: Hazır altyapı ile kurulum
+        title: 50.000 - 150.000 TL
+        description: |-
+          Shopify, ikas, T-Soft, IdeaSoft, Ticimax ya da WooCommerce üzerinde markaya özel tasarım, ürün ve kategori yapısı, ödeme ve kargo entegrasyonları, SEO altyapısı ve kurulu ölçüm.
+
+          Kimin için: satışa hızlı başlamak ve siteyi kendi ekibiyle yönetmek isteyen markalar.
+        featured: true
+      - eyebrow: Özel yazılım
+        title: Teklifle
+        description: |-
+          Hazır sistemlerin karşılamadığı iş akışları, özel yönetim paneli, B2B fiyatlandırma ya da farklı sistemlerle derin entegrasyon.
+
+          Kimin için: satış süreci standart kalıplara sığmayan işletmeler.
+    note: >-
+      Tüm fiyatlar KDV hariçtir. Altyapının kendi aylık ya da yıllık ücreti ve ödeme
+      kuruluşunun komisyonu kurulum fiyatına dahil değildir. Kesin rakam, kapsamı ilk
+      görüşmede birlikte çıkardığımızda tek bir tutara iner.
+
+  - type: stats
+    background: dark
+    eyebrow: Kısaca
+    heading: İki Rakamda E-Ticaret Sitesi Fiyatları
+    items:
+      - value: 50
+        suffix: '.000 ₺'
+        label: Hazır altyapıyla kurulum başlangıcı
+        description: KDV hariç, işin kapsamına göre.
+      - value: 150
+        suffix: '.000 ₺'
+        label: Hazır altyapıda kapsamlı projeler
+        description: Çok dilli, çok entegrasyonlu yapılar.
+
+  - type: scope
+    background: light
+    eyebrow: Fiyatı Ne Değiştirir?
+    heading: Fiyatınızı Belirleyen Beş Kalem
+    lead: >-
+      Teklif alırken bu listeyi yanınızda tutun. İki teklif arasındaki farkın büyük kısmı
+      genelde bu satırlardan birinin boş kalmasıdır.
+    items:
+      - title: Ürün ve kategori sayısı
+        description: >-
+          On ürünlük bir mağaza ile varyantlı yüzlerce üründen oluşan bir katalog aynı
+          kurulumu istemiyor.
+      - title: Tasarım yaklaşımı
+        description: >-
+          Hazır temanın uyarlanması mı, markaya özel tasarım mı?
+      - title: Entegrasyonlar
+        description: >-
+          Ödeme, kargo, pazaryeri, muhasebe ya da ERP bağlantılarının sayısı ve derinliği.
+      - title: Dil ve para birimi
+        description: >-
+          Yurt dışına satış için her dil ve para birimi ayrı içerik ve ayar demek.
+      - title: İçerik ve ürün girişi
+        description: >-
+          Ürün fotoğrafı, açıklamaları ve ürün girişinin kimin tarafından yapılacağı.
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Satış ve Katalog Sitelerini Kurduğumuz Markalar
+    slugs:
+      - sera-natura
+      - cagla-aytac
+      - redex-glass
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: E-Ticaret Sitesi Fiyatları Hakkında Sorular
+    items:
+      - question: E-ticaret sitesi kurmak ne kadar tutar?
+        answer: >-
+          Pixelon'da hazır altyapıyla e-ticaret sitesi kurulumu işin kapsamına göre
+          50.000 TL ile 150.000 TL arasında, KDV hariç. Özel yazılım gereken işler ayrıca
+          fiyatlandırılıyor.
+      - question: Altyapının aylık ücreti fiyata dahil mi?
+        answer: >-
+          Hayır. Shopify, ikas ya da T-Soft gibi altyapıların kendi paket ücretleri ve ödeme
+          kuruluşlarının komisyonları ayrı. Altyapıların farkını
+          [e-ticaret altyapısı nasıl seçilir](/blog/e-ticaret-altyapisi-nasil-secilir/)
+          yazısında anlattık.
+      - question: Hangi altyapıyı kullanıyorsunuz?
+        answer: >-
+          Shopify, ikas, T-Soft, IdeaSoft, Ticimax, WooCommerce ya da özel yazılım. Firmanın
+          ürününe, pazarına ve ekibine en uygun olanı seçip onun üzerine kuruyoruz.
+      - question: E-ticarete yeni başlıyorum, nereden başlamalıyım?
+        answer: >-
+          Siteden önce ürün, fiyat ve kanal kararları geliyor. Adımları
+          [e-ticaret nasıl yapılır](/blog/e-ticaret-nasil-yapilir/) yazısında anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Fiyatı Tahmin Etmeyin, Birlikte Netleştirelim
+    lead: >-
+      Ne sattığınızı ve nerede satmak istediğinizi anlatın; hangi altyapının ve hangi
+      kapsamın gerektiğini ilk görüşmede açıkça söyleyelim.
+    ctas:
+      - label: Size Özel Teklif Alın
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: E-Ticaret Hizmetimiz
+        href: /hizmetlerimiz/e-ticaret-cozumleri/
+        variant: outline

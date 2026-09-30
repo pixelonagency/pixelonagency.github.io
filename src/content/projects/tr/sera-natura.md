@@ -9,6 +9,7 @@ featured: false
 order: 6
 tags:
   - Marka Kimliği
+  - Kurumsal Kimlik
   - Ambalaj Tasarımı
   - Sosyal Medya
   - Video & Fotoğraf

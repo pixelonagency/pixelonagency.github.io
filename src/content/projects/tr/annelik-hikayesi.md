@@ -9,6 +9,7 @@ featured: true
 order: 1
 tags:
   - Marka Kimliği
+  - Kurumsal Kimlik
   - Logo Tasarımı
   - Web Tasarım
   - Sosyal Medya

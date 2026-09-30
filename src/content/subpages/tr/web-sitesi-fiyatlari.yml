@@ -4,13 +4,15 @@ parent: web-tasarim-ve-yazilim
 # Diğer rakamların tamamı yayındaki "web tasarım fiyatları" yazısında sahip onayıyla yayınlanmış
 # fiyat aralıklarıdır (50.000 / 95.000 / 140.000 TL, bakım 2.000 TL/ay, KDV hariç). Yeni rakam
 # eklenmeden önce sahip onayı alınır.
+# 1 Eki 2026: sahip, hazır altyapıyla e-ticaret kurulumunu 50.000 - 150.000 TL olarak verdi;
+# 140.000 TL artık yalnızca özel yazılımın başlangıcı.
 status: published
 
 seo:
   title: Web Sitesi Fiyatları 2026 | Kurumsal Site Paketleri | Pixelon
   description: >-
-    Web sitesi fiyatları 2026: kurumsal web sitesi 50.000 TL'den, e-ticaret ve özel
-    yazılım 140.000 TL'den başlıyor (KDV hariç). Paketlere neyin dahil olduğunu ve
+    Web sitesi fiyatları 2026: kurumsal web sitesi 50.000 TL'den, özel yazılım 140.000 TL'den,
+    hazır altyapıyla e-ticaret 50.000 TL'den başlıyor (KDV hariç). Paketlere neyin dahil olduğunu ve
     fiyatı değiştiren kalemleri açıkça yazdık.
 
 whatsappMessage: Merhaba Pixelon, web sitesi fiyatları hakkında bilgi almak ve teklif istemek istiyorum.
@@ -23,8 +25,7 @@ sections:
     headingLines:
       - "Web Sitesi Fiyatları: Kurumsal Siteler *50.000 TL'den* Başlıyor."
     lead: >-
-      Rakamı saklamıyoruz. Kurumsal web siteleri 50.000 TL'den, e-ticaret ve özel yazılım
-      projeleri 140.000 TL'den başlıyor. Tüm fiyatlar KDV hariç. Aşağıda her paketin
+      Rakamı saklamıyoruz. Kurumsal web siteleri 50.000 TL'den, özel yazılım projeleri 140.000 TL'den, hazır altyapıyla e-ticaret siteleri 50.000 TL'den başlıyor. Tüm fiyatlar KDV hariç. Aşağıda her paketin
       içinde ne olduğunu tek tek yazdık.
     chips:
       - KDV hariç net fiyatlar
@@ -65,12 +66,12 @@ sections:
 
           Kimin için: yurt dışına da seslenen, içerikle büyümek isteyen markalar.
         featured: true
-      - eyebrow: E-ticaret ve özel proje
+      - eyebrow: Özel yazılım
         title: 140.000 TL ve üzeri
         description: |-
-          Ürün kataloğu, ödeme ve kargo entegrasyonları, size özel yönetim paneli ya da sistem geliştirmesi.
+          Size özel yönetim paneli, iş akışı ya da sistem geliştirmesi; hazır altyapıların karşılamadığı e-ticaret projeleri.
 
-          Kimin için: online satış yapan ya da hazır sistemlerin yetmediği işler.
+          Kimin için: hazır sistemlerin yetmediği işler. Hazır altyapıyla e-ticaret sitesi 50.000 TL ile 150.000 TL arasında.
     note: >-
       Tüm fiyatlar KDV hariçtir. Kesin rakam, kapsamı ilk görüşmede birlikte çıkardığımızda
       tek bir tutara iner.
@@ -88,8 +89,8 @@ sections:
         description: KDV hariç, markaya özel tasarımla. Ortalama 30 günde teslim.
       - value: 140
         suffix: '.000 ₺'
-        label: E-ticaret ve özel yazılım başlangıcı
-        description: Ödeme, kargo ve özel panel içeren kapsamlar.
+        label: Özel yazılım başlangıcı
+        description: Özel panel ve iş akışı içeren kapsamlar.
       - value: 2
         suffix: '.000 ₺'
         label: Aylık bakım paketi başlangıcı
@@ -217,8 +218,7 @@ sections:
     items:
       - question: Web sitesi yaptırmak ne kadar tutar?
         answer: >-
-          Pixelon'da kurumsal web siteleri 50.000 TL, e-ticaret ve özel yazılım projeleri
-          140.000 TL'den başlıyor, KDV hariç. Kesin rakamı sayfa düzeni sayısı,
+          Pixelon'da kurumsal web siteleri 50.000 TL, özel yazılım projeleri 140.000 TL'den, hazır altyapıyla e-ticaret siteleri 50.000 TL'den başlıyor, KDV hariç. Kesin rakamı sayfa düzeni sayısı,
           içerik sorumluluğu, dil sayısı ve entegrasyonlar belirliyor.
       - question: Neden tek bir fiyat değil de fiyat aralığı veriyorsunuz?
         answer: >-
