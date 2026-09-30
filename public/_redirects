@@ -72,6 +72,8 @@
 /en/projects/web-design/                                                    /projelerimiz/web-tasarim/                                                  301
 /en/projects/social-media                                                   /projelerimiz/sosyal-medya/                                                 301
 /en/projects/social-media/                                                  /projelerimiz/sosyal-medya/                                                 301
+/en/projects/digital-advertising                                            /projelerimiz/dijital-reklam/                                               301
+/en/projects/digital-advertising/                                           /projelerimiz/dijital-reklam/                                               301
 /en/projects/annelik-hikayesi                                               /projelerimiz/annelik-hikayesi/                                             301
 /en/projects/annelik-hikayesi/                                              /projelerimiz/annelik-hikayesi/                                             301
 /en/projects/cagla-aytac                                                    /projelerimiz/cagla-aytac/                                                  301
@@ -140,6 +142,7 @@
 /blog                                                                       /blog/                                                                      301
 /blog/alan-adi-nedir                                                        /blog/alan-adi-nedir/                                                       301
 /blog/blog-yazmak-seoya-yarar-mi                                            /blog/blog-yazmak-seoya-yarar-mi/                                           301
+/blog/cpc-cpm-ctr-nedir                                                     /blog/cpc-cpm-ctr-nedir/                                                    301
 /blog/crm-nedir-ne-ise-yarar                                                /blog/crm-nedir-ne-ise-yarar/                                               301
 /blog/cta-nedir                                                             /blog/cta-nedir/                                                            301
 /blog/dijital-pazarlama-ajansi-ne-is-yapar                                  /blog/dijital-pazarlama-ajansi-ne-is-yapar/                                 301
@@ -149,8 +152,18 @@
 /blog/freelance-mi-ajans-mi                                                 /blog/freelance-mi-ajans-mi/                                                301
 /blog/google-ads-butcesi-nasil-belirlenir                                   /blog/google-ads-butcesi-nasil-belirlenir/                                  301
 /blog/google-ads-mi-meta-ads-mi                                             /blog/google-ads-mi-meta-ads-mi/                                            301
+/blog/google-ads-nedir                                                      /blog/google-ads-nedir/                                                     301
 /blog/google-isletme-profili-nasil-olusturulur                              /blog/google-isletme-profili-nasil-olusturulur/                             301
+/blog/google-reklam-nasil-verilir                                           /blog/google-reklam-nasil-verilir/                                          301
+/blog/google-tag-manager-nedir                                              /blog/google-tag-manager-nedir/                                             301
 /blog/hazir-site-mi-ozel-tasarim-mi                                         /blog/hazir-site-mi-ozel-tasarim-mi/                                        301
+/blog/influencer-marketing-nedir                                            /blog/influencer-marketing-nedir/                                           301
+/blog/instagram-algoritmasi                                                 /blog/instagram-algoritmasi/                                                301
+/blog/instagram-gonderi-boyutlari                                           /blog/instagram-gonderi-boyutlari/                                          301
+/blog/instagram-isletme-hesabi                                              /blog/instagram-isletme-hesabi/                                             301
+/blog/instagram-paylasim-saatleri                                           /blog/instagram-paylasim-saatleri/                                          301
+/blog/instagram-reklam-nasil-verilir                                        /blog/instagram-reklam-nasil-verilir/                                       301
+/blog/instagram-reklam-ucretleri                                            /blog/instagram-reklam-ucretleri/                                           301
 /blog/instagramda-marka-nasil-buyutulur                                     /blog/instagramda-marka-nasil-buyutulur/                                    301
 /blog/kategori/dijital-reklam                                               /blog/kategori/dijital-reklam/                                              301
 /blog/kategori/seo                                                          /blog/kategori/seo/                                                         301
@@ -158,9 +171,11 @@
 /blog/kategori/web-tasarim                                                  /blog/kategori/web-tasarim/                                                 301
 /blog/kurumsal-web-sitesi-nasil-olmali                                      /blog/kurumsal-web-sitesi-nasil-olmali/                                     301
 /blog/landing-page-nedir                                                    /blog/landing-page-nedir/                                                   301
+/blog/marka-bilinirligi-nasil-artirilir                                     /blog/marka-bilinirligi-nasil-artirilir/                                    301
 /blog/marka-kimligi-nedir-neleri-kapsar                                     /blog/marka-kimligi-nedir-neleri-kapsar/                                    301
 /blog/meta-reklamlari-neden-sonuc-vermiyor                                  /blog/meta-reklamlari-neden-sonuc-vermiyor/                                 301
 /blog/mobil-uyumlu-web-sitesi                                               /blog/mobil-uyumlu-web-sitesi/                                              301
+/blog/performance-max-nedir                                                 /blog/performance-max-nedir/                                                301
 /blog/reels-ile-marka-buyutme                                               /blog/reels-ile-marka-buyutme/                                              301
 /blog/roas-nedir-nasil-hesaplanir                                           /blog/roas-nedir-nasil-hesaplanir/                                          301
 /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur  /blog/saglik-markalari-icin-dijital-pazarlama-stratejisi-nasil-olusturulur/ 301
@@ -170,9 +185,13 @@
 /blog/seo-uyumlu-blog-yazisi-nasil-yazilir                                  /blog/seo-uyumlu-blog-yazisi-nasil-yazilir/                                 301
 /blog/seo-uyumlu-web-sitesi                                                 /blog/seo-uyumlu-web-sitesi/                                                301
 /blog/sosyal-medya-ajanslari-ne-is-yapar                                    /blog/sosyal-medya-ajanslari-ne-is-yapar/                                   301
+/blog/sosyal-medya-analizi-nasil-yapilir                                    /blog/sosyal-medya-analizi-nasil-yapilir/                                   301
 /blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir                          /blog/sosyal-medya-icerik-takvimi-nasil-hazirlanir/                         301
+/blog/sosyal-medya-uzmani-ne-is-yapar                                       /blog/sosyal-medya-uzmani-ne-is-yapar/                                      301
+/blog/sosyal-medya-yonetimi-nedir                                           /blog/sosyal-medya-yonetimi-nedir/                                          301
 /blog/ssl-sertifikasi-nedir                                                 /blog/ssl-sertifikasi-nedir/                                                301
 /blog/ucuz-web-sitesi                                                       /blog/ucuz-web-sitesi/                                                      301
+/blog/ugc-nedir                                                             /blog/ugc-nedir/                                                            301
 /blog/ui-ux-nedir                                                           /blog/ui-ux-nedir/                                                          301
 /blog/web-sitesi-analizi-nasil-yapilir                                      /blog/web-sitesi-analizi-nasil-yapilir/                                     301
 /blog/web-sitesi-kac-gunde-biter                                            /blog/web-sitesi-kac-gunde-biter/                                           301
@@ -188,6 +207,11 @@
 /gizlilik-politikasi                                                        /gizlilik-politikasi/                                                       301
 /hizmetlerimiz                                                              /hizmetlerimiz/                                                             301
 /hizmetlerimiz/dijital-reklam-yonetimi                                      /hizmetlerimiz/dijital-reklam-yonetimi/                                     301
+/hizmetlerimiz/dijital-reklam-yonetimi/google-ads-yonetimi                  /hizmetlerimiz/dijital-reklam-yonetimi/google-ads-yonetimi/                 301
+/hizmetlerimiz/dijital-reklam-yonetimi/istanbul-reklam-ajansi               /hizmetlerimiz/dijital-reklam-yonetimi/istanbul-reklam-ajansi/              301
+/hizmetlerimiz/dijital-reklam-yonetimi/meta-reklam-yonetimi                 /hizmetlerimiz/dijital-reklam-yonetimi/meta-reklam-yonetimi/                301
+/hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari            /hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/           301
+/hizmetlerimiz/dijital-reklam-yonetimi/saglik-turizmi-reklamlari            /hizmetlerimiz/dijital-reklam-yonetimi/saglik-turizmi-reklamlari/           301
 /hizmetlerimiz/e-ticaret-cozumleri                                          /hizmetlerimiz/e-ticaret-cozumleri/                                         301
 /hizmetlerimiz/marka-ve-kurumsal-kimlik                                     /hizmetlerimiz/marka-ve-kurumsal-kimlik/                                    301
 /hizmetlerimiz/saglik-turizmi-danismanligi                                  /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
@@ -195,6 +219,7 @@
 /hizmetlerimiz/sosyal-medya-yonetimi                                        /hizmetlerimiz/sosyal-medya-yonetimi/                                       301
 /hizmetlerimiz/sosyal-medya-yonetimi/doktor-ve-klinik-sosyal-medya          /hizmetlerimiz/sosyal-medya-yonetimi/doktor-ve-klinik-sosyal-medya/         301
 /hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels                /hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/               301
+/hizmetlerimiz/sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari        /hizmetlerimiz/sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari/       301
 /hizmetlerimiz/web-tasarim-ve-yazilim                                       /hizmetlerimiz/web-tasarim-ve-yazilim/                                      301
 /hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi           /hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/          301
 /hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim                  /hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim/                 301
@@ -209,6 +234,7 @@
 /projelerimiz/annelik-hikayesi                                              /projelerimiz/annelik-hikayesi/                                             301
 /projelerimiz/cagla-aytac                                                   /projelerimiz/cagla-aytac/                                                  301
 /projelerimiz/dentasay                                                      /projelerimiz/dentasay/                                                     301
+/projelerimiz/dijital-reklam                                                /projelerimiz/dijital-reklam/                                               301
 /projelerimiz/dr-ayse-cinkaya-kahveci                                       /projelerimiz/dr-ayse-cinkaya-kahveci/                                      301
 /projelerimiz/handsforall                                                   /projelerimiz/handsforall/                                                  301
 /projelerimiz/mobico                                                        /projelerimiz/mobico/                                                       301
@@ -216,6 +242,7 @@
 /projelerimiz/redex-glass                                                   /projelerimiz/redex-glass/                                                  301
 /projelerimiz/sekoya                                                        /projelerimiz/sekoya/                                                       301
 /projelerimiz/sera-natura                                                   /projelerimiz/sera-natura/                                                  301
+/projelerimiz/sosyal-medya                                                  /projelerimiz/sosyal-medya/                                                 301
 /projelerimiz/touch-consulting                                              /projelerimiz/touch-consulting/                                             301
 /projelerimiz/valueset                                                      /projelerimiz/valueset/                                                     301
 /projelerimiz/vennyx                                                        /projelerimiz/vennyx/                                                       301

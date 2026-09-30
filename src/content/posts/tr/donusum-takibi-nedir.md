@@ -3,7 +3,7 @@ title: 'Dönüşüm Takibi Nedir, Nasıl Kurulur?'
 category: Dijital Reklam
 translationKey: what-is-conversion-tracking
 excerpt: Dönüşüm takibi, ziyaretçinin sitede yaptığı değerli eylemleri kaydeden yapıdır. Kurulmadığında hangi kanalın talep getirdiği bilinmez ve reklam bütçesi tahminle yönetilir.
-date: 2026-08-21
+date: 2026-10-01
 cover: '/src/assets/images/blog/donusum-takibi-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin ekrandaki dönüşüm olayları panosunu incelediği, yanındaki ekranda web sitesi formunun açık olduğu fotoğraf
 author: Pixelon Ekibi
@@ -13,7 +13,7 @@ seo:
   title: 'Dönüşüm Takibi Nedir, Nasıl Kurulur? | Pixelon'
   description: 'Dönüşüm takibi nedir, neden gerekli? Form, telefon ve WhatsApp dönüşümlerinin tanımlanması, kurulum adımları, doğrulama yöntemi ve KVKK açısından dikkat edilecekler.'
 article:
-  updated: 2026-08-21
+  updated: 2026-10-01
   quickAnswer:
     heading: Kısa Cevap
     text: 'Dönüşüm takibi, ziyaretçinin sitede yaptığı değerli eylemleri kaydeden yapıdır: form gönderimi, telefon numarasına tıklama, WhatsApp yönlendirmesi, satın alma. Kurulumu üç adımdan oluşur: hangi eylemin dönüşüm sayılacağını tanımlamak, bu eylemleri etiket yöneticisi üzerinden olay olarak kaydetmek ve olayları reklam platformlarına bağlamak. Ölçüm kurulmadan yürütülen kampanyada hangi kanalın talep getirdiği bilinemez.'
@@ -154,7 +154,7 @@ article:
 
         Hangi eylemlerin sayılacağını yazıya dökün, etiket yöneticisi üzerinden kurun, reklam platformlarına bağlayın ve her dönüşümü kendiniz test edin.
 
-        Kurulum tamamlandığında bütçe kararları tahmine değil veriye dayanıyor; ve genellikle ilk bulgu, sanılandan farklı bir kanalın talep ürettiği oluyor. Reklam paneli talebin sayısını gösteriyor, o talebin kaçının müşteriye döndüğünü ise [CRM](/blog/crm-nedir-ne-ise-yarar/) tarafı gösteriyor; ikisi birleştiğinde tablo tamamlanıyor. Kurulumu ve sonrasındaki kampanya kararlarını [reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) kapsamında birlikte yürütüyoruz.
+        Kurulum tamamlandığında bütçe kararları tahmine değil veriye dayanıyor; ve genellikle ilk bulgu, sanılandan farklı bir kanalın talep ürettiği oluyor. Reklam paneli talebin sayısını gösteriyor, o talebin kaçının müşteriye döndüğünü ise [CRM](/blog/crm-nedir-ne-ise-yarar/) tarafı gösteriyor; ikisi birleştiğinde tablo tamamlanıyor. Etiketlerin tek yerden nasıl yönetildiğini [Google Tag Manager nedir](/blog/google-tag-manager-nedir/) yazısında anlattık. Kurulumu ve sonrasındaki kampanya kararlarını [reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) kapsamında birlikte yürütüyoruz.
 
     - type: cta
       heading: Ölçüm kurulumunuzu birlikte kontrol edelim.

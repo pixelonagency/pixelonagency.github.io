@@ -1,0 +1,193 @@
+title: Google Ads Yönetimi
+parent: dijital-reklam-yonetimi
+status: published
+
+seo:
+  title: Google Ads Ajansı ve Google Ads Yönetimi | Pixelon
+  description: >-
+    Google Ads ajansı Pixelon: arama, Performance Max, YouTube ve yeniden pazarlama
+    kampanyaları, dönüşüm takibi ve hesap danışmanlığı. 20 ülkede 13 dilde yönetilen
+    Google reklamları.
+
+whatsappMessage: Merhaba Pixelon, Google Ads yönetimi hakkında bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Google Ads Yönetimi
+    headingLines:
+      - "Google'da Arayana, *Arama Anında* Ulaşın."
+    lead: >-
+      Google reklamının gücü, kişi hizmetinizi tam o an ararken karşısına çıkması.
+      Kampanyayı, anahtar kelimeyi, reklamın indiği sayfayı ve dönüşüm takibini tek
+      ekipte kuruyor, bütçeyi tıklamaya değil talebe göre yönetiyoruz.
+    video:
+      desktopMp4: /media/hero/dijital-reklam/hero-ads-desktop.mp4
+      desktopWebm: /media/hero/dijital-reklam/hero-ads-desktop.webm
+      desktopPoster: /media/hero/dijital-reklam/hero-ads-desktop-poster.webp
+      mobileMp4: /media/hero/dijital-reklam/hero-ads-mobile.mp4
+      mobileWebm: /media/hero/dijital-reklam/hero-ads-mobile.webm
+      mobilePoster: /media/hero/dijital-reklam/hero-ads-mobile-poster.webp
+    chips:
+      - Arama ağı
+      - Performance Max
+      - YouTube
+      - Dönüşüm takibi
+    ctas:
+      - label: Hesabınızı İnceleyelim
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: stats
+    background: light
+    eyebrow: Rakamlarla
+    heading: Google ve Meta'da Yönettiğimiz Kampanyalar
+    items:
+      - value: 1000
+        suffix: '+'
+        label: Yayına alınan kampanya
+        description: Arama, görüntülü, video, alışveriş ve talep toplama.
+      - value: 20
+        suffix: '+'
+        label: Ülkede reklam yayını
+        description: Yurt içi ve yurt dışı hedefli kampanyalar.
+      - value: 13
+        label: Dilde reklam yönetimi
+        description: Metin ve indiği sayfa hedef dilde, çeviriyle değil.
+
+  - type: text
+    background: dark
+    layout: split
+    eyebrow: Arama Niyeti
+    heading: Google'da Reklam, Talebi Yaratmaz, Yakalar
+    body: |-
+      Instagram'da reklam, kişiyi henüz aramadığı bir şeyle tanıştırır. Google'da ise kişi zaten arıyor: "Manavgat dermatolog", "implant fiyatı", "kurumsal web sitesi". Bu yüzden Google reklamında asıl iş, doğru aramayı seçmek ve o aramayı yapan kişiye doğru sayfayı göstermek.
+
+      Bütçenin en çok kaybolduğu yer de burası. Geniş eşlemeli anahtar kelimeler, ilgisiz aramalardan gelen tıklamalar ve ana sayfaya düşen reklamlar tıklama sayısını büyütüyor, talebi değil. Hesabı arama terimi raporuyla düzenli olarak temizliyor, her hizmet için ayrı bir sayfaya yönlendiriyoruz.
+
+      Dentasay'da her tedavinin kendi landing page'i var ve kampanyalar ülke ve dil bazında ayrışıyor. Reklamın indiği sayfa, kampanyanın bir parçası olarak kuruluyor.
+    highlight: Google reklamında tıklamayı reklam getirir, talebi reklamın indiği sayfa.
+
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Kampanya Türleri
+    heading: Hangi Google Kampanyası, Ne İşe Yarar?
+    items:
+      - title: Arama ağı
+        description: >-
+          Hizmetinizi arayan kişiye arama sonucunda çıkan metin reklamlar. Talep toplamak
+          için çoğu işletmenin başlangıç noktası.
+        icon: strategy
+      - title: Performance Max
+        description: >-
+          Arama, YouTube, Gmail, Haritalar ve görüntülü ağda tek kampanya. Doğru dönüşüm
+          verisiyle beslendiğinde güçlü, veri olmadan kontrolsüz.
+        icon: orbit
+      - title: YouTube ve video
+        description: >-
+          Ürünü ya da hizmeti göstermek gereken işlerde bilinirlik ve yeniden pazarlama
+          için video reklamlar.
+        icon: craft
+      - title: Yeniden pazarlama
+        description: >-
+          Sitenizi ziyaret edip talep bırakmayan kişilere yeniden ulaşan kampanyalar.
+          Kararı uzun süren hizmetlerde en verimli bütçe kalemlerinden biri.
+        icon: partnership
+
+  - type: steps
+    background: dark
+    kind: timeline
+    eyebrow: Süreç
+    heading: Hesap Denetiminden Rapora
+    items:
+      - title: Hesap denetimi
+        description: Mevcut hesap varsa kayıp bütçe, ilgisiz aramalar ve eksik ölçüm tespit ediliyor.
+      - title: Anahtar kelime ve yapı
+        description: Aramalar hizmetlere göre gruplanıyor, negatif kelimeler baştan ekleniyor.
+      - title: Reklam ve sayfa
+        description: Reklam metni ile indiği sayfa aynı sözü veriyor, her hizmet kendi sayfasına gidiyor.
+      - title: Dönüşüm takibi
+        description: Form, arama ve WhatsApp tıklamaları Google Ads'e dönüşüm olarak bağlanıyor.
+      - title: Optimizasyon ve rapor
+        description: Arama terimleri, teklif ve bütçe düzenli olarak gözden geçiriliyor, sonuç aylık raporlanıyor.
+
+  - type: bullets
+    background: light
+    kind: check
+    eyebrow: Google Ads Danışmanlığı
+    heading: Hesabı Kendiniz mi Yönetiyorsunuz?
+    lead: >-
+      Yönetimi devralmadan da çalışabiliyoruz. Kendi ekibiyle reklam veren firmalar için
+      denetim ve danışmanlık kapsamında şunlara bakıyoruz:
+    items:
+      - Bütçenin hangi aramalara harcandığı
+      - Negatif anahtar kelime listesinin durumu
+      - Dönüşüm takibinin doğru kurulup kurulmadığı
+      - Reklamların hangi sayfaya indiği
+      - Kampanya yapısının hizmetlerle örtüşmesi
+      - Ekibinizin bundan sonra neye bakması gerektiği
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Google Reklamlarını Yönettiğimiz Markalar
+    slugs:
+      - dentasay
+      - cagla-aytac
+      - dr-ayse-cinkaya-kahveci
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm dijital reklam örneklerimiz
+    ctaHref: /projelerimiz/dijital-reklam/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Google Ads Yönetimi Hakkında Sorular
+    items:
+      - question: Google Ads ajansı ile Google Ads uzmanı arasındaki fark ne?
+        answer: >-
+          Uzman genellikle yalnızca reklam hesabını yönetir. Ajans ise reklamın indiği
+          sayfayı, reklam içeriğini, dönüşüm takibini ve gelen talebin nasıl karşılandığını
+          da kapsar. Reklam performansı çoğu zaman hesabın içinde değil, bu halkalarda
+          kaybedilir.
+      - question: Google Ads yönetimi ne kadar?
+        answer: >-
+          Reklam yönetimi aylık 15.000 TL ile 25.000 TL arasında, KDV hariç; reklam bütçesi
+          ayrı ve doğrudan Google'a ödenir. Ayrıntılar
+          [reklam yönetimi fiyatları](/hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/)
+          sayfasında. Bütçenin nasıl belirlendiğini
+          [Google Ads bütçesi](/blog/google-ads-butcesi-nasil-belirlenir/) yazısında anlattık.
+      - question: Reklam hesabı kimin adına açılıyor?
+        answer: >-
+          Sizin adınıza. Hesap, geçmiş veriler ve dönüşüm kurulumları çalışma sona erdiğinde
+          de sizde kalıyor.
+      - question: Google mı Meta mı?
+        answer: >-
+          Hizmetiniz aranıyorsa Google, gösterilerek anlatılması gerekiyorsa Meta genellikle
+          daha iyi başlangıç. Çoğu markada ikisi birlikte çalışıyor; farkını
+          [Google Ads mi Meta Ads mi](/blog/google-ads-mi-meta-ads-mi/) yazısında anlattık.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Bütçenizin Nereye Gittiğini Birlikte Görelim
+    lead: >-
+      Mevcut hesabınızı ya da hedefinizi anlatın; hangi aramalarda, hangi sayfayla ve ne
+      kadar bütçeyle başlamak gerektiğini ilk görüşmede çıkaralım.
+    ctas:
+      - label: Hesabınızı İnceleyelim
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Meta Reklam Yönetimi
+        href: /hizmetlerimiz/dijital-reklam-yonetimi/meta-reklam-yonetimi/
+        variant: outline

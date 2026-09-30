@@ -1,0 +1,164 @@
+title: Sağlık Turizmi ve Klinik Reklamları
+parent: dijital-reklam-yonetimi
+status: published
+
+seo:
+  title: Sağlık Turizmi Reklamları ve Klinik Reklamı | Pixelon
+  description: >-
+    Sağlık turizmi reklamları: 20 ülkede 13 dilde Google ve Meta kampanyaları, tedaviye
+    özel landing page, WhatsApp hasta iletişimi ve tanıtım kurallarına uygun dil.
+    Dentasay ve Dr. Ayşe Cinkaya Kahveci projelerinden.
+
+whatsappMessage: Merhaba Pixelon, kliniğimiz için sağlık turizmi reklamları hakkında bilgi almak istiyoruz.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Sağlık Turizmi Reklamları
+    headingLines:
+      - 'Hastaya Kendi Ülkesinde, *Kendi Dilinde* Ulaşın.'
+    lead: >-
+      Sağlık turizminde reklam, hastayı kliniğe getiren zincirin yalnızca ilk halkası.
+      Kampanyayı, indiği sayfayı ve ilk mesaja verilen cevabı birlikte kuruyoruz; her
+      ülke için ayrı, her dil için yeniden yazılmış olarak.
+    video:
+      desktopMp4: /media/hero/dijital-reklam/hero-ads-desktop.mp4
+      desktopWebm: /media/hero/dijital-reklam/hero-ads-desktop.webm
+      desktopPoster: /media/hero/dijital-reklam/hero-ads-desktop-poster.webp
+      mobileMp4: /media/hero/dijital-reklam/hero-ads-mobile.mp4
+      mobileWebm: /media/hero/dijital-reklam/hero-ads-mobile.webm
+      mobilePoster: /media/hero/dijital-reklam/hero-ads-mobile-poster.webp
+    chips:
+      - 20 ülke, 13 dil
+      - Tedaviye özel landing page
+      - WhatsApp hasta iletişimi
+      - Kurallara uygun dil
+    ctas:
+      - label: Kliniğiniz İçin Görüşelim
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: WhatsApp'tan Yazın
+        href: https://wa.me/905065229034
+        variant: outline
+        icon: whatsapp
+        external: true
+
+  - type: stats
+    background: light
+    eyebrow: Sağlık Kampanyalarından
+    heading: İki Klinik, Aynı Yaklaşım
+    items:
+      - value: 20
+        suffix: ' ülke'
+        label: Dentasay
+        description: 13 dilde yürüyen Meta ve Google kampanyaları.
+      - value: 5
+        suffix: ' dil'
+        label: Dr. Ayşe Cinkaya Kahveci
+        description: Türkçe, Rusça, Almanca, İngilizce ve Arapça reklam.
+      - value: 2
+        suffix: '.886'
+        label: Hasta mesajı
+        description: Dr. Ayşe Cinkaya Kahveci'de reklamdan gelen mesajlaşma.
+
+  - type: text
+    background: dark
+    layout: split
+    eyebrow: Çeviri Değil Yerelleştirme
+    heading: Aynı Reklam, Her Ülkede Başka Bir Soruya Cevap Veriyor
+    body: |-
+      İki farklı ülkedeki hasta aynı tedaviyi farklı sebeplerle araştırabiliyor: biri fiyatı ve süreyi, diğeri güveni ve süreci merak ediyor. Türkçe bir reklamın çevirisi bu farkı görmüyor.
+
+      Dentasay'da kampanyalar ülke ve dil bazında ayrışıyor; implant, zirkonyum ve diğer tedaviler için her dilde ayrı reklam ve her tedavi için ayrı landing page var. Reklam metinleri çeviriyle değil, o pazarın diliyle yazılıyor.
+
+      Sağlık turizminde bütçeden daha belirleyici bir şey daha var: ilk cevabın hızı ve dili. Bu yüzden reklamın yanına WhatsApp iletişim akışları kurduk; hasta ilk mesajına kendi dilinde, beklemeden cevap alıyor.
+    highlight: Reklam hastayı getirir, ilk cevap onu tutar.
+
+  - type: cards
+    background: light
+    kind: feature
+    columns: 2
+    eyebrow: Nasıl Kuruyoruz
+    heading: Bir Sağlık Kampanyasının Dört Parçası
+    items:
+      - title: Ülke ve dil bazlı kampanya
+        description: >-
+          Her pazar kendi kampanyasında; bütçe, teklif ve mesaj o ülkenin rekabetine ve
+          arama diline göre ayarlanıyor.
+        icon: tourism
+      - title: Tedaviye özel sayfa
+        description: >-
+          Reklam ana sayfaya değil, o tedavinin sayfasına iniyor. Klinik sitelerini nasıl
+          kurduğumuzu [doktor ve klinik web sitesi](/hizmetlerimiz/web-tasarim-ve-yazilim/doktor-ve-klinik-web-sitesi/)
+          sayfasında anlattık.
+        icon: web
+      - title: Mesaja açılan yol
+        description: >-
+          WhatsApp ve form talepleri kayıt altına alınıyor, hangi reklamın hangi hastayı
+          getirdiği ölçülüyor.
+        icon: partnership
+      - title: Kurallara uygun dil
+        description: >-
+          Kesin sonuç vaadi, üstünlük iddiası ve yanıltıcı öncesi-sonrası kullanımı yerine
+          bilgilendirici bir dil. Metinlerin son onayı hekimde.
+        icon: health
+
+  - type: projects
+    background: light
+    eyebrow: Projeler
+    heading: Reklamlarını Yönettiğimiz Sağlık Markaları
+    slugs:
+      - dentasay
+      - dr-ayse-cinkaya-kahveci
+      - cagla-aytac
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm dijital reklam örneklerimiz
+    ctaHref: /projelerimiz/dijital-reklam/
+
+  - type: faq
+    background: dark
+    eyebrow: Merak Edilenler
+    heading: Sağlık Turizmi Reklamları Hakkında Sorular
+    items:
+      - question: Klinikler reklam verebilir mi?
+        answer: >-
+          Türkiye'de sağlık hizmetlerinin tanıtımı yönetmelikle sınırlı; Google ve Meta'nın
+          da sağlık reklamları için ayrı politikaları var. Bilgilendirici içerik ile talep
+          yaratmaya yönelik tanıtım arasındaki çizgi ülkeye ve platforma göre değişiyor.
+          Kampanyanın dilini bu çerçevede kuruyoruz; hukuki değerlendirme için kliniğin
+          kendi danışmanının görüşü esas.
+      - question: Hangi ülkelerde reklam veriyorsunuz?
+        answer: >-
+          Avrupa, Körfez, Kuzey Afrika ve Rusça konuşulan pazarlar dahil 20'den fazla
+          ülkede kampanya yönettik. Hedef ülkeyi hastanın nereden geldiğine ve kliniğin
+          hangi dilde hizmet verebildiğine göre seçiyoruz.
+      - question: Reklam yönetimi ne kadar?
+        answer: >-
+          Reklam yönetimi aylık 15.000 TL ile 25.000 TL arasında, KDV hariç; reklam bütçesi
+          ayrı. Çok ülkeli ve çok dilli büyük projeler için ayrıca teklif veriyoruz.
+          Ayrıntılar [reklam yönetimi fiyatları](/hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/)
+          sayfasında.
+      - question: Sosyal medyayı da yönetiyor musunuz?
+        answer: >-
+          Evet. Hekimin kendi anlatımıyla video ve hasta sorularına dayalı içerikle
+          çalışıyoruz; ayrıntısı
+          [doktor ve klinik sosyal medya](/hizmetlerimiz/sosyal-medya-yonetimi/doktor-ve-klinik-sosyal-medya/)
+          sayfasında.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Hastalarınızın Geldiği Ülkeleri Birlikte Planlayalım
+    lead: >-
+      Hangi tedavileri, hangi dillerde sunduğunuzu anlatın; hangi ülkede, hangi kampanyayla
+      başlamak gerektiğini ilk görüşmede çıkaralım.
+    ctas:
+      - label: Kliniğiniz İçin Görüşelim
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Dentasay Projesi
+        href: /projelerimiz/dentasay/
+        variant: outline

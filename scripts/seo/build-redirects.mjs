@@ -114,6 +114,7 @@ export const LEGACY = [
      yayınlanmadı. Kural, ROUTE_SLUGS'taki her İngilizce yolun kapalı kalmasını güvenceye alır. */
   ['/en/projects/web-design', '/projelerimiz/web-tasarim/'],
   ['/en/projects/social-media', '/projelerimiz/sosyal-medya/'],
+  ['/en/projects/digital-advertising', '/projelerimiz/dijital-reklam/'],
   ['/en/projects/annelik-hikayesi', '/projelerimiz/annelik-hikayesi/'],
   ['/en/projects/cagla-aytac', '/projelerimiz/cagla-aytac/'],
   ['/en/projects/dentasay', '/projelerimiz/dentasay/'],

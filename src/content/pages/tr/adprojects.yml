@@ -1,0 +1,117 @@
+seo:
+  title: Dijital Reklam Örnekleri | Yönettiğimiz Kampanyalar | Pixelon
+  description: >-
+    Pixelon dijital reklam örnekleri: 20 ülkede 13 dilde sağlık turizmi kampanyaları,
+    Almanya'da şehir bazlı reklamlar, çok dilli klinik reklamları ve doğal ürün
+    markasında satışa dönen Meta kampanyaları.
+
+whatsappMessage: Merhaba Pixelon, dijital reklam örneklerinizi inceledim, markamız için bilgi almak istiyorum.
+
+sections:
+  - type: hero
+    background: dark
+    breadcrumb:
+      - label: Ana Sayfa
+        href: /
+      - label: Projelerimiz
+        href: /projelerimiz/
+      - label: Dijital Reklam
+    eyebrow: Dijital Reklam Örnekleri
+    headingLines:
+      - 'Yönettiğimiz Kampanyalardan *Örnekler*.'
+    lead: >-
+      Her kampanyada önce reklamın neyi getireceğine karar verdik: hasta mesajı mı, ön
+      görüşme mi, satış mı? Platform, dil ve bütçe o hedefe göre kuruldu, sonuç da o
+      hedefle ölçüldü.
+    video:
+      desktopMp4: /media/hero/dijital-reklam/hero-ads-desktop.mp4
+      desktopWebm: /media/hero/dijital-reklam/hero-ads-desktop.webm
+      desktopPoster: /media/hero/dijital-reklam/hero-ads-desktop-poster.webp
+      mobileMp4: /media/hero/dijital-reklam/hero-ads-mobile.mp4
+      mobileWebm: /media/hero/dijital-reklam/hero-ads-mobile.webm
+      mobilePoster: /media/hero/dijital-reklam/hero-ads-mobile-poster.webp
+    chips:
+      - Sağlık turizmi kampanyaları
+      - Çok dilli reklam
+      - Google ve Meta
+      - E-ticaret ve ürün
+    ctas:
+      - label: Kampanyanızı Konuşalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Reklam Yönetimi Hizmetimiz
+        href: /hizmetlerimiz/dijital-reklam-yonetimi/
+        variant: outline
+
+  # Liste elle tutulmaz: "Dijital Reklam" etiketli her vaka buraya kendiliğinden girer.
+  - type: projects
+    background: light
+    eyebrow: Portfolyo
+    heading: Dijital Reklam Projelerimiz
+    lead: >-
+      Kartlar, kampanyanın nasıl kurulduğunu ve neyi getirdiğini anlatan vaka
+      çalışmalarına açılıyor.
+    tag: Dijital Reklam
+    columns: 3
+    kind: grid
+    ctaLabel: Tüm projelerimizi inceleyin
+    ctaHref: /projelerimiz/
+
+  - type: stats
+    background: dark
+    eyebrow: Sonuçlardan
+    heading: Kampanyaların Arkasındaki Rakamlar
+    items:
+      - value: 20
+        suffix: ' ülke'
+        label: Dentasay
+        description: 13 dilde yürüyen Meta ve Google kampanyaları.
+      - value: 2
+        suffix: '.886'
+        label: Dr. Ayşe Cinkaya Kahveci
+        description: Reklamdan gelen hasta mesajı.
+      - value: 335
+        prefix: '%'
+        label: Çağla Aytaç
+        description: Bağlantı tıklamalarındaki artış, iki yılda 533 bine.
+
+  - type: faq
+    background: light
+    eyebrow: Merak Edilenler
+    heading: Dijital Reklam Örnekleri Hakkında Sorular
+    items:
+      - question: Hangi platformlarda kampanya yönetiyorsunuz?
+        answer: >-
+          Google, Meta (Instagram ve Facebook), TikTok, YouTube, LinkedIn, Yandex ve
+          Snapchat. Platformu hedef kitlenin nerede olduğuna göre seçiyoruz. Google tarafını
+          [Google Ads yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/google-ads-yonetimi/),
+          Instagram ve Facebook tarafını
+          [Meta reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/meta-reklam-yonetimi/)
+          sayfasında anlattık.
+      - question: Yurt dışına yönelik reklam veriyor musunuz?
+        answer: >-
+          Evet. Dentasay için 20 ülkede ve 13 dilde, Çağla Aytaç için Almanya ve Hollanda'da
+          kampanya yönetiyoruz. Reklam metinlerini çeviriyle değil, her pazarın diline göre
+          yazıyoruz.
+      - question: Reklam yönetimi ne kadar tutuyor?
+        answer: >-
+          Reklam yönetimi aylık 15.000 TL'den başlıyor, KDV hariç; reklam bütçesi ayrı.
+          Ayrıntılar [reklam yönetimi fiyatları](/hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/)
+          sayfasında.
+
+  - type: cta
+    background: dark
+    kind: spot
+    heading: Sıradaki Kampanya Sizinki Olsun
+    lead: >-
+      Reklamdan ne beklediğinizi anlatın; hangi platformda, hangi dilde ve hangi hedefle
+      başlamak gerektiğini birlikte çıkaralım.
+    ctas:
+      - label: Kampanyanızı Konuşalım
+        href: /iletisim/
+        variant: primary
+        icon: arrow
+      - label: Reklam Yönetimi Hizmetimiz
+        href: /hizmetlerimiz/dijital-reklam-yonetimi/
+        variant: outline
