@@ -45,16 +45,16 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
-    "@secretlint/secretlint-rule-preset-recommend": "13.0.4",
-    "@types/bun": "1.3.14",
-    "knip": "6.31.0",
-    "oxlint": "1.77.0",
-    "playwright": "1.62.1",
-    "prettier": "3.9.6",
+    "@secretlint/secretlint-rule-preset-recommend": "13.0.6",
+    "@types/bun": "1.4.2",
+    "knip": "6.38.0",
+    "oxlint": "1.85.0",
+    "playwright": "1.63.0",
+    "prettier": "3.9.9",
     "prettier-plugin-astro": "0.14.1",
-    "secretlint": "13.0.4",
+    "secretlint": "13.0.6",
     "typescript": "5.9.3",
-    "yaml": "2.9.0"
+    "yaml": "2.9.1"
   },
   "overrides": {
     "brace-expansion": "^1.1.19",
