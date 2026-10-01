@@ -1705,6 +1705,25 @@ describe('mobil hız ve paylaşım', () => {
     expect(offenders.map((file) => file.replace(DIST, ''))).toEqual([]);
   });
 
+  test('Türkçe karakterli font dosyaları da önden yüklenir', () => {
+    /* ı, ş, ğ latin-ext alt kümesinde; geç gelince metin yeniden çiziliyor ve LCP kayıyordu. */
+    const head = readFileSync(join(DIST, 'blog', 'index.html'), 'utf8').match(/<head>[\s\S]*<\/head>/)?.[0] ?? '';
+    expect(head).toMatch(/rel="preload" href="[^"]*archivo-latin-ext-400-normal[^"]*\.woff2"/);
+    expect(head).toMatch(/rel="preload" href="[^"]*space-grotesk-latin-ext-700-normal[^"]*\.woff2"/);
+  });
+
+  test('hero giriş animasyonu tamamen görünmez başlamaz', () => {
+    /* Chrome opaklığı 0 olan öğeyi LCP adayı saymıyor; hero görseli yerine geç gelen
+       çerez bandı LCP oluyordu. Animasyon 0,01'den başlar, gözle fark edilmez. */
+    const css = readdirSync(join(DIST, 'assets'))
+      .filter((file) => file.endsWith('.css'))
+      .map((file) => readFileSync(join(DIST, 'assets', file), 'utf8'))
+      .join('');
+    const frames = css.match(/@keyframes heroIn\{[^}]*\}/)?.[0] ?? '';
+    expect(frames).toContain('opacity:.01');
+    expect(css).toMatch(/\[data-reveal-now\]\{[^}]*animation:[^;}]*heroIn/);
+  });
+
   test('her başlık en fazla 60 karakter', () => {
     const long = pages
       .map((file) => ({ file, title: readFileSync(file, 'utf8').match(/<title>([^<]*)<\/title>/)?.[1] ?? '' }))

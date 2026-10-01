@@ -306,8 +306,24 @@ button {
  * görünmez tutuyor ve mobil LCP'yi saniyelerce geciktiriyordu (1 Eki 2026).
  * `--reveal-i` sıra gecikmesi, scroll-reveal'daki `data-reveal-index` ile aynı adım.
  */
+/*
+ * fadeUp ile aynı hareket, tek farkla: opaklık 0 değil 0,01'den başlar. Chrome opaklığı
+ * 0 olan öğeyi LCP adayı saymıyor; hero görseli sayılmayınca geç gelen çerez bandı LCP
+ * oluyordu (vaka sayfası, mobil 10 sn). 0,01 gözle 0'dan ayırt edilmez.
+ */
+@keyframes heroIn {
+  from {
+    opacity: 0.01;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 [data-reveal-now] {
-  animation: fadeUp 0.8s var(--ease-out) both;
+  animation: heroIn 0.8s var(--ease-out) both;
   animation-delay: calc(var(--reveal-i, 0) * 0.05s);
 }
 
