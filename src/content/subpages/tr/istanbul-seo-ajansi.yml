@@ -144,6 +144,9 @@ sections:
           Yalnızca orada gerçekten bir şubeniz ya da o ilçeye özel bir hizmetiniz varsa.
           Aynı metnin ilçe adı değiştirilerek çoğaltılması Google'ın spam politikasına
           takılıyor ve sitenin tamamına zarar verebiliyor.
+      - question: Sitemizi ve reklamlarımızı da yapıyor musunuz?
+        answer: >-
+          Evet. Kadıköy'deki aynı ekiple [İstanbul web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/istanbul-web-tasarim/) ve [İstanbul reklam ajansı](/hizmetlerimiz/dijital-reklam-yonetimi/istanbul-reklam-ajansi/) hizmeti de veriyoruz.
 
   - type: cta
     background: dark

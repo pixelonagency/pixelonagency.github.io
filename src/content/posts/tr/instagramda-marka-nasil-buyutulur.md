@@ -161,7 +161,7 @@ article:
 
         Profili net kurun, tek bir konuda düzenli üretin, kaydedilen ve paylaşılan içerikle erişimi büyütün, gelen ilgiyi karşılıksız bırakmayın.
 
-        Ve göstergeye bakarken beğeniyi değil kaydetme, paylaşma ve mesajı takip edin; büyümenin gerçek işareti orada. Kullanıcı içeriğiyle erişimi büyütmenin yolunu [UGC nedir](/blog/ugc-nedir/) yazısında, bilinirliğin nasıl ölçüldüğünü [marka bilinirliği](/blog/marka-bilinirligi-nasil-artirilir/) yazısında anlattık. Üretimi ve bu takibi düzene bağlamak isteyen markalarla [sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) kapsamında çalışıyoruz.
+        Ve göstergeye bakarken beğeniyi değil kaydetme, paylaşma ve mesajı takip edin; büyümenin gerçek işareti orada. Kullanıcı içeriğiyle erişimi büyütmenin yolunu [UGC nedir](/blog/ugc-nedir/) yazısında, bilinirliğin nasıl ölçüldüğünü [marka bilinirliği](/blog/marka-bilinirligi-nasil-artirilir/) yazısında anlattık. Üretimi ve bu takibi düzene bağlamak isteyen markalarla [sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) kapsamında çalışıyoruz. Farklı sektörlerde yönettiğimiz hesaplar [sosyal medya örnekleri](/projelerimiz/sosyal-medya/) sayfasında.
 
     - type: cta
       heading: Hesabınızı birlikte gözden geçirelim.

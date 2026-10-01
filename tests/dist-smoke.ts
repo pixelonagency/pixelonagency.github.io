@@ -1679,3 +1679,66 @@ describe('ham bağlantı sözdizimi sızmaz', () => {
     expect(leaks).toEqual([]);
   });
 });
+
+/*
+ * 1 Eki 2026 SEO denetimi: mobil LCP 4,9-12,3 sn ölçüldü. Kalıcı korumalar:
+ *   · Fontlar kendi alan adımızdan gelir; Google Fonts CSS'i render'ı bloke ediyordu.
+ *   · Sayfanın üstündeki hero içeriği JS'li scroll-reveal'a bağlanmaz; görünür olması
+ *     scriptin yüklenmesini beklemesin (aynı giriş efekti CSS animasyonuyla verilir).
+ *   · Başlıklar arama sonucunda kesilmesin diye en fazla 60 karakter.
+ *   · Paylaşım görseli her platformun önizleyebildiği JPEG.
+ */
+describe('mobil hız ve paylaşım', () => {
+  const pages = allHtmlFiles(DIST).filter((file) => !file.includes('/admin/'));
+
+  test('hiçbir sayfa Google Fonts yüklemez', () => {
+    const offenders = pages.filter((file) => readFileSync(file, 'utf8').includes('fonts.googleapis.com'));
+    expect(offenders.map((file) => file.replace(DIST, ''))).toEqual([]);
+  });
+
+  test('hero görseli ve vaka hero metni JS reveal beklemez', () => {
+    const offenders = pages.filter((file) =>
+      /class="(?:hero__media|pd-hero__copy|pd-hero__media)"[^>]*\bdata-reveal(?![-\w])/.test(
+        readFileSync(file, 'utf8'),
+      ),
+    );
+    expect(offenders.map((file) => file.replace(DIST, ''))).toEqual([]);
+  });
+
+  test('her başlık en fazla 60 karakter', () => {
+    const long = pages
+      .map((file) => ({ file, title: readFileSync(file, 'utf8').match(/<title>([^<]*)<\/title>/)?.[1] ?? '' }))
+      .map(({ file, title }) => ({ file, length: title.replace(/&amp;/g, '&').replace(/&#39;/g, "'").length }))
+      .filter(({ length }) => length > 60)
+      .map(({ file, length }) => `${file.replace(DIST, '')} (${length})`);
+    expect(long).toEqual([]);
+  });
+
+  test('blog ve vaka paylaşım görseli JPEG', () => {
+    const offenders = pages
+      .filter((file) => file.includes('/blog/') || file.includes('/projelerimiz/'))
+      .map((file) => ({
+        file,
+        og: readFileSync(file, 'utf8').match(/property="og:image" content="([^"]+)"/)?.[1] ?? '',
+      }))
+      .filter(({ og }) => !/\.jpe?g$/.test(og))
+      .map(({ file, og }) => `${file.replace(DIST, '')} → ${og}`);
+    expect(offenders).toEqual([]);
+  });
+});
+
+describe('blog kategori meta açıklaması', () => {
+  /* Şablondan üretilen ~90 karakterlik açıklama arama sonucunda boş alan bırakıyordu. */
+  test('her kategori sayfasının açıklaması en az 120 karakter', () => {
+    const dir = join(DIST, 'blog', 'kategori');
+    const short = readdirSync(dir)
+      .map((slug) => ({ slug, html: readFileSync(join(dir, slug, 'index.html'), 'utf8') }))
+      .map(({ slug, html }) => ({
+        slug,
+        length: (html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '').length,
+      }))
+      .filter(({ length }) => length < 120)
+      .map(({ slug, length }) => `${slug} (${length})`);
+    expect(short).toEqual([]);
+  });
+});

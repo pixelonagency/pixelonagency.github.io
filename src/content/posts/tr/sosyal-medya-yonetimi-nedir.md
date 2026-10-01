@@ -121,7 +121,7 @@ article:
       text: |-
         Sosyal medya yönetimi strateji, içerik üretimi, yayın, topluluk yönetimi ve ölçümden oluşuyor. Paylaşım bu zincirin yalnızca görünen halkası.
 
-        Hesabınızın hangi parçasının eksik olduğunu görmek için [sosyal medya analizi nasıl yapılır](/blog/sosyal-medya-analizi-nasil-yapilir/) yazısındaki altı adımı izleyebilirsiniz. Bu işi nasıl yürüttüğümüzü [sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) sayfasında, çekim ve kurgu tarafını [içerik üretimi ve Reels çekimi](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/) sayfasında anlattık.
+        Hesabınızın hangi parçasının eksik olduğunu görmek için [sosyal medya analizi nasıl yapılır](/blog/sosyal-medya-analizi-nasil-yapilir/) yazısındaki altı adımı izleyebilirsiniz. Bu işi nasıl yürüttüğümüzü [sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) sayfasında, çekim ve kurgu tarafını [içerik üretimi ve Reels çekimi](/hizmetlerimiz/sosyal-medya-yonetimi/icerik-uretimi-ve-reels/) sayfasında anlattık. Yönettiğimiz hesapları [sosyal medya örnekleri](/projelerimiz/sosyal-medya/) sayfasında topladık.
 
     - type: cta
       heading: Hesabınızın hangi parçasının eksik olduğuna bakalım.

@@ -51,10 +51,9 @@ describe('güvenlik başlıkları', () => {
     expect(hsts()).toBeDefined();
   });
 
-  test('HSTS max-age deneme aşamasında kalıyor (≤ 1 gün)', () => {
+  test('HSTS 3. basamakta: 1 ay (1 Eki 2026, sahip onayıyla)', () => {
     const maxAge = Number(/max-age=(\d+)/.exec(hsts() ?? '')?.[1] ?? -1);
-    expect(maxAge).toBeGreaterThan(0);
-    expect(maxAge).toBeLessThanOrEqual(86_400);
+    expect(maxAge).toBe(2_592_000);
   });
 
   test('HSTS alt alan adlarını kapsamıyor ve preload listesine girmiyor', () => {

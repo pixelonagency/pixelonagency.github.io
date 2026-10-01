@@ -129,8 +129,8 @@ sections:
       - cagla-aytac
     columns: 3
     kind: grid
-    ctaLabel: Tüm projelerimizi inceleyin
-    ctaHref: /projelerimiz/
+    ctaLabel: Sosyal medya örneklerimiz
+    ctaHref: /projelerimiz/sosyal-medya/
 
   - type: faq
     background: dark

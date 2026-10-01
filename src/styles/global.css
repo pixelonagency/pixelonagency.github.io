@@ -300,6 +300,17 @@ button {
   transform: none;
 }
 
+/*
+ * Sayfanın üstündeki (hero) içerik için aynı giriş efekti, JS beklemeden: CSS
+ * animasyonu ilk boyamayla başlar. JS'li reveal hero görselini script yüklenene dek
+ * görünmez tutuyor ve mobil LCP'yi saniyelerce geciktiriyordu (1 Eki 2026).
+ * `--reveal-i` sıra gecikmesi, scroll-reveal'daki `data-reveal-index` ile aynı adım.
+ */
+[data-reveal-now] {
+  animation: fadeUp 0.8s var(--ease-out) both;
+  animation-delay: calc(var(--reveal-i, 0) * 0.05s);
+}
+
 /* Hareket azaltma tercihine saygı — tüm giriş animasyonları devre dışı. */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -317,6 +328,10 @@ button {
   [data-reveal] {
     opacity: 1;
     transform: none;
+  }
+
+  [data-reveal-now] {
+    animation: none;
   }
 }
 

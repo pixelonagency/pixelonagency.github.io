@@ -112,6 +112,25 @@ const tickerItems = section.tagline?.includes('✦')
   {
     heroVideo && (
       <>
+        {/* Poster mobil LCP adayı; script DCL'de bağlamadan önce indirilmeye başlasın. */}
+        {heroVideo.mobilePoster && (
+          <link
+            rel="preload"
+            as="image"
+            href={mediaUrl(heroVideo.mobilePoster)}
+            media="(max-width: 768px)"
+            fetchpriority="high"
+          />
+        )}
+        {heroVideo.desktopPoster && (
+          <link
+            rel="preload"
+            as="image"
+            href={mediaUrl(heroVideo.desktopPoster)}
+            media="(min-width: 769px)"
+            fetchpriority="high"
+          />
+        )}
         <div class="hero__media-bg" aria-hidden="true">
           <video
             class="hero__video"
@@ -255,7 +274,7 @@ const tickerItems = section.tagline?.includes('✦')
 
       {
         heroImage && (
-          <div class="hero__media" data-reveal>
+          <div class="hero__media" data-reveal-now>
             <Image
               src={heroImage}
               alt={section.imageAlt ?? ''}
