@@ -14,7 +14,7 @@
  */
 import type { CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaSection from './sections/CtaSection.astro';
@@ -41,6 +41,8 @@ const asImage = (value: unknown): ImageMetadata | undefined =>
     : undefined;
 
 const heroImage = asImage(detail.heroImage);
+/* Paylaşım görseli JPEG: webp her sosyal platformda önizlenmiyor. */
+const ogImage = heroImage ? await getImage({ src: heroImage, format: 'jpeg', width: 1200 }) : undefined;
 
 /* Metin alanları çift satır sonuyla paragraflanır (schema: text — markdown değil). */
 const paragraphs = (text: string): string[] =>
@@ -300,7 +302,7 @@ const RAIL_SCRIPT = `(() => {
   ogType="article"
   {locale}
   {alternates}
-  ogImage={heroImage?.src}
+  ogImage={ogImage?.src}
   {extraSchema}
 >
   <article class="pd">
@@ -316,7 +318,7 @@ const RAIL_SCRIPT = `(() => {
         </nav>
 
         <div class="pd-hero__grid">
-          <div class="pd-hero__copy" data-reveal>
+          <div class="pd-hero__copy" data-reveal-now>
             <p class="eyebrow">
               Case Study
               {detail.period && <span class="pd-hero__period"> · {detail.period}</span>}
@@ -332,7 +334,7 @@ const RAIL_SCRIPT = `(() => {
           }
           {
             heroImage && (
-              <div class="pd-hero__media" data-reveal data-reveal-index="1">
+              <div class="pd-hero__media" data-reveal-now style="--reveal-i: 1">
                 <Image
                   src={heroImage}
                   alt={`${client} — ${detail.intro}`}
@@ -627,7 +629,15 @@ const RAIL_SCRIPT = `(() => {
                   <a class="pd-more__card" href={item.href}>
                     <span class="pd-more__media">
                       {item.cover ? (
-                        <Image src={item.cover} alt="" loading="lazy" decoding="async" class="pd-more__image" />
+                        <Image
+                          src={item.cover}
+                          alt=""
+                          widths={[260, 360, 520, 680]}
+                          sizes="(max-width: 923px) 240px, (max-width: 1269px) 26vw, 330px"
+                          loading="lazy"
+                          decoding="async"
+                          class="pd-more__image"
+                        />
                       ) : (
                         <span class="pd-more__placeholder" aria-hidden="true">
                           {item.client}

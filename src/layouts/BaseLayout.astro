@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import { getEntry } from 'astro:content';
 import ogDefaultImage from '../assets/images/pixelon-ekip-pixel-art.webp';
 import logoImage from '../assets/logo/pixelon-logo.webp';
@@ -12,6 +13,23 @@ import { canonicalUrl, truncateDescription } from '../lib/seo';
 import { organizationSchema, toJsonLd, webPageSchema, webSiteSchema } from '../lib/schema';
 import { DEFAULT_LOCALE, type Locale } from '../lib/i18n';
 import { t } from '../lib/ui';
+/*
+ * Fontlar kendi alan adımızdan (Fontsource). Google Fonts CSS'i render'ı bloke ediyor
+ * ve iki ayrı alan adına bağlantı açtırıyordu; mobil ölçümde ~0,8 sn (1 Eki 2026).
+ * Yalnız kullanılan ağırlıklar ve Türkçe için gereken latin + latin-ext alt kümeleri.
+ */
+import '@fontsource/space-grotesk/latin-500.css';
+import '@fontsource/space-grotesk/latin-ext-500.css';
+import '@fontsource/space-grotesk/latin-600.css';
+import '@fontsource/space-grotesk/latin-ext-600.css';
+import '@fontsource/space-grotesk/latin-700.css';
+import '@fontsource/space-grotesk/latin-ext-700.css';
+import '@fontsource/archivo/latin-400.css';
+import '@fontsource/archivo/latin-ext-400.css';
+import '@fontsource/archivo/latin-600.css';
+import '@fontsource/archivo/latin-ext-600.css';
+import archivoRegular from '@fontsource/archivo/files/archivo-latin-400-normal.woff2?url';
+import groteskBold from '@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2?url';
 import '../styles/global.css';
 
 interface Props {
@@ -53,7 +71,9 @@ const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
 const canonical = canonicalUrl(Astro.url.pathname, site);
 const metaDescription = truncateDescription(description, 160);
 
-const ogImageUrl = new URL(ogImage ?? ogDefaultImage.src, site).toString();
+/* Varsayılan paylaşım görseli de JPEG: webp her sosyal platformda önizlenmiyor. */
+const ogDefault = await getImage({ src: ogDefaultImage, format: 'jpeg', width: 1200 });
+const ogImageUrl = new URL(ogImage ?? ogDefault.src, site).toString();
 
 /*
  * GTM yalnızca üretim build'ine basılır (dev sunucusu veri toplamaz) ve
@@ -155,16 +175,9 @@ const jsonLd = toJsonLd([
       )
     }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    {
-      /* Kullanılmayan ağırlıklar yüklenmez: SG 400 ve Archivo 500 sitede hiç kullanılmıyor;
-        Archivo 600 makale içindeki <strong> için kalır. */
-    }
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Archivo:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+    {/* Gövde metni ve başlıkların ilk boyandığı iki dosya önden istenir. */}
+    <link rel="preload" href={archivoRegular} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={groteskBold} as="font" type="font/woff2" crossorigin />
 
     <slot name="head" />
   </head>

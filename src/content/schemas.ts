@@ -751,6 +751,8 @@ export const blogCategorySchema = z.object({
   /** Kümenin aktığı hizmet sayfası — küme sayfasından hizmete tek bir güçlü bağlantı. */
   serviceHref: optHref,
   serviceLabel: opt(z.string()),
+  /** Arama sonucundaki açıklama; yoksa yazı sayısından üretilen kısa metin kullanılır. */
+  description: opt(z.string()),
 });
 
 export const legalSchema = z.object({

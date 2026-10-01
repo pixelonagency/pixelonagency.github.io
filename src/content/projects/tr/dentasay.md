@@ -13,6 +13,9 @@ tags:
   - Sosyal Medya
   - Dijital Reklam
   - Çok Dilli İçerik
+seo:
+  title: 'Dentasay Vakası: 20 Ülkede 13 Dilde Sağlık Turizmi | Pixelon'
+  description: 'Dentasay için web sitesi, sosyal medya, dijital reklam ve uluslararası hasta iletişimini tek stratejide kurduk: 20 ülkede, 13 dilde çalışan bir sistem.'
 detail:
   heroImage: '/src/assets/images/projects/dentasay/hero.webp'
   intro: Tek strateji altında çalışan çok dilli bir dijital sistem — bugün 20

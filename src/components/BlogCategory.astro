@@ -42,9 +42,10 @@ const intro = editorial?.data;
 
 const title = `${group.name} ${t('blog.category.titleSuffix', locale)} | Pixelon Blog`;
 const description =
-  locale === 'tr'
+  intro?.description ??
+  (locale === 'tr'
     ? `Pixelon blogunda ${group.name} kategorisindeki ${group.posts.length} yazı: strateji, uygulama ve ölçüm başlıklarıyla.`
-    : `${group.posts.length} articles in the ${group.name} category on the Pixelon blog: strategy, implementation and measurement.`;
+    : `${group.posts.length} articles in the ${group.name} category on the Pixelon blog: strategy, implementation and measurement.`);
 
 /* Son kırıntı bulunulan sayfadır; hedefi yoktur — `breadcrumbSchema` bunu bekler. */
 const extraSchema = [

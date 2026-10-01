@@ -1442,6 +1442,7 @@ collections:
     fields:
       - { label: Kategori Adı, name: name, widget: string, i18n: true }
       - { label: Giriş Metni, name: intro, widget: text, i18n: true }
+      - { label: Meta Açıklama, name: description, widget: string, required: false, i18n: true, hint: 'Arama sonucunda görünen 140-155 karakterlik özet.' }
       - { label: Hizmet Bağlantısı, name: serviceHref, widget: string, required: false, i18n: true }
       - { label: Hizmet Bağlantı Etiketi, name: serviceLabel, widget: string, required: false, i18n: true }
 

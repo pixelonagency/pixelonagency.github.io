@@ -20,7 +20,7 @@ tags:
   - CRM Danışmanlığı
 year: '2025–2026'
 seo:
-  title: 'Dermatoloji Kliniği Vakası: Bir Yılda %25 Hasta Artışı | Pixelon'
+  title: 'Dermatoloji Kliniği Vakası: %25 Hasta Artışı | Pixelon'
   description: "Manavgat'taki dermatoloji ve estetik kliniği için kurduğumuz sistem: 6 dilli web sitesi, 100'den fazla video, 2.886 hasta mesajı ve ilk yılda %25 hasta artışı."
 detail:
   intro: Tıbbi ciddiyeti kaybetmeden randevuya dönüşen bir hekim markası.

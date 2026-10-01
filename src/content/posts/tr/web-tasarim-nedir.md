@@ -165,7 +165,7 @@ article:
 
         Tasarımdan kodlamaya kadar bütün süreci tek ekiple nasıl yürüttüğümüzü [web tasarım ve yazılım](/hizmetlerimiz/web-tasarim-ve-yazilim/) hizmet sayfamızda anlattık.
 
-        Kurumsal bir sitede neye dikkat etmek gerektiğini [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali/) yazısında, bu kararları kendi projelerimizde nasıl uyguladığımızı [kurumsal web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/) sayfasında anlattık.
+        Kurumsal bir sitede neye dikkat etmek gerektiğini [kurumsal web sitesi nasıl olmalı](/blog/kurumsal-web-sitesi-nasil-olmali/) yazısında, bu kararları kendi projelerimizde nasıl uyguladığımızı [kurumsal web tasarım](/hizmetlerimiz/web-tasarim-ve-yazilim/kurumsal-web-tasarim/) sayfasında anlattık. Kurduğumuz sitelerin tamamını [web tasarım örnekleri](/projelerimiz/web-tasarim/) sayfasında görebilirsiniz.
 
     - type: cta
       heading: Sitenizde hangi kararın eksik olduğunu birlikte bulalım.
