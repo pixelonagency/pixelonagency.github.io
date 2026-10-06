@@ -676,3 +676,12 @@ describe('hero lead mobilde bölüm bazında gizlenebilir', () => {
     expect((result.data!.sections[0] as { hideLeadOnMobile: boolean }).hideLeadOnMobile).toBe(true);
   });
 });
+
+describe('açık pozisyonlar', () => {
+  const job = { title: 'Grafik Tasarımcı', description: 'Marka görselleri üretir.' };
+
+  test('ilan listesi boş olabilir: boş durum JobsSection içinde basılır', () => {
+    expect(parseSection({ type: 'jobs', heading: 'Açık Pozisyonlar', items: [] }).success).toBe(true);
+    expect(parseSection({ type: 'jobs', heading: 'Açık Pozisyonlar', items: [job] }).success).toBe(true);
+  });
+});

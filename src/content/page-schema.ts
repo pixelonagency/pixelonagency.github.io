@@ -639,7 +639,8 @@ export function makePageSchema(image: ImageResolver = defaultImage) {
           href: optHref,
         }),
       )
-      .min(1),
+      // Boş liste geçerlidir: JobsSection "açık pozisyon yok" durumunu basar.
+      .default([]),
   });
 
   const section = z.discriminatedUnion('type', [
