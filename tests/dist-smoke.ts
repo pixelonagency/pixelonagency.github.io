@@ -1351,6 +1351,20 @@ describe('başlık tekilliği', () => {
   }
 });
 
+describe('kariyer açık pozisyonlar', () => {
+  /*
+   * İlanlar 6 Eki 2026'da kaldırıldı. Liste boşken bölüm kaybolmaz: hero ve CTA'lar
+   * `#pozisyonlar` çapasına bağlanıyor, o yüzden çapa yerinde kalır ve tasarımdaki
+   * "açık pozisyon yok" durumu basılır.
+   */
+  test('ilan yokken boş durum basılır ve çapa yerinde kalır', () => {
+    const source = readFileSync(htmlPath('/kariyer'), 'utf8');
+    expect(source).toContain('id="pozisyonlar"');
+    expect(source).toContain('Şu Anda Açık Bir Pozisyonumuz Bulunmuyor');
+    expect(source).not.toContain('class="jobs"');
+  });
+});
+
 describe('breadcrumb kuralı', () => {
   /*
    * Kural (29 Eyl 2026, sahip kararı): ana sayfa dışındaki HER indekslenebilir sayfa

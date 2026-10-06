@@ -24,42 +24,63 @@ const listLabelId = section.anchor ? `${section.anchor}-jobs-label` : 'jobs-labe
 <Section anchor={section.anchor} background={section.background} ctas={section.ctas}>
   <SectionHead eyebrow={section.eyebrow} heading={section.heading} lead={section.lead} />
 
-  <span id={listLabelId} class="visually-hidden">{section.heading}</span>
-  <ul class="jobs" aria-labelledby={listLabelId}>
-    {
-      section.items.map((item, index) => {
-        const meta = [item.location, item.employmentType].filter((value): value is string => Boolean(value));
-        const label = t(item.href ? 'jobs.apply' : 'jobs.contact', locale);
+  {
+    section.items.length === 0 && (
+      <div class="card jobs__empty" data-reveal>
+        <h3 class="h3 jobs__title">{t('jobs.empty.heading', locale)}</h3>
+        <p class="body-text jobs__description">{t('jobs.empty.body', locale)}</p>
+        <p class="body-text jobs__description">{t('jobs.empty.followUp', locale)}</p>
+        <a class="btn btn--primary btn--sm jobs__cta" href={contactPath}>
+          {t('jobs.empty.cta', locale)}
+          <span aria-hidden="true">→</span>
+        </a>
+        <p class="jobs__note">{t('jobs.empty.note', locale)}</p>
+      </div>
+    )
+  }
 
-        return (
-          <li class="jobs__row">
-            <article class="card jobs__item" data-reveal data-reveal-index={index}>
-              <div class="jobs__body">
-                <h3 class="h3 jobs__title">{item.title}</h3>
-                {meta.length > 0 && (
-                  <p class="jobs__meta">
-                    {meta.map((value) => (
-                      <span class="jobs__meta-item">{value}</span>
-                    ))}
-                  </p>
-                )}
-                <p class="body-text jobs__description">{item.description}</p>
-              </div>
+  {
+    section.items.length > 0 && (
+      <>
+        <span id={listLabelId} class="visually-hidden">
+          {section.heading}
+        </span>
+        <ul class="jobs" aria-labelledby={listLabelId}>
+          {section.items.map((item, index) => {
+            const meta = [item.location, item.employmentType].filter((value): value is string => Boolean(value));
+            const label = t(item.href ? 'jobs.apply' : 'jobs.contact', locale);
 
-              <a
-                class="btn btn--outline btn--sm jobs__cta"
-                href={item.href ?? contactPath}
-                aria-label={`${item.title} — ${label}`}
-              >
-                {label}
-                <span aria-hidden="true">→</span>
-              </a>
-            </article>
-          </li>
-        );
-      })
-    }
-  </ul>
+            return (
+              <li class="jobs__row">
+                <article class="card jobs__item" data-reveal data-reveal-index={index}>
+                  <div class="jobs__body">
+                    <h3 class="h3 jobs__title">{item.title}</h3>
+                    {meta.length > 0 && (
+                      <p class="jobs__meta">
+                        {meta.map((value) => (
+                          <span class="jobs__meta-item">{value}</span>
+                        ))}
+                      </p>
+                    )}
+                    <p class="body-text jobs__description">{item.description}</p>
+                  </div>
+
+                  <a
+                    class="btn btn--outline btn--sm jobs__cta"
+                    href={item.href ?? contactPath}
+                    aria-label={`${item.title} — ${label}`}
+                  >
+                    {label}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    )
+  }
 </Section>
 
 <style>
@@ -121,6 +142,26 @@ const listLabelId = section.anchor ? `${section.anchor}-jobs-label` : 'jobs-labe
     max-width: 68ch;
   }
 
+  /* İlan yokken: tek kart, sol hizalı akış. */
+  .jobs__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .jobs__empty .jobs__cta {
+    margin-top: 6px;
+  }
+
+  .jobs__note {
+    margin: 0;
+    max-width: 68ch;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--text-faint);
+  }
+
   .jobs__cta {
     flex-shrink: 0;
     white-space: nowrap;
@@ -137,16 +178,17 @@ const listLabelId = section.anchor ? `${section.anchor}-jobs-label` : 'jobs-labe
   }
 
   /* --- Açık zemin varyantı --- */
-  :global(.section--light) .jobs__meta {
+  :global(.section--light) .jobs__meta,
+  :global(.section--light) .jobs__note {
     color: var(--text-muted-on-light);
   }
 
-  :global(.section--light) .jobs__cta {
+  :global(.section--light) .jobs__item .jobs__cta {
     border-color: var(--border-on-light);
     color: var(--text-on-light);
   }
 
-  :global(.section--light) .jobs__cta:hover {
+  :global(.section--light) .jobs__item .jobs__cta:hover {
     border-color: var(--text-on-light);
     color: var(--text-on-light);
   }

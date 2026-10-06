@@ -95,6 +95,23 @@ const STRINGS = {
 
   'jobs.apply': { tr: 'Başvur', en: 'Apply' },
   'jobs.contact': { tr: 'Bize Yazın', en: 'Get in Touch' },
+  'jobs.empty.heading': {
+    tr: 'Şu Anda Açık Bir Pozisyonumuz Bulunmuyor',
+    en: 'We Have No Open Positions Right Now',
+  },
+  'jobs.empty.body': {
+    tr: "Ekibimizi büyütmek için doğru zamanı ve doğru kişileri bekliyoruz. Şu anda aktif bir ilanımız bulunmasa da Pixelon'da çalışmak istiyorsanız genel başvurunuzu bırakabilirsiniz.",
+    en: 'We are waiting for the right time and the right people to grow our team. There is no active listing right now, but if you want to work at Pixelon you can leave a general application.',
+  },
+  'jobs.empty.followUp': {
+    tr: 'Deneyiminiz ve yetenekleriniz gelecekte oluşabilecek bir pozisyonla eşleştiğinde sizinle iletişime geçebiliriz.',
+    en: 'When your experience and skills match a future position, we may get in touch with you.',
+  },
+  'jobs.empty.cta': { tr: 'Genel Başvuru Yap', en: 'Send a General Application' },
+  'jobs.empty.note': {
+    tr: 'Tasarım, sosyal medya, içerik, reklam, yazılım, prodüksiyon ve staj başvurularınızı değerlendirme havuzumuza bırakabilirsiniz.',
+    en: 'You can leave design, social media, content, advertising, software, production and internship applications in our talent pool.',
+  },
 
   'form.required': { tr: '(zorunlu)', en: '(required)' },
   'form.sending': { tr: 'Gönderiliyor…', en: 'Sending…' },
