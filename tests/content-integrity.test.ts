@@ -438,6 +438,14 @@ describe('rehber koleksiyonları', () => {
     expect(parsed.bolumler.flatMap((bolum) => bolum.maddeler)).toHaveLength(26);
   });
 
+  test('hekim checklisti e-postalardaki PDF’e bağlı ve dosya public/ altında', async () => {
+    const parsed = checklistSchema.parse(
+      parse(await Bun.file(join(CONTENT, 'checklists', 'tr', 'dijital-gorunurluk-checklisti.yml')).text()),
+    );
+    expect(parsed.pdf).toBe('/rehber/indir/hekimler-dijital-gorunurluk-checklisti.pdf');
+    expect(existsSync(join(CONTENT, '..', '..', 'public', parsed.pdf ?? ''))).toBe(true);
+  });
+
   test('üç hekim yazısı ve hekim checklisti kendi kapak görselini taşır', async () => {
     const files = [
       'rehber/tr/hekimin-google-profili.md',

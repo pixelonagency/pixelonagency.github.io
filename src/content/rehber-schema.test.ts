@@ -149,3 +149,14 @@ describe('makale blok verileri', () => {
     expect(rehberSchema.safeParse({ ...article, istatistikler: [{ deger: '100+' }] }).success).toBe(false);
   });
 });
+
+describe('checklist PDF', () => {
+  test('isteğe bağlıdır ve yalnızca /rehber/indir/ altındaki bir PDF olabilir', () => {
+    expect(checklistSchema.parse(checklist).pdf).toBeUndefined();
+    expect(checklistSchema.parse({ ...checklist, pdf: '' }).pdf).toBeUndefined();
+    const pdf = '/rehber/indir/hekimler-dijital-gorunurluk-checklisti.pdf';
+    expect(checklistSchema.parse({ ...checklist, pdf }).pdf).toBe(pdf);
+    expect(checklistSchema.safeParse({ ...checklist, pdf: 'https://example.com/a.pdf' }).success).toBe(false);
+    expect(checklistSchema.safeParse({ ...checklist, pdf: '/rehber/indir/a.docx' }).success).toBe(false);
+  });
+});

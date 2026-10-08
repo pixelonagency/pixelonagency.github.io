@@ -1398,6 +1398,7 @@ collections:
           - { label: Puan Aralığı, name: aralik, widget: string }
           - { label: Metin, name: metin, widget: text }
       - { label: Sonraki Adım, name: sonraki_adim, widget: text, required: false, i18n: true }
+      - { label: PDF Dosyası, name: pdf, widget: string, required: false, i18n: duplicate, hint: 'public/rehber/indir/ altındaki dosyanın yolu, örneğin /rehber/indir/ad.pdf. E-postalardaki indirme bağlantısıyla aynı olmalı.' }
 
   # --- Projeler -----------------------------------------------------------
   - name: projects

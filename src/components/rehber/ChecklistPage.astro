@@ -13,7 +13,12 @@ import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { CHECKLIST_FORM_ENDPOINT, checklistFormEndpoint } from '../../lib/checklist-form';
+import {
+  CHECKLIST_CONSENT_TEXTS,
+  CHECKLIST_FORM_ENDPOINT,
+  CHECKLIST_SUCCESS_TEXT,
+  checklistFormEndpoint,
+} from '../../lib/checklist-form';
 import { localizedPath, type Locale } from '../../lib/i18n';
 import { guideTitleTag, rehberCrumbs, REHBER_AUDIENCE_LABELS } from '../../lib/rehber';
 import { breadcrumbSchema } from '../../lib/schema';
@@ -28,7 +33,7 @@ interface Props {
 }
 
 const { checklist, locale, alternates } = Astro.props;
-const { title, description, sektor, kitle, durum, sure_dakika, intro, bolumler, kapak } = checklist.data;
+const { title, description, sektor, kitle, durum, sure_dakika, intro, bolumler, kapak, pdf } = checklist.data;
 
 /* The cover appears on the audience card; here it is the share image. */
 const coverImage: ImageMetadata | undefined =
@@ -116,7 +121,17 @@ const extraSchema = [
         <div class="cl__success" data-checklist-success role="status" tabindex="-1" hidden>
           <span class="cl__success-mark" aria-hidden="true">✓</span>
           <p class="cl__success-title">Talebiniz alındı.</p>
-          <p class="cl__success-body">Checklist birkaç dakika içinde e-posta adresinize gelecek.</p>
+          <p class="cl__success-body">{CHECKLIST_SUCCESS_TEXT}</p>
+          {
+            pdf && (
+              <p class="cl__success-download">
+                E-posta gelmezse checklisti buradan da indirebilirsiniz:{' '}
+                <a href={pdf} download>
+                  PDF'i indir
+                </a>
+              </p>
+            )
+          }
         </div>
 
         <form
@@ -151,8 +166,9 @@ const extraSchema = [
                 data-error-target="kvkk"
               />
               <span>
-                <a href={localizedPath('kvkk', locale)} target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni
-                okudum.
+                <a href={localizedPath('kvkk', locale)} target="_blank" rel="noopener"
+                  >{CHECKLIST_CONSENT_TEXTS.kvkk.link}</a
+                >{CHECKLIST_CONSENT_TEXTS.kvkk.after}
                 <span class="cl__required" aria-hidden="true">*</span>
                 <span class="visually-hidden">(zorunlu)</span>
               </span>
@@ -162,12 +178,16 @@ const extraSchema = [
 
           <div class="cl__consent">
             <label class="cl__check" for="f-marketing">
-              <input type="checkbox" id="f-marketing" name="marketing" value="evet" />
-              <span>
-                Pixelon'un dijital pazarlama içerikleri ve duyuruları hakkında bana e-posta gönderilmesini kabul
-                ediyorum. (İsteğe bağlı)
-              </span>
+              <input
+                type="checkbox"
+                id="f-marketing"
+                name="marketing"
+                value="evet"
+                aria-describedby="cl-marketing-note"
+              />
+              <span>{CHECKLIST_CONSENT_TEXTS.marketing}</span>
             </label>
+            <p class="cl__note" id="cl-marketing-note">{CHECKLIST_CONSENT_TEXTS.marketingNote}</p>
           </div>
 
           <div class="cl__actions">
@@ -457,6 +477,24 @@ const extraSchema = [
     margin: 0 0 10px;
     font: 600 clamp(21px, 2.4vw, 26px) var(--font-display);
     color: var(--text);
+  }
+
+  .cl__note {
+    margin: 0 0 0 26px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  .cl__success-download {
+    margin: 16px 0 0;
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+  }
+
+  .cl__success-download a {
+    font-weight: 600;
+    color: var(--accent);
   }
 
   .cl__success-body {

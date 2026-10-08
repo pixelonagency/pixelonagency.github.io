@@ -8,6 +8,7 @@ hukuk_kontrolu: false
 kapak: '/src/assets/images/rehber/dijital-gorunurluk-checklisti.webp'
 kapak_alt: 'Hekim masasında işaretlenmiş bir kontrol listesi, kalem ve stetoskop'
 sure_dakika: 20
+pdf: '/rehber/indir/hekimler-dijital-gorunurluk-checklisti.pdf'
 intro: |-
   Hastanız sizi aramadan önce, adınızı arıyor.
   Bu liste, o aramada ne gördüğünü 20 dakikada kendiniz kontrol etmeniz için hazırlandı.

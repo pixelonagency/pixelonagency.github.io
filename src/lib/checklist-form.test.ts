@@ -1,6 +1,8 @@
 import { describe, expect, test } from 'bun:test';
 import {
+  CHECKLIST_CONSENT_TEXTS,
   CHECKLIST_CONSENT_VERSION,
+  CHECKLIST_SUCCESS_TEXT,
   CHECKLIST_FORM_ENDPOINT,
   checklistFormEndpoint,
   checklistSource,
@@ -35,6 +37,27 @@ describe('checklist form endpoint', () => {
 describe('consent text version', () => {
   test('matches the approved form notice (rehber/saglik/kvkk-checklist-formu.md)', () => {
     expect(CHECKLIST_CONSENT_VERSION).toBe('kvkk-checklist-1-v1');
+  });
+});
+
+describe('approved form texts (kvkk-checklist-1-v1)', () => {
+  test('checkbox 1 links the KVKK notice and states it was read', () => {
+    expect(CHECKLIST_CONSENT_TEXTS.kvkk).toEqual({ link: 'Aydınlatma Metni', after: "'ni okudum." });
+  });
+
+  test('checkbox 2 is the marketing consent, word for word', () => {
+    expect(CHECKLIST_CONSENT_TEXTS.marketing).toBe(
+      "Pixelon'un yeni rehber ve checklistleri, hizmetleri ve ücretsiz dijital analiz davetleri hakkında bana e-posta gönderilmesine ve bu amaçla ad soyad, e-posta, unvan/uzmanlık ve şehir bilgilerimin işlenmesine açık rıza veriyorum. Onayımı istediğim zaman geri çekebilirim.",
+    );
+    expect(CHECKLIST_CONSENT_TEXTS.marketingNote).toBe(
+      'Bu kutuyu işaretlemeseniz de checklist e-posta adresinize gönderilir.',
+    );
+  });
+
+  test('success message tells the reader where the email goes', () => {
+    expect(CHECKLIST_SUCCESS_TEXT).toBe(
+      'Checklist e-posta adresinize gönderildi. Birkaç dakika içinde gelen kutunuzu, gelmezse spam klasörünü kontrol edin.',
+    );
   });
 });
 

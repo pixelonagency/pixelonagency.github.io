@@ -19,6 +19,21 @@ export const CHECKLIST_FORM_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2695
  */
 export const CHECKLIST_CONSENT_VERSION = 'kvkk-checklist-1-v1';
 
+/**
+ * Form texts approved together with `CHECKLIST_CONSENT_VERSION`; they change together.
+ * Checkbox 1 is required, checkbox 2 (marketing) is optional and never pre-checked.
+ */
+export const CHECKLIST_CONSENT_TEXTS = {
+  kvkk: { link: 'Aydınlatma Metni', after: "'ni okudum." },
+  marketing:
+    "Pixelon'un yeni rehber ve checklistleri, hizmetleri ve ücretsiz dijital analiz davetleri hakkında bana e-posta gönderilmesine ve bu amaçla ad soyad, e-posta, unvan/uzmanlık ve şehir bilgilerimin işlenmesine açık rıza veriyorum. Onayımı istediğim zaman geri çekebilirim.",
+  marketingNote: 'Bu kutuyu işaretlemeseniz de checklist e-posta adresinize gönderilir.',
+} as const;
+
+/** Shown after MailerLite confirms the sign-up. */
+export const CHECKLIST_SUCCESS_TEXT =
+  'Checklist e-posta adresinize gönderildi. Birkaç dakika içinde gelen kutunuzu, gelmezse spam klasörünü kontrol edin.';
+
 const MAILERLITE_SUBSCRIBE = /^https:\/\/assets\.mailerlite\.com\/jsonp\/\d+\/forms\/\d+\/subscribe$/;
 
 /**

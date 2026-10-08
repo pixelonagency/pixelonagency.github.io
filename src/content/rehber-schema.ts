@@ -89,5 +89,7 @@ export const makeChecklistSchema = (image: ImageResolver = defaultImage) =>
         .min(1),
       puanlama: list(z.object({ aralik: nonEmpty, metin: nonEmpty })),
       sonraki_adim: opt(z.string()),
+      /** The PDF the emails link to; also offered as a direct download after sign-up. */
+      pdf: opt(z.string().regex(/^\/rehber\/indir\/[a-z0-9-]+\.pdf$/, 'pdf must be a file under /rehber/indir/.')),
     })
     .superRefine(requireCoverAlt);
