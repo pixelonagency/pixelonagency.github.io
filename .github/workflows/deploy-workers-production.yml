@@ -97,11 +97,15 @@ jobs:
           # indeksleme başlığı basması. Önceki hâli her `/*` bloğunu reddediyordu ve
           # tüm site için yazılan güvenlik başlıklarını (nosniff, Referrer-Policy…)
           # da engelliyordu — oysa onların üretimde olması İSTENEN durum.
+          #
+          # Tek istisna, adı tek tek yazılmış indirme yolları: `/rehber/indir/*`
+          # HTML değil PDF sunar ve bilerek noindex'tir. Listeye yol eklemek
+          # bilinçli bir karar olmalı; `/*` gibi geniş bir kalıp asla eklenmez.
           if awk '
-            /^https?:/            { host = 1; next }
-            /^\//                 { host = 0; next }
-            /^[[:space:]]+/       { if (!host && tolower($0) ~ /x-robots-tag|noindex/) { found = 1 } ; next }
-            { host = 0 }
+            /^https?:/            { host = 1; ok = 0; next }
+            /^\//                 { host = 0; ok = ($1 == "/rehber/indir/*"); next }
+            /^[[:space:]]+/       { if (!host && !ok && tolower($0) ~ /x-robots-tag|noindex/) { found = 1 } ; next }
+            { host = 0; ok = 0 }
             END { exit(found ? 0 : 1) }
           ' dist/_headers; then
             echo "host'suz indeksleme başlığı bulundu — noindex üretime sızabilir"; exit 1
