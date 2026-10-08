@@ -3,6 +3,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { makePageSchema } from '../src/content/page-schema';
+import { checklistSchema, rehberSchema } from '../src/content/rehber-schema';
 import { blogCategorySchema, makeServiceSchema, makeTeamSchema, settingsSchema } from '../src/content/schemas';
 import { categoriesWithPages, type CategorizablePost } from '../src/lib/blog-categories';
 import {
@@ -387,4 +388,43 @@ describe('yazı başlıkları', () => {
       expect(tooLong).toEqual([]);
     });
   }
+});
+
+describe('rehber koleksiyonları', () => {
+  /*
+   * Rehber yazıları ve checklistler `slug` alanından URL alır; CMS dosya adını da aynı
+   * alandan yazar. İkisi ayrışırsa CMS'teki girdi ile sitedeki adres farklı şeyleri
+   * gösterir. zod tanımsız anahtarı sessizce sildiği için kayıp anahtar da burada aranır.
+   */
+  const frontmatterOf = (source: string): Record<string, unknown> =>
+    parse(source.split('---')[1] ?? '') as Record<string, unknown>;
+
+  const cases = [
+    { dir: 'rehber', ext: '.md', schema: rehberSchema, read: frontmatterOf },
+    { dir: 'checklists', ext: '.yml', schema: checklistSchema, read: (source: string) => parse(source) },
+  ] as const;
+
+  for (const { dir, ext, schema, read } of cases) {
+    for (const locale of PUBLISHED_LOCALES) {
+      const full = join(CONTENT, dir, locale);
+      const files = existsSync(full) ? readdirSync(full).filter((name) => name.endsWith(ext)) : [];
+
+      for (const file of files) {
+        test(`${dir}/${locale}/${file} şemadan kayıpsız geçer ve dosya adı slug ile aynıdır`, async () => {
+          const raw = read(await Bun.file(join(full, file)).text()) as Record<string, unknown>;
+          const parsed = schema.parse(raw) as Record<string, unknown>;
+          expect(strippedKeys(raw, parsed)).toEqual([]);
+          expect(`${String(parsed.slug)}${ext}`).toBe(file);
+        });
+      }
+    }
+  }
+
+  test('sağlık hekim checklisti tohum içeriği yerinde ve taslak', async () => {
+    const file = join(CONTENT, 'checklists', 'tr', 'dijital-gorunurluk-checklisti.yml');
+    expect(existsSync(file)).toBe(true);
+    const parsed = checklistSchema.parse(parse(await Bun.file(file).text()));
+    expect(parsed.durum).toBe('taslak');
+    expect(parsed.bolumler.flatMap((bolum) => bolum.maddeler)).toHaveLength(26);
+  });
 });

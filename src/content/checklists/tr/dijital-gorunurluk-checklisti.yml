@@ -1,0 +1,61 @@
+title: Hekimler için Dijital Görünürlük Checklisti
+description: 'Hastanız sizi aradığında ne görüyor? Google profili, web sitesi, yorumlar, sosyal medya ve tanıtım kurallarını 20 dakikada kontrol edin.'
+slug: dijital-gorunurluk-checklisti
+sektor: saglik
+kitle: hekimler
+durum: taslak
+hukuk_kontrolu: false
+sure_dakika: 20
+intro: |-
+  Hastanız sizi aramadan önce, adınızı arıyor.
+  Bu liste, o aramada ne gördüğünü 20 dakikada kendiniz kontrol etmeniz için hazırlandı.
+  Her maddeyi telefonunuzdan, bir hasta gibi bakarak işaretleyin.
+  Her "evet" bir puan.
+bolumler:
+  - baslik: Google profili
+    maddeler:
+      - Adınızı ve "uzmanlık + şehir" aramasını yaptığınızda Google profiliniz ilk ekranda çıkıyor.
+      - Profilin sahibi sizsiniz ya da kliniğiniz; eski bir çalışan veya eski bir ajans değil.
+      - 'Ana kategori doğru ve tek: örneğin "Diş hekimi", "Dermatolog", "Ortopedi uzmanı".'
+      - Telefon, adres, çalışma saatleri ve randevu linki güncel; telefonu aradığınızda biri açıyor.
+      - Son 6 ayda eklenmiş, sizi ve muayenehanenizi gösteren en az 10 gerçek fotoğraf var.
+      - Hizmetler bölümünde uzmanlık alanlarınız tek tek yazılı.
+  - baslik: Web sitesi
+    maddeler:
+      - 'Siteniz telefonda hızlı açılıyor: Google PageSpeed Insights mobil testinde sonuç kırmızı değil.'
+      - Ana sayfanın ilk ekranında adınız, uzmanlığınız, şehriniz ve randevu butonu görünüyor.
+      - Her uzmanlık alanı veya tedavi için ayrı bir sayfa var.
+      - Eğitiminiz, uzmanlık belgeniz ve üye olduğunuz dernekler açıkça yazılı.
+      - Telefon ve WhatsApp numaranız tek dokunuşla aranabiliyor.
+      - Site "https" ile açılıyor; KVKK aydınlatma metni ve çerez bildirimi var.
+  - baslik: Hasta yorumları
+    maddeler:
+      - Google profilinize son 3 ayda yeni yorum geldi.
+      - 'Tedavi sonrası yorum istemek için bir rutininiz var: kim, ne zaman, hangi linkle istiyor belli.'
+      - Olumsuzlar dahil her yoruma 48 saat içinde cevap veriliyor.
+      - Cevaplarda hastanın adı, teşhisi veya tedavisi hakkında hiçbir bilgi paylaşılmıyor.
+      - Şikayet sitelerinde adınızı aradınız; açık bir şikayet yok ya da cevaplanmış.
+  - baslik: Sosyal medya ve video
+    maddeler:
+      - Instagram biyografinizde adınız, uzmanlığınız, şehriniz ve randevu linki var.
+      - Son 30 günde en az 4 paylaşım yaptınız.
+      - 'Paylaşımlarınızın en az yarısı bilgi veriyor: hastaların sık sorduğu sorular, tedavi süreci, iyileşme.'
+      - Son 3 ayda yüzünüzün ve sesinizin olduğu en az bir video paylaştınız.
+      - Mesajlara ve yorumlara aynı gün dönülüyor; kimin cevapladığı belli.
+  - baslik: Tanıtım kuralları
+    not: 'Hukuk kontrolü: bu bölüm yayından önce avukata okutulacak.'
+    maddeler:
+      - Paylaşımlarda "en iyi", "garantili", "acısız" gibi üstünlük veya sonuç garantisi iddiası yok.
+      - Fiyat, indirim veya kampanya duyurusu yapılmıyor.
+      - Önce ve sonra görselleri ile hasta görüntüleri, hastanın yazılı onamı olmadan kullanılmıyor.
+      - Hasta yorumlarını veya teşekkür mesajlarını tanıtım amacıyla paylaşmadan önce mevzuat kontrol edildi.
+puanlama:
+  - aralik: 22 ile 26
+    metin: Dijitalde güçlüsünüz. Eksik kalan maddeleri tamamlayın, yılda iki kez bu listeyi tekrarlayın.
+  - aralik: 15 ile 21
+    metin: Hastalarınız sizi buluyor ama ikna olmadan ayrılıyor olabilir. En düşük puanlı bölümden başlayın.
+  - aralik: 14 ve altı
+    metin: Hastalarınız sizi aradığında büyük ihtimalle başka bir hekime geçiyor. İlk iş Google profili ve yorumlar.
+sonraki_adim: |-
+  Hangi maddeden başlayacağınızdan emin değilseniz, adınızı ve muayenehanenizi biz inceleyelim.
+  Ücretsiz dijital analiz: pixelon.com.tr/ucretsiz-analiz

@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { makePageSchema, makeSubpageSchema } from './content/page-schema';
+import { checklistSchema, rehberSchema } from './content/rehber-schema';
 import {
   blogCategorySchema,
   legalSchema,
@@ -80,6 +81,19 @@ const subpages = defineCollection({
   schema: ({ image }) => makeSubpageSchema(image),
 });
 
+// Sector guide articles — `/rehber/<sektor>/<kitle>/<slug>/`. The file name is the
+// `slug` field; drafts (`durum: taslak`) are built only by the dev server.
+const rehber = defineCollection({
+  loader: glob({ pattern: '*/*.md', base: `${CONTENT}/rehber` }),
+  schema: rehberSchema,
+});
+
+// Gated checklists shown as a landing page with a sign-up form under their audience.
+const checklists = defineCollection({
+  loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/checklists` }),
+  schema: checklistSchema,
+});
+
 export const collections = {
   services,
   projects,
@@ -91,4 +105,6 @@ export const collections = {
   legal,
   categories,
   subpages,
+  rehber,
+  checklists,
 };
