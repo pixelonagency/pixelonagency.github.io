@@ -1512,6 +1512,72 @@ describe('hizmet alt sayfaları', () => {
   }
 });
 
+describe('rehber taslakları yayına çıkmaz', () => {
+  /*
+   * Rehber yazıları ve checklistler sahip ve hukuk onayından geçmeden yayına çıkmaz:
+   * `durum: taslak` olan girdi üretim build'inde, sitemap'te ve hiçbir sayfanın
+   * bağlantısında bulunmamalı. Hiç yayında içerik yoksa rehber merkezi de üretilmez
+   * (boş merkez sayfası yetim ve ince sayfa olurdu).
+   */
+  const CONTENT = join(import.meta.dir, '..', 'src', 'content');
+  const field = (source: string, name: string): string =>
+    source.match(new RegExp(`^${name}:\\s*(\\S+)`, 'm'))?.[1] ?? '';
+
+  const entries = (['rehber', 'checklists'] as const).flatMap((collection) => {
+    const dir = join(CONTENT, collection, 'tr');
+    if (!existsSync(dir)) return [];
+    return readdirSync(dir)
+      .filter((file) => /\.(md|yml)$/.test(file))
+      .map((file) => {
+        const source = readFileSync(join(dir, file), 'utf8');
+        return {
+          file: `${collection}/tr/${file}`,
+          route: `/rehber/${field(source, 'sektor')}/${field(source, 'kitle')}/${field(source, 'slug')}/`,
+          published: field(source, 'durum') === 'yayinda',
+        };
+      });
+  });
+
+  const sitemap = (): string =>
+    readdirSync(DIST)
+      .filter((file) => file.startsWith('sitemap'))
+      .map((file) => readFileSync(join(DIST, file), 'utf8'))
+      .join('\n');
+
+  test('kapsam: en az bir rehber girdisi denetleniyor', () => {
+    expect(entries.length).toBeGreaterThan(0);
+  });
+
+  for (const { file, route, published } of entries) {
+    test(`${file} ${published ? 'yayında olduğu için üretilir' : 'taslak olduğu için üretilmez'}`, () => {
+      expect(existsSync(join(DIST, route.slice(1), 'index.html'))).toBe(published);
+    });
+  }
+
+  test('sitemap taslak girdi listelemez', () => {
+    const xml = sitemap();
+    const leaked = entries.filter(({ published, route }) => !published && xml.includes(route)).map(({ file }) => file);
+    expect(leaked).toEqual([]);
+  });
+
+  test('hiçbir sayfa taslak girdiye bağlantı vermez', () => {
+    const drafts = entries.filter(({ published }) => !published).map(({ route }) => route);
+    const offenders: string[] = [];
+    for (const file of allHtmlFiles(DIST)) {
+      const body = readFileSync(file, 'utf8');
+      for (const route of drafts)
+        if (body.includes(`href="${route}"`)) offenders.push(`${file.replace(DIST, '')} → ${route}`);
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('yayında rehber içeriği yokken rehber merkezi ve alt sayfaları hiç üretilmez', () => {
+    if (entries.some(({ published }) => published)) return;
+    expect(existsSync(join(DIST, 'rehber'))).toBe(false);
+    expect(sitemap()).not.toContain('/rehber/');
+  });
+});
+
 describe('web tasarım örnekleri', () => {
   /*
    * Yol haritası katman 4 (30 Eyl 2026): "web tasarım örnekleri" aramasına cevap veren
