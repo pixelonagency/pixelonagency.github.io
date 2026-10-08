@@ -3,17 +3,21 @@ import type { ChecklistFormInput } from './forms';
 /**
  * Where the checklist sign-up form posts: a MailerLite embedded form.
  *
- * THE single config value for the checklist form. Paste the form's subscribe URL from
- * MailerLite (Forms › Embedded form › HTML code, the `action` of the <form>):
- *
- *   https://assets.mailerlite.com/jsonp/<account id>/forms/<form id>/subscribe
- *
+ * THE single config value for the checklist form: the form's subscribe URL from
+ * MailerLite (Forms › Embedded form › HTML code, the `action` of the <form>).
  * The embedded form endpoint takes no API key, so nothing secret reaches the browser.
  *
- * While it is empty the form renders an "henüz aktif değil" state on the dev server, and
- * a checklist marked `yayinda` stops the production build (see `isChecklistBuilt`).
+ * Emptying it puts the form into its "henüz aktif değil" state on the dev server, and a
+ * checklist marked `yayinda` then stops the production build (see `isChecklistBuilt`).
  */
-export const CHECKLIST_FORM_ENDPOINT = '';
+export const CHECKLIST_FORM_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2695085/forms/200745219577087214/subscribe';
+
+/**
+ * Version of the consent notice shown on the form, stored with every sign-up as proof of
+ * what the reader agreed to. Change it whenever the checkbox texts or the notice change,
+ * and keep the old text (source: rehber/saglik/kvkk-checklist-formu.md, `metin_surumu`).
+ */
+export const CHECKLIST_CONSENT_VERSION = 'kvkk-checklist-1-v1';
 
 const MAILERLITE_SUBSCRIBE = /^https:\/\/assets\.mailerlite\.com\/jsonp\/\d+\/forms\/\d+\/subscribe$/;
 
@@ -30,23 +34,46 @@ export function checklistFormEndpoint(value: string): string {
 }
 
 /**
- * Form values → MailerLite embedded form body.
- *
- * `name` and `email` are MailerLite default fields. `unvan`, `sehir`, `kvkk_onay` and
- * `pazarlama_izni` are custom fields that must exist in the MailerLite account with
- * exactly these keys. Marketing consent is sent as `evet` or `hayir` every time, so the
- * subscriber record says which one the reader chose instead of leaving it blank.
+ * Where the sign-up came from: the page path, plus `utm_source` when the link carried one.
+ * Other query parameters (click ids, other UTM keys) are dropped on purpose.
  */
-export function mailerLitePayload(input: ChecklistFormInput): [string, string][] {
+export function checklistSource(pathname: string, search: string): string {
+  const utmSource = new URLSearchParams(search).get('utm_source');
+  return utmSource ? `${pathname}?utm_source=${encodeURIComponent(utmSource)}` : pathname;
+}
+
+interface SubmissionContext {
+  /** Moment of submission; stored as the consent timestamp. */
+  submittedAt: Date;
+  /** See `checklistSource`. */
+  source: string;
+}
+
+/**
+ * Form values → MailerLite embedded form fields.
+ *
+ * `name`, `email` and `city` are MailerLite default fields; `unvan`, `kvkk_onay`,
+ * `pazarlama_izni`, `onay_tarihi`, `metin_surumu` and `kaynak` are custom fields that
+ * exist in the account with exactly these keys. Marketing consent is sent as `evet` or
+ * `hayir` every time, so the record says which one the reader chose.
+ */
+export function mailerLitePayload(input: ChecklistFormInput, context: SubmissionContext): [string, string][] {
+  if (!input.kvkk) throw new Error('A checklist sign-up cannot be sent without the KVKK notice confirmation.');
   return [
     ['fields[name]', input.name.trim()],
     ['fields[email]', input.email.trim()],
     ['fields[unvan]', input.title.trim()],
-    ['fields[sehir]', (input.city ?? '').trim()],
-    ['fields[kvkk_onay]', input.kvkk ? 'evet' : 'hayir'],
+    ['fields[city]', (input.city ?? '').trim()],
+    ['fields[kvkk_onay]', 'evet'],
     ['fields[pazarlama_izni]', input.marketing ? 'evet' : 'hayir'],
+    ['fields[onay_tarihi]', context.submittedAt.toISOString()],
+    ['fields[metin_surumu]', CHECKLIST_CONSENT_VERSION],
+    ['fields[kaynak]', context.source],
     // The two control fields MailerLite's own embed code sends with every submission.
     ['ml-submit', '1'],
     ['anticsrf', 'true'],
   ];
 }
+
+/** Request body: `application/x-www-form-urlencoded`, as MailerLite's embed posts it. */
+export const mailerLiteBody = (payload: [string, string][]): URLSearchParams => new URLSearchParams(payload);

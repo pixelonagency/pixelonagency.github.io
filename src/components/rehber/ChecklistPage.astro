@@ -479,7 +479,7 @@ const extraSchema = [
   // Validation lives in src/lib/forms.ts and the MailerLite mapping in
   // src/lib/checklist-form.ts; both are unit tested. This script only reads the DOM.
   import { buildEventPayload, pushToDataLayer, resolvePageLocation } from '../../lib/analytics-events';
-  import { mailerLitePayload } from '../../lib/checklist-form';
+  import { checklistSource, mailerLiteBody, mailerLitePayload } from '../../lib/checklist-form';
   import { validateChecklistForm } from '../../lib/forms';
 
   const form = document.querySelector<HTMLFormElement>('form[data-checklist-form]');
@@ -547,8 +547,13 @@ const extraSchema = [
       }
 
       try {
-        const body = new FormData();
-        for (const [key, entry] of mailerLitePayload(input)) body.append(key, entry);
+        /* URLSearchParams sends application/x-www-form-urlencoded, as MailerLite's embed does. */
+        const body = mailerLiteBody(
+          mailerLitePayload(input, {
+            submittedAt: new Date(),
+            source: checklistSource(location.pathname, location.search),
+          }),
+        );
         const response = await fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body });
         const payload = (await response.json().catch(() => ({}))) as { success?: boolean };
         if (!response.ok || payload.success !== true) throw new Error('MailerLite rejected the submission');
