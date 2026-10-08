@@ -178,6 +178,8 @@ interface ListedArticle extends TreeArticle {
     seri: string;
     okuma_suresi: number;
     durum: RehberStatus;
+    kapak?: unknown;
+    kapak_alt?: string | undefined;
   };
 }
 
@@ -188,6 +190,8 @@ interface ListedChecklist extends TreeEntry {
     description: string;
     sure_dakika: number;
     durum: RehberStatus;
+    kapak?: unknown;
+    kapak_alt?: string | undefined;
   };
 }
 
@@ -198,8 +202,20 @@ export interface RehberLevel<A, C> {
   audience?: RehberAudienceNode<A, C> | undefined;
 }
 
+/**
+ * Card or page cover. `image` is the optimised asset when the entry has one; without it
+ * the page draws the fallback: `label` on a dark panel with a pixel motif seeded by `seed`.
+ */
+export interface RehberCover {
+  image: unknown;
+  alt: string | undefined;
+  label: string;
+  seed: string;
+}
+
 interface RehberCard {
   href: string;
+  cover?: RehberCover | undefined;
   title: string;
   description: string;
   meta?: string | undefined;
@@ -238,6 +254,7 @@ export function rehberIndexView<A extends ListedArticle, C extends ListedCheckli
       emptyText: 'Bu kitle için henüz yayında yazı yok.',
       cards: audience.articles.map((entry) => ({
         href: rehberPath(locale, sector.sektor, audience.kitle, entry.data.slug),
+        cover: coverOf(entry.data, entry.data.seri, entry.data.slug),
         eyebrow: entry.data.seri,
         title: entry.data.title,
         description: entry.data.description,
@@ -247,6 +264,7 @@ export function rehberIndexView<A extends ListedArticle, C extends ListedCheckli
       checklistHeading: 'Kontrol listesi',
       checklists: audience.checklists.map((entry) => ({
         href: rehberPath(locale, sector.sektor, audience.kitle, entry.data.slug),
+        cover: coverOf(entry.data, 'Kontrol listesi', entry.data.slug),
         title: entry.data.title,
         description: entry.data.description,
         meta: `${entry.data.sure_dakika} dakikada doldurulur`,
@@ -265,6 +283,8 @@ export function rehberIndexView<A extends ListedArticle, C extends ListedCheckli
       listHeading: 'Kime göre?',
       cards: sector.audiences.map((node) => ({
         href: rehberPath(locale, sector.sektor, node.kitle),
+        /* Articles are sorted newest first, so this is the latest cover. */
+        cover: coverOf(node.articles[0]?.data ?? {}, REHBER_AUDIENCE_LABELS[node.kitle], node.kitle),
         title: REHBER_AUDIENCE_LABELS[node.kitle],
         description: REHBER_AUDIENCE_COPY[node.kitle].description,
         meta: node.articles.length > 0 ? `${node.articles.length} yazı` : undefined,
@@ -279,8 +299,77 @@ export function rehberIndexView<A extends ListedArticle, C extends ListedCheckli
     description: REHBER_HUB_COPY.description,
     cards: tree.map((node) => ({
       href: rehberPath(locale, node.sektor),
+      cover: coverOf({}, REHBER_SECTOR_LABELS[node.sektor], node.sektor),
       title: REHBER_SECTOR_LABELS[node.sektor],
       description: REHBER_SECTOR_COPY[node.sektor].description,
     })),
   };
+}
+
+const coverOf = (
+  data: { kapak?: unknown; kapak_alt?: string | undefined },
+  label: string,
+  seed: string,
+): RehberCover => ({ image: data.kapak, alt: data.kapak_alt, label, seed });
+
+/** Small deterministic PRNG (mulberry32) seeded from a string with FNV-1a. */
+function seededRandom(seed: string): () => number {
+  let hash = 2166136261;
+  for (const char of seed) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
+  let state = hash >>> 0;
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let next = Math.imul(state ^ (state >>> 15), 1 | state);
+    next = (next + Math.imul(next ^ (next >>> 7), 61 | next)) ^ next;
+    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+export interface MotifCell {
+  x: number;
+  y: number;
+  /** Lime cell; there is one accent cluster per motif. */
+  accent: boolean;
+  /** Opacity of a neutral cell. */
+  alpha: number;
+}
+
+/** Grid the motif is drawn on: 16 x 9 cells, the 16:9 cover ratio. */
+export const MOTIF_GRID = { columns: 16, rows: 9 } as const;
+
+/**
+ * Pixel motif for the fallback cover: scattered neutral squares and one lime staircase,
+ * the brand's pixel idea. The same seed always gives the same motif, so a cover does not
+ * change between builds, and different articles get different covers.
+ */
+export function pixelMotif(seed: string): MotifCell[] {
+  const random = seededRandom(seed);
+  const cells = new Map<string, MotifCell>();
+  const { columns, rows } = MOTIF_GRID;
+
+  for (let y = 0; y < rows; y += 1) {
+    for (let x = 0; x < columns; x += 1) {
+      /* Denser towards the right so the label on the left stays on a calm surface. */
+      if (random() < 0.08 + (x / columns) * 0.32) {
+        cells.set(`${x},${y}`, { x, y, accent: false, alpha: Number((0.06 + random() * 0.16).toFixed(2)) });
+      }
+    }
+  }
+
+  const originX = 10 + Math.floor(random() * 4);
+  const originY = 1 + Math.floor(random() * 4);
+  const steps = [
+    [0, 2],
+    [1, 2],
+    [1, 1],
+    [2, 1],
+    [2, 0],
+  ] as const;
+  for (const [dx, dy] of steps) {
+    const x = originX + dx;
+    const y = originY + dy;
+    cells.set(`${x},${y}`, { x, y, accent: true, alpha: 1 });
+  }
+
+  return [...cells.values()].sort((a, b) => a.y - b.y || a.x - b.x);
 }

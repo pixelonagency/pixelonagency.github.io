@@ -7,6 +7,8 @@ seri: 'Hekimler için dijital görünürlük'
 okuma_suresi: 6
 durum: taslak
 hukuk_kontrolu: false
+kapak: '/src/assets/images/rehber/hekimin-google-profili.webp'
+kapak_alt: 'Hekimin elinde telefon, ekranda yıldızlı bir işletme profili ve harita, arkada klinik resepsiyonu'
 sektor: saglik
 yayin_tarihi: 2026-10-26
 checklist: dijital-gorunurluk-checklisti

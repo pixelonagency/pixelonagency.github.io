@@ -5,6 +5,8 @@ sektor: saglik
 kitle: hekimler
 durum: taslak
 hukuk_kontrolu: false
+kapak: '/src/assets/images/rehber/dijital-gorunurluk-checklisti.webp'
+kapak_alt: 'Hekim masasında işaretlenmiş bir kontrol listesi, kalem ve stetoskop'
 sure_dakika: 20
 intro: |-
   Hastanız sizi aramadan önce, adınızı arıyor.

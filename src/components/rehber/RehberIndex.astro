@@ -7,10 +7,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import type { Locale } from '../../lib/i18n';
 import { breadcrumbSchema } from '../../lib/schema';
+import type { RehberCover as Cover } from '../../lib/rehber';
+import RehberCover from './RehberCover.astro';
 import RehberCrumbs from './RehberCrumbs.astro';
 
 interface Card {
   href: string;
+  cover?: Cover | undefined;
   title: string;
   description: string;
   /** Short line under the description, e.g. reading time. */
@@ -80,6 +83,11 @@ const extraSchema = [
             {checklists.map((card) => (
               <li>
                 <a class="card rx__card rx__card--feature" href={card.href}>
+                  {card.cover && (
+                    <div class="rx__cover">
+                      <RehberCover cover={card.cover} size="card" />
+                    </div>
+                  )}
                   {card.draft && <span class="rx__draft">Taslak, yalnızca önizleme</span>}
                   <span class="rx__card-title">{card.title}</span>
                   <span class="rx__card-text">{card.description}</span>
@@ -111,6 +119,11 @@ const extraSchema = [
             {cards.map((card) => (
               <li>
                 <a class="card rx__card" href={card.href}>
+                  {card.cover && (
+                    <div class="rx__cover">
+                      <RehberCover cover={card.cover} size="card" />
+                    </div>
+                  )}
                   {card.draft && <span class="rx__draft">Taslak, yalnızca önizleme</span>}
                   {card.eyebrow && <span class="rx__card-eyebrow">{card.eyebrow}</span>}
                   <span class="rx__card-title">{card.title}</span>
@@ -189,6 +202,20 @@ const extraSchema = [
     width: 100%;
     color: var(--text);
     text-decoration: none;
+  }
+
+  /* Cover bleeds to the card edges; the card's own radius clips it. */
+  .rx__card {
+    overflow: hidden;
+  }
+
+  .rx__cover {
+    margin: -30px -30px 8px;
+  }
+
+  .rx__cover :global(.rc) {
+    border: 0;
+    border-radius: 0;
   }
 
   .rx__card--feature {

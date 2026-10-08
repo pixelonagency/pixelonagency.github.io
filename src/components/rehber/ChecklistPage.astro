@@ -9,6 +9,8 @@
  * Without `CHECKLIST_FORM_ENDPOINT` the form is visibly inactive. That state can only be
  * seen on the dev server: a published checklist without an endpoint stops the build.
  */
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CHECKLIST_FORM_ENDPOINT, checklistFormEndpoint } from '../../lib/checklist-form';
@@ -25,7 +27,12 @@ interface Props {
 }
 
 const { checklist, locale, alternates } = Astro.props;
-const { title, description, sektor, kitle, durum, sure_dakika, intro, bolumler } = checklist.data;
+const { title, description, sektor, kitle, durum, sure_dakika, intro, bolumler, kapak } = checklist.data;
+
+/* The cover appears on the audience card; here it is the share image. */
+const coverImage: ImageMetadata | undefined =
+  kapak && typeof kapak === 'object' && 'src' in kapak ? (kapak as ImageMetadata) : undefined;
+const ogImage = coverImage ? await getImage({ src: coverImage, format: 'jpeg', width: 1200 }) : undefined;
 
 const endpoint = checklistFormEndpoint(CHECKLIST_FORM_ENDPOINT);
 const active = endpoint !== '';
@@ -45,7 +52,14 @@ const extraSchema = [
 ];
 ---
 
-<BaseLayout title={`${title} | Pixelon Rehber`} {description} {locale} {alternates} {extraSchema}>
+<BaseLayout
+  title={`${title} | Pixelon Rehber`}
+  {description}
+  {locale}
+  {alternates}
+  ogImage={ogImage?.src}
+  {extraSchema}
+>
   <header class="cl__head">
     <div class="container cl__inner">
       <RehberCrumbs {crumbs} {locale} />

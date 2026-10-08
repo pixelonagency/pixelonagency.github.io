@@ -1,5 +1,8 @@
 import { describe, expect, test } from 'bun:test';
-import { checklistSchema, rehberSchema } from './rehber-schema';
+import { makeChecklistSchema, makeRehberSchema } from './rehber-schema';
+
+const rehberSchema = makeRehberSchema();
+const checklistSchema = makeChecklistSchema();
 
 const article = {
   title: 'Hekimin Google profili',
@@ -100,4 +103,25 @@ describe('checklist şeması', () => {
     });
     expect(parsed.bolumler[0]?.not).toBe('Avukat kontrolü bekliyor.');
   });
+});
+
+describe('kapak görseli', () => {
+  const cases = [
+    { name: 'rehber yazısı', schema: rehberSchema, base: article },
+    { name: 'checklist', schema: checklistSchema, base: checklist },
+  ] as const;
+
+  for (const { name, schema, base } of cases) {
+    test(`${name}: kapak isteğe bağlıdır; CMS boş bıraktığında yok sayılır`, () => {
+      expect(schema.parse(base).kapak).toBeUndefined();
+      expect(schema.parse({ ...base, kapak: '', kapak_alt: '' }).kapak).toBeUndefined();
+    });
+
+    test(`${name}: kapak verildiyse alt metni de verilmeli`, () => {
+      const kapak = '/src/assets/images/rehber/ornek.webp';
+      expect(schema.safeParse({ ...base, kapak }).success).toBe(false);
+      expect(schema.safeParse({ ...base, kapak, kapak_alt: '  ' }).success).toBe(false);
+      expect(schema.safeParse({ ...base, kapak, kapak_alt: 'Muayenehanede hekim' }).success).toBe(true);
+    });
+  }
 });

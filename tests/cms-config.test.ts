@@ -3,7 +3,7 @@ import { existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { PAGE_SECTION_TYPES } from '../src/content/page-schema';
-import { checklistSchema, rehberSchema } from '../src/content/rehber-schema';
+import { makeChecklistSchema, makeRehberSchema } from '../src/content/rehber-schema';
 import { DEFAULT_LOCALE, PUBLISHED_LOCALES } from '../src/lib/i18n';
 import { REHBER_AUDIENCES, REHBER_SECTORS, REHBER_STATUSES } from '../src/lib/rehber';
 import {
@@ -545,12 +545,12 @@ describe('rehber and checklists collections mirror their schemas', () => {
 
   test('rehber exposes the schema fields plus the markdown body', () => {
     const names = fieldNames(collection('rehber').fields ?? []).filter((name) => name !== 'body');
-    expect(names).toEqual(schemaKeys(rehberSchema));
+    expect(names).toEqual(schemaKeys(makeRehberSchema()));
     expect(fieldNames(collection('rehber').fields ?? [])).toContain('body');
   });
 
   test('checklists exposes the schema fields', () => {
-    expect(fieldNames(collection('checklists').fields ?? [])).toEqual(schemaKeys(checklistSchema));
+    expect(fieldNames(collection('checklists').fields ?? [])).toEqual(schemaKeys(makeChecklistSchema()));
   });
 
   test('checklist sections expose heading, note and items', () => {

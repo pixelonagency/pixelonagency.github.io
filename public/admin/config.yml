@@ -1298,6 +1298,8 @@ collections:
           - { label: Yayında, value: yayinda }
         i18n: duplicate
       - { label: Hukuk Kontrolü Yapıldı, name: hukuk_kontrolu, widget: boolean, default: false, i18n: duplicate }
+      - { label: Kapak Görseli, name: kapak, widget: image, required: false, i18n: duplicate, hint: '16:9, 1600x900 webp. Boş bırakılırsa tasarlanmış yedek kapak görünür.' }
+      - { label: Kapak Alt Metni, name: kapak_alt, widget: string, required: false, i18n: true, hint: 'Kapak görseli eklendiyse zorunlu.' }
       - label: Bağlı Checklist
         name: checklist
         widget: relation
@@ -1352,6 +1354,8 @@ collections:
           - { label: Yayında, value: yayinda }
         i18n: duplicate
       - { label: Hukuk Kontrolü Yapıldı, name: hukuk_kontrolu, widget: boolean, default: false, i18n: duplicate }
+      - { label: Kapak Görseli, name: kapak, widget: image, required: false, i18n: duplicate, hint: '16:9, 1600x900 webp. Boş bırakılırsa tasarlanmış yedek kapak görünür.' }
+      - { label: Kapak Alt Metni, name: kapak_alt, widget: string, required: false, i18n: true, hint: 'Kapak görseli eklendiyse zorunlu.' }
       - { label: Süre (dakika), name: sure_dakika, widget: number, value_type: int, min: 1, i18n: duplicate }
       - { label: Giriş Metni, name: intro, widget: text, i18n: true }
       - label: Bölümler

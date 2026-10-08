@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import {
   buildRehberTree,
+  pixelMotif,
   isChecklistBuilt,
   isRehberEntryBuilt,
   rehberCrumbs,
@@ -201,5 +202,66 @@ describe('rehber listeleme görünümü', () => {
     expect(view.checklists?.map((card) => [card.href, card.draft])).toEqual([
       ['/rehber/saglik/hekimler/dijital-gorunurluk-checklisti/', true],
     ]);
+  });
+});
+
+describe('rehber kart kapakları', () => {
+  const entry = (slug: string, kapak?: string) => ({
+    id: `tr/${slug}`,
+    data: {
+      slug,
+      sektor: 'saglik' as const,
+      kitle: 'hekimler' as const,
+      yayin_tarihi: new Date(slug === 'yeni' ? '2026-10-05' : '2026-09-01'),
+      title: slug,
+      description: 'Özet',
+      seri: 'Hekimler için dijital görünürlük',
+      okuma_suresi: 5,
+      durum: 'yayinda' as const,
+      ...(kapak ? { kapak, kapak_alt: `${slug} kapağı` } : {}),
+    },
+  });
+
+  test('yazı kartı kendi kapağını taşır; kapak yoksa seri etiketiyle yedek kapak çizilir', () => {
+    const tree = buildRehberTree({
+      articles: [entry('yeni', 'kapak.webp'), entry('eski')],
+      checklists: [],
+      dev: false,
+    });
+    const audience = tree[0]?.audiences[0];
+    const view = rehberIndexView('tr', { tree, sector: tree[0], audience });
+    expect(view.cards.map((card) => card.cover)).toEqual([
+      { image: 'kapak.webp', alt: 'yeni kapağı', label: 'Hekimler için dijital görünürlük', seed: 'yeni' },
+      { image: undefined, alt: undefined, label: 'Hekimler için dijital görünürlük', seed: 'eski' },
+    ]);
+  });
+
+  test('kitle kartı en yeni yazının kapağını, yoksa kitle adıyla yedek kapağı kullanır', () => {
+    const tree = buildRehberTree({ articles: [entry('eski'), entry('yeni', 'kapak.webp')], checklists: [], dev: true });
+    const view = rehberIndexView('tr', { tree, sector: tree[0] });
+    expect(view.cards[0]?.cover).toEqual({
+      image: 'kapak.webp',
+      alt: 'yeni kapağı',
+      label: 'Hekimler',
+      seed: 'hekimler',
+    });
+    expect(view.cards[1]?.cover).toEqual({ image: undefined, alt: undefined, label: 'Klinikler', seed: 'klinikler' });
+  });
+});
+
+describe('piksel motifi', () => {
+  test('aynı tohum her build’de aynı deseni verir', () => {
+    expect(pixelMotif('kamera-karsisinda-hekim')).toEqual(pixelMotif('kamera-karsisinda-hekim'));
+  });
+
+  test('farklı yazılar farklı desen alır', () => {
+    expect(pixelMotif('hekimin-google-profili')).not.toEqual(pixelMotif('kamera-karsisinda-hekim'));
+  });
+
+  test('tek bir lime vurgu kümesi vardır, gerisi nötr', () => {
+    const cells = pixelMotif('hekimin-google-profili');
+    const lime = cells.filter((cell) => cell.accent);
+    expect(lime.length).toBeGreaterThan(0);
+    expect(lime.length).toBeLessThan(cells.length / 3);
   });
 });

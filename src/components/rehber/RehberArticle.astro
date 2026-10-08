@@ -4,6 +4,8 @@
  * dark title band, then the body on the light band at reading width. Structured data
  * reuses the blog posting node as an `Article`.
  */
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -13,6 +15,7 @@ import { rehberCrumbs, rehberPath, REHBER_AUDIENCE_LABELS } from '../../lib/rehb
 import { blogPostingSchema, breadcrumbSchema } from '../../lib/schema';
 import { canonicalUrl } from '../../lib/seo';
 import { t } from '../../lib/ui';
+import RehberCover from './RehberCover.astro';
 import RehberCrumbs from './RehberCrumbs.astro';
 
 interface Props {
@@ -24,11 +27,16 @@ interface Props {
 }
 
 const { article, checklist, locale, alternates } = Astro.props;
-const { title, description, sektor, kitle, seri, okuma_suresi, yayin_tarihi, durum } = article.data;
+const { title, description, sektor, kitle, seri, okuma_suresi, yayin_tarihi, durum, kapak, kapak_alt } = article.data;
 const { Content } = await render(article);
 
 const crumbs = rehberCrumbs({ locale, sektor, kitle, title });
 const audiencePath = rehberPath(locale, sektor, kitle);
+
+const coverImage: ImageMetadata | undefined =
+  kapak && typeof kapak === 'object' && 'src' in kapak ? (kapak as ImageMetadata) : undefined;
+/* Share image as JPEG, same as blog posts: webp does not preview on every platform. */
+const ogImage = coverImage ? await getImage({ src: coverImage, format: 'jpeg', width: 1200 }) : undefined;
 
 const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
 const extraSchema = [
@@ -40,6 +48,7 @@ const extraSchema = [
     datePublished: isoDate(yayin_tarihi),
     author: 'Pixelon',
     locale,
+    imageUrl: coverImage ? new URL(coverImage.src, site).toString() : undefined,
   }),
   breadcrumbSchema(
     crumbs.map((crumb) => ({ label: crumb.label, url: crumb.href ? new URL(crumb.href, site).toString() : undefined })),
@@ -47,7 +56,15 @@ const extraSchema = [
 ];
 ---
 
-<BaseLayout title={`${title} | Pixelon Rehber`} {description} ogType="article" {locale} {alternates} {extraSchema}>
+<BaseLayout
+  title={`${title} | Pixelon Rehber`}
+  {description}
+  ogType="article"
+  {locale}
+  {alternates}
+  ogImage={ogImage?.src}
+  {extraSchema}
+>
   <article class="ra">
     <header class="ra__head">
       <div class="container ra__inner">
@@ -65,6 +82,9 @@ const extraSchema = [
     </header>
 
     <div class="ra__article">
+      <div class="container ra__wide">
+        <RehberCover cover={{ image: kapak, alt: kapak_alt, label: seri, seed: article.data.slug }} size="hero" />
+      </div>
       <div class="container ra__inner">
         <div class="ra__body">
           <Content />
@@ -100,6 +120,12 @@ const extraSchema = [
 
   .ra__inner {
     max-width: 820px;
+  }
+
+  /* Cover uses the wider media line of the blog layout. */
+  .ra__wide {
+    max-width: calc(1080px + var(--gutter) * 2);
+    margin-bottom: clamp(36px, 5vw, 56px);
   }
 
   .ra__draft {
@@ -194,6 +220,11 @@ const extraSchema = [
   .ra__body :global(strong),
   .ra__body :global(a) {
     color: var(--text-on-light);
+  }
+
+  /* Source lists carry long URLs; without this they push the page sideways on phones. */
+  .ra__body :global(a) {
+    overflow-wrap: anywhere;
   }
 
   .ra__body :global(blockquote) {

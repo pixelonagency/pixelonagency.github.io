@@ -3,7 +3,10 @@ import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { makePageSchema } from '../src/content/page-schema';
-import { checklistSchema, rehberSchema } from '../src/content/rehber-schema';
+import { makeChecklistSchema, makeRehberSchema } from '../src/content/rehber-schema';
+
+const rehberSchema = makeRehberSchema();
+const checklistSchema = makeChecklistSchema();
 import { blogCategorySchema, makeServiceSchema, makeTeamSchema, settingsSchema } from '../src/content/schemas';
 import { categoriesWithPages, type CategorizablePost } from '../src/lib/blog-categories';
 import {
@@ -416,6 +419,12 @@ describe('rehber koleksiyonları', () => {
           expect(strippedKeys(raw, parsed)).toEqual([]);
           expect(`${String(parsed.slug)}${ext}`).toBe(file);
         });
+
+        test(`${dir}/${locale}/${file} kapak görseli verdiyse dosya depoda var`, async () => {
+          const raw = read(await Bun.file(join(full, file)).text()) as { kapak?: string };
+          if (!raw.kapak) return;
+          expect(existsSync(join(CONTENT, '..', '..', raw.kapak))).toBe(true);
+        });
       }
     }
   }
@@ -426,5 +435,25 @@ describe('rehber koleksiyonları', () => {
     const parsed = checklistSchema.parse(parse(await Bun.file(file).text()));
     expect(parsed.durum).toBe('taslak');
     expect(parsed.bolumler.flatMap((bolum) => bolum.maddeler)).toHaveLength(26);
+  });
+
+  test('üç hekim yazısı ve hekim checklisti kendi kapak görselini taşır', async () => {
+    const files = [
+      'rehber/tr/hekimin-google-profili.md',
+      'rehber/tr/hasta-yorumlarini-toplamak-ve-cevaplamak.md',
+      'rehber/tr/kamera-karsisinda-hekim.md',
+      'checklists/tr/dijital-gorunurluk-checklisti.yml',
+    ];
+    for (const file of files) {
+      const source = await Bun.file(join(CONTENT, file)).text();
+      const slug = file
+        .split('/')
+        .at(-1)
+        ?.replace(/\.(md|yml)$/, '');
+      expect({ file, kapak: source.includes(`kapak: '/src/assets/images/rehber/${slug}.webp'`) }).toEqual({
+        file,
+        kapak: true,
+      });
+    }
   });
 });

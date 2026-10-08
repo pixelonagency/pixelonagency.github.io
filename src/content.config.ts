@@ -1,7 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { makePageSchema, makeSubpageSchema } from './content/page-schema';
-import { checklistSchema, rehberSchema } from './content/rehber-schema';
+import { makeChecklistSchema, makeRehberSchema } from './content/rehber-schema';
 import {
   blogCategorySchema,
   legalSchema,
@@ -92,13 +92,13 @@ const idFromPath = ({ entry }: { entry: string }): string => entry.replace(/\.(m
 // `slug` field; drafts (`durum: taslak`) are built only by the dev server.
 const rehber = defineCollection({
   loader: glob({ pattern: '*/*.md', base: `${CONTENT}/rehber`, generateId: idFromPath }),
-  schema: rehberSchema,
+  schema: ({ image }) => makeRehberSchema(image),
 });
 
 // Gated checklists shown as a landing page with a sign-up form under their audience.
 const checklists = defineCollection({
   loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/checklists`, generateId: idFromPath }),
-  schema: checklistSchema,
+  schema: ({ image }) => makeChecklistSchema(image),
 });
 
 export const collections = {

@@ -7,6 +7,8 @@ seri: 'Hekimler için dijital görünürlük'
 okuma_suresi: 6
 durum: taslak
 hukuk_kontrolu: false
+kapak: '/src/assets/images/rehber/hasta-yorumlarini-toplamak-ve-cevaplamak.webp'
+kapak_alt: 'Klinik resepsiyonunda QR kodlu yorum standı ve yorum ekranı açık bir telefon'
 sektor: saglik
 yayin_tarihi: 2026-10-26
 checklist: dijital-gorunurluk-checklisti
