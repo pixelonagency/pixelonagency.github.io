@@ -1309,7 +1309,29 @@ collections:
         display_fields: [title]
         required: false
         i18n: duplicate
-      - { label: İçerik, name: body, widget: markdown, i18n: true }
+      # Body blocks: the article text places them with marker lines such as `[[alinti]]`,
+      # `[[istatistikler]]`, `[[checklist: 13-17]]` and `[[infografik: <ad>]]`.
+      - label: Alıntı
+        name: alinti
+        widget: object
+        required: false
+        collapsed: true
+        i18n: true
+        hint: 'Metinde [[alinti]] satırının olduğu yerde görünür.'
+        fields:
+          - { label: Alıntı Metni, name: metin, widget: text }
+          - { label: Kaynak, name: kaynak, widget: string, hint: 'Örneğin: Uzman dermatolog, Antalya' }
+      - label: İstatistik Kartları
+        name: istatistikler
+        widget: list
+        required: false
+        i18n: true
+        hint: 'Metinde [[istatistikler]] satırının olduğu yerde görünür.'
+        fields:
+          - { label: Değer, name: deger, widget: string }
+          - { label: Etiket, name: etiket, widget: string }
+          - { label: Not, name: not, widget: string, required: false }
+      - { label: İçerik, name: body, widget: markdown, i18n: true, hint: 'Blok satırları: [[alinti]], [[istatistikler]], [[checklist: 13-17]], [[infografik: ad]]' }
 
   # --- Checklistler ---------------------------------------------------------
   # Kitle sayfasının altında açılan kayıt formlu sayfa. Sayfada yalnızca ilk bölüm

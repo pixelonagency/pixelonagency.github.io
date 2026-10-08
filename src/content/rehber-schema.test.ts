@@ -125,3 +125,27 @@ describe('kapak görseli', () => {
     });
   }
 });
+
+describe('makale blok verileri', () => {
+  test('alıntı isteğe bağlıdır; verildiyse metin ve kaynak ister', () => {
+    expect(rehberSchema.parse(article).alinti).toBeUndefined();
+    expect(rehberSchema.parse({ ...article, alinti: null }).alinti).toBeUndefined();
+    expect(rehberSchema.safeParse({ ...article, alinti: { metin: 'Söz' } }).success).toBe(false);
+    expect(
+      rehberSchema.parse({ ...article, alinti: { metin: 'Söz', kaynak: 'Uzman dermatolog, Antalya' } }).alinti,
+    ).toEqual({ metin: 'Söz', kaynak: 'Uzman dermatolog, Antalya' });
+  });
+
+  test('istatistik kartları değer ve etiket ister, not isteğe bağlıdır', () => {
+    expect(rehberSchema.parse(article).istatistikler).toEqual([]);
+    const parsed = rehberSchema.parse({
+      ...article,
+      istatistikler: [
+        { deger: '100+', etiket: 'video' },
+        { deger: '%266', etiket: 'profil ziyareti', not: 'Meta reklam sonuçları' },
+      ],
+    });
+    expect(parsed.istatistikler[1]?.not).toBe('Meta reklam sonuçları');
+    expect(rehberSchema.safeParse({ ...article, istatistikler: [{ deger: '100+' }] }).success).toBe(false);
+  });
+});

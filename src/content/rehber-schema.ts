@@ -58,6 +58,10 @@ export const makeRehberSchema = (image: ImageResolver = defaultImage) =>
       yayin_tarihi: z.coerce.date(),
       /** Slug of the related checklist in the same audience. */
       checklist: opt(slug),
+      /** Pull quote placed in the body with `[[alinti]]` (see src/lib/rehber-blocks.ts). */
+      alinti: opt(z.object({ metin: nonEmpty, kaynak: nonEmpty })),
+      /** Stat cards placed in the body with `[[istatistikler]]`. */
+      istatistikler: list(z.object({ deger: nonEmpty, etiket: nonEmpty, not: opt(z.string()) })),
     })
     .superRefine(requireCoverAlt);
 
