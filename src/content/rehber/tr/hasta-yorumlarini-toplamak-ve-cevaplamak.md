@@ -22,6 +22,8 @@ Cevapsız kalmış bir olumsuz yorumun yanında ise okuyanın aklına tek bir so
 Bu yazı, hekimler için hazırladığımız dijital görünürlük checklistinin hasta yorumları bölümünü açıyor.
 Yorumları düzenli toplamayı, her birine doğru cevap vermeyi ve bunu yaparken hasta mahremiyetini korumayı anlatıyoruz.
 
+[[checklist: 13-17]]
+
 ## Yorum hem hastaya hem Google'a konuşuyor
 
 Google, yerel sıralamadaki belirginliği etkileyen bilgiler arasında aldığınız yorum sayısını açıkça sayıyor.
@@ -127,6 +129,8 @@ Bunun için QR kodu ve yorum linkini taşıyan A5 boyutunda bir stant hazırlıy
 Çalıştığımız her klinikte banko ekibinden bunu özellikle rica ediyoruz.
 Yorum karşılığında indirim, hediye ya da herhangi bir ayrıcalık sunulmuyor.
 İstek, hastanın deneyimini paylaşmasına yönelik tarafsız bir rica olarak kalıyor.
+
+[[infografik: hasta-yorumlarini-toplamak-ve-cevaplamak]]
 
 Rutin kurulduktan sonra klinikte her ay gelen yeni yorum sayısı artmaya başladı.
 Akış yavaşladığında devreye giriyor ve klinik ekibinin tamamına, tedavisi tamamlanan hastalardan yorum istemeyi hatırlatıyoruz.

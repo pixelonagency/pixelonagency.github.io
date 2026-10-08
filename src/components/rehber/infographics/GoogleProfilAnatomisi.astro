@@ -1,0 +1,136 @@
+---
+/**
+ * "Google profilinin anatomisi": a generic business profile card (no search engine logo
+ * or real UI) with numbered markers that match checklist items 1-6. Lime marks the one
+ * key element: who owns the profile.
+ */
+const markers = [
+  { n: 1, cy: 28 },
+  { n: 2, cy: 153 },
+  { n: 3, cy: 117 },
+  { n: 4, cy: 228 },
+  { n: 5, cy: 322 },
+  { n: 6, cy: 410 },
+];
+
+const legend = [
+  { n: 1, label: 'Arama görünürlüğü' },
+  { n: 2, label: 'Sahiplik' },
+  { n: 3, label: 'Kategori' },
+  { n: 4, label: 'İletişim ve saatler' },
+  { n: 5, label: 'Fotoğraflar' },
+  { n: 6, label: 'Hizmetler' },
+];
+
+const photos = [
+  { x: 32, label: 'Giriş' },
+  { x: 120, label: 'Bekleme' },
+  { x: 208, label: 'Muayene' },
+];
+
+const services = [
+  { x: 32, w: 54, label: 'Akne' },
+  { x: 94, w: 54, label: 'Leke' },
+  { x: 156, w: 60, label: 'Sedef' },
+  { x: 224, w: 70, label: 'Egzama' },
+];
+---
+
+<svg
+  viewBox="0 0 360 552"
+  role="img"
+  aria-label="Google profilinin anatomisi. Bir hekim profil kartı üzerinde altı numaralı alan: 1 arama görünürlüğü, uzmanlık ve şehir aramasında ilk ekranda çıkmak; 2 sahiplik, profilin sahibi siz ya da kliniğiniz; 3 doğru ve tek ana kategori; 4 telefon, çalışma saatleri ve randevu linki; 5 muayenehaneyi gösteren gerçek fotoğraflar; 6 tek tek yazılmış hizmetler."
+>
+  <!-- 1. Search -->
+  <rect x="16" y="8" width="328" height="40" rx="20" class="ig-line"></rect>
+  <circle cx="38" cy="26" r="7" class="ig-line"></circle>
+  <path d="M43 31l6 6" class="ig-line" stroke-linecap="round"></path>
+  <text x="58" y="33" class="ig-text">dermatolog Antalya</text>
+
+  <!-- Profile card -->
+  <rect x="16" y="64" width="328" height="372" rx="16" class="ig-soft"></rect>
+  <rect x="16" y="64" width="328" height="372" rx="16" class="ig-line"></rect>
+
+  <circle cx="50" cy="104" r="20" class="ig-faint"></circle>
+  <circle cx="50" cy="98" r="7" class="ig-line"></circle>
+  <path d="M37 117c3-7 8-10 13-10s10 3 13 10" class="ig-line" stroke-linecap="round"></path>
+  <text x="82" y="100" class="ig-title">Uzm. Dr. Ad Soyad</text>
+  <!-- 3. Category -->
+  <text x="82" y="122" class="ig-sub">Dermatolog</text>
+
+  <!-- 2. Ownership: the key element -->
+  <rect x="32" y="140" width="226" height="26" rx="13" class="ig-lime"></rect>
+  <text x="46" y="158" class="ig-text">✓ Sahibi: siz ya da kliniğiniz</text>
+
+  <path d="M32 182h296" class="ig-line" opacity="0.25"></path>
+
+  <!-- 4. Contact and hours -->
+  <rect x="30" y="194" width="10" height="16" rx="2.5" class="ig-line"></rect>
+  <text x="56" y="207" class="ig-text">Telefon: biri açıyor</text>
+  <circle cx="35" cy="227" r="7" class="ig-line"></circle>
+  <path d="M35 223v4l3 2" class="ig-line" stroke-linecap="round"></path>
+  <text x="56" y="232" class="ig-text">Açık · 09:00-18:00</text>
+  <rect x="28" y="244" width="14" height="13" rx="2.5" class="ig-line"></rect>
+  <path d="M28 249h14" class="ig-line"></path>
+  <text x="56" y="256" class="ig-text">Randevu linki</text>
+
+  <path d="M32 272h296" class="ig-line" opacity="0.25"></path>
+
+  <!-- 5. Photos -->
+  {
+    photos.map((photo) => (
+      <>
+        <rect x={photo.x} y="286" width="80" height="62" rx="8" class="ig-faint" />
+        <rect x={photo.x + 30} y="300" width="20" height="34" rx="2" class="ig-line" />
+        <text x={photo.x + 40} y="368" text-anchor="middle" class="ig-sub">
+          {photo.label}
+        </text>
+      </>
+    ))
+  }
+
+  <path d="M32 384h296" class="ig-line" opacity="0.25"></path>
+
+  <!-- 6. Services -->
+  {
+    services.map((chip) => (
+      <>
+        <rect x={chip.x} y="398" width={chip.w} height="24" rx="12" class="ig-line" />
+        <text x={chip.x + chip.w / 2} y="414" text-anchor="middle" class="ig-sub">
+          {chip.label}
+        </text>
+      </>
+    ))
+  }
+
+  <!-- Numbered markers -->
+  {
+    markers.map((marker) => (
+      <>
+        <circle cx="322" cy={marker.cy} r="11" class="ig-ink" />
+        <text x="322" y={marker.cy + 4} text-anchor="middle" class="ig-num">
+          {marker.n}
+        </text>
+      </>
+    ))
+  }
+
+  <!-- Legend -->
+  {
+    legend.map((item, index) => {
+      const x = index < 3 ? 16 : 188;
+      const y = 476 + (index % 3) * 28;
+      return (
+        <>
+          <circle cx={x + 10} cy={y - 5} r="10" class="ig-ink" />
+          <text x={x + 10} y={y - 1} text-anchor="middle" class="ig-num">
+            {item.n}
+          </text>
+          <text x={x + 28} y={y} class="ig-text">
+            {item.label}
+          </text>
+        </>
+      );
+    })
+  }
+</svg>

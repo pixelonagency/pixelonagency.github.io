@@ -1,0 +1,60 @@
+---
+/**
+ * "Yorum akışı": the review routine as five steps, from the end of treatment to a
+ * stronger profile, with the privacy rule as a side note on the reply step. Lime marks
+ * the outcome step.
+ */
+const steps = [
+  { title: 'Tedavi biter', sub: 'Hasta henüz klinikte' },
+  { title: 'A5 stand ve QR kod', sub: 'Resepsiyon bankosunda' },
+  { title: 'Hasta yorum yazar', sub: 'Kendi sözleriyle' },
+  { title: '48 saat içinde cevap', sub: 'Belirli bir görevli yazar' },
+  { title: 'Profil güçlenir', sub: 'Güven ve görünürlük' },
+];
+
+const STEP_Y = 96;
+const top = (index: number) => 16 + index * STEP_Y;
+const last = steps.length - 1;
+---
+
+<svg
+  viewBox="0 0 360 480"
+  role="img"
+  aria-label="Yorum akışı, beş adım: 1 tedavi biter, hasta henüz klinikteyken; 2 resepsiyon bankosundaki A5 stand ve QR kod; 3 hasta yorumunu kendi sözleriyle yazar; 4 belirli bir görevli 48 saat içinde cevap verir; 5 profil güçlenir. Yan not: hasta bilgisi cevaba asla yazılmaz."
+>
+  <defs>
+    <marker id="yorum-ok" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0l10 5-10 5z" class="ig-ink"></path>
+    </marker>
+  </defs>
+
+  {
+    steps.map((step, index) => (
+      <>
+        <rect x="16" y={top(index)} width="220" height="64" rx="12" class={index === last ? 'ig-lime' : 'ig-soft'} />
+        {index !== last && <rect x="16" y={top(index)} width="220" height="64" rx="12" class="ig-line" />}
+        <circle cx="42" cy={top(index) + 32} r="12" class="ig-ink" />
+        <text x="42" y={top(index) + 36} text-anchor="middle" class="ig-num">
+          {index + 1}
+        </text>
+        <text x="64" y={top(index) + 28} class="ig-title">
+          {step.title}
+        </text>
+        <text x="64" y={top(index) + 48} class="ig-sub">
+          {step.sub}
+        </text>
+        {index !== last && (
+          <path d={`M126 ${top(index) + 66}V${top(index + 1) - 6}`} class="ig-line" marker-end="url(#yorum-ok)" />
+        )}
+      </>
+    ))
+  }
+
+  <!-- Side note on the reply step -->
+  <path d={`M236 ${top(3) + 32}h14`} class="ig-dash"></path>
+  <rect x="250" y={top(3) - 20} width="98" height="104" rx="10" class="ig-dash"></rect>
+  <text x="299" y={top(3) + 4} text-anchor="middle" class="ig-title">Hasta</text>
+  <text x="299" y={top(3) + 22} text-anchor="middle" class="ig-title">bilgisi</text>
+  <text x="299" y={top(3) + 40} text-anchor="middle" class="ig-title">cevaba asla</text>
+  <text x="299" y={top(3) + 58} text-anchor="middle" class="ig-title">yazılmaz</text>
+</svg>

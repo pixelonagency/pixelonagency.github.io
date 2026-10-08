@@ -1,0 +1,49 @@
+---
+/**
+ * "Çekim düzeni": the monthly video routine as a timeline. Lime marks the shoot day,
+ * the step everything else hangs on; eight small tiles show the monthly output.
+ */
+const steps = [
+  { title: 'Sorular önceden gönderilir', sub: 'Takipçilerin gerçekten sorduğu sorular' },
+  { title: 'Hekim hazırlanır', sub: 'Metin okunmaz, kendi cümleleriyle' },
+  { title: 'Çekim günü', sub: 'Ayda 1 · İstanbul dışında 2 ayda 1', key: true },
+  { title: 'Yaklaşık 8 video/ay', sub: 'Tek kurulum, art arda sorular' },
+  { title: 'Kurgu ve altyazı', sub: 'Sade kurgu, her videoda altyazı' },
+  { title: 'Yayın', sub: 'Her video tek bir soruyu cevaplar' },
+];
+
+const y = (index: number) => 34 + index * 84;
+const tiles = Array.from({ length: 8 }, (_, index) => ({
+  x: 262 + (index % 4) * 22,
+  y: y(3) - 16 + Math.floor(index / 4) * 22,
+}));
+---
+
+<svg
+  viewBox="0 0 360 490"
+  role="img"
+  aria-label="Çekim düzeni, altı adım: 1 sorular çekimden önce hekime gönderilir; 2 hekim kendi bilgisiyle hazırlanır, metin okunmaz; 3 çekim günü, ayda bir, İstanbul dışında iki ayda bir; 4 ayda yaklaşık sekiz video; 5 kurgu ve altyazı; 6 yayın."
+>
+  <path d={`M30 ${y(0)}V${y(steps.length - 1)}`} class="ig-line" opacity="0.35"></path>
+
+  {
+    steps.map((step, index) => (
+      <>
+        <circle cx="30" cy={y(index)} r="11" class={step.key ? 'ig-lime' : 'ig-paper'} />
+        <circle cx="30" cy={y(index)} r="11" class="ig-line" />
+        <text x="30" y={y(index) + 4} text-anchor="middle" class="ig-num-dark">
+          {index + 1}
+        </text>
+        {step.key && <rect x="52" y={y(index) - 15} width="104" height="26" rx="13" class="ig-lime" />}
+        <text x={step.key ? 64 : 54} y={y(index) + 4} class="ig-title">
+          {step.title}
+        </text>
+        <text x="54" y={y(index) + 28} class="ig-sub">
+          {step.sub}
+        </text>
+      </>
+    ))
+  }
+
+  {tiles.map((tile) => <rect x={tile.x} y={tile.y} width="16" height="16" rx="3" class="ig-faint" />)}
+</svg>

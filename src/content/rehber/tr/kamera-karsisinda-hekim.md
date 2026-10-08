@@ -12,6 +12,18 @@ kapak_alt: 'Beyaz önlüklü bir hekim, halka ışık ve tripodlu kamera karşı
 sektor: saglik
 yayin_tarihi: 2026-10-26
 checklist: dijital-gorunurluk-checklisti
+alinti:
+  metin: 'Hastalarım muayeneye geldiğinde çoğu zaman videoları izlemiş oluyor, görüşmeye bir adım önden başlıyoruz.'
+  kaynak: 'Uzman dermatolog, Antalya'
+istatistikler:
+  - deger: '100+'
+    etiket: 'video'
+  - deger: '9,2M'
+    etiket: 'görüntülenme'
+    not: 'reklam destekli videolar dahil'
+  - deger: '%266'
+    etiket: 'profil ziyareti'
+    not: 'Meta reklam sonuçları'
 ---
 
 Pek çok hekim kameraya mesafeli durur: konuşmakta zorlanmaz, ama çekim fikri ona yabancı gelir.
@@ -21,6 +33,8 @@ Kamera bu işi bir kez yapıp, aynı soruyu soran herkese ulaştırıyor.
 
 Bu yazı, hekimler için hazırladığımız dijital görünürlük checklistinin sosyal medya ve video bölümünü açıyor.
 Profilden konu seçimine, çekim gününden mesajlara kadar adım adım ilerliyoruz.
+
+[[checklist: 18-25]]
 
 ## Hasta sizi muayeneden önce ekranda tanıyor
 
@@ -127,6 +141,8 @@ Videolarda metin okunmuyor.
 Soruları çekimden önce hekime gönderiyoruz.
 Hekim kendi bilgisiyle hazırlanıyor ve kamerada soruları kendi cümleleriyle cevaplıyor.
 
+[[infografik: kamera-karsisinda-hekim]]
+
 Konuları takipçilerin gerçekten sorduğu sorular üzerine kurduk: botoksun etkisi ne kadar sürer, fraksiyonel lazer nasıl çalışır, göz altı morlukları nasıl geçer.
 Uygulama süreçlerini adım adım anlatarak merakı bilgiye çevirmeyi hedefledik.
 Çalışmayı devraldığımız 2025 sonbaharından bu yana en çok izlenen videolar üç başlıkta toplandı: izler, ameliyatsız yüz uygulamaları ve hastanın zaten taşıdığı bir soru ya da kaygıyla açılan videolar.
@@ -143,8 +159,12 @@ Bir yılda içerikler 9,2 milyon kez görüntülendi.
 Meta reklamlarının sonuç raporlarında ölçülen profil ziyaretleri yüzde 266 arttı.
 Bu bir organik ölçüm değil, reklamlardan gelen dönüşümlerin ölçümü.
 
+[[istatistikler]]
+
 Rakamlardan daha anlamlı olan, muayene odasında değişen şey.
-Hekimin kendi sözleriyle: "Hastalarım muayeneye geldiğinde çoğu zaman videoları izlemiş oluyor, görüşmeye bir adım önden başlıyoruz."
+
+[[alinti]]
+
 Etki muayenehanenin dışına da taşıyor.
 Hekim, yolda karşılaştığı insanlardan videolarını izlediklerini ve beğendiklerini duymaya başladı.
 Kamera karşısında düzenli konuşan bir hekim, şehrinde tanınan bir isme dönüşüyor.

@@ -7,7 +7,6 @@
 import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate, isoDate } from '../../lib/format';
 import type { Locale } from '../../lib/i18n';
@@ -15,7 +14,13 @@ import { rehberCrumbs, rehberPath, REHBER_AUDIENCE_LABELS } from '../../lib/rehb
 import { blogPostingSchema, breadcrumbSchema } from '../../lib/schema';
 import { canonicalUrl } from '../../lib/seo';
 import { t } from '../../lib/ui';
+import { checklistRangeText, splitArticleBody } from '../../lib/rehber-blocks';
+import ArticleCallout from '../article/ArticleCallout.astro';
+import ArticleQuote from '../article/ArticleQuote.astro';
+import { INFOGRAPHICS } from './infographics';
 import RehberCover from './RehberCover.astro';
+import RehberFigure from './RehberFigure.astro';
+import RehberStats from './RehberStats.astro';
 import RehberCrumbs from './RehberCrumbs.astro';
 
 interface Props {
@@ -27,8 +32,28 @@ interface Props {
 }
 
 const { article, checklist, locale, alternates } = Astro.props;
-const { title, description, sektor, kitle, seri, okuma_suresi, yayin_tarihi, durum, kapak, kapak_alt } = article.data;
-const { Content } = await render(article);
+const {
+  title,
+  description,
+  sektor,
+  kitle,
+  seri,
+  okuma_suresi,
+  yayin_tarihi,
+  durum,
+  kapak,
+  kapak_alt,
+  alinti,
+  istatistikler,
+} = article.data;
+/*
+ * The Markdown body is rendered by Astro as usual; blocks placed with marker lines
+ * (`[[alinti]]`, `[[checklist: 13-17]]` …) are cut out of that HTML and rendered as
+ * components. See src/lib/rehber-blocks.ts for the syntax and why no MDX.
+ */
+const html = article.rendered?.html;
+if (html === undefined) throw new Error(`Guide article "${article.id}" has no rendered body.`);
+const segments = splitArticleBody(html);
 
 const crumbs = rehberCrumbs({ locale, sektor, kitle, title });
 const audiencePath = rehberPath(locale, sektor, kitle);
@@ -87,7 +112,50 @@ const extraSchema = [
       </div>
       <div class="container ra__inner">
         <div class="ra__body">
-          <Content />
+          {
+            segments.map((segment) => {
+              switch (segment.kind) {
+                case 'html':
+                  return <div class="ra__prose" set:html={segment.html} />;
+                case 'alinti':
+                  if (!alinti) throw new Error(`"${article.id}" uses [[alinti]] without an alinti field.`);
+                  return <ArticleQuote block={{ type: 'quote', text: alinti.metin, cite: alinti.kaynak }} />;
+                case 'istatistikler':
+                  if (istatistikler.length === 0) {
+                    throw new Error(`"${article.id}" uses [[istatistikler]] without istatistikler.`);
+                  }
+                  return <RehberStats items={istatistikler} />;
+                case 'checklist': {
+                  if (!article.data.checklist) {
+                    throw new Error(`"${article.id}" uses [[checklist]] without a checklist field.`);
+                  }
+                  /* Linked only when the checklist page is in this build; a draft checklist stays text. */
+                  const link = checklist
+                    ? ` [Checklisti açın →](${rehberPath(locale, sektor, kitle, checklist.data.slug)})`
+                    : '';
+                  return (
+                    <ArticleCallout
+                      block={{
+                        type: 'callout',
+                        heading: 'Checklist bağlantısı',
+                        text: `${checklistRangeText(segment.from, segment.to)}${link}`,
+                      }}
+                    />
+                  );
+                }
+                case 'infografik': {
+                  const entry = INFOGRAPHICS[segment.name as keyof typeof INFOGRAPHICS];
+                  if (!entry) throw new Error(`"${article.id}" names unknown infographic "${segment.name}".`);
+                  const Graphic = entry.component;
+                  return (
+                    <RehberFigure title={entry.title} caption={entry.caption}>
+                      <Graphic />
+                    </RehberFigure>
+                  );
+                }
+              }
+            })
+          }
         </div>
 
         {
@@ -186,53 +254,63 @@ const extraSchema = [
     color: rgba(10, 10, 10, 0.8);
   }
 
-  .ra__body > :global(:first-child) {
+  .ra__body > .ra__prose:first-child > :global(:first-child) {
     margin-top: 0;
   }
 
-  .ra__body :global(h2) {
+  .ra__prose :global(h2) {
     margin: 44px 0 16px;
     font: 600 clamp(22px, 2.4vw, 28px) / 1.3 var(--font-display);
     letter-spacing: -0.01em;
     color: var(--text-on-light);
   }
 
-  .ra__body :global(h3) {
+  .ra__prose :global(h3) {
     margin: 32px 0 12px;
     font: 600 19px var(--font-display);
     color: var(--text-on-light);
   }
 
-  .ra__body :global(p) {
+  .ra__prose :global(p) {
     margin: 0 0 20px;
   }
 
-  .ra__body :global(ul),
-  .ra__body :global(ol) {
+  .ra__prose :global(ul),
+  .ra__prose :global(ol) {
     margin: 0 0 22px;
     padding-left: 22px;
   }
 
-  .ra__body :global(li) {
+  .ra__prose :global(li) {
     margin-bottom: 10px;
   }
 
-  .ra__body :global(strong),
-  .ra__body :global(a) {
+  .ra__prose :global(strong),
+  .ra__prose :global(a) {
     color: var(--text-on-light);
   }
 
   /* Source lists carry long URLs; without this they push the page sideways on phones. */
-  .ra__body :global(a) {
+  .ra__prose :global(a) {
     overflow-wrap: anywhere;
   }
 
-  .ra__body :global(blockquote) {
+  .ra__prose :global(blockquote) {
     margin: 28px 0;
     padding: 4px 0 4px 22px;
     border-left: 2px solid var(--accent);
     font-size: 17px;
     color: rgba(10, 10, 10, 0.75);
+  }
+
+  /*
+   * Site links are lime with a white hover, which fails contrast on the light band.
+   * Links inside guide blocks (e.g. the checklist callout) use dark ink instead.
+   */
+  .ra__body :global(.aq a),
+  .ra__body :global(.aq a:hover) {
+    font-weight: 600;
+    color: var(--text-on-light);
   }
 
   .ra__checklist {

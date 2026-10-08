@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { parse } from 'yaml';
 import { makePageSchema } from '../src/content/page-schema';
 import { makeChecklistSchema, makeRehberSchema } from '../src/content/rehber-schema';
+import { INFOGRAPHIC_NAMES, parseMarker, type BodyBlock } from '../src/lib/rehber-blocks';
 
 const rehberSchema = makeRehberSchema();
 const checklistSchema = makeChecklistSchema();
@@ -455,5 +456,80 @@ describe('rehber koleksiyonları', () => {
         kapak: true,
       });
     }
+  });
+});
+
+describe('rehber yazılarındaki blok işaretleri', () => {
+  /*
+   * Blok işaretleri (`[[alinti]]`, `[[checklist: 13-17]]` …) build sırasında da denetlenir;
+   * burada ayrıca içerik düzeyinde tutulur: işaret ile frontmatter verisi birbirini
+   * gerektirir, aksi hâlde ya boş blok ya da hiç görünmeyen veri kalır.
+   */
+  const dir = join(CONTENT, 'rehber', 'tr');
+  const files = existsSync(dir) ? readdirSync(dir).filter((file) => file.endsWith('.md')) : [];
+
+  const read = async (file: string) => {
+    const source = await Bun.file(join(dir, file)).text();
+    const [, front = '', ...rest] = source.split('---');
+    const data = parse(front) as { alinti?: unknown; istatistikler?: unknown[]; checklist?: string };
+    const blocks = rest
+      .join('---')
+      .split('\n')
+      .map((line) => parseMarker(line))
+      .filter((block): block is BodyBlock => block !== null);
+    return { data, blocks };
+  };
+
+  for (const file of files) {
+    test(`${file}: işaretler geçerli ve verileriyle eşleşiyor`, async () => {
+      const { data, blocks } = await read(file);
+      const kinds = blocks.map((block) => block.kind);
+
+      for (const block of blocks) {
+        if (block.kind === 'infografik') expect(INFOGRAPHIC_NAMES as readonly string[]).toContain(block.name);
+      }
+      expect({ file, quote: kinds.includes('alinti') }).toEqual({ file, quote: Boolean(data.alinti) });
+      expect({ file, stats: kinds.includes('istatistikler') }).toEqual({
+        file,
+        stats: (data.istatistikler ?? []).length > 0,
+      });
+      if (kinds.includes('checklist')) expect(data.checklist).toBeTruthy();
+    });
+  }
+
+  const expected: Record<string, BodyBlock[]> = {
+    'hekimin-google-profili.md': [
+      { kind: 'infografik', name: 'hekimin-google-profili' },
+      { kind: 'checklist', from: 1, to: 6 },
+    ],
+    'hasta-yorumlarini-toplamak-ve-cevaplamak.md': [
+      { kind: 'infografik', name: 'hasta-yorumlarini-toplamak-ve-cevaplamak' },
+      { kind: 'checklist', from: 13, to: 17 },
+    ],
+    'kamera-karsisinda-hekim.md': [
+      { kind: 'infografik', name: 'kamera-karsisinda-hekim' },
+      { kind: 'alinti' },
+      { kind: 'istatistikler' },
+      { kind: 'checklist', from: 18, to: 25 },
+    ],
+  };
+
+  for (const [file, blocks] of Object.entries(expected)) {
+    test(`${file}: beklenen blokların hepsi yerinde`, async () => {
+      const { blocks: found } = await read(file);
+      for (const block of blocks) expect(found).toContainEqual(block);
+    });
+  }
+
+  test('kamera yazısındaki hekim sözü alıntı bloğuna taşındı, metinde tekrar etmiyor', async () => {
+    const source = await Bun.file(join(dir, 'kamera-karsisinda-hekim.md')).text();
+    const body = source.split('---').slice(2).join('---');
+    expect(body).not.toContain('Hastalarım muayeneye geldiğinde');
+    const { data } = await read('kamera-karsisinda-hekim.md');
+    expect(data.alinti).toEqual({
+      metin:
+        'Hastalarım muayeneye geldiğinde çoğu zaman videoları izlemiş oluyor, görüşmeye bir adım önden başlıyoruz.',
+      kaynak: 'Uzman dermatolog, Antalya',
+    });
   });
 });

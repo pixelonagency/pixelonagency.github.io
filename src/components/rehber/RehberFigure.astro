@@ -1,0 +1,120 @@
+---
+/**
+ * Figure for an inline SVG infographic in a guide article: the graphic in the slot,
+ * then a caption with a short title and one explanatory sentence.
+ *
+ * Infographics draw in `currentColor` (dark ink on the light article band) and use lime
+ * for one key element only, always with black text on it. The shared SVG text classes
+ * live here so the three infographics share one type scale.
+ */
+interface Props {
+  title: string;
+  caption: string;
+}
+
+const { title, caption } = Astro.props;
+---
+
+<figure class="rf">
+  <div class="rf__art">
+    <slot />
+  </div>
+  <figcaption class="rf__caption"><strong>{title}.</strong> {caption}</figcaption>
+</figure>
+
+<style>
+  .rf {
+    margin: clamp(32px, 4vw, 48px) 0;
+    padding: clamp(20px, 3vw, 32px);
+    border: 1px solid var(--border-on-light);
+    border-radius: var(--radius-media);
+    background: #fff;
+    color: var(--text-on-light);
+  }
+
+  .rf__art :global(svg) {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .rf__caption {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-on-light);
+    font: 400 var(--fs-small) / 1.6 var(--font-body);
+    color: var(--text-muted-on-light);
+  }
+
+  .rf__caption strong {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-on-light);
+  }
+
+  /* Shared SVG vocabulary for the infographics. */
+  .rf :global(.ig-line) {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  .rf :global(.ig-soft) {
+    fill: currentColor;
+    opacity: 0.06;
+  }
+
+  .rf :global(.ig-faint) {
+    fill: currentColor;
+    opacity: 0.16;
+  }
+
+  .rf :global(.ig-paper) {
+    fill: #fff;
+  }
+
+  .rf :global(.ig-ink) {
+    fill: currentColor;
+  }
+
+  .rf :global(.ig-lime) {
+    fill: var(--accent);
+  }
+
+  .rf :global(.ig-title) {
+    font: 600 15px var(--font-display);
+    fill: currentColor;
+  }
+
+  .rf :global(.ig-text) {
+    font: 400 13.5px var(--font-body);
+    fill: currentColor;
+  }
+
+  .rf :global(.ig-sub) {
+    font: 400 12.5px var(--font-body);
+    fill: currentColor;
+    opacity: 0.72;
+  }
+
+  .rf :global(.ig-num) {
+    font: 700 12px var(--font-display);
+    fill: #fff;
+  }
+
+  /* Numbers on light circles. */
+  .rf :global(.ig-num-dark) {
+    font: 700 12px var(--font-display);
+    fill: currentColor;
+  }
+
+  .rf :global(.ig-dash) {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+  }
+</style>

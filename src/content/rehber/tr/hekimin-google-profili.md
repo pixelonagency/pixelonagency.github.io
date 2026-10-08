@@ -22,6 +22,8 @@ Hasta daha sitenize girmeden kararının bir kısmını orada veriyor.
 Bu yazı, hekimler için hazırladığımız dijital görünürlük checklistinin ilk bölümünü açıyor.
 Google profiliyle ilgili altı maddeyi tek tek, neden önemli olduğuyla ve nasıl düzeltileceğiyle anlatıyoruz.
 
+[[checklist: 1-6]]
+
 ## İki arama yapın: adınız ve "uzmanlık + şehir"
 
 Hasta sizi iki farklı yoldan arar.
@@ -37,6 +39,8 @@ Belirginlik ise aldığınız yorum sayısı ve sitenize bağlantı veren sitele
 
 Bu iki aramayı bir hasta gibi yapın: telefondan ve gizli sekmede.
 Kendi bilgisayarınızda, kendi hesabınızla yaptığınız arama size gerçek tabloyu göstermeyebilir.
+
+[[infografik: hekimin-google-profili]]
 
 ## Profilin anahtarı kimde?
 
