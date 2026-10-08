@@ -227,6 +227,8 @@ interface ArticleInput {
   author: string;
   locale: Locale;
   imageUrl?: string | undefined;
+  /** Guide articles are evergreen reference pages, not blog posts; they use `Article`. */
+  type?: 'BlogPosting' | 'Article';
 }
 
 export function blogPostingSchema({
@@ -238,11 +240,12 @@ export function blogPostingSchema({
   author,
   locale,
   imageUrl,
+  type = 'BlogPosting',
 }: ArticleInput): Record<string, unknown> {
   // "Pixelon" / "Pixelon Ekibi" kurumsal yazarlıktır; başka bir ad gerçek kişidir.
   const isOrgAuthor = /^pixelon/i.test(author.trim());
   return {
-    '@type': 'BlogPosting',
+    '@type': type,
     headline,
     description,
     url,

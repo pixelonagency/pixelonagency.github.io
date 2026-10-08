@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import {
+  blogPostingSchema,
   breadcrumbSchema,
   caseStudySchema,
   faqPageSchema,
@@ -164,6 +165,28 @@ describe('serviceSchema', () => {
 
     expect(node['@id']).toBe('https://pixelon.com.tr/hizmetlerimiz/marka-ve-kurumsal-kimlik/#service');
     expect(node.provider).toEqual({ '@id': 'https://pixelon.com.tr/#organization' });
+  });
+});
+
+describe('blogPostingSchema', () => {
+  const input = {
+    headline: 'Hekimin Google profili',
+    description: 'Google profilini bir hasta gibi kontrol etmek.',
+    url: 'https://pixelon.com.tr/rehber/saglik/hekimler/hekimin-google-profili/',
+    datePublished: '2026-10-08',
+    author: 'Pixelon',
+    locale: 'tr' as const,
+  };
+
+  test('blog yazısı varsayılan olarak BlogPosting düğümüdür', () => {
+    expect(blogPostingSchema(input)['@type']).toBe('BlogPosting');
+  });
+
+  test('rehber yazısı aynı alanlarla Article düğümü olarak işaretlenir', () => {
+    const node = blogPostingSchema({ ...input, type: 'Article' });
+    expect(node['@type']).toBe('Article');
+    expect(node.author).toEqual({ '@id': 'https://pixelon.com.tr/#organization' });
+    expect(node.mainEntityOfPage).toBe(input.url);
   });
 });
 

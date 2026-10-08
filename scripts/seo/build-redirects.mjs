@@ -144,6 +144,9 @@ export const LEGACY = [
   ['/en/careers', '/kariyer/'],
   ['/en/contact', '/iletisim/'],
   ['/en/free-analysis', '/ucretsiz-analiz/'],
+  /* 8 Eki 2026: the guide section was added after the English section closed and was
+     never published under `/en/`. The rule keeps every English path in ROUTE_SLUGS closed. */
+  ['/en/guides', '/rehber/'],
   ['/en/personal-data-processing-notice', '/kvkk-aydinlatma-metni/'],
   ['/en/privacy-policy', '/gizlilik-politikasi/'],
   ['/en/cookie-policy', '/cerez-politikasi/'],

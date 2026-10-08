@@ -71,6 +71,7 @@ export const ROUTE_SLUGS = {
   careers: { tr: 'kariyer', en: 'careers' },
   contact: { tr: 'iletisim', en: 'contact' },
   analysis: { tr: 'ucretsiz-analiz', en: 'free-analysis' },
+  guide: { tr: 'rehber', en: 'guides' },
   kvkk: { tr: 'kvkk-aydinlatma-metni', en: 'personal-data-processing-notice' },
   privacy: { tr: 'gizlilik-politikasi', en: 'privacy-policy' },
   cookies: { tr: 'cerez-politikasi', en: 'cookie-policy' },
