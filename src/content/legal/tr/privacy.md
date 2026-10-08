@@ -8,7 +8,7 @@ seo:
 intro: >-
   Bu politika, pixelon.com.tr'yi ziyaret ettiğinizde ve bizimle iletişime
   geçtiğinizde bilgilerinizin nasıl ele alındığını sade bir dille açıklar.
-updated: 2026-08-19
+updated: 2026-10-08
 ---
 
 ## 1. Kapsam
@@ -18,17 +18,25 @@ Bu politika, Mehmet Fatih Dayan tarafından "Pixelon" markasıyla işletilen pix
 ## 2. Hangi Bilgileri Topluyoruz?
 
 - **Siz paylaştığınızda:** iletişim ve ücretsiz analiz formlarındaki ad-soyad, e-posta, telefon, şirket/marka, web sitesi, ilgilendiğiniz hizmet, bütçe aralığı ve mesaj içeriği.
+- **Rehber veya checklist indirdiğinizde:** ad-soyad, e-posta, unvan veya uzmanlık, isterseniz şehir; verdiğiniz onayların kaydı; gönderdiğimiz e-postaların açılma ve tıklanma bilgisi.
 - **Otomatik olarak:** sitenin sunulması sırasında barındırma altyapısının tuttuğu istek kayıtları (IP adresi dâhil) ve çerez tercihinizi saklayan `pixelon-consent` çerezi.
 
-Sitemizde üyelik sistemi, ödeme altyapısı, bülten kaydı veya iş başvuru formu yoktur; bu tür veriler toplanmaz.
+Sitemizde üyelik sistemi, ödeme altyapısı veya iş başvuru formu yoktur; bu tür veriler toplanmaz.
 
 ## 3. Bilgileri Neden Kullanıyoruz?
 
-Yalnızca talebinize dönüş yapmak, teklif hazırlamak, kurduğunuz iletişimi yürütmek ve siteyi güvenli biçimde çalıştırmak için. Bilgileriniz üçüncü kişilere satılmaz; reklam amacıyla paylaşılmaz.
+Talebinize dönüş yapmak, teklif hazırlamak, kurduğunuz iletişimi yürütmek, talep ettiğiniz rehber veya checklisti göndermek ve siteyi güvenli biçimde çalıştırmak için.
+Yeni içerikler, hizmetlerimiz ve ücretsiz analiz davetleri hakkında e-posta yalnızca buna ayrıca onay verdiyseniz gönderilir.
+Bilgileriniz üçüncü kişilere satılmaz; reklam amacıyla paylaşılmaz.
 
 ## 4. Formlar
 
 Form gönderimleri, form iletim hizmeti **Web3Forms** üzerinden e-posta kutumuza ulaştırılır ve yalnızca Pixelon tarafından okunur. Formların altında, gönderim öncesinde sizi bilgilendiren kısa açıklamalar yer alır.
+
+Rehber ve checklist formları ise e-posta gönderim hizmetimiz **MailerLite** üzerinden çalışır; içerik size bu hizmetle gönderilir.
+Bu formlarda iki ayrı kutu bulunur: aydınlatma metnini okuduğunuzu belirten zorunlu kutu ve pazarlama e-postaları için isteğe bağlı, varsayılan olarak işaretsiz onay kutusu.
+İkinci kutuyu işaretlemeseniz de talep ettiğiniz içerik size gönderilir.
+Onayınızı her e-postanın altındaki bağlantıyla veya [info@pixelon.com.tr](mailto:info@pixelon.com.tr) adresine yazarak istediğiniz zaman geri çekebilirsiniz.
 
 ## 5. Çerezler ve Ölçüm
 
@@ -40,6 +48,7 @@ Sitenin çalışması için şu hizmet sağlayıcılar kullanılır:
 
 - **GitHub Pages** — web sitesinin barındırılması,
 - **Web3Forms** — form iletimi,
+- **MailerLite** (UAB MailerLite, Litvanya), rehber ve checklist e-postalarının gönderimi (veriler Avrupa Birliği'ndeki sunucularda saklanır),
 - **Google** — Tag Manager altyapısı, web fontları ve Google Analytics 4 (çerez tabanlı ölçüm Analitik izninize bağlıdır),
 - **Microsoft** — Clarity davranış analitiği (oturum kayıtları/ısı haritaları; çerez tabanlı çalışması Analitik izninize bağlıdır),
 - **Meta** — Meta Pixel reklam/dönüşüm ölçümü (yalnızca Pazarlama izninizle yüklenir).
@@ -53,6 +62,10 @@ Bilgilerinizin korunması için makul teknik ve idari tedbirler uygularız; eri�
 ## 8. Saklama
 
 Teklif veya iletişim talebiniz bir müşteri ilişkisine dönüşmezse, ilgili form ve e-posta kayıtları talebin sonuçlanmasından itibaren en geç 2 yıl içinde silinir. Müşteri ilişkisi kurulursa ilgili kayıtlar; sözleşmesel, muhasebesel ve diğer uygulanabilir yasal saklama yükümlülükleri kapsamında gerekli süre boyunca saklanabilir. Diğer veri kategorileri yalnızca kendi amaçları için gerekli olan süreyle tutulur.
+
+Rehber veya checklist için verdiğiniz bilgiler, pazarlama e-postalarına onay vermediyseniz içeriğin size gönderilmesinden 12 ay sonra silinir.
+Onay verdiyseniz, onayınızı geri çekene kadar saklanır.
+Onay kayıtları, ispat amacıyla onayın geri çekilmesinden veya ilişkinin sona ermesinden itibaren 10 yıl saklanır.
 
 ## 9. Haklarınız
 

@@ -541,3 +541,28 @@ describe('rehber yazılarındaki blok işaretleri', () => {
     });
   });
 });
+
+describe('yasal metinler rehber formunu kapsar', () => {
+  /*
+   * Checklist formu MailerLite'a veri gönderiyor ve pazarlama e-postası için ayrı onay
+   * topluyor. Yasal metinler bunu anlatmalı; "bülten yok" ve "pazarlama iletişimi
+   * yürütülmüyor" iddiaları artık doğru değil (ek metin onayı: 2026-10-08).
+   */
+  const read = (file: string) => Bun.file(join(CONTENT, 'legal', 'tr', file)).text();
+
+  for (const file of ['kvkk.md', 'privacy.md']) {
+    test(`${file} MailerLite'ı, ayrı pazarlama onayını ve saklama sürelerini anlatır`, async () => {
+      const text = await read(file);
+      expect(text).toContain('MailerLite');
+      expect(text).toContain('12 ay');
+      expect(text).toContain('10 yıl');
+      expect(text).not.toContain('bülten kaydı');
+    });
+  }
+
+  test('KVKK metni pazarlama iletişiminin yürütülmediğini artık söylemez', async () => {
+    const text = await read('kvkk.md');
+    expect(text).not.toContain('şu anda yürütülmemektedir');
+    expect(text).toContain('KVKK m.5/1');
+  });
+});

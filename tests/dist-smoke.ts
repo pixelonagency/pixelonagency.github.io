@@ -1596,6 +1596,21 @@ describe('e-posta logosu', () => {
   });
 });
 
+describe('MailerLite sitede iz bırakmaz', () => {
+  /*
+   * Checklist formu MailerLite'a doğrudan fetch ile gönderir; sitede MailerLite script'i
+   * yüklenmez. Bu, Çerez Politikası'nın değişmemesinin dayanağıdır
+   * (PRIVACY_TRACKING_INVENTORY.md, MailerLite notu).
+   */
+  test('hiçbir sayfa MailerLite script’i yüklemez', () => {
+    const offenders = allHtmlFiles(DIST)
+      .filter((file) => !file.includes(`${sep}admin${sep}`))
+      .filter((file) => /<script[^>]+src="[^"]*mailerlite/i.test(readFileSync(file, 'utf8')))
+      .map((file) => file.replace(DIST, ''));
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe('checklist PDF indirmesi', () => {
   /* E-postalardaki bağlantı bu adresi kullanır; dosya taşınırsa e-postalar kırılır. */
   const PDF = join(DIST, 'rehber', 'indir', 'hekimler-dijital-gorunurluk-checklisti.pdf');
