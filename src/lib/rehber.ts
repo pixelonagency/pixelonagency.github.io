@@ -401,3 +401,10 @@ export function guideTitleTag(title: string): string {
   }
   return title;
 }
+
+/**
+ * Whether the main navigation and footer link to the guide. Only published entries
+ * count: the dev server previews drafts, but the link must not appear before launch.
+ */
+export const hasPublishedGuide = (entries: readonly { data: { durum: RehberStatus } }[]): boolean =>
+  entries.some((entry) => entry.data.durum === 'yayinda');

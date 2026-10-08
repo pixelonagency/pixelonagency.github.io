@@ -1574,6 +1574,20 @@ describe('rehber taslakları yayına çıkmaz', () => {
     expect(offenders).toEqual([]);
   });
 
+  test('Rehber bağlantısı header ve footer’da yalnızca yayında içerik varken bulunur', () => {
+    const published = entries.some((entry) => entry.published);
+    const home = readFileSync(join(DIST, 'index.html'), 'utf8');
+    const nav = home.match(/<nav class="site-nav"[\s\S]*?<\/nav>/)?.[0] ?? '';
+    const mobile = home.match(/<nav class="mnav-panel__nav"[\s\S]*?<\/nav>/)?.[0] ?? '';
+    const footer = home.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? '';
+    const linked = (part: string): boolean => part.includes('href="/rehber/"');
+    expect({ nav: linked(nav), mobile: linked(mobile), footer: linked(footer) }).toEqual({
+      nav: published,
+      mobile: published,
+      footer: published,
+    });
+  });
+
   test('yayında rehber içeriği yokken rehber merkezi ve alt sayfaları hiç üretilmez', () => {
     if (entries.some(({ published }) => published)) return;
     expect(existsSync(join(DIST, 'rehber', 'index.html'))).toBe(false);

@@ -4,6 +4,7 @@ import { getCollection, getEntry } from 'astro:content';
 import logo from '../assets/logo/pixelon-logo.webp';
 import { DEFAULT_LOCALE, localizedPath, type Locale } from '../lib/i18n';
 import { menuServices } from '../lib/nav';
+import { hasPublishedGuide } from '../lib/rehber';
 import { serviceHref, t } from '../lib/ui';
 import { telHref } from '../lib/whatsapp';
 
@@ -34,6 +35,10 @@ const corporateLinks = [
   { label: t('nav.careers', locale), href: localizedPath('careers', locale) },
   { label: t('nav.contact', locale), href: localizedPath('contact', locale) },
   { label: t('nav.blog', locale), href: localizedPath('blog', locale) },
+  /* Same rule as the header: only once a guide entry is published. */
+  ...(hasPublishedGuide([...(await getCollection('rehber')), ...(await getCollection('checklists'))])
+    ? [{ label: t('nav.guide', locale), href: localizedPath('guide', locale) }]
+    : []),
   /*
    * "Web Sitesi Yaptır" açılış sayfası bilerek BURADA DEĞİL: sahip footer'da
    * istemedi. Sayfa yayında ve sitemap ile llms.txt'te duruyor, ama artık hiçbir

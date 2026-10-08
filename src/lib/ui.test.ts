@@ -79,6 +79,19 @@ describe('serviceHref', () => {
 });
 
 describe('buildPrimaryNav', () => {
+  test('Rehber yalnız istendiğinde, İletişim’den önce eklenir', () => {
+    expect(buildPrimaryNav('tr').some((item) => item.href === '/rehber/')).toBe(false);
+    expect(buildPrimaryNav('tr', { guide: true }).map((item) => item.label)).toEqual([
+      'Biz Kimiz?',
+      'Hizmetlerimiz',
+      'Projelerimiz',
+      'Referanslarımız',
+      'Rehber',
+      'İletişim',
+    ]);
+    expect(buildPrimaryNav('tr', { guide: true }).find((item) => item.label === 'Rehber')?.href).toBe('/rehber/');
+  });
+
   test('referans tasarımdaki sırayı korur', () => {
     expect(buildPrimaryNav('tr').map((item) => item.label)).toEqual([
       'Biz Kimiz?',

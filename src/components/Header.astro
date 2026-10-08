@@ -6,6 +6,7 @@ import logo from '../assets/logo/pixelon-logo.webp';
 import { DEFAULT_LOCALE, hasLanguageSwitcher, localizedPath, type Locale } from '../lib/i18n';
 import { buildPrimaryNav, serviceHref, t } from '../lib/ui';
 import { isActiveRoute, menuServices } from '../lib/nav';
+import { hasPublishedGuide } from '../lib/rehber';
 import LangSwitch from './LangSwitch.astro';
 
 interface Props {
@@ -42,7 +43,9 @@ const serviceLinks = menuServices(scoped).map((entry) => ({
   image: entry.data.cover as ImageMetadata | undefined,
 }));
 
-const PRIMARY_NAV = buildPrimaryNav(locale);
+/* The guide link appears only once a guide entry is published (drafts never count). */
+const guidePublished = hasPublishedGuide([...(await getCollection('rehber')), ...(await getCollection('checklists'))]);
+const PRIMARY_NAV = buildPrimaryNav(locale, { guide: guidePublished });
 const currentPath = Astro.url.pathname;
 ---
 
@@ -158,6 +161,13 @@ const currentPath = Astro.url.pathname;
     }
     <a href={localizedPath('references', locale)} class="mnav-panel__link">{t('nav.references', locale)}</a>
     <a href={localizedPath('blog', locale)} class="mnav-panel__link">{t('nav.blog', locale)}</a>
+    {
+      guidePublished && (
+        <a href={localizedPath('guide', locale)} class="mnav-panel__link">
+          {t('nav.guide', locale)}
+        </a>
+      )
+    }
     <a href={localizedPath('careers', locale)} class="mnav-panel__link">{t('nav.careers', locale)}</a>
     <a href={localizedPath('contact', locale)} class="mnav-panel__link mnav-panel__link--last"
       >{t('nav.contact', locale)}</a

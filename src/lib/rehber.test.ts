@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import {
   buildRehberTree,
+  hasPublishedGuide,
   guideTitleTag,
   pdfMockupHeading,
   pixelMotif,
@@ -298,5 +299,13 @@ describe('rehber sayfa başlığı', () => {
     expect(guideTitleTag('Hekimin Google profili: adınız arandığında ne görünüyor?')).toBe(
       'Hekimin Google profili: adınız arandığında ne görünüyor?',
     );
+  });
+});
+
+describe('gezinmede Rehber bağlantısı', () => {
+  test('yalnızca yayında en az bir girdi varsa görünür; taslak önizlemeler sayılmaz', () => {
+    expect(hasPublishedGuide([])).toBe(false);
+    expect(hasPublishedGuide([{ data: { durum: 'taslak' } }])).toBe(false);
+    expect(hasPublishedGuide([{ data: { durum: 'taslak' } }, { data: { durum: 'yayinda' } }])).toBe(true);
   });
 });

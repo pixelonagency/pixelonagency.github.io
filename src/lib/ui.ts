@@ -29,6 +29,7 @@ const STRINGS = {
   'nav.logoHome': { tr: 'Pixelon ana sayfa', en: 'Pixelon home' },
   'nav.language': { tr: 'Dil', en: 'Language' },
   'nav.portfolio': { tr: 'Portfolyo', en: 'Portfolio' },
+  'nav.guide': { tr: 'Rehber', en: 'Guides' },
   'portfolio.eyebrow': { tr: 'Sunum', en: 'Deck' },
   'portfolio.heading': { tr: 'Portfolyo 2023–2026', en: 'Portfolio 2023–2026' },
   'portfolio.lead': {
@@ -268,7 +269,7 @@ export function serviceHref(slug: string, locale: Locale): string {
 }
 
 /** Header ve mobil menüdeki ana gezinme — referans tasarımdaki sırayla. */
-export function buildPrimaryNav(locale: Locale): NavItem[] {
+export function buildPrimaryNav(locale: Locale, options: { guide?: boolean } = {}): NavItem[] {
   const item = (key: UiKey, page: PageKey, extra?: Partial<NavItem>): NavItem => ({
     label: t(key, locale),
     href: localizedPath(page, locale),
@@ -283,6 +284,8 @@ export function buildPrimaryNav(locale: Locale): NavItem[] {
     // değil. Sayfa yayında (noindex) — linki doğrudan müşteriye gönderiliyor.
     { label: t('nav.references', locale), href: localizedPath('references', locale) },
     // Kariyer bilerek YOK: üst menüyü kısa tutmak için yalnız footer ve mobil menüde durur.
+    // Rehber yalnızca yayında içerik varken görünür (bkz. `hasPublishedGuide`).
+    ...(options.guide ? [item('nav.guide', 'guide')] : []),
     item('nav.contact', 'contact'),
   ];
 }
