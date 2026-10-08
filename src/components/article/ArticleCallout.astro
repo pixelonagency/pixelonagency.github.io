@@ -67,6 +67,22 @@ const variant = block.variant ?? 'note';
     color: var(--text-muted-on-light);
   }
 
+  /* The global lime link color is unreadable on the pale lime background;
+     same treatment as body links in ArticleSection. */
+  .aq__text :global(a) {
+    color: var(--text-on-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    padding-block: 4px;
+    transition: color var(--t-base);
+  }
+
+  .aq__text :global(a:hover) {
+    color: var(--text-muted-on-light);
+  }
+
   @media (max-width: 520px) {
     .aq {
       grid-template-columns: 1fr;

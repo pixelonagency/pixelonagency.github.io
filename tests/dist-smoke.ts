@@ -307,6 +307,30 @@ describe('inline links in body copy', () => {
       expect({ file, nested }).toEqual({ file, nested: false });
     }
   });
+
+  // Callout links inherited the global lime `a` color on the pale lime callout
+  // background (~1.1:1). They must use the dark on-light text color instead.
+  test('blog callout links use dark text, not the lime accent', () => {
+    for (const slug of ['web-tasarim-fiyatlari', 'tiktok-reklam-verme', 'cpc-cpm-ctr-nedir']) {
+      const source = read(`/blog/${slug}`);
+      expect({ slug, calloutLink: /class="aq__text"[^>]*>(?:(?!<\/p>).)*<a\b/s.test(source) }).toEqual({
+        slug,
+        calloutLink: true,
+      });
+
+      const inline = [...source.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map((match) => match[1]);
+      const linked = [...source.matchAll(/<link rel="stylesheet" href="([^"]+)"/g)].map((match) =>
+        readFileSync(join(DIST, match[1]), 'utf8'),
+      );
+      const css = [...inline, ...linked].join('');
+      const rule = css.match(/\.aq__text\[data-astro-cid-[\w-]+\] a\{([^}]*)\}/)?.[1] ?? '';
+      expect({ slug, color: rule.match(/(?:^|;)color:([^;]+)/)?.[1] }).toEqual({ slug, color: 'var(--text-on-light)' });
+      expect({ slug, underline: rule.includes('text-decoration') && rule.includes('underline') }).toEqual({
+        slug,
+        underline: true,
+      });
+    }
+  });
 });
 
 describe('service detail pages', () => {
