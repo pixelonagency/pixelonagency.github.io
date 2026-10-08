@@ -18,6 +18,7 @@ import { localizedPath, type Locale } from '../../lib/i18n';
 import { rehberCrumbs, REHBER_AUDIENCE_LABELS } from '../../lib/rehber';
 import { breadcrumbSchema } from '../../lib/schema';
 import FormField from '../sections/FormField.astro';
+import ChecklistPdfMockup from './ChecklistPdfMockup.astro';
 import RehberCrumbs from './RehberCrumbs.astro';
 
 interface Props {
@@ -95,82 +96,94 @@ const extraSchema = [
   </section>
 
   <section class="cl__signup" aria-labelledby="cl-form-title">
-    <div class="container cl__inner">
-      <h2 class="cl__form-title" id="cl-form-title">Listenin tamamını e-postanıza gönderelim</h2>
+    <div class="container cl__signup-grid">
+      <div class="cl__mockup">
+        <ChecklistPdfMockup {title} {kitle} section={preview} {itemCount} sectionCount={bolumler.length} />
+      </div>
+      <div class="cl__signup-main">
+        <h2 class="cl__form-title" id="cl-form-title">Listenin tamamını e-postanıza gönderelim</h2>
 
-      {
-        !active && (
-          <div class="cl__inactive" role="status" data-checklist-inactive>
-            <p class="cl__inactive-title">Bu form henüz aktif değil.</p>
-            <p class="cl__inactive-body">
-              Gönderim adresi tanımlanmadı (src/lib/checklist-form.ts). Bu durum yalnızca önizlemede görünür; adres
-              girilmeden sayfa yayına çıkamaz.
-            </p>
+        {
+          !active && (
+            <div class="cl__inactive" role="status" data-checklist-inactive>
+              <p class="cl__inactive-title">Bu form henüz aktif değil.</p>
+              <p class="cl__inactive-body">
+                Gönderim adresi tanımlanmadı (src/lib/checklist-form.ts). Bu durum yalnızca önizlemede görünür; adres
+                girilmeden sayfa yayına çıkamaz.
+              </p>
+            </div>
+          )
+        }
+
+        <div class="cl__alert" data-checklist-error role="alert" hidden>
+          <p class="cl__alert-title">Form gönderilemedi.</p>
+          <p class="cl__alert-body">Lütfen biraz sonra tekrar deneyin.</p>
+        </div>
+
+        <div class="cl__success" data-checklist-success role="status" tabindex="-1" hidden>
+          <span class="cl__success-mark" aria-hidden="true">✓</span>
+          <p class="cl__success-title">Talebiniz alındı.</p>
+          <p class="cl__success-body">Checklist birkaç dakika içinde e-posta adresinize gelecek.</p>
+        </div>
+
+        <form
+          class="cl__form"
+          novalidate
+          aria-labelledby="cl-form-title"
+          data-checklist-form
+          data-endpoint={endpoint}
+          data-busy-label="Gönderiliyor…"
+        >
+          <div class="cl__grid">
+            <FormField name="name" label="Ad soyad" required placeholder="Dr. Ad Soyad" {locale} />
+            <FormField name="email" label="E-posta" type="email" required placeholder="ornek@klinik.com" {locale} />
+            <FormField
+              name="title"
+              label="Unvan / uzmanlık"
+              required
+              placeholder="Örneğin: Dermatoloji uzmanı"
+              {locale}
+            />
+            <FormField name="city" label="Şehir" placeholder="İsteğe bağlı" {locale} />
           </div>
-        )
-      }
 
-      <div class="cl__alert" data-checklist-error role="alert" hidden>
-        <p class="cl__alert-title">Form gönderilemedi.</p>
-        <p class="cl__alert-body">Lütfen biraz sonra tekrar deneyin.</p>
+          <div class="cl__consent">
+            <label class="cl__check" for="f-kvkk">
+              <input
+                type="checkbox"
+                id="f-kvkk"
+                name="kvkk"
+                value="evet"
+                aria-required="true"
+                data-error-target="kvkk"
+              />
+              <span>
+                <a href={localizedPath('kvkk', locale)} target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni
+                okudum.
+                <span class="cl__required" aria-hidden="true">*</span>
+                <span class="visually-hidden">(zorunlu)</span>
+              </span>
+            </label>
+            <p class="cl__error" id="err-kvkk" data-error-for="kvkk" aria-live="polite"></p>
+          </div>
+
+          <div class="cl__consent">
+            <label class="cl__check" for="f-marketing">
+              <input type="checkbox" id="f-marketing" name="marketing" value="evet" />
+              <span>
+                Pixelon'un dijital pazarlama içerikleri ve duyuruları hakkında bana e-posta gönderilmesini kabul
+                ediyorum. (İsteğe bağlı)
+              </span>
+            </label>
+          </div>
+
+          <div class="cl__actions">
+            <button type="submit" class="btn btn--primary" data-submit disabled={!active}>
+              Checklisti gönder <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
       </div>
-
-      <div class="cl__success" data-checklist-success role="status" tabindex="-1" hidden>
-        <span class="cl__success-mark" aria-hidden="true">✓</span>
-        <p class="cl__success-title">Talebiniz alındı.</p>
-        <p class="cl__success-body">Checklist birkaç dakika içinde e-posta adresinize gelecek.</p>
-      </div>
-
-      <form
-        class="cl__form"
-        novalidate
-        aria-labelledby="cl-form-title"
-        data-checklist-form
-        data-endpoint={endpoint}
-        data-busy-label="Gönderiliyor…"
-      >
-        <div class="cl__grid">
-          <FormField name="name" label="Ad soyad" required placeholder="Dr. Ad Soyad" {locale} />
-          <FormField name="email" label="E-posta" type="email" required placeholder="ornek@klinik.com" {locale} />
-          <FormField
-            name="title"
-            label="Unvan / uzmanlık"
-            required
-            placeholder="Örneğin: Dermatoloji uzmanı"
-            {locale}
-          />
-          <FormField name="city" label="Şehir" placeholder="İsteğe bağlı" {locale} />
-        </div>
-
-        <div class="cl__consent">
-          <label class="cl__check" for="f-kvkk">
-            <input type="checkbox" id="f-kvkk" name="kvkk" value="evet" aria-required="true" data-error-target="kvkk" />
-            <span>
-              <a href={localizedPath('kvkk', locale)} target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni
-              okudum.
-              <span class="cl__required" aria-hidden="true">*</span>
-              <span class="visually-hidden">(zorunlu)</span>
-            </span>
-          </label>
-          <p class="cl__error" id="err-kvkk" data-error-for="kvkk" aria-live="polite"></p>
-        </div>
-
-        <div class="cl__consent">
-          <label class="cl__check" for="f-marketing">
-            <input type="checkbox" id="f-marketing" name="marketing" value="evet" />
-            <span>
-              Pixelon'un dijital pazarlama içerikleri ve duyuruları hakkında bana e-posta gönderilmesini kabul ediyorum.
-              (İsteğe bağlı)
-            </span>
-          </label>
-        </div>
-
-        <div class="cl__actions">
-          <button type="submit" class="btn btn--primary" data-submit disabled={!active}>
-            Checklisti gönder <span aria-hidden="true">→</span>
-          </button>
-        </div>
-      </form>
     </div>
   </section>
 </BaseLayout>
@@ -271,6 +284,40 @@ const extraSchema = [
 
   .cl__signup {
     padding: clamp(60px, 7vw, 90px) 0;
+  }
+
+  /* Form and PDF mockup side by side; the mockup leads on narrow screens. */
+  .cl__signup-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+    grid-template-areas: 'main mockup';
+    gap: clamp(40px, 6vw, 88px);
+    align-items: start;
+    max-width: calc(1080px + var(--gutter) * 2);
+  }
+
+  .cl__signup-main {
+    grid-area: main;
+    min-width: 0;
+  }
+
+  .cl__mockup {
+    grid-area: mockup;
+    position: sticky;
+    top: calc(var(--header-h) + 32px);
+  }
+
+  @media (max-width: 1020px) {
+    .cl__signup-grid {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: 'mockup' 'main';
+    }
+
+    .cl__mockup {
+      position: static;
+      width: min(100%, 280px);
+      margin: 0 auto;
+    }
   }
 
   .cl__form-title {

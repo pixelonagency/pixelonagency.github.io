@@ -373,3 +373,17 @@ export function pixelMotif(seed: string): MotifCell[] {
 
   return [...cells.values()].sort((a, b) => a.y - b.y || a.x - b.x);
 }
+
+/**
+ * Heading of the PDF mockup on a checklist page, laid out like the real PDF: the
+ * audience as a chip, then the title with its last word highlighted in lime.
+ */
+export function pdfMockupHeading(title: string, kitle: RehberAudience): { chip: string; lead: string; mark: string } {
+  const chip = `${REHBER_AUDIENCE_LABELS[kitle]} için`;
+  const rest = title.toLocaleLowerCase('tr').startsWith(chip.toLocaleLowerCase('tr'))
+    ? title.slice(chip.length).trim()
+    : title.trim();
+  const words = rest.split(/\s+/);
+  const mark = words.pop() ?? '';
+  return { chip, lead: words.join(' '), mark };
+}

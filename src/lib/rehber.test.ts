@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import {
   buildRehberTree,
+  pdfMockupHeading,
   pixelMotif,
   isChecklistBuilt,
   isRehberEntryBuilt,
@@ -263,5 +264,23 @@ describe('piksel motifi', () => {
     const lime = cells.filter((cell) => cell.accent);
     expect(lime.length).toBeGreaterThan(0);
     expect(lime.length).toBeLessThan(cells.length / 3);
+  });
+});
+
+describe('PDF önizleme başlığı', () => {
+  test('kitle ön eki çipe taşınır, son kelime vurgulanır', () => {
+    expect(pdfMockupHeading('Hekimler için Dijital Görünürlük Checklisti', 'hekimler')).toEqual({
+      chip: 'Hekimler için',
+      lead: 'Dijital Görünürlük',
+      mark: 'Checklisti',
+    });
+  });
+
+  test('ön ek yoksa başlık olduğu gibi kalır', () => {
+    expect(pdfMockupHeading('Klinik Yorum Checklisti', 'klinikler')).toEqual({
+      chip: 'Klinikler için',
+      lead: 'Klinik Yorum',
+      mark: 'Checklisti',
+    });
   });
 });

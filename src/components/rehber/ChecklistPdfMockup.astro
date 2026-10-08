@@ -1,0 +1,208 @@
+---
+/**
+ * Mockup of the first page of the checklist PDF, so a visitor sees what the form sends.
+ *
+ * Drawn in HTML/CSS after the print design (white A4 page, running wordmark header,
+ * lime chip and highlight, numbered section with a lime number chip, square checkboxes).
+ * The page itself is a picture of a document, so it is hidden from screen readers and
+ * the figure carries a short description instead.
+ */
+import logoSvg from '../../assets/logo/pixelon-logo-white.svg?raw';
+import { pdfMockupHeading, type RehberAudience } from '../../lib/rehber';
+
+interface Props {
+  title: string;
+  kitle: RehberAudience;
+  section: { baslik: string; maddeler: string[] };
+  itemCount: number;
+  sectionCount: number;
+}
+
+const { title, kitle, section, itemCount, sectionCount } = Astro.props;
+const heading = pdfMockupHeading(title, kitle);
+
+/* The source file starts with an XML prolog and carries editor ids; neither belongs inline. */
+const wordmark = logoSvg.replace(/<\?xml[^>]*\?>/, '').replace(/\sid="[^"]*"/g, '');
+
+const ROWS = 6;
+const rows = section.maddeler.slice(0, ROWS);
+---
+
+<figure
+  class="pm"
+  aria-label={`E-postanıza gelecek PDF'in ilk sayfası: ${title}, ${itemCount} madde, ${sectionCount} bölüm.`}
+>
+  <div class="pm__page" aria-hidden="true">
+    <div class="pm__run">
+      <span class="pm__logo" set:html={wordmark} />
+      <span>Sağlık rehberi · Checklist</span>
+    </div>
+    <span class="pm__chip">{heading.chip}</span>
+    <p class="pm__title">
+      {`${heading.lead} `}<span class="pm__mark">{heading.mark}</span>
+    </p>
+    <div class="pm__section">
+      <span class="pm__n">1</span>
+      <span class="pm__h">{section.baslik}</span>
+      <span class="pm__score">Puan __ / {section.maddeler.length}</span>
+    </div>
+    <ol class="pm__rows">
+      {
+        rows.map((item, index) => (
+          <li>
+            <span class="pm__no">{String(index + 1).padStart(2, '0')}</span>
+            <span class="pm__box" />
+            <span class="pm__text">{item}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+  <figcaption class="pm__caption">PDF önizlemesi · {itemCount} madde, {sectionCount} bölüm</figcaption>
+</figure>
+
+<style>
+  .pm {
+    margin: 0;
+  }
+
+  /* A4 ratio; the page fades out at the bottom to read as "and more". */
+  .pm__page {
+    position: relative;
+    aspect-ratio: 210 / 297;
+    overflow: hidden;
+    padding: 9% 9% 0;
+    border-radius: 6px;
+    background: #fff;
+    color: var(--text-on-light);
+    box-shadow:
+      0 1px 0 rgb(255 255 255 / 8%),
+      0 24px 60px rgb(0 0 0 / 45%);
+    transform: rotate(-1.5deg);
+    font-family: var(--font-body);
+    /* Children size their type in cqi: the page scales as one picture. */
+    container-type: inline-size;
+  }
+
+  .pm__page::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 32%;
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0%), #fff 75%);
+  }
+
+  .pm__run {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2.6cqi;
+    margin-bottom: 5cqi;
+    border-bottom: 1.5px solid var(--text-on-light);
+    font: 600 2.4cqi var(--font-body);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #545454;
+  }
+
+  .pm__logo :global(svg) {
+    display: block;
+    width: 18cqi;
+    height: auto;
+  }
+
+  .pm__logo :global(.cls-2) {
+    fill: var(--text-on-light);
+  }
+
+  .pm__logo :global(.cls-1) {
+    fill: var(--accent);
+  }
+
+  .pm__chip {
+    display: inline-block;
+    padding: 1.2cqi 2.4cqi;
+    background: var(--accent);
+    font: 700 2.5cqi var(--font-body);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-on-light);
+  }
+
+  .pm__title {
+    margin: 3.5cqi 0 6cqi;
+    font: 700 9.4cqi / 0.98 var(--font-display);
+    letter-spacing: -0.035em;
+    color: var(--text-on-light);
+  }
+
+  .pm__mark {
+    padding: 0 0.05em;
+    background: linear-gradient(to top, var(--accent) 0 60%, transparent 60%);
+  }
+
+  .pm__section {
+    display: flex;
+    align-items: baseline;
+    gap: 2.6cqi;
+    padding-bottom: 1.6cqi;
+    border-bottom: 1px solid var(--text-on-light);
+  }
+
+  .pm__n {
+    padding: 0.4cqi 1.6cqi;
+    background: var(--accent);
+    font: 900 3cqi var(--font-body);
+    color: var(--text-on-light);
+  }
+
+  .pm__h {
+    font: 700 4.6cqi var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .pm__score {
+    margin-left: auto;
+    font: 600 2.3cqi var(--font-body);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #545454;
+  }
+
+  .pm__rows {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pm__rows li {
+    display: grid;
+    grid-template-columns: 6cqi 4.4cqi 1fr;
+    gap: 2.4cqi;
+    align-items: start;
+    padding: 2.2cqi 0;
+    border-bottom: 1px solid #dcdfd9;
+    font-size: 3cqi;
+    line-height: 1.4;
+  }
+
+  .pm__no {
+    font-weight: 700;
+    color: #545454;
+  }
+
+  .pm__box {
+    width: 3.6cqi;
+    height: 3.6cqi;
+    margin-top: 0.4cqi;
+    border: 1.5px solid var(--text-on-light);
+    border-radius: 2px;
+  }
+
+  .pm__caption {
+    margin-top: 22px;
+    text-align: center;
+    font: 500 13.5px var(--font-display);
+    color: var(--text-muted);
+  }
+</style>
