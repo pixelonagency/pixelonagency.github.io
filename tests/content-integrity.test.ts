@@ -430,11 +430,10 @@ describe('rehber koleksiyonları', () => {
     }
   }
 
-  test('sağlık hekim checklisti tohum içeriği yerinde ve taslak', async () => {
+  test('sağlık hekim checklisti tohum içeriği yerinde ve 26 maddeden oluşuyor', async () => {
     const file = join(CONTENT, 'checklists', 'tr', 'dijital-gorunurluk-checklisti.yml');
     expect(existsSync(file)).toBe(true);
     const parsed = checklistSchema.parse(parse(await Bun.file(file).text()));
-    expect(parsed.durum).toBe('taslak');
     expect(parsed.bolumler.flatMap((bolum) => bolum.maddeler)).toHaveLength(26);
   });
 

@@ -5,12 +5,12 @@ slug: kamera-karsisinda-hekim
 kitle: hekimler
 seri: 'Hekimler için dijital görünürlük'
 okuma_suresi: 6
-durum: taslak
+durum: yayinda
 hukuk_kontrolu: false
 kapak: '/src/assets/images/rehber/kamera-karsisinda-hekim.webp'
 kapak_alt: 'Beyaz önlüklü bir hekim, halka ışık ve tripodlu kamera karşısında konuşuyor'
 sektor: saglik
-yayin_tarihi: 2026-10-26
+yayin_tarihi: 2026-10-08
 checklist: dijital-gorunurluk-checklisti
 alinti:
   metin: 'Hastalarım muayeneye geldiğinde çoğu zaman videoları izlemiş oluyor, görüşmeye bir adım önden başlıyoruz.'

@@ -5,12 +5,12 @@ slug: hekimin-google-profili
 kitle: hekimler
 seri: 'Hekimler için dijital görünürlük'
 okuma_suresi: 6
-durum: taslak
+durum: yayinda
 hukuk_kontrolu: false
 kapak: '/src/assets/images/rehber/hekimin-google-profili.webp'
 kapak_alt: 'Hekimin elinde telefon, ekranda yıldızlı bir işletme profili ve harita, arkada klinik resepsiyonu'
 sektor: saglik
-yayin_tarihi: 2026-10-26
+yayin_tarihi: 2026-10-08
 checklist: dijital-gorunurluk-checklisti
 ---
 
