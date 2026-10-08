@@ -10,7 +10,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate, isoDate } from '../../lib/format';
 import type { Locale } from '../../lib/i18n';
-import { rehberCrumbs, rehberPath, REHBER_AUDIENCE_LABELS } from '../../lib/rehber';
+import { guideTitleTag, rehberCrumbs, rehberPath, REHBER_AUDIENCE_LABELS } from '../../lib/rehber';
 import { blogPostingSchema, breadcrumbSchema } from '../../lib/schema';
 import { canonicalUrl } from '../../lib/seo';
 import { t } from '../../lib/ui';
@@ -82,7 +82,7 @@ const extraSchema = [
 ---
 
 <BaseLayout
-  title={`${title} | Pixelon Rehber`}
+  title={guideTitleTag(title)}
   {description}
   ogType="article"
   {locale}

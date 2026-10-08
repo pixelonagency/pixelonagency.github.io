@@ -15,7 +15,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CHECKLIST_FORM_ENDPOINT, checklistFormEndpoint } from '../../lib/checklist-form';
 import { localizedPath, type Locale } from '../../lib/i18n';
-import { rehberCrumbs, REHBER_AUDIENCE_LABELS } from '../../lib/rehber';
+import { guideTitleTag, rehberCrumbs, REHBER_AUDIENCE_LABELS } from '../../lib/rehber';
 import { breadcrumbSchema } from '../../lib/schema';
 import FormField from '../sections/FormField.astro';
 import ChecklistPdfMockup from './ChecklistPdfMockup.astro';
@@ -53,14 +53,7 @@ const extraSchema = [
 ];
 ---
 
-<BaseLayout
-  title={`${title} | Pixelon Rehber`}
-  {description}
-  {locale}
-  {alternates}
-  ogImage={ogImage?.src}
-  {extraSchema}
->
+<BaseLayout title={guideTitleTag(title)} {description} {locale} {alternates} ogImage={ogImage?.src} {extraSchema}>
   <header class="cl__head">
     <div class="container cl__inner">
       <RehberCrumbs {crumbs} {locale} />

@@ -387,3 +387,17 @@ export function pdfMockupHeading(title: string, kitle: RehberAudience): { chip: 
   const mark = words.pop() ?? '';
   return { chip, lead: words.join(' '), mark };
 }
+
+/** Search results cut titles at about 60 characters (enforced in tests/dist-smoke.ts). */
+const TITLE_MAX = 60;
+
+/**
+ * `<title>` for guide pages: the longest brand suffix that still fits in 60 characters,
+ * so a long article title loses the suffix instead of being cut mid-sentence.
+ */
+export function guideTitleTag(title: string): string {
+  for (const suffix of [' | Pixelon Rehber', ' | Pixelon']) {
+    if (title.length + suffix.length <= TITLE_MAX) return `${title}${suffix}`;
+  }
+  return title;
+}

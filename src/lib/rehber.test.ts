@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import {
   buildRehberTree,
+  guideTitleTag,
   pdfMockupHeading,
   pixelMotif,
   isChecklistBuilt,
@@ -282,5 +283,20 @@ describe('PDF önizleme başlığı', () => {
       lead: 'Klinik Yorum',
       mark: 'Checklisti',
     });
+  });
+});
+
+describe('rehber sayfa başlığı', () => {
+  test('sığıyorsa "| Pixelon Rehber" eki alır', () => {
+    expect(guideTitleTag('Kamera karşısında hekim')).toBe('Kamera karşısında hekim | Pixelon Rehber');
+  });
+
+  test('60 karakteri aşacaksa önce kısa eke, sonra eksiz başlığa düşer', () => {
+    expect(guideTitleTag('Hasta yorumlarını toplamak ve cevaplamak rehberi')).toBe(
+      'Hasta yorumlarını toplamak ve cevaplamak rehberi | Pixelon',
+    );
+    expect(guideTitleTag('Hekimin Google profili: adınız arandığında ne görünüyor?')).toBe(
+      'Hekimin Google profili: adınız arandığında ne görünüyor?',
+    );
   });
 });
