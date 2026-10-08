@@ -1578,6 +1578,24 @@ describe('rehber taslakları yayına çıkmaz', () => {
   });
 });
 
+describe('e-posta logosu', () => {
+  /* MailerLite şablonları https://pixelon.com.tr/email/pixelon-logo.png adresini kullanır. */
+  const LOGO = join(DIST, 'email', 'pixelon-logo.png');
+
+  test('logo yayınlanır ve gerçek bir PNG dosyasıdır', () => {
+    expect(existsSync(LOGO)).toBe(true);
+    expect([...readFileSync(LOGO).subarray(0, 4)]).toEqual([0x89, 0x50, 0x4e, 0x47]);
+  });
+
+  test('sitemap e-posta görsellerini listelemez', () => {
+    const xml = readdirSync(DIST)
+      .filter((file) => file.startsWith('sitemap'))
+      .map((file) => readFileSync(join(DIST, file), 'utf8'))
+      .join('\n');
+    expect(xml).not.toContain('/email/');
+  });
+});
+
 describe('checklist PDF indirmesi', () => {
   /* E-postalardaki bağlantı bu adresi kullanır; dosya taşınırsa e-postalar kırılır. */
   const PDF = join(DIST, 'rehber', 'indir', 'hekimler-dijital-gorunurluk-checklisti.pdf');

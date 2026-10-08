@@ -44,6 +44,16 @@ https://:version.:subdomain.workers.dev/*
   Cache-Control: public, max-age=2592000
 
 # ---------------------------------------------------------------------------
+# 3a) E-POSTA GÖRSELLERİ — bir ay
+#
+# MailerLite e-posta şablonları logoyu buradan çeker (`/email/pixelon-logo.png`).
+# Parmak izli değil; `/media/*` gibi bir ay. Değişirse dosya adı değiştirilir, çünkü
+# gönderilmiş e-postalar eski adresi kullanmaya devam eder.
+# ---------------------------------------------------------------------------
+/email/*
+  Cache-Control: public, max-age=2592000
+
+# ---------------------------------------------------------------------------
 # 3b) REHBER İNDİRMELERİ — noindex
 #
 # Checklist PDF'leri e-postalardaki indirme bağlantısı için yayında durur ama arama

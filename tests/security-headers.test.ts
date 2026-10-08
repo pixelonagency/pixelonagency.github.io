@@ -89,3 +89,16 @@ describe('rehber indirmeleri', () => {
     expect(blockFor('/rehber/indir/*')).toContain('X-Robots-Tag: noindex');
   });
 });
+
+describe('e-posta görselleri', () => {
+  /*
+   * MailerLite şablonları logoyu sitemizden çeker. Dosya adı parmak izli değil, bu yüzden
+   * bir yıl değil `/media/*` ile aynı bir ay önbellek: değişirse dosya adı değiştirilir.
+   */
+  test('/email/* bir ay önbelleğe alınır', () => {
+    const lines = headers.split('\n');
+    const start = lines.findIndex((line) => line.trim() === '/email/*');
+    expect(start).toBeGreaterThan(-1);
+    expect(lines[start + 1]?.trim()).toBe('Cache-Control: public, max-age=2592000');
+  });
+});
