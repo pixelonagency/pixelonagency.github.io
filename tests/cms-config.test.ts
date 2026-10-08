@@ -3,7 +3,9 @@ import { existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { PAGE_SECTION_TYPES } from '../src/content/page-schema';
+import { checklistSchema, rehberSchema } from '../src/content/rehber-schema';
 import { DEFAULT_LOCALE, PUBLISHED_LOCALES } from '../src/lib/i18n';
+import { REHBER_AUDIENCES, REHBER_SECTORS, REHBER_STATUSES } from '../src/lib/rehber';
 import {
   makePostSchema,
   makeProjectSchema,
@@ -166,11 +168,13 @@ describe('config structure', () => {
   test('declares every collection the Astro content config defines', () => {
     expect(config.collections.map((entry) => entry.name).sort()).toEqual([
       'categories',
+      'checklists',
       'legal',
       'pages',
       'posts',
       'projects',
       'references',
+      'rehber',
       'services',
       'settings',
       'subpages',
@@ -530,4 +534,47 @@ describe('pages collection mirrors the page section vocabulary', () => {
     const formId = form?.fields?.find((field) => field.name === 'formId') as { options?: string[] } | undefined;
     expect(formId?.options).toEqual(['contact', 'analysis']);
   });
+});
+
+describe('rehber and checklists collections mirror their schemas', () => {
+  const options = (name: string, field: string): string[] => {
+    const found = collection(name).fields?.find((entry) => entry.name === field) as
+      { options?: (string | { value: string })[] } | undefined;
+    return (found?.options ?? []).map((option) => (typeof option === 'string' ? option : option.value));
+  };
+
+  test('rehber exposes the schema fields plus the markdown body', () => {
+    const names = fieldNames(collection('rehber').fields ?? []).filter((name) => name !== 'body');
+    expect(names).toEqual(schemaKeys(rehberSchema));
+    expect(fieldNames(collection('rehber').fields ?? [])).toContain('body');
+  });
+
+  test('checklists exposes the schema fields', () => {
+    expect(fieldNames(collection('checklists').fields ?? [])).toEqual(schemaKeys(checklistSchema));
+  });
+
+  test('checklist sections expose heading, note and items', () => {
+    const sections = collection('checklists').fields?.find((field) => field.name === 'bolumler');
+    expect(fieldNames(sections?.fields ?? [])).toEqual(['baslik', 'maddeler', 'not']);
+  });
+
+  for (const name of ['rehber', 'checklists']) {
+    test(`${name} offers exactly the statuses, sectors and audiences the schema allows`, () => {
+      expect(options(name, 'durum')).toEqual([...REHBER_STATUSES]);
+      expect(options(name, 'sektor')).toEqual([...REHBER_SECTORS]);
+      expect(options(name, 'kitle')).toEqual([...REHBER_AUDIENCES]);
+    });
+
+    test(`${name} writes the file name from the slug field and starts entries as drafts`, () => {
+      const entry = collection(name);
+      expect(entry.slug).toBe('{{fields.slug}}');
+      expect(entry.folder).toBe(`src/content/${name}`);
+      const durum = entry.fields?.find((field) => field.name === 'durum') as { default?: string } | undefined;
+      expect(durum?.default).toBe('taslak');
+    });
+
+    test(`${name} opts into i18n so Sveltia reads the locale folders`, () => {
+      expect(collection(name).i18n).toBe(true);
+    });
+  }
 });

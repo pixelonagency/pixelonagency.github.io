@@ -1245,6 +1245,134 @@ collections:
       - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text, required: false, i18n: true }
       - *f_sections
 
+  # --- Rehber (sektör rehberleri) ----------------------------------------
+  # `/rehber/<sektör>/<kitle>/<slug>/`. Dosya adı "Adres (slug)" alanından yazılır.
+  # Yeni yazı TASLAK başlar; yalnızca durum "Yayında" yapıldığında siteye çıkar.
+  # Merkez, sektör ve kitle sayfaları içerikten kendiliğinden üretilir.
+  - name: rehber
+    icon: menu_book
+    label: Rehber Yazıları
+    label_singular: Rehber Yazısı
+    folder: src/content/rehber
+    extension: md
+    create: true
+    slug: '{{fields.slug}}'
+    identifier_field: title
+    sortable_fields: [yayin_tarihi, title]
+    i18n: true
+    fields:
+      - { label: Başlık, name: title, widget: string, i18n: true }
+      - { label: Açıklama, name: description, widget: text, i18n: true, hint: 'Meta açıklama ve liste özeti, 140-155 karakter.' }
+      - { label: Adres (slug), name: slug, widget: string, i18n: duplicate, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf, rakam ve tire.'] }
+      - label: Sektör
+        name: sektor
+        widget: select
+        default: saglik
+        options:
+          - { label: Sağlık, value: saglik }
+        i18n: duplicate
+      - label: Kitle
+        name: kitle
+        widget: select
+        options:
+          - { label: Hekimler, value: hekimler }
+          - { label: Klinikler, value: klinikler }
+          - { label: Hastaneler, value: hastaneler }
+          - { label: Sağlık Turizmi, value: saglik-turizmi }
+        i18n: duplicate
+      - { label: Seri, name: seri, widget: string, i18n: true }
+      - { label: Okuma Süresi (dakika), name: okuma_suresi, widget: number, value_type: int, min: 1, i18n: duplicate }
+      - label: Yayın Tarihi
+        name: yayin_tarihi
+        widget: datetime
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        picker_utc: true
+        i18n: duplicate
+      - label: Durum
+        name: durum
+        widget: select
+        default: taslak
+        options:
+          - { label: Taslak, value: taslak }
+          - { label: Yayında, value: yayinda }
+        i18n: duplicate
+      - { label: Hukuk Kontrolü Yapıldı, name: hukuk_kontrolu, widget: boolean, default: false, i18n: duplicate }
+      - label: Bağlı Checklist
+        name: checklist
+        widget: relation
+        collection: checklists
+        value_field: slug
+        search_fields: [title]
+        display_fields: [title]
+        required: false
+        i18n: duplicate
+      - { label: İçerik, name: body, widget: markdown, i18n: true }
+
+  # --- Checklistler ---------------------------------------------------------
+  # Kitle sayfasının altında açılan kayıt formlu sayfa. Sayfada yalnızca ilk bölüm
+  # önizleme olarak görünür; listenin tamamı e-postayla gönderilir.
+  - name: checklists
+    icon: checklist
+    label: Checklistler
+    label_singular: Checklist
+    folder: src/content/checklists
+    extension: yml
+    format: yaml
+    create: true
+    slug: '{{fields.slug}}'
+    identifier_field: title
+    i18n: true
+    fields:
+      - { label: Başlık, name: title, widget: string, i18n: true }
+      - { label: Açıklama, name: description, widget: text, i18n: true, hint: 'Meta açıklama ve liste özeti, 140-155 karakter.' }
+      - { label: Adres (slug), name: slug, widget: string, i18n: duplicate, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Yalnızca küçük harf, rakam ve tire.'] }
+      - label: Sektör
+        name: sektor
+        widget: select
+        default: saglik
+        options:
+          - { label: Sağlık, value: saglik }
+        i18n: duplicate
+      - label: Kitle
+        name: kitle
+        widget: select
+        options:
+          - { label: Hekimler, value: hekimler }
+          - { label: Klinikler, value: klinikler }
+          - { label: Hastaneler, value: hastaneler }
+          - { label: Sağlık Turizmi, value: saglik-turizmi }
+        i18n: duplicate
+      - label: Durum
+        name: durum
+        widget: select
+        default: taslak
+        options:
+          - { label: Taslak, value: taslak }
+          - { label: Yayında, value: yayinda }
+        i18n: duplicate
+      - { label: Hukuk Kontrolü Yapıldı, name: hukuk_kontrolu, widget: boolean, default: false, i18n: duplicate }
+      - { label: Süre (dakika), name: sure_dakika, widget: number, value_type: int, min: 1, i18n: duplicate }
+      - { label: Giriş Metni, name: intro, widget: text, i18n: true }
+      - label: Bölümler
+        name: bolumler
+        widget: list
+        i18n: true
+        hint: 'İlk bölüm sayfada önizleme olarak açık görünür.'
+        fields:
+          - { label: Bölüm Başlığı, name: baslik, widget: string }
+          - { label: Editör Notu (sitede görünmez), name: not, widget: string, required: false }
+          - { label: Maddeler, name: maddeler, widget: list, field: { label: Madde, name: madde, widget: string } }
+      - label: Puanlama
+        name: puanlama
+        widget: list
+        required: false
+        i18n: true
+        fields:
+          - { label: Puan Aralığı, name: aralik, widget: string }
+          - { label: Metin, name: metin, widget: text }
+      - { label: Sonraki Adım, name: sonraki_adim, widget: text, required: false, i18n: true }
+
   # --- Projeler -----------------------------------------------------------
   - name: projects
     icon: work
