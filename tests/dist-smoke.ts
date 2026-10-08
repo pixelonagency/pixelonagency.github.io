@@ -1573,8 +1573,26 @@ describe('rehber taslakları yayına çıkmaz', () => {
 
   test('yayında rehber içeriği yokken rehber merkezi ve alt sayfaları hiç üretilmez', () => {
     if (entries.some(({ published }) => published)) return;
-    expect(existsSync(join(DIST, 'rehber'))).toBe(false);
+    expect(existsSync(join(DIST, 'rehber', 'index.html'))).toBe(false);
     expect(sitemap()).not.toContain('/rehber/');
+  });
+});
+
+describe('checklist PDF indirmesi', () => {
+  /* E-postalardaki bağlantı bu adresi kullanır; dosya taşınırsa e-postalar kırılır. */
+  const PDF = join(DIST, 'rehber', 'indir', 'hekimler-dijital-gorunurluk-checklisti.pdf');
+
+  test('PDF yayınlanır ve gerçek bir PDF dosyasıdır', () => {
+    expect(existsSync(PDF)).toBe(true);
+    expect(readFileSync(PDF).subarray(0, 5).toString()).toBe('%PDF-');
+  });
+
+  test('sitemap hiçbir PDF listelemez', () => {
+    const xml = readdirSync(DIST)
+      .filter((file) => file.startsWith('sitemap'))
+      .map((file) => readFileSync(join(DIST, file), 'utf8'))
+      .join('\n');
+    expect(xml).not.toContain('.pdf');
   });
 });
 

@@ -67,3 +67,25 @@ describe('güvenlik başlıkları', () => {
     expect(value).not.toContain('preload');
   });
 });
+
+describe('rehber indirmeleri', () => {
+  /*
+   * Checklist PDF'leri e-postadaki bağlantı için yayında durur ama arama sonucunda
+   * çıkmamalı: içerik formun karşılığıdır, formu atlayan bir giriş kapısı olmamalı.
+   */
+  const blockFor = (pattern: string): string[] => {
+    const lines = headers.split('\n');
+    const start = lines.findIndex((line) => line.trim() === pattern);
+    if (start === -1) return [];
+    const out: string[] = [];
+    for (const line of lines.slice(start + 1)) {
+      if (!/^\s+\S/.test(line)) break;
+      out.push(line.trim());
+    }
+    return out;
+  };
+
+  test('/rehber/indir/* noindex başlığıyla sunulur', () => {
+    expect(blockFor('/rehber/indir/*')).toContain('X-Robots-Tag: noindex');
+  });
+});

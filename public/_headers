@@ -44,6 +44,16 @@ https://:version.:subdomain.workers.dev/*
   Cache-Control: public, max-age=2592000
 
 # ---------------------------------------------------------------------------
+# 3b) REHBER İNDİRMELERİ — noindex
+#
+# Checklist PDF'leri e-postalardaki indirme bağlantısı için yayında durur ama arama
+# sonucunda çıkmamalı: dosya formun karşılığıdır, formu atlayan bir giriş olmamalı.
+# Sitemap zaten yalnızca HTML sayfaları listeler.
+# ---------------------------------------------------------------------------
+/rehber/indir/*
+  X-Robots-Tag: noindex
+
+# ---------------------------------------------------------------------------
 # 4) GÜVENLİK BAŞLIKLARI — tüm yollar
 #
 # Sıralama etkisi YOKTUR; Google güvenlik başlığına göre sıralamaz. Buradaki
