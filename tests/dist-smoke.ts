@@ -1079,9 +1079,12 @@ describe('legal pages', () => {
       // "geçici" etiketi üretime sızmamalı (sahip bilgileri kesinleşmeden bu ibare metne yazılmaz).
       if (/geçici/i.test(body)) offenders.push(`${url}: "geçici" içeriyor`);
       // m.5/2-e "meşru menfaat" DEĞİLDİR (meşru menfaat = m.5/2-f) — yanlış eşleştirme yasak.
-      if (body.includes('5/2-e') && /meşru menfaat|legitimate interest/i.test(body)) {
-        offenders.push(`${url}: 5/2-e ile meşru menfaat aynı sayfada eşleştirilmiş`);
-      }
+      // Eşleştirme hukuki sebebin yazıldığı madde/paragraf içinde aranır: aynı sayfada m.5/2-f
+      // için meşru menfaat geçmesi doğrudur (2026-10-08 ek metninde ikisi ayrı maddelerde).
+      const pairedWrongly = body
+        .split(/<\/(?:li|p)>/)
+        .some((part) => part.includes('5/2-e') && /meşru menfaat|legitimate interest/i.test(part));
+      if (pairedWrongly) offenders.push(`${url}: 5/2-e ile meşru menfaat aynı maddede eşleştirilmiş`);
       // Dil önceliği hükmü sahip/hukukçu onayı olmadan yer alamaz.
       for (const clause of [
         'Türkçe metin esas',
