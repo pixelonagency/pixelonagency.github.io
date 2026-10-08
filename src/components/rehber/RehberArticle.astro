@@ -1,0 +1,248 @@
+---
+/**
+ * Guide article. Same reading layout as a markdown blog post (`PostDetail.astro`):
+ * dark title band, then the body on the light band at reading width. Structured data
+ * reuses the blog posting node as an `Article`.
+ */
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate, isoDate } from '../../lib/format';
+import type { Locale } from '../../lib/i18n';
+import { rehberCrumbs, rehberPath, REHBER_AUDIENCE_LABELS } from '../../lib/rehber';
+import { blogPostingSchema, breadcrumbSchema } from '../../lib/schema';
+import { canonicalUrl } from '../../lib/seo';
+import { t } from '../../lib/ui';
+import RehberCrumbs from './RehberCrumbs.astro';
+
+interface Props {
+  article: CollectionEntry<'rehber'>;
+  /** The related checklist when it has a page in this build. */
+  checklist?: CollectionEntry<'checklists'> | undefined;
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+}
+
+const { article, checklist, locale, alternates } = Astro.props;
+const { title, description, sektor, kitle, seri, okuma_suresi, yayin_tarihi, durum } = article.data;
+const { Content } = await render(article);
+
+const crumbs = rehberCrumbs({ locale, sektor, kitle, title });
+const audiencePath = rehberPath(locale, sektor, kitle);
+
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const extraSchema = [
+  blogPostingSchema({
+    type: 'Article',
+    headline: title,
+    description,
+    url: canonicalUrl(Astro.url.pathname, site),
+    datePublished: isoDate(yayin_tarihi),
+    author: 'Pixelon',
+    locale,
+  }),
+  breadcrumbSchema(
+    crumbs.map((crumb) => ({ label: crumb.label, url: crumb.href ? new URL(crumb.href, site).toString() : undefined })),
+  ),
+];
+---
+
+<BaseLayout title={`${title} | Pixelon Rehber`} {description} ogType="article" {locale} {alternates} {extraSchema}>
+  <article class="ra">
+    <header class="ra__head">
+      <div class="container ra__inner">
+        <RehberCrumbs {crumbs} {locale} />
+        {durum === 'taslak' && <p class="ra__draft">Taslak, yalnızca önizleme</p>}
+        <p class="ra__chip">{seri}</p>
+        <h1 class="ra__title">{title}</h1>
+        <p class="lead ra__excerpt">{description}</p>
+        <div class="ra__meta">
+          <span>{REHBER_AUDIENCE_LABELS[kitle]}</span>
+          <time datetime={isoDate(yayin_tarihi)}>{formatDate(yayin_tarihi, locale)}</time>
+          <span>{okuma_suresi} {t('blog.readingTime', locale)}</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="ra__article">
+      <div class="container ra__inner">
+        <div class="ra__body">
+          <Content />
+        </div>
+
+        {
+          checklist && (
+            <aside class="ra__checklist" aria-labelledby="ra-checklist-title">
+              <p class="ra__checklist-eyebrow">Kontrol listesi</p>
+              <p class="ra__checklist-title" id="ra-checklist-title">
+                {checklist.data.title}
+              </p>
+              <p class="ra__checklist-text">{checklist.data.description}</p>
+              <a class="btn btn--primary" href={rehberPath(locale, sektor, kitle, checklist.data.slug)}>
+                Checklisti alın <span aria-hidden="true">→</span>
+              </a>
+            </aside>
+          )
+        }
+
+        <a class="btn btn--outline ra__back" href={audiencePath}>
+          ← {REHBER_AUDIENCE_LABELS[kitle]} rehberine dön
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .ra__head {
+    padding: clamp(40px, 5vw, 64px) 0 clamp(40px, 5vw, 56px);
+  }
+
+  .ra__inner {
+    max-width: 820px;
+  }
+
+  .ra__draft {
+    display: inline-block;
+    margin: 0 12px 0 0;
+    padding: 6px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    font: 600 12px var(--font-display);
+    color: var(--text-soft);
+  }
+
+  /* Series chip: same treatment as the blog category chip. */
+  .ra__chip {
+    display: inline-block;
+    margin: 0;
+    padding: 6px 14px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-pill);
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .ra__title {
+    margin: 22px 0 0;
+    font: 600 clamp(28px, 4vw, 44px) / 1.2 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .ra__excerpt {
+    margin-top: 20px;
+  }
+
+  .ra__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-top: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    font: 500 13.5px var(--font-display);
+    color: var(--text-faint);
+  }
+
+  .ra__article {
+    background: var(--bg-light);
+    color: var(--text-on-light);
+    padding: clamp(48px, 6vw, 72px) 0 clamp(72px, 9vw, 110px);
+  }
+
+  /* Body copy matches the markdown blog body: 18/1.75, dark on the light band. */
+  .ra__body {
+    font-size: 18px;
+    line-height: 1.75;
+    color: rgba(10, 10, 10, 0.8);
+  }
+
+  .ra__body > :global(:first-child) {
+    margin-top: 0;
+  }
+
+  .ra__body :global(h2) {
+    margin: 44px 0 16px;
+    font: 600 clamp(22px, 2.4vw, 28px) / 1.3 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--text-on-light);
+  }
+
+  .ra__body :global(h3) {
+    margin: 32px 0 12px;
+    font: 600 19px var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .ra__body :global(p) {
+    margin: 0 0 20px;
+  }
+
+  .ra__body :global(ul),
+  .ra__body :global(ol) {
+    margin: 0 0 22px;
+    padding-left: 22px;
+  }
+
+  .ra__body :global(li) {
+    margin-bottom: 10px;
+  }
+
+  .ra__body :global(strong),
+  .ra__body :global(a) {
+    color: var(--text-on-light);
+  }
+
+  .ra__body :global(blockquote) {
+    margin: 28px 0;
+    padding: 4px 0 4px 22px;
+    border-left: 2px solid var(--accent);
+    font-size: 17px;
+    color: rgba(10, 10, 10, 0.75);
+  }
+
+  .ra__checklist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 48px;
+    padding: clamp(28px, 4vw, 40px);
+    border-radius: var(--radius-feature);
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .ra__checklist-eyebrow {
+    margin: 0;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .ra__checklist-title {
+    margin: 0;
+    font: 600 clamp(21px, 2.4vw, 26px) / 1.25 var(--font-display);
+  }
+
+  .ra__checklist-text {
+    margin: 0 0 8px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  .ra__back {
+    margin-top: 44px;
+    border-color: rgba(10, 10, 10, 0.25);
+    color: var(--text-on-light);
+  }
+
+  .ra__back:hover {
+    border-color: var(--text-on-light);
+    color: var(--text-on-light);
+  }
+</style>

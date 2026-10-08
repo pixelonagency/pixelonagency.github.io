@@ -1,0 +1,243 @@
+---
+/**
+ * Guide listing page: the hub (sectors), a sector (audiences) and an audience
+ * (its articles and checklists) share this one layout. The caller passes the cards;
+ * this component only draws them.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Locale } from '../../lib/i18n';
+import { breadcrumbSchema } from '../../lib/schema';
+import RehberCrumbs from './RehberCrumbs.astro';
+
+interface Card {
+  href: string;
+  title: string;
+  description: string;
+  /** Short line under the description, e.g. reading time. */
+  meta?: string | undefined;
+  /** Small label above the title, e.g. the article series. */
+  eyebrow?: string | undefined;
+  /** Drafts appear only on the dev server; the badge says so. */
+  draft?: boolean | undefined;
+}
+
+interface Props {
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+  crumbs: { label: string; href?: string }[];
+  eyebrow: string;
+  title: string;
+  description: string;
+  /** Heading above the main card grid; omitted on the hub. */
+  listHeading?: string | undefined;
+  cards: Card[];
+  /** Shown when `cards` is empty (dev preview of an audience without content). */
+  emptyText?: string | undefined;
+  checklistHeading?: string | undefined;
+  checklists?: Card[] | undefined;
+}
+
+const {
+  locale,
+  alternates,
+  crumbs,
+  eyebrow,
+  title,
+  description,
+  listHeading,
+  cards,
+  emptyText,
+  checklistHeading,
+  checklists = [],
+} = Astro.props;
+
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const extraSchema = [
+  breadcrumbSchema(
+    crumbs.map((crumb) => ({ label: crumb.label, url: crumb.href ? new URL(crumb.href, site).toString() : undefined })),
+  ),
+];
+---
+
+<BaseLayout title={`${title} | Pixelon`} {description} {locale} {alternates} {extraSchema}>
+  <header class="rx__head">
+    <div class="container rx__inner">
+      <RehberCrumbs {crumbs} {locale} />
+      <p class="eyebrow rx__eyebrow">{eyebrow}</p>
+      <h1 class="rx__title">{title}</h1>
+      <p class="lead rx__lead">{description}</p>
+    </div>
+  </header>
+
+  {
+    checklists.length > 0 && (
+      <section class="rx__section" aria-labelledby="rx-checklists">
+        <div class="container">
+          <h2 class="rx__heading" id="rx-checklists">
+            {checklistHeading}
+          </h2>
+          <ul class="rx__grid" role="list">
+            {checklists.map((card) => (
+              <li>
+                <a class="card rx__card rx__card--feature" href={card.href}>
+                  {card.draft && <span class="rx__draft">Taslak, yalnızca önizleme</span>}
+                  <span class="rx__card-title">{card.title}</span>
+                  <span class="rx__card-text">{card.description}</span>
+                  {card.meta && <span class="rx__card-meta">{card.meta}</span>}
+                  <span class="rx__card-more" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="rx__section" aria-labelledby={listHeading ? 'rx-list' : undefined}>
+    <div class="container">
+      {
+        listHeading && (
+          <h2 class="rx__heading" id="rx-list">
+            {listHeading}
+          </h2>
+        )
+      }
+      {
+        cards.length > 0 ? (
+          <ul class="rx__grid" role="list">
+            {cards.map((card) => (
+              <li>
+                <a class="card rx__card" href={card.href}>
+                  {card.draft && <span class="rx__draft">Taslak, yalnızca önizleme</span>}
+                  {card.eyebrow && <span class="rx__card-eyebrow">{card.eyebrow}</span>}
+                  <span class="rx__card-title">{card.title}</span>
+                  <span class="rx__card-text">{card.description}</span>
+                  {card.meta && <span class="rx__card-meta">{card.meta}</span>}
+                  <span class="rx__card-more" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          emptyText && <p class="rx__empty">{emptyText}</p>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .rx__head {
+    padding: clamp(40px, 5vw, 64px) 0 clamp(24px, 3vw, 36px);
+  }
+
+  .rx__inner {
+    max-width: 820px;
+  }
+
+  .rx__eyebrow {
+    margin-top: 22px;
+  }
+
+  .rx__title {
+    margin: 0;
+    font: 600 clamp(30px, 4.4vw, 52px) / 1.12 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .rx__lead {
+    margin-top: 20px;
+  }
+
+  .rx__section {
+    padding: clamp(24px, 3vw, 40px) 0 clamp(60px, 7vw, 90px);
+  }
+
+  .rx__section + .rx__section {
+    padding-top: 0;
+  }
+
+  .rx__heading {
+    margin: 0 0 24px;
+    font: 600 var(--fs-h3) var(--font-display);
+    color: var(--text);
+  }
+
+  .rx__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: var(--gap-card);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rx__grid > li {
+    display: flex;
+  }
+
+  .rx__card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .rx__card--feature {
+    background-image: radial-gradient(ellipse 80% 90% at 0% 0%, var(--accent-soft), transparent 70%);
+  }
+
+  .rx__card-eyebrow {
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .rx__card-title {
+    font: 600 clamp(19px, 1.8vw, 22px) / 1.3 var(--font-display);
+  }
+
+  .rx__card-text {
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  .rx__card-meta {
+    font: 500 13.5px var(--font-display);
+    color: var(--text-faint);
+  }
+
+  .rx__card-more {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 20px;
+    color: var(--accent);
+  }
+
+  .rx__draft {
+    align-self: flex-start;
+    padding: 4px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    font: 600 12px var(--font-display);
+    color: var(--text-soft);
+  }
+
+  .rx__empty {
+    margin: 0;
+    padding: 28px 30px;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-card);
+    color: var(--text-muted);
+  }
+</style>

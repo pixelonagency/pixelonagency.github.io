@@ -30,6 +30,43 @@ export const REHBER_AUDIENCE_LABELS: Record<RehberAudience, string> = {
   'saglik-turizmi': 'Sağlık Turizmi',
 };
 
+/**
+ * Copy for the generated hub, sector and audience pages (title, meta description, intro).
+ * Draft wording: these pages have no CMS entry because they only list content.
+ */
+export const REHBER_HUB_COPY = {
+  title: 'Sektör Rehberleri',
+  description:
+    'Sektörünüze özel dijital görünürlük rehberleri ve kontrol listeleri: hastanızın ya da müşterinizin sizi bulduğu yerde ne gördüğünü adım adım kontrol edin.',
+};
+
+export const REHBER_SECTOR_COPY: Record<RehberSector, { title: string; description: string }> = {
+  saglik: {
+    title: 'Sağlık Rehberi',
+    description:
+      'Hekimler, klinikler, hastaneler ve sağlık turizmi kurumları için dijital görünürlük rehberleri ve kontrol listeleri.',
+  },
+};
+
+export const REHBER_AUDIENCE_COPY: Record<RehberAudience, { title: string; description: string }> = {
+  hekimler: {
+    title: 'Hekimler için Rehber',
+    description: 'Muayenehane hekimleri ve kendi adıyla çalışan uzmanlar için dijital görünürlük rehberleri.',
+  },
+  klinikler: {
+    title: 'Klinikler için Rehber',
+    description: 'Poliklinik, diş ve estetik klinikleri için dijital görünürlük rehberleri.',
+  },
+  hastaneler: {
+    title: 'Hastaneler için Rehber',
+    description: 'Özel hastanelerin pazarlama ve iletişim ekipleri için dijital görünürlük rehberleri.',
+  },
+  'saglik-turizmi': {
+    title: 'Sağlık Turizmi Rehberi',
+    description: 'Yurt dışından hasta kabul eden kurumlar için dijital görünürlük rehberleri.',
+  },
+};
+
 /** `/rehber/`, `/rehber/<sektor>/`, `/rehber/<sektor>/<kitle>/`, `/rehber/<sektor>/<kitle>/<slug>/` */
 export const rehberPath = (locale: Locale, ...segments: string[]): string =>
   localizedPath('guide', locale, segments.join('/') || undefined);
@@ -131,4 +168,119 @@ export function buildRehberTree<A extends TreeArticle, C extends TreeEntry>({
       checklists: checklists.filter((entry) => entry.data.sektor === sektor && entry.data.kitle === kitle),
     })).filter((node) => dev || node.articles.length > 0 || node.checklists.length > 0),
   })).filter((node) => dev || node.audiences.length > 0);
+}
+
+interface ListedArticle extends TreeArticle {
+  data: TreeArticle['data'] & {
+    slug: string;
+    title: string;
+    description: string;
+    seri: string;
+    okuma_suresi: number;
+    durum: RehberStatus;
+  };
+}
+
+interface ListedChecklist extends TreeEntry {
+  data: TreeEntry['data'] & {
+    slug: string;
+    title: string;
+    description: string;
+    sure_dakika: number;
+    durum: RehberStatus;
+  };
+}
+
+/** One listing page: the hub (tree only), a sector, or an audience inside a sector. */
+export interface RehberLevel<A, C> {
+  tree: RehberSectorNode<A, C>[];
+  sector?: RehberSectorNode<A, C> | undefined;
+  audience?: RehberAudienceNode<A, C> | undefined;
+}
+
+interface RehberCard {
+  href: string;
+  title: string;
+  description: string;
+  meta?: string | undefined;
+  eyebrow?: string | undefined;
+  draft?: boolean | undefined;
+}
+
+interface RehberIndexView {
+  crumbs: { label: string; href?: string }[];
+  eyebrow: string;
+  title: string;
+  description: string;
+  listHeading?: string | undefined;
+  emptyText?: string | undefined;
+  cards: RehberCard[];
+  checklistHeading?: string | undefined;
+  checklists?: RehberCard[] | undefined;
+}
+
+/**
+ * What a listing page shows. Cards are derived from the same tree that produced the
+ * routes, so a listing can never link to a page that was not built.
+ */
+export function rehberIndexView<A extends ListedArticle, C extends ListedChecklist>(
+  locale: Locale,
+  { tree, sector, audience }: RehberLevel<A, C>,
+): RehberIndexView {
+  if (sector && audience) {
+    const copy = REHBER_AUDIENCE_COPY[audience.kitle];
+    return {
+      crumbs: rehberCrumbs({ locale, sektor: sector.sektor, kitle: audience.kitle }),
+      eyebrow: `${REHBER_LABEL} · ${REHBER_SECTOR_LABELS[sector.sektor]}`,
+      title: copy.title,
+      description: copy.description,
+      listHeading: 'Yazılar',
+      emptyText: 'Bu kitle için henüz yayında yazı yok.',
+      cards: audience.articles.map((entry) => ({
+        href: rehberPath(locale, sector.sektor, audience.kitle, entry.data.slug),
+        eyebrow: entry.data.seri,
+        title: entry.data.title,
+        description: entry.data.description,
+        meta: `${entry.data.okuma_suresi} ${t('blog.readingTime', locale)}`,
+        draft: entry.data.durum === 'taslak',
+      })),
+      checklistHeading: 'Kontrol listesi',
+      checklists: audience.checklists.map((entry) => ({
+        href: rehberPath(locale, sector.sektor, audience.kitle, entry.data.slug),
+        title: entry.data.title,
+        description: entry.data.description,
+        meta: `${entry.data.sure_dakika} dakikada doldurulur`,
+        draft: entry.data.durum === 'taslak',
+      })),
+    };
+  }
+
+  if (sector) {
+    const copy = REHBER_SECTOR_COPY[sector.sektor];
+    return {
+      crumbs: rehberCrumbs({ locale, sektor: sector.sektor }),
+      eyebrow: REHBER_LABEL,
+      title: copy.title,
+      description: copy.description,
+      listHeading: 'Kime göre?',
+      cards: sector.audiences.map((node) => ({
+        href: rehberPath(locale, sector.sektor, node.kitle),
+        title: REHBER_AUDIENCE_LABELS[node.kitle],
+        description: REHBER_AUDIENCE_COPY[node.kitle].description,
+        meta: node.articles.length > 0 ? `${node.articles.length} yazı` : undefined,
+      })),
+    };
+  }
+
+  return {
+    crumbs: rehberCrumbs({ locale }),
+    eyebrow: REHBER_LABEL,
+    title: REHBER_HUB_COPY.title,
+    description: REHBER_HUB_COPY.description,
+    cards: tree.map((node) => ({
+      href: rehberPath(locale, node.sektor),
+      title: REHBER_SECTOR_LABELS[node.sektor],
+      description: REHBER_SECTOR_COPY[node.sektor].description,
+    })),
+  };
 }

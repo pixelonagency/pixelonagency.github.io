@@ -1,0 +1,55 @@
+---
+/**
+ * Visible breadcrumb for every guide page. The same list feeds the BreadcrumbList
+ * JSON-LD in the page component, so names and order cannot drift apart.
+ */
+import type { Locale } from '../../lib/i18n';
+import { t } from '../../lib/ui';
+
+interface Props {
+  crumbs: { label: string; href?: string }[];
+  locale: Locale;
+}
+
+const { crumbs, locale } = Astro.props;
+---
+
+<nav class="rehber-crumbs" aria-label={t('nav.breadcrumb', locale)}>
+  {
+    crumbs.map((crumb, index) => (
+      <>
+        {index > 0 && <span aria-hidden="true">/</span>}
+        {crumb.href ? <a href={crumb.href}>{crumb.label}</a> : <span aria-current="page">{crumb.label}</span>}
+      </>
+    ))
+  }
+</nav>
+
+<style>
+  .rehber-crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font: 500 13px var(--font-display);
+    color: var(--text-faint);
+    margin-bottom: 11px;
+  }
+
+  .rehber-crumbs a {
+    /* Touch target reaches 24 px (WCAG 2.5.8), same as the blog breadcrumb. */
+    padding-block: 5px;
+    min-width: 24px;
+    color: var(--text-faint);
+    text-decoration: none;
+    transition: color var(--t-base);
+  }
+
+  .rehber-crumbs a:hover {
+    color: var(--accent);
+  }
+
+  .rehber-crumbs [aria-current] {
+    color: var(--text-soft);
+  }
+</style>

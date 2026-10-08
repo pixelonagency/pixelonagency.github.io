@@ -81,16 +81,23 @@ const subpages = defineCollection({
   schema: ({ image }) => makeSubpageSchema(image),
 });
 
+/*
+ * The guide collections carry a `slug` field, and the glob loader would use it as the
+ * entry id, dropping the `<locale>/` prefix every route relies on. The id is taken from
+ * the file path instead, like every other collection here.
+ */
+const idFromPath = ({ entry }: { entry: string }): string => entry.replace(/\.(md|yml)$/, '');
+
 // Sector guide articles — `/rehber/<sektor>/<kitle>/<slug>/`. The file name is the
 // `slug` field; drafts (`durum: taslak`) are built only by the dev server.
 const rehber = defineCollection({
-  loader: glob({ pattern: '*/*.md', base: `${CONTENT}/rehber` }),
+  loader: glob({ pattern: '*/*.md', base: `${CONTENT}/rehber`, generateId: idFromPath }),
   schema: rehberSchema,
 });
 
 // Gated checklists shown as a landing page with a sign-up form under their audience.
 const checklists = defineCollection({
-  loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/checklists` }),
+  loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/checklists`, generateId: idFromPath }),
   schema: checklistSchema,
 });
 

@@ -1,5 +1,12 @@
 import { describe, expect, test } from 'bun:test';
-import { buildRehberTree, isChecklistBuilt, isRehberEntryBuilt, rehberCrumbs, rehberPath } from './rehber';
+import {
+  buildRehberTree,
+  isChecklistBuilt,
+  isRehberEntryBuilt,
+  rehberCrumbs,
+  rehberIndexView,
+  rehberPath,
+} from './rehber';
 
 describe('rehber adresleri', () => {
   test('merkez, sektör, kitle ve yazı aynı ağaçta durur', () => {
@@ -130,5 +137,69 @@ describe('rehber ağacı', () => {
     });
     const hekimler = tree[0]?.audiences.find((audience) => audience.kitle === 'hekimler');
     expect(hekimler?.articles.map((entry) => entry.data.slug)).toEqual(['yeni', 'eski']);
+  });
+});
+
+describe('rehber listeleme görünümü', () => {
+  const article = (slug: string, durum: 'taslak' | 'yayinda') => ({
+    id: `tr/${slug}`,
+    data: {
+      slug,
+      sektor: 'saglik' as const,
+      kitle: 'hekimler' as const,
+      yayin_tarihi: new Date('2026-10-01'),
+      title: `Yazı ${slug}`,
+      description: 'Özet',
+      seri: 'Seri',
+      okuma_suresi: 5,
+      durum,
+    },
+  });
+  const checklist = {
+    id: 'tr/dijital-gorunurluk-checklisti',
+    data: {
+      slug: 'dijital-gorunurluk-checklisti',
+      sektor: 'saglik' as const,
+      kitle: 'hekimler' as const,
+      title: 'Checklist',
+      description: 'Özet',
+      sure_dakika: 20,
+      durum: 'taslak' as const,
+    },
+  };
+
+  test('merkez sayfası sektörleri listeler', () => {
+    const tree = buildRehberTree({ articles: [article('a', 'yayinda')], checklists: [], dev: false });
+    const view = rehberIndexView('tr', { tree });
+    expect(view.title).toBe('Sektör Rehberleri');
+    expect(view.cards.map((card) => card.href)).toEqual(['/rehber/saglik/']);
+    expect(view.crumbs.at(-1)).toEqual({ label: 'Rehber' });
+  });
+
+  test('sektör sayfası kitleleri listeler', () => {
+    const tree = buildRehberTree({ articles: [article('a', 'yayinda')], checklists: [], dev: false });
+    const view = rehberIndexView('tr', { tree, sector: tree[0] });
+    expect(view.cards.map((card) => card.title)).toEqual(['Hekimler']);
+    expect(view.cards[0]?.href).toBe('/rehber/saglik/hekimler/');
+  });
+
+  test('kitle sayfası yazılarını ve checklistini listeler, taslakları işaretler', () => {
+    const tree = buildRehberTree({
+      articles: [article('yayinda-yazi', 'yayinda'), article('taslak-yazi', 'taslak')],
+      checklists: [checklist],
+      dev: true,
+    });
+    const sector = tree[0];
+    const audience = sector?.audiences.find((node) => node.kitle === 'hekimler');
+    const view = rehberIndexView('tr', { tree, sector, audience });
+
+    expect(view.title).toBe('Hekimler için Rehber');
+    expect(view.cards.map((card) => [card.href, card.draft])).toEqual([
+      ['/rehber/saglik/hekimler/yayinda-yazi/', false],
+      ['/rehber/saglik/hekimler/taslak-yazi/', true],
+    ]);
+    expect(view.checklists?.map((card) => [card.href, card.draft])).toEqual([
+      ['/rehber/saglik/hekimler/dijital-gorunurluk-checklisti/', true],
+    ]);
   });
 });
