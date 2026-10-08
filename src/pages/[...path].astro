@@ -11,9 +11,18 @@ import SubpageDetail from '../components/SubpageDetail.astro';
 import { isSubpageBuilt, subpagePath } from '../lib/subpages';
 import { categoriesWithPages, categoryPath } from '../lib/blog-categories';
 import PortfolioViewer from '../components/PortfolioViewer.astro';
+import ChecklistPage from '../components/rehber/ChecklistPage.astro';
 import RehberArticle from '../components/rehber/RehberArticle.astro';
 import RehberIndex from '../components/rehber/RehberIndex.astro';
-import { buildRehberTree, isRehberEntryBuilt, rehberIndexView, rehberPath, type RehberLevel } from '../lib/rehber';
+import { CHECKLIST_FORM_ENDPOINT } from '../lib/checklist-form';
+import {
+  buildRehberTree,
+  isChecklistBuilt,
+  isRehberEntryBuilt,
+  rehberIndexView,
+  rehberPath,
+  type RehberLevel,
+} from '../lib/rehber';
 import {
   alternatesFor,
   DEFAULT_LOCALE,
@@ -60,7 +69,7 @@ export const getStaticPaths = (async () => {
   const published = <T extends { id: string }>(entries: T[]): T[] =>
     entries.filter((entry) => isPublishedLocale(splitId(entry.id).locale));
 
-  const [allServices, allPosts, allLegal, allProjects, allSubpages, allRehber] = await Promise.all([
+  const [allServices, allPosts, allLegal, allProjects, allSubpages, allRehber, allChecklists] = await Promise.all([
     getCollection('services'),
     getCollection('posts', ({ data }) => data.status === 'published'),
     getCollection('legal'),
@@ -70,6 +79,8 @@ export const getStaticPaths = (async () => {
     getCollection('subpages', ({ data }) => isSubpageBuilt(data.status, import.meta.env.DEV)),
     // Guide drafts follow the same rule: dev server only.
     getCollection('rehber', ({ data }) => isRehberEntryBuilt(data.durum, import.meta.env.DEV)),
+    // Every checklist is read: articles may name a draft one, which must still resolve.
+    getCollection('checklists'),
   ]);
 
   const services = published(allServices);
@@ -78,6 +89,10 @@ export const getStaticPaths = (async () => {
   const projects = published(allProjects);
   const subpages = published(allSubpages);
   const rehber = published(allRehber);
+  const checklistEntries = published(allChecklists);
+  const checklists = checklistEntries.filter((entry) =>
+    isChecklistBuilt(entry.data, CHECKLIST_FORM_ENDPOINT, import.meta.env.DEV),
+  );
 
   /* Yasal sayfalar `pages` koleksiyonundan değil `legal` koleksiyonundan gelir. */
   const LEGAL_KEYS = new Set(['kvkk', 'privacy', 'cookies', 'terms']);
@@ -211,8 +226,11 @@ export const getStaticPaths = (async () => {
   // content sits below it, so an empty guide ships no pages and no sitemap entries.
   // Guide content is Turkish only; it gets no hreflang alternates.
   for (const locale of PUBLISHED_LOCALES) {
-    const articles = rehber.filter((entry) => splitId(entry.id).locale === locale);
-    const tree = buildRehberTree({ articles, checklists: [], dev: import.meta.env.DEV });
+    const inLocale = <T extends { id: string }>(entries: T[]): T[] =>
+      entries.filter((entry) => splitId(entry.id).locale === locale);
+    const articles = inLocale(rehber);
+    const localeChecklists = inLocale(checklists);
+    const tree = buildRehberTree({ articles, checklists: localeChecklists, dev: import.meta.env.DEV });
     if (tree.length === 0) continue;
 
     const seen = new Set<string>();
@@ -230,10 +248,23 @@ export const getStaticPaths = (async () => {
           kind: 'rehberIndex',
           level: { tree, sector, audience },
         });
+        for (const checklist of audience.checklists) {
+          add(rehberPath(locale, sector.sektor, audience.kitle, checklist.data.slug), {
+            kind: 'rehberChecklist',
+            checklist,
+          });
+        }
         for (const article of audience.articles) {
+          /* A misspelt checklist slug stops the build; a draft checklist just gets no link. */
+          const wanted = article.data.checklist;
+          const exists = wanted && inLocale(checklistEntries).find((entry) => entry.data.slug === wanted);
+          if (wanted && !exists) {
+            throw new Error(`Guide article "${article.id}" names checklist "${wanted}", which does not exist.`);
+          }
           add(rehberPath(locale, sector.sektor, audience.kitle, article.data.slug), {
             kind: 'rehberArticle',
             article,
+            checklist: audience.checklists.find((entry) => entry.data.slug === wanted),
           });
         }
       }
@@ -264,7 +295,8 @@ const props = Astro.props as {
     | 'category'
     | 'portfolio'
     | 'rehberIndex'
-    | 'rehberArticle';
+    | 'rehberArticle'
+    | 'rehberChecklist';
   locale: Locale;
   alternates: Partial<Record<Locale, string>>;
   pageKey?: PageKey;
@@ -278,6 +310,7 @@ const props = Astro.props as {
   others?: Parameters<typeof BlogCategory>[0]['others'];
   level?: RehberLevel<CollectionEntry<'rehber'>, CollectionEntry<'checklists'>>;
   article?: CollectionEntry<'rehber'>;
+  checklist?: CollectionEntry<'checklists'>;
 };
 
 const { kind, locale = DEFAULT_LOCALE, alternates } = props;
@@ -297,7 +330,12 @@ const rehberIndex = kind === 'rehberIndex' && props.level ? rehberIndexView(loca
 {kind === 'legal' && props.legal && <LegalPage entry={props.legal} {locale} {alternates} />}
 {kind === 'portfolio' && <PortfolioViewer {locale} {alternates} />}
 {rehberIndex && <RehberIndex {locale} {alternates} {...rehberIndex} />}
-{kind === 'rehberArticle' && props.article && <RehberArticle article={props.article} {locale} {alternates} />}
+{
+  kind === 'rehberArticle' && props.article && (
+    <RehberArticle article={props.article} checklist={props.checklist} {locale} {alternates} />
+  )
+}
+{kind === 'rehberChecklist' && props.checklist && <ChecklistPage checklist={props.checklist} {locale} {alternates} />}
 {
   kind === 'category' && props.category && (
     <BlogCategory group={props.category} others={props.others ?? []} {locale} {alternates} />

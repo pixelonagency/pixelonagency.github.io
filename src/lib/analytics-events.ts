@@ -18,6 +18,11 @@ export const ANALYTICS_EVENTS = [
   'click_phone',
   'click_email',
   'click_free_analysis',
+  /*
+   * Checklist sign-up on a guide page. Deliberately NOT generate_lead: GTM forwards
+   * generate_lead to the Meta Lead conversion, and a content download is not a sales lead.
+   */
+  'request_checklist',
 ] as const;
 export type AnalyticsEvent = (typeof ANALYTICS_EVENTS)[number];
 
@@ -34,6 +39,7 @@ const INTERACTION_LOCATIONS = [
   'service_page',
   'project_page',
   'landing_page',
+  'guide_page',
 ] as const;
 export type InteractionLocation = (typeof INTERACTION_LOCATIONS)[number];
 
@@ -103,7 +109,7 @@ function isAnalysisPath(href: string): boolean {
  */
 export function resolvePageLocation(pathname: string): InteractionLocation | undefined {
   const clean = pathname.replace(/\/+$/, '');
-  const startsWithRoute = (key: 'services' | 'projects'): boolean => {
+  const startsWithRoute = (key: 'services' | 'projects' | 'guide'): boolean => {
     for (const locale of ['tr', 'en'] as Locale[]) {
       const prefix = locale === 'tr' ? '' : '/en';
       if (
@@ -126,6 +132,7 @@ export function resolvePageLocation(pathname: string): InteractionLocation | und
   if (equalsRoute('website')) return 'landing_page';
   if (startsWithRoute('services')) return 'service_page';
   if (startsWithRoute('projects')) return 'project_page';
+  if (startsWithRoute('guide')) return 'guide_page';
   return undefined;
 }
 

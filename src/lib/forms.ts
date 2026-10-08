@@ -106,3 +106,40 @@ export function validateAnalysisForm(
 
   return { valid: Object.keys(errors).length === 0, errors };
 }
+
+export interface ChecklistFormInput {
+  name: string;
+  email: string;
+  /** Title or specialty, e.g. "Dermatoloji uzmanı". */
+  title: string;
+  city?: string;
+  /** Read the KVKK notice: required. */
+  kvkk: boolean;
+  /** Marketing e-mails: optional, never required, never pre-checked. */
+  marketing: boolean;
+}
+
+interface ChecklistFormMessages {
+  name: string;
+  email: string;
+  title: string;
+  kvkk: string;
+}
+
+/* The guide is Turkish only, so the checklist form has a single message set. */
+const CHECKLIST_MESSAGES: ChecklistFormMessages = {
+  name: DEFAULT_MESSAGES.name,
+  email: DEFAULT_MESSAGES.email,
+  title: 'Lütfen unvanınızı veya uzmanlık alanınızı girin.',
+  kvkk: 'Devam etmek için aydınlatma metnini okuduğunuzu onaylayın.',
+};
+
+/** Checklist sign-up form: city and marketing consent are optional. */
+export function validateChecklistForm(input: ChecklistFormInput): ValidationResult {
+  const errors: Record<string, string> = {};
+  if (isBlank(input.name) || input.name.trim().length < 2) errors.name = CHECKLIST_MESSAGES.name;
+  if (!EMAIL_RE.test(input.email.trim())) errors.email = CHECKLIST_MESSAGES.email;
+  if (isBlank(input.title)) errors.title = CHECKLIST_MESSAGES.title;
+  if (!input.kvkk) errors.kvkk = CHECKLIST_MESSAGES.kvkk;
+  return { valid: Object.keys(errors).length === 0, errors };
+}

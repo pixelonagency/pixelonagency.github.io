@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { validateAnalysisForm, validateContactForm, type FormMessages } from './forms';
+import { validateAnalysisForm, validateChecklistForm, validateContactForm, type FormMessages } from './forms';
 
 const validContact = {
   name: 'Ayşe Yılmaz',
@@ -152,5 +152,38 @@ describe('locale-aware validation messages', () => {
 
   test('falls back to the Turkish defaults when no message set is given', () => {
     expect(validateContactForm({ ...validContact, name: '' }).errors.name).toBe('Lütfen adınızı ve soyadınızı girin.');
+  });
+});
+
+describe('validateChecklistForm', () => {
+  const valid = {
+    name: 'Dr. Ayşe Yılmaz',
+    email: 'ayse@ornek.com',
+    title: 'Dermatoloji uzmanı',
+    city: '',
+    kvkk: true,
+    marketing: false,
+  };
+
+  test('accepts a submission without city and without marketing consent', () => {
+    expect(validateChecklistForm(valid)).toEqual({ valid: true, errors: {} });
+  });
+
+  test('requires name, a valid email and the title or specialty', () => {
+    const result = validateChecklistForm({ ...valid, name: ' ', email: 'ayse@', title: '' });
+    expect(result.valid).toBe(false);
+    expect(Object.keys(result.errors).sort()).toEqual(['email', 'name', 'title']);
+    expect(result.errors.title).toBe('Lütfen unvanınızı veya uzmanlık alanınızı girin.');
+  });
+
+  test('requires confirming the KVKK notice was read', () => {
+    expect(validateChecklistForm({ ...valid, kvkk: false }).errors).toEqual({
+      kvkk: 'Devam etmek için aydınlatma metnini okuduğunuzu onaylayın.',
+    });
+  });
+
+  test('marketing consent is optional either way', () => {
+    expect(validateChecklistForm({ ...valid, marketing: true }).valid).toBe(true);
+    expect(validateChecklistForm({ ...valid, marketing: false }).valid).toBe(true);
   });
 });

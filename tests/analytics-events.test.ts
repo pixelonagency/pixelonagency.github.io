@@ -13,14 +13,23 @@ import {
 const ROOT = join(import.meta.dir, '..');
 
 describe('event allowlist', () => {
-  test('only the five business events exist in the taxonomy', () => {
+  test('only the six business events exist in the taxonomy', () => {
     expect([...ANALYTICS_EVENTS]).toEqual([
       'generate_lead',
       'click_whatsapp',
       'click_phone',
       'click_email',
       'click_free_analysis',
+      'request_checklist',
     ]);
+  });
+
+  test('a checklist request is its own event, not a lead, and carries no lead_type', () => {
+    /* Kept apart from generate_lead on purpose: GTM maps generate_lead to the Meta Lead
+       conversion, and a checklist download must not count as a sales lead. */
+    expect(
+      buildEventPayload('request_checklist', { leadType: 'contact', location: 'guide_page', language: 'tr' }),
+    ).toEqual({ event: 'request_checklist', interaction_location: 'guide_page', page_language: 'tr' });
   });
 
   test('unknown or drifted event names are rejected as no-op', () => {
@@ -109,6 +118,8 @@ describe('page context', () => {
     expect(resolvePageLocation('/hizmetlerimiz/web-tasarim-ve-yazilim/')).toBe('service_page');
     expect(resolvePageLocation('/en/services/')).toBe('service_page');
     expect(resolvePageLocation('/projelerimiz/')).toBe('project_page');
+    expect(resolvePageLocation('/rehber/')).toBe('guide_page');
+    expect(resolvePageLocation('/rehber/saglik/hekimler/dijital-gorunurluk-checklisti/')).toBe('guide_page');
   });
 
   test('pages without a business location yield undefined (no invented values)', () => {

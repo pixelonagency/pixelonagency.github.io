@@ -1,0 +1,534 @@
+---
+/**
+ * Checklist landing page: title, intro, the first section shown openly as a preview,
+ * then a sign-up form that sends the full checklist by e-mail (MailerLite).
+ *
+ * Only the first section is rendered. The rest of the list stays out of the HTML; it is
+ * what the reader receives after signing up.
+ *
+ * Without `CHECKLIST_FORM_ENDPOINT` the form is visibly inactive. That state can only be
+ * seen on the dev server: a published checklist without an endpoint stops the build.
+ */
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CHECKLIST_FORM_ENDPOINT, checklistFormEndpoint } from '../../lib/checklist-form';
+import { localizedPath, type Locale } from '../../lib/i18n';
+import { rehberCrumbs, REHBER_AUDIENCE_LABELS } from '../../lib/rehber';
+import { breadcrumbSchema } from '../../lib/schema';
+import FormField from '../sections/FormField.astro';
+import RehberCrumbs from './RehberCrumbs.astro';
+
+interface Props {
+  checklist: CollectionEntry<'checklists'>;
+  locale: Locale;
+  alternates: Partial<Record<Locale, string>>;
+}
+
+const { checklist, locale, alternates } = Astro.props;
+const { title, description, sektor, kitle, durum, sure_dakika, intro, bolumler } = checklist.data;
+
+const endpoint = checklistFormEndpoint(CHECKLIST_FORM_ENDPOINT);
+const active = endpoint !== '';
+
+const preview = bolumler[0];
+if (!preview) throw new Error(`Checklist "${checklist.id}" has no section to preview.`);
+const itemCount = bolumler.reduce((total, bolum) => total + bolum.maddeler.length, 0);
+const restSections = bolumler.length - 1;
+const restItems = itemCount - preview.maddeler.length;
+
+const crumbs = rehberCrumbs({ locale, sektor, kitle, title });
+const site = Astro.site?.toString() ?? 'https://pixelon.com.tr';
+const extraSchema = [
+  breadcrumbSchema(
+    crumbs.map((crumb) => ({ label: crumb.label, url: crumb.href ? new URL(crumb.href, site).toString() : undefined })),
+  ),
+];
+---
+
+<BaseLayout title={`${title} | Pixelon Rehber`} {description} {locale} {alternates} {extraSchema}>
+  <header class="cl__head">
+    <div class="container cl__inner">
+      <RehberCrumbs {crumbs} {locale} />
+      {durum === 'taslak' && <p class="cl__draft">Taslak, yalnızca önizleme</p>}
+      <p class="eyebrow cl__eyebrow">Kontrol listesi · {REHBER_AUDIENCE_LABELS[kitle]}</p>
+      <h1 class="cl__title">{title}</h1>
+      <div class="cl__intro">
+        {intro.split('\n').map((line) => line.trim() && <p class="lead">{line}</p>)}
+      </div>
+      <p class="cl__meta">
+        <span>{sure_dakika} dakika</span>
+        <span>{itemCount} madde</span>
+        <span>{bolumler.length} bölüm</span>
+      </p>
+    </div>
+  </header>
+
+  <section class="cl__preview" aria-labelledby="cl-preview-title">
+    <div class="container cl__inner">
+      <p class="cl__preview-eyebrow">Önizleme</p>
+      <h2 class="cl__preview-title" id="cl-preview-title">1. {preview.baslik}</h2>
+      <ol class="cl__items">
+        {preview.maddeler.map((madde) => <li>{madde}</li>)}
+      </ol>
+      {
+        restSections > 0 && (
+          <p class="cl__rest">
+            Kalan {restSections} bölüm ve {restItems} madde, puanlama tablosuyla birlikte e-postanıza gelir.
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="cl__signup" aria-labelledby="cl-form-title">
+    <div class="container cl__inner">
+      <h2 class="cl__form-title" id="cl-form-title">Listenin tamamını e-postanıza gönderelim</h2>
+
+      {
+        !active && (
+          <div class="cl__inactive" role="status" data-checklist-inactive>
+            <p class="cl__inactive-title">Bu form henüz aktif değil.</p>
+            <p class="cl__inactive-body">
+              Gönderim adresi tanımlanmadı (src/lib/checklist-form.ts). Bu durum yalnızca önizlemede görünür; adres
+              girilmeden sayfa yayına çıkamaz.
+            </p>
+          </div>
+        )
+      }
+
+      <div class="cl__alert" data-checklist-error role="alert" hidden>
+        <p class="cl__alert-title">Form gönderilemedi.</p>
+        <p class="cl__alert-body">Lütfen biraz sonra tekrar deneyin.</p>
+      </div>
+
+      <div class="cl__success" data-checklist-success role="status" tabindex="-1" hidden>
+        <span class="cl__success-mark" aria-hidden="true">✓</span>
+        <p class="cl__success-title">Talebiniz alındı.</p>
+        <p class="cl__success-body">Checklist birkaç dakika içinde e-posta adresinize gelecek.</p>
+      </div>
+
+      <form
+        class="cl__form"
+        novalidate
+        aria-labelledby="cl-form-title"
+        data-checklist-form
+        data-endpoint={endpoint}
+        data-busy-label="Gönderiliyor…"
+      >
+        <div class="cl__grid">
+          <FormField name="name" label="Ad soyad" required placeholder="Dr. Ad Soyad" {locale} />
+          <FormField name="email" label="E-posta" type="email" required placeholder="ornek@klinik.com" {locale} />
+          <FormField
+            name="title"
+            label="Unvan / uzmanlık"
+            required
+            placeholder="Örneğin: Dermatoloji uzmanı"
+            {locale}
+          />
+          <FormField name="city" label="Şehir" placeholder="İsteğe bağlı" {locale} />
+        </div>
+
+        <div class="cl__consent">
+          <label class="cl__check" for="f-kvkk">
+            <input type="checkbox" id="f-kvkk" name="kvkk" value="evet" aria-required="true" data-error-target="kvkk" />
+            <span>
+              <a href={localizedPath('kvkk', locale)} target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni
+              okudum.
+              <span class="cl__required" aria-hidden="true">*</span>
+              <span class="visually-hidden">(zorunlu)</span>
+            </span>
+          </label>
+          <p class="cl__error" id="err-kvkk" data-error-for="kvkk" aria-live="polite"></p>
+        </div>
+
+        <div class="cl__consent">
+          <label class="cl__check" for="f-marketing">
+            <input type="checkbox" id="f-marketing" name="marketing" value="evet" />
+            <span>
+              Pixelon'un dijital pazarlama içerikleri ve duyuruları hakkında bana e-posta gönderilmesini kabul ediyorum.
+              (İsteğe bağlı)
+            </span>
+          </label>
+        </div>
+
+        <div class="cl__actions">
+          <button type="submit" class="btn btn--primary" data-submit disabled={!active}>
+            Checklisti gönder <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cl__head {
+    padding: clamp(40px, 5vw, 64px) 0 clamp(40px, 5vw, 56px);
+  }
+
+  .cl__inner {
+    max-width: 820px;
+  }
+
+  .cl__draft {
+    display: inline-block;
+    margin: 0 0 14px;
+    padding: 6px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    font: 600 12px var(--font-display);
+    color: var(--text-soft);
+  }
+
+  .cl__eyebrow {
+    display: flex;
+    margin-top: 22px;
+  }
+
+  .cl__title {
+    margin: 0;
+    font: 600 clamp(28px, 4vw, 44px) / 1.2 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .cl__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 20px;
+  }
+
+  .cl__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin: 24px 0 0;
+    font: 500 13.5px var(--font-display);
+    color: var(--text-faint);
+  }
+
+  /* Preview on the light band, same reading treatment as an article body. */
+  .cl__preview {
+    background: var(--bg-light);
+    color: var(--text-on-light);
+    padding: clamp(48px, 6vw, 72px) 0;
+  }
+
+  .cl__preview-eyebrow {
+    margin: 0 0 10px;
+    font: 600 var(--fs-eyebrow) var(--font-display);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-muted-on-light);
+  }
+
+  .cl__preview-title {
+    margin: 0 0 20px;
+    font: 600 clamp(22px, 2.4vw, 28px) / 1.3 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .cl__items {
+    margin: 0;
+    padding-left: 24px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(10, 10, 10, 0.8);
+  }
+
+  .cl__items li {
+    margin-bottom: 12px;
+    padding-left: 4px;
+  }
+
+  .cl__items li::marker {
+    font: 600 16px var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .cl__rest {
+    margin: 24px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-on-light);
+    font: 500 15px / 1.6 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .cl__signup {
+    padding: clamp(60px, 7vw, 90px) 0;
+  }
+
+  .cl__form-title {
+    margin: 0 0 28px;
+    font: 600 clamp(24px, 3vw, 34px) / 1.2 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .cl__form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .cl__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .cl__consent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cl__check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: 24px;
+    font-size: var(--fs-small);
+    line-height: 1.65;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .cl__check a {
+    padding-block: 5px;
+    color: var(--text);
+  }
+
+  .cl__check input {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 3px 0 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+
+  .cl__check input[aria-invalid='true'] {
+    outline: 2px solid var(--danger);
+    outline-offset: 2px;
+  }
+
+  .cl__required {
+    margin-left: 4px;
+    color: var(--accent);
+  }
+
+  .cl__error {
+    margin: 0;
+    font-size: var(--fs-small);
+    color: var(--danger);
+  }
+
+  .cl__error:empty {
+    display: none;
+  }
+
+  .cl__actions .btn[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .cl__actions .btn[disabled]:hover {
+    background: var(--accent);
+  }
+
+  .cl__inactive {
+    margin-bottom: 26px;
+    padding: 18px 20px;
+    border: 1px dashed var(--accent);
+    border-radius: var(--radius-input);
+  }
+
+  .cl__inactive-title {
+    margin: 0 0 6px;
+    font: 600 15px var(--font-display);
+    color: var(--accent);
+  }
+
+  .cl__inactive-body {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .cl__alert {
+    margin-bottom: 22px;
+    padding: 16px 18px;
+    border: 1px solid rgb(226 60 60 / 40%);
+    border-radius: var(--radius-input);
+  }
+
+  .cl__alert-title {
+    margin: 0 0 6px;
+    font: 600 15px var(--font-display);
+    color: var(--danger);
+  }
+
+  .cl__alert-body {
+    margin: 0;
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+  }
+
+  .cl__success {
+    padding: clamp(32px, 4vw, 48px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-feature);
+    text-align: center;
+    background-image: radial-gradient(ellipse 70% 80% at 50% 0%, var(--accent-soft), transparent 65%);
+  }
+
+  .cl__success-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--text-on-light);
+    font-size: 26px;
+  }
+
+  .cl__success-title {
+    margin: 0 0 10px;
+    font: 600 clamp(21px, 2.4vw, 26px) var(--font-display);
+    color: var(--text);
+  }
+
+  .cl__success-body {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 720px) {
+    .cl__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cl__actions .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Validation lives in src/lib/forms.ts and the MailerLite mapping in
+  // src/lib/checklist-form.ts; both are unit tested. This script only reads the DOM.
+  import { buildEventPayload, pushToDataLayer, resolvePageLocation } from '../../lib/analytics-events';
+  import { mailerLitePayload } from '../../lib/checklist-form';
+  import { validateChecklistForm } from '../../lib/forms';
+
+  const form = document.querySelector<HTMLFormElement>('form[data-checklist-form]');
+  if (form) {
+    const endpoint = form.dataset.endpoint ?? '';
+    const successPanel = document.querySelector<HTMLElement>('[data-checklist-success]');
+    const errorPanel = document.querySelector<HTMLElement>('[data-checklist-error]');
+    const submitButton = form.querySelector<HTMLButtonElement>('[data-submit]');
+    const FIELDS = ['name', 'email', 'title', 'kvkk'] as const;
+
+    const value = (name: string): string => form.querySelector<HTMLInputElement>(`[name="${name}"]`)?.value ?? '';
+    const checked = (name: string): boolean =>
+      form.querySelector<HTMLInputElement>(`input[name="${name}"]`)?.checked ?? false;
+    const control = (name: string) => form.querySelector<HTMLElement>(`[data-error-target="${name}"]`);
+    const errorBox = (name: string) => form.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
+
+    const setError = (name: string, message: string): void => {
+      const box = errorBox(name);
+      if (box) box.textContent = message;
+      const element = control(name);
+      if (!element) return;
+      if (message) {
+        element.setAttribute('aria-invalid', 'true');
+        element.setAttribute('aria-describedby', `err-${name}`);
+      } else {
+        element.removeAttribute('aria-invalid');
+        element.removeAttribute('aria-describedby');
+      }
+    };
+
+    const clearOnEdit = (event: Event): void => {
+      const target = event.target;
+      if (target instanceof HTMLInputElement && target.name) setError(target.name, '');
+    };
+    form.addEventListener('input', clearOnEdit);
+    form.addEventListener('change', clearOnEdit);
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      // No endpoint means no submission path at all; the inactive notice is already visible.
+      if (!endpoint) return;
+
+      if (errorPanel) errorPanel.hidden = true;
+      const input = {
+        name: value('name'),
+        email: value('email'),
+        title: value('title'),
+        city: value('city'),
+        kvkk: checked('kvkk'),
+        marketing: checked('marketing'),
+      };
+
+      const result = validateChecklistForm(input);
+      for (const name of FIELDS) setError(name, result.errors[name] ?? '');
+      if (!result.valid) {
+        const first = FIELDS.find((name) => result.errors[name]);
+        if (first) control(first)?.focus();
+        return;
+      }
+
+      const originalLabel = submitButton?.innerHTML ?? '';
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = form.dataset.busyLabel ?? '…';
+      }
+
+      try {
+        const body = new FormData();
+        for (const [key, entry] of mailerLitePayload(input)) body.append(key, entry);
+        const response = await fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body });
+        const payload = (await response.json().catch(() => ({}))) as { success?: boolean };
+        if (!response.ok || payload.success !== true) throw new Error('MailerLite rejected the submission');
+
+        form.hidden = true;
+        if (successPanel) {
+          successPanel.hidden = false;
+          successPanel.focus();
+        }
+
+        // Fired only on a confirmed success, once per page life; analytics never blocks the form.
+        try {
+          if (!form.hasAttribute('data-tracked')) {
+            form.setAttribute('data-tracked', '');
+            const analytics = buildEventPayload('request_checklist', {
+              location: resolvePageLocation(location.pathname) ?? 'guide_page',
+              language: document.documentElement.lang,
+            });
+            if (analytics) pushToDataLayer(analytics);
+          }
+        } catch {
+          /* analytics must not affect the form */
+        }
+      } catch {
+        if (errorPanel) {
+          errorPanel.hidden = false;
+          errorPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalLabel;
+        }
+      }
+    });
+  }
+</script>

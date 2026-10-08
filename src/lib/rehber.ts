@@ -10,7 +10,7 @@ import { t } from './ui';
  */
 
 export const REHBER_SECTORS = ['saglik'] as const;
-export type RehberSector = (typeof REHBER_SECTORS)[number];
+type RehberSector = (typeof REHBER_SECTORS)[number];
 
 export const REHBER_AUDIENCES = ['hekimler', 'klinikler', 'hastaneler', 'saglik-turizmi'] as const;
 export type RehberAudience = (typeof REHBER_AUDIENCES)[number];
@@ -19,9 +19,9 @@ export type RehberAudience = (typeof REHBER_AUDIENCES)[number];
 export const REHBER_STATUSES = ['taslak', 'yayinda'] as const;
 export type RehberStatus = (typeof REHBER_STATUSES)[number];
 
-export const REHBER_LABEL = 'Rehber';
+const REHBER_LABEL = 'Rehber';
 
-export const REHBER_SECTOR_LABELS: Record<RehberSector, string> = { saglik: 'Sağlık' };
+const REHBER_SECTOR_LABELS: Record<RehberSector, string> = { saglik: 'Sağlık' };
 
 export const REHBER_AUDIENCE_LABELS: Record<RehberAudience, string> = {
   hekimler: 'Hekimler',
@@ -34,13 +34,13 @@ export const REHBER_AUDIENCE_LABELS: Record<RehberAudience, string> = {
  * Copy for the generated hub, sector and audience pages (title, meta description, intro).
  * Draft wording: these pages have no CMS entry because they only list content.
  */
-export const REHBER_HUB_COPY = {
+const REHBER_HUB_COPY = {
   title: 'Sektör Rehberleri',
   description:
     'Sektörünüze özel dijital görünürlük rehberleri ve kontrol listeleri: hastanızın ya da müşterinizin sizi bulduğu yerde ne gördüğünü adım adım kontrol edin.',
 };
 
-export const REHBER_SECTOR_COPY: Record<RehberSector, { title: string; description: string }> = {
+const REHBER_SECTOR_COPY: Record<RehberSector, { title: string; description: string }> = {
   saglik: {
     title: 'Sağlık Rehberi',
     description:
@@ -48,7 +48,7 @@ export const REHBER_SECTOR_COPY: Record<RehberSector, { title: string; descripti
   },
 };
 
-export const REHBER_AUDIENCE_COPY: Record<RehberAudience, { title: string; description: string }> = {
+const REHBER_AUDIENCE_COPY: Record<RehberAudience, { title: string; description: string }> = {
   hekimler: {
     title: 'Hekimler için Rehber',
     description: 'Muayenehane hekimleri ve kendi adıyla çalışan uzmanlar için dijital görünürlük rehberleri.',
@@ -130,7 +130,7 @@ interface TreeArticle extends TreeEntry {
   data: TreeEntry['data'] & { yayin_tarihi: Date };
 }
 
-export interface RehberAudienceNode<A, C> {
+interface RehberAudienceNode<A, C> {
   kitle: RehberAudience;
   articles: A[];
   checklists: C[];
