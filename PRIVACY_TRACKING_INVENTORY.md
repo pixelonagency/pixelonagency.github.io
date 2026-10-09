@@ -78,6 +78,10 @@ Google tag'e aittir. Payload şeması kapalı enum'dur (`lead_type`, `interactio
 `page_language`) — **form içeriği, ad, e-posta, telefon, şirket, mesaj veya başka hiçbir PII
 GA4'e gönderilmez**; `generate_lead` yalnız doğrulanmış Web3Forms başarısında tetiklenir.
 
+CHECKLIST OLAYI (2026-10-09, GTM v11): `request_checklist` yalnız doğrulanmış MailerLite checklist formu başarısında üretilir; payload `interaction_location` + `page_language` (kapalı enum), PII yok.
+GA4: `CE - Business Events` regex'ine eklendi. Meta: `Meta - Checklist Lead` etiketi, Marketing izni koşuluyla standard `Lead` (`lead_type: checklist`).
+Aynı yayında, daha önce eklenmiş `Google Ads - Conversion Linker` etiketi de canlıya girdi; çerez politikası uyumu issue #11'de.
+
 GA4 uygulama notu (2026-08-19): GA4 site koduna EKLENMEZ — ölçüm yalnızca `GTM-MWVJ2S27`
 container'ındaki "GA4 - Google Tag - Pixelon" Google tag'i (Tag ID `GT-M3K8V5NL`, hedef `G-15DCDNXNG7`, trigger:
 All Pages) üzerinden yapılır ve Consent Mode v2 `analytics_storage` sinyaline tabidir

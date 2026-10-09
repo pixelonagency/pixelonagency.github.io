@@ -31,6 +31,7 @@ Bu fazda CAPI / server-side GTM / access token / event deduplication / Advanced 
 | ---------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | sayfa yükleme (izinli)       | `PageView` (standard, base tag)   | —                                                                                                             |
 | `generate_lead`              | `Lead` (standard)                 | `lead_type`, `interaction_location`, `page_language` — **value/currency YOK** (doğrulanmış parasal değer yok) |
+| `request_checklist`          | `Lead` (standard)                 | `lead_type: checklist` (sabit), `interaction_location`, `page_language` — value/currency YOK                  |
 | `click_whatsapp`             | `WhatsAppClick` (trackCustom)     | `interaction_location`, `page_language`                                                                       |
 | `click_phone`                | `PhoneClick` (trackCustom)        | aynı — telefon numarası asla gönderilmez                                                                      |
 | `click_email`                | `EmailClick` (trackCustom)        | aynı — e-posta adresi asla gönderilmez                                                                        |
@@ -40,6 +41,10 @@ Kurallar: Lead YALNIZ doğrulanmış Web3Forms başarısından (mevcut `generate
 `response.ok && payload.success===true`); klikler Lead DEĞİLDİR; bu fazda `Contact` standard
 eventine map yok; DOM listener'lar yeniden yazılmaz — mevcut dataLayer olayları tek kaynak.
 Custom isimler resmî `trackCustom` kurallarına uygun (string, kısa, harf/rakam).
+
+Checklist kaydı (2026-10-09, GTM v11): `request_checklist` yalnız doğrulanmış MailerLite form başarısında üretilir.
+GTM'de ayrı tetikleyici (`CE - Meta Checklist Lead`, aynı `meta_marketing_consent = granted` koşulu) ve ayrı etiket (`Meta - Checklist Lead`) ile `Lead` olarak gider.
+`lead_type: checklist` sabiti, iletişim formu Lead'lerinden ayırmak ve Meta'da özel dönüşüm tanımlamak içindir.
 
 ## PII
 
