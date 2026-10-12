@@ -47,6 +47,18 @@ export function organizationSchema({ site, logoUrl, email, phone, socialUrls }: 
       availableLanguage: ['Turkish', 'English'],
     },
     sameAs: socialUrls,
+    /* Google İşletme Profili ile birebir aynı tutulur (1 Eki 2026). Profilde açık adres
+       gizli (hizmet bölgesi işletmesi), bu yüzden şemada da sokak adresi yok. */
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
+    foundingDate: '2023-05-29',
+    numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 9 },
   };
 }
 

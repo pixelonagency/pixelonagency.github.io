@@ -4,6 +4,7 @@ import {
   breadcrumbSchema,
   caseStudySchema,
   faqPageSchema,
+  organizationSchema,
   serviceSchema,
   SERVICE_BY_PROJECT_CATEGORY,
   type Crumb,
@@ -195,5 +196,32 @@ describe('faqPageSchema', () => {
     const schema = faqPageSchema([{ question: 'S?', answer: 'Ayrıntısı [fiyat sayfası](/fiyat/) içinde.' }]);
     const [entity] = schema.mainEntity as { acceptedAnswer: { text: string } }[];
     expect(entity?.acceptedAnswer.text).toBe('Ayrıntısı fiyat sayfası içinde.');
+  });
+});
+
+describe('organizationSchema yerel bilgileri', () => {
+  /* Google İşletme Profili ile birebir aynı (1 Eki 2026): Pzt-Cuma 09-18, kuruluş 29 May 2023, 2-9 çalışan. */
+  const org = organizationSchema({
+    site: 'https://pixelon.com.tr/',
+    logoUrl: 'https://pixelon.com.tr/logo.webp',
+    email: 'info@pixelon.com.tr',
+    phone: '+90 506 522 90 34',
+    socialUrls: [],
+  });
+
+  test('çalışma saatleri hafta içi 09:00-18:00', () => {
+    expect(org.openingHoursSpecification).toEqual([
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ]);
+  });
+
+  test('kuruluş tarihi ve çalışan aralığı', () => {
+    expect(org.foundingDate).toBe('2023-05-29');
+    expect(org.numberOfEmployees).toEqual({ '@type': 'QuantitativeValue', minValue: 2, maxValue: 9 });
   });
 });
