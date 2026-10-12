@@ -13,7 +13,7 @@ sections:
     eyebrow: 360° Dijital Pazarlama Partneriniz
     # *yıldız* içine alınan kelimeler lime (aksan) renkle basılır — bkz. src/lib/highlight.ts
     headingLines:
-      - "Markanızı *Strateji*, *Tasarım* ve *Teknolojiyle* Büyütüyoruz."
+      - "Markanızı *Selam*, *Tasarım* ve *Teknolojiyle* Büyütüyoruz."
     lead: |-
       Pixelon; yaratıcı fikirleri güçlü tasarımlara, dijital stratejileri ölçülebilir sonuçlara dönüştüren 360° dijital pazarlama ajansıdır. Markanızın tüm dijital ihtiyaçlarına tek çatı altında çözüm sunar.
     tagline: Bir fikriniz mi var? Birlikte büyütelim.
