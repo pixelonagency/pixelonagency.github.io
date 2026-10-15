@@ -1,0 +1,74 @@
+title: Satış ve İş Geliştirme Uzmanı
+status: published
+datePosted: 2026-10-14
+remote: true
+
+seo:
+  title: Satış ve İş Geliştirme Uzmanı | Pixelon Kariyer
+  description: >-
+    Pixelon, markalarla ilk iletişimden yeni iş birliklerinin kurulmasına kadar satış sürecini yönetecek bir Satış ve İş Geliştirme Uzmanı arıyor. Uzaktan çalışma.
+
+sections:
+  - type: hero
+    background: dark
+    eyebrow: Açık Pozisyon
+    headingLines:
+      - Satış ve İş Geliştirme Uzmanı
+    lead: >-
+      Pixelon olarak, markalarla ilk iletişimden yeni iş birliklerinin kurulmasına kadar satış sürecini yönetecek bir çalışma arkadaşı arıyoruz.
+    chips:
+      - Uzaktan
+    ctas:
+      - label: Başvur
+        href: 'mailto:info@pixelon.com.tr?subject=Ba%C5%9Fvuru%3A%20Sat%C4%B1%C5%9F%20ve%20%C4%B0%C5%9F%20Geli%C5%9Ftirme%20Uzman%C4%B1'
+        variant: primary
+      - label: Tüm Pozisyonlar
+        href: '/kariyer/#pozisyonlar'
+        variant: outline
+
+  - type: text
+    background: light
+    eyebrow: Pozisyon Hakkında
+    body: >-
+      Web tasarım, sosyal medya yönetimi, dijital reklam ve marka iletişimi alanlarında hizmet veren ajansımızda; iletişimi güçlü, takip disiplini yüksek ve dijital dünyaya ilgi duyan adaylarla tanışmak istiyoruz.
+
+  - type: bullets
+    background: dark
+    kind: split
+    heading: Neler yapacaksın?
+    items:
+      - Ajansımıza gelen potansiyel müşteri taleplerini değerlendirerek telefon ve çevrim içi kanallar üzerinden ilk görüşmeleri gerçekleştirmek.
+      - Müşterilerin ihtiyaçlarını anlamak ve uygun hizmetlerimizi tanıtmak.
+      - Ajans ekibiyle koordineli şekilde teklif sürecini yürütmek.
+      - Teklif sonrası görüşmeleri takip ederek yeni iş birlikleri oluşturmak.
+      - Müşteri görüşmelerini ve satış fırsatlarını CRM üzerinden düzenli olarak takip etmek.
+
+  - type: bullets
+    background: light
+    kind: split
+    heading: Senden neler bekliyoruz?
+    items:
+      - Tercihen dijital ajans, web tasarım, yazılım veya hizmet sektöründe satış deneyimi.
+      - Telefonda ve yazılı iletişimde güçlü ifade becerisi.
+      - Müşteri ihtiyaçlarını anlayan, çözüm odaklı bir yaklaşım.
+      - Teklif sunma, itirazları karşılama ve satış sonuçlandırma becerisi.
+      - İş takibi, zaman yönetimi ve düzenli raporlama alışkanlığı.
+      - Web tasarım, sosyal medya ve dijital reklam hizmetlerine temel düzeyde hâkimiyet.
+
+  - type: text
+    background: dark
+    layout: split
+    heading: Neden Pixelon?
+    body: >-
+      Farklı sektörlerden markalarla çalışabileceğin, tasarım ve dijital pazarlama ekibimizle birlikte satış süreçlerinde aktif sorumluluk alabileceğin bir çalışma ortamı sunuyoruz.
+
+  - type: cta
+    background: dark
+    eyebrow: Başvuru
+    heading: Başvurmak İçin Bize Yaz
+    lead: >-
+      Özgeçmişini ve satış deneyimini anlatan kısa bir ön yazını info@pixelon.com.tr adresine gönder.
+    ctas:
+      - label: Başvur
+        href: 'mailto:info@pixelon.com.tr?subject=Ba%C5%9Fvuru%3A%20Sat%C4%B1%C5%9F%20ve%20%C4%B0%C5%9F%20Geli%C5%9Ftirme%20Uzman%C4%B1'
+        variant: primary

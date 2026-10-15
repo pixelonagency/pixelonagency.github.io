@@ -1245,6 +1245,52 @@ collections:
       - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text, required: false, i18n: true }
       - *f_sections
 
+  # --- Kariyer ilanları ---------------------------------------------------
+  # `/kariyer/<ilan>/`. Gövde, sayfa bölüm kütüphanesinin aynısıdır (`*f_sections`).
+  # Breadcrumb elle yazılmaz: build kendisi üretir. Yeni ilan TASLAK başlar ve yalnızca
+  # durum "Yayında" yapıldığında siteye çıkar. Kariyer sayfasındaki listeye ilanı
+  # "Sayfalar > Kariyer > Açık Pozisyonlar" bölümünden bağlayın.
+  - name: jobs
+    icon: work
+    label: Kariyer İlanları
+    label_singular: Kariyer İlanı
+    folder: src/content/jobs
+    extension: yml
+    format: yaml
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    i18n: true
+    fields:
+      - { label: Pozisyon Adı, name: title, widget: string, i18n: true }
+      - label: Durum
+        name: status
+        widget: select
+        default: draft
+        options:
+          - { label: Taslak, value: draft }
+          - { label: Yayında, value: published }
+        i18n: duplicate
+      - label: Yayın Tarihi
+        name: datePosted
+        widget: datetime
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        picker_utc: true
+        i18n: duplicate
+      - label: Son Başvuru Tarihi
+        name: validThrough
+        widget: datetime
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        picker_utc: true
+        required: false
+        i18n: duplicate
+      - { label: Uzaktan Çalışma, name: remote, widget: boolean, default: false, i18n: duplicate }
+      - *f_seo
+      - { label: WhatsApp Mesajı, name: whatsappMessage, widget: text, required: false, i18n: true }
+      - *f_sections
+
   # --- Rehber (sektör rehberleri) ----------------------------------------
   # `/rehber/<sektör>/<kitle>/<slug>/`. Dosya adı "Adres (slug)" alanından yazılır.
   # Yeni yazı TASLAK başlar; yalnızca durum "Yayında" yapıldığında siteye çıkar.

@@ -155,6 +155,57 @@ export function serviceSchema({ name, description, url, locale }: ServiceInput):
   };
 }
 
+interface JobPostingInput {
+  title: string;
+  /** Sayfada görünen metinden üretilmiş HTML (bkz. `jobDescriptionHtml`). */
+  description: string;
+  url: string;
+  datePosted: Date;
+  validThrough?: Date | undefined;
+  remote: boolean;
+}
+
+const isoDate = (date: Date): string => date.toISOString().slice(0, 10);
+
+/**
+ * Google iş ilanı. Başvuru e-postayla yapıldığı için `directApply` yanlıştır.
+ * Uzaktan ilanda başvuru şartı Türkiye'dir; ofis ilanı Organization'daki görünen
+ * konumu (Kadıköy, İstanbul) taşır. Maaş ve çalışma şekli içerikte yok, yazılmaz.
+ */
+export function jobPostingSchema({
+  title,
+  description,
+  url,
+  datePosted,
+  validThrough,
+  remote,
+}: JobPostingInput): Record<string, unknown> {
+  return {
+    '@type': 'JobPosting',
+    '@id': `${url}#job`,
+    title,
+    description,
+    url,
+    datePosted: isoDate(datePosted),
+    ...(validThrough ? { validThrough: isoDate(validThrough) } : {}),
+    hiringOrganization: { '@id': ORG_ID },
+    directApply: false,
+    ...(remote
+      ? { jobLocationType: 'TELECOMMUTE', applicantLocationRequirements: { '@type': 'Country', name: 'TR' } }
+      : {
+          jobLocation: {
+            '@type': 'Place',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Kadıköy',
+              addressRegion: 'İstanbul',
+              addressCountry: 'TR',
+            },
+          },
+        }),
+  };
+}
+
 /**
  * Proje kategorisi → hizmet `translationKey` eşlemesi.
  *

@@ -75,7 +75,13 @@ sections:
     lead: >-
       Pixelon'un güncel iş ve staj fırsatlarını inceleyin. Size uygun pozisyonun detaylarını görüntüleyerek birkaç adımda başvurunuzu tamamlayabilirsiniz.
     # İlan yokken JobsSection "açık pozisyon yok" durumunu basar; yeni ilan CMS'ten eklenir.
-    items: []
+    # İlanın detay sayfası `jobs` koleksiyonundadır (`/kariyer/<ilan>/`).
+    items:
+      - title: Satış ve İş Geliştirme Uzmanı
+        location: Uzaktan
+        description: >-
+          Markalarla ilk iletişimden yeni iş birliklerinin kurulmasına kadar satış sürecini yönetecek bir çalışma arkadaşı arıyoruz.
+        href: /kariyer/satis-ve-is-gelistirme-uzmani/
 
   # 5 — GENEL BAŞVURU ÇAĞRISI
   - type: cta

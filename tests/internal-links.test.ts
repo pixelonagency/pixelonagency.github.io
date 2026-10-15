@@ -95,6 +95,13 @@ const buildRoutes = async (): Promise<Set<string>> => {
       }
     }
 
+    // Kariyer ilanları: yalnızca yayındakiler rota üretir (taslak build'e girmez).
+    const jobDir = join(CONTENT, 'jobs', locale);
+    for (const file of existsSync(jobDir) ? readdirSync(jobDir) : []) {
+      const front = parse(await Bun.file(join(jobDir, file)).text()) as { status?: string };
+      if (front?.status === 'published') routes.add(localizedPath('careers', locale, file.replace(/\.yml$/, '')));
+    }
+
     // Kategori merkezleri yalnızca eşiği geçen kategoriler için üretilir.
     const posts: CategorizablePost[] = [];
     for (const file of postFiles(locale)) {

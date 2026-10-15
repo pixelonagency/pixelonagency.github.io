@@ -1380,15 +1380,19 @@ describe('başlık tekilliği', () => {
 
 describe('kariyer açık pozisyonlar', () => {
   /*
-   * İlanlar 6 Eki 2026'da kaldırıldı. Liste boşken bölüm kaybolmaz: hero ve CTA'lar
-   * `#pozisyonlar` çapasına bağlanıyor, o yüzden çapa yerinde kalır ve tasarımdaki
-   * "açık pozisyon yok" durumu basılır.
+   * Liste boşken bölüm kaybolmaz: hero ve CTA'lar `#pozisyonlar` çapasına bağlanıyor,
+   * o yüzden çapa her durumda yerinde kalır. İlan yokken tasarımdaki "açık pozisyon yok"
+   * durumu, ilan varken liste basılır. Beklenti içerikten okunur, ilan eklenip
+   * kaldırıldıkça test değişmez.
    */
-  test('ilan yokken boş durum basılır ve çapa yerinde kalır', () => {
+  const careers = readFileSync(join(import.meta.dir, '..', 'src', 'content', 'pages', 'tr', 'careers.yml'), 'utf8');
+  const hasJobs = !/^\s*items: \[\]\s*$/m.test(careers.split('type: jobs')[1]?.split('- type:')[0] ?? '');
+
+  test(`${hasJobs ? 'ilan varken liste' : 'ilan yokken boş durum'} basılır ve çapa yerinde kalır`, () => {
     const source = readFileSync(htmlPath('/kariyer'), 'utf8');
     expect(source).toContain('id="pozisyonlar"');
-    expect(source).toContain('Şu Anda Açık Bir Pozisyonumuz Bulunmuyor');
-    expect(source).not.toContain('class="jobs"');
+    expect(source.includes('Şu Anda Açık Bir Pozisyonumuz Bulunmuyor')).toBe(!hasJobs);
+    expect(source.includes('class="jobs"')).toBe(hasJobs);
   });
 });
 
@@ -1512,6 +1516,40 @@ describe('hizmet alt sayfaları', () => {
     test(`${parent}/${slug} ${published ? 'yayında olduğu için üretilir' : 'taslak olduğu için üretilmez'}`, () => {
       expect(existsSync(file)).toBe(published);
     });
+  }
+});
+
+describe('kariyer ilanları', () => {
+  /*
+   * İlan sahip onayından geçmeden yayına çıkmaz: `status: draft` olan ilan üretim
+   * build'inde OLMAMALI. Yayındaki ilan Google iş ilanı verisini (JobPosting) taşır.
+   */
+  const JOBS = join(import.meta.dir, '..', 'src', 'content', 'jobs', 'tr');
+  const entries = existsSync(JOBS)
+    ? readdirSync(JOBS)
+        .filter((file) => file.endsWith('.yml'))
+        .map((file) => ({
+          slug: file.replace(/\.yml$/, ''),
+          published: /^status:\s*published\b/m.test(readFileSync(join(JOBS, file), 'utf8')),
+        }))
+    : [];
+
+  test('kapsam: en az bir ilan denetleniyor', () => {
+    expect(entries.length).toBeGreaterThan(0);
+  });
+
+  for (const { slug, published } of entries) {
+    const file = join(DIST, 'kariyer', slug, 'index.html');
+    test(`${slug} ${published ? 'yayında olduğu için üretilir' : 'taslak olduğu için üretilmez'}`, () => {
+      expect(existsSync(file)).toBe(published);
+    });
+
+    if (published) {
+      test(`${slug} JobPosting verisi taşır ve kariyer sayfası ona bağlanır`, () => {
+        expect(readFileSync(file, 'utf8')).toContain('"@type":"JobPosting"');
+        expect(readFileSync(join(DIST, 'kariyer', 'index.html'), 'utf8')).toContain(`href="/kariyer/${slug}/"`);
+      });
+    }
   }
 });
 
