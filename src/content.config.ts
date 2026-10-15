@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { makePageSchema, makeSubpageSchema } from './content/page-schema';
+import { makeJobSchema, makePageSchema, makeSubpageSchema } from './content/page-schema';
 import { makeChecklistSchema, makeRehberSchema } from './content/rehber-schema';
 import {
   blogCategorySchema,
@@ -81,6 +81,12 @@ const subpages = defineCollection({
   schema: ({ image }) => makeSubpageSchema(image),
 });
 
+// Kariyer ilanları — `/kariyer/<ilan>/`. Dosya adı ilanın slug'ıdır (bkz. src/lib/jobs.ts).
+const jobs = defineCollection({
+  loader: glob({ pattern: '*/*.yml', base: `${CONTENT}/jobs` }),
+  schema: ({ image }) => makeJobSchema(image),
+});
+
 /*
  * The guide collections carry a `slug` field, and the glob loader would use it as the
  * entry id, dropping the `<locale>/` prefix every route relies on. The id is taken from
@@ -112,6 +118,7 @@ export const collections = {
   legal,
   categories,
   subpages,
+  jobs,
   rehber,
   checklists,
 };

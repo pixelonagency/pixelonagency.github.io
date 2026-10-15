@@ -699,6 +699,24 @@ export function makeSubpageSchema(image: ImageResolver = defaultImage) {
   });
 }
 
+/**
+ * Kariyer ilanı (`/kariyer/<ilan>/`). Gövdesi sayfa bölüm kütüphanesinin aynısıdır;
+ * üstüne kimlik, yayın durumu ve Google iş ilanı (JobPosting) için gereken alanlar eklenir.
+ *
+ * Varsayılan durum TASLAK: ilan sahip onayından geçmeden yayına çıkmaz.
+ */
+export function makeJobSchema(image: ImageResolver = defaultImage) {
+  return makePageSchema(image).extend({
+    /** Pozisyon adı: breadcrumb ve JobPosting `title`. */
+    title: nonEmpty,
+    status: z.enum(['draft', 'published']).default('draft'),
+    datePosted: z.coerce.date(),
+    validThrough: opt(z.coerce.date()),
+    /** Uzaktan ilan JobPosting'e TELECOMMUTE olarak, ofis ilanı ofis konumuyla yazılır. */
+    remote: z.boolean().default(false),
+  });
+}
+
 export type PageSection = z.infer<ReturnType<typeof makePageSchema>>['sections'][number];
 export type PageSectionType = PageSection['type'];
 

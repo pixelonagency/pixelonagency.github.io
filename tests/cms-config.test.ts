@@ -169,6 +169,7 @@ describe('config structure', () => {
     expect(config.collections.map((entry) => entry.name).sort()).toEqual([
       'categories',
       'checklists',
+      'jobs',
       'legal',
       'pages',
       'posts',

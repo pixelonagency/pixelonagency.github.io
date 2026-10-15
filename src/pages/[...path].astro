@@ -8,6 +8,8 @@ import PostDetail from '../components/PostDetail.astro';
 import ProjectDetail from '../components/ProjectDetail.astro';
 import ServiceDetail from '../components/ServiceDetail.astro';
 import SubpageDetail from '../components/SubpageDetail.astro';
+import JobDetail from '../components/JobDetail.astro';
+import { isJobBuilt, jobPath } from '../lib/jobs';
 import { isSubpageBuilt, subpagePath } from '../lib/subpages';
 import { categoriesWithPages, categoryPath } from '../lib/blog-categories';
 import PortfolioViewer from '../components/PortfolioViewer.astro';
@@ -69,25 +71,29 @@ export const getStaticPaths = (async () => {
   const published = <T extends { id: string }>(entries: T[]): T[] =>
     entries.filter((entry) => isPublishedLocale(splitId(entry.id).locale));
 
-  const [allServices, allPosts, allLegal, allProjects, allSubpages, allRehber, allChecklists] = await Promise.all([
-    getCollection('services'),
-    getCollection('posts', ({ data }) => data.status === 'published'),
-    getCollection('legal'),
-    // Detay sayfası yalnız case study içeriği (detail) dolu projeler için üretilir.
-    getCollection('projects', ({ data }) => Boolean(data.detail)),
-    // Taslak alt sayfa yalnızca geliştirme sunucusunda üretilir: onaylanmamış metin yayına çıkmaz.
-    getCollection('subpages', ({ data }) => isSubpageBuilt(data.status, import.meta.env.DEV)),
-    // Guide drafts follow the same rule: dev server only.
-    getCollection('rehber', ({ data }) => isRehberEntryBuilt(data.durum, import.meta.env.DEV)),
-    // Every checklist is read: articles may name a draft one, which must still resolve.
-    getCollection('checklists'),
-  ]);
+  const [allServices, allPosts, allLegal, allProjects, allSubpages, allJobs, allRehber, allChecklists] =
+    await Promise.all([
+      getCollection('services'),
+      getCollection('posts', ({ data }) => data.status === 'published'),
+      getCollection('legal'),
+      // Detay sayfası yalnız case study içeriği (detail) dolu projeler için üretilir.
+      getCollection('projects', ({ data }) => Boolean(data.detail)),
+      // Taslak alt sayfa yalnızca geliştirme sunucusunda üretilir: onaylanmamış metin yayına çıkmaz.
+      getCollection('subpages', ({ data }) => isSubpageBuilt(data.status, import.meta.env.DEV)),
+      // Draft job postings follow the same rule: dev server only.
+      getCollection('jobs', ({ data }) => isJobBuilt(data.status, import.meta.env.DEV)),
+      // Guide drafts follow the same rule: dev server only.
+      getCollection('rehber', ({ data }) => isRehberEntryBuilt(data.durum, import.meta.env.DEV)),
+      // Every checklist is read: articles may name a draft one, which must still resolve.
+      getCollection('checklists'),
+    ]);
 
   const services = published(allServices);
   const posts = published(allPosts);
   const legal = published(allLegal);
   const projects = published(allProjects);
   const subpages = published(allSubpages);
+  const jobs = published(allJobs);
   const rehber = published(allRehber);
   const checklistEntries = published(allChecklists);
   const checklists = checklistEntries.filter((entry) =>
@@ -149,6 +155,15 @@ export const getStaticPaths = (async () => {
     paths.push({
       params: { path: toParam(subpagePath(locale, entry.data.parent, key)) },
       props: { kind: 'subpage', subpage: entry, parentTitle: parent.data.title, locale, alternates: {} },
+    });
+  }
+
+  // --- Kariyer ilanları: `/kariyer/<ilan>/` ---
+  for (const entry of jobs) {
+    const { locale, key } = splitId(entry.id);
+    paths.push({
+      params: { path: toParam(jobPath(locale, key)) },
+      props: { kind: 'job', job: entry, locale, alternates: {} },
     });
   }
 
@@ -289,6 +304,7 @@ const props = Astro.props as {
     | 'page'
     | 'service'
     | 'subpage'
+    | 'job'
     | 'post'
     | 'project'
     | 'legal'
@@ -303,6 +319,7 @@ const props = Astro.props as {
   service?: Parameters<typeof ServiceDetail>[0]['service'];
   subpage?: Parameters<typeof SubpageDetail>[0]['subpage'];
   parentTitle?: string;
+  job?: Parameters<typeof JobDetail>[0]['job'];
   post?: Parameters<typeof PostDetail>[0]['post'];
   project?: Parameters<typeof ProjectDetail>[0]['project'];
   legal?: Parameters<typeof LegalPage>[0]['entry'];
@@ -325,6 +342,7 @@ const rehberIndex = kind === 'rehberIndex' && props.level ? rehberIndexView(loca
     <SubpageDetail subpage={props.subpage} parentTitle={props.parentTitle} {locale} {alternates} />
   )
 }
+{kind === 'job' && props.job && <JobDetail job={props.job} {locale} {alternates} />}
 {kind === 'post' && props.post && <PostDetail post={props.post} {locale} {alternates} />}
 {kind === 'project' && props.project && <ProjectDetail project={props.project} {locale} {alternates} />}
 {kind === 'legal' && props.legal && <LegalPage entry={props.legal} {locale} {alternates} />}

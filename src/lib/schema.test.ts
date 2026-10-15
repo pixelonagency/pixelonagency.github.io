@@ -4,6 +4,7 @@ import {
   breadcrumbSchema,
   caseStudySchema,
   faqPageSchema,
+  jobPostingSchema,
   organizationSchema,
   serviceSchema,
   SERVICE_BY_PROJECT_CATEGORY,
@@ -166,6 +167,50 @@ describe('serviceSchema', () => {
 
     expect(node['@id']).toBe('https://pixelon.com.tr/hizmetlerimiz/marka-ve-kurumsal-kimlik/#service');
     expect(node.provider).toEqual({ '@id': 'https://pixelon.com.tr/#organization' });
+  });
+});
+
+describe('jobPostingSchema', () => {
+  const input = {
+    title: 'Satış ve İş Geliştirme Uzmanı',
+    description: '<p>Bir çalışma arkadaşı arıyoruz.</p>',
+    url: 'https://pixelon.com.tr/kariyer/satis-ve-is-gelistirme-uzmani/',
+    datePosted: new Date('2026-10-14'),
+    remote: true,
+  };
+
+  test('işvereni site geneli Organization düğümüne bağlar', () => {
+    const node = jobPostingSchema(input);
+    expect(node['@type']).toBe('JobPosting');
+    expect(node.hiringOrganization).toEqual({ '@id': 'https://pixelon.com.tr/#organization' });
+    expect(node.datePosted).toBe('2026-10-14');
+    expect(node.directApply).toBe(false);
+  });
+
+  test('uzaktan ilan TELECOMMUTE ve Türkiye başvuru şartıyla yazılır', () => {
+    const node = jobPostingSchema(input);
+    expect(node.jobLocationType).toBe('TELECOMMUTE');
+    expect(node.applicantLocationRequirements).toEqual({ '@type': 'Country', name: 'TR' });
+    expect(node.jobLocation).toBeUndefined();
+  });
+
+  test('ofis ilanı görünen ofis konumunu taşır', () => {
+    const node = jobPostingSchema({ ...input, remote: false });
+    expect(node.jobLocationType).toBeUndefined();
+    expect(node.jobLocation).toEqual({
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Kadıköy',
+        addressRegion: 'İstanbul',
+        addressCountry: 'TR',
+      },
+    });
+  });
+
+  test('son başvuru tarihi yalnız verildiğinde yazılır', () => {
+    expect(jobPostingSchema(input).validThrough).toBeUndefined();
+    expect(jobPostingSchema({ ...input, validThrough: new Date('2026-12-31') }).validThrough).toBe('2026-12-31');
   });
 });
 
