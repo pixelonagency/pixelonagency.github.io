@@ -766,7 +766,9 @@ describe('analytics (GTM + GA4)', () => {
     for (const inactive of ['LinkedIn Insight', 'Yandex Metrica', 'TikTok Pixel']) {
       expect(row(inactive), `${inactive} hâlâ Not Active olmalı`).toContain('Not Active');
     }
-    expect(row('Google Ads')).toContain('Not Active');
+    // Google Ads conversion tracking went live with GTM on 2026-10-18 (issue #11).
+    expect(row('Google Ads')).toContain('**Active**');
+    expect(inventory).toContain('AW-17843555663');
   });
 
   test('every public page loads the GTM container exactly once (script + noscript)', () => {
@@ -1046,6 +1048,11 @@ describe('legal pages', () => {
       expect(body.includes('analytics_storage'), `${url} consent sinyalini anlatmıyor`).toBe(true);
       // Gözlemlenen _gcl_au çerezi anlatılmalı; "pazarlama çerez yerleştirmez" iddiası kalkmış olmalı.
       expect(body.includes('_gcl_au'), `${url} _gcl_au çerezini anlatmıyor`).toBe(true);
+      // Google Ads conversion tracking is live: the click-ID cookie is listed and the "not active" claim is gone.
+      expect(body.includes('_gcl_aw'), `${url} _gcl_aw çerezini anlatmıyor`).toBe(true);
+      expect(body.includes('henüz aktif değildir'), `${url} eski "Google Ads aktif değil" iddiasını içeriyor`).toBe(
+        false,
+      );
       expect(body.includes('_clck'), `${url} Clarity çerezlerini anlatmıyor`).toBe(true);
       expect(body.includes('_fbp'), `${url} Meta çerezlerini anlatmıyor`).toBe(true);
       expect(body.includes('Meta Pixel'), `${url} Meta Pixel'i anlatmıyor`).toBe(true);
