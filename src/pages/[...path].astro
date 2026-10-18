@@ -23,6 +23,7 @@ import {
   isRehberEntryBuilt,
   rehberIndexView,
   rehberPath,
+  siblingArticles,
   type RehberLevel,
 } from '../lib/rehber';
 import {
@@ -280,6 +281,7 @@ export const getStaticPaths = (async () => {
             kind: 'rehberArticle',
             article,
             checklist: audience.checklists.find((entry) => entry.data.slug === wanted),
+            siblings: siblingArticles(audience.articles, article.data.slug),
           });
         }
       }
@@ -328,6 +330,7 @@ const props = Astro.props as {
   level?: RehberLevel<CollectionEntry<'rehber'>, CollectionEntry<'checklists'>>;
   article?: CollectionEntry<'rehber'>;
   checklist?: CollectionEntry<'checklists'>;
+  siblings?: CollectionEntry<'rehber'>[];
 };
 
 const { kind, locale = DEFAULT_LOCALE, alternates } = props;
@@ -350,7 +353,13 @@ const rehberIndex = kind === 'rehberIndex' && props.level ? rehberIndexView(loca
 {rehberIndex && <RehberIndex {locale} {alternates} {...rehberIndex} />}
 {
   kind === 'rehberArticle' && props.article && (
-    <RehberArticle article={props.article} checklist={props.checklist} {locale} {alternates} />
+    <RehberArticle
+      article={props.article}
+      checklist={props.checklist}
+      siblings={props.siblings}
+      {locale}
+      {alternates}
+    />
   )
 }
 {kind === 'rehberChecklist' && props.checklist && <ChecklistPage checklist={props.checklist} {locale} {alternates} />}

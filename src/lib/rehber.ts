@@ -33,25 +33,46 @@ export const REHBER_AUDIENCE_LABELS: Record<RehberAudience, string> = {
 /**
  * Copy for the generated hub, sector and audience pages (title, meta description, intro).
  * Draft wording: these pages have no CMS entry because they only list content.
+ * `intro` paragraphs sit under the lead; without them the pages fell below Semrush's
+ * word count threshold (17 Oct 2026). Copy that names a level's content must stay true
+ * whatever is published there later, so it describes the level, not its current list.
  */
-const REHBER_HUB_COPY = {
+interface RehberLevelCopy {
+  title: string;
+  description: string;
+  intro?: string[];
+}
+
+const REHBER_HUB_COPY: RehberLevelCopy = {
   title: 'Sektör Rehberleri',
   description:
     'Sektörünüze özel dijital görünürlük rehberleri ve kontrol listeleri: hastanızın ya da müşterinizin sizi bulduğu yerde ne gördüğünü adım adım kontrol edin.',
+  intro: [
+    'Bir kurumu seçmeden önce insanlar adını arar, çıkan profile bakar, yorumları okur ve web sitesine göz atar. Bu rehberler o kısa yolculuğun her durağını tek tek ele alır: orada ne görünmesi gerekir, bugün ne görünüyor ve aradaki farkı kapatmak için hangi adım önce atılır.',
+    'Her sektörün kendine ait kuralları vardır ve rehberler bu kurallarla birlikte yazılır. Sağlıkta bu, tanıtım yönetmeliği ve kişisel verilerin korunması demektir; bu sınırların dışına çıkan bir öneri rehberde yer almaz. Rehberler kitlelere ayrılır, çünkü kendi adıyla çalışan bir uzmanla büyük bir kurumun pazarlama ekibinin önceliği aynı değildir. Yazıların yanında indirilebilir kontrol listeleri bulunur: maddeleri kendi profilinize ve sitenize bakarak işaretler, nereden başlayacağınızı görürsünüz.',
+  ],
 };
 
-const REHBER_SECTOR_COPY: Record<RehberSector, { title: string; description: string }> = {
+const REHBER_SECTOR_COPY: Record<RehberSector, RehberLevelCopy> = {
   saglik: {
     title: 'Sağlık Rehberi',
     description:
       'Hekimler, klinikler, hastaneler ve sağlık turizmi kurumları için dijital görünürlük rehberleri ve kontrol listeleri.',
+    intro: [
+      'Hasta bir hekimi, kliniği ya da hastaneyi seçmeden önce çoğu zaman adını arar, Google profiline bakar, yorumları okur ve bir video izler. Bu rehber o adımların her birini ele alır ve her öneriyi sağlık tanıtımına dair kurallarla birlikte anlatır: hangi bilgiyi paylaşabilirsiniz, hangi ifade yasaktır, hasta verisi nerede devreye girer.',
+      'Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik ve KVKK, sağlıkta dijital görünürlüğün sınırlarını çizer. Rehberdeki her yazı bu sınırların içinde kalır ve dayandığı kaynakları sonunda listeler. Bir hekimin Google profiliyle bir hastanenin web sitesi farklı sorulara cevap verir, bu yüzden aynı kontrol listesi herkese uymaz. Bölümler kitleye göre ayrılır; kendinize en yakın olanı seçerek başlayın.',
+    ],
   },
 };
 
-const REHBER_AUDIENCE_COPY: Record<RehberAudience, { title: string; description: string }> = {
+const REHBER_AUDIENCE_COPY: Record<RehberAudience, RehberLevelCopy> = {
   hekimler: {
     title: 'Hekimler için Rehber',
     description: 'Muayenehane hekimleri ve kendi adıyla çalışan uzmanlar için dijital görünürlük rehberleri.',
+    intro: [
+      'Kendi adıyla çalışan bir hekim için dijital görünürlük üç yerde kazanılır ya da kaybedilir: adınız arandığında çıkan Google profili, hastaların bıraktığı yorumlar ve kamera karşısında anlattıklarınız. Buradaki yazılar bu alanları ayrı ayrı ele alır ve yapılacakları öncelik sırasıyla verir. Her yazıda, anlatılanları kendi profilinizde kontrol edebileceğiniz checklist maddelerine bağlantı bulunur. Yazılar teknik bilgi gerektirmez; çoğu adım için bir öğleden sonra ayırmanız yeterlidir.',
+      'Öneriler, Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik gözetilerek hazırlanmıştır. Önce ve sonra görselleri, fiyat duyurusu ya da üstünlük iddiası gibi yasak alanlara giren bir taktik önerilmez. Bugünkü durumunuzu tek seferde görmek isterseniz yazılardan önce kontrol listesiyle başlayabilirsiniz.',
+    ],
   },
   klinikler: {
     title: 'Klinikler için Rehber',
@@ -228,6 +249,7 @@ interface RehberIndexView {
   eyebrow: string;
   title: string;
   description: string;
+  intro?: string[] | undefined;
   listHeading?: string | undefined;
   emptyText?: string | undefined;
   cards: RehberCard[];
@@ -250,6 +272,7 @@ export function rehberIndexView<A extends ListedArticle, C extends ListedCheckli
       eyebrow: `${REHBER_LABEL} · ${REHBER_SECTOR_LABELS[sector.sektor]}`,
       title: copy.title,
       description: copy.description,
+      intro: copy.intro,
       listHeading: 'Yazılar',
       emptyText: 'Bu kitle için henüz yayında yazı yok.',
       cards: audience.articles.map((entry) => ({
@@ -280,6 +303,7 @@ export function rehberIndexView<A extends ListedArticle, C extends ListedCheckli
       eyebrow: REHBER_LABEL,
       title: copy.title,
       description: copy.description,
+      intro: copy.intro,
       listHeading: 'Kime göre?',
       cards: sector.audiences.map((node) => ({
         href: rehberPath(locale, sector.sektor, node.kitle),
@@ -297,6 +321,7 @@ export function rehberIndexView<A extends ListedArticle, C extends ListedCheckli
     eyebrow: REHBER_LABEL,
     title: REHBER_HUB_COPY.title,
     description: REHBER_HUB_COPY.description,
+    intro: REHBER_HUB_COPY.intro,
     cards: tree.map((node) => ({
       href: rehberPath(locale, node.sektor),
       cover: coverOf({}, REHBER_SECTOR_LABELS[node.sektor], node.sektor),
@@ -305,6 +330,13 @@ export function rehberIndexView<A extends ListedArticle, C extends ListedCheckli
     })),
   };
 }
+
+/**
+ * Other articles of the same audience, in the audience's own order, for the list under
+ * an article. Without it an article was reachable only from its audience page.
+ */
+export const siblingArticles = <A extends { data: { slug: string } }>(articles: readonly A[], slug: string): A[] =>
+  articles.filter((entry) => entry.data.slug !== slug);
 
 const coverOf = (
   data: { kapak?: unknown; kapak_alt?: string | undefined },

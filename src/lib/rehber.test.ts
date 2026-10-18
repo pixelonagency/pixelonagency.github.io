@@ -10,6 +10,7 @@ import {
   rehberCrumbs,
   rehberIndexView,
   rehberPath,
+  siblingArticles,
 } from './rehber';
 
 describe('rehber adresleri', () => {
@@ -205,6 +206,54 @@ describe('rehber listeleme görünümü', () => {
     expect(view.checklists?.map((card) => [card.href, card.draft])).toEqual([
       ['/rehber/saglik/hekimler/dijital-gorunurluk-checklisti/', true],
     ]);
+  });
+});
+
+describe('rehber listeleme giriş metni', () => {
+  /*
+   * Semrush 17 Eki 2026: merkez, sağlık ve hekimler sayfaları yaklaşık 120 kelimeyle
+   * "düşük kelime sayısı" uyarısı aldı. Her listeleme sayfası kartlardan önce bir giriş taşır.
+   */
+  const article = {
+    id: 'tr/a',
+    data: {
+      slug: 'a',
+      sektor: 'saglik' as const,
+      kitle: 'hekimler' as const,
+      yayin_tarihi: new Date('2026-10-01'),
+      title: 'Yazı',
+      description: 'Özet',
+      seri: 'Seri',
+      okuma_suresi: 5,
+      durum: 'yayinda' as const,
+    },
+  };
+  const tree = buildRehberTree({ articles: [article], checklists: [], dev: false });
+  const sector = tree[0];
+  const audience = sector?.audiences[0];
+  const words = (paragraphs: string[] | undefined): number =>
+    (paragraphs ?? []).join(' ').split(/\s+/).filter(Boolean).length;
+
+  test.each([
+    ['merkez', rehberIndexView('tr', { tree })],
+    ['sağlık', rehberIndexView('tr', { tree, sector })],
+    ['hekimler', rehberIndexView('tr', { tree, sector, audience })],
+  ])('%s sayfası en az 100 kelimelik giriş taşır', (_name, view) => {
+    expect(words(view.intro)).toBeGreaterThanOrEqual(100);
+  });
+});
+
+describe('rehber yazısı altındaki diğer yazılar', () => {
+  /* Yazılar birbirine bağlanmadığında yalnız kitle sayfasından erişiliyordu (Semrush: tek iç bağlantı). */
+  const entry = (slug: string) => ({ data: { slug } });
+
+  test('aynı kitledeki diğer yazılar sırasıyla döner, açık yazı listede yer almaz', () => {
+    const articles = [entry('a'), entry('b'), entry('c')];
+    expect(siblingArticles(articles, 'b').map((item) => item.data.slug)).toEqual(['a', 'c']);
+  });
+
+  test('kitlede tek yazı varsa liste boştur', () => {
+    expect(siblingArticles([entry('a')], 'a')).toEqual([]);
   });
 });
 

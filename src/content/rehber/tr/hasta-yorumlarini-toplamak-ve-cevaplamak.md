@@ -155,11 +155,11 @@ Google profilinden tanıtım kurallarına kadar 26 maddeyi 20 dakikada kendiniz 
 
 ## Kaynaklar
 
-- Google İşletme Profili Yardım, "Google'da yerel sıralamanızı iyileştirme ipuçları": https://support.google.com/business/answer/7091?hl=tr
-- Google Haritalar kullanıcı katkılı içerik politikası, yasaklanan ve kısıtlanan içerik: https://support.google.com/contributionpolicy/answer/7400114?hl=tr
-- Google İşletme Profili Yardım, "İşletme Profilinizdeki uygunsuz yorumları bildirme": https://support.google.com/business/answer/4596773?hl=tr
-- Kişisel Verileri Koruma Kurumu, "Özel Nitelikli Kişisel Veriler": https://www.kvkk.gov.tr/Icerik/2051/Ozel-Nitelikli-Kisisel-Veriler
-- Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik, Resmi Gazete, 29.07.2023, sayı 32263, metin: https://www.alomaliye.com/2023/07/29/saglik-hizmetlerinde-tanitim-ve-bilgilendirme-faaliyetleri-hakkinda-yonetmelik/
+- [Google İşletme Profili Yardım, "Google'da yerel sıralamanızı iyileştirme ipuçları"](https://support.google.com/business/answer/7091?hl=tr)
+- [Google Haritalar kullanıcı katkılı içerik politikası, yasaklanan ve kısıtlanan içerik](https://support.google.com/contributionpolicy/answer/7400114?hl=tr)
+- [Google İşletme Profili Yardım, "İşletme Profilinizdeki uygunsuz yorumları bildirme"](https://support.google.com/business/answer/4596773?hl=tr)
+- [Kişisel Verileri Koruma Kurumu, "Özel Nitelikli Kişisel Veriler"](https://www.kvkk.gov.tr/Icerik/2051/Ozel-Nitelikli-Kisisel-Veriler)
+- [Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik, Resmi Gazete, 29.07.2023, sayı 32263](https://www.resmigazete.gov.tr/eskiler/2023/07/20230729-29.htm)
 
 <!--
 Görsel brief: Tek özgün görsel, "iyi cevap / riskli cevap" karşılaştırması.

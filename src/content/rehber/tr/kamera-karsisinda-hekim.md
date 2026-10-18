@@ -183,9 +183,9 @@ Google profilinden tanıtım kurallarına kadar 26 maddeyi 20 dakikada kendiniz 
 
 ## Kaynaklar
 
-- Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik, Resmi Gazete, 29.07.2023, sayı 32263, metin: https://www.alomaliye.com/2023/07/29/saglik-hizmetlerinde-tanitim-ve-bilgilendirme-faaliyetleri-hakkinda-yonetmelik/
-- Yönetmeliğin madde madde özeti, Hukuki Haber: https://www.hukukihaber.net/saglik-hizmetlerinde-tanitim-ve-bilgilendirme-faaliyetleri-hakkinda-yonetmelik-hukuki-haber/amp
-- Yönetmeliğin yayımına ilişkin değerlendirme, Erdem & Erdem: https://www.erdem-erdem.av.tr/bilgi-bankasi/saglik-hizmetlerinde-tanitim-ve-bilgilendirme-faaliyetleri-hakkinda-yonetmelik-yayimlandi
+- [Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik, Resmi Gazete, 29.07.2023, sayı 32263](https://www.resmigazete.gov.tr/eskiler/2023/07/20230729-29.htm)
+- [Yönetmeliğin madde madde özeti, Hukuki Haber](https://www.hukukihaber.net/saglik-hizmetlerinde-tanitim-ve-bilgilendirme-faaliyetleri-hakkinda-yonetmelik-hukuki-haber/amp)
+- [Yönetmeliğin yayımına ilişkin değerlendirme, Erdem & Erdem](https://www.erdem-erdem.av.tr/bilgi-bankasi/saglik-hizmetlerinde-tanitim-ve-bilgilendirme-faaliyetleri-hakkinda-yonetmelik-yayimlandi)
 
 <!--
 Görsel brief: Tek özgün görsel, muayenehanede kurulmuş sade bir çekim düzeninin kuşbakışı şeması.
