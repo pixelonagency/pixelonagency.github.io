@@ -1666,6 +1666,30 @@ describe('MailerLite sitede iz bırakmaz', () => {
   });
 });
 
+describe('rehber yazıları birbirine bağlanır', () => {
+  /* Semrush 17 Eki 2026: hekim yazıları yalnız kitle sayfasından bağlantı alıyordu. */
+  const AUDIENCE = join(DIST, 'rehber', 'saglik', 'hekimler');
+  const articles = existsSync(AUDIENCE)
+    ? readdirSync(AUDIENCE, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory() && entry.name !== 'dijital-gorunurluk-checklisti')
+        .map((entry) => entry.name)
+    : [];
+
+  test('kapsam: en az iki hekim yazısı denetleniyor', () => {
+    expect(articles.length).toBeGreaterThanOrEqual(2);
+  });
+
+  for (const slug of articles) {
+    test(`${slug} aynı kitledeki diğer yazıların hepsine bağlanır`, () => {
+      const html = readFileSync(join(AUDIENCE, slug, 'index.html'), 'utf8');
+      const missing = articles
+        .filter((other) => other !== slug)
+        .filter((other) => !html.includes(`href="/rehber/saglik/hekimler/${other}/"`));
+      expect({ slug, missing }).toEqual({ slug, missing: [] });
+    });
+  }
+});
+
 describe('checklist PDF indirmesi', () => {
   /* E-postalardaki bağlantı bu adresi kullanır; dosya taşınırsa e-postalar kırılır. */
   const PDF = join(DIST, 'rehber', 'indir', 'hekimler-dijital-gorunurluk-checklisti.pdf');

@@ -31,6 +31,8 @@ interface Props {
   eyebrow: string;
   title: string;
   description: string;
+  /** Paragraphs under the lead that say what this level covers. */
+  intro?: string[] | undefined;
   /** Heading above the main card grid; omitted on the hub. */
   listHeading?: string | undefined;
   cards: Card[];
@@ -47,6 +49,7 @@ const {
   eyebrow,
   title,
   description,
+  intro = [],
   listHeading,
   cards,
   emptyText,
@@ -69,6 +72,15 @@ const extraSchema = [
       <p class="eyebrow rx__eyebrow">{eyebrow}</p>
       <h1 class="rx__title">{title}</h1>
       <p class="lead rx__lead">{description}</p>
+      {
+        intro.length > 0 && (
+          <div class="rx__intro">
+            {intro.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        )
+      }
     </div>
   </header>
 
@@ -166,6 +178,21 @@ const extraSchema = [
 
   .rx__lead {
     margin-top: 20px;
+  }
+
+  .rx__intro {
+    margin-top: 20px;
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .rx__intro p {
+    margin: 0 0 14px;
+  }
+
+  .rx__intro p:last-child {
+    margin-bottom: 0;
   }
 
   .rx__section {

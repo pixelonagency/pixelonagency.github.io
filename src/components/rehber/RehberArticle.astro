@@ -27,11 +27,13 @@ interface Props {
   article: CollectionEntry<'rehber'>;
   /** The related checklist when it has a page in this build. */
   checklist?: CollectionEntry<'checklists'> | undefined;
+  /** Other articles of the same audience that have a page in this build. */
+  siblings?: CollectionEntry<'rehber'>[] | undefined;
   locale: Locale;
   alternates: Partial<Record<Locale, string>>;
 }
 
-const { article, checklist, locale, alternates } = Astro.props;
+const { article, checklist, siblings = [], locale, alternates } = Astro.props;
 const {
   title,
   description,
@@ -170,6 +172,26 @@ const extraSchema = [
                 Checklisti alın <span aria-hidden="true">→</span>
               </a>
             </aside>
+          )
+        }
+
+        {
+          siblings.length > 0 && (
+            <nav class="ra__more" aria-labelledby="ra-more-title">
+              <h2 class="ra__more-title" id="ra-more-title">
+                Bu rehberdeki diğer yazılar
+              </h2>
+              <ul class="ra__more-list" role="list">
+                {siblings.map((entry) => (
+                  <li>
+                    <a class="ra__more-link" href={rehberPath(locale, sektor, kitle, entry.data.slug)}>
+                      <span class="ra__more-name">{entry.data.title}</span>
+                      <span class="ra__more-text">{entry.data.description}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           )
         }
 
@@ -342,6 +364,50 @@ const extraSchema = [
     margin: 0 0 8px;
     line-height: 1.65;
     color: var(--text-muted);
+  }
+
+  .ra__more {
+    margin-top: 56px;
+  }
+
+  .ra__more-title {
+    margin: 0 0 8px;
+    font: 600 clamp(21px, 2.4vw, 26px) / 1.25 var(--font-display);
+    color: var(--text-on-light);
+  }
+
+  .ra__more-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ra__more-list > li {
+    border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+  }
+
+  .ra__more-link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 0;
+    color: var(--text-on-light);
+    text-decoration: none;
+  }
+
+  .ra__more-name {
+    font: 600 19px / 1.35 var(--font-display);
+  }
+
+  .ra__more-link:hover .ra__more-name {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .ra__more-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(10, 10, 10, 0.7);
   }
 
   .ra__back {
