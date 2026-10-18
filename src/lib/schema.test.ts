@@ -254,8 +254,15 @@ describe('organizationSchema yerel bilgileri', () => {
     socialUrls: [],
   });
 
-  test('çalışma saatleri hafta içi 09:00-18:00', () => {
-    expect(org.openingHoursSpecification).toEqual([
+  /* schema.org Organization openingHoursSpecification tanımaz (yalnız Place/LocalBusiness);
+     Semrush 17 Eki 2026 taramasında 168 sayfada yapılandırılmış veri hatası verdi. */
+  test('Organization düğümünde openingHoursSpecification yok', () => {
+    expect(org).not.toHaveProperty('openingHoursSpecification');
+  });
+
+  test('çalışma saatleri hafta içi 09:00-18:00, iletişim noktasında', () => {
+    const contactPoint = org.contactPoint as Record<string, unknown>;
+    expect(contactPoint.hoursAvailable).toEqual([
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
