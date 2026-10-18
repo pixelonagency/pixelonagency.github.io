@@ -541,6 +541,31 @@ describe('rehber yazılarındaki blok işaretleri', () => {
   });
 });
 
+describe('rehber yazılarındaki dış bağlantılar', () => {
+  /*
+   * Çıplak URL otomatik bağlantıya dönüşür ve bağlantı metni adresin kendisi olur;
+   * Semrush bunu "anchor text yok" sayar (17 Eki 2026, 11 bağlantı). Kaynak satırları
+   * `[Kaynak adı](url)` biçiminde yazılır.
+   */
+  const dir = join(CONTENT, 'rehber', 'tr');
+  const files = existsSync(dir) ? readdirSync(dir).filter((file) => file.endsWith('.md')) : [];
+  const bodyOf = (source: string): string => source.split('---').slice(2).join('---');
+
+  for (const file of files) {
+    test(`${file}: metinde çıplak URL yok, her dış bağlantının metni var`, async () => {
+      const body = bodyOf(await Bun.file(join(dir, file)).text()).replace(/<!--[\s\S]*?-->/g, '');
+      const bare = body.match(/(?<!\]\()https?:\/\/[^\s)]+/g) ?? [];
+      expect({ file, bare }).toEqual({ file, bare: [] });
+    });
+
+    test(`${file}: yönetmelik bağlantısı Resmi Gazete'nin kendi sayfasına gider`, async () => {
+      const body = bodyOf(await Bun.file(join(dir, file)).text());
+      /* alomaliye.com tarayıcılara 403 döndürüyor; resmi kaynak tercih edilir. */
+      expect(body).not.toContain('alomaliye.com');
+    });
+  }
+});
+
 describe('yasal metinler rehber formunu kapsar', () => {
   /*
    * Checklist formu MailerLite'a veri gönderiyor ve pazarlama e-postası için ayrı onay

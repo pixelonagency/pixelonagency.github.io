@@ -144,9 +144,9 @@ Google profilinden tanıtım kurallarına kadar 26 maddeyi 20 dakikada kendiniz 
 
 ## Kaynaklar
 
-- Google İşletme Profili Yardım, "Google'da yerel sıralamanızı iyileştirme ipuçları": https://support.google.com/business/answer/7091?hl=tr
-- Google İşletme Profili Yardım, "Google'da işletmenizi temsil etme yönergeleri": https://support.google.com/business/answer/3038177?hl=tr
-- Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik, Resmi Gazete, 29.07.2023, sayı 32263, metin: https://www.alomaliye.com/2023/07/29/saglik-hizmetlerinde-tanitim-ve-bilgilendirme-faaliyetleri-hakkinda-yonetmelik/
+- [Google İşletme Profili Yardım, "Google'da yerel sıralamanızı iyileştirme ipuçları"](https://support.google.com/business/answer/7091?hl=tr)
+- [Google İşletme Profili Yardım, "Google'da işletmenizi temsil etme yönergeleri"](https://support.google.com/business/answer/3038177?hl=tr)
+- [Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik, Resmi Gazete, 29.07.2023, sayı 32263](https://www.resmigazete.gov.tr/eskiler/2023/07/20230729-29.htm)
 
 <!--
 Görsel brief: Tek özgün görsel, telefon ekranında bir hekim Google profilinin şematik maketi.
