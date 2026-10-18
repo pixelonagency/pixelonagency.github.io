@@ -8,7 +8,7 @@ seo:
 intro: >-
   Bu politika, sitemizde şu anda gerçekten kullanılan çerezleri ve tercihlerinizi
   nasıl yönetebileceğinizi açıklar; sistemle birebir uyumlu tutulur.
-updated: 2026-08-19
+updated: 2026-10-18
 ---
 
 ## 1. Çerez Nedir?
@@ -40,17 +40,18 @@ Analitik kategorisine izin verirseniz Google Analytics 4 aşağıdaki ölçüm �
 | `_clck`          | Microsoft | Clarity kullanıcı kimliği/tercihleri  | Analitik | ~365 gün         | HTTP çerezi |
 | `_clsk`          | Microsoft | Clarity oturum kaydı birleştirme      | Analitik | ~1 gün           | HTTP çerezi |
 
-Pazarlama kategorisine izin verirseniz aşağıdaki çerezler oluşabilir (canlı sistemde gözlemlenmiş değerler; yalnızca Pazarlama izni sonrasında). **Meta Pixel** izin gelmeden hiç yüklenmez; izni geri çektiğinizde `_fbp`/`_fbc` çerezleri silinir. `_gcl_au` için iznin geri çekilmesi yeni veri işlenmesini durdurur; mevcut çerezi tarayıcı ayarlarınızdan silebilirsiniz. `_fbc` her ziyaretçide oluşmaz — yalnızca siteye bir Meta reklamı tıklamasıyla (`fbclid`) gelinirse:
+Pazarlama kategorisine izin verirseniz aşağıdaki çerezler oluşabilir (canlı sistemde gözlemlenmiş değerler; yalnızca Pazarlama izni sonrasında). **Meta Pixel** izin gelmeden hiç yüklenmez; izni geri çektiğinizde `_fbp`/`_fbc` çerezleri silinir. `_gcl_au` ve `_gcl_aw` için iznin geri çekilmesi yeni veri işlenmesini durdurur; mevcut çerezleri tarayıcı ayarlarınızdan silebilirsiniz. `_fbc` yalnızca siteye bir Meta reklamı tıklamasıyla (`fbclid`), `_gcl_aw` yalnızca bir Google reklamı tıklamasıyla (`gclid`) gelinirse oluşur:
 
 | Ad        | Sağlayıcı | Amaç                                        | Kategori  | Süre    | Tür         |
 | --------- | --------- | ------------------------------------------- | --------- | ------- | ----------- |
 | `_fbp`    | Meta      | Reklam/dönüşüm ölçümü (ziyaretçi ayrımı)    | Pazarlama | ~90 gün | HTTP çerezi |
 | `_fbc`    | Meta      | Reklam tıklaması ilişkilendirmesi (koşullu) | Pazarlama | ~90 gün | HTTP çerezi |
 | `_gcl_au` | Google    | Reklam/dönüşüm ilişkilendirmesi ve ölçümü   | Pazarlama | ~90 gün | HTTP çerezi |
+| `_gcl_aw` | Google    | Reklam tıklaması ilişkilendirmesi (koşullu) | Pazarlama | ~90 gün | HTTP çerezi |
 
 ## 4. Analitik ve Pazarlama Kategorileri
 
-**Analitik** kategorisinde **Google Analytics 4** (site kullanımını ve performansı anlamamıza yardımcı ölçüm hizmeti) ve **Microsoft Clarity** (anonim oturum kayıtları ve ısı haritalarıyla davranış analitiği; form içerikleri maskelenir) kullanılmaktadır. İzin vermezseniz veya izninizi geri çekerseniz `analytics_storage` sinyali "reddedildi" kalır: bu durumda Analitik çerezleri **kullanılmaz ve oluşturulmaz**; ancak Google'ın Consent Mode altyapısı gereği Google'a çerezsiz, kimliksiz ölçüm/izin sinyalleri (consent ping) gönderilebilir. İzin verdiğinizde ise çerez tabanlı Analitik ölçümü devreye girebilir. **Pazarlama** kategorisinde **Meta Pixel** (reklam performansı ve dönüşüm ölçümü) kullanılmaktadır ve **yalnızca izin verirseniz yüklenir**; izin yokken Meta'ya hiçbir istek gitmez, izni geri çektiğinizde çerezleri silinir. Form alanlarına yazdığınız içerik Meta'ya gönderilmez. Google Ads dönüşüm takibi ise henüz aktif değildir; bu kategoriye izin verirseniz Google tag yalnızca yukarıda listelenen `_gcl_au` çerezini yerleştirebilir. Yeni bir pazarlama hizmeti etkinleştirilirse bu politika gerçek çerez listesiyle **önceden** güncellenir.
+**Analitik** kategorisinde **Google Analytics 4** (site kullanımını ve performansı anlamamıza yardımcı ölçüm hizmeti) ve **Microsoft Clarity** (anonim oturum kayıtları ve ısı haritalarıyla davranış analitiği; form içerikleri maskelenir) kullanılmaktadır. İzin vermezseniz veya izninizi geri çekerseniz `analytics_storage` sinyali "reddedildi" kalır: bu durumda Analitik çerezleri **kullanılmaz ve oluşturulmaz**; ancak Google'ın Consent Mode altyapısı gereği Google'a çerezsiz, kimliksiz ölçüm/izin sinyalleri (consent ping) gönderilebilir. İzin verdiğinizde ise çerez tabanlı Analitik ölçümü devreye girebilir. **Pazarlama** kategorisinde **Meta Pixel** (reklam performansı ve dönüşüm ölçümü) kullanılmaktadır ve **yalnızca izin verirseniz yüklenir**; izin yokken Meta'ya hiçbir istek gitmez, izni geri çektiğinizde çerezleri silinir. Form alanlarına yazdığınız içerik Meta'ya gönderilmez. Aynı kategoride **Google Ads** dönüşüm takibi ve yeniden pazarlama kullanılmaktadır: bir Google reklamına tıklayarak geldiyseniz teklif formu gönderimi, WhatsApp ve telefon bağlantısı tıklamaları reklamla ilişkilendirilir; siteyi ziyaret etmiş olmanız Google reklamlarında size gösterilecek reklamları etkileyebilir. İzin vermezseniz reklam depolaması ve kişiselleştirme sinyalleri "reddedildi" kalır; bu durumda Google Ads çerezleri **oluşturulmaz**, Consent Mode gereği Google'a yalnızca çerezsiz, kimliksiz sinyaller gönderilebilir. Form alanlarına yazdığınız içerik Google'a gönderilmez. Yeni bir pazarlama hizmeti etkinleştirilirse bu politika gerçek çerez listesiyle **önceden** güncellenir.
 
 ## 5. Google Tag Manager ve Consent Mode
 
