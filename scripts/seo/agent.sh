@@ -16,7 +16,7 @@ set -uo pipefail
 
 cd "$(dirname "$0")/../.."
 ROOT="$(pwd)"
-export PATH="$HOME/.bun/bin:$HOME/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+export PATH="$HOME/.local/bin:$HOME/.bun/bin:$HOME/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 
 STAMP="$(TZ=Europe/Istanbul date +%Y-%m-%d)"
 NOW="$(TZ=Europe/Istanbul date +%Y-%m-%dT%H:%M:%S%z)"
@@ -62,12 +62,19 @@ if [ "${FAILS:-0}" -ge "$MAX_FAILURES" ]; then
   exit 0
 fi
 
+# --- Klonu güncelle --------------------------------------------------------------
+# Başarısızlık koşuyu durdurmaz ama loga yazılır; ajan eski kodla çalıştığını bilmeli.
+if [ -z "${SEO_AGENT_SKIP_SYNC:-}" ]; then
+  bash "$ROOT/scripts/seo/sync-clone.sh" "$LOG" || log "UYARI — klon güncellenemedi, eldeki kopyayla devam ediliyor"
+fi
+
 # --- Koşu öncesi durum (son kapı için) -----------------------------------------
 HEAD_BEFORE="$(git rev-parse HEAD)"
 # Ham porcelain çıktısı saklanır: geri alma hash karşılaştırmasıyla değil, yol
 # farkıyla yapılır. Sahibin koşu öncesinde zaten kirli olan dosyalarına
 # dokunulmaması bunu gerektiriyor (bkz. scripts/seo/protected-paths.mjs).
 PROTECTED_BEFORE_RAW="$(git status --porcelain -- "${PROTECTED[@]}")"
+CONTENT_BEFORE_RAW="$(git status --porcelain --untracked-files=all -- src/content)"
 PROTECTED_BEFORE="$(printf '%s' "$PROTECTED_BEFORE_RAW" | shasum -a256 | cut -d' ' -f1)"
 # Kök dizin dosya listesi. `bun -e` argv kayması bir kez kökte `0` adlı dosya
 # üretmişti; kimse bakmadığı için fark edilmesi zor. Artık kapıda tutuluyor.
@@ -77,7 +84,10 @@ log "BAŞLADI pid=$$ bütçe=\$$BUDGET_USD süre=${TIMEOUT_SEC}s"
 
 # --- Ajan ---------------------------------------------------------------------
 # `perl -e alarm` kullanılıyor: macOS'ta GNU `timeout` yok.
-perl -e "alarm $TIMEOUT_SEC; exec @ARGV" claude -p \
+# `caffeinate -i`: 30 Ağu 2026 koşusu Mac uykuya geçince yarıda kesildi.
+AWAKE=()
+command -v caffeinate >/dev/null 2>&1 && AWAKE=(caffeinate -i)
+${AWAKE[@]+"${AWAKE[@]}"} perl -e "alarm $TIMEOUT_SEC; exec @ARGV" claude -p \
   --output-format json \
   --max-budget-usd "$BUDGET_USD" \
   --permission-mode dontAsk \
@@ -128,8 +138,10 @@ if [ "$PROTECTED_BEFORE" != "$PROTECTED_AFTER" ]; then
     log "İHLAL — korunan yollar değişti ama yeni kirlenen yol yok; sahibin mevcut dosyaları değişmiş olabilir. Geri alma YAPILMADI, sahip incelemeli."
   fi
 fi
-# Taslak src/content'e sızmış mı?
-if git status --porcelain -- src/content | grep -q .; then
+# Taslak src/content'e sızmış mı? Yalnızca koşu SIRASINDA kirlenen yollar sayılır:
+# 27-28 Ağu 2026'da sahibin önceden bıraktığı dosyalar ihlal sanıldı ve ajan BLOCKED oldu.
+if PROTECTED_BEFORE_RAW="$CONTENT_BEFORE_RAW" PROTECTED_AFTER_RAW="$(git status --porcelain --untracked-files=all -- src/content)" \
+     bun scripts/seo/protected-paths.mjs 2>>"$LOG" | grep -q .; then
   VIOLATION="${VIOLATION:+$VIOLATION; }src/content'e yazıldı"
 fi
 # Kökte beklenmeyen dosya oluştu mu?

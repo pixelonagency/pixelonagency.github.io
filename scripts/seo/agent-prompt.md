@@ -61,24 +61,28 @@ links give the reader more natural context, make the topic-to-service relationsh
 explicit, and improve internal-link architecture. State observed structure, not inferred
 algorithm behaviour.
 
-## Until the 2026-08-29 checkpoint
+## Current focus (updated 2026-10-31)
 
-Do NOT publish new production blog URLs. Do NOT start a new Phase 1 keyword study, a new
-TOP 20, or rewrite the six locked drafts. Do NOT generate visuals — the visual briefs are
-ready but production waits until Wave 1 is chosen. Do NOT make new production SEO changes
-except a critical regression.
+The 29 Aug checkpoint is over; its restrictions no longer apply.
+English was unpublished on 16 Sep 2026; only Turkish pages are live.
 
-Keep running: GSC measurement, indexing/discovery monitoring, query-to-URL mapping,
-cannibalization watch, technical monitoring, authority and entity research, backlink
-validation, and competitor/SERP refresh only when a decision actually needs it.
+- Measure the 31 Oct 2026 changes: 7 new blog posts, 5 retitled pages, WhatsApp-first
+  CTAs on the three price pages, mobile speed fixes. Report indexing and impressions;
+  attribute nothing to a single change.
+- Watch indexing: 114 of 168 sitemap URLs were indexed on 31 Oct. List URLs that are still
+  "unknown to Google" or "discovered, not indexed" so the owner can request indexing.
+- The SEMrush API has no units left. Do not call any `mcp__claude_ai_Semrush__*` tool; use
+  the saved bundle and GSC data. Write UNKNOWN where only fresh SEMrush data would answer.
+- Backlink work is research only: candidate sources, status of existing listings.
+  Never contact anyone or register anywhere.
 
-Never manufacture work to fill the approval queue. An empty queue is a valid result.
+Do NOT generate visuals. Never manufacture work to fill the approval queue.
 
 ## Report length
 
 Unless there is a genuinely important finding, keep the owner-facing report short —
 CRITICAL ALERTS / NEW READY_FOR_APPROVAL / MEASURING / AUTONOMOUS WORK / OWNER ACTION
-REQUIRED. The long-form report is for the 2026-08-29 checkpoint only.
+REQUIRED.
 
 ## Measuring tasks — leave them alone
 
