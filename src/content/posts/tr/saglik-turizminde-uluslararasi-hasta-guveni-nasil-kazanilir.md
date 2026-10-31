@@ -6,7 +6,7 @@ date: 2026-07-10
 translationKey: health-tourism-patient-trust
 cover: '/src/assets/images/blog/saglik-turizminde-hasta-guveni-cover.webp'
 coverAlt: Uluslararası hastaya tedavi planını anlatan klinik hasta danışmanı
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:
@@ -170,20 +170,20 @@ Uluslararası hasta güveni, hastanın klinikten ayrılmasıyla sona ermez. Kull
 
 **Sağlık Turizminde Güven Kontrol Listesi**
 
-- [ ] Web siteniz mobil cihazlarda hızlı açılıyor mu?
-- [ ] Klinik ve doktor bilgileri güncel mi?
-- [ ] Tedavi süreçleri anlaşılır biçimde açıklanıyor mu?
-- [ ] Gerçek klinik ve ekip görselleri kullanılıyor mu?
-- [ ] Hasta yorumları güvenilir ve izinli mi?
-- [ ] Fiyat ve paket kapsamı şeffaf mı?
-- [ ] Reklam ve web sitesi aynı bilgileri veriyor mu?
-- [ ] Çok dilli içerikler profesyonel biçimde hazırlanıyor mu?
-- [ ] Hasta taleplerine hızlı dönüş yapılıyor mu?
-- [ ] Gelen talepler CRM sisteminde kaydediliyor mu?
-- [ ] Konaklama ve transfer süreci açık mı?
-- [ ] Hasta verileri güvenli biçimde saklanıyor mu?
-- [ ] Tedavi sonrası takip sistemi bulunuyor mu?
-- [ ] Reklam sonuçları tedavi dönüşümleriyle birlikte ölçülüyor mu?
+- Web siteniz mobil cihazlarda hızlı açılıyor mu?
+- Klinik ve doktor bilgileri güncel mi?
+- Tedavi süreçleri anlaşılır biçimde açıklanıyor mu?
+- Gerçek klinik ve ekip görselleri kullanılıyor mu?
+- Hasta yorumları güvenilir ve izinli mi?
+- Fiyat ve paket kapsamı şeffaf mı?
+- Reklam ve web sitesi aynı bilgileri veriyor mu?
+- Çok dilli içerikler profesyonel biçimde hazırlanıyor mu?
+- Hasta taleplerine hızlı dönüş yapılıyor mu?
+- Gelen talepler CRM sisteminde kaydediliyor mu?
+- Konaklama ve transfer süreci açık mı?
+- Hasta verileri güvenli biçimde saklanıyor mu?
+- Tedavi sonrası takip sistemi bulunuyor mu?
+- Reklam sonuçları tedavi dönüşümleriyle birlikte ölçülüyor mu?
 
 > "Uluslararası hasta kazanımında en güçlü pazarlama unsuru, hastanın ilk temastan tedavi sonrasına kadar hissettiği güvendir."
 >

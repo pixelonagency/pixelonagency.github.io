@@ -166,6 +166,12 @@ export const LEGACY = [
      yazılmış. Siteden bu adrese HİÇ link verilmiyor — kaynak dışarıda, yani biri
      yanlış yazmış ya da yanlış link vermiş. Doğru sayfa yayında. */
   ['/blog/sosyal-medya-ajanslari-ne-is-is-yapar', '/blog/sosyal-medya-ajanslari-ne-is-yapar/'],
+
+  /* 31 Ekim 2026 — Search Console URL denetimi. İki eski adres son 90 günde gösterim
+     almış ama 404 veriyor; ikisi de aynı yazının önceki slug'ı. Türkçe karakterli
+     adres Search Console'da yüzde kodlu göründüğü biçimde yazıldı. */
+  ['/blog/web-sitesi-kac-gunde-biter-gercek-takvim', '/blog/web-sitesi-kac-gunde-biter/'],
+  ['/blog/web-sitesi-ka%C3%A7-g%C3%BCnde-biter', '/blog/web-sitesi-kac-gunde-biter/'],
 ];
 
 /** Sitemap XML → kanonik yol listesi (alfabetik, deterministik). */

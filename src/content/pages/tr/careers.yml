@@ -19,15 +19,13 @@ sections:
       Strateji, tasarım, teknoloji ve yaratıcılığın bir araya geldiği Pixelon'da; öğrenmeye açık, sorumluluk alan ve birlikte üretmekten keyif alan ekip arkadaşlarıyla büyüyoruz. Açık pozisyonlarımızı inceleyebilir veya yeteneklerinizi ve deneyiminizi paylaşmak için genel başvuru bırakabilirsiniz.
     tagline: >-
       Aradığınız pozisyon şu anda açık değilse de başvurunuzu bırakabilirsiniz. Uygun bir fırsat oluştuğunda sizinle iletişime geçebiliriz.
-    # DİKKAT: '#basvuru' hedefi bu sayfada henüz yok. Referansta "Genel Başvuru Yap"
-    # bir modal açıyor; `form` şemasının formId enum'ı ('contact' | 'analysis') kariyer
-    # başvuru formunu kapsamıyor. Form bölümü/modalı eklenene kadar bu bağlantı boşta.
+    # Genel başvuru, ayrı bir form kurulana kadar e-postayla alınır (31 Eki 2026).
     ctas:
       - label: Açık Pozisyonları İncele
         href: '#pozisyonlar'
         variant: primary
       - label: Genel Başvuru Yap
-        href: '#basvuru'
+        href: 'mailto:info@pixelon.com.tr?subject=Genel%20Ba%C5%9Fvuru'
         variant: outline
 
   # 2 — PIXELON'DA ÇALIŞMAK
@@ -89,10 +87,10 @@ sections:
     eyebrow: Açık Pozisyonu Beklemeyin
     heading: Yeteneklerinizi Bizimle Paylaşın.
     lead: >-
-      Şu anda size uygun bir pozisyon göremiyorsanız genel başvuru formunu doldurun. Deneyiminizi, ilgi alanlarınızı ve Pixelon'a nasıl katkı sağlayabileceğinizi bizimle paylaşın. Başvurunuz, ileride oluşabilecek iş, staj, freelance veya proje bazlı çalışma fırsatları için değerlendirilebilir.
+      Şu anda size uygun bir pozisyon göremiyorsanız özgeçmişinizi ve varsa portfolyonuzu info@pixelon.com.tr adresine gönderin. Deneyiminizi, ilgi alanlarınızı ve Pixelon'a nasıl katkı sağlayabileceğinizi bizimle paylaşın. Başvurunuz, ileride oluşabilecek iş, staj, freelance veya proje bazlı çalışma fırsatları için değerlendirilebilir.
     ctas:
-      - label: Genel Başvuru Formunu Aç
-        href: '#basvuru'
+      - label: E-postayla Başvurun
+        href: 'mailto:info@pixelon.com.tr?subject=Genel%20Ba%C5%9Fvuru'
         variant: primary
 
   # 6 — BAŞVURU SÜRECİ
@@ -177,5 +175,5 @@ sections:
         href: '#pozisyonlar'
         variant: primary
       - label: Genel Başvuru Yap
-        href: '#basvuru'
+        href: 'mailto:info@pixelon.com.tr?subject=Genel%20Ba%C5%9Fvuru'
         variant: outline

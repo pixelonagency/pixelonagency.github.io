@@ -6,7 +6,7 @@ date: 2026-07-18
 translationKey: healthcare-digital-marketing-strategy
 cover: '/src/assets/images/blog/saglik-markalari-dijital-pazarlama-cover.webp'
 coverAlt: Sağlık markasının dijital pazarlama performansını değerlendiren ajans ekibi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:
@@ -111,7 +111,7 @@ Yurt dışından hasta kabul eden kliniklerde bu sistemin en kritik parçası g�
 - WhatsApp hasta iletişim şablonları
 - Form ve dönüşüm takibi
 
-[Projeyi İnceleyin →](/hizmetlerimiz/saglik-turizmi-danismanligi/#projeler)
+[Projeyi İnceleyin →](/projelerimiz/dentasay/)
 
 > "Başarılı dijital pazarlama, daha fazla kişiye ulaşmak değil; doğru kişiyi doğru mesajla harekete geçirmektir."
 > >
@@ -129,14 +129,14 @@ Yalnızca daha fazla kullanıcıya ulaşmak yerine, güven oluşturan ve nitelik
 
 **Sağlık Markaları İçin Dijital Pazarlama Kontrol Listesi**
 
-- [ ] Web sitesi mobil uyumlu mu?
-- [ ] Tedavi sayfaları yeterli bilgi veriyor mu?
-- [ ] Doktor ve klinik güven unsurları görünür mü?
-- [ ] WhatsApp ve telefon butonları kolay erişilebilir mi?
-- [ ] Reklam dönüşümleri doğru ölçülüyor mu?
-- [ ] Hasta talepleri CRM sisteminde takip ediliyor mu?
-- [ ] İçerikler hedef pazara uygun dilde hazırlanıyor mu?
-- [ ] Reklam sonrası geri dönüş süresi takip ediliyor mu?
+- Web sitesi mobil uyumlu mu?
+- Tedavi sayfaları yeterli bilgi veriyor mu?
+- Doktor ve klinik güven unsurları görünür mü?
+- WhatsApp ve telefon butonları kolay erişilebilir mi?
+- Reklam dönüşümleri doğru ölçülüyor mu?
+- Hasta talepleri CRM sisteminde takip ediliyor mu?
+- İçerikler hedef pazara uygun dilde hazırlanıyor mu?
+- Reklam sonrası geri dönüş süresi takip ediliyor mu?
 
 ## Sıkça Sorulan Sorular
 

@@ -80,7 +80,8 @@ const ogImageUrl = new URL(ogImage ?? ogDefault.src, site).toString();
 /*
  * GTM yalnızca üretim build'ine basılır (dev sunucusu veri toplamaz) ve
  * çalışma anında canlı alan adıyla sınırlanır (dist önizlemeleri toplamaz).
- * Resmî kurulum: script <head> açılışına yakın, noscript <body> hemen sonrası.
+ * Yalnız script, <head> açılışına yakın. Resmî kurulumdaki noscript iframe bilerek yok:
+ * JavaScript kapalı ziyaretçi izin veremez, iframe izinsiz istek atardı (31 Eki 2026).
  */
 const includeAnalytics = import.meta.env.PROD;
 const gtmScript = `if(location.hostname==='${ANALYTICS_HOSTNAME}'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');}`;
@@ -191,20 +192,6 @@ const jsonLd = toJsonLd([
   </head>
 
   <body>
-    {/* Google Tag Manager (noscript) — <body> açılışının hemen ardından (resmî kurulum). */}
-    {
-      includeAnalytics && (
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style="display:none;visibility:hidden"
-            title="Google Tag Manager"
-          />
-        </noscript>
-      )
-    }
     <a href="#main" class="skip-link">{t('nav.skipToContent', locale)}</a>
     <Header {locale} {alternates} />
     <main id="main">
@@ -222,7 +209,9 @@ const jsonLd = toJsonLd([
       // Scroll-reveal: viewport'a giren [data-reveal] elemanlarını kademeli gecikmeyle açar.
       const revealables = document.querySelectorAll<HTMLElement>('[data-reveal]');
 
-      if (revealables.length > 0 && 'IntersectionObserver' in window) {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (revealables.length > 0 && 'IntersectionObserver' in window && !reducedMotion) {
         const observer = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
@@ -239,9 +228,14 @@ const jsonLd = toJsonLd([
           { threshold: 0, rootMargin: '0px 0px -12% 0px' },
         );
 
-        for (const element of revealables) observer.observe(element);
-      } else {
-        for (const element of revealables) element.classList.add('is-revealed');
+        // Yalnız ekranın altında kalan öğeler gizlenip izlenir. İlk ekrandaki içerik hiç
+        // gizlenmez; böylece JS'in yüklenmesini beklemeden boyanır (LCP).
+        const fold = window.innerHeight;
+        for (const element of revealables) {
+          if (element.getBoundingClientRect().top < fold) continue;
+          element.classList.add('is-pending');
+          observer.observe(element);
+        }
       }
     </script>
   </body>

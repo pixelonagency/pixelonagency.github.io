@@ -287,17 +287,23 @@ button {
   animation: fadeUp 0.8s var(--ease-out) both;
 }
 
-[data-reveal] {
+/*
+ * Scroll-reveal içeriği varsayılan olarak GÖRÜNÜR. Gizleme yalnız JS'in ekran
+ * altında kalan öğelere eklediği `is-pending` ile başlar. Eskiden `[data-reveal]`
+ * opacity:0 ile başlıyordu; JS gecikince ilk ekran mobilde 6-9 sn boş kalıyordu
+ * (31 Eki 2026 Lighthouse) ve JS hiç çalışmazsa içerik hiç görünmüyordu.
+ */
+[data-reveal].is-pending {
   opacity: 0;
   transform: translateY(28px);
+}
+
+[data-reveal].is-pending.is-revealed {
+  opacity: 1;
+  transform: none;
   transition:
     opacity 0.8s var(--ease-out),
     transform 0.8s var(--ease-out);
-}
-
-[data-reveal].is-revealed {
-  opacity: 1;
-  transform: none;
 }
 
 /*
@@ -341,7 +347,7 @@ button {
     transition-duration: 0.01ms !important;
   }
 
-  [data-reveal] {
+  [data-reveal].is-pending {
     opacity: 1;
     transform: none;
   }
