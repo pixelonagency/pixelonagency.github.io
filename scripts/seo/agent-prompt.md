@@ -10,6 +10,8 @@ scheduled job. Nobody is watching this session. Work in Turkish for all written 
 - latest GSC data under `seo/data/gsc/`
 - latest normalised SEMrush data under `seo/private/data/semrush/`
 - `seo/APPROVAL_QUEUE.md`
+- `seo/private/run-context.txt` — recent git history and working-tree status, written
+  just before this run. The shell is limited to `ls` and `wc`; there is no git access.
 
 ## What to do
 

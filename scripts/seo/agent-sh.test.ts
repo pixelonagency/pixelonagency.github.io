@@ -54,7 +54,14 @@ function runAgent(action = '') {
   const r = spawnSync('bash', [join(repo, 'scripts/seo/agent.sh')], {
     cwd: repo,
     encoding: 'utf8',
-    env: { HOME: home, FAKE_OUT: root, FAKE_ACTION: action, SEO_AGENT_SKIP_SYNC: '1', TZ: 'Europe/Istanbul' },
+    env: {
+      HOME: home,
+      LANG: 'tr_TR.UTF-8',
+      FAKE_OUT: root,
+      FAKE_ACTION: action,
+      SEO_AGENT_SKIP_SYNC: '1',
+      TZ: 'Europe/Istanbul',
+    },
   });
   const logs = spawnSync('bash', ['-c', 'cat seo/logs/agent-*.log'], { cwd: repo, encoding: 'utf8' }).stdout;
   const state = JSON.parse(readFileSync(join(repo, 'seo/private/SEO_STATE.private.json'), 'utf8'));
@@ -145,9 +152,10 @@ describe('agent.sh', () => {
     for (const bare of ['Bash', 'Write', 'Edit']) expect(allowed).not.toContain(bare);
     expect(allowed).toContain('Write(seo/**)');
     expect(allowed).toContain('Edit(seo/**)');
-    expect(allowed.filter((t) => t.startsWith('Bash(')).every((t) => !/python|node|bash|sh |perl|curl/.test(t))).toBe(
-      true,
-    );
+    // Only fixed, side-effect-free shell commands: no interpreters, no git (git diff --output writes files).
+    expect(allowed.filter((t) => t.startsWith('Bash('))).toEqual(['Bash(ls:*)', 'Bash(wc:*)']);
+    // The git context the agent needs is handed over as a file instead.
+    expect(readFileSync(join(repo, 'seo/private/run-context.txt'), 'utf8')).toContain('init');
   });
 
   test.skipIf(process.platform !== 'darwin')('keeps the Mac awake while claude runs', () => {

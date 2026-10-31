@@ -13,6 +13,7 @@
 #
 # Git push YOK, commit YOK. Onaylı değişiklikleri interaktif oturum commit eder.
 set -uo pipefail
+export LC_ALL=C
 
 cd "$(dirname "$0")/../.."
 ROOT="$(pwd)"
@@ -85,12 +86,14 @@ log "BAŞLADI pid=$$ bütçe=\$$BUDGET_USD süre=${TIMEOUT_SEC}s"
 # Git kancaları ve repo yapılandırması: ajanın yazdığı bir kanca sonraki git komutunda
 # araç kısıtlaması olmadan çalışırdı. Yedeklenir, değişirse geri yüklenir.
 GIT_DIR_PATH="$(git rev-parse --absolute-git-dir)"
-# Her giriş türü sayılır: `ls -ld` symlink hedefini de gösterir, shasum dosya içeriğini.
+# Her giriş türü sayılır (dosya, dizin, symlink ve hedefi, izinler) ve dosya içerikleri.
+# Zaman damgası bilerek yok: geri yükleme dizin saatlerini değiştirir, yerel ayara
+# göre biçimi de değişir (31 Eki 2026'da Türkçe tarih yanlış ihlal üretti).
 git_meta_hash() {
   (cd "$GIT_DIR_PATH" && {
-    find hooks config config.worktree info -print 2>/dev/null | sort | while IFS= read -r f; do ls -ld "$f"; done
+    find hooks config config.worktree info -exec stat -f '%N %HT %Lp %Y' {} + 2>/dev/null | sort
     find hooks config config.worktree info -type f -exec shasum -a256 {} + 2>/dev/null | sort
-  } | sed -E 's/ +[A-Z][a-z]{2} +[0-9]+ +[0-9:]+ / /' | shasum -a256 | cut -d' ' -f1)
+  } | shasum -a256 | cut -d' ' -f1)
 }
 GIT_META_BEFORE="$(git_meta_hash)"
 # Yedek, ajanın yazdığı seo/ altında değil, rastgele adlı 700 izinli geçici dizinde.
@@ -99,9 +102,17 @@ chmod 700 "$GIT_META_BACKUP"
 cp -Rp "$GIT_DIR_PATH/hooks" "$GIT_DIR_PATH/config" "$GIT_META_BACKUP/"
 [ -d "$GIT_DIR_PATH/info" ] && cp -Rp "$GIT_DIR_PATH/info" "$GIT_META_BACKUP/"
 
+# --- Ajan için git bağlamı ---------------------------------------------------------
+{
+  echo "# git log -30 --stat"; git log -30 --stat --date=iso
+  echo; echo "# git status --porcelain"; git status --porcelain
+} >"$ROOT/seo/private/run-context.txt" 2>&1
+
 # --- Ajan ---------------------------------------------------------------------
 # Araç yetkisi asıl sınırdır: yazma yalnızca seo/ altına, kabuk yalnızca okuma
-# yapan git komutları ve depodaki SEO script'leri. Aşağıdaki son kapı ikinci
+# yapan iki komut. Git ve script çalıştırma yok: `git diff --output` dosya yazar,
+# bir script yolu jokeri `..` ile seo/ altındaki koda uzanır. Ajanın ihtiyaç
+# duyduğu git bilgisi koşudan önce seo/private/run-context.txt dosyasına yazılır. Aşağıdaki son kapı ikinci
 # katmandır; sınırsız bir kabuğu sonradan temizlemeye çalışmak açık bırakır.
 # `perl -e alarm` kullanılıyor: macOS'ta GNU `timeout` yok.
 # `caffeinate -i`: 30 Ağu 2026 koşusu Mac uykuya geçince yarıda kesildi.
@@ -114,9 +125,7 @@ ${AWAKE[@]+"${AWAKE[@]}"} perl -e "alarm $TIMEOUT_SEC; exec @ARGV" claude -p \
   --no-session-persistence \
   --allowedTools "Read" "Glob" "Grep" "WebSearch" "WebFetch" \
                  "Write(seo/**)" "Edit(seo/**)" \
-                 "Bash(git status:*)" "Bash(git log:*)" "Bash(git diff:*)" "Bash(git show:*)" \
-                 "Bash(git rev-parse:*)" "Bash(ls:*)" "Bash(wc:*)" "Bash(date:*)" \
-                 "Bash(bun scripts/seo/*)" \
+                 "Bash(ls:*)" "Bash(wc:*)" \
                  "mcp__claude_ai_Semrush__execute_report" "mcp__claude_ai_Semrush__get_report_schema" \
                  "mcp__claude_ai_Semrush__keyword_research" "mcp__claude_ai_Semrush__backlinks_research" \
                  "mcp__claude_ai_Semrush__organic_research" "mcp__claude_ai_Semrush__competitors_research" \
