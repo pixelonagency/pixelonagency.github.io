@@ -306,7 +306,10 @@ const forbidden = [
     : []),
   ...(state.currentKeywordClusters ?? []),
 ];
-assertPublicSafe(publicReport, forbidden);
+// Raporun sabit veri kaynağı etiketleri; sorgu listesinde aynı ifade olsa da sızıntı değildir.
+assertPublicSafe(publicReport, forbidden, {
+  boilerplate: ['Google Search Console', 'Google Search Central', 'SEMrush', 'Live SERP'],
+});
 // Public özet BİLEREK farklı adla yazılır: `DAILY-*` deseni gitignore'da private tarafa
 // ayrılmış durumda. Ad farkı, yanlış dosyanın yanlış katmana düşmesini imkânsız kılar.
 const publicName = `SUMMARY-${reportName}`;

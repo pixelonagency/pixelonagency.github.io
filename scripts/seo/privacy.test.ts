@@ -142,6 +142,24 @@ describe('assertPublicSafe', () => {
     expect(() => assertPublicSafe('ORNEK SORGU IKI', ['ornek sorgu iki'])).toThrow(/GİZLİLİK İHLALİ/);
   });
 
+  test('raporun kendi sabit etiketleri sorguyla aynı olsa da çökertmez', () => {
+    // 5 Eyl - 31 Eki 2026: "google search console" gerçek bir sorguydu ve raporun veri kaynağı
+    // satırında da geçiyordu; günlük rapor 8 hafta boyunca her sabah çöktü.
+    const report = 'Google Search Console: YES\nOrganic clicks: 12';
+    expect(
+      assertPublicSafe(report, ['google search console', 'search console'], {
+        boilerplate: ['Google Search Console'],
+      }),
+    ).toBe(true);
+  });
+
+  test('sabit etiket dışındaki yerde geçen sorgu yine yakalanır', () => {
+    const report = 'Google Search Console: YES\nEn iyi sorgu: search console nedir';
+    expect(() =>
+      assertPublicSafe(report, ['search console nedir'], { boilerplate: ['Google Search Console'] }),
+    ).toThrow(/GİZLİLİK İHLALİ/);
+  });
+
   test('temiz metinde sessizce geçer', () => {
     expect(assertPublicSafe('Organic clicks: 12\nImpressions: 651', ['ornek sorgu'])).toBe(true);
   });
