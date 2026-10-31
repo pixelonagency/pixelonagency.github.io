@@ -145,6 +145,25 @@ const LOOP_SCRIPT = `(() => {
 })();`;
 
 /*
+ * Video kapakları tembel: `poster` özniteliği tarayıcıya hemen indirtir ve sayfa
+ * altındaki kapaklar hero görseliyle bant genişliği için yarışıyordu (Dentasay, mobil
+ * LCP 10,9 sn). Kapak `data-poster`da durur, video ekrana 600 px yaklaşınca verilir.
+ */
+const POSTER_SCRIPT = `(() => {
+  const videos = document.querySelectorAll('video[data-poster]');
+  const show = (video) => { video.poster = video.dataset.poster; video.removeAttribute('data-poster'); };
+  if (!('IntersectionObserver' in window)) { videos.forEach(show); return; }
+  const io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      show(entry.target);
+      io.unobserve(entry.target);
+    }
+  }, { rootMargin: '600px 0px' });
+  videos.forEach((video) => io.observe(video));
+})();`;
+
+/*
  * Diğer vakalar rayı: kendi kendine ilerleyen sonsuz döngü. Kart kümesi JS ile
  * bir kez klonlanır, ray bir "periyot" (özgün küme genişliği) sonuna geldiğinde
  * scrollLeft sessizce bir periyot geri alınır — kullanıcı dikişi görmez. Klonlar
@@ -483,13 +502,13 @@ const RAIL_SCRIPT = `(() => {
                   {block.video && (
                     <video
                       class="pd-loop"
-                      poster={mediaUrl(block.video.poster)}
+                      data-poster={mediaUrl(block.video.poster)}
                       width={block.video.width}
                       height={block.video.height}
                       muted
                       loop
                       playsinline
-                      preload="metadata"
+                      preload="none"
                       disablepictureinpicture
                       aria-label={`${client} — ${block.heading}`}
                     >
@@ -546,7 +565,7 @@ const RAIL_SCRIPT = `(() => {
                       >
                         <video
                           class="pd-reel__video"
-                          poster={mediaUrl(reel.poster)}
+                          data-poster={mediaUrl(reel.poster)}
                           controls
                           playsinline
                           preload="none"
@@ -681,6 +700,7 @@ const RAIL_SCRIPT = `(() => {
 
     {ctaSection && <CtaSection section={ctaSection} />}
 
+    <script is:inline set:html={POSTER_SCRIPT} />
     {hasLoopVideo && <script is:inline set:html={LOOP_SCRIPT} />}
     {railProjects.length > 0 && <script is:inline set:html={RAIL_SCRIPT} />}
   </article>
