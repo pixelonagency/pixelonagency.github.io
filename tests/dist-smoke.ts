@@ -2135,3 +2135,19 @@ describe('vaka sayfası video kapakları tembel yüklenir', () => {
     expect(page).toMatch(/dataset\.poster/);
   });
 });
+
+/*
+ * 31 Eki 2026: Google İşletme Profili (kgmid /g/11zx6dm7j2) sahibinden alındı. Kurumsal
+ * şema ve footer onu gösterir; Google siteyi ve profili aynı işletme olarak bağlar.
+ */
+describe('Google İşletme Profili', () => {
+  const profile = 'https://www.google.com/search?kgmid=/g/11zx6dm7j2';
+  test('Organization sameAs profili içerir', () => {
+    const home = readFileSync(join(DIST, 'index.html'), 'utf8');
+    expect(home).toMatch(/"sameAs":\[[^\]]*"https:\/\/www\.google\.com\/search\?kgmid=\/g\/11zx6dm7j2"/);
+  });
+  test('footer profile bağlanır', () => {
+    const home = readFileSync(join(DIST, 'index.html'), 'utf8');
+    expect(home).toContain(`href="${profile}"`);
+  });
+});
