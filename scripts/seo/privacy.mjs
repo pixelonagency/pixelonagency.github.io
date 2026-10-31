@@ -191,10 +191,16 @@ export function countOpportunities(opportunities) {
 /**
  * Son savunma hattı: public metin içinde yasaklı dizelerden biri geçiyorsa fırlatır.
  * Sessiz sızıntı yerine gürültülü çökme tercih edilir.
+ *
+ * `boilerplate`: raporun her gün aynı yazdığı sabit etiketler (ör. "Google Search
+ * Console" veri kaynağı satırı). Kontrolden önce metinden çıkarılır; aksi halde aynı
+ * ifade bir arama sorgusu olduğunda rapor her gün çöker (5 Eyl - 31 Eki 2026).
  * @param {string} text @param {string[]} forbidden
+ * @param {{ boilerplate?: string[] }} [options]
  */
-export function assertPublicSafe(text, forbidden) {
-  const hay = text.toLowerCase();
+export function assertPublicSafe(text, forbidden, { boilerplate = [] } = {}) {
+  let hay = text.toLowerCase();
+  for (const label of boilerplate) if (label) hay = hay.split(label.toLowerCase()).join(' ');
   const hits = [...new Set(forbidden.filter((s) => s && s.trim().length >= 4 && hay.includes(s.toLowerCase())))];
   if (hits.length) {
     throw new Error(
