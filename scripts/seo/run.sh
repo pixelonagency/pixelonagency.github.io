@@ -49,6 +49,9 @@ trap 'rm -rf "$LOCK_DIR"' EXIT INT TERM
 # --- Koşu --------------------------------------------------------------------
 log "BAŞLADI mode=$MODE pid=$$"
 
+# Klon her koşudan önce origin/main'e getirilir; başarısızlık loga yazılır.
+bash "$ROOT/scripts/seo/sync-clone.sh" "$LOG" || log "UYARI — klon güncellenemedi, eldeki kopyayla devam ediliyor"
+
 # GSC verisi her koşuda tazelenir; başarısız olursa koşu yine de devam eder
 # (sources.mjs eldeki en güncel veriyle çalışır, tahmin üretmez).
 if bun "$ROOT/scripts/seo/gsc.mjs" >>"$LOG" 2>&1; then
