@@ -166,6 +166,8 @@ article:
 
         Kimliğin günlük olarak en çok sınandığı yer sosyal medya; aynı dilin orada nasıl korunduğunu [Instagram'da marka nasıl büyütülür](/blog/instagramda-marka-nasil-buyutulur/) yazısında ele aldık. Kurduğumuz kimliklerin canlı hâllerini ise [referanslarımız](/referanslarimiz/) sayfasında görebilirsiniz.
 
+        Bu kimliğin kartvizitten tabelaya somut uygulamalarını [kurumsal kimlik nedir](/blog/kurumsal-kimlik-nedir/) yazısında topladık.
+
     - type: cta
       heading: Markanızın kimliğini birlikte kuralım.
       text: Mevcut görsel dilinizi inceleyip konumlandırmadan uygulama kurallarına kadar eksik kalan katmanları çıkaralım.

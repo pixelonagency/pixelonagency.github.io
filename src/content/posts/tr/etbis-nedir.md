@@ -160,6 +160,8 @@ article:
 
         Kuralları ezberden değil resmi kaynaktan takip edin; kayıt kapsamı ve bildirim yükümlülükleri güncellenebiliyor. Yasal adımlarla birlikte kanal, altyapı ve kurulum planını baştan netleştirmek isterseniz [e-ticaret danışmanlığı](/hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-danismanligi/) sayfamıza, genel yaklaşımımız için [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) sayfasına göz atabilirsiniz.
 
+        ETBİS kaydının yanında hazır olması gereken diğer belgeleri [e-ticaret sitesi kurmak için gerekenler](/blog/e-ticaret-sitesi-kurmak-icin-gerekenler/) yazısında topladık.
+
     - type: cta
       heading: Yayına hazır bir mağaza kuralım.
       text: Yasal metinlerin, kayıt işaretinin ve güven unsurlarının yerini tasarım aşamasında planlayalım; siteniz ilk günden eksiksiz yayına çıksın.

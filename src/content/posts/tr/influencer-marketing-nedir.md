@@ -13,7 +13,7 @@ seo:
   title: 'Influencer Marketing Nedir? Süreç ve Örnekler | Pixelon'
   description: 'Influencer marketing nedir, nasıl yapılır? Influencer türleri, doğru kişiyi seçme, iş birliği süreci, reklam etiketi kuralları, ölçüm ve sağlık turizmi ile doğal ürün markalarından gerçek örnekler.'
 article:
-  updated: 2026-10-01
+  updated: 2026-10-31
   quickAnswer:
     heading: Kısa Cevap
     text: Influencer marketing, bir markanın ürününü ya da hizmetini, sosyal medyada kendi kitlesi olan kişiler aracılığıyla tanıtmasıdır. Erişim influencer'ın takipçilerinden gelir, güven ise o kişinin takipçileriyle kurduğu ilişkiden. İyi sonuç veren iş birliği, takipçi sayısından çok kitlenin markanın hedef kitlesiyle örtüşmesine, içeriğin influencer'ın kendi diliyle üretilmesine ve iş birliğinin açıkça belirtilmesine dayanır.
@@ -107,7 +107,7 @@ article:
     - type: callout
       variant: note
       heading: Reklam olduğunu söyleyin
-      text: Ticaret Bakanlığı Reklam Kurulu'nun sosyal medya etkileyicileri kılavuzu, ücretli ya da karşılıklı bir iş birliğinin içerikte açıkça belirtilmesini istiyor. Sağlık hizmetlerinde bunun yanında sağlık tanıtım kuralları da geçerli; kesin sonuç vaadi ve yanıltıcı öncesi sonrası kullanımından uzak durulmalı. Açıkça belirtilen bir iş birliği güveni düşürmüyor, saklanan bir iş birliği ise ortaya çıktığında hem influencer'a hem markaya zarar veriyor.
+      text: 1 Ağustos 2026'dan beri Ticari Reklam ve Haksız Ticari Uygulamalar Yönetmeliği'nin 23/A maddesi, bir markadan menfaat alınarak yapılan paylaşımlarda "Reklam" ya da "Tanıtım" ifadesini ve reklam verenin adını zorunlu tutuyor; 2021 kılavuzunun kabul ettiği #işbirliği gibi etiketler artık tek başına yetmiyor. Ayrıntısını [Instagramda kimler reklam yazmak zorunda](/blog/instagram-reklam-etiketi/) yazısında anlattık. Sağlık hizmetlerinde bunun yanında sağlık tanıtım kuralları da geçerli; kesin sonuç vaadi ve yanıltıcı öncesi sonrası kullanımından uzak durulmalı. Açıkça belirtilen bir iş birliği güveni düşürmüyor, saklanan bir iş birliği ise ortaya çıktığında hem influencer'a hem markaya zarar veriyor.
 
     - type: checklist
       heading: Sık yapılan hatalar

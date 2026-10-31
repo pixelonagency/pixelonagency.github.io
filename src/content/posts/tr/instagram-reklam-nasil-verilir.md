@@ -179,6 +179,8 @@ article:
 
         Kısa videoya dayalı başka bir kanal düşünüyorsanız [TikTok reklam verme](/blog/tiktok-reklam-verme/) yazısına göz atın. Meta kampanyalarını nasıl yürüttüğümüzü [Meta reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/meta-reklam-yonetimi/) sayfasında, tüm reklam kanallarındaki yaklaşımımızı [dijital reklam yönetimi](/hizmetlerimiz/dijital-reklam-yonetimi/) sayfasında anlattık.
 
+        Reklam butonu çalışmıyorsa ya da hesap kısıtlandıysa nedenlerini ve çözümlerini [Instagram reklam veremiyorum](/blog/instagram-reklam-veremiyorum/) yazısında anlattık.
+
     - type: cta
       heading: Instagram reklamlarınızı birlikte kuralım.
       text: Hesap yapısından piksele kadar eksikleri çıkaralım, hangi hedefle başlamanız gerektiğini birlikte belirleyelim.
