@@ -302,3 +302,18 @@ describe('cli options', () => {
     expect(options.sitemapUrl).toBe(`${SITE}/sitemap-index.xml`);
   });
 });
+
+/*
+ * 31 Eki 2026: üretim 22 Ağu'da Cloudflare Workers'a taşındı, IndexNow job'ı eski GitHub Pages
+ * akışında (deploy.yml, artık yalnız elle) kaldı. 10 hafta boyunca hiçbir değişiklik Bing'e
+ * bildirilmedi. Üretim akışı, başarılı deploy'dan sonra IndexNow'u çalıştırmak zorunda.
+ */
+describe('üretim yayın akışı IndexNow bildirir', () => {
+  test("deploy-workers-production.yml deploy sonrası indexnow job'ı taşır", () => {
+    const wf = readFileSync('.github/workflows/deploy-workers-production.yml', 'utf8');
+    const job = wf.slice(wf.indexOf('\n  indexnow:'));
+    expect(wf).toContain('\n  indexnow:');
+    expect(job).toMatch(/needs: deploy/);
+    expect(job).toContain('bun scripts/seo/indexnow.ts --base "${{ github.event.before }}" --head "${{ github.sha }}"');
+  });
+});
