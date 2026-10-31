@@ -85,11 +85,18 @@ log "BAŞLADI pid=$$ bütçe=\$$BUDGET_USD süre=${TIMEOUT_SEC}s"
 # Git kancaları ve repo yapılandırması: ajanın yazdığı bir kanca sonraki git komutunda
 # araç kısıtlaması olmadan çalışırdı. Yedeklenir, değişirse geri yüklenir.
 GIT_DIR_PATH="$(git rev-parse --absolute-git-dir)"
-git_meta_hash() { (cd "$GIT_DIR_PATH" && find hooks config -type f -exec shasum -a256 {} + 2>/dev/null | sort | shasum -a256 | cut -d' ' -f1); }
+# Her giriş türü sayılır: `ls -ld` symlink hedefini de gösterir, shasum dosya içeriğini.
+git_meta_hash() {
+  (cd "$GIT_DIR_PATH" && {
+    find hooks config config.worktree info -print 2>/dev/null | sort | while IFS= read -r f; do ls -ld "$f"; done
+    find hooks config config.worktree info -type f -exec shasum -a256 {} + 2>/dev/null | sort
+  } | sed -E 's/ +[A-Z][a-z]{2} +[0-9]+ +[0-9:]+ / /' | shasum -a256 | cut -d' ' -f1)
+}
 GIT_META_BEFORE="$(git_meta_hash)"
 GIT_META_BACKUP="$LOG_DIR/.git-meta-backup"
 rm -rf "$GIT_META_BACKUP"; mkdir -p "$GIT_META_BACKUP"
 cp -Rp "$GIT_DIR_PATH/hooks" "$GIT_DIR_PATH/config" "$GIT_META_BACKUP/"
+[ -d "$GIT_DIR_PATH/info" ] && cp -Rp "$GIT_DIR_PATH/info" "$GIT_META_BACKUP/"
 
 # --- Ajan ---------------------------------------------------------------------
 # `perl -e alarm` kullanılıyor: macOS'ta GNU `timeout` yok.
@@ -112,6 +119,20 @@ ${AWAKE[@]+"${AWAKE[@]}"} perl -e "alarm $TIMEOUT_SEC; exec @ARGV" claude -p \
   < "$ROOT/scripts/seo/agent-prompt.md" > "$LOG_DIR/agent-$STAMP.json" 2>>"$LOG"
 CLAUDE_EXIT=$?
 log "ajan bitti exit=$CLAUDE_EXIT"
+
+# --- Git meta verisi: başka HİÇBİR git komutundan önce ----------------------------
+# Ajanın yazdığı bir kanca veya ayar, temizlik sırasındaki ilk git komutunda araç
+# kısıtlaması olmadan çalışırdı. Bu yüzden önce karşılaştırılır, sonra değişmiş
+# olsun olmasın yedekten geri yüklenir; sonraki git komutları da kancasız ve
+# genel/sistem ayarı okumadan çalışır.
+GIT_META_AFTER="$(git_meta_hash)"
+rm -rf "$GIT_DIR_PATH/hooks" "$GIT_DIR_PATH/info" "$GIT_DIR_PATH/config.worktree"
+cp -Rp "$GIT_META_BACKUP/hooks" "$GIT_DIR_PATH/hooks"
+cp -p "$GIT_META_BACKUP/config" "$GIT_DIR_PATH/config"
+[ -d "$GIT_META_BACKUP/info" ] && cp -Rp "$GIT_META_BACKUP/info" "$GIT_DIR_PATH/info"
+rm -rf "$GIT_META_BACKUP"
+export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null
+git() { command git -c core.hooksPath=/dev/null -c core.fsmonitor=false "$@"; }
 
 # --- SON KAPI: üretim yollarına dokunuldu mu? ----------------------------------
 VIOLATION=""
@@ -141,19 +162,16 @@ if [ "$PROTECTED_BEFORE" != "$PROTECTED_AFTER" ]; then
   if [ -n "$AGENT_PATHS" ]; then
     log "İHLAL — ajanın kirlettiği yollar geri alınıyor:"
     printf '%s\n' "$AGENT_PATHS" >>"$LOG"
-    printf '%s\n' "$AGENT_PATHS" | tr '\n' '\0' | xargs -0 git checkout -- 2>>"$LOG" || true
-    printf '%s\n' "$AGENT_PATHS" | tr '\n' '\0' | xargs -0 git clean -fd -- 2>>"$LOG" || true
+    printf '%s\n' "$AGENT_PATHS" | tr '\n' '\0' | xargs -0 git -c core.hooksPath=/dev/null -c core.fsmonitor=false checkout -- 2>>"$LOG" || true
+    printf '%s\n' "$AGENT_PATHS" | tr '\n' '\0' | xargs -0 git -c core.hooksPath=/dev/null -c core.fsmonitor=false clean -fd -- 2>>"$LOG" || true
   else
     log "İHLAL — korunan yollar değişti ama yeni kirlenen yol yok; sahibin mevcut dosyaları değişmiş olabilir. Geri alma YAPILMADI, sahip incelemeli."
   fi
 fi
-if [ "$GIT_META_BEFORE" != "$(git_meta_hash)" ]; then
-  VIOLATION="${VIOLATION:+$VIOLATION; }.git/hooks veya .git/config değişti"
-  log "İHLAL — git kancaları/yapılandırması değişti, yedekten geri yükleniyor"
-  rm -rf "$GIT_DIR_PATH/hooks" && cp -Rp "$GIT_META_BACKUP/hooks" "$GIT_DIR_PATH/hooks"
-  cp -p "$GIT_META_BACKUP/config" "$GIT_DIR_PATH/config"
+if [ "$GIT_META_BEFORE" != "$GIT_META_AFTER" ]; then
+  VIOLATION="${VIOLATION:+$VIOLATION; }.git/hooks, .git/info veya .git/config değişti"
+  log "İHLAL — git kancaları/yapılandırması değişmişti, yedekten geri yüklendi"
 fi
-rm -rf "$GIT_META_BACKUP"
 
 # Taslak src/content'e sızmış mı? Yalnızca koşu SIRASINDA kirlenen yollar sayılır:
 # 27-28 Ağu 2026'da sahibin önceden bıraktığı dosyalar ihlal sanıldı ve ajan BLOCKED oldu.

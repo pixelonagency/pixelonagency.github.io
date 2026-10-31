@@ -123,6 +123,20 @@ describe('agent.sh', () => {
     expect(existsSync(join(repo, '.git/hooks/post-merge'))).toBe(false);
   });
 
+  test('a symlinked git hook is a violation and is removed', () => {
+    const { logs, agent } = runAgent('ln -s /bin/sh .git/hooks/post-checkout');
+    expect(logs).toContain('SINIR İHLALİ');
+    expect(agent.lastExitCode).toBe(90);
+    expect(existsSync(join(repo, '.git/hooks/post-checkout'))).toBe(false);
+  });
+
+  test('a hook planted by the agent never runs during the post-run cleanup', () => {
+    const marker = join(root, 'hook-ran');
+    const hook = `printf "#!/bin/sh\\ntouch ${marker}\\n" > .git/hooks/post-checkout; chmod +x .git/hooks/post-checkout; echo x > src/content/posts/a.md`;
+    runAgent(hook);
+    expect(existsSync(marker)).toBe(false);
+  });
+
   test.skipIf(process.platform !== 'darwin')('keeps the Mac awake while claude runs', () => {
     runAgent();
     // caffeinate execs the command and holds the assertion on its behalf.
