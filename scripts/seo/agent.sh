@@ -100,6 +100,9 @@ cp -Rp "$GIT_DIR_PATH/hooks" "$GIT_DIR_PATH/config" "$GIT_META_BACKUP/"
 [ -d "$GIT_DIR_PATH/info" ] && cp -Rp "$GIT_DIR_PATH/info" "$GIT_META_BACKUP/"
 
 # --- Ajan ---------------------------------------------------------------------
+# Araç yetkisi asıl sınırdır: yazma yalnızca seo/ altına, kabuk yalnızca okuma
+# yapan git komutları ve depodaki SEO script'leri. Aşağıdaki son kapı ikinci
+# katmandır; sınırsız bir kabuğu sonradan temizlemeye çalışmak açık bırakır.
 # `perl -e alarm` kullanılıyor: macOS'ta GNU `timeout` yok.
 # `caffeinate -i`: 30 Ağu 2026 koşusu Mac uykuya geçince yarıda kesildi.
 AWAKE=()
@@ -109,7 +112,11 @@ ${AWAKE[@]+"${AWAKE[@]}"} perl -e "alarm $TIMEOUT_SEC; exec @ARGV" claude -p \
   --max-budget-usd "$BUDGET_USD" \
   --permission-mode dontAsk \
   --no-session-persistence \
-  --allowedTools "Bash" "Read" "Write" "Edit" "Glob" "Grep" "WebSearch" "WebFetch" \
+  --allowedTools "Read" "Glob" "Grep" "WebSearch" "WebFetch" \
+                 "Write(seo/**)" "Edit(seo/**)" \
+                 "Bash(git status:*)" "Bash(git log:*)" "Bash(git diff:*)" "Bash(git show:*)" \
+                 "Bash(git rev-parse:*)" "Bash(ls:*)" "Bash(wc:*)" "Bash(date:*)" \
+                 "Bash(bun scripts/seo/*)" \
                  "mcp__claude_ai_Semrush__execute_report" "mcp__claude_ai_Semrush__get_report_schema" \
                  "mcp__claude_ai_Semrush__keyword_research" "mcp__claude_ai_Semrush__backlinks_research" \
                  "mcp__claude_ai_Semrush__organic_research" "mcp__claude_ai_Semrush__competitors_research" \
@@ -117,6 +124,7 @@ ${AWAKE[@]+"${AWAKE[@]}"} perl -e "alarm $TIMEOUT_SEC; exec @ARGV" claude -p \
   --disallowedTools "Bash(git push:*)" "Bash(git commit:*)" "Bash(gh workflow run:*)" \
                     "Bash(gh secret:*)" "Bash(wrangler:*)" "Bash(bunx wrangler:*)" \
                     "Bash(claude:*)" "Bash(launchctl:*)" "Bash(rm -rf:*)" \
+                    "Read(~/.config/**)" "Read(~/.ssh/**)" "Read(~/Downloads/**)" \
   < "$ROOT/scripts/seo/agent-prompt.md" > "$LOG_DIR/agent-$STAMP.json" 2>>"$LOG"
 CLAUDE_EXIT=$?
 log "ajan bitti exit=$CLAUDE_EXIT"

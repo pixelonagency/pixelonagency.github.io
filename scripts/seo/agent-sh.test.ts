@@ -44,6 +44,7 @@ function git(cwd: string, ...args: string[]) {
 /** Fake claude: records the sleep assertions held for it, runs FAKE_ACTION, prints a result JSON. */
 const FAKE_CLAUDE = `#!/bin/bash
 cat >/dev/null
+printf '%s\\n' "$@" > "$FAKE_OUT/args"
 { pmset -g assertions 2>/dev/null | grep "pid $$)" || true; } > "$FAKE_OUT/ran"
 if [ -n "\${FAKE_ACTION:-}" ]; then eval "$FAKE_ACTION"; fi
 echo '{"subtype":"success","is_error":false,"num_turns":1,"total_cost_usd":0.01,"duration_ms":1000}'
@@ -135,6 +136,18 @@ describe('agent.sh', () => {
     const hook = `printf "#!/bin/sh\\ntouch ${marker}\\n" > .git/hooks/post-checkout; chmod +x .git/hooks/post-checkout; echo x > src/content/posts/a.md`;
     runAgent(hook);
     expect(existsSync(marker)).toBe(false);
+  });
+
+  test('claude gets scoped tools only: writes limited to seo/, no unrestricted shell', () => {
+    runAgent();
+    const args = readFileSync(join(root, 'args'), 'utf8').split('\n');
+    const allowed = args.slice(args.indexOf('--allowedTools') + 1, args.indexOf('--disallowedTools'));
+    for (const bare of ['Bash', 'Write', 'Edit']) expect(allowed).not.toContain(bare);
+    expect(allowed).toContain('Write(seo/**)');
+    expect(allowed).toContain('Edit(seo/**)');
+    expect(allowed.filter((t) => t.startsWith('Bash(')).every((t) => !/python|node|bash|sh |perl|curl/.test(t))).toBe(
+      true,
+    );
   });
 
   test.skipIf(process.platform !== 'darwin')('keeps the Mac awake while claude runs', () => {
