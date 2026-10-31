@@ -93,8 +93,9 @@ git_meta_hash() {
   } | sed -E 's/ +[A-Z][a-z]{2} +[0-9]+ +[0-9:]+ / /' | shasum -a256 | cut -d' ' -f1)
 }
 GIT_META_BEFORE="$(git_meta_hash)"
-GIT_META_BACKUP="$LOG_DIR/.git-meta-backup"
-rm -rf "$GIT_META_BACKUP"; mkdir -p "$GIT_META_BACKUP"
+# Yedek, ajanın yazdığı seo/ altında değil, rastgele adlı 700 izinli geçici dizinde.
+GIT_META_BACKUP="$(mktemp -d "${TMPDIR:-/tmp}/seo-git-meta.XXXXXX")"
+chmod 700 "$GIT_META_BACKUP"
 cp -Rp "$GIT_DIR_PATH/hooks" "$GIT_DIR_PATH/config" "$GIT_META_BACKUP/"
 [ -d "$GIT_DIR_PATH/info" ] && cp -Rp "$GIT_DIR_PATH/info" "$GIT_META_BACKUP/"
 
@@ -131,6 +132,12 @@ cp -Rp "$GIT_META_BACKUP/hooks" "$GIT_DIR_PATH/hooks"
 cp -p "$GIT_META_BACKUP/config" "$GIT_DIR_PATH/config"
 [ -d "$GIT_META_BACKUP/info" ] && cp -Rp "$GIT_META_BACKUP/info" "$GIT_DIR_PATH/info"
 rm -rf "$GIT_META_BACKUP"
+# Geri yükleme sonrası durum koşu öncesiyle aynı olmalı; değilse kancalar boşaltılır.
+if [ "$(git_meta_hash)" != "$GIT_META_BEFORE" ]; then
+  log "İHLAL — geri yüklenen git meta verisi koşu öncesiyle eşleşmiyor, kancalar boşaltıldı"
+  rm -rf "$GIT_DIR_PATH/hooks"; mkdir "$GIT_DIR_PATH/hooks"
+  GIT_META_AFTER="restore-mismatch"
+fi
 export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null
 git() { command git -c core.hooksPath=/dev/null -c core.fsmonitor=false "$@"; }
 
