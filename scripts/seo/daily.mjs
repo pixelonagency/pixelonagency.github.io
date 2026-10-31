@@ -11,7 +11,7 @@ import { readFileSync, writeFileSync, existsSync, globSync, appendFileSync, mkdi
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 import { connectionHealth, classifyQueries } from './sources.mjs';
-import { assertPublicSafe, countOpportunities, splitState, summariseGSC } from './privacy.mjs';
+import { PUBLIC_BOILERPLATE, assertPublicSafe, countOpportunities, splitState, summariseGSC } from './privacy.mjs';
 import { stampFor } from './clock.mjs';
 import { checkCounter, maxTaskNumber } from './task-id.mjs';
 import { checkSummary, loadWindow, runChecks } from './analysis.mjs';
@@ -307,9 +307,7 @@ const forbidden = [
   ...(state.currentKeywordClusters ?? []),
 ];
 // Raporun sabit veri kaynağı etiketleri; sorgu listesinde aynı ifade olsa da sızıntı değildir.
-assertPublicSafe(publicReport, forbidden, {
-  boilerplate: ['Google Search Console', 'Google Search Central', 'SEMrush', 'Live SERP'],
-});
+assertPublicSafe(publicReport, forbidden, { boilerplate: PUBLIC_BOILERPLATE });
 // Public özet BİLEREK farklı adla yazılır: `DAILY-*` deseni gitignore'da private tarafa
 // ayrılmış durumda. Ad farkı, yanlış dosyanın yanlış katmana düşmesini imkânsız kılar.
 const publicName = `SUMMARY-${reportName}`;
@@ -349,7 +347,7 @@ const counterCheck = checkCounter(state.nextTaskIdCounter, state.seoTasks);
 if (!counterCheck.ok) throw new Error(`GÖREV KİMLİĞİ SAYACI: ${counterCheck.reason}`);
 
 const { publicState, privateState } = splitState(state);
-assertPublicSafe(JSON.stringify(publicState), forbidden);
+assertPublicSafe(JSON.stringify(publicState), forbidden, { boilerplate: PUBLIC_BOILERPLATE });
 writeFileSync(statePath, JSON.stringify(publicState, null, 2) + '\n');
 writeFileSync(privateStatePath, JSON.stringify(privateState, null, 2) + '\n');
 

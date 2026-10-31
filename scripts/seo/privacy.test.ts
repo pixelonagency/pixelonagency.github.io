@@ -11,6 +11,7 @@ import {
   PRIVATE_PATHS,
   PRIVATE_STATE_KEYS,
   assertPublicSafe,
+  PUBLIC_BOILERPLATE,
   countOpportunities,
   splitState,
   PUBLIC_STATE_KEYS,
@@ -158,6 +159,14 @@ describe('assertPublicSafe', () => {
     expect(() =>
       assertPublicSafe(report, ['search console nedir'], { boilerplate: ['Google Search Console'] }),
     ).toThrow(/GİZLİLİK İHLALİ/);
+  });
+
+  test('durum dosyasının kendi alan adları sızıntı sayılmaz', () => {
+    // publicState JSON'unda "googleSearchConsole" anahtarı var; "searchconsole" sorgusu onu yakalıyordu.
+    const state = JSON.stringify({ dataSources: { googleSearchConsole: true }, note: 'Google Search Console bağlı' });
+    expect(assertPublicSafe(state, ['searchconsole', 'search console'], { boilerplate: PUBLIC_BOILERPLATE })).toBe(
+      true,
+    );
   });
 
   test('temiz metinde sessizce geçer', () => {
