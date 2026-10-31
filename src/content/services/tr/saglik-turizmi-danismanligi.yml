@@ -6,11 +6,16 @@ order: 7
 # Menüden çıkarıldı: hizmet envanteri 6 başlığa indirildi, sayfa yayında kalıyor.
 menu: false
 
+# Başlık 18 Eyl 2026'da hizalandı. Diğer altı hizmet sayfası zaten "X Ajansı"
+# kalıbını taşıyor (SEO Ajansı, Marka Ajansı, E-Ticaret Ajansı…); sağlık turizmi
+# tek istisnaydı. `sağlık turizmi ajansı` ifadesi o güne kadar sitenin HİÇBİR
+# yerinde geçmiyordu — yamyamlık riski yok, eksik olan kelime ekleniyor.
+# "Danışmanlığı" korundu: ayrı bir arama karşılığı var ve sayfanın adı o.
 seo:
-  title: Sağlık Turizmi Dijital Pazarlama Danışmanlığı | Pixelon
+  title: Sağlık Turizmi Ajansı | Hasta Kazanım Danışmanlığı | Pixelon
   description: >-
-    Çok dilli web sitesi, uluslararası reklam, içerik üretimi ve hasta iletişim
-    sistemleriyle sağlık markanızı global pazarlarda büyütün.
+    Klinikler için sağlık turizmi ajansı: çok dilli web sitesi, ülke bazlı
+    reklam ve hasta iletişimiyle uluslararası hasta kazanın. 20 ülke, 13 dil.
 
 hero:
   eyebrow: Sağlık Turizmi Danışmanlığı
