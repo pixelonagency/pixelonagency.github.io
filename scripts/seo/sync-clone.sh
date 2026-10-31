@@ -18,7 +18,9 @@ NOW="$(TZ=Europe/Istanbul date +%Y-%m-%dT%H:%M:%S%z)"
 log() { printf '[%s] %s\n' "$NOW" "$1" >>"$LOG"; }
 
 BEFORE="$(git rev-parse --short HEAD)"
-if ! OUT="$(git fetch -q origin main 2>&1 && git merge --ff-only -q origin/main 2>&1)"; then
+# Hooks are switched off so nothing written into .git/hooks can run here.
+NOHOOKS=(-c core.hooksPath=/dev/null -c core.fsmonitor=false)
+if ! OUT="$(git "${NOHOOKS[@]}" fetch -q origin main 2>&1 && git "${NOHOOKS[@]}" merge --ff-only -q origin/main 2>&1)"; then
   log "SENKRON BAŞARISIZ (HEAD $BEFORE kaldı): $(printf '%s' "$OUT" | tr '\n' ' ')"
   exit 1
 fi

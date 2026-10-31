@@ -32,7 +32,7 @@ TIMEOUT_SEC="${SEO_AGENT_TIMEOUT_SEC:-1800}" # 30 dakika
 MAX_FAILURES=3                                # bu sayıdan sonra BLOCKED
 
 # Üretim riski taşıyan yollar — ajan bunlara dokunamaz.
-PROTECTED=(src public .github wrangler.jsonc package.json bun.lock astro.config.mjs knip.json)
+PROTECTED=(src public .github scripts .githooks wrangler.jsonc package.json bun.lock astro.config.mjs knip.json)
 
 log() { printf '[%s] %s\n' "$NOW" "$1" >>"$LOG"; }
 
@@ -81,6 +81,15 @@ PROTECTED_BEFORE="$(printf '%s' "$PROTECTED_BEFORE_RAW" | shasum -a256 | cut -d'
 ROOT_FILES_BEFORE="$(ls -A1 | sort | shasum -a256 | cut -d' ' -f1)"
 
 log "BAŞLADI pid=$$ bütçe=\$$BUDGET_USD süre=${TIMEOUT_SEC}s"
+
+# Git kancaları ve repo yapılandırması: ajanın yazdığı bir kanca sonraki git komutunda
+# araç kısıtlaması olmadan çalışırdı. Yedeklenir, değişirse geri yüklenir.
+GIT_DIR_PATH="$(git rev-parse --absolute-git-dir)"
+git_meta_hash() { (cd "$GIT_DIR_PATH" && find hooks config -type f -exec shasum -a256 {} + 2>/dev/null | sort | shasum -a256 | cut -d' ' -f1); }
+GIT_META_BEFORE="$(git_meta_hash)"
+GIT_META_BACKUP="$LOG_DIR/.git-meta-backup"
+rm -rf "$GIT_META_BACKUP"; mkdir -p "$GIT_META_BACKUP"
+cp -Rp "$GIT_DIR_PATH/hooks" "$GIT_DIR_PATH/config" "$GIT_META_BACKUP/"
 
 # --- Ajan ---------------------------------------------------------------------
 # `perl -e alarm` kullanılıyor: macOS'ta GNU `timeout` yok.
@@ -138,6 +147,14 @@ if [ "$PROTECTED_BEFORE" != "$PROTECTED_AFTER" ]; then
     log "İHLAL — korunan yollar değişti ama yeni kirlenen yol yok; sahibin mevcut dosyaları değişmiş olabilir. Geri alma YAPILMADI, sahip incelemeli."
   fi
 fi
+if [ "$GIT_META_BEFORE" != "$(git_meta_hash)" ]; then
+  VIOLATION="${VIOLATION:+$VIOLATION; }.git/hooks veya .git/config değişti"
+  log "İHLAL — git kancaları/yapılandırması değişti, yedekten geri yükleniyor"
+  rm -rf "$GIT_DIR_PATH/hooks" && cp -Rp "$GIT_META_BACKUP/hooks" "$GIT_DIR_PATH/hooks"
+  cp -p "$GIT_META_BACKUP/config" "$GIT_DIR_PATH/config"
+fi
+rm -rf "$GIT_META_BACKUP"
+
 # Taslak src/content'e sızmış mı? Yalnızca koşu SIRASINDA kirlenen yollar sayılır:
 # 27-28 Ağu 2026'da sahibin önceden bıraktığı dosyalar ihlal sanıldı ve ajan BLOCKED oldu.
 if PROTECTED_BEFORE_RAW="$CONTENT_BEFORE_RAW" PROTECTED_AFTER_RAW="$(git status --porcelain --untracked-files=all -- src/content)" \

@@ -74,7 +74,7 @@ beforeEach(() => {
   mkdirSync(join(repo, 'src/content/posts'), { recursive: true });
   for (const f of COPIED) copyFileSync(join(SEO, f), join(repo, 'scripts/seo', f));
   writeFileSync(join(repo, 'src/content/posts/a.md'), 'original\n');
-  writeFileSync(join(repo, '.gitignore'), 'seo/\n');
+  writeFileSync(join(repo, '.gitignore'), '/seo/\n');
   git(repo, 'init', '-q', '-b', 'main');
   git(repo, 'config', 'user.email', 't@t');
   git(repo, 'config', 'user.name', 't');
@@ -107,6 +107,20 @@ describe('agent.sh', () => {
     expect(logs).toContain('SINIR İHLALİ');
     expect(agent.lastExitCode).toBe(90);
     expect(existsSync(join(repo, 'src/content/posts/leak.md'))).toBe(false);
+  });
+
+  test('editing scheduler scripts is a violation and is reverted', () => {
+    const { logs, agent } = runAgent('echo evil >> scripts/seo/sync-clone.sh');
+    expect(logs).toContain('SINIR İHLALİ');
+    expect(agent.lastExitCode).toBe(90);
+    expect(readFileSync(join(repo, 'scripts/seo/sync-clone.sh'), 'utf8')).not.toContain('evil');
+  });
+
+  test('writing a git hook is a violation and the hook is removed', () => {
+    const { logs, agent } = runAgent('printf "#!/bin/sh\\n" > .git/hooks/post-merge');
+    expect(logs).toContain('SINIR İHLALİ');
+    expect(agent.lastExitCode).toBe(90);
+    expect(existsSync(join(repo, '.git/hooks/post-merge'))).toBe(false);
   });
 
   test.skipIf(process.platform !== 'darwin')('keeps the Mac awake while claude runs', () => {
