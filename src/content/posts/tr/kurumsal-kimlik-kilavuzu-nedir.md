@@ -6,7 +6,7 @@ excerpt: 'Kurumsal kimlik kılavuzu, markanın nasıl uygulanacağını yazıya 
 date: 2026-10-01
 cover: '/src/assets/images/blog/kurumsal-kimlik-kilavuzu-nedir-cover.webp'
 coverAlt: Masada açık duran, renk paletleri ve yazı karakteri örnekleri içeren basılı bir marka kılavuzu
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

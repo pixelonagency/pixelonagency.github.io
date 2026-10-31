@@ -6,7 +6,7 @@ excerpt: 'Bir sitenin neden talep getirmediğini anlamak için pahalı araçlara
 date: 2026-09-30
 cover: '/src/assets/images/blog/web-sitesi-analizi-nasil-yapilir-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin dizüstü bilgisayarda analiz grafikleri ve hız göstergesini incelediği, masada işaretlenmiş bir kontrol listesi ve telefonun durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

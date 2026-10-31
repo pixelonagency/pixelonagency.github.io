@@ -6,7 +6,7 @@ excerpt: 'Ambalaj artık yalnızca rafta değil, e-ticaret sayfasında ve sosyal
 date: 2026-10-01
 cover: '/src/assets/images/blog/ambalaj-ve-etiket-tasarimi-cover.webp'
 coverAlt: Ahşap bir rafta dizili, altın kapaklı ve botanik illüstrasyonlu etiketlere sahip amber cam uçucu yağ şişeleri
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

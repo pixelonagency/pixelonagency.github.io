@@ -6,7 +6,7 @@ excerpt: Hazır şablon hızlı ve ucuz bir başlangıç. Özel tasarım daha uz
 date: 2026-09-30
 cover: '/src/assets/images/blog/hazir-site-mi-ozel-tasarim-mi-cover.webp'
 coverAlt: Koyu bir stüdyoda iki kişinin masada yan yana duran iki seçeneği karşılaştırdığı, solda dizüstü bilgisayarda birbirinin aynı kutulardan oluşan hazır şablonun, sağda kâğıda elle çizilmiş özel site taslağının durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -37,15 +37,15 @@ sections:
       - Markaya özel tasarım
       - Özel yazılım teklifle
     ctas:
-      - label: Size Özel Teklif Alın
-        href: /iletisim/
+      - label: WhatsApp'tan Fiyat Alın
+        href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20e-ticaret%20sitesi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'
         variant: primary
-        icon: arrow
-      - label: WhatsApp'tan Sorun
-        href: https://wa.me/905065229034
-        variant: outline
         icon: whatsapp
         external: true
+      - label: Teklif Formunu Doldurun
+        href: /iletisim/
+        variant: outline
+        icon: arrow
 
   - type: cards
     background: light
@@ -74,6 +74,16 @@ sections:
       kuruluşunun komisyonu kurulum fiyatına dahil değildir. Kesin rakam, kapsamı ilk
       görüşmede birlikte çıkardığımızda tek bir tutara iner.
 
+  # Fiyat kartlarının hemen ardından: okur rakamı gördüğü anda soracağı yer.
+  - type: cta
+    background: light
+    heading: "Ürün sayınızı yazın, hangi seçeneğe *denk geldiğinizi* WhatsApp'tan söyleyelim."
+    ctas:
+      - label: WhatsApp'tan Yazın
+        href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20e-ticaret%20sitesi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'
+        variant: primary
+        icon: whatsapp
+        external: true
   - type: stats
     background: dark
     eyebrow: Kısaca
@@ -154,15 +164,15 @@ sections:
   - type: cta
     background: dark
     kind: spot
-    heading: Fiyatı Tahmin Etmeyin, Birlikte Netleştirelim
+    heading: Fiyatı Tahmin Etmeyin, WhatsApp'tan Sorun
     lead: >-
-      Ne sattığınızı ve nerede satmak istediğinizi anlatın; hangi altyapının ve hangi
-      kapsamın gerektiğini ilk görüşmede açıkça söyleyelim.
+      Ne sattığınızı ve nerede satmak istediğinizi WhatsApp'tan yazın. Hangi altyapının ve hangi kapsamın gerektiğini, net fiyat aralığıyla birlikte söyleyelim.
     ctas:
-      - label: Size Özel Teklif Alın
-        href: /iletisim/
+      - label: WhatsApp'tan Yazın
+        href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20e-ticaret%20sitesi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'
         variant: primary
-        icon: arrow
-      - label: E-Ticaret Hizmetimiz
-        href: /hizmetlerimiz/e-ticaret-cozumleri/
+        icon: whatsapp
+        external: true
+      - label: Teklif Formunu Doldurun
+        href: /iletisim/
         variant: outline

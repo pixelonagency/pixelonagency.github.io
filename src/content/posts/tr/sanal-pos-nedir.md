@@ -6,7 +6,7 @@ excerpt: 'Sanal POS, internet sitenizden kartla ödeme almanızı sağlayan sist
 date: 2026-10-01
 cover: '/src/assets/images/blog/sanal-pos-nedir-cover.webp'
 coverAlt: Dizüstü bilgisayardaki güvenli ödeme sayfasının önünde kredi kartı tutan bir elin yakın plan fotoğrafı
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: 'Google Tag Manager, sitenize eklenen takip kodlarını tek bir panelde
 date: 2026-10-01
 cover: '/src/assets/images/blog/google-tag-manager-nedir-cover.webp'
 coverAlt: Akşam iki monitörde bir web sitesi ve bağlantılı etiket şemasıyla çalışan bir geliştirici
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

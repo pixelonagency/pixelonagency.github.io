@@ -6,7 +6,7 @@ excerpt: 'Wireframe, bir sayfanın renksiz ve fotoğrafsız iskeleti. Rengi ve g
 date: 2026-09-30
 cover: '/src/assets/images/blog/wireframe-nedir-cover.webp'
 coverAlt: Koyu bir masada elle çizilmiş gri kutulardan oluşan web sitesi taslaklarının yayıldığı, solda telefon ekranı taslağının durduğu ve bir elin taslaklardan birini düzelttiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

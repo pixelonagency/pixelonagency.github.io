@@ -6,7 +6,7 @@ excerpt: 'E-ticaret SEO''su blog yazısıyla değil kategori ve ürün sayfalar�
 date: 2026-10-01
 cover: '/src/assets/images/blog/e-ticaret-seo-cover.webp'
 coverAlt: Karanlık bir ofiste monitörde online mağaza kategori sayfasını ve arama sonuçlarını inceleyen bir kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

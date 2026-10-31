@@ -6,7 +6,7 @@ excerpt: 'Beğeni sayısı bir hesabın ne kadar iyi gittiğini söylemiyor. Han
 date: 2026-09-30
 cover: '/src/assets/images/blog/sosyal-medya-analizi-nasil-yapilir-cover.webp'
 coverAlt: Gece ofiste iki kişinin dizüstü bilgisayardaki grafiklere ve masadaki basılı içerik çıktılarına eğilerek baktığı fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

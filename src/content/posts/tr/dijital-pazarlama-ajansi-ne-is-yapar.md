@@ -6,7 +6,7 @@ excerpt: Dijital pazarlama ajansı; strateji, web, reklam, içerik, sosyal medya
 date: 2026-08-21
 cover: '/src/assets/images/blog/dijital-pazarlama-ajansi-ne-is-yapar-cover.webp'
 coverAlt: Koyu bir ajans toplantı odasında ekibe sunum yapan bir kişi ve duvarda yan yana duran ekranlarda web sitesi, reklam performansı ve sosyal medya panolarının görüldüğü fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: true
 seo:

@@ -6,7 +6,7 @@ excerpt: 'Mobil uyumlu site, masaüstü sitenin telefona sığdırılmış hali 
 date: 2026-09-30
 cover: '/src/assets/images/blog/mobil-uyumlu-web-sitesi-cover.webp'
 coverAlt: Koyu bir çalışma masasında yan yana dizilmiş üç telefonda ve elde tutulan dördüncü telefonda aynı web sayfasının test edildiği, arkada dizüstü bilgisayarda sayfanın masaüstü halinin açık olduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

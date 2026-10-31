@@ -6,7 +6,7 @@ excerpt: Aynı işe gelen teklifler neden birbirinden kat kat farklı? Web sites
 date: 2026-08-21
 cover: '/src/assets/images/blog/web-tasarim-fiyatlari-cover.webp'
 coverAlt: İki kişinin koyu bir masada basılı kapsam dokümanını kalemle satır satır işaretlediği, dizüstü bilgisayarda aynı kalem listesinin açık olduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

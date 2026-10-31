@@ -6,7 +6,7 @@ excerpt: Web tasarım, bir sitenin nasıl göründüğünden önce ziyaretçinin
 date: 2026-09-30
 cover: '/src/assets/images/blog/web-tasarim-nedir-cover.webp'
 coverAlt: Koyu bir tasarım stüdyosunda iki kişinin masaya yayılmış kâğıt site taslaklarını incelediği, birinin taslaktaki bir bölümü işaret ettiği ve ekranda aynı düzenin bitmiş site olarak açık olduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

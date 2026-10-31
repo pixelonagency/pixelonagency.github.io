@@ -6,7 +6,7 @@ excerpt: 'Sitenize gelenlerin çoğu ilk ziyarette karar vermiyor. Remarketing, 
 date: 2026-10-01
 cover: '/src/assets/images/blog/remarketing-nedir-cover.webp'
 coverAlt: Gece kanepede telefondan alışveriş yapan bir kadın ve yanındaki dizüstü bilgisayarda daha önce baktığı ürünün reklamı
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

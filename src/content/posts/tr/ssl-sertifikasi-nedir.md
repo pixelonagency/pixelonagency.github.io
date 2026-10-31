@@ -6,7 +6,7 @@ excerpt: 'Adres çubuğundaki kilit simgesi, siteyle ziyaretçi arasındaki bağ
 date: 2026-09-30
 cover: '/src/assets/images/blog/ssl-sertifikasi-nedir-cover.webp'
 coverAlt: Koyu bir ofiste dizüstü bilgisayar ekranında parlayan kilit simgesinin göründüğü, masada gerçek bir asma kilit ve anahtarın durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

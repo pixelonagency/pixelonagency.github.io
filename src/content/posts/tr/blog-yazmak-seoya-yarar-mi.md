@@ -6,7 +6,7 @@ excerpt: Blog tek başına sıralama getirmiyor. Ama doğru kurgulandığında h
 date: 2026-10-01
 cover: '/src/assets/images/blog/blog-seo-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin duvardaki ekranda birbirine bağlı içerik sayfalarından oluşan bir konu haritasını incelediği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

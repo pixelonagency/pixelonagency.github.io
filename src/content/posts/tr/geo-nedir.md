@@ -6,7 +6,7 @@ excerpt: 'GEO, yani üretken motor optimizasyonu, ChatGPT, Gemini, Perplexity ve
 date: 2026-10-01
 cover: '/src/assets/images/blog/geo-nedir-cover.webp'
 coverAlt: Akşam dizüstü bilgisayarda bir yapay zeka sohbet asistanına soru soran bir kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: Takipçi sayısı büyümenin göstergesi değil. Instagram'da marka b�
 date: 2026-08-21
 cover: '/src/assets/images/blog/instagram-marka-cover.webp'
 coverAlt: Koyu bir ajans ofisinde bir kişinin ekranda sosyal medya profil düzenini ve içerik ızgarasını incelediği, yanında telefonun aynı profili gösterdiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

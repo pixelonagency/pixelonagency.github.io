@@ -6,7 +6,7 @@ excerpt: 'Shopify, ikas, T-Soft, IdeaSoft, Ticimax, WooCommerce ve özel yazıl�
 date: 2026-10-01
 cover: '/src/assets/images/blog/e-ticaret-altyapisi-nasil-secilir-cover.webp'
 coverAlt: Karanlık bir ofiste dizüstü bilgisayar ve tablette farklı e-ticaret panellerini karşılaştıran iki kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

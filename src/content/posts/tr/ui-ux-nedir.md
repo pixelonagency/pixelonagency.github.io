@@ -6,7 +6,7 @@ excerpt: 'UX, ziyaretçinin sitede aradığını nasıl bulacağını planlar; U
 date: 2026-09-30
 cover: '/src/assets/images/blog/ui-ux-nedir-cover.webp'
 coverAlt: Koyu bir stüdyoda iki tasarımcının kâğıda çizilmiş kullanıcı akışı diyagramını tablette açık renkli arayüz tasarımıyla karşılaştırdığı fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

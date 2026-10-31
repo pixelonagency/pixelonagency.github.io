@@ -6,7 +6,7 @@ excerpt: İki platform farklı anlarda devreye giriyor. Google Ads arayan kişiy
 date: 2026-10-01
 cover: '/src/assets/images/blog/google-ads-mi-meta-ads-mi-cover.webp'
 coverAlt: Koyu bir ajans ofisinde iki kişinin duvardaki büyük ekranda yan yana duran iki reklam kampanyası panosunu karşılaştırdığı fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: 'E-ihracat, ürününüzü internet üzerinden yurt dışındaki müşt
 date: 2026-10-01
 cover: '/src/assets/images/blog/e-ihracat-nedir-cover.webp'
 coverAlt: Arkada dünya haritası asılı bir masada uluslararası gönderime hazırlanan paketlere etiket yapıştıran bir kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

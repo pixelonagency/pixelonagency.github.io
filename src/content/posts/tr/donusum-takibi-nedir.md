@@ -6,7 +6,7 @@ excerpt: Dönüşüm takibi, ziyaretçinin sitede yaptığı değerli eylemleri 
 date: 2026-10-01
 cover: '/src/assets/images/blog/donusum-takibi-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin ekrandaki dönüşüm olayları panosunu incelediği, yanındaki ekranda web sitesi formunun açık olduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

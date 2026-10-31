@@ -1,4 +1,4 @@
-import type { Locale } from './i18n';
+import { PUBLISHED_LOCALES, type Locale } from './i18n';
 
 /**
  * Site geneli JSON-LD entity graph'ı.
@@ -69,7 +69,8 @@ export function webSiteSchema(site: string): Record<string, unknown> {
     '@id': WEBSITE_ID,
     name: 'Pixelon',
     url: site,
-    inLanguage: ['tr', 'en'],
+    // Yalnız yayındaki diller; tek dilde dizi yerine düz değer.
+    inLanguage: PUBLISHED_LOCALES.length === 1 ? PUBLISHED_LOCALES[0] : [...PUBLISHED_LOCALES],
     publisher: { '@id': ORG_ID },
   };
 }
@@ -281,6 +282,14 @@ export function caseStudySchema({
   return [work, { '@type': 'Service', '@id': serviceId, name: service.name, url: service.url }];
 }
 
+/**
+ * Bilinen yazarların unvanı. Yazı yalnız adı taşır; unvan burada tek yerde durur ve
+ * hem şemaya hem görünen imzaya aynı değer gider (31 Eki 2026, sahip kararı).
+ */
+export const AUTHOR_PROFILES: Record<string, { jobTitle: string }> = {
+  'Mehmet Fatih': { jobTitle: 'Kurucu' },
+};
+
 interface ArticleInput {
   headline: string;
   description: string;
@@ -308,6 +317,7 @@ export function blogPostingSchema({
 }: ArticleInput): Record<string, unknown> {
   // "Pixelon" / "Pixelon Ekibi" kurumsal yazarlıktır; başka bir ad gerçek kişidir.
   const isOrgAuthor = /^pixelon/i.test(author.trim());
+  const profile = AUTHOR_PROFILES[author.trim()];
   return {
     '@type': type,
     headline,
@@ -317,7 +327,13 @@ export function blogPostingSchema({
     datePublished,
     ...(dateModified ? { dateModified } : {}),
     inLanguage: locale,
-    author: isOrgAuthor ? { '@id': ORG_ID } : { '@type': 'Person', name: author },
+    author: isOrgAuthor
+      ? { '@id': ORG_ID }
+      : {
+          '@type': 'Person',
+          name: author,
+          ...(profile ? { jobTitle: profile.jobTitle, worksFor: { '@id': ORG_ID } } : {}),
+        },
     publisher: { '@id': ORG_ID },
     ...(imageUrl ? { image: imageUrl } : {}),
   };

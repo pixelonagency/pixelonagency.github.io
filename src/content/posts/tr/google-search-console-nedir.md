@@ -6,7 +6,7 @@ excerpt: 'Google Search Console, sitenizin Google aramalarında nasıl göründ�
 date: 2026-10-01
 cover: '/src/assets/images/blog/google-search-console-nedir-cover.webp'
 coverAlt: Masada tıklama ve gösterim grafiklerinin açık olduğu bir dizüstü bilgisayar ve basılı rapor üzerinde kalem tutan bir el
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

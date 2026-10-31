@@ -6,7 +6,7 @@ excerpt: 'Ucuz web sitesi her zaman kötü bir karar değil; bazen tam ihtiyaç 
 date: 2026-09-30
 cover: '/src/assets/images/blog/ucuz-web-sitesi-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin masada tek sayfalık ince bir teklif ile çok kalemli kalın bir teklif dosyasını karşılaştırdığı, yanlarında bir hesap makinesinin durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

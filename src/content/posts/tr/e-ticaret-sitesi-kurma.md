@@ -6,7 +6,7 @@ excerpt: E-ticaret sitesi kurmanın maliyeti tasarımdan değil, ürün yapısı
 date: 2026-09-05
 cover: '/src/assets/images/blog/e-ticaret-sitesi-kurma-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin ekranda e-ticaret ürün kataloğunu, beden ve renk varyantlarını ve stok alanlarını incelediği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

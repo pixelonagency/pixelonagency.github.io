@@ -6,7 +6,7 @@ excerpt: 'Anahtar kelime, insanların Google''a yazdığı arama ifadesi. Arama 
 date: 2026-10-01
 cover: '/src/assets/images/blog/anahtar-kelime-nedir-cover.webp'
 coverAlt: Gece dizüstü bilgisayarda arama çubuğuna yazı yazan eller ve yanında kelime listeleri not edilmiş bir defter
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

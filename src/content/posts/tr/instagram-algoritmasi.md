@@ -6,7 +6,7 @@ excerpt: 'Instagram''da tek bir algoritma yok; akış, hikâye, Reels ve keşfet
 date: 2026-09-30
 cover: '/src/assets/images/blog/instagram-algoritmasi-cover.webp'
 coverAlt: Loş bir odada elde tutulan telefonda kaydırılan video akışı ve masadaki ikinci ekranda bağlantı diyagramı
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

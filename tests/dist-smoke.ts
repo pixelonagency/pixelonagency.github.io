@@ -771,7 +771,10 @@ describe('analytics (GTM + GA4)', () => {
     expect(inventory).toContain('AW-17843555663');
   });
 
-  test('every public page loads the GTM container exactly once (script + noscript)', () => {
+  /* 31 Eki 2026: noscript iframe kaldırıldı. JavaScript kapalı ziyaretçi çerez izni
+     veremiyor; iframe ise izin akışını ve alan adı kontrolünü atlayarak Google'a istek
+     atıyordu. Çerez politikası izinsiz istek yapılmadığını söylüyor. */
+  test('every public page loads the GTM container exactly once (script only)', () => {
     const walk = (dir: string, prefix: string, out: string[][]) => {
       for (const entry of readdirSync(dir, { withFileTypes: true })) {
         if (entry.isDirectory()) walk(join(dir, entry.name), `${prefix}${entry.name}/`, out);
@@ -785,11 +788,10 @@ describe('analytics (GTM + GA4)', () => {
       const scripts = (body.match(/googletagmanager\.com\/gtm\.js/g) ?? []).length;
       const noscripts = (body.match(/googletagmanager\.com\/ns\.html/g) ?? []).length;
       if (scripts !== 1) offenders.push(`${url}: gtm.js ×${scripts}`);
-      if (noscripts !== 1) offenders.push(`${url}: ns.html ×${noscripts}`);
+      if (noscripts !== 0) offenders.push(`${url}: ns.html ×${noscripts}`);
       if (!body.includes(GTM)) offenders.push(`${url}: container ID yok`);
-      // script <head> içinde, noscript <body> açılışından hemen sonra olmalı
+      // script <head> içinde olmalı
       if (body.indexOf('gtm.js') > body.indexOf('</head>')) offenders.push(`${url}: script head dışında`);
-      if (body.indexOf('ns.html') < body.indexOf('<body')) offenders.push(`${url}: noscript body öncesi`);
     }
     expect(offenders).toEqual([]);
   });
@@ -2000,5 +2002,115 @@ describe('blog kategori meta açıklaması', () => {
       .filter(({ length }) => length < 120)
       .map(({ slug, length }) => `${slug} (${length})`);
     expect(short).toEqual([]);
+  });
+});
+
+/*
+ * 31 Eki 2026 denetimi (Codex + canlı tarama). Her madde canlıda bir kullanıcının
+ * yaşadığı ya da Google'ın okuduğu bir sorundu.
+ */
+describe('31 Ekim denetimi', () => {
+  const pages = allHtmlFiles(DIST).filter((file) => !file.includes(`${sep}admin${sep}`));
+  const routeOf = (file: string): string =>
+    file
+      .replace(DIST, '')
+      .replace(/index\.html$/, '')
+      .replace(/\\/g, '/') || '/';
+  const idsOf = (body: string): Set<string> =>
+    new Set([...body.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1] ?? ''));
+
+  test('site içi bölüm bağlantıları (#id) var olan bir hedefe gider', () => {
+    /* Footer'daki "Referanslar" 170 sayfada olmayan #referanslar'a, kariyer butonları
+       olmayan #basvuru'ya gidiyordu; sayfa açıldığı için 404 taraması bunu görmüyordu. */
+    const ids = new Map(pages.map((file) => [routeOf(file), idsOf(readFileSync(file, 'utf8'))]));
+    const broken = new Set<string>();
+    for (const file of pages) {
+      const body = readFileSync(file, 'utf8');
+      for (const match of body.matchAll(/<a\b[^>]*\shref="([^"]*#[^"]+)"/g)) {
+        const href = match[1] ?? '';
+        if (/^(https?:|mailto:|tel:)/.test(href)) continue;
+        const [path = '', fragment = ''] = href.split('#');
+        if (fragment === 'top') continue; // HTML'de özel anlamı var: sayfanın başı
+        const target = path === '' ? routeOf(file) : path;
+        const targetIds = ids.get(target);
+        if (!targetIds) continue; // sayfa yoksa başka test yakalar
+        if (!targetIds.has(decodeURIComponent(fragment))) broken.add(`${routeOf(file)} → ${href}`);
+      }
+    }
+    expect([...broken].slice(0, 20)).toEqual([]);
+  });
+
+  test('WebSite şeması yalnız yayındaki dili bildirir', () => {
+    const home = readFileSync(join(DIST, 'index.html'), 'utf8');
+    expect(home).not.toContain('"inLanguage":["tr","en"]');
+    expect(home).toMatch(/"@type":"WebSite"[^}]*"inLanguage":"tr"/);
+  });
+
+  test('blog yazılarının yazarı görünür ve şemada kişi olarak işaretli', () => {
+    const post = readFileSync(join(DIST, 'blog', 'amblem-nedir', 'index.html'), 'utf8');
+    expect(post).toMatch(/"author":\{"@type":"Person","name":"Mehmet Fatih","jobTitle":"Kurucu"/);
+    expect(post).toContain('Mehmet Fatih');
+    const missing = pages
+      .filter((file) => /[\\/]blog[\\/](?!kategori)[^\\/]+[\\/]index\.html$/.test(file))
+      .filter((file) => !readFileSync(file, 'utf8').includes('"name":"Mehmet Fatih"'))
+      .map(routeOf);
+    expect(missing).toEqual([]);
+  });
+
+  test('scroll-reveal içeriği JavaScript olmadan gizlemez', () => {
+    /* [data-reveal] opacity:0 ile başlıyordu; JS gecikince ilk ekran 6-9 sn boş kalıyordu. */
+    const css = readdirSync(join(DIST, 'assets'))
+      .filter((file) => file.endsWith('.css'))
+      .map((file) => readFileSync(join(DIST, 'assets', file), 'utf8'))
+      .join('');
+    expect(css).not.toMatch(/(^|[},])\[data-reveal\]\{[^}]*opacity:0[;}]/);
+  });
+
+  test('makalelerde etiketsiz checkbox yok', () => {
+    const offenders = pages
+      .filter((file) => file.includes(`${sep}blog${sep}`))
+      .filter((file) => /<input[^>]*type="checkbox"/.test(readFileSync(file, 'utf8')))
+      .map(routeOf);
+    expect(offenders).toEqual([]);
+  });
+
+  test('gösterim almış eski adresler 404 yerine yönlenir', () => {
+    const redirects = readFileSync(join(DIST, '_redirects'), 'utf8');
+    expect(redirects).toMatch(
+      /^\/blog\/web-sitesi-kac-gunde-biter-gercek-takvim\/? +\/blog\/web-sitesi-kac-gunde-biter\/ +301/m,
+    );
+    expect(redirects).toMatch(
+      /^\/blog\/web-sitesi-ka%C3%A7-g%C3%BCnde-biter\/? +\/blog\/web-sitesi-kac-gunde-biter\/ +301/m,
+    );
+  });
+
+  test("rehber yazılarının yayın tarihi sitemap'e geçer", () => {
+    const sitemap = readFileSync(join(DIST, 'sitemap-0.xml'), 'utf8');
+    expect(sitemap).toMatch(/rehber\/saglik\/hekimler\/hekimin-google-profili\/<\/loc><lastmod>2026-10-08/);
+  });
+
+  test("fiyat sayfaları WhatsApp'a ön-dolu mesajla en az üç yerden yönlendirir", () => {
+    const slugs = [
+      'e-ticaret-cozumleri/e-ticaret-sitesi-fiyatlari',
+      'sosyal-medya-yonetimi/sosyal-medya-yonetimi-fiyatlari',
+      'web-tasarim-ve-yazilim/web-sitesi-fiyatlari',
+    ];
+    const weak = slugs
+      .map((slug) => ({
+        slug,
+        count: [
+          ...readFileSync(join(DIST, 'hizmetlerimiz', slug, 'index.html'), 'utf8').matchAll(
+            /<a\b[^>]*href="https:\/\/wa\.me\/905065229034\?text=[^"]+"/g,
+          ),
+        ].length,
+      }))
+      .filter(({ count }) => count < 4) // hero + ara blok + kapanış + yüzen buton
+      .map(({ slug, count }) => `${slug} (${count})`);
+    expect(weak).toEqual([]);
+  });
+
+  test('GTM, JavaScript kapalıyken izin akışını atlayarak yüklenmez', () => {
+    const home = readFileSync(join(DIST, 'index.html'), 'utf8');
+    expect(home).not.toContain('googletagmanager.com/ns.html');
   });
 });

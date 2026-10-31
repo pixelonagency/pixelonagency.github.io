@@ -6,7 +6,7 @@ excerpt: 'Antetli kâğıt, şirketin resmî yazışmalarında kullandığı, lo
 date: 2026-10-01
 cover: '/src/assets/images/blog/antetli-kagit-nedir-cover.webp'
 coverAlt: Koyu bir masada antetli kağıda imza atan bir el ve yanında aynı setten bir zarf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: 'Broşür bir konuyu kısa anlatır, katalog ise bir ürün ya da hizme
 date: 2026-10-01
 cover: '/src/assets/images/blog/brosur-ve-katalog-tasarimi-cover.webp'
 coverAlt: Masaya yelpaze gibi yayılmış broşürler ve ürün fotoğraflarının göründüğü açık bir katalog
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

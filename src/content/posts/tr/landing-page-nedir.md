@@ -6,7 +6,7 @@ excerpt: Landing page, tek bir amaca hizmet eden bağımsız bir sayfadır. Rekl
 date: 2026-08-21
 cover: '/src/assets/images/blog/landing-page-nedir-cover.webp'
 coverAlt: Bir tasarımcının çift ekranlı masada tek sayfalık açılış sayfası tasarımı üzerinde çalıştığı, yanındaki ekranda reklam kreatifi varyasyonlarının dizildiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

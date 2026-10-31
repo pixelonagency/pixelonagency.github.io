@@ -6,7 +6,7 @@ excerpt: 'Backlink, başka bir sitenin sizin sitenize verdiği bağlantı ve Goo
 date: 2026-10-01
 cover: '/src/assets/images/blog/backlink-nedir-cover.webp'
 coverAlt: Loş bir stüdyoda duvara asılmış web sayfası çıktılarını birbirine bağlayan kırmızı iplerle oluşan ağı inceleyen bir kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

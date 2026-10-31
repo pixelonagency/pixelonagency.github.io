@@ -6,7 +6,7 @@ excerpt: 'Instagram''da reklam vermenin iki yolu var: uygulamadaki öne çıkar 
 date: 2026-10-01
 cover: '/src/assets/images/blog/instagram-reklam-nasil-verilir-cover.webp'
 coverAlt: Akşam bir butiğin tezgahında telefonundan sponsorlu gönderi hazırlayan işletme sahibi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

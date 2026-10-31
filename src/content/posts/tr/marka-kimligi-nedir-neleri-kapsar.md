@@ -6,7 +6,7 @@ excerpt: Marka kimliği logo demek değil. Logo, renk ve tipografi görünen kı
 date: 2026-08-21
 cover: '/src/assets/images/blog/marka-kimligi-cover.webp'
 coverAlt: Koyu bir ajans ofisinde bir masanın üzerine serilmiş marka kılavuzu çıktıları, renk kartelaları ve basılı uygulama örnekleri, üzerine eğilmiş iki kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

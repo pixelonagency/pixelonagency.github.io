@@ -6,7 +6,7 @@ excerpt: 'Yanlış boyutta hazırlanan bir görsel kırpılıyor, bulanıklaşı
 date: 2026-09-30
 cover: '/src/assets/images/blog/instagram-gonderi-boyutlari-cover.webp'
 coverAlt: Karanlık bir tasarım masasında farklı ölçülerde basılmış Instagram gönderi çıktılarını karşılaştıran bir tasarımcının elleri
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

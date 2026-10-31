@@ -6,7 +6,7 @@ excerpt: İçerik takvimi, hangi gün ne paylaşılacağını yazan bir liste de
 date: 2026-08-21
 cover: '/src/assets/images/blog/icerik-takvimi-cover.webp'
 coverAlt: Koyu bir ajans ofisinde iki kişinin duvardaki ekranda aylık içerik planı ızgarasına baktığı, birinin bir içerik kartını boş güne yerleştirdiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

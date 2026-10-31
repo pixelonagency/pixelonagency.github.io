@@ -6,7 +6,7 @@ excerpt: 'Web tasarımda zevk tartışılır, ilkeler tartışılmaz. Hiyerarşi
 date: 2026-09-30
 cover: '/src/assets/images/blog/web-tasarim-ilkeleri-cover.webp'
 coverAlt: Koyu bir tasarım stüdyosunda bir tasarımcının masaya ızgara halinde dizilmiş basılı sayfa tasarımları üzerinde cetvel ve kalemle hizalama kontrol ettiği, çıktılardan birinde renk kontrast şeridinin durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

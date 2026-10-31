@@ -6,7 +6,7 @@ excerpt: 'E-ticarete başlamak site kurmakla başlamıyor. Önce ürün ve kâr 
 date: 2026-10-01
 cover: '/src/assets/images/blog/e-ticaret-nasil-yapilir-cover.webp'
 coverAlt: Gece ev ofisinde sipariş kutusu hazırlayan genç bir girişimci ve dizüstü bilgisayarda açık mağaza paneli
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:
