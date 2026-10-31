@@ -189,6 +189,22 @@ export function countOpportunities(opportunities) {
 }
 
 /**
+ * Raporun ve durum dosyasının her gün aynı yazdığı sabit etiketler: veri kaynağı adları ve
+ * durum JSON'undaki anahtarlar. Bir arama sorgusu bunlarla aynı kelimeleri taşıyabilir
+ * ("search console"); sabit etiket sızıntı değildir.
+ */
+export const PUBLIC_BOILERPLATE = [
+  // Araç adı; rakip için bilgi taşımaz ve durum notlarında serbest metin olarak geçiyor.
+  'Search Console',
+  'googleSearchConsole',
+  'Google Search Central',
+  'googleSearchCentral',
+  'SEMrush',
+  'Live SERP',
+  'liveSerp',
+];
+
+/**
  * Son savunma hattı: public metin içinde yasaklı dizelerden biri geçiyorsa fırlatır.
  * Sessiz sızıntı yerine gürültülü çökme tercih edilir.
  *
