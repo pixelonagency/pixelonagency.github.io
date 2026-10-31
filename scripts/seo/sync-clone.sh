@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Brings the scheduler clone (/Users/mfd/pixelon-web) up to date with origin/main.
+# Brings the scheduler clone (the separate checkout launchd runs from) up to date with origin/main.
 #
 # Why: the launchd jobs run from a separate clone so they never disturb the
 # owner's working tree. Nothing ever pulled that clone, so from 18 Sep to
