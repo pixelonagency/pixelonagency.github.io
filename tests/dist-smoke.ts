@@ -2114,3 +2114,24 @@ describe('31 Ekim denetimi', () => {
     expect(home).not.toContain('googletagmanager.com/ns.html');
   });
 });
+
+/*
+ * 31 Eki 2026: Dentasay vakasında sayfa altındaki üç videonun kapakları (~360 KB) hero
+ * görseliyle aynı anda iniyordu; mobil LCP 10,9 sn. `poster` her zaman hemen indirilir,
+ * bu yüzden kapak `data-poster` ile basılır ve ekrana yaklaşınca script ile verilir.
+ */
+describe('vaka sayfası video kapakları tembel yüklenir', () => {
+  test('hiçbir vaka videosu poster özniteliğiyle gelmez', () => {
+    const offenders = allHtmlFiles(join(DIST, 'projelerimiz'))
+      .filter((file) => /<video\b[^>]*\sposter="/.test(readFileSync(file, 'utf8')))
+      .map((file) => file.replace(DIST, ''));
+    expect(offenders).toEqual([]);
+  });
+
+  test('kapaklar data-poster ile taşınır ve sayfada onları veren script var', () => {
+    const page = readFileSync(join(DIST, 'projelerimiz', 'dentasay', 'index.html'), 'utf8');
+    expect(page).toMatch(/<video\b[^>]*\sdata-poster="\/media\/projects\/dentasay\//);
+    expect(page).toContain('data-poster');
+    expect(page).toMatch(/dataset\.poster/);
+  });
+});

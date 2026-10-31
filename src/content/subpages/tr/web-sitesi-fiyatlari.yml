@@ -258,7 +258,7 @@ sections:
     kind: spot
     heading: Fiyatı Tahmin Etmeyin, WhatsApp'tan Sorun
     lead: >-
-      Ne yaptığınızı ve sitenizden ne beklediğinizi WhatsApp'tan yazın. Varsa mevcut sitenizin adresini de ekleyin; hangi pakete denk geldiğinizi ve kapsamı açıkça söyleyelim.
+      Ne yaptığınızı ve sitenizden ne beklediğinizi WhatsApp'tan yazın. Varsa mevcut sitenizin adresini de ekleyin; hangi pakete denk geldiğinizi ve kapsamı açıkça söyleyelim. Mesai saatlerinde aynı gün dönüyoruz.
     ctas:
       - label: WhatsApp'tan Yazın
         href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20web%20sitesi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'

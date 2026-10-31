@@ -234,13 +234,17 @@ sections:
           edileceğini [sosyal medya ajansı ne iş yapar](/blog/sosyal-medya-ajanslari-ne-is-yapar/)
           yazısında anlattık.
 
-  # 9. KAPANIŞ
+      # 9. KAPANIŞ
+      - question: Sosyal medya yönetimi tam olarak hangi işleri kapsıyor?
+        answer: >-
+          Hesap stratejisi, içerik takvimi, içerik üretimi, paylaşım, yorum ve mesaj takibi ile aylık rapor. Ayrıntısını [sosyal medya yönetimi nedir](/blog/sosyal-medya-yonetimi-nedir/) yazısında, bu işi yapan kişinin görevlerini [sosyal medya uzmanı ne iş yapar](/blog/sosyal-medya-uzmani-ne-is-yapar/) yazısında anlattık.
+
   - type: cta
     background: dark
     kind: spot
     heading: Fiyatı Tahmin Etmeyin, WhatsApp'tan Sorun
     lead: >-
-      Instagram hesabınızı ve sosyal medyadan ne beklediğinizi WhatsApp'tan yazın. Hangi pakete denk geldiğinizi ve kapsamın ne olması gerektiğini açıkça söyleyelim.
+      Instagram hesabınızı ve sosyal medyadan ne beklediğinizi WhatsApp'tan yazın. Hangi pakete denk geldiğinizi ve kapsamın ne olması gerektiğini açıkça söyleyelim. Mesai saatlerinde aynı gün dönüyoruz.
     ctas:
       - label: WhatsApp'tan Yazın
         href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20sosyal%20medya%20y%C3%B6netimi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'

@@ -166,7 +166,7 @@ sections:
     kind: spot
     heading: Fiyatı Tahmin Etmeyin, WhatsApp'tan Sorun
     lead: >-
-      Ne sattığınızı ve nerede satmak istediğinizi WhatsApp'tan yazın. Hangi altyapının ve hangi kapsamın gerektiğini, net fiyat aralığıyla birlikte söyleyelim.
+      Ne sattığınızı ve nerede satmak istediğinizi WhatsApp'tan yazın. Hangi altyapının ve hangi kapsamın gerektiğini, net fiyat aralığıyla birlikte söyleyelim. Mesai saatlerinde aynı gün dönüyoruz.
     ctas:
       - label: WhatsApp'tan Yazın
         href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20e-ticaret%20sitesi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'
