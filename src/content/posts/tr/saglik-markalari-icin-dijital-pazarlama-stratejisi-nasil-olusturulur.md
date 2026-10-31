@@ -157,3 +157,5 @@ Hedef kitle ve tedavi türüne göre Google Ads, Instagram ve Facebook reklamlar
 - [Google Search Central](https://developers.google.com/search)
 - [Meta Business Resources](https://www.facebook.com/business/help)
 - [Think with Google](https://www.thinkwithgoogle.com)
+
+Yurt dışına yönelik reklam ve tanıtım giderlerinin devlet tarafından nasıl desteklendiğini [sağlık turizmi teşvikleri](/blog/saglik-turizmi-tesvikleri/) yazısında anlattık.

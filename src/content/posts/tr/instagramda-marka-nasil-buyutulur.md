@@ -163,6 +163,8 @@ article:
 
         Ve göstergeye bakarken beğeniyi değil kaydetme, paylaşma ve mesajı takip edin; büyümenin gerçek işareti orada. Kullanıcı içeriğiyle erişimi büyütmenin yolunu [UGC nedir](/blog/ugc-nedir/) yazısında, bilinirliğin nasıl ölçüldüğünü [marka bilinirliği](/blog/marka-bilinirligi-nasil-artirilir/) yazısında anlattık. Üretimi ve bu takibi düzene bağlamak isteyen markalarla [sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) kapsamında çalışıyoruz. Farklı sektörlerde yönettiğimiz hesaplar [sosyal medya örnekleri](/projelerimiz/sosyal-medya/) sayfasında.
 
+        Influencer iş birliklerinde paylaşımın nasıl etiketlenmesi gerektiğini [Instagramda kimler reklam yazmak zorunda](/blog/instagram-reklam-etiketi/) yazısında anlattık.
+
     - type: cta
       heading: Hesabınızı birlikte gözden geçirelim.
       text: Profil kurgusundan içerik dengesine ve gelen mesajların yönetimine kadar nerede kayıp yaşandığını çıkaralım.

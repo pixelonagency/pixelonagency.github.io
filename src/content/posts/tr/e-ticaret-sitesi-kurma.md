@@ -180,6 +180,8 @@ article:
 
         Platform seçimini de ürün sayısı değil iş akışınızın standartlığı belirlemeli. Kendine özgü bir süreciniz varsa hazır sistemde yürütmeye çalışmak ilk yıl ucuz, ikinci yıl pahalı oluyor. Nasıl çalıştığımızı [e-ticaret çözümleri](/hizmetlerimiz/e-ticaret-cozumleri/) sayfasında anlattık.
 
+        Yayına çıkmadan önce yasal, ödeme ve lojistik tarafta neleri hazırlamanız gerektiğini [e-ticaret sitesi kurmak için gerekenler](/blog/e-ticaret-sitesi-kurmak-icin-gerekenler/) yazısında liste halinde anlattık.
+
     - type: cta
       heading: Ürün yapınızı birlikte çıkaralım.
       text: Kaç ürün, kaç varyant, hangi entegrasyonlar — kapsamı madde madde tanımlayalım; elinizde her ajansa verebileceğiniz net bir kapsam tanımı ve gerçekçi bir bütçe aralığı olsun.

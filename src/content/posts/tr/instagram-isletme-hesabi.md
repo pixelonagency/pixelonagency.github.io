@@ -119,6 +119,8 @@ article:
 
         Profil ve içerik için doğru ölçüleri [Instagram gönderi boyutları](/blog/instagram-gonderi-boyutlari/) yazısında, hesabın nasıl büyütüldüğünü [Instagram'da marka nasıl büyütülür](/blog/instagramda-marka-nasil-buyutulur/) yazısında anlattık. Hesap yönetimini nasıl yürüttüğümüzü [sosyal medya yönetimi](/hizmetlerimiz/sosyal-medya-yonetimi/) sayfasında bulabilirsiniz.
 
+        Profesyonel hesaba geçtiğiniz halde reklam veremiyorsanız olası nedenleri [Instagram reklam veremiyorum](/blog/instagram-reklam-veremiyorum/) yazısında sıraladık.
+
     - type: cta
       heading: Profilinizi birlikte kuralım.
       text: Biyografiden öne çıkanlara, takipçinizi müşteriye çevirecek profil düzenini birlikte çıkaralım.

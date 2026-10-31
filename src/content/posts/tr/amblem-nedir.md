@@ -162,6 +162,8 @@ article:
 
         Logo ve amblem tasarlarken izlediğimiz yolu [logo tasarımı](/hizmetlerimiz/marka-ve-kurumsal-kimlik/logo-tasarimi/) sayfasında, logonun parçası olduğu bütünü [marka ve kurumsal kimlik](/hizmetlerimiz/marka-ve-kurumsal-kimlik/) hizmetimizde anlattık. Farklı türlerin uygulanmış hâllerini [kurumsal kimlik örnekleri](/projelerimiz/kurumsal-kimlik/) sayfasında görebilirsiniz. Logonun markanın geri kalanıyla ilişkisi için [marka kimliği nedir](/blog/marka-kimligi-nedir-neleri-kapsar/) yazısına da göz atabilirsiniz.
 
+        Amblemin içinde yer aldığı bütün sistemi [kurumsal kimlik nedir](/blog/kurumsal-kimlik-nedir/) yazısında anlattık.
+
     - type: cta
       heading: Markanıza uygun logo türünü birlikte seçelim.
       text: Adınızı, sektörünüzü ve logonun kullanılacağı alanları inceleyip hangi türün size uyduğunu çıkaralım.
