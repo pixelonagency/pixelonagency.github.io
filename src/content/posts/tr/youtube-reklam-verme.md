@@ -6,7 +6,7 @@ excerpt: 'YouTube''da reklam vermek için ayrı bir platform yok; reklam Google 
 date: 2026-10-01
 cover: '/src/assets/images/blog/youtube-reklam-verme-cover.webp'
 coverAlt: Karanlık bir stüdyoda masadaki ürünü çeken tripodlu kamera ve arkada video kurgu ekranı
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

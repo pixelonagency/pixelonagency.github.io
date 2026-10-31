@@ -6,7 +6,7 @@ excerpt: CRM, gelen taleplerin ve müşteri ilişkisinin tek yerde toplandığı
 date: 2026-08-21
 cover: '/src/assets/images/blog/crm-nedir-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin ekrandaki müşteri talep listesi ve satış aşamaları panosunu incelediği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

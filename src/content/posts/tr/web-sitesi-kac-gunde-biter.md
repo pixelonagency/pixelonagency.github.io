@@ -6,7 +6,7 @@ excerpt: Teslim ettiğimiz kurumsal web sitelerinde ortalama süre 30 gün. Takv
 date: 2026-09-05
 cover: '/src/assets/images/blog/web-sitesi-kac-gunde-biter-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin duvardaki ekranda haftalara bölünmüş proje takvimini incelediği, masada not defteri bulunan fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

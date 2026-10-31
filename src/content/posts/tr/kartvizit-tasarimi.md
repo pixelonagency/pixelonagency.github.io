@@ -6,7 +6,7 @@ excerpt: 'Kartvizit küçük bir yüzey ama çok karar istiyor: hangi bilgi gire
 date: 2026-10-01
 cover: '/src/assets/images/blog/kartvizit-tasarimi-cover.webp'
 coverAlt: Koyu taş bir yüzeyde üst üste duran sade ve şık kartvizitler
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

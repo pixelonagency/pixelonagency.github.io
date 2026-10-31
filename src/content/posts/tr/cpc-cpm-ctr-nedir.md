@@ -6,7 +6,7 @@ excerpt: 'Reklam panelindeki kısaltmalar karışık görünüyor ama hepsi ayn�
 date: 2026-10-01
 cover: '/src/assets/images/blog/cpc-cpm-ctr-nedir-cover.webp'
 coverAlt: Gece şehir manzaralı bir ofiste dizüstü bilgisayarda oran ve huni grafiklerini inceleyen bir analist
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

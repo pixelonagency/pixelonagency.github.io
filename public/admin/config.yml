@@ -1680,7 +1680,7 @@ collections:
       # aynı dosyayı kullanır — buradan değişince sitenin her yerinde değişir.
       - { label: Hizmet Görseli, name: cover, widget: image, required: false, i18n: duplicate }
       - { label: Kapak Alt Metni, name: coverAlt, widget: string, required: false, i18n: true }
-      - { label: Yazar, name: author, widget: string, default: Pixelon, i18n: duplicate }
+      - { label: Yazar, name: author, widget: string, default: Mehmet Fatih, i18n: duplicate }
       - label: Durum
         name: status
         widget: select

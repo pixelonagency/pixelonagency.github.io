@@ -6,7 +6,7 @@ excerpt: 'Meta description ve title etiketi, sayfanızın arama sonucunda nasıl
 date: 2026-10-01
 cover: '/src/assets/images/blog/meta-description-nedir-cover.webp'
 coverAlt: Ahşap bir masada başlık ve kısa açıklamalardan oluşan arama sonuçlarının göründüğü bir telefon ve kahve fincanı
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -14,7 +14,7 @@ import { formatDate, isoDate, readingTime } from '../lib/format';
 import { localizedPath, type Locale } from '../lib/i18n';
 import { pickRelatedPosts } from '../lib/related-posts';
 import { canonicalUrl } from '../lib/seo';
-import { blogPostingSchema, breadcrumbSchema, faqPageSchema } from '../lib/schema';
+import { AUTHOR_PROFILES, blogPostingSchema, breadcrumbSchema, faqPageSchema } from '../lib/schema';
 import { t } from '../lib/ui';
 
 interface Props {
@@ -142,6 +142,7 @@ const extraSchema = [
               <path d="M5 19.5c1.4-3.1 4-4.5 7-4.5s5.6 1.4 7 4.5" stroke-linecap="round"></path>
             </svg>
             {author}
+            {AUTHOR_PROFILES[author.trim()] && `, ${AUTHOR_PROFILES[author.trim()]?.jobTitle}`}
           </span>
           <span class="post__meta-item">
             <svg

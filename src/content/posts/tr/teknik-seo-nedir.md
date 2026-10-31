@@ -6,7 +6,7 @@ excerpt: 'Teknik SEO, Google''ın sitenizi tarayabilmesi, anlayabilmesi ve dizin
 date: 2026-10-01
 cover: '/src/assets/images/blog/teknik-seo-nedir-cover.webp'
 coverAlt: Gece iki monitörde site kodunu ve sayfa hızı göstergesini inceleyen bir geliştirici
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

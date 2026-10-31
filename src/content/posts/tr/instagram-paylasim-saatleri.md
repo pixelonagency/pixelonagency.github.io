@@ -6,7 +6,7 @@ excerpt: 'İnternette dolaşan "en iyi paylaşım saatleri" listeleri başka hes
 date: 2026-09-30
 cover: '/src/assets/images/blog/instagram-paylasim-saatleri-cover.webp'
 coverAlt: Akşam ışığında bir ofiste telefonda saatlik etkinlik grafiğine bakan bir el ve arkada duvar saati
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: 'Bir web sitesi tasarım programında değil, bir kararla başlıyor: s
 date: 2026-09-30
 cover: '/src/assets/images/blog/web-sitesi-nasil-yapilir-cover.webp'
 coverAlt: Koyu bir stüdyoda iki kişinin masadaki site haritası çizimi üzerinde çalıştığı, birinin elinde ürün fotoğrafı tuttuğu, masada fotoğraf destesi, numaralı not defteri ve telefonda taslak sayfanın durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

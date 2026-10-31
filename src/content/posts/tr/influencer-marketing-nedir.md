@@ -6,7 +6,7 @@ excerpt: 'Influencer marketing, markanın mesajını kitlesi olan birinin sesiyl
 date: 2026-10-01
 cover: '/src/assets/images/blog/influencer-marketing-nedir-cover.webp'
 coverAlt: Akşam saatinde bir kliniğin bekleme alanında bir içerik üreticisinin telefonla kendini çektiği, arkada halka ışık tutan bir kişinin durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

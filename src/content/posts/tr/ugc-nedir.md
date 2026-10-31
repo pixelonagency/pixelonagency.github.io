@@ -6,7 +6,7 @@ excerpt: 'UGC, markanın değil kullanıcının ürettiği içerik: bir yorum, b
 date: 2026-09-30
 cover: '/src/assets/images/blog/ugc-nedir-cover.webp'
 coverAlt: Banyoda bir kadının elindeki cilt bakım ürününü telefon kamerasına göstererek video çektiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

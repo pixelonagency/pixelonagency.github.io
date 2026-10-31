@@ -6,7 +6,7 @@ excerpt: 'Google''da reklam vermek için bir hesap ve kredi kartı yetiyor, ama 
 date: 2026-10-01
 cover: '/src/assets/images/blog/google-reklam-nasil-verilir-cover.webp'
 coverAlt: Loş bir kafede elde tutulan telefonda öne çıkarılmış bir arama sonucunun göründüğü yakın plan fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

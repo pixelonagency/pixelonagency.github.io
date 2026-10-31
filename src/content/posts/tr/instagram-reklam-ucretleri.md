@@ -6,7 +6,7 @@ excerpt: 'Instagram''da sabit bir reklam fiyatı yok. Bütçeyi siz belirliyorsu
 date: 2026-10-01
 cover: '/src/assets/images/blog/instagram-reklam-ucretleri-cover.webp'
 coverAlt: Masada sosyal medya reklam önizlemesi açık bir telefon, hesap makinesi, bütçe notları alınmış defter ve bozuk paralar
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

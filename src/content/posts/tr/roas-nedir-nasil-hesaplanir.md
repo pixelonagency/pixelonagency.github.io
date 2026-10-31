@@ -6,7 +6,7 @@ excerpt: ROAS, reklama harcanan her liranın kaç lira ciro getirdiğini göster
 date: 2026-10-01
 cover: '/src/assets/images/blog/roas-nedir-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin büyük ekranda harcama ve gelir çubuklarını karşılaştıran grafiği anlattığı, masada oturan meslektaşının dizüstü bilgisayardan takip ettiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

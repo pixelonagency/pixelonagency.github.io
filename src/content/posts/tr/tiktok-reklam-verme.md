@@ -6,7 +6,7 @@ excerpt: 'TikTok''ta reklam vermek için TikTok Ads Manager hesabı, dikey bir v
 date: 2026-10-01
 cover: '/src/assets/images/blog/tiktok-reklam-verme-cover.webp'
 coverAlt: Gün batımında bir evde halka ışık önünde tripoda takılı telefonla dikey video çeken genç bir içerik üreticisi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -120,6 +120,8 @@
 /en/contact/                                                                /iletisim/                                                                  301
 /en/free-analysis                                                           /ucretsiz-analiz/                                                           301
 /en/free-analysis/                                                          /ucretsiz-analiz/                                                           301
+/en/guides                                                                  /rehber/                                                                    301
+/en/guides/                                                                 /rehber/                                                                    301
 /en/personal-data-processing-notice                                         /kvkk-aydinlatma-metni/                                                     301
 /en/personal-data-processing-notice/                                        /kvkk-aydinlatma-metni/                                                     301
 /en/privacy-policy                                                          /gizlilik-politikasi/                                                       301
@@ -136,6 +138,10 @@
 /en/blog/category/healthcare-marketing/                                     /blog/                                                                      301
 /blog/sosyal-medya-ajanslari-ne-is-is-yapar                                 /blog/sosyal-medya-ajanslari-ne-is-yapar/                                   301
 /blog/sosyal-medya-ajanslari-ne-is-is-yapar/                                /blog/sosyal-medya-ajanslari-ne-is-yapar/                                   301
+/blog/web-sitesi-kac-gunde-biter-gercek-takvim                              /blog/web-sitesi-kac-gunde-biter/                                           301
+/blog/web-sitesi-kac-gunde-biter-gercek-takvim/                             /blog/web-sitesi-kac-gunde-biter/                                           301
+/blog/web-sitesi-ka%C3%A7-g%C3%BCnde-biter                                  /blog/web-sitesi-kac-gunde-biter/                                           301
+/blog/web-sitesi-ka%C3%A7-g%C3%BCnde-biter/                                 /blog/web-sitesi-kac-gunde-biter/                                           301
 
 # 2) KANONİK SLASH NORMALİZASYONU — Workers auto-trailing-slash 307 döndürüyor;
 #    Google kanonikleştirmesi için kalıcı 301 gerekiyor. Wildcard kullanılmaz.
@@ -157,6 +163,7 @@
 /blog/doktor-web-sitesi-nasil-olmali                                        /blog/doktor-web-sitesi-nasil-olmali/                                       301
 /blog/donusum-takibi-nedir                                                  /blog/donusum-takibi-nedir/                                                 301
 /blog/e-ihracat-nedir                                                       /blog/e-ihracat-nedir/                                                      301
+/blog/e-posta-pazarlamasi-nedir                                             /blog/e-posta-pazarlamasi-nedir/                                            301
 /blog/e-ticaret-altyapisi-nasil-secilir                                     /blog/e-ticaret-altyapisi-nasil-secilir/                                    301
 /blog/e-ticaret-nasil-yapilir                                               /blog/e-ticaret-nasil-yapilir/                                              301
 /blog/e-ticaret-seo                                                         /blog/e-ticaret-seo/                                                        301
@@ -194,6 +201,7 @@
 /blog/logo-tasarimi-nasil-yapilir                                           /blog/logo-tasarimi-nasil-yapilir/                                          301
 /blog/marka-bilinirligi-nasil-artirilir                                     /blog/marka-bilinirligi-nasil-artirilir/                                    301
 /blog/marka-kimligi-nedir-neleri-kapsar                                     /blog/marka-kimligi-nedir-neleri-kapsar/                                    301
+/blog/marka-konumlandirma-nedir                                             /blog/marka-konumlandirma-nedir/                                            301
 /blog/markalasma-nedir                                                      /blog/markalasma-nedir/                                                     301
 /blog/meta-description-nedir                                                /blog/meta-description-nedir/                                               301
 /blog/meta-reklamlari-neden-sonuc-vermiyor                                  /blog/meta-reklamlari-neden-sonuc-vermiyor/                                 301
@@ -225,6 +233,7 @@
 /blog/ucuz-web-sitesi                                                       /blog/ucuz-web-sitesi/                                                      301
 /blog/ugc-nedir                                                             /blog/ugc-nedir/                                                            301
 /blog/ui-ux-nedir                                                           /blog/ui-ux-nedir/                                                          301
+/blog/urun-fotografi-cekimi                                                 /blog/urun-fotografi-cekimi/                                                301
 /blog/web-sitesi-analizi-nasil-yapilir                                      /blog/web-sitesi-analizi-nasil-yapilir/                                     301
 /blog/web-sitesi-kac-gunde-biter                                            /blog/web-sitesi-kac-gunde-biter/                                           301
 /blog/web-sitesi-nasil-yapilir                                              /blog/web-sitesi-nasil-yapilir/                                             301
@@ -247,7 +256,13 @@
 /hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari            /hizmetlerimiz/dijital-reklam-yonetimi/reklam-yonetimi-fiyatlari/           301
 /hizmetlerimiz/dijital-reklam-yonetimi/saglik-turizmi-reklamlari            /hizmetlerimiz/dijital-reklam-yonetimi/saglik-turizmi-reklamlari/           301
 /hizmetlerimiz/e-ticaret-cozumleri                                          /hizmetlerimiz/e-ticaret-cozumleri/                                         301
+/hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-danismanligi                   /hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-danismanligi/                  301
+/hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-sitesi-fiyatlari               /hizmetlerimiz/e-ticaret-cozumleri/e-ticaret-sitesi-fiyatlari/              301
+/hizmetlerimiz/e-ticaret-cozumleri/hazir-altyapi-ile-e-ticaret              /hizmetlerimiz/e-ticaret-cozumleri/hazir-altyapi-ile-e-ticaret/             301
 /hizmetlerimiz/marka-ve-kurumsal-kimlik                                     /hizmetlerimiz/marka-ve-kurumsal-kimlik/                                    301
+/hizmetlerimiz/marka-ve-kurumsal-kimlik/ambalaj-ve-etiket-tasarimi          /hizmetlerimiz/marka-ve-kurumsal-kimlik/ambalaj-ve-etiket-tasarimi/         301
+/hizmetlerimiz/marka-ve-kurumsal-kimlik/kurumsal-kimlik-fiyatlari           /hizmetlerimiz/marka-ve-kurumsal-kimlik/kurumsal-kimlik-fiyatlari/          301
+/hizmetlerimiz/marka-ve-kurumsal-kimlik/logo-tasarimi                       /hizmetlerimiz/marka-ve-kurumsal-kimlik/logo-tasarimi/                      301
 /hizmetlerimiz/saglik-turizmi-danismanligi                                  /hizmetlerimiz/saglik-turizmi-danismanligi/                                 301
 /hizmetlerimiz/seo-ve-icerik-pazarlamasi                                    /hizmetlerimiz/seo-ve-icerik-pazarlamasi/                                   301
 /hizmetlerimiz/seo-ve-icerik-pazarlamasi/istanbul-seo-ajansi                /hizmetlerimiz/seo-ve-icerik-pazarlamasi/istanbul-seo-ajansi/               301
@@ -266,6 +281,7 @@
 /hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari                  /hizmetlerimiz/web-tasarim-ve-yazilim/web-sitesi-fiyatlari/                 301
 /iletisim                                                                   /iletisim/                                                                  301
 /kariyer                                                                    /kariyer/                                                                   301
+/kariyer/satis-ve-is-gelistirme-uzmani                                      /kariyer/satis-ve-is-gelistirme-uzmani/                                     301
 /kullanim-kosullari                                                         /kullanim-kosullari/                                                        301
 /kvkk-aydinlatma-metni                                                      /kvkk-aydinlatma-metni/                                                     301
 /projelerimiz                                                               /projelerimiz/                                                              301
@@ -275,6 +291,7 @@
 /projelerimiz/dijital-reklam                                                /projelerimiz/dijital-reklam/                                               301
 /projelerimiz/dr-ayse-cinkaya-kahveci                                       /projelerimiz/dr-ayse-cinkaya-kahveci/                                      301
 /projelerimiz/handsforall                                                   /projelerimiz/handsforall/                                                  301
+/projelerimiz/kurumsal-kimlik                                               /projelerimiz/kurumsal-kimlik/                                              301
 /projelerimiz/mobico                                                        /projelerimiz/mobico/                                                       301
 /projelerimiz/op-dr-ismail-buyukcayir                                       /projelerimiz/op-dr-ismail-buyukcayir/                                      301
 /projelerimiz/redex-glass                                                   /projelerimiz/redex-glass/                                                  301
@@ -287,5 +304,12 @@
 /projelerimiz/web-tasarim                                                   /projelerimiz/web-tasarim/                                                  301
 /projelerimiz/xray-groupe                                                   /projelerimiz/xray-groupe/                                                  301
 /referanslarimiz                                                            /referanslarimiz/                                                           301
+/rehber                                                                     /rehber/                                                                    301
+/rehber/saglik                                                              /rehber/saglik/                                                             301
+/rehber/saglik/hekimler                                                     /rehber/saglik/hekimler/                                                    301
+/rehber/saglik/hekimler/dijital-gorunurluk-checklisti                       /rehber/saglik/hekimler/dijital-gorunurluk-checklisti/                      301
+/rehber/saglik/hekimler/hasta-yorumlarini-toplamak-ve-cevaplamak            /rehber/saglik/hekimler/hasta-yorumlarini-toplamak-ve-cevaplamak/           301
+/rehber/saglik/hekimler/hekimin-google-profili                              /rehber/saglik/hekimler/hekimin-google-profili/                             301
+/rehber/saglik/hekimler/kamera-karsisinda-hekim                             /rehber/saglik/hekimler/kamera-karsisinda-hekim/                            301
 /ucretsiz-analiz                                                            /ucretsiz-analiz/                                                           301
 /web-sitesi-yaptir                                                          /web-sitesi-yaptir/                                                         301

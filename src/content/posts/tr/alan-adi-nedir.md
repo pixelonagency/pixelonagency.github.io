@@ -6,7 +6,7 @@ excerpt: 'Alan adı sitenizin adresi, hosting ise sitenin durduğu yer. İkisini
 date: 2026-09-30
 cover: '/src/assets/images/blog/alan-adi-nedir-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin dizüstü bilgisayarda tarayıcının adres çubuğuna yazı yazdığı, masada bir anahtar ve bir kartvizitin durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

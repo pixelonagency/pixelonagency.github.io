@@ -6,7 +6,7 @@ excerpt: 'Shopify, abonelikle kullanılan hazır bir e-ticaret platformu. Nasıl
 date: 2026-10-01
 cover: '/src/assets/images/blog/shopify-nedir-cover.webp'
 coverAlt: Masada ürün kartlarından oluşan sade bir online mağazanın açık olduğu dizüstü bilgisayar ve alışveriş çantası
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: Google Ads bütçesi tahminle değil hesapla belirlenir. Tıklama maliy
 date: 2026-10-01
 cover: '/src/assets/images/blog/google-ads-butcesi-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin dizüstü bilgisayarda reklam bütçesi hesap tablosunu incelediği, masada not defteri ve hesap makinesi bulunan fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

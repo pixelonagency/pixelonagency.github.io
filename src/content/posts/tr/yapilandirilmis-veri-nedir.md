@@ -6,14 +6,14 @@ excerpt: 'Yapılandırılmış veri, sayfanızdaki bilgiyi Google''ın doğrudan
 date: 2026-10-01
 cover: '/src/assets/images/blog/yapilandirilmis-veri-nedir-cover.webp'
 coverAlt: Karanlık bir ofiste düzenli kod bloklarının ve yıldız puanlı bir arama sonucu kartının göründüğü monitör
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:
   title: 'Schema Markup Nedir? JSON-LD ve Türleri | Pixelon'
   description: 'Yapılandırılmış veri ve schema markup nedir? JSON-LD, Organization, LocalBusiness, Article, FAQ ve Product türleri, zengin sonuçlar, test araçları ve sık yapılan hatalar.'
 article:
-  updated: 2026-10-01
+  updated: 2026-10-31
   quickAnswer:
     heading: Kısa Cevap
     text: 'Yapılandırılmış veri, sayfadaki bilgiyi (bu bir işletme, adresi şu, bu bir ürün, fiyatı şu) arama motorlarının doğrudan okuyabileceği standart bir biçimde işaretleyen koddur. Bu biçimin sözlüğü schema.org, Google''ın önerdiği yazım şekli JSON-LD. Doğru işaretleme, ürün fiyatı, yıldız puanı ya da içerik haritası gibi zengin sonuçlara uygun olmanızı sağlıyor ama bunları garanti etmiyor.'
@@ -94,7 +94,7 @@ article:
 
         Önemli nokta şu: doğru işaretleme sizi zengin sonuca uygun hale getiriyor, zengin sonucu garanti etmiyor. Google hangi sonucu hangi aramada zengin göstereceğine kendisi karar veriyor. Yapılandırılmış veri doğrudan bir sıralama sinyali de değil; Google'ın sayfayı daha iyi anlamasına yardım ediyor, sıranızı tek başına yükseltmiyor.
 
-        Google zaman zaman bazı zengin sonuç türlerini kaldırıyor ya da daraltıyor. 2023'te sık sorulan sorular zengin sonucunu büyük ölçüde iyi bilinen, yetkili devlet ve sağlık sitelerine sınırladı; nasıl yapılır sonuçlarını ise kaldırdı. Bu yüzden FAQ işaretlemesi çoğu site için artık arama sonucunda soru ve cevap göstermiyor. Yine de sayfadaki soru cevap yapısını makinenin anlaması için işaretlemenin zararı yok.
+        Google zaman zaman bazı zengin sonuç türlerini kaldırıyor ya da daraltıyor. 2023'te sık sorulan sorular zengin sonucunu yetkili devlet ve sağlık sitelerine sınırladı, nasıl yapılır sonuçlarını kaldırdı. Mayıs 2026'da sık sorulan sorular zengin sonucunu da tamamen kaldırdı. Yani FAQ işaretlemesi artık hiçbir sitede arama sonucunda soru ve cevap göstermiyor. Google var olan işaretlemenin silinmesini istemiyor; zararı yok ama görünür bir etkisi de yok.
 
     - type: section
       id: yerel-isletme
@@ -157,7 +157,7 @@ article:
         - question: Yapılandırılmış veriyi eklemek için yazılımcı gerekir mi?
           answer: WordPress gibi sistemlerde eklentilerle temel türler eklenebiliyor. Özel yapılmış sitelerde işaretlemenin şablona bir kez kurulması ve içerikten otomatik üretilmesi en sağlıklısı; bu da bir geliştirici işi.
         - question: FAQ işaretlemesi artık işe yaramıyor mu?
-          answer: Çoğu site için arama sonucunda soru cevap göstermiyor. Ama işaretleme sayfanın yapısını makineye anlatmaya devam ediyor ve kurallara uygun yazıldığı sürece zarar vermiyor.
+          answer: Arama sonucunda görünen kısmı bitti. Google sık sorulan sorular zengin sonucunu Mayıs 2026'da kaldırdı. Var olan işaretleme zarar vermiyor ve sayfanın yapısını makineye anlatmaya devam ediyor, ama yalnız zengin sonuç için yeni FAQ işaretlemesi eklemeye değmez.
         - question: Hangi türün desteklendiğini nereden öğrenirim?
           answer: Google Search Central'daki yapılandırılmış veri galerisi, Google'ın zengin sonuç için desteklediği türleri ve zorunlu alanları listeliyor. Liste zaman zaman değiştiği için işe başlamadan oradan kontrol etmek gerekiyor.
 

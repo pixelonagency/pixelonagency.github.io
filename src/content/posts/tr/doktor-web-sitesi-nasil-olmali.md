@@ -6,7 +6,7 @@ excerpt: 'Hasta bir hekimi seçmeden önce şikâyetini arıyor, hekimi araştı
 date: 2026-09-30
 cover: '/src/assets/images/blog/doktor-web-sitesi-nasil-olmali-cover.webp'
 coverAlt: Loş ışıklı bir klinik bekleme alanında bir hastanın telefonunda hekim tanıtım kartı ve randevu butonu olan klinik sitesine baktığı, arka planda beyaz önlüklü hekimin resepsiyonla konuştuğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

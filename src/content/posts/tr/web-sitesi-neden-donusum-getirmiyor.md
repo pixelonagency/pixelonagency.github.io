@@ -6,7 +6,7 @@ excerpt: Site yayında, ziyaretçi geliyor ama talep gelmiyor. Bu tablonun neden
 date: 2026-08-21
 cover: '/src/assets/images/blog/web-sitesi-donusum-cover.webp'
 coverAlt: İki kişinin koyu bir ofiste büyük ekrandaki dönüşüm hunisi ve düşen performans grafiği önünde durduğu, birinin huninin daraldığı adımı işaret ettiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

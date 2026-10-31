@@ -6,7 +6,7 @@ excerpt: 'Performance Max, Google''ın arama, YouTube, Gmail, Discover, Haritala
 date: 2026-10-01
 cover: '/src/assets/images/blog/performance-max-nedir-cover.webp'
 coverAlt: Karanlık bir ofiste video, harita, e-posta ve arama panellerinin birbirine bağlandığı ekranı gösteren bir kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

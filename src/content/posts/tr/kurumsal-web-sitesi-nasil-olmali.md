@@ -6,7 +6,7 @@ excerpt: İyi bir kurumsal web sitesi güzel görünen site değil, ziyaretçini
 date: 2026-08-21
 cover: '/src/assets/images/blog/kurumsal-web-sitesi-nasil-olmali-cover.webp'
 coverAlt: İki kişinin koyu bir ofiste büyük ekranda kurumsal web sitesi tasarımını incelediği, masada aynı sitenin masaüstü ve mobil görünümünün yan yana durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

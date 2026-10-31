@@ -6,7 +6,7 @@ excerpt: Reklam yayında, gösterim var, tıklama da geliyor ama talep yok. Meta
 date: 2026-10-01
 cover: '/src/assets/images/blog/meta-reklamlari-sonuc-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin ekrandaki reklam kampanyası performans panosunu incelediği, bir kişinin düşen grafiği işaret ettiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

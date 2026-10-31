@@ -234,6 +234,16 @@ describe('blogPostingSchema', () => {
     expect(node.author).toEqual({ '@id': 'https://pixelon.com.tr/#organization' });
     expect(node.mainEntityOfPage).toBe(input.url);
   });
+
+  test('bilinen yazar unvanıyla ve kurumuna bağlı kişi olarak işaretlenir', () => {
+    const node = blogPostingSchema({ ...input, author: 'Mehmet Fatih' });
+    expect(node.author).toEqual({
+      '@type': 'Person',
+      name: 'Mehmet Fatih',
+      jobTitle: 'Kurucu',
+      worksFor: { '@id': 'https://pixelon.com.tr/#organization' },
+    });
+  });
 });
 
 describe('faqPageSchema', () => {

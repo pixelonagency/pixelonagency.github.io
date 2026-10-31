@@ -6,7 +6,7 @@ excerpt: 'CTA, ziyaretçiye bir sonraki adımı söyleyen buton ya da cümle. "G
 date: 2026-09-30
 cover: '/src/assets/images/blog/cta-nedir-cover.webp'
 coverAlt: Koyu bir tasarım stüdyosunda bir tasarımcının dokunmatik ekrandaki sade sayfa düzeninde öne çıkan tek limon yeşili butona uzandığı, arka duvarda buton çeşitlerinin asılı olduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

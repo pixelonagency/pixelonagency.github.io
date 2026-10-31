@@ -6,7 +6,7 @@ excerpt: 'SEO, arama motorlarında para ödemeden görünür olma çalışmasıd
 date: 2026-10-01
 cover: '/src/assets/images/blog/seo-nedir-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin büyük ekrandaki arama sonuçları ve sıralama grafiğini incelediği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

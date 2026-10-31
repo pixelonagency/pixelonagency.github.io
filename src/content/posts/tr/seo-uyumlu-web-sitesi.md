@@ -6,7 +6,7 @@ excerpt: 'SEO uyumlu site, yayına alındıktan sonra eklenen bir eklenti değil
 date: 2026-09-30
 cover: '/src/assets/images/blog/seo-uyumlu-web-sitesi-cover.webp'
 coverAlt: Koyu bir stüdyoda iki kişinin büyük ekranda sayfaları birbirine bağlayan bir site haritası diyagramını ve arama sonucu düzenini incelediği, masada basılı sayfa yapısı çizimlerinin durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

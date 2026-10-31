@@ -6,7 +6,7 @@ excerpt: 'Google Ads, Google aramalarında, YouTube''da ve milyonlarca sitede re
 date: 2026-10-01
 cover: '/src/assets/images/blog/google-ads-nedir-cover.webp'
 coverAlt: Akşam saatinde şehir manzaralı bir ofiste dizüstü bilgisayarda reklam kampanyası grafiklerini inceleyen bir kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

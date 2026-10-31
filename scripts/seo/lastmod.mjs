@@ -75,5 +75,17 @@ export function buildLastmodMap() {
     }
   }
 
+  // --- Rehber yazıları: yayin_tarihi (yalnız yayındakiler) ---
+  // URL /rehber/<sektor>/<kitle>/<dosya>/ — rota üretimiyle aynı alanlar.
+  const guideDir = join(CONTENT, 'rehber', 'tr');
+  if (existsSync(guideDir)) {
+    for (const file of readdirSync(guideDir).filter((f) => f.endsWith('.md'))) {
+      const data = frontmatter(join(guideDir, file));
+      if (!data || data.durum !== 'yayinda' || !data.sektor || !data.kitle) continue;
+      const date = gecerliTarih(data.yayin_tarihi);
+      if (date) map.set(`/rehber/${data.sektor}/${data.kitle}/${data.slug ?? file.replace(/\.md$/, '')}/`, date);
+    }
+  }
+
   return map;
 }

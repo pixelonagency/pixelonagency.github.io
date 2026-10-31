@@ -6,7 +6,7 @@ excerpt: 'SEO uzmanı, bir sitenin arama motorlarında görünürlüğünü art�
 date: 2026-10-01
 cover: '/src/assets/images/blog/seo-uzmani-ne-is-yapar-cover.webp'
 coverAlt: Karanlık bir ofiste ekrandaki arama trafiği grafiklerini bir işletme sahibine anlatan danışman
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

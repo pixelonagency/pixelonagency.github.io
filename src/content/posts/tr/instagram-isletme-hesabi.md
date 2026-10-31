@@ -6,7 +6,7 @@ excerpt: 'İşletme hesabı, istatistiklere, iletişim butonlarına ve reklama a
 date: 2026-09-30
 cover: '/src/assets/images/blog/instagram-isletme-hesabi-cover.webp'
 coverAlt: Bir dükkan sahibinin tezgahın arkasında işletme profilinin açık olduğu telefonu kameraya gösterdiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

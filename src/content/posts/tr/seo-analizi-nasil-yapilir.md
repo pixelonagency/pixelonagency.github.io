@@ -6,7 +6,7 @@ excerpt: 'SEO analizi, sitenizin Google''da neden olduğu yerde durduğunu göst
 date: 2026-10-01
 cover: '/src/assets/images/blog/seo-analizi-nasil-yapilir-cover.webp'
 coverAlt: Akşam şehir manzaralı bir ofiste monitördeki site denetim grafiklerini ve kontrol listesini inceleyen bir uzman
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

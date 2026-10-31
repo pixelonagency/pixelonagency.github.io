@@ -6,7 +6,7 @@ excerpt: 'Profesyonel logo tasarımı bir çizim programını açmakla başlamı
 date: 2026-10-01
 cover: '/src/assets/images/blog/logo-tasarimi-nasil-yapilir-cover.webp'
 coverAlt: Gece bir tasarımcının masasında defterdeki logo eskizleri, basılı logo taslakları ve vektör şekiller açık bir dizüstü bilgisayar
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

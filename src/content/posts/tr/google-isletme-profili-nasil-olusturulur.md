@@ -6,7 +6,7 @@ excerpt: 'Haritada ve yerel aramada çıkan işletme kartı, çoğu müşterinin
 date: 2026-10-01
 cover: '/src/assets/images/blog/google-isletme-profili-nasil-olusturulur-cover.webp'
 coverAlt: Akşam saatinde bir dükkân vitrininin önünde bir işletme sahibinin telefonunda harita ve işletme kartını incelediği, tezgâhtaki dizüstü bilgisayarda aynı profil panelinin açık olduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: 'E-ticarette müşteri ürüne dokunamıyor; kararı fotoğrafa bakarak
 date: 2026-10-01
 cover: '/src/assets/images/blog/urun-fotografi-cekimi-cover.webp'
 coverAlt: Karanlık bir stüdyoda softbox ışığıyla aydınlatılmış bir cilt bakım şişesi ve önde tripoda takılı kamera
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

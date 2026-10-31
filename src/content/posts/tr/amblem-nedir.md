@@ -6,12 +6,12 @@ excerpt: 'Amblem, logonun yazı içermeyen işaret kısmıdır. Logotype, monogr
 date: 2026-10-01
 cover: '/src/assets/images/blog/amblem-nedir-cover.webp'
 coverAlt: Kalın koyu bir kağıda kabartma olarak basılmış soyut bir amblemin yakın plan fotoğrafı
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:
-  title: 'Amblem Nedir? Logo Türleri ve Farkları | Pixelon'
-  description: 'Amblem nedir, logodan farkı ne? Logotype, monogram, rozet ve kombine logo gibi logo türleri, karşılaştırma tablosu ve hangi markaya hangisinin uyduğu.'
+  title: 'Amblem Ne Demek? Amblem ile Logo Farkı ve Türleri | Pixelon'
+  description: 'Amblem ne demek? Kısaca: logonun yazısız işaret kısmı. Amblem ile logo farkı, logotype, monogram ve rozet türleri, örnekler ve hangi markaya hangisi uyar.'
 article:
   updated: 2026-10-01
   quickAnswer:

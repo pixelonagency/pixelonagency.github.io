@@ -6,7 +6,7 @@ excerpt: 'Markalaşma bir logo yaptırmak değil; işletmenin kime, ne vaatle se
 date: 2026-10-01
 cover: '/src/assets/images/blog/markalasma-nedir-cover.webp'
 coverAlt: Akşam karanlık bir tasarım stüdyosunda büyük bir masada renk örnekleri ve ürün numunelerini düzenleyen ekip
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

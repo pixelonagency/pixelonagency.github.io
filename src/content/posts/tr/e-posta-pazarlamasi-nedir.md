@@ -6,7 +6,7 @@ excerpt: 'E-ticarette en ucuz satış, zaten sizden almış müşteriden gelir. 
 date: 2026-10-01
 cover: '/src/assets/images/blog/e-posta-pazarlamasi-nedir-cover.webp'
 coverAlt: Akşam kanepede tabletten ürün görselli bir kampanya e-postası okuyan bir kişi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

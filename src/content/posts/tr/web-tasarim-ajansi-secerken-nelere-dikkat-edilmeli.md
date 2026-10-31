@@ -6,7 +6,7 @@ excerpt: Web tasarım ajansı seçimi çoğu zaman en düşük teklifle sonuçla
 date: 2026-08-21
 cover: '/src/assets/images/blog/web-tasarim-ajansi-secimi-cover.webp'
 coverAlt: İki kişinin koyu bir toplantı masasında yan yana açılmış üç ayrı teklif dosyasını karşılaştırdığı, yanlarındaki dizüstü bilgisayarda portfolyo ızgarasının göründüğü fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

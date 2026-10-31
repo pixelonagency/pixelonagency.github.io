@@ -6,7 +6,7 @@ excerpt: 'Freelancer daha hızlı ve ekonomik olabilir; ajans daha geniş bir i�
 date: 2026-09-30
 cover: '/src/assets/images/blog/freelance-mi-ajans-mi-cover.webp'
 coverAlt: Akşam saatinde aynı mekânın bir tarafında tek başına çalışan bir serbest tasarımcının, diğer tarafında büyük bir masada birlikte çalışan dört kişilik bir ajans ekibinin göründüğü fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

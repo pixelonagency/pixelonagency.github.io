@@ -6,7 +6,7 @@ excerpt: 'Sosyal medya uzmanı tek bir iş değil; strateji, metin, tasarım, vi
 date: 2026-09-30
 cover: '/src/assets/images/blog/sosyal-medya-uzmani-ne-is-yapar-cover.webp'
 coverAlt: Halka ışık ve kamera kurulu bir masada sosyal medya uzmanının telefonuna bakarak deftere plan notları aldığı fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

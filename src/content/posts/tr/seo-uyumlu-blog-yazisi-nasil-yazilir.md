@@ -6,7 +6,7 @@ excerpt: SEO uyumlu yazı, anahtar kelimeyle doldurulmuş yazı değil; arayan k
 date: 2026-10-01
 cover: '/src/assets/images/blog/seo-blog-yazisi-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin çift ekranda blog yazısı taslağı ve anahtar kelime listesi üzerinde çalıştığı fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

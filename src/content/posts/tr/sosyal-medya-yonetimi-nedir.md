@@ -6,7 +6,7 @@ excerpt: 'Sosyal medya yönetimi, paylaşım yapmaktan çok daha fazlası: strat
 date: 2026-09-30
 cover: '/src/assets/images/blog/sosyal-medya-yonetimi-nedir-cover.webp'
 coverAlt: Akşam saatinde bir ofiste bir kadının duvardaki içerik takvimine not eklediği, masada dizüstü bilgisayar ve tripoda takılı telefonun durduğu fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

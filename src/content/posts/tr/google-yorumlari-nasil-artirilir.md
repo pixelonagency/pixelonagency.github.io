@@ -6,7 +6,7 @@ excerpt: 'Google yorumları hem yeni müşterinin güvenini hem yerel aramadaki 
 date: 2026-10-01
 cover: '/src/assets/images/blog/google-yorumlari-nasil-artirilir-cover.webp'
 coverAlt: Akşam bir kafenin tezgahında telefonundan beş yıldızlı yorum bırakan müşteri ve arkada gülümseyen işletme sahibi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

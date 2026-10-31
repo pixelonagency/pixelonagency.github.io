@@ -31,15 +31,15 @@ sections:
       - Reklam bütçesi ayrı
       - Türkiye ve yurt dışında çekim
     ctas:
-      - label: Size Özel Teklif Alın
-        href: /iletisim/
+      - label: WhatsApp'tan Fiyat Alın
+        href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20sosyal%20medya%20y%C3%B6netimi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'
         variant: primary
-        icon: arrow
-      - label: WhatsApp'tan Sorun
-        href: https://wa.me/905065229034
-        variant: outline
         icon: whatsapp
         external: true
+      - label: Teklif Formunu Doldurun
+        href: /iletisim/
+        variant: outline
+        icon: arrow
 
   # 2. PAKETLER: başlangıç fiyatı, içerik, kimin için.
   - type: cards
@@ -76,6 +76,17 @@ sections:
       tutara iner.
 
   # 3. RAKAMLAR: sayaç tam sayı saydığı için binlik kısım sonek olarak yazılır.
+
+  # Fiyat kartlarının hemen ardından: okur rakamı gördüğü anda soracağı yer.
+  - type: cta
+    background: light
+    heading: "Hesabınızı yazın, hangi pakete *denk geldiğinizi* WhatsApp'tan söyleyelim."
+    ctas:
+      - label: WhatsApp'tan Yazın
+        href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20sosyal%20medya%20y%C3%B6netimi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'
+        variant: primary
+        icon: whatsapp
+        external: true
   - type: stats
     background: dark
     eyebrow: Kısaca
@@ -227,15 +238,15 @@ sections:
   - type: cta
     background: dark
     kind: spot
-    heading: Fiyatı Tahmin Etmeyin, Birlikte Netleştirelim
+    heading: Fiyatı Tahmin Etmeyin, WhatsApp'tan Sorun
     lead: >-
-      Markanızı ve sosyal medyadan ne beklediğinizi anlatın. Hangi pakete denk geldiğinizi
-      ve kapsamın ne olması gerektiğini ilk görüşmede açıkça söyleyelim.
+      Instagram hesabınızı ve sosyal medyadan ne beklediğinizi WhatsApp'tan yazın. Hangi pakete denk geldiğinizi ve kapsamın ne olması gerektiğini açıkça söyleyelim.
     ctas:
-      - label: Size Özel Teklif Alın
-        href: /iletisim/
+      - label: WhatsApp'tan Yazın
+        href: 'https://wa.me/905065229034?text=Merhaba%20Pixelon%2C%20sosyal%20medya%20y%C3%B6netimi%20fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20teklif%20istemek%20istiyorum.'
         variant: primary
-        icon: arrow
-      - label: Sosyal Medya Yönetimi
-        href: /hizmetlerimiz/sosyal-medya-yonetimi/
+        icon: whatsapp
+        external: true
+      - label: Teklif Formunu Doldurun
+        href: /iletisim/
         variant: outline

@@ -6,7 +6,7 @@ excerpt: 'Marka konumlandırma, markanın kime, hangi ihtiyaç için, rakiplerin
 date: 2026-10-01
 cover: '/src/assets/images/blog/marka-konumlandirma-nedir-cover.webp'
 coverAlt: Karanlık bir toplantı odasında beyaz tahtaya çizilmiş iki eksenli konumlandırma haritasına yapışkan notlar yerleştiren bir strateji uzmanı
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

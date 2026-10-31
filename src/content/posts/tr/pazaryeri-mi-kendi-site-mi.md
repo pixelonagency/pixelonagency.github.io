@@ -6,7 +6,7 @@ excerpt: 'Pazaryerinde satmak hızlı başlatıyor ama müşteri, marka ve fiyat
 date: 2026-10-01
 cover: '/src/assets/images/blog/pazaryeri-mi-kendi-site-mi-cover.webp'
 coverAlt: Akşam küçük bir depoda raflardaki koliler ve bir koliyi okutan çalışan
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

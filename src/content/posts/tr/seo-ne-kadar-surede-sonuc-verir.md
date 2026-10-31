@@ -6,7 +6,7 @@ excerpt: Tek bir süre vermek mümkün değil; süreyi sitenin mevcut durumu, re
 date: 2026-10-01
 cover: '/src/assets/images/blog/seo-sure-cover.webp'
 coverAlt: Koyu bir ofiste bir kişinin ekrandaki aylara yayılmış organik trafik grafiğini anlattığı, meslektaşının dizüstü bilgisayardan takip ettiği fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: Reels, takipçisi olmayan kişilere ulaşabilen tek format. Bu yüzden 
 date: 2026-08-21
 cover: '/src/assets/images/blog/reels-marka-cover.webp'
 coverAlt: Koyu bir ajans ofisinde dikey video çekimi için kurulmuş tripod ve telefon, arkada ekranda video kurgu zaman çizelgesinin göründüğü fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,7 +6,7 @@ excerpt: 'Marka bilinirliği, müşterinin ihtiyaç anında aklına sizin gelmen
 date: 2026-09-30
 cover: '/src/assets/images/blog/marka-bilinirligi-nasil-artirilir-cover.webp'
 coverAlt: Akşam bir otobüs durağında telefonlarına bakan insanlar ve arkada ışıklı bir reklam panosu
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

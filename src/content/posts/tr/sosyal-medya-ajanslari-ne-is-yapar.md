@@ -6,7 +6,7 @@ excerpt: 'Sosyal medya ajansı, bir markanın hesaplarını içerik üretiminden
 date: 2026-08-20
 cover: '/src/assets/images/blog/sosyal-medya-ajansi-ne-is-yapar-cover.webp'
 coverAlt: Sosyal medya stratejisi üzerinde çalışan dijital pazarlama ajansı ekibi
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: true
 seo:

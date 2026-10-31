@@ -6,7 +6,7 @@ excerpt: İkisini de yapıyoruz, bu yüzden taraf tutmadan yazabiliyoruz. Seçim
 date: 2026-09-05
 cover: '/src/assets/images/blog/wordpress-mi-ozel-yazilim-cover.webp'
 coverAlt: Koyu bir ofiste iki kişinin yan yana duran iki ekranda hazır yönetim panelini ve özel yazılım panelini karşılaştırdığı fotoğraf
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

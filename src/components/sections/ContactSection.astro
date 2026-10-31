@@ -156,7 +156,7 @@ const { section, locale = DEFAULT_LOCALE } = Astro.props;
 
   /* Açık zeminli varyant */
   :global(.section--light) .contact__info-label {
-    color: rgba(10, 10, 10, 0.45);
+    color: var(--text-muted-on-light);
   }
 
   :global(.section--light) .contact__info-value {

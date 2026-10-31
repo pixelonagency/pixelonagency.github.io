@@ -6,7 +6,7 @@ excerpt: 'ETBİS, internetten satış yapan işletmelerin Ticaret Bakanlığı''
 date: 2026-10-01
 cover: '/src/assets/images/blog/etbis-nedir-cover.webp'
 coverAlt: Gece masasında dizüstü bilgisayardan resmi bir kayıt formu dolduran işletme sahibi ve yanında şirket evrakları
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:

@@ -6,11 +6,11 @@ excerpt: 'Rebranding, markanın konumlandırmasını, adını ya da görsel kiml
 date: 2026-10-01
 cover: '/src/assets/images/blog/rebranding-nedir-cover.webp'
 coverAlt: Akşam bir dükkanın eski tabelası duvara yaslanmışken yeni tabelanın yerine takıldığı sokak görüntüsü
-author: Pixelon Ekibi
+author: Mehmet Fatih
 status: published
 featured: false
 seo:
-  title: 'Rebranding ve Marka Yenileme Rehberi | Pixelon'
+  title: 'Rebranding Ne Demek? Ne Zaman Yapılmalı? | Pixelon'
   description: 'Rebranding nedir, marka yenileme ne zaman gerekir? Tazeleme ile rebranding farkı, riskler, adım adım süreç, tanınırlığı korumak, geçiş planı ve isim değişiminde SEO.'
 article:
   updated: 2026-10-01

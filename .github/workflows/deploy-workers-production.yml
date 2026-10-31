@@ -29,7 +29,8 @@ on:
     branches: [main]
     paths-ignore:
       - 'seo/**'
-      - 'scripts/seo/**'
+      # scripts/seo/ bilerek listede YOK: lastmod.mjs sitemap'i, build-redirects.mjs
+      # _redirects'i üretiyor; yalnız onları değiştiren bir push da yayına çıkmalı.
       - '*.md'
   workflow_dispatch:
 
